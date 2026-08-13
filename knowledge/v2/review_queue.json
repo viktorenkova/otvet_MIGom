@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-08-12",
+  "publication_policy": "expert_approval_required",
+  "source": "MIGTORG knowledge audit after expert interviews, parts 1-2, approved questionnaire part 2 ver. 2, project-owner clarifications and buyer contract review",
+  "records": [
+    {
+      "candidate_id": "review.loyalty.rules",
+      "proposed_scenario_id": "loyalty.rules",
+      "title": "Полный регламент программы лояльности",
+      "status": "expert_review_required",
+      "risk": "financial",
+      "support_conversations": 1,
+      "approved_legacy_ids": ["kb-107-программа-топ-10-покупателей", "kb-108-почему-бонус-не-начислен"],
+      "questions_for_expert": ["В какую дату начисляется кэшбэк и имеет ли он срок действия?", "Кто утверждает изменения программы и когда правила пересматриваются?"],
+      "safe_fallback_scenario_id": "loyalty.unconfirmed_details",
+      "publication_blockers": ["cashback_credit_date_and_expiry", "revision_owner", "review_date"],
+      "owner": "MIGTORG knowledge base owner",
+      "expert_role": "MIGTORG finance and product owner"
+    },
+    {
+      "candidate_id": "review.contract.deadlines",
+      "proposed_scenario_id": "contract.deadlines",
+      "title": "Коллизии сроков блокировки и расторжения",
+      "status": "expert_review_required",
+      "risk": "financial_contractual",
+      "support_conversations": 1,
+      "approved_legacy_ids": ["site-doc-011-obespechitelnyy-platezh-ogranicheniya"],
+      "questions_for_expert": ["Какой документ фактически устанавливает срок оплаты услуг, если пункт 5.5 ссылается на Приложение № 2 с формой акта об отказе, и нужно ли исправить ссылку в шаблоне договора?", "Применяется ли автоматическое восстановление после оплаты только к комиссии в личном кабинете или также к другим обязательствам?"],
+      "safe_fallback_scenario_id": "contract.unconfirmed_details",
+      "publication_blockers": ["contract_appendix_reference", "restoration_scope", "legal_owner"],
+      "owner": "MIGTORG knowledge base owner",
+      "expert_role": "MIGTORG legal and auction administration"
+    },
+    {
+      "candidate_id": "review.refusal",
+      "proposed_scenario_id": "lot.refusal",
+      "title": "Отказ от выигранного или переданного лота",
+      "status": "expert_review_required",
+      "risk": "contractual",
+      "support_conversations": 29,
+      "approved_legacy_ids": ["kb-069-можно-ли-отказаться-от-выигранного-лота", "kb-071-мотивированный-отказ", "kb-073-как-описывать-расхождения"],
+      "questions_for_expert": ["Чем различаются финансовые последствия отказа по этапам сделки: активная ставка, победа до передачи, переданный лот, осмотр и полная оплата?", "Какой перечень оснований пункта 3.6 считать исчерпывающим и как документировать невозможность регистрации?", "Какие последствия отказа автоматические, а какие требуют решения продавца или MIGTORG?"],
+      "safe_fallback_scenario_id": "refusal.unconfirmed_details",
+      "publication_blockers": ["refusal_stage_consequences", "exhaustive_grounds", "automatic_vs_manual_decisions", "named_legal_expert"],
+      "owner": "MIGTORG knowledge base owner",
+      "expert_role": "MIGTORG legal"
+    },
+    {
+      "candidate_id": "review.penalty",
+      "proposed_scenario_id": "penalty.policy_details",
+      "title": "Штраф и его оспаривание",
+      "status": "expert_review_required",
+      "risk": "financial_contractual",
+      "support_conversations": 10,
+      "approved_legacy_ids": ["kb-074-оспаривание-штрафа", "manual-review-2026-07-11-remaining54-q-110-почему-меня-обязуют-платить-штраф"],
+      "questions_for_expert": ["Какой срок оплаты штрафа и от какого события он начинается?", "Кто принимает окончательное решение по индивидуальному обращению о штрафе?", "Можно ли публиковать конкретные формулы штрафов или бот всегда должен направлять к договору?"],
+      "safe_fallback_scenario_id": "penalty.unconfirmed_details",
+      "publication_blockers": ["penalty_payment_deadline", "decision_owner", "publication_boundary", "named_finance_expert", "named_legal_expert"],
+      "owner": "MIGTORG knowledge base owner",
+      "expert_role": "MIGTORG finance and legal"
+    },
+    {
+      "candidate_id": "review.knowledge.governance",
+      "proposed_scenario_id": "knowledge.governance",
+      "title": "Матрица публикации и владельцы правил",
+      "status": "expert_review_required",
+      "risk": "operational",
+      "support_conversations": 1,
+      "approved_legacy_ids": ["kb-114-когда-вопрос-нужно-передать-сотруднику", "kb-126-что-первая-линия-не-должна-обещать"],
+      "questions_for_expert": ["Какие сведения после авторизации всё равно доступны только сотруднику после индивидуальной проверки?", "Какие документы подтверждают полномочия представителя организации и плательщика, отличного от владельца аккаунта?", "Кто утверждает каждый финансовый и договорный раздел?", "Какова периодичность и события внепланового пересмотра БЗ?"],
+      "safe_fallback_scenario_id": "support.staff_only_details",
+      "publication_blockers": ["staff_only_boundary", "representative_and_payer_documents", "named_domain_owners", "review_schedule"],
+      "owner": "MIGTORG knowledge base owner",
+      "expert_role": "MIGTORG product owner, finance and legal"
+    }
+  ]
+}

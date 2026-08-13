@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>MIGTORG Chat Widget Demo</title>
+    <link rel="stylesheet" href="./style.css?v=20260812-chat-home" />
+  </head>
+  <body data-demo="true">
+    <main class="demo">
+      <section class="demo__content">
+        <p class="demo__eyebrow">MIGTORG</p>
+        <h1>Web-chat MVP1</h1>
+        <p>Дежурный помощник поддержки для вопросов по лотам, торгам, тарифам, оплате, документам и обращениям.</p>
+      </section>
+
+      <details class="demo__controls" aria-label="Dev controls">
+        <summary>Настройки демо</summary>
+        <div class="demo__controls-header">
+          <strong>Тестовый контекст</strong>
+          <button class="demo__reset-session" type="button">Сбросить session_id</button>
+        </div>
+        <p class="demo__hint">Только для локальной проверки. На сайте эту панель заменит контекст страницы.</p>
+        <label>
+          <span>Роль</span>
+          <select name="is_authorized">
+            <option value="false">guest</option>
+            <option value="true">authorized</option>
+          </select>
+        </label>
+        <label>
+          <span>page_type</span>
+          <select name="page_type">
+            <option value="public_site">public_site</option>
+            <option value="registration">registration</option>
+            <option value="login">login</option>
+            <option value="tariffs">tariffs</option>
+            <option value="lot_catalog">lot_catalog</option>
+            <option value="lot_card">lot_card</option>
+            <option value="balance">balance</option>
+            <option value="payments">payments</option>
+            <option value="won_lots">won_lots</option>
+            <option value="transferred_lots">transferred_lots</option>
+            <option value="support">support</option>
+          </select>
+        </label>
+        <label>
+          <span>user_id</span>
+          <input name="user_id" placeholder="u-123" />
+        </label>
+        <label>
+          <span>lot_id</span>
+          <input name="lot_id" placeholder="12345" />
+        </label>
+        <label>
+          <span>email</span>
+          <input name="user_email" placeholder="user@example.com" />
+        </label>
+        <label>
+          <span>phone</span>
+          <input name="user_phone" placeholder="+7..." />
+        </label>
+        <pre class="demo__debug" aria-label="Debug response">Ожидаю запрос...</pre>
+      </details>
+    </main>
+
+    <div class="chat" data-open="false">
+      <button class="chat__toggle" type="button" aria-label="Открыть поддержку MIGTORG">
+        <svg class="chat__toggle-icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false">
+          <path d="M6 4h12a4 4 0 0 1 4 4v6a4 4 0 0 1-4 4h-6l-5 3v-3H6a4 4 0 0 1-4-4V8a4 4 0 0 1 4-4Z" />
+        </svg>
+        <span class="chat__toggle-text">Поддержка MIGTORG</span>
+      </button>
+
+      <section class="chat__panel" aria-label="Поддержка MIGTORG">
+        <header class="chat__header">
+          <div class="chat__brand">
+            <span class="chat__logo" aria-hidden="true">M</span>
+            <div>
+              <strong>Поддержка MIGTORG</strong>
+              <span>Лоты, торги, оплата и документы</span>
+            </div>
+          </div>
+          <button class="chat__close" type="button" aria-label="Закрыть чат">×</button>
+        </header>
+
+        <div class="chat__messages" aria-live="polite">
+          <div class="message message--bot message--welcome">Опишите проблему своими словами — я помогу разобраться или подготовлю обращение в поддержку.</div>
+          <div class="chat__quick-intro">
+            <strong>Частые ситуации</strong>
+          </div>
+          <div class="chat__quick" aria-label="Частые ситуации">
+            <button type="button" data-message="Лот не передают">Лот не передают</button>
+            <button type="button" data-message="Не могу сделать ставку">Не могу сделать ставку</button>
+            <button type="button" data-message="Оплатил тариф, доступа нет">Оплатил тариф, доступа нет</button>
+            <button type="button" data-message="Вопрос по штрафу или депозиту">Вопрос по штрафу или депозиту</button>
+          </div>
+        </div>
+
+        <nav class="chat__navigation" aria-label="Навигация по чату">
+          <button class="chat__home" type="button" aria-label="Вернуться в начало и начать новый диалог">В начало</button>
+        </nav>
+
+        <form class="chat__form">
+          <input class="chat__input" name="message" autocomplete="off" placeholder="Коротко опишите проблему" />
+          <button class="chat__send" type="submit" aria-label="Отправить сообщение">Отправить</button>
+        </form>
+
+        <div class="chat__actions" hidden>
+          <button class="chat__ticket-button" type="button">Создать обращение</button>
+        </div>
+
+        <form class="ticket-form" hidden>
+          <label>
+            <span>Контакт</span>
+            <input name="contact" placeholder="Телефон или email" />
+          </label>
+          <label>
+            <span>Тема</span>
+            <select name="topic">
+              <option value="Обращение в поддержку">Обращение в поддержку</option>
+              <option value="Проверка платежа">Проверка платежа</option>
+              <option value="Возврат">Возврат</option>
+              <option value="Вопрос по начислению штрафа">Вопрос по начислению штрафа</option>
+              <option value="Отказ от лота">Отказ от лота</option>
+              <option value="Вопрос по лоту">Вопрос по лоту</option>
+              <option value="Получение автомобиля">Получение автомобиля</option>
+              <option value="Вопрос по тарифу">Вопрос по тарифу</option>
+              <option value="Закрывающие документы по сделке">Закрывающие документы по сделке</option>
+              <option value="Обратная связь">Обратная связь</option>
+              <option value="Другая тема">Другая тема</option>
+            </select>
+          </label>
+          <label class="ticket-form__custom-topic" hidden>
+            <span>Своя тема</span>
+            <input name="custom_topic" placeholder="Коротко укажите тему" />
+          </label>
+          <label class="ticket-form__description">
+            <span>Описание</span>
+            <textarea name="description" placeholder="Опишите ситуацию, номер лота или платежа"></textarea>
+          </label>
+          <button class="ticket-form__clear-description" type="button">Очистить и написать своё</button>
+          <button type="submit">Создать обращение</button>
+        </form>
+      </section>
+    </div>
+
+    <script src="./widget.js?v=20260812-chat-home"></script>
+  </body>
+</html>

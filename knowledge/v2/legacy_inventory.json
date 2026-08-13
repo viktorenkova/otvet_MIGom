@@ -1,0 +1,4409 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-08-12",
+  "policy": "Each active legacy record has exactly one disposition. Retained confirmed and expert-review records block migration completion.",
+  "allowed_statuses": [
+    "migrated_to_v2",
+    "merged_into_v2",
+    "retained_confirmed",
+    "expert_review_required",
+    "deactivated"
+  ],
+  "records": [
+    {
+      "legacy_id": "kb-002-что-такое-migtorg",
+      "title": "Что такое MIGTORG",
+      "intent": "platform",
+      "priority": "normal",
+      "status": "migrated_to_v2",
+      "target_scenario_ids": [
+        "platform.about"
+      ],
+      "source": "migtorg_knowledge_base_first_line_updated.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "kb-003-роль-площадки-в-сделке",
+      "title": "Роль площадки в сделке",
+      "intent": "platform",
+      "priority": "normal",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "platform.about"
+      ],
+      "source": "migtorg_knowledge_base_first_line_updated.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "kb-004-что-продается-на-площадке",
+      "title": "Что продается на площадке",
+      "intent": "platform",
+      "priority": "normal",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "platform.about"
+      ],
+      "source": "migtorg_knowledge_base_first_line_updated.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "kb-005-чем-площадка-отличается-от-доски-объявлений",
+      "title": "Чем площадка отличается от доски объявлений",
+      "intent": "platform",
+      "priority": "normal",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "platform.about"
+      ],
+      "source": "migtorg_knowledge_base_first_line_updated.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "kb-006-migtorg-не-выкупает-лоты-сам",
+      "title": "MIGTORG не выкупает лоты сам",
+      "intent": "platform",
+      "priority": "normal",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "platform.about"
+      ],
+      "source": "migtorg_knowledge_base_first_line_updated.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "kb-007-почему-победа-не-гарантирует-покупку",
+      "title": "Почему победа не гарантирует покупку",
+      "intent": "lot",
+      "priority": "normal",
+      "status": "migrated_to_v2",
+      "target_scenario_ids": [
+        "transfer.not_confirmed"
+      ],
+      "source": "migtorg_knowledge_base_first_line_updated.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "kb-008-почему-автомобиль-выставлен-до-финального-решения-страховой",
+      "title": "Почему автомобиль выставлен до финального решения страховой",
+      "intent": "lot",
+      "priority": "normal",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "platform.about"
+      ],
+      "source": "migtorg_knowledge_base_first_line_updated.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "kb-009-собственник-возмущен-что-его-авто-на-торгах",
+      "title": "Собственник возмущен, что его авто на торгах",
+      "intent": "lot",
+      "priority": "normal",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "platform.about"
+      ],
+      "source": "migtorg_knowledge_base_first_line_updated.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "kb-010-у-кого-покупатель-выкупает-лот",
+      "title": "У кого покупатель выкупает лот",
+      "intent": "lot",
+      "priority": "normal",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "platform.about"
+      ],
+      "source": "migtorg_knowledge_base_first_line_updated.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "kb-011-проверка-юридической-чистоты-автомобиля",
+      "title": "Проверка юридической чистоты автомобиля",
+      "intent": "lot",
+      "priority": "normal",
+      "status": "migrated_to_v2",
+      "target_scenario_ids": [
+        "vehicle.legal_check"
+      ],
+      "source": "migtorg_knowledge_base_first_line_updated.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "kb-012-регистрация-на-сайте",
+      "title": "Регистрация на сайте",
+      "intent": "registration",
+      "priority": "high",
+      "status": "migrated_to_v2",
+      "target_scenario_ids": [
+        "account.registration"
+      ],
+      "source": "migtorg_knowledge_base_first_line_updated.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "kb-013-что-происходит-после-регистрации",
+      "title": "Что происходит после регистрации",
+      "intent": "registration",
+      "priority": "high",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "account.registration"
+      ],
+      "source": "migtorg_knowledge_base_first_line_updated.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "kb-014-демо-режим-после-регистрации",
+      "title": "Демо-режим после регистрации",
+      "intent": "registration",
+      "priority": "high",
+      "status": "migrated_to_v2",
+      "target_scenario_ids": [
+        "tariff.demo"
+      ],
+      "source": "migtorg_knowledge_base_first_line_updated.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "kb-015-не-приходит-письмо-или-код",
+      "title": "Не приходит письмо или код",
+      "intent": "registration",
+      "priority": "high",
+      "status": "migrated_to_v2",
+      "target_scenario_ids": [
+        "account.login_problem"
+      ],
+      "source": "migtorg_knowledge_base_first_line_updated.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "kb-016-восстановление-доступа",
+      "title": "Восстановление доступа",
+      "intent": "registration",
+      "priority": "high",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "account.login_problem"
+      ],
+      "source": "migtorg_knowledge_base_first_line_updated.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "kb-017-аккаунт-не-активирован",
+      "title": "Аккаунт не активирован",
+      "intent": "registration",
+      "priority": "high",
+      "status": "migrated_to_v2",
+      "target_scenario_ids": [
+        "account.activation_pending"
+      ],
+      "source": "migtorg_knowledge_base_first_line_updated.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "kb-018-регистрация-продавца",
+      "title": "Регистрация продавца",
+      "intent": "registration",
+      "priority": "high",
+      "status": "migrated_to_v2",
+      "target_scenario_ids": [
+        "seller.get_started"
+      ],
+      "source": "migtorg_knowledge_base_first_line_updated.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "kb-019-зачем-нужен-тариф",
+      "title": "Зачем нужен тариф",
+      "intent": "tariffs",
+      "priority": "critical",
+      "status": "migrated_to_v2",
+      "target_scenario_ids": [
+        "tariff.choose"
+      ],
+      "source": "migtorg_knowledge_base_first_line_updated.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "kb-021-разовый-тариф",
+      "title": "Разовый тариф",
+      "intent": "tariffs",
+      "priority": "critical",
+      "status": "migrated_to_v2",
+      "target_scenario_ids": [
+        "tariff.one_time"
+      ],
+      "source": "migtorg_knowledge_base_first_line_updated.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "kb-022-премиум-тариф",
+      "title": "Премиум-тариф",
+      "intent": "tariffs",
+      "priority": "critical",
+      "status": "migrated_to_v2",
+      "target_scenario_ids": [
+        "tariff.premium"
+      ],
+      "source": "migtorg_knowledge_base_first_line_updated.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "kb-023-как-подключить-тариф",
+      "title": "Как подключить тариф",
+      "intent": "tariffs",
+      "priority": "critical",
+      "status": "migrated_to_v2",
+      "target_scenario_ids": [
+        "tariff.connect"
+      ],
+      "source": "migtorg_knowledge_base_first_line_updated.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "kb-024-как-проверить-активен-ли-тариф",
+      "title": "Как проверить, активен ли тариф",
+      "intent": "tariffs",
+      "priority": "critical",
+      "status": "migrated_to_v2",
+      "target_scenario_ids": [
+        "tariff.status"
+      ],
+      "source": "migtorg_knowledge_base_first_line_updated.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "kb-025-акции-и-скидки-по-тарифам",
+      "title": "Акции и скидки по тарифам",
+      "intent": "tariffs",
+      "priority": "critical",
+      "status": "migrated_to_v2",
+      "target_scenario_ids": [
+        "tariff.promotion"
+      ],
+      "source": "migtorg_knowledge_base_first_line_updated.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "kb-026-тариф-для-покупки-для-себя",
+      "title": "Тариф для покупки для себя",
+      "intent": "tariffs",
+      "priority": "critical",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "tariff.choose"
+      ],
+      "source": "migtorg_knowledge_base_first_line_updated.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "kb-027-тариф-для-заработка",
+      "title": "Тариф для заработка",
+      "intent": "tariffs",
+      "priority": "critical",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "tariff.choose"
+      ],
+      "source": "migtorg_knowledge_base_first_line_updated.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "kb-028-тариф-и-баланс-разные-вещи",
+      "title": "Тариф и баланс — разные вещи",
+      "intent": "payment",
+      "priority": "critical",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "payment.methods"
+      ],
+      "source": "migtorg_knowledge_base_first_line_updated.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "kb-029-как-пополнить-баланс",
+      "title": "Как пополнить баланс",
+      "intent": "payment",
+      "priority": "critical",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "payment.methods"
+      ],
+      "source": "migtorg_knowledge_base_first_line_updated.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "kb-030-комиссия-платежной-системы",
+      "title": "Комиссия платежной системы",
+      "intent": "payment",
+      "priority": "critical",
+      "status": "migrated_to_v2",
+      "target_scenario_ids": [
+        "commission.explained"
+      ],
+      "source": "migtorg_knowledge_base_first_line_updated.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "kb-031-платеж-списался-но-не-отображается",
+      "title": "Платеж списался, но не отображается",
+      "intent": "payment",
+      "priority": "critical",
+      "status": "migrated_to_v2",
+      "target_scenario_ids": [
+        "payment.not_visible"
+      ],
+      "source": "migtorg_knowledge_base_first_line_updated.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "kb-032-финансовые-и-бухгалтерские-вопросы",
+      "title": "Финансовые и бухгалтерские вопросы",
+      "intent": "payment",
+      "priority": "critical",
+      "status": "migrated_to_v2",
+      "target_scenario_ids": [
+        "payment.accounting_documents"
+      ],
+      "source": "migtorg_knowledge_base_first_line_updated.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "kb-033-закрывающие-документы",
+      "title": "Закрывающие документы",
+      "intent": "payment",
+      "priority": "critical",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "payment.accounting_documents"
+      ],
+      "source": "migtorg_knowledge_base_first_line_updated.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "kb-034-где-искать-лоты",
+      "title": "Где искать лоты",
+      "intent": "lot",
+      "priority": "normal",
+      "status": "migrated_to_v2",
+      "target_scenario_ids": [
+        "lot.catalog_search"
+      ],
+      "source": "migtorg_knowledge_base_first_line_updated.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "kb-035-как-читать-карточку-лота",
+      "title": "Как читать карточку лота",
+      "intent": "lot",
+      "priority": "normal",
+      "status": "migrated_to_v2",
+      "target_scenario_ids": [
+        "lot.card_information"
+      ],
+      "source": "migtorg_knowledge_base_first_line_updated.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "kb-036-поиск-и-фильтры",
+      "title": "Поиск и фильтры",
+      "intent": "lot",
+      "priority": "normal",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "lot.catalog_search"
+      ],
+      "source": "migtorg_knowledge_base_first_line_updated.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "kb-037-нет-номера-лота",
+      "title": "Нет номера лота",
+      "intent": "lot",
+      "priority": "normal",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "lot.card_information"
+      ],
+      "source": "migtorg_knowledge_base_first_line_updated.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "kb-038-лот-готов-к-реализации",
+      "title": "Лот готов к реализации",
+      "intent": "lot",
+      "priority": "normal",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "lot.card_information"
+      ],
+      "source": "migtorg_knowledge_base_first_line_updated.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "kb-039-лот-исчез-или-изменился",
+      "title": "Лот исчез или изменился",
+      "intent": "lot",
+      "priority": "normal",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "lot.card_information"
+      ],
+      "source": "migtorg_knowledge_base_first_line_updated.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "kb-040-vin-и-платная-информация-по-автомобилю",
+      "title": "VIN и платная информация по автомобилю",
+      "intent": "lot",
+      "priority": "normal",
+      "status": "migrated_to_v2",
+      "target_scenario_ids": [
+        "vehicle.vin_request"
+      ],
+      "source": "migtorg_knowledge_base_first_line_updated.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "kb-041-как-устроены-торги-простыми-словами",
+      "title": "Как устроены торги простыми словами",
+      "intent": "bidding",
+      "priority": "normal",
+      "status": "migrated_to_v2",
+      "target_scenario_ids": [
+        "auction.formats"
+      ],
+      "source": "migtorg_knowledge_base_first_line_updated.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "kb-042-открытые-торги",
+      "title": "Открытые торги",
+      "intent": "bidding",
+      "priority": "normal",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "auction.formats"
+      ],
+      "source": "migtorg_knowledge_base_first_line_updated.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "kb-043-закрытые-торги",
+      "title": "Закрытые торги",
+      "intent": "bidding",
+      "priority": "normal",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "auction.formats"
+      ],
+      "source": "migtorg_knowledge_base_first_line_updated.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "kb-044-чем-отличаются-открытые-и-закрытые-торги",
+      "title": "Чем отличаются открытые и закрытые торги",
+      "intent": "bidding",
+      "priority": "normal",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "auction.formats"
+      ],
+      "source": "migtorg_knowledge_base_first_line_updated.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "kb-045-как-сделать-ставку",
+      "title": "Как сделать ставку",
+      "intent": "bidding",
+      "priority": "normal",
+      "status": "migrated_to_v2",
+      "target_scenario_ids": [
+        "bid.place",
+        "buyer.get_started"
+      ],
+      "source": "migtorg_knowledge_base_first_line_updated.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "kb-046-автоставка",
+      "title": "Автоставка",
+      "intent": "bidding",
+      "priority": "normal",
+      "status": "migrated_to_v2",
+      "target_scenario_ids": [
+        "bid.autobid_extension"
+      ],
+      "source": "migtorg_knowledge_base_first_line_updated.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "kb-047-пролонгация-торгов",
+      "title": "Пролонгация торгов",
+      "intent": "bidding",
+      "priority": "normal",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "bid.autobid_extension"
+      ],
+      "source": "migtorg_knowledge_base_first_line_updated.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "kb-048-ставка-ради-просмотра-результата",
+      "title": "Ставка ради просмотра результата",
+      "intent": "bidding",
+      "priority": "normal",
+      "status": "migrated_to_v2",
+      "target_scenario_ids": [
+        "auction.result"
+      ],
+      "source": "migtorg_knowledge_base_first_line_updated.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "kb-049-ставка-перебита",
+      "title": "Ставка перебита",
+      "intent": "bidding",
+      "priority": "normal",
+      "status": "migrated_to_v2",
+      "target_scenario_ids": [
+        "bid.modify_cancel"
+      ],
+      "source": "migtorg_knowledge_base_first_line_updated.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "kb-050-можно-ли-отменить-ставку",
+      "title": "Можно ли отменить ставку",
+      "intent": "bidding",
+      "priority": "normal",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "bid.modify_cancel"
+      ],
+      "source": "migtorg_knowledge_base_first_line_updated.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "kb-051-что-происходит-после-победы",
+      "title": "Что происходит после победы",
+      "intent": "transfer",
+      "priority": "high",
+      "status": "migrated_to_v2",
+      "target_scenario_ids": [
+        "lot.payment.start",
+        "win.next_steps"
+      ],
+      "source": "migtorg_knowledge_base_first_line_updated.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "kb-052-срок-действия-ставки",
+      "title": "Срок действия ставки",
+      "intent": "bidding",
+      "priority": "normal",
+      "status": "migrated_to_v2",
+      "target_scenario_ids": [
+        "bid.validity"
+      ],
+      "source": "migtorg_knowledge_base_first_line_updated.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "kb-053-если-продавец-не-связался",
+      "title": "Если продавец не связался",
+      "intent": "transfer",
+      "priority": "high",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "transfer.not_confirmed"
+      ],
+      "source": "migtorg_knowledge_base_first_line_updated.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "kb-054-продавец-обратился-после-срока",
+      "title": "Продавец обратился после срока",
+      "intent": "bidding",
+      "priority": "normal",
+      "status": "migrated_to_v2",
+      "target_scenario_ids": [
+        "bid.expired"
+      ],
+      "source": "migtorg_knowledge_base_first_line_updated.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "kb-055-почему-нужно-формировать-воронку",
+      "title": "Почему нужно формировать воронку",
+      "intent": "bidding",
+      "priority": "normal",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "transfer.not_confirmed"
+      ],
+      "source": "migtorg_knowledge_base_first_line_updated.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "kb-056-лот-не-передали-это-нормально",
+      "title": "Лот не передали — это нормально?",
+      "intent": "bidding",
+      "priority": "normal",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "transfer.not_confirmed"
+      ],
+      "source": "migtorg_knowledge_base_first_line_updated.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "kb-057-что-значит-лот-передан",
+      "title": "Что значит лот передан",
+      "intent": "transfer",
+      "priority": "high",
+      "status": "migrated_to_v2",
+      "target_scenario_ids": [
+        "transfer.confirmed"
+      ],
+      "source": "migtorg_knowledge_base_first_line_updated.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "kb-058-уведомление-о-передаче",
+      "title": "Уведомление о передаче",
+      "intent": "transfer",
+      "priority": "high",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "transfer.confirmed"
+      ],
+      "source": "migtorg_knowledge_base_first_line_updated.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "kb-059-какие-реквизиты-отправить-физлицу",
+      "title": "Какие реквизиты отправить физлицу",
+      "intent": "transfer",
+      "priority": "high",
+      "status": "migrated_to_v2",
+      "target_scenario_ids": [
+        "transfer.requisites"
+      ],
+      "source": "migtorg_knowledge_base_first_line_updated.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "kb-060-какие-реквизиты-отправить-юрлицу-или-ип",
+      "title": "Какие реквизиты отправить юрлицу или ИП",
+      "intent": "transfer",
+      "priority": "high",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "transfer.requisites"
+      ],
+      "source": "migtorg_knowledge_base_first_line_updated.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "kb-061-срок-подготовки-документов",
+      "title": "Срок подготовки документов",
+      "intent": "transfer",
+      "priority": "high",
+      "status": "migrated_to_v2",
+      "target_scenario_ids": [
+        "documents.preparation_delay"
+      ],
+      "source": "migtorg_knowledge_base_first_line_updated.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "kb-062-документы-не-приходят",
+      "title": "Документы не приходят",
+      "intent": "transfer",
+      "priority": "high",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "documents.preparation_delay"
+      ],
+      "source": "migtorg_knowledge_base_first_line_updated.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "kb-064-как-записаться-на-осмотр",
+      "title": "Как записаться на осмотр",
+      "intent": "inspection",
+      "priority": "high",
+      "status": "migrated_to_v2",
+      "target_scenario_ids": [
+        "inspection.arrange"
+      ],
+      "source": "migtorg_knowledge_base_first_line_updated.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "kb-065-что-взять-на-осмотр",
+      "title": "Что взять на осмотр",
+      "intent": "inspection",
+      "priority": "high",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "inspection.arrange"
+      ],
+      "source": "migtorg_knowledge_base_first_line_updated.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "kb-066-что-проверять-на-осмотре",
+      "title": "Что проверять на осмотре",
+      "intent": "inspection",
+      "priority": "high",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "inspection.arrange"
+      ],
+      "source": "migtorg_knowledge_base_first_line_updated.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "kb-067-выявлены-расхождения-при-осмотре",
+      "title": "Выявлены расхождения при осмотре",
+      "intent": "inspection",
+      "priority": "high",
+      "status": "migrated_to_v2",
+      "target_scenario_ids": [
+        "inspection.problem"
+      ],
+      "source": "migtorg_knowledge_base_first_line_updated.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "kb-068-осмотр-невозможен-или-нет-доступа",
+      "title": "Осмотр невозможен или нет доступа",
+      "intent": "inspection",
+      "priority": "high",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "inspection.problem"
+      ],
+      "source": "migtorg_knowledge_base_first_line_updated.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "kb-069-можно-ли-отказаться-от-выигранного-лота",
+      "title": "Можно ли отказаться от выигранного лота",
+      "intent": "refusal",
+      "priority": "critical",
+      "status": "migrated_to_v2",
+      "target_scenario_ids": [
+        "refusal.change_mind"
+      ],
+      "source": "migtorg_knowledge_base_first_line_updated.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "kb-070-что-будет-если-просто-пропасть",
+      "title": "Что будет, если просто пропасть",
+      "intent": "refusal",
+      "priority": "critical",
+      "status": "migrated_to_v2",
+      "target_scenario_ids": [
+        "refusal.no_response"
+      ],
+      "source": "migtorg_knowledge_base_first_line_updated.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "kb-071-мотивированный-отказ",
+      "title": "Мотивированный отказ",
+      "intent": "refusal",
+      "priority": "critical",
+      "status": "migrated_to_v2",
+      "target_scenario_ids": [
+        "refusal.deadline_and_submission"
+      ],
+      "source": "migtorg_knowledge_base_first_line_updated.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "kb-073-как-описывать-расхождения",
+      "title": "Как описывать расхождения",
+      "intent": "refusal",
+      "priority": "critical",
+      "status": "migrated_to_v2",
+      "target_scenario_ids": [
+        "refusal.evidence"
+      ],
+      "source": "migtorg_knowledge_base_first_line_updated.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "kb-074-оспаривание-штрафа",
+      "title": "Оспаривание штрафа",
+      "intent": "penalty",
+      "priority": "critical",
+      "status": "migrated_to_v2",
+      "target_scenario_ids": [
+        "penalty.explain_or_dispute"
+      ],
+      "source": "migtorg_knowledge_base_first_line_updated.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "kb-075-когда-оплачивать-автомобиль",
+      "title": "Когда оплачивать автомобиль",
+      "intent": "payment",
+      "priority": "critical",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "lot.payment.start"
+      ],
+      "source": "migtorg_knowledge_base_first_line_updated.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "kb-076-кому-оплачивается-автомобиль",
+      "title": "Кому оплачивается автомобиль",
+      "intent": "payment",
+      "priority": "critical",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "lot.payment.details"
+      ],
+      "source": "migtorg_knowledge_base_first_line_updated.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "kb-077-комиссия-площадки",
+      "title": "Комиссия площадки",
+      "intent": "payment",
+      "priority": "critical",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "commission.explained"
+      ],
+      "source": "migtorg_knowledge_base_first_line_updated.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "kb-078-скидка-при-быстрой-оплате-комиссии",
+      "title": "Скидка при быстрой оплате комиссии",
+      "intent": "payment",
+      "priority": "critical",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "commission.discount"
+      ],
+      "source": "migtorg_knowledge_base_first_line_updated.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "kb-079-когда-можно-забирать-автомобиль",
+      "title": "Когда можно забирать автомобиль",
+      "intent": "pickup",
+      "priority": "high",
+      "status": "migrated_to_v2",
+      "target_scenario_ids": [
+        "lot.payment.details",
+        "pickup.receive_lot"
+      ],
+      "source": "migtorg_knowledge_base_first_line_updated.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "kb-080-самовывоз-и-доставка",
+      "title": "Самовывоз и доставка",
+      "intent": "payment",
+      "priority": "critical",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "pickup.receive_lot"
+      ],
+      "source": "migtorg_knowledge_base_first_line_updated.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "kb-081-стоянка-и-задержка-вывоза",
+      "title": "Стоянка и задержка вывоза",
+      "intent": "pickup",
+      "priority": "high",
+      "status": "migrated_to_v2",
+      "target_scenario_ids": [
+        "pickup.delay"
+      ],
+      "source": "migtorg_knowledge_base_first_line_updated.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "kb-082-что-такое-гарантийный-обеспечительный-депозит",
+      "title": "Что такое гарантийный/обеспечительный депозит",
+      "intent": "refund",
+      "priority": "critical",
+      "status": "migrated_to_v2",
+      "target_scenario_ids": [
+        "deposit.explained"
+      ],
+      "source": "migtorg_knowledge_base_first_line_updated.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "kb-083-возврат-депозита-при-расторжении-договора",
+      "title": "Возврат депозита при расторжении договора",
+      "intent": "refund",
+      "priority": "critical",
+      "status": "migrated_to_v2",
+      "target_scenario_ids": [
+        "refund.application"
+      ],
+      "source": "migtorg_knowledge_base_first_line_updated.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "kb-085-возврат-разового-доступа",
+      "title": "Возврат разового доступа",
+      "intent": "refund",
+      "priority": "critical",
+      "status": "migrated_to_v2",
+      "target_scenario_ids": [
+        "refund.eligibility"
+      ],
+      "source": "migtorg_knowledge_base_first_line_updated.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "kb-086-возврат-оплаты-услуги-или-тарифа",
+      "title": "Возврат оплаты услуги или тарифа",
+      "intent": "refund",
+      "priority": "critical",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "refund.eligibility"
+      ],
+      "source": "migtorg_knowledge_base_first_line_updated.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "kb-087-почему-возврат-не-делается-мгновенно",
+      "title": "Почему возврат не делается мгновенно",
+      "intent": "refund",
+      "priority": "critical",
+      "status": "migrated_to_v2",
+      "target_scenario_ids": [
+        "refund.timing_status"
+      ],
+      "source": "migtorg_knowledge_base_first_line_updated.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "kb-088-что-такое-раздел-имущества",
+      "title": "Что такое раздел имущества",
+      "intent": "lot",
+      "priority": "normal",
+      "status": "migrated_to_v2",
+      "target_scenario_ids": [
+        "property.overview"
+      ],
+      "source": "migtorg_knowledge_base_first_line_updated.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "kb-089-как-оценивать-имущественный-лот",
+      "title": "Как оценивать имущественный лот",
+      "intent": "lot",
+      "priority": "normal",
+      "status": "migrated_to_v2",
+      "target_scenario_ids": [
+        "property.evaluate"
+      ],
+      "source": "migtorg_knowledge_base_first_line_updated.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "kb-090-покупка-партии-товаров",
+      "title": "Покупка партии товаров",
+      "intent": "lot",
+      "priority": "normal",
+      "status": "migrated_to_v2",
+      "target_scenario_ids": [
+        "property.bulk_goods"
+      ],
+      "source": "migtorg_knowledge_base_first_line_updated.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "kb-091-готовый-бизнес",
+      "title": "Готовый бизнес",
+      "intent": "lot",
+      "priority": "normal",
+      "status": "migrated_to_v2",
+      "target_scenario_ids": [
+        "property.business"
+      ],
+      "source": "migtorg_knowledge_base_first_line_updated.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "kb-092-осмотр-имущества",
+      "title": "Осмотр имущества",
+      "intent": "lot",
+      "priority": "normal",
+      "status": "migrated_to_v2",
+      "target_scenario_ids": [
+        "property.inspection_documents"
+      ],
+      "source": "migtorg_knowledge_base_first_line_updated.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "kb-093-документы-по-имущественным-лотам",
+      "title": "Документы по имущественным лотам",
+      "intent": "lot",
+      "priority": "normal",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "property.inspection_documents"
+      ],
+      "source": "migtorg_knowledge_base_first_line_updated.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "kb-094-основные-разделы-личного-кабинета",
+      "title": "Основные разделы личного кабинета",
+      "intent": "lot",
+      "priority": "normal",
+      "status": "migrated_to_v2",
+      "target_scenario_ids": [
+        "account.dashboard_sections"
+      ],
+      "source": "migtorg_knowledge_base_first_line_updated.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "kb-095-статусы-лотов",
+      "title": "Статусы лотов",
+      "intent": "lot",
+      "priority": "normal",
+      "status": "migrated_to_v2",
+      "target_scenario_ids": [
+        "lot.status_guide"
+      ],
+      "source": "migtorg_knowledge_base_first_line_updated.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "kb-096-уведомления-по-лотам",
+      "title": "Уведомления по лотам",
+      "intent": "lot",
+      "priority": "normal",
+      "status": "migrated_to_v2",
+      "target_scenario_ids": [
+        "notification.delivery_problem"
+      ],
+      "source": "migtorg_knowledge_base_first_line_updated.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "kb-097-telegram-каналы-и-бот",
+      "title": "Telegram-каналы и бот",
+      "intent": "lot",
+      "priority": "normal",
+      "status": "migrated_to_v2",
+      "target_scenario_ids": [
+        "support.telegram_channels"
+      ],
+      "source": "migtorg_knowledge_base_first_line_updated.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "kb-098-мобильная-версия",
+      "title": "Мобильная версия",
+      "intent": "lot",
+      "priority": "normal",
+      "status": "migrated_to_v2",
+      "target_scenario_ids": [
+        "account.mobile_access"
+      ],
+      "source": "migtorg_knowledge_base_first_line_updated.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "kb-099-первичная-консультация-нового-пользователя",
+      "title": "Первичная консультация нового пользователя",
+      "intent": "bidding",
+      "priority": "normal",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "buyer.get_started"
+      ],
+      "source": "migtorg_knowledge_base_first_line_updated.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "kb-100-покупка-для-себя",
+      "title": "Покупка для себя",
+      "intent": "bidding",
+      "priority": "normal",
+      "status": "migrated_to_v2",
+      "target_scenario_ids": [
+        "buyer.personal_purchase"
+      ],
+      "source": "migtorg_knowledge_base_first_line_updated.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "kb-101-покупка-для-заработка",
+      "title": "Покупка для заработка",
+      "intent": "bidding",
+      "priority": "normal",
+      "status": "migrated_to_v2",
+      "target_scenario_ids": [
+        "buyer.resale_strategy"
+      ],
+      "source": "migtorg_knowledge_base_first_line_updated.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "kb-102-что-подготовить-до-первой-ставки",
+      "title": "Что подготовить до первой ставки",
+      "intent": "bidding",
+      "priority": "normal",
+      "status": "migrated_to_v2",
+      "target_scenario_ids": [
+        "buyer.first_bid_checklist"
+      ],
+      "source": "migtorg_knowledge_base_first_line_updated.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "kb-103-как-выбирать-лоты-новичку",
+      "title": "Как выбирать лоты новичку",
+      "intent": "bidding",
+      "priority": "normal",
+      "status": "migrated_to_v2",
+      "target_scenario_ids": [
+        "buyer.beginner_lot_selection"
+      ],
+      "source": "migtorg_knowledge_base_first_line_updated.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "kb-104-сценарии-работы-с-авто",
+      "title": "Сценарии работы с авто",
+      "intent": "bidding",
+      "priority": "normal",
+      "status": "migrated_to_v2",
+      "target_scenario_ids": [
+        "vehicle.business_use_cases"
+      ],
+      "source": "migtorg_knowledge_base_first_line_updated.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "kb-105-расчет-ставки",
+      "title": "Расчет ставки",
+      "intent": "bidding",
+      "priority": "normal",
+      "status": "migrated_to_v2",
+      "target_scenario_ids": [
+        "bid.maximum_budget"
+      ],
+      "source": "migtorg_knowledge_base_first_line_updated.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "kb-106-завершенные-торги-как-аналитика",
+      "title": "Завершенные торги как аналитика",
+      "intent": "bidding",
+      "priority": "normal",
+      "status": "migrated_to_v2",
+      "target_scenario_ids": [
+        "auction.completed_analytics"
+      ],
+      "source": "migtorg_knowledge_base_first_line_updated.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "kb-107-программа-топ-10-покупателей",
+      "title": "Программа ТОП-10 покупателей",
+      "intent": "tariffs",
+      "priority": "critical",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "commission.discount"
+      ],
+      "source": "migtorg_knowledge_base_first_line_updated.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "kb-108-почему-бонус-не-начислен",
+      "title": "Почему бонус не начислен",
+      "intent": "tariffs",
+      "priority": "critical",
+      "status": "migrated_to_v2",
+      "target_scenario_ids": [
+        "loyalty.unconfirmed_details"
+      ],
+      "source": "migtorg_knowledge_base_first_line_updated.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "kb-109-контакты-поддержки",
+      "title": "Контакты поддержки",
+      "intent": "support",
+      "priority": "normal",
+      "status": "migrated_to_v2",
+      "target_scenario_ids": [
+        "support.contact"
+      ],
+      "source": "migtorg_knowledge_base_first_line_updated.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "kb-110-телефон-поддержки",
+      "title": "Телефон поддержки",
+      "intent": "support",
+      "priority": "normal",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "support.contact"
+      ],
+      "source": "migtorg_knowledge_base_first_line_updated.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "kb-111-пропуск-в-офис",
+      "title": "Пропуск в офис",
+      "intent": "support",
+      "priority": "normal",
+      "status": "migrated_to_v2",
+      "target_scenario_ids": [
+        "support.office_visit"
+      ],
+      "source": "migtorg_knowledge_base_first_line_updated.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "kb-112-адрес-офиса-для-визита",
+      "title": "Адрес офиса для визита",
+      "intent": "support",
+      "priority": "normal",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "support.office_visit"
+      ],
+      "source": "migtorg_knowledge_base_first_line_updated.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "kb-113-вопрос-авторизованного-клиента-по-лоту",
+      "title": "Вопрос авторизованного клиента по лоту",
+      "intent": "support",
+      "priority": "normal",
+      "status": "migrated_to_v2",
+      "target_scenario_ids": [
+        "support.lot_case_review"
+      ],
+      "source": "migtorg_knowledge_base_first_line_updated.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "kb-114-когда-вопрос-нужно-передать-сотруднику",
+      "title": "Когда вопрос нужно передать сотруднику",
+      "intent": "support",
+      "priority": "normal",
+      "status": "migrated_to_v2",
+      "target_scenario_ids": [
+        "support.manual_review_scope"
+      ],
+      "source": "migtorg_knowledge_base_first_line_updated.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "kb-115-ошибка-на-сайте",
+      "title": "Ошибка на сайте",
+      "intent": "support",
+      "priority": "normal",
+      "status": "migrated_to_v2",
+      "target_scenario_ids": [
+        "technical.site_error"
+      ],
+      "source": "migtorg_knowledge_base_first_line_updated.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "kb-116-проблема-с-оплатой-на-сайте",
+      "title": "Проблема с оплатой на сайте",
+      "intent": "support",
+      "priority": "normal",
+      "status": "migrated_to_v2",
+      "target_scenario_ids": [
+        "payment.checkout_problem"
+      ],
+      "source": "migtorg_knowledge_base_first_line_updated.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "kb-117-не-открывается-карточка-лота",
+      "title": "Не открывается карточка лота",
+      "intent": "support",
+      "priority": "normal",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "technical.site_error"
+      ],
+      "source": "migtorg_knowledge_base_first_line_updated.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "kb-118-ошибки-уведомлений",
+      "title": "Ошибки уведомлений",
+      "intent": "support",
+      "priority": "normal",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "notification.delivery_problem"
+      ],
+      "source": "migtorg_knowledge_base_first_line_updated.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "kb-119-пользователь-недоволен-площадкой",
+      "title": "Пользователь недоволен площадкой",
+      "intent": "feedback",
+      "priority": "normal",
+      "status": "migrated_to_v2",
+      "target_scenario_ids": [
+        "feedback.platform_complaint"
+      ],
+      "source": "migtorg_knowledge_base_first_line_updated.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "kb-120-пользователь-раздражен-или-пишет-резко",
+      "title": "Пользователь раздражен или пишет резко",
+      "intent": "support",
+      "priority": "normal",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "feedback.platform_complaint"
+      ],
+      "source": "migtorg_knowledge_base_first_line_updated.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "kb-121-предложение-по-улучшению-сайта",
+      "title": "Предложение по улучшению сайта",
+      "intent": "support",
+      "priority": "normal",
+      "status": "migrated_to_v2",
+      "target_scenario_ids": [
+        "feedback.improvement_suggestion"
+      ],
+      "source": "migtorg_knowledge_base_first_line_updated.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "kb-122-недовольство-ответом-бота",
+      "title": "Недовольство ответом бота",
+      "intent": "support",
+      "priority": "normal",
+      "status": "migrated_to_v2",
+      "target_scenario_ids": [
+        "feedback.bot_answer_complaint"
+      ],
+      "source": "migtorg_knowledge_base_first_line_updated.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "kb-123-шаблон-заявления-на-возврат-депозита",
+      "title": "Шаблон заявления на возврат депозита",
+      "intent": "support",
+      "priority": "normal",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "refund.application"
+      ],
+      "source": "migtorg_knowledge_base_first_line_updated.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "site-doc-001-osnovnye-terminy-kotirovok",
+      "title": "Основные термины котировок и торгов",
+      "intent": "bidding",
+      "priority": "normal",
+      "status": "migrated_to_v2",
+      "target_scenario_ids": [
+        "bid.price_terms"
+      ],
+      "source": "docs/source-documents-extracted/terms.txt",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "site-doc-002-pravila-izmeneniya-stavki",
+      "title": "Как меняется ставка и что если ставки равные",
+      "intent": "bidding",
+      "priority": "normal",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "bid.price_terms"
+      ],
+      "source": "docs/source-documents-extracted/terms.txt",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "site-doc-003-prodlenie-i-snizhenie-tseny",
+      "title": "Продление торгов и снижение цены",
+      "intent": "bidding",
+      "priority": "normal",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "bid.autobid_extension"
+      ],
+      "source": "docs/source-documents-extracted/terms.txt",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "site-doc-004-pobeditel-i-reshenie-sobstvennika",
+      "title": "Победитель торгов и решение собственника",
+      "intent": "transfer",
+      "priority": "high",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "transfer.not_confirmed"
+      ],
+      "source": "docs/source-documents-extracted/terms.txt; docs/source-documents-extracted/public_offer.txt",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "site-doc-005-spornye-sroki-deystviya-predlozheniya",
+      "title": "Срок действия предложения после торгов",
+      "intent": "bidding",
+      "priority": "normal",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "bid.validity"
+      ],
+      "source": "docs/source-documents-extracted/terms.txt; docs/source-documents-extracted/public_offer.txt; docs/disputed-site-document-points.md",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "site-doc-006-spornye-sroki-oplaty-i-vyvoza",
+      "title": "Сроки оплаты и вывоза лота",
+      "intent": "payment",
+      "priority": "critical",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "lot.payment.overdue"
+      ],
+      "source": "docs/source-documents-extracted/terms.txt; docs/source-documents-extracted/public_offer.txt; docs/disputed-site-document-points.md",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "site-doc-007-spornye-osnovaniya-otkaza",
+      "title": "Основания мотивированного отказа: 5%, 10% и существенные расхождения",
+      "intent": "refusal",
+      "priority": "critical",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "refusal.invalid_reasons"
+      ],
+      "source": "docs/source-documents-extracted/terms.txt; docs/source-documents-extracted/public_offer.txt; docs/source-documents-extracted/migtorg_oferta_seller.txt; docs/disputed-site-document-points.md",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "site-doc-008-otzyv-lota-i-obremeneniya",
+      "title": "Когда лот могут отозвать с торгов",
+      "intent": "lot",
+      "priority": "normal",
+      "status": "migrated_to_v2",
+      "target_scenario_ids": [
+        "vehicle.encumbrance_detected"
+      ],
+      "source": "docs/source-documents-extracted/terms.txt",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "site-doc-009-akkreditatsiya-i-dokumenty",
+      "title": "Аккредитация и документы для участия",
+      "intent": "registration",
+      "priority": "high",
+      "status": "migrated_to_v2",
+      "target_scenario_ids": [
+        "registration.accreditation"
+      ],
+      "source": "docs/source-documents-extracted/terms.txt",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "site-doc-010-login-parol-i-otvetstvennost",
+      "title": "Логин, пароль и ответственность за действия в аккаунте",
+      "intent": "registration",
+      "priority": "high",
+      "status": "migrated_to_v2",
+      "target_scenario_ids": [
+        "account.credential_responsibility"
+      ],
+      "source": "docs/source-documents-extracted/terms.txt; docs/source-documents-extracted/public_offer.txt; docs/source-documents-extracted/migtorg_oferta_seller.txt",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "site-doc-011-obespechitelnyy-platezh-ogranicheniya",
+      "title": "Обеспечительный платеж и ограничения доступа",
+      "intent": "refund",
+      "priority": "critical",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "deposit.explained"
+      ],
+      "source": "docs/source-documents-extracted/public_offer.txt",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "site-doc-012-osago-specialnye-pravila",
+      "title": "Специальные правила раздела ОСАГО",
+      "intent": "bidding",
+      "priority": "normal",
+      "status": "migrated_to_v2",
+      "target_scenario_ids": [
+        "insurance.osago_rules"
+      ],
+      "source": "docs/source-documents-extracted/terms.txt",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "site-doc-013-prodavets-i-informatsiya-ne-oferta",
+      "title": "Продавец, размещение лота и статус информации",
+      "intent": "platform",
+      "priority": "normal",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "seller.information_status"
+      ],
+      "source": "docs/source-documents-extracted/migtorg_oferta_seller.txt; docs/disputed-site-document-points.md",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "site-doc-014-dogovor-mezhdu-sobstvennikom-i-pokupatelem",
+      "title": "Кто заключает договор купли-продажи и за что отвечает площадка",
+      "intent": "transfer",
+      "priority": "high",
+      "status": "migrated_to_v2",
+      "target_scenario_ids": [
+        "contract.parties_signing"
+      ],
+      "source": "docs/source-documents-extracted/public_offer.txt; docs/source-documents-extracted/migtorg_oferta_seller.txt",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "site-doc-015-personalnye-dannye-tseli",
+      "title": "Зачем MIGTORG обрабатывает персональные данные",
+      "intent": "support",
+      "priority": "normal",
+      "status": "migrated_to_v2",
+      "target_scenario_ids": [
+        "privacy.processing_purposes"
+      ],
+      "source": "docs/source-documents-extracted/private_policy.txt",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "site-doc-016-personalnye-dannye-kategorii",
+      "title": "Какие персональные данные может обрабатывать площадка",
+      "intent": "support",
+      "priority": "normal",
+      "status": "migrated_to_v2",
+      "target_scenario_ids": [
+        "privacy.data_categories"
+      ],
+      "source": "docs/source-documents-extracted/private_policy.txt",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "site-doc-017-personalnye-dannye-prava-i-otzyv",
+      "title": "Права пользователя и отзыв согласия на обработку данных",
+      "intent": "support",
+      "priority": "normal",
+      "status": "migrated_to_v2",
+      "target_scenario_ids": [
+        "privacy.rights_withdrawal"
+      ],
+      "source": "docs/source-documents-extracted/private_policy.txt",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "site-doc-018-platezhnaya-politika-v-dokumentah",
+      "title": "Платежная политика в правилах: способы оплаты и спорные возвраты",
+      "intent": "payment",
+      "priority": "critical",
+      "status": "migrated_to_v2",
+      "target_scenario_ids": [
+        "payment.document_policy"
+      ],
+      "source": "docs/source-documents-extracted/terms.txt; docs/disputed-site-document-points.md",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "site-doc-019-zhaloby-i-spory-po-dokumentam",
+      "title": "Жалобы и споры по правилам площадки",
+      "intent": "feedback",
+      "priority": "normal",
+      "status": "migrated_to_v2",
+      "target_scenario_ids": [
+        "complaint.formal_dispute"
+      ],
+      "source": "docs/source-documents-extracted/terms.txt; docs/source-documents-extracted/private_policy.txt",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "faq-2026-07-10-faq-01-closed-bid-position",
+      "title": "Что такое опция «Узнать позицию ставки» в закрытых торгах",
+      "intent": "bidding",
+      "priority": "normal",
+      "status": "migrated_to_v2",
+      "target_scenario_ids": [
+        "bid.position_service"
+      ],
+      "source": "MIGTORG_FAQ_variations_and_bot_answers_10_07_2026.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "faq-2026-07-10-faq-02-vin-check-price",
+      "title": "Сколько стоит опция проверки по VIN-номеру",
+      "intent": "lot",
+      "priority": "normal",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "vehicle.vin_request"
+      ],
+      "source": "MIGTORG_FAQ_variations_and_bot_answers_10_07_2026.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "faq-2026-07-10-faq-03-request-vin-button",
+      "title": "Что такое кнопка «Запросить»",
+      "intent": "lot",
+      "priority": "normal",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "vehicle.vin_request"
+      ],
+      "source": "MIGTORG_FAQ_variations_and_bot_answers_10_07_2026.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "faq-2026-07-10-faq-04-autoteka-after-auction",
+      "title": "Машина в любом случае попадает в Автотеку после торгов",
+      "intent": "lot",
+      "priority": "normal",
+      "status": "migrated_to_v2",
+      "target_scenario_ids": [
+        "vehicle.autoteka_visibility"
+      ],
+      "source": "MIGTORG_FAQ_variations_and_bot_answers_10_07_2026.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "faq-2026-07-10-faq-05-other-auction",
+      "title": "Что такое «Иной аукцион»",
+      "intent": "bidding",
+      "priority": "normal",
+      "status": "migrated_to_v2",
+      "target_scenario_ids": [
+        "auction.other_platform_offer"
+      ],
+      "source": "MIGTORG_FAQ_variations_and_bot_answers_10_07_2026.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "faq-2026-07-10-faq-06-insufficient-lot-info",
+      "title": "Как сделать ставку, если везде написано «нет информации»",
+      "intent": "lot",
+      "priority": "normal",
+      "status": "migrated_to_v2",
+      "target_scenario_ids": [
+        "lot.insufficient_information"
+      ],
+      "source": "MIGTORG_FAQ_variations_and_bot_answers_10_07_2026.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "faq-2026-07-10-faq-07-commission-discount-10",
+      "title": "На что действует скидка 10%",
+      "intent": "payment",
+      "priority": "critical",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "commission.discount"
+      ],
+      "source": "MIGTORG_FAQ_variations_and_bot_answers_10_07_2026.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "faq-2026-07-10-faq-08-request-inspection",
+      "title": "Как запросить осмотр",
+      "intent": "inspection",
+      "priority": "high",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "inspection.arrange"
+      ],
+      "source": "MIGTORG_FAQ_variations_and_bot_answers_10_07_2026.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "faq-2026-07-10-faq-09-refuse-won-lot",
+      "title": "Не хочу или не могу выкупить лот — что делать",
+      "intent": "refusal",
+      "priority": "critical",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "refusal.change_mind"
+      ],
+      "source": "MIGTORG_FAQ_variations_and_bot_answers_10_07_2026.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "manual-review-2026-07-11-q-002-что-за-платформа",
+      "title": "что за платформа?",
+      "intent": "platform",
+      "priority": "normal",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "platform.about"
+      ],
+      "source": "50 первых формулировок.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "manual-review-2026-07-11-q-003-кто-выставляет-машины-на-вашу-площадку",
+      "title": "кто выставляет машины на вашу площадку?",
+      "intent": "platform",
+      "priority": "normal",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "platform.about"
+      ],
+      "source": "50 первых формулировок.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "manual-review-2026-07-11-q-004-вы-кто",
+      "title": "вы кто?",
+      "intent": "platform",
+      "priority": "normal",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "platform.about"
+      ],
+      "source": "50 первых формулировок.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "manual-review-2026-07-11-q-005-кто-может-участвовать",
+      "title": "кто может участвовать?",
+      "intent": "platform",
+      "priority": "normal",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "platform.about"
+      ],
+      "source": "50 первых формулировок.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "manual-review-2026-07-11-q-006-откуда-у-вас-машины-берутся",
+      "title": "откуда у вас машины берутся?",
+      "intent": "platform",
+      "priority": "normal",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "platform.about"
+      ],
+      "source": "50 первых формулировок.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "manual-review-2026-07-11-q-007-что-нужно-для-регистрации",
+      "title": "что нужно для регистрации?",
+      "intent": "registration",
+      "priority": "high",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "account.registration"
+      ],
+      "source": "50 первых формулировок.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "manual-review-2026-07-11-q-008-какие-документы-для-регистрации-нужны",
+      "title": "какие документы для регистрации нужны?",
+      "intent": "registration",
+      "priority": "high",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "account.registration"
+      ],
+      "source": "50 первых формулировок.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "manual-review-2026-07-11-q-009-куда-нажать-чтобы-зарегистрироваться",
+      "title": "куда нажать, чтобы зарегистрироваться?",
+      "intent": "registration",
+      "priority": "high",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "account.registration"
+      ],
+      "source": "50 первых формулировок.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "manual-review-2026-07-11-q-010-если-я-физик-могу-участвовать",
+      "title": "если я физик - могу участвовать?",
+      "intent": "registration",
+      "priority": "high",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "account.registration"
+      ],
+      "source": "50 первых формулировок.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "manual-review-2026-07-11-q-011-обязательно-ли-наличие-юридического-лица",
+      "title": "обязательно ли наличие юридического лица?",
+      "intent": "registration",
+      "priority": "high",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "account.registration"
+      ],
+      "source": "50 первых формулировок.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "manual-review-2026-07-11-q-012-мне-нужно-ооо",
+      "title": "мне нужно ООО?",
+      "intent": "registration",
+      "priority": "high",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "account.registration"
+      ],
+      "source": "50 первых формулировок.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "manual-review-2026-07-11-q-013-какие-тарифы-есть",
+      "title": "какие тарифы есть?",
+      "intent": "tariffs",
+      "priority": "critical",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "tariff.choose"
+      ],
+      "source": "50 первых формулировок.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "manual-review-2026-07-11-q-014-в-чем-отличие-тарифа-премиум-от-разового",
+      "title": "в чем отличие тарифа премиум от разового?",
+      "intent": "tariffs",
+      "priority": "critical",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "tariff.choose"
+      ],
+      "source": "50 первых формулировок.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "manual-review-2026-07-11-q-015-что-дает-демо-режим",
+      "title": "что дает демо-режим?",
+      "intent": "tariffs",
+      "priority": "critical",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "tariff.demo"
+      ],
+      "source": "50 первых формулировок.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "manual-review-2026-07-11-q-016-можно-ли-делать-ставки-в-демо-режиме",
+      "title": "можно ли делать ставки в демо-режиме?",
+      "intent": "tariffs",
+      "priority": "critical",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "tariff.demo"
+      ],
+      "source": "50 первых формулировок.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "manual-review-2026-07-11-q-017-можно-ли-видеть-результаты-торгов-в-демо-режиме",
+      "title": "можно ли видеть результаты торгов в демо-режиме?",
+      "intent": "tariffs",
+      "priority": "critical",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "tariff.demo"
+      ],
+      "source": "50 первых формулировок.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "manual-review-2026-07-11-q-018-можно-ли-участвовать-бесплатно",
+      "title": "можно ли участвовать бесплатно?",
+      "intent": "tariffs",
+      "priority": "critical",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "tariff.choose"
+      ],
+      "source": "50 первых формулировок.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "manual-review-2026-07-11-q-019-можно-ли-делать-ставки-без-тарифа",
+      "title": "можно ли делать ставки без тарифа?",
+      "intent": "tariffs",
+      "priority": "critical",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "tariff.choose"
+      ],
+      "source": "50 первых формулировок.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "manual-review-2026-07-11-q-020-можно-ли-узнать-результаты-без-подключенного-тарифа",
+      "title": "можно ли узнать результаты без подключенного тарифа?",
+      "intent": "tariffs",
+      "priority": "critical",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "tariff.demo"
+      ],
+      "source": "50 первых формулировок.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "manual-review-2026-07-11-q-021-как-посмотреть-цену-за-лот-если-у-меня-демо-режим",
+      "title": "как посмотреть цену за лот, если у меня демо-режим?",
+      "intent": "tariffs",
+      "priority": "critical",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "tariff.demo"
+      ],
+      "source": "50 первых формулировок.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "manual-review-2026-07-11-q-022-тариф-премиум-надо-каждый-год-платить",
+      "title": "тариф премиум надо каждый год платить?",
+      "intent": "tariffs",
+      "priority": "critical",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "tariff.premium"
+      ],
+      "source": "50 первых формулировок.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "manual-review-2026-07-11-q-023-сколько-действет-по-времени",
+      "title": "сколько действет по времени?",
+      "intent": "tariffs",
+      "priority": "critical",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "tariff.premium"
+      ],
+      "source": "50 первых формулировок.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "manual-review-2026-07-11-q-024-у-вас-абонентская-оплата",
+      "title": "у вас абонентская оплата?",
+      "intent": "tariffs",
+      "priority": "critical",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "tariff.premium"
+      ],
+      "source": "50 первых формулировок.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "manual-review-2026-07-11-q-025-что-входит-в-тариф-разовый-что-входит-в-тариф-премиум",
+      "title": "что входит в тариф разовый/ что входит в тариф премиум",
+      "intent": "tariffs",
+      "priority": "critical",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "tariff.choose"
+      ],
+      "source": "50 первых формулировок.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "manual-review-2026-07-11-q-026-как-оплатить-без-комиссии-можно-ли-оплатить-без-комиссии",
+      "title": "как оплатить без комиссии? Можно ли оплатить без комиссии?",
+      "intent": "payment",
+      "priority": "critical",
+      "status": "deactivated",
+      "target_scenario_ids": [],
+      "source": "50 первых формулировок.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Legacy answer is unsafe, ambiguous, outdated, or superseded by guarded routing.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "manual-review-2026-07-11-q-027-пополнил-кошелек-но-тариф-не-включился-что-делать",
+      "title": "Пополнил кошелек, но тариф не включился, что делать?",
+      "intent": "tariffs",
+      "priority": "critical",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "tariff.status"
+      ],
+      "source": "50 первых формулировок.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "manual-review-2026-07-11-q-028-можно-ли-оплатить-по-счету",
+      "title": "можно ли оплатить по счету?",
+      "intent": "payment",
+      "priority": "critical",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "payment.methods"
+      ],
+      "source": "50 первых формулировок.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "manual-review-2026-07-11-q-029-можно-ли-оплатить-наличными-в-офисе",
+      "title": "можно ли оплатить наличными в офисе?",
+      "intent": "payment",
+      "priority": "critical",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "payment.methods"
+      ],
+      "source": "50 первых формулировок.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "manual-review-2026-07-11-q-030-как-оплатить-тариф",
+      "title": "как оплатить тариф?",
+      "intent": "payment",
+      "priority": "critical",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "payment.methods"
+      ],
+      "source": "50 первых формулировок.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "manual-review-2026-07-11-q-031-как-пополнить-кошелек-как-пополнить-баланс",
+      "title": "как пополнить кошелек? Как пополнить баланс?",
+      "intent": "payment",
+      "priority": "critical",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "payment.methods"
+      ],
+      "source": "50 первых формулировок.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "manual-review-2026-07-11-q-032-какая-комиссия-за-пополнение",
+      "title": "какая комиссия за пополнение?",
+      "intent": "payment",
+      "priority": "critical",
+      "status": "migrated_to_v2",
+      "target_scenario_ids": [
+        "balance.topup.commission"
+      ],
+      "source": "50 первых формулировок.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "manual-review-2026-07-11-q-034-что-такое-открытые-торги",
+      "title": "что такое открытые торги",
+      "intent": "bidding",
+      "priority": "normal",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "auction.formats"
+      ],
+      "source": "50 первых формулировок.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "manual-review-2026-07-11-q-035-что-такое-закрытые-торги",
+      "title": "что такое закрытые торги",
+      "intent": "bidding",
+      "priority": "normal",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "auction.formats"
+      ],
+      "source": "50 первых формулировок.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "manual-review-2026-07-11-q-036-какие-есть-дополнительные-услуги",
+      "title": "какие есть дополнительные услуги?",
+      "intent": "bidding",
+      "priority": "normal",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "bid.position_service"
+      ],
+      "source": "50 первых формулировок.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "manual-review-2026-07-11-q-037-нужно-ли-отдельно-платить-деньги-за-торги-за-лот-нужно-ли-вносить-обеспечительны",
+      "title": "нужно ли отдельно платить деньги за торги за лот / нужно ли вносить обеспечительный платеж",
+      "intent": "tariffs",
+      "priority": "critical",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "tariff.choose"
+      ],
+      "source": "50 первых формулировок.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "manual-review-2026-07-11-q-038-почему-я-не-вижу-никаких-цен",
+      "title": "почему я не вижу никаких цен?",
+      "intent": "bidding",
+      "priority": "normal",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "auction.formats"
+      ],
+      "source": "50 первых формулировок.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "manual-review-2026-07-11-q-039-как-узнать-минимальный-размер-ставки",
+      "title": "как узнать минимальный размер ставки",
+      "intent": "bidding",
+      "priority": "normal",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "bid.price_terms"
+      ],
+      "source": "50 первых формулировок.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "manual-review-2026-07-11-q-040-что-такое-шаг-ставки",
+      "title": "что такое шаг ставки?",
+      "intent": "bidding",
+      "priority": "normal",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "bid.price_terms"
+      ],
+      "source": "50 первых формулировок.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "manual-review-2026-07-11-q-041-что-такое-стартовая-цена",
+      "title": "что такое стартовая цена",
+      "intent": "bidding",
+      "priority": "normal",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "bid.price_terms"
+      ],
+      "source": "50 первых формулировок.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "manual-review-2026-07-11-q-042-что-такое-текущая-цена",
+      "title": "что такое текущая цена",
+      "intent": "bidding",
+      "priority": "normal",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "bid.price_terms"
+      ],
+      "source": "50 первых формулировок.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "manual-review-2026-07-11-q-043-что-такое-автоматическое-повышение-цены-в-открытых-торгах",
+      "title": "что такое автоматическое повышение цены в открытых торгах",
+      "intent": "bidding",
+      "priority": "normal",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "bid.autobid_extension"
+      ],
+      "source": "50 первых формулировок.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "manual-review-2026-07-11-q-044-как-узнать-победил-ли-я",
+      "title": "как узнать победил ли я",
+      "intent": "bidding",
+      "priority": "normal",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "auction.result"
+      ],
+      "source": "50 первых формулировок.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "manual-review-2026-07-11-q-045-как-получить-выигранный-лот",
+      "title": "как получить выигранный лот",
+      "intent": "transfer",
+      "priority": "high",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "win.next_steps"
+      ],
+      "source": "50 первых формулировок.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "manual-review-2026-07-11-q-046-где-отображаются-результаты",
+      "title": "где отображаются результаты",
+      "intent": "bidding",
+      "priority": "normal",
+      "status": "migrated_to_v2",
+      "target_scenario_ids": [
+        "auction.status"
+      ],
+      "source": "50 первых формулировок.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "manual-review-2026-07-11-q-047-что-такое-срок-действия-ставки",
+      "title": "что такое срок действия ставки",
+      "intent": "bidding",
+      "priority": "normal",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "bid.validity"
+      ],
+      "source": "50 первых формулировок.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "manual-review-2026-07-11-q-048-могу-ли-я-отменить-ставку",
+      "title": "могу ли я отменить ставку",
+      "intent": "bidding",
+      "priority": "normal",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "bid.modify_cancel"
+      ],
+      "source": "50 первых формулировок.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "manual-review-2026-07-11-q-049-могу-ли-я-изменить-ставку",
+      "title": "могу ли я изменить ставку",
+      "intent": "bidding",
+      "priority": "normal",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "bid.modify_cancel"
+      ],
+      "source": "50 первых формулировок.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "manual-review-2026-07-11-q-050-можно-ли-попросить-перевыставить-лот-я-готов-предложить-больше-что-делать",
+      "title": "можно ли попросить перевыставить лот, я готов предложить больше, что делать",
+      "intent": "bidding",
+      "priority": "normal",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "bid.modify_cancel"
+      ],
+      "source": "50 первых формулировок.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "manual-review-2026-07-11-next25-q-051-что-значит-статус-ожидает-подтверждения",
+      "title": "что значит статус ожидает подтверждения",
+      "intent": "lot",
+      "priority": "normal",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "win.next_steps"
+      ],
+      "source": "25 следующих вопросов.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "manual-review-2026-07-11-next25-q-052-я-выиграл-лот-горит-ожидает-подтверждения-что-это-значит",
+      "title": "я выиграл лот, горит ожидает подтверждения - что это значит?",
+      "intent": "lot",
+      "priority": "normal",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "win.next_steps"
+      ],
+      "source": "25 следующих вопросов.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "manual-review-2026-07-11-next25-q-053-я-выиграл-лот-горит-ожидает-подтверждения-как-и-когда-со-мной-свяжутся",
+      "title": "я выиграл лот, горит ожидает подтверждения - как и когда со мной свяжутся?",
+      "intent": "lot",
+      "priority": "normal",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "win.next_steps"
+      ],
+      "source": "25 следующих вопросов.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "manual-review-2026-07-11-next25-q-054-как-я-узнаю-что-лот-передается",
+      "title": "как я узнаю, что лот передается",
+      "intent": "transfer",
+      "priority": "high",
+      "status": "migrated_to_v2",
+      "target_scenario_ids": [
+        "transfer.notification_contact"
+      ],
+      "source": "25 следующих вопросов.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "manual-review-2026-07-11-next25-q-055-горит-срок-действия-ставки-истек-висит-в-выигранных-что-значит",
+      "title": "горит \"срок действия ставки истек\" - висит в выигранных - что значит?",
+      "intent": "bidding",
+      "priority": "normal",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "bid.expired"
+      ],
+      "source": "25 следующих вопросов.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "manual-review-2026-07-11-next25-q-056-можно-уменьшить-ставку",
+      "title": "можно уменьшить ставку?",
+      "intent": "bidding",
+      "priority": "normal",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "bid.modify_cancel"
+      ],
+      "source": "25 следующих вопросов.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "manual-review-2026-07-11-next25-q-058-как-получить-контакт-продавца",
+      "title": "как получить контакт продавца?",
+      "intent": "transfer",
+      "priority": "high",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "transfer.notification_contact"
+      ],
+      "source": "25 следующих вопросов.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "manual-review-2026-07-11-next25-q-059-могу-я-посмотреть-машину-перед-ставкой",
+      "title": "могу я посмотреть машину перед ставкой",
+      "intent": "inspection",
+      "priority": "high",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "inspection.arrange"
+      ],
+      "source": "25 следующих вопросов.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "manual-review-2026-07-11-next25-q-060-как-получить-информацию-об-автомобиле-если-больше-ничего-нет",
+      "title": "как получить информацию об автомобиле, если больше ничего нет?",
+      "intent": "lot",
+      "priority": "normal",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "lot.card_information"
+      ],
+      "source": "25 следующих вопросов.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "manual-review-2026-07-11-next25-q-061-где-у-вас-стоянка",
+      "title": "где у вас стоянка?",
+      "intent": "lot",
+      "priority": "normal",
+      "status": "migrated_to_v2",
+      "target_scenario_ids": [
+        "lot.location"
+      ],
+      "source": "25 следующих вопросов.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "manual-review-2026-07-11-next25-q-062-как-посмотреть-машину",
+      "title": "как посмотреть машину?",
+      "intent": "inspection",
+      "priority": "high",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "inspection.arrange"
+      ],
+      "source": "25 следующих вопросов.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "manual-review-2026-07-11-next25-q-063-где-находится-машина-как-узнать",
+      "title": "где находится машина? Как узнать?",
+      "intent": "lot",
+      "priority": "normal",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "lot.location"
+      ],
+      "source": "25 следующих вопросов.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "manual-review-2026-07-11-next25-q-064-есть-ли-точный-адрес-нахождения-машины",
+      "title": "есть ли точный адрес нахождения машины?",
+      "intent": "lot",
+      "priority": "normal",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "lot.location"
+      ],
+      "source": "25 следующих вопросов.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "manual-review-2026-07-11-next25-q-065-почему-нет-птс",
+      "title": "почему нет ПТС?",
+      "intent": "lot",
+      "priority": "normal",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "lot.card_information"
+      ],
+      "source": "25 следующих вопросов.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "manual-review-2026-07-11-next25-q-066-почему-скрываете-информацию-о-машине",
+      "title": "почему скрываете информацию о машине?",
+      "intent": "lot",
+      "priority": "normal",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "lot.card_information"
+      ],
+      "source": "25 следующих вопросов.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "manual-review-2026-07-11-next25-q-067-как-искать-лоты-по-определенной-марке-и-модели",
+      "title": "как искать лоты по определенной марке и модели?",
+      "intent": "lot",
+      "priority": "normal",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "lot.catalog_search"
+      ],
+      "source": "25 следующих вопросов.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "manual-review-2026-07-11-next25-q-068-есть-ли-фильтр-для-поиска",
+      "title": "есть ли фильтр для поиска?",
+      "intent": "lot",
+      "priority": "normal",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "lot.catalog_search"
+      ],
+      "source": "25 следующих вопросов.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "manual-review-2026-07-11-next25-q-069-мне-нужна-конкретная-машина-как-найти",
+      "title": "мне нужна конкретная машина, как найти?",
+      "intent": "lot",
+      "priority": "normal",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "lot.catalog_search"
+      ],
+      "source": "25 следующих вопросов.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "manual-review-2026-07-11-next25-q-070-мне-пришла-смс-что-лот-передается-кому-звонить",
+      "title": "мне пришла смс, что лот передается - кому звонить?",
+      "intent": "transfer",
+      "priority": "high",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "transfer.notification_contact"
+      ],
+      "source": "25 следующих вопросов.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "manual-review-2026-07-11-next25-q-071-почему-мне-выставили-такую-комиссию",
+      "title": "почему мне выставили такую комиссию?",
+      "intent": "payment",
+      "priority": "critical",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "commission.explained"
+      ],
+      "source": "25 следующих вопросов.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "manual-review-2026-07-11-next25-q-072-откуда-взялась-такая-сумма",
+      "title": "откуда взялась такая сумма?",
+      "intent": "payment",
+      "priority": "critical",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "commission.explained"
+      ],
+      "source": "25 следующих вопросов.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "manual-review-2026-07-11-next25-q-073-мне-пришло-письмо-и-просят-реквизиты-что-мне-нужно-прислать",
+      "title": "мне пришло письмо и просят реквизиты - что мне нужно прислать?",
+      "intent": "transfer",
+      "priority": "high",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "transfer.requisites"
+      ],
+      "source": "25 следующих вопросов.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "manual-review-2026-07-11-next25-q-074-что-такое-реквизиты",
+      "title": "что такое реквизиты?",
+      "intent": "transfer",
+      "priority": "high",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "transfer.requisites"
+      ],
+      "source": "25 следующих вопросов.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "manual-review-2026-07-11-next25-q-075-я-могу-оплатить-только-наличными",
+      "title": "я могу оплатить только наличными",
+      "intent": "payment",
+      "priority": "critical",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "payment.methods"
+      ],
+      "source": "25 следующих вопросов.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "manual-review-2026-07-11-remaining54-q-076-может-ли-лот-оплатить-за-меня-другой-человек",
+      "title": "может ли лот оплатить за меня другой человек?",
+      "intent": "transfer",
+      "priority": "high",
+      "status": "migrated_to_v2",
+      "target_scenario_ids": [
+        "documents.payer_change"
+      ],
+      "source": "54 оставшихся формулировок.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "manual-review-2026-07-11-remaining54-q-077-отправил-реквизиты-не-отвечают-что-делать",
+      "title": "отправил реквизиты, не отвечают - что делать?",
+      "intent": "transfer",
+      "priority": "high",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "documents.preparation_delay"
+      ],
+      "source": "54 оставшихся формулировок.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "manual-review-2026-07-11-remaining54-q-078-страховая-не-выходит-на-связь",
+      "title": "страховая не выходит на связь",
+      "intent": "transfer",
+      "priority": "high",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "documents.preparation_delay"
+      ],
+      "source": "54 оставшихся формулировок.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "manual-review-2026-07-11-remaining54-q-079-как-позвонить-продавцу",
+      "title": "как позвонить продавцу?",
+      "intent": "transfer",
+      "priority": "high",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "transfer.notification_contact"
+      ],
+      "source": "54 оставшихся формулировок.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "manual-review-2026-07-11-remaining54-q-080-какие-документы-нужны-для-забора-лота",
+      "title": "какие документы нужны для забора лота?",
+      "intent": "transfer",
+      "priority": "high",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "pickup.receive_lot"
+      ],
+      "source": "54 оставшихся формулировок.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "manual-review-2026-07-11-remaining54-q-081-как-получить-дкп",
+      "title": "как получить ДКП?",
+      "intent": "transfer",
+      "priority": "high",
+      "status": "migrated_to_v2",
+      "target_scenario_ids": [
+        "contract.receive"
+      ],
+      "source": "54 оставшихся формулировок.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "manual-review-2026-07-11-remaining54-q-082-как-подписать-договор",
+      "title": "как подписать договор?",
+      "intent": "transfer",
+      "priority": "high",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "contract.parties_signing"
+      ],
+      "source": "54 оставшихся формулировок.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "manual-review-2026-07-11-remaining54-q-083-как-запросить-осмотр",
+      "title": "как запросить осмотр?",
+      "intent": "inspection",
+      "priority": "high",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "inspection.arrange"
+      ],
+      "source": "54 оставшихся формулировок.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "manual-review-2026-07-11-remaining54-q-085-можно-ли-увидеть-машину-до-выкупа",
+      "title": "можно ли увидеть машину до выкупа?",
+      "intent": "inspection",
+      "priority": "high",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "inspection.arrange"
+      ],
+      "source": "54 оставшихся формулировок.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "manual-review-2026-07-11-remaining54-q-088-как-попасть-на-стоянку",
+      "title": "как попасть на стоянку",
+      "intent": "transfer",
+      "priority": "high",
+      "status": "migrated_to_v2",
+      "target_scenario_ids": [
+        "pickup.access_issuer"
+      ],
+      "source": "54 оставшихся формулировок.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "manual-review-2026-07-11-remaining54-q-089-где-контакты-стоянки-взять",
+      "title": "где контакты стоянки взять",
+      "intent": "transfer",
+      "priority": "high",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "pickup.access_issuer"
+      ],
+      "source": "54 оставшихся формулировок.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "manual-review-2026-07-11-remaining54-q-091-кто-выдает-лот",
+      "title": "кто выдает лот?",
+      "intent": "transfer",
+      "priority": "high",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "pickup.access_issuer"
+      ],
+      "source": "54 оставшихся формулировок.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "manual-review-2026-07-11-remaining54-q-092-нужно-ли-ехать-к-вам-в-офис",
+      "title": "нужно ли ехать к вам в офис",
+      "intent": "transfer",
+      "priority": "high",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "pickup.access_issuer"
+      ],
+      "source": "54 оставшихся формулировок.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "manual-review-2026-07-11-remaining54-q-093-нужна-ли-мне-доверенность-на-получение-машины",
+      "title": "нужна ли мне доверенность на получение машины",
+      "intent": "transfer",
+      "priority": "high",
+      "status": "migrated_to_v2",
+      "target_scenario_ids": [
+        "pickup.representative"
+      ],
+      "source": "54 оставшихся формулировок.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "manual-review-2026-07-11-remaining54-q-094-какая-нужна-доверенность-нужна-ли-нотариальная-доверенность",
+      "title": "какая нужна доверенность? Нужна ли нотариальная доверенность?",
+      "intent": "transfer",
+      "priority": "high",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "pickup.representative"
+      ],
+      "source": "54 оставшихся формулировок.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "manual-review-2026-07-11-remaining54-q-095-может-ли-другой-чел-забрать-мой-лот",
+      "title": "может ли другой чел забрать мой лот",
+      "intent": "transfer",
+      "priority": "high",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "pickup.representative"
+      ],
+      "source": "54 оставшихся формулировок.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "manual-review-2026-07-11-remaining54-q-096-можно-ли-поменять-реквизиты-плательщика",
+      "title": "можно ли поменять реквизиты/плательщика",
+      "intent": "transfer",
+      "priority": "high",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "documents.payer_change"
+      ],
+      "source": "54 оставшихся формулировок.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "manual-review-2026-07-11-remaining54-q-097-мне-передали-лот-но-он-мне-не-нужен",
+      "title": "мне передали лот, но он мне не нужен",
+      "intent": "refusal",
+      "priority": "critical",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "refusal.change_mind"
+      ],
+      "source": "54 оставшихся формулировок.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "manual-review-2026-07-11-remaining54-q-098-какой-отказ-считается-обоснованным",
+      "title": "какой отказ считается обоснованным?",
+      "intent": "refusal",
+      "priority": "critical",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "refusal.evidence"
+      ],
+      "source": "54 оставшихся формулировок.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "manual-review-2026-07-11-remaining54-q-100-что-значит-обоснованный-отказ",
+      "title": "что значит обоснованный отказ",
+      "intent": "refusal",
+      "priority": "critical",
+      "status": "migrated_to_v2",
+      "target_scenario_ids": [
+        "refusal.invalid_reasons"
+      ],
+      "source": "54 оставшихся формулировок.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "manual-review-2026-07-11-remaining54-q-101-какой-размер-доп-повреждений-входит-в-обоснованный-отказ",
+      "title": "какой размер доп повреждений входит в обоснованный отказ",
+      "intent": "refusal",
+      "priority": "critical",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "refusal.invalid_reasons"
+      ],
+      "source": "54 оставшихся формулировок.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "manual-review-2026-07-11-remaining54-q-102-на-машине-есть-ограничения",
+      "title": "на машине есть ограничения",
+      "intent": "refusal",
+      "priority": "critical",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "vehicle.encumbrance_detected"
+      ],
+      "source": "54 оставшихся формулировок.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "manual-review-2026-07-11-remaining54-q-103-на-машине-есть-залоги",
+      "title": "на машине есть залоги",
+      "intent": "refusal",
+      "priority": "critical",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "vehicle.encumbrance_detected"
+      ],
+      "source": "54 оставшихся формулировок.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "manual-review-2026-07-11-remaining54-q-104-что-значит-тс-кредитное",
+      "title": "что значит ТС кредитное",
+      "intent": "lot",
+      "priority": "normal",
+      "status": "migrated_to_v2",
+      "target_scenario_ids": [
+        "vehicle.credit_lease_pledge"
+      ],
+      "source": "54 оставшихся формулировок.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "manual-review-2026-07-11-remaining54-q-105-что-значит-тс-в-лизинге",
+      "title": "что значит ТС в лизинге",
+      "intent": "lot",
+      "priority": "normal",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "vehicle.credit_lease_pledge"
+      ],
+      "source": "54 оставшихся формулировок.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "manual-review-2026-07-11-remaining54-q-106-что-значит-тс-в-залоге",
+      "title": "что значит ТС в залоге",
+      "intent": "lot",
+      "priority": "normal",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "vehicle.credit_lease_pledge"
+      ],
+      "source": "54 оставшихся формулировок.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "manual-review-2026-07-11-remaining54-q-107-нужно-ли-мне-гасить-кредит",
+      "title": "нужно ли мне гасить кредит",
+      "intent": "lot",
+      "priority": "normal",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "vehicle.credit_lease_pledge"
+      ],
+      "source": "54 оставшихся формулировок.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "manual-review-2026-07-11-remaining54-q-108-за-что-заблокировали-аккаунт",
+      "title": "за что заблокировали аккаунт?",
+      "intent": "penalty",
+      "priority": "critical",
+      "status": "migrated_to_v2",
+      "target_scenario_ids": [
+        "account.blocked"
+      ],
+      "source": "54 оставшихся формулировок.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "manual-review-2026-07-11-remaining54-q-109-как-разблокировать",
+      "title": "как разблокировать",
+      "intent": "penalty",
+      "priority": "critical",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "account.blocked"
+      ],
+      "source": "54 оставшихся формулировок.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "manual-review-2026-07-11-remaining54-q-110-почему-меня-обязуют-платить-штраф",
+      "title": "почему меня обязуют платить штраф?",
+      "intent": "penalty",
+      "priority": "critical",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "penalty.explain_or_dispute"
+      ],
+      "source": "54 оставшихся формулировок.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "manual-review-2026-07-11-remaining54-q-111-что-за-штраф-мне-выставили",
+      "title": "что за штраф мне выставили?",
+      "intent": "penalty",
+      "priority": "critical",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "penalty.explain_or_dispute"
+      ],
+      "source": "54 оставшихся формулировок.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "manual-review-2026-07-11-remaining54-q-112-могу-ли-я-делать-ставки-не-оплатив-штраф",
+      "title": "могу ли я делать ставки не оплатив штраф",
+      "intent": "penalty",
+      "priority": "critical",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "penalty.explain_or_dispute"
+      ],
+      "source": "54 оставшихся формулировок.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "manual-review-2026-07-11-remaining54-q-113-можно-ли-оплатить-штраф-онлайн",
+      "title": "можно ли оплатить штраф онлайн?",
+      "intent": "penalty",
+      "priority": "critical",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "penalty.explain_or_dispute"
+      ],
+      "source": "54 оставшихся формулировок.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "manual-review-2026-07-11-remaining54-q-114-что-такое-возвратный-депозит",
+      "title": "что такое возвратный депозит?",
+      "intent": "refund",
+      "priority": "critical",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "deposit.explained"
+      ],
+      "source": "54 оставшихся формулировок.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "manual-review-2026-07-11-remaining54-q-115-не-хочу-больше-участвовать",
+      "title": "не хочу больше участвовать",
+      "intent": "refund",
+      "priority": "critical",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "refund.application"
+      ],
+      "source": "54 оставшихся формулировок.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "manual-review-2026-07-11-remaining54-q-117-как-вернуть-деньги",
+      "title": "как вернуть деньги",
+      "intent": "refund",
+      "priority": "critical",
+      "status": "deactivated",
+      "target_scenario_ids": [],
+      "source": "54 оставшихся формулировок.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Legacy answer is unsafe, ambiguous, outdated, or superseded by guarded routing.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "manual-review-2026-07-11-remaining54-q-118-не-могу-зайти-в-личный-кабинет",
+      "title": "не могу зайти в личный кабинет",
+      "intent": "registration",
+      "priority": "high",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "account.login_problem"
+      ],
+      "source": "54 оставшихся формулировок.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "manual-review-2026-07-11-remaining54-q-119-ваш-сайт-говно",
+      "title": "ваш сайт говно",
+      "intent": "feedback",
+      "priority": "normal",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "feedback.platform_complaint"
+      ],
+      "source": "54 оставшихся формулировок.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "manual-review-2026-07-11-remaining54-q-120-не-работает-ничего",
+      "title": "не работает ничего",
+      "intent": "feedback",
+      "priority": "normal",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "technical.site_error"
+      ],
+      "source": "54 оставшихся формулировок.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "manual-review-2026-07-11-remaining54-q-121-у-меня-некорректно-работает-фильтр",
+      "title": "у меня некорректно работает фильтр",
+      "intent": "support",
+      "priority": "normal",
+      "status": "migrated_to_v2",
+      "target_scenario_ids": [
+        "technical.catalog_search_filter"
+      ],
+      "source": "54 оставшихся формулировок.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "manual-review-2026-07-11-remaining54-q-122-неправильно-работает-поиск",
+      "title": "неправильно работает поиск",
+      "intent": "support",
+      "priority": "normal",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "technical.catalog_search_filter"
+      ],
+      "source": "54 оставшихся формулировок.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "manual-review-2026-07-11-remaining54-q-123-слетела-фотка",
+      "title": "слетела фотка",
+      "intent": "support",
+      "priority": "normal",
+      "status": "migrated_to_v2",
+      "target_scenario_ids": [
+        "technical.lot_image_missing"
+      ],
+      "source": "54 оставшихся формулировок.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "manual-review-2026-07-11-remaining54-q-124-не-могу-до-вас-дозвониться",
+      "title": "не могу до вас дозвониться",
+      "intent": "support",
+      "priority": "normal",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "support.callback"
+      ],
+      "source": "54 оставшихся формулировок.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "manual-review-2026-07-11-remaining54-q-125-на-мои-письма-никто-не-отвечает",
+      "title": "на мои письма никто не отвечает",
+      "intent": "support",
+      "priority": "normal",
+      "status": "migrated_to_v2",
+      "target_scenario_ids": [
+        "support.email_no_response"
+      ],
+      "source": "54 оставшихся формулировок.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "manual-review-2026-07-11-remaining54-q-126-можем-договориться",
+      "title": "можем договориться?",
+      "intent": "prohibited",
+      "priority": "normal",
+      "status": "migrated_to_v2",
+      "target_scenario_ids": [
+        "compliance.private_arrangement"
+      ],
+      "source": "54 оставшихся формулировок.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "manual-review-2026-07-11-remaining54-q-127-можем-настроить-индивидуальное-сотрудничество",
+      "title": "можем настроить индивидуальное сотрудничество?",
+      "intent": "prohibited",
+      "priority": "normal",
+      "status": "migrated_to_v2",
+      "target_scenario_ids": [
+        "partnership.official_proposal"
+      ],
+      "source": "54 оставшихся формулировок.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "manual-review-2026-07-11-remaining54-q-128-готов-доплатить-чтобы-забрать-лот",
+      "title": "готов доплатить, чтобы забрать лот",
+      "intent": "prohibited",
+      "priority": "normal",
+      "status": "migrated_to_v2",
+      "target_scenario_ids": [
+        "compliance.off_platform_payment"
+      ],
+      "source": "54 оставшихся формулировок.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "manual-review-2026-07-11-remaining54-q-129-реализация-через-меня-обсуждаема",
+      "title": "реализация через меня обсуждаема?",
+      "intent": "prohibited",
+      "priority": "normal",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "partnership.official_proposal"
+      ],
+      "source": "54 оставшихся формулировок.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "manual-review-2026-07-11-remaining54-q-130-можно-ли-через-вас-все-забирать",
+      "title": "можно ли через вас все забирать?",
+      "intent": "tariffs",
+      "priority": "critical",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "tariff.choose"
+      ],
+      "source": "54 оставшихся формулировок.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "manual-review-2026-07-11-remaining54-q-131-можно-ли-указать-другие-суммы-в-договорах",
+      "title": "можно ли указать другие суммы в договорах",
+      "intent": "prohibited",
+      "priority": "normal",
+      "status": "migrated_to_v2",
+      "target_scenario_ids": [
+        "documents.actual_amount"
+      ],
+      "source": "54 оставшихся формулировок.xlsx",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "site-doc-020-kasko-section-overview",
+      "title": "Что находится в разделе КАСКО",
+      "intent": "lot",
+      "priority": "normal",
+      "status": "migrated_to_v2",
+      "target_scenario_ids": [
+        "vehicle.insurance_catalog"
+      ],
+      "source": "manual-service-review-2026-07-13",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "site-doc-021-osago-section-overview",
+      "title": "Что находится в разделе ОСАГО",
+      "intent": "lot",
+      "priority": "normal",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "vehicle.insurance_catalog"
+      ],
+      "source": "manual-service-review-2026-07-13",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "site-doc-022-damaged-vehicle-catalog",
+      "title": "Поврежденные автомобили в каталоге",
+      "intent": "platform",
+      "priority": "normal",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "vehicle.insurance_catalog"
+      ],
+      "source": "manual-service-review-2026-07-13",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "site-doc-023-property-section-failure",
+      "title": "Не открывается раздел имущества",
+      "intent": "support",
+      "priority": "normal",
+      "status": "migrated_to_v2",
+      "target_scenario_ids": [
+        "property.section_error"
+      ],
+      "source": "manual-service-review-2026-07-13",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "site-doc-024-bid-definition",
+      "title": "Что такое ставка",
+      "intent": "bidding",
+      "priority": "normal",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "bid.price_terms"
+      ],
+      "source": "manual-service-review-2026-07-13",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "site-doc-025-auction-definition",
+      "title": "Что такое торги",
+      "intent": "bidding",
+      "priority": "normal",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "auction.formats"
+      ],
+      "source": "manual-service-review-2026-07-13",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "site-doc-026-lot-definition",
+      "title": "Что такое лот",
+      "intent": "lot",
+      "priority": "normal",
+      "status": "migrated_to_v2",
+      "target_scenario_ids": [
+        "lot.definition"
+      ],
+      "source": "manual-service-review-2026-07-13",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "site-doc-027-quotation-definition",
+      "title": "Что такое котировки",
+      "intent": "bidding",
+      "priority": "normal",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "auction.formats"
+      ],
+      "source": "manual-service-review-2026-07-13",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "site-doc-028-demo-mode-upgrade",
+      "title": "Переход из демо-режима на тариф",
+      "intent": "tariffs",
+      "priority": "critical",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "tariff.demo"
+      ],
+      "source": "manual-service-review-2026-07-13",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "site-doc-029-vehicle-inspection-purpose",
+      "title": "Зачем нужен осмотр автомобиля",
+      "intent": "inspection",
+      "priority": "high",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "inspection.arrange"
+      ],
+      "source": "manual-service-review-2026-07-13",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "site-doc-030-insurer-listed-owner-vehicle",
+      "title": "Страховая компания выставила мой автомобиль",
+      "intent": "lot",
+      "priority": "normal",
+      "status": "migrated_to_v2",
+      "target_scenario_ids": [
+        "vehicle.owner_listing_dispute"
+      ],
+      "source": "manual-service-review-2026-07-13",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "site-doc-031-cancel-bid-closed-active",
+      "title": "Как изменить ставку в активных закрытых торгах",
+      "intent": "bidding",
+      "priority": "normal",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "bid.modify_cancel"
+      ],
+      "source": "manual-service-review-2026-07-13",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "site-doc-032-cancel-bid-completed",
+      "title": "Можно ли отменить ставку после завершения торгов",
+      "intent": "bidding",
+      "priority": "normal",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "bid.modify_cancel"
+      ],
+      "source": "manual-service-review-2026-07-13",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "kb-safety-reported-threat",
+      "title": "Пользователю угрожает участник площадки",
+      "intent": "support",
+      "priority": "normal",
+      "status": "migrated_to_v2",
+      "target_scenario_ids": [
+        "safety.reported_threat"
+      ],
+      "source": "safety-audit-2026-07-12",
+      "reviewed_at": "2026-07-13",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "seller-offer-001-kak-nachat-prodavat-na-migtorg",
+      "title": "Как начать продавать на MIGTORG",
+      "intent": "platform",
+      "priority": "normal",
+      "status": "migrated_to_v2",
+      "target_scenario_ids": [
+        "seller.get_started",
+        "seller.publish_lot"
+      ],
+      "source": "docs/source-documents-extracted/migtorg_oferta_seller.txt",
+      "reviewed_at": "2026-07-14",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "seller-offer-002-kakoe-imuschestvo-mozhno-razmeschat",
+      "title": "Какое имущество можно размещать продавцу",
+      "intent": "platform",
+      "priority": "normal",
+      "status": "migrated_to_v2",
+      "target_scenario_ids": [
+        "seller.categories"
+      ],
+      "source": "docs/source-documents-extracted/migtorg_oferta_seller.txt; docs/disputed-site-document-points.md",
+      "reviewed_at": "2026-07-14",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "seller-offer-003-prodazha-avto-transporta-i-gots",
+      "title": "Продажа авто, транспорта и ГОТС продавцом",
+      "intent": "platform",
+      "priority": "normal",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "seller.categories"
+      ],
+      "source": "docs/source-documents-extracted/migtorg_oferta_seller.txt; docs/disputed-site-document-points.md",
+      "reviewed_at": "2026-07-14",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "seller-offer-004-prodazha-partii-tovarov-optom",
+      "title": "Продажа партии товаров оптом",
+      "intent": "platform",
+      "priority": "normal",
+      "status": "merged_into_v2",
+      "target_scenario_ids": [
+        "seller.categories"
+      ],
+      "source": "docs/source-documents-extracted/migtorg_oferta_seller.txt",
+      "reviewed_at": "2026-07-14",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "seller-offer-005-dostup-login-parol-prodavca",
+      "title": "Доступ продавца: логин, пароль и ответственность",
+      "intent": "registration",
+      "priority": "high",
+      "status": "migrated_to_v2",
+      "target_scenario_ids": [
+        "seller.access_security"
+      ],
+      "source": "docs/source-documents-extracted/migtorg_oferta_seller.txt",
+      "reviewed_at": "2026-07-14",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "seller-offer-006-informatsiya-prodavca-ne-oferta",
+      "title": "Информация продавца не является офертой",
+      "intent": "platform",
+      "priority": "normal",
+      "status": "migrated_to_v2",
+      "target_scenario_ids": [
+        "seller.information_status"
+      ],
+      "source": "docs/source-documents-extracted/migtorg_oferta_seller.txt",
+      "reviewed_at": "2026-07-14",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "seller-offer-007-pokupatel-otkazalsya-ot-imuschestva",
+      "title": "Покупатель отказался от имущества",
+      "intent": "refusal",
+      "priority": "critical",
+      "status": "migrated_to_v2",
+      "target_scenario_ids": [
+        "seller.buyer_refusal"
+      ],
+      "source": "docs/source-documents-extracted/migtorg_oferta_seller.txt",
+      "reviewed_at": "2026-07-14",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "seller-offer-008-pokupatel-ne-oplatil-imuschestvo",
+      "title": "Покупатель не оплатил имущество",
+      "intent": "payment",
+      "priority": "critical",
+      "status": "migrated_to_v2",
+      "target_scenario_ids": [
+        "seller.buyer_nonpayment"
+      ],
+      "source": "docs/source-documents-extracted/migtorg_oferta_seller.txt",
+      "reviewed_at": "2026-07-14",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "seller-offer-009-obuchenie-sotrudnikov-prodavca",
+      "title": "Обучение сотрудников продавца",
+      "intent": "platform",
+      "priority": "normal",
+      "status": "migrated_to_v2",
+      "target_scenario_ids": [
+        "seller.training"
+      ],
+      "source": "docs/source-documents-extracted/migtorg_oferta_seller.txt",
+      "reviewed_at": "2026-07-14",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "seller-offer-010-srok-i-rastorzhenie-dogovora-prodavca",
+      "title": "Срок и расторжение договора продавца",
+      "intent": "platform",
+      "priority": "normal",
+      "status": "migrated_to_v2",
+      "target_scenario_ids": [
+        "seller.contract_term"
+      ],
+      "source": "docs/source-documents-extracted/migtorg_oferta_seller.txt",
+      "reviewed_at": "2026-07-14",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    },
+    {
+      "legacy_id": "kb-money-status-informal",
+      "title": "Где деньги: платеж или возврат",
+      "intent": "payment",
+      "priority": "critical",
+      "status": "migrated_to_v2",
+      "target_scenario_ids": [
+        "finance.status.clarify"
+      ],
+      "source": "manual regression: informal payment/refund query",
+      "reviewed_at": "2026-07-14",
+      "review_owner": "MIGTORG knowledge base owner",
+      "rationale": "Content is represented by active v2 scenario(s); legacy search entry must be suppressed.",
+      "blocks_production": false
+    }
+  ]
+}

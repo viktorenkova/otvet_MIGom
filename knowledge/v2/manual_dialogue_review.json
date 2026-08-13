@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "reviewed_at": "2026-08-12",
+  "review_owner": "Codex-assisted MIGTORG knowledge QA",
+  "completed": true,
+  "review_method": "Live process_chat_message responses were inspected in full for routing, factual boundaries, unsafe promises, escalation and clarification behavior.",
+  "systematic_false_answers_found": false,
+  "reviewed_cases": 35,
+  "approved_answers": 26,
+  "safe_clarifications": 9,
+  "issues_found": 2,
+  "issues_resolved": 2,
+  "resolved_issues": [
+    {
+      "message": "верните деньги за разовый тариф",
+      "issue": "The request was routed to tariff selection instead of the refund procedure.",
+      "resolution": "Added a refund application example and excluded the phrase from tariff selection scenarios."
+    },
+    {
+      "message": "скрытое повреждение могу отказаться",
+      "issue": "The answer used the general change-of-mind scenario instead of the evidence-based refusal procedure.",
+      "resolution": "Routed the phrase to refusal.evidence and excluded it from refusal.change_mind."
+    }
+  ],
+  "cases": [
+    {"message": "как вернуть деньги", "expected_scenario_id": null, "expected_confidence": "medium", "verdict": "safe_clarification"},
+    {"message": "как вернуть депозит", "expected_scenario_id": "refund.application", "expected_confidence": "high", "verdict": "approved"},
+    {"message": "верните деньги за разовый тариф", "expected_scenario_id": "refund.application", "expected_confidence": "high", "verdict": "approved_after_fix"},
+    {"message": "когда придет возврат", "expected_scenario_id": "refund.timing_status", "expected_confidence": "high", "verdict": "approved"},
+    {"message": "почему отказали в возврате", "expected_scenario_id": "refund.denied_or_blocked", "expected_confidence": "high", "verdict": "approved"},
+    {"message": "как оплатить без комиссии", "expected_scenario_id": "payment.methods", "expected_confidence": "high", "verdict": "approved"},
+    {"message": "можно оплатить тариф по QR без комиссии", "expected_scenario_id": "payment.methods", "expected_confidence": "high", "verdict": "approved"},
+    {"message": "платеж списался но не отображается", "expected_scenario_id": "payment.not_visible", "expected_confidence": "high", "verdict": "approved"},
+    {"message": "банк отклоняет платеж", "expected_scenario_id": "payment.checkout_problem", "expected_confidence": "high", "verdict": "approved"},
+    {"message": "как оплатить выигранный лот", "expected_scenario_id": null, "expected_confidence": "medium", "verdict": "safe_clarification"},
+    {"message": "как оспорить штраф", "expected_scenario_id": "penalty.explain_or_dispute", "expected_confidence": "high", "verdict": "approved"},
+    {"message": "какие последствия отказа на каждом этапе", "expected_scenario_id": "refusal.unconfirmed_details", "expected_confidence": "high", "verdict": "approved"},
+    {"message": "скрытое повреждение могу отказаться", "expected_scenario_id": "refusal.evidence", "expected_confidence": "high", "verdict": "approved_after_fix"},
+    {"message": "я передумал покупать выигранный лот", "expected_scenario_id": null, "expected_confidence": "medium", "verdict": "safe_clarification"},
+    {"message": "могу отменить активную ставку", "expected_scenario_id": null, "expected_confidence": "medium", "verdict": "safe_clarification"},
+    {"message": "когда начислят кэшбэк", "expected_scenario_id": "loyalty.unconfirmed_details", "expected_confidence": "high", "verdict": "approved"},
+    {"message": "в договоре неправильная ссылка на приложение", "expected_scenario_id": "contract.unconfirmed_details", "expected_confidence": "high", "verdict": "approved"},
+    {"message": "какие данные доступны только сотруднику", "expected_scenario_id": "support.staff_only_details", "expected_confidence": "high", "verdict": "approved"},
+    {"message": "может другой человек оплатить мой лот", "expected_scenario_id": "lot.payment.details", "expected_confidence": "high", "verdict": "approved"},
+    {"message": "может другой человек забрать мой лот", "expected_scenario_id": null, "expected_confidence": "medium", "verdict": "safe_clarification"},
+    {"message": "лот уже продан если появился статус иной аукцион", "expected_scenario_id": "auction.other_platform_offer", "expected_confidence": "high", "verdict": "approved"},
+    {"message": "готов доплатить продавцу чтобы забрать лот", "expected_scenario_id": null, "expected_confidence": "medium", "verdict": "safe_clarification"},
+    {"message": "можем договориться напрямую", "expected_scenario_id": "compliance.private_arrangement", "expected_confidence": "high", "verdict": "approved"},
+    {"message": "неправильно работает поиск", "expected_scenario_id": "technical.catalog_search_filter", "expected_confidence": "high", "verdict": "approved"},
+    {"message": "слетела фотография лота", "expected_scenario_id": "technical.lot_image_missing", "expected_confidence": "high", "verdict": "approved"},
+    {"message": "украли доступ к аккаунту", "expected_scenario_id": "account.credential_responsibility", "expected_confidence": "high", "verdict": "approved"},
+    {"message": "как отозвать согласие", "expected_scenario_id": "privacy.rights_withdrawal", "expected_confidence": "high", "verdict": "approved"},
+    {"message": "обрабатываете биометрию", "expected_scenario_id": "privacy.data_categories", "expected_confidence": "high", "verdict": "approved"},
+    {"message": "как обжаловать действия организатора", "expected_scenario_id": "complaint.formal_dispute", "expected_confidence": "high", "verdict": "approved"},
+    {"message": "покупатель мне угрожает", "expected_scenario_id": "safety.reported_threat", "expected_confidence": "high", "verdict": "approved"},
+    {"message": "продавец не выходит на связь", "expected_scenario_id": null, "expected_confidence": "medium", "verdict": "safe_clarification"},
+    {"message": "нет информации о машине", "expected_scenario_id": null, "expected_confidence": "medium", "verdict": "safe_clarification"},
+    {"message": "почему собственник указан страховая", "expected_scenario_id": "vehicle.owner_listing_dispute", "expected_confidence": "high", "verdict": "approved"},
+    {"message": "можно посмотреть машину до ставки", "expected_scenario_id": null, "expected_confidence": "medium", "verdict": "safe_clarification"},
+    {"message": "кто выдает лот на стоянке", "expected_scenario_id": "pickup.access_issuer", "expected_confidence": "high", "verdict": "approved"}
+  ]
+}

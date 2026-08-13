@@ -1,0 +1,51 @@
+# Local environment and secrets
+.env
+.env.*
+!.env.example
+
+# Python
+.venv/
+venv/
+env/
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Local runtime data
+*.sqlite
+*.sqlite3
+*.db
+*.db-journal
+*.sqlite3-*
+data/
+storage/
+tickets/
+.work/
+.run/
+*.pid
+
+# Logs
+*.log
+logs/
+
+# Frontend dependencies and builds
+node_modules/
+dist/
+build/
+coverage/
+.vite/
+.next/
+.nuxt/
+
+# Editor, OS, and local agent state
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+.agents/
+.codex/
