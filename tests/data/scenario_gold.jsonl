@@ -194,7 +194,7 @@
 {"message":"какие реквизиты отправить физлицу","expected_scenario_id":"transfer.requisites","required_answer_markers":["паспортные данные","официальной ветке","не присылайте паспорт"],"expected_escalation":false}
 {"message":"какие реквизиты нужны ип","expected_scenario_id":"transfer.requisites","required_answer_markers":["огрн","инн","банковские реквизиты"],"expected_escalation":false}
 {"message":"документы не приходят","expected_scenario_id":"documents.preparation_delay","required_answer_markers":["3–7 дней","точную дату подтверждает продавец"],"expected_escalation":true}
-{"message":"страховая не выходит на связь","expected_scenario_id":"documents.preparation_delay","required_answer_markers":["ожидает подтверждения","само по себе не означает проблему"],"expected_escalation":true}
+{"message":"страховая не выходит на связь","expected_scenario_id":"transfer.seller_no_response","required_answer_markers":["ожидает подтверждения","само по себе не означает проблему"],"expected_escalation":true}
 {"message":"как подписать договор","expected_scenario_id":"contract.parties_signing","required_answer_markers":["между продавцом или собственником и покупателем","способом, указанным в письме"],"expected_escalation":false}
 {"message":"как запросить осмотр","expected_scenario_id":"inspection.arrange","required_answer_markers":["после подтверждения передачи лота и до оплаты","стороннему специалисту"],"expected_escalation":true}
 {"message":"на осмотре обнаружил расхождения","expected_scenario_id":"inspection.problem","required_answer_markers":["фотографии или видео","не гарантируют мотивированный отказ"],"expected_escalation":true}
@@ -254,7 +254,7 @@
 {"message":"как не уйти в минус на торгах","expected_scenario_id":"bid.maximum_budget","required_answer_markers":["консервативную подтверждаемую цену","безопаснее пропустить лот","не повышайте её из-за азарта"],"forbidden_answer_markers":["гарантия отсутствия убытка"],"expected_escalation":false}
 {"message":"зачем смотреть завершенные торги","expected_scenario_id":"auction.completed_analytics","required_answer_markers":["прошлые ставки","собственные ставки","не подтверждает текущую рыночную цену"],"expected_escalation":false}
 {"message":"как понять рынок по прошлым торгам","expected_scenario_id":"auction.completed_analytics","required_answer_markers":["действительно похожие лоты","дату, состояние, документы и регион","диапазон результатов"],"forbidden_answer_markers":["гарантированная рыночная цена"],"expected_escalation":false}
-{"message":"где находится офис","expected_scenario_id":"support.office_visit","required_answer_markers":["Смирновская","25","каб. 30","строго с 10:00 до 18:00"],"expected_escalation":true}
+{"message":"где находится офис","expected_scenario_id":null,"expected_clarification":true,"expected_escalation":false}
 {"message":"мне нужен пропуск в офис","expected_scenario_id":"support.office_visit","required_answer_markers":["по предварительной записи","государственный регистрационный номер","марку транспортного средства"],"forbidden_answer_markers":["пропуск оформлен","можете приезжать без подтверждения"],"expected_escalation":true}
 {"message":"я приеду за документами","expected_scenario_id":"support.office_visit","required_answer_markers":["дождитесь подтверждения записи","цель визита","info@migtorg.com"],"expected_escalation":true}
 {"message":"как к вам попасть","expected_scenario_id":null,"expected_clarification":true}

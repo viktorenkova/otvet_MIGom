@@ -64,7 +64,7 @@ def test_deal_documents_batch_migrated_28_legacy_records():
         "transfer.notification_contact", "transfer.requisites", "documents.preparation_delay",
         "contract.parties_signing", "inspection.arrange", "inspection.problem",
         "pickup.access_issuer", "pickup.representative", "documents.payer_change",
-        "documents.actual_amount",
+        "documents.actual_amount", "transfer.seller_no_response",
     }
     prefixes = (
         "faq-2026-07-10-faq-08", "kb-059", "kb-060", "kb-062", "kb-067", "kb-068",

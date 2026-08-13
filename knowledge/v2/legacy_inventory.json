@@ -3318,7 +3318,7 @@
       "priority": "high",
       "status": "merged_into_v2",
       "target_scenario_ids": [
-        "documents.preparation_delay"
+        "transfer.seller_no_response"
       ],
       "source": "54 оставшихся формулировок.xlsx",
       "reviewed_at": "2026-07-13",

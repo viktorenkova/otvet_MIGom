@@ -292,8 +292,12 @@ def _concept_categories(text: str) -> set[str]:
     ):
         categories.add("bribery_risk")
 
+    violent_intent = _contains_stem(
+        text,
+        ("разнес", "разгром", "подожг", "удар", "сломаю", "силой застав"),
+    ) or bool(re.search(r"\bизоб(?:ью|ьешь|ьет|ьем|ьете|ьют|ить)\b", text))
     if not reporting and (
-        _contains_stem(text, ("разнес", "разгром", "подожг", "изоб", "удар", "сломаю", "силой застав"))
+        violent_intent
         and _contains_stem(text, ("я ", "приед", "буду", "хочу", "как ", "офис", "сотрудник", "продавц", "вас"))
     ):
         categories.add("threat_risk")

@@ -8,6 +8,7 @@ from typing import Any, Protocol
 from backend.app.config import get_settings
 from backend.app.bot.semantic_search import MultilingualHybridSemanticIndex
 from backend.app.bot.scenario_engine import clear_scenario_cache, load_scenarios, match_scenario
+from backend.app.bot.routing_v3 import clear_routing_v3_cache, get_routing_v3
 from backend.app.bot.topic_router import route_topic
 from backend.app.bot.text_processing import (
     IntentPatternMatch,
@@ -460,6 +461,29 @@ def _suppressed_legacy_ids(root: Path) -> set[str]:
     return {item for item in suppressed if item}
 
 
+@lru_cache(maxsize=1)
+def _legacy_scenario_targets() -> dict[str, tuple[str, ...]]:
+    """Map retired legacy article ids to their published v2 replacements."""
+
+    path = get_settings().knowledge_root / "v2" / "legacy_inventory.json"
+    if not path.exists():
+        return {}
+    raw = json.loads(path.read_text(encoding="utf-8"))
+    result: dict[str, tuple[str, ...]] = {}
+    for item in raw.get("records", []):
+        if not isinstance(item, dict):
+            continue
+        legacy_id = str(item.get("legacy_id") or "")
+        targets = tuple(
+            str(target)
+            for target in item.get("target_scenario_ids", [])
+            if str(target)
+        )
+        if legacy_id and targets:
+            result[legacy_id] = targets
+    return result
+
+
 def _load_matching_config() -> dict[str, Any]:
     return load_matching_config()
 
@@ -494,6 +518,49 @@ def _ambiguous_phrase_rule(message: str) -> dict[str, Any] | None:
         return rules.get("где деньги")
     if "штраф" in text and "депозит" in text:
         return rules.get("вопрос по штрафу или депозиту")
+
+    refund_signal = bool(re.search(r"\b(?:возврат\w*|верн\w*|возвращ\w*)\b", text)) or bool(
+        re.search(r"\b(?:деньги|средства)\s+обратно\b|\bобратно\s+(?:деньги|средства)\b", text)
+    )
+    refund_detail = bool(
+        re.search(
+            r"\b(?:заявлен\w*|шаблон\w*|куда|когда|срок\w*|статус\w*|сколько|"
+            r"можно|подлеж\w*|депозит\w*|тариф\w*|комисс\w*|баланс\w*|платеж\w*)\b",
+            text,
+        )
+    )
+    if refund_signal and not refund_detail:
+        return {
+            "text": "Уточните, пожалуйста, что именно нужно узнать о возврате:",
+            "options": [
+                "Какие средства можно вернуть",
+                "Как подать заявление на возврат",
+                "Срок или статус возврата",
+            ],
+            "intents": ["refund", "refund", "refund"],
+            "article_ids": ["", "", ""],
+        }
+
+    address_signal = bool(
+        re.search(r"\b(?:адрес\w*|местонахождени\w*|находитесь|куда\s+к\s+вам|к\s+вам\s+ехать)\b", text)
+    )
+    address_purpose = bool(
+        re.search(
+            r"\b(?:офис\w*|подпис\w*|договор\w*|познаком\w*|сотруднич\w*|административ\w*|"
+            r"площадк\w*|получ\w*|забр\w*|машин\w*|авто\w*|лот\w*|стоянк\w*)\b",
+            text,
+        )
+    )
+    if address_signal and not address_purpose:
+        return {
+            "text": "Уточните, пожалуйста: нужен адрес офиса MIGTORG или адрес лота для осмотра или получения?",
+            "options": [
+                "Офис MIGTORG и подписание договора",
+                "Осмотр или получение автомобиля",
+            ],
+            "intents": ["support", "lot"],
+            "article_ids": ["", ""],
+        }
 
     has_bid_cancellation = bool(
         re.search(r"\bставк\w*\b", text)
@@ -808,12 +875,15 @@ def clear_knowledge_cache() -> None:
     _canonical_phrase_rules.cache_clear()
     _canonical_token_rules.cache_clear()
     _synonym_token_groups.cache_clear()
+    _legacy_scenario_targets.cache_clear()
+    clear_routing_v3_cache()
     clear_scenario_cache()
 
 
 def warm_knowledge_indexes() -> None:
     load_articles()
     _prepared_articles()
+    get_routing_v3()
     if bool(_semantic_config().get("enabled", False)):
         _semantic_index()
 
@@ -1106,6 +1176,28 @@ def _site_action_error_route(message: str) -> str:
     if (has_action_target and has_action_error) or has_site_error:
         return "site_action_error"
     return ""
+
+
+def _support_employee_request_route(message: str) -> str:
+    text = _normalize(message)
+    if re.search(r"\b(?:продавц\w*|страхов\w*)\b", text):
+        return ""
+    asks_to_connect = bool(
+        re.search(
+            r"\b(?:соедин\w*|переключ\w*|позов\w*|приглас\w*|"
+            r"дай(?:те)?|позвон\w*|связ\w*)\b",
+            text,
+        )
+    )
+    mentions_staff = bool(
+        re.search(r"\b(?:сотрудник\w*|менеджер\w*|оператор\w*|специалист\w*)\b", text)
+    )
+    names_person = bool(
+        re.search(r"\b(?:с|со)\s+(?!вами\b|мной\b|нами\b)[а-яё]{3,}\b", text)
+        or re.search(r"\b(?:свяж\w*|позвон\w*|перезвон\w*|ответ\w*|позов\w*|дай(?:те)?)\s+[а-яё]{3,}\b", text)
+        or re.search(r"\b(?:сотрудник\w*|менеджер\w*|оператор\w*|специалист\w*)\s+[а-яё]{3,}\b", text)
+    )
+    return "support_employee_request" if asks_to_connect and (mentions_staff or names_person) else ""
 
 
 def _document_visit_route(message: str) -> str:
@@ -1731,6 +1823,9 @@ def structured_route_name(message: str, intent: str) -> str:
     winner_ownership_route = _winner_ownership_route(message)
     if winner_ownership_route:
         return winner_ownership_route
+    support_employee_route = _support_employee_request_route(message)
+    if support_employee_route:
+        return support_employee_route
     site_action_error_route = _site_action_error_route(message)
     if site_action_error_route:
         return site_action_error_route
@@ -2119,7 +2214,8 @@ class RuleBasedSearchProvider:
                     ["canonical_phrase"],
                 )
 
-        if not _has_domain_signal(message):
+        structured_route = structured_route_name(message, intent)
+        if not _has_domain_signal(message) and not structured_route:
             return KnowledgeSearchResult(
                 article=None,
                 score=0,
@@ -2128,7 +2224,6 @@ class RuleBasedSearchProvider:
                 fallback_reason="out_of_scope",
             )
 
-        structured_route = structured_route_name(message, intent)
         topic_route = route_topic(message)
         if topic_route.ambiguous and not skip_topic_ambiguity and not structured_route:
             labels = _semantic_config().get("topic_labels", {})
@@ -2174,16 +2269,30 @@ class RuleBasedSearchProvider:
         route_config = structured_routes.get(structured_route, {}) if isinstance(structured_routes, dict) else {}
         structured_article_id = str(route_config.get("article_id", "")) if isinstance(route_config, dict) else ""
         if structured_article_id:
+            candidate_ids = (
+                structured_article_id,
+                *_legacy_scenario_targets().get(structured_article_id, ()),
+            )
             structured_article = next(
-                (article for article in candidates if article.slug == structured_article_id),
+                (
+                    article
+                    for article_id in candidate_ids
+                    for article in candidates
+                    if article.slug == article_id
+                ),
                 None,
             )
             if structured_article:
+                alias_feature = (
+                    [f"legacy_route_resolved:{structured_article_id}"]
+                    if structured_article.slug != structured_article_id
+                    else []
+                )
                 return KnowledgeSearchResult(
                     structured_article,
                     230,
                     "high",
-                    [f"structured_route:{structured_route}"],
+                    [f"structured_route:{structured_route}", *alias_feature],
                 )
 
         analysis = analysis or analyze_text(message, context)
@@ -2382,6 +2491,7 @@ def search_knowledge_match(
     skip_topic_ambiguity: bool = False,
 ) -> KnowledgeSearchResult:
     runtime_settings = get_settings()
+    routing_v3 = get_routing_v3().decide(message, role) if runtime_settings.knowledge_v2_enabled else None
     scenario_decision = match_scenario(message, role) if runtime_settings.knowledge_v2_enabled else None
     if runtime_settings.knowledge_v2_shadow_mode:
         legacy_result = HybridSearchProvider().search(
@@ -2401,19 +2511,17 @@ def search_knowledge_match(
                 ]
             )
         return legacy_result
-    if scenario_decision and scenario_decision.scenario and scenario_decision.confidence == "high":
-        article = get_article_by_id(scenario_decision.scenario.scenario_id, role)
-        if article:
-            return KnowledgeSearchResult(
-                article=article,
-                score=scenario_decision.score,
-                confidence="high",
-                matched_features=["knowledge_v2", *scenario_decision.matched_features],
-            )
+    # Explicit ambiguity rules are policy, not a lower-ranked retrieval result.
+    # They must run before a high lexical match to prevent generic address,
+    # refund and cancellation requests from receiving an overconfident answer.
     if (
         scenario_decision
         and scenario_decision.confidence == "medium"
         and scenario_decision.candidates
+        and any(
+            feature in {"scenario_ambiguity:visit_purpose", "scenario_ambiguity:generic_refund"}
+            for feature in scenario_decision.matched_features
+        )
         and _normalize(message) not in _canonical_phrase_rules()
     ):
         candidates = list(scenario_decision.candidates)
@@ -2428,6 +2536,33 @@ def search_knowledge_match(
             clarifying_article_ids=[item.scenario_id for item in candidates] + [""],
             clarifying_intents=[item.intent for item in candidates] + ["unknown"],
         )
+    if routing_v3 and routing_v3.scenario and routing_v3.confidence == "high":
+        article = get_article_by_id(routing_v3.scenario.scenario_id, role)
+        if article:
+            candidate_trace = [
+                f"routing_v3_candidate:{item.scenario.scenario_id}:{item.score:.4f}"
+                for item in routing_v3.candidates
+            ]
+            return KnowledgeSearchResult(
+                article=article,
+                score=max(165, int(round(routing_v3.score * 300))),
+                confidence="high",
+                matched_features=[
+                    "routing_v3",
+                    f"routing_v3_margin:{routing_v3.margin:.4f}",
+                    *routing_v3.matched_features,
+                    *candidate_trace,
+                ],
+            )
+    if scenario_decision and scenario_decision.scenario and scenario_decision.confidence == "high":
+        article = get_article_by_id(scenario_decision.scenario.scenario_id, role)
+        if article:
+            return KnowledgeSearchResult(
+                article=article,
+                score=scenario_decision.score,
+                confidence="high",
+                matched_features=["knowledge_v2", *scenario_decision.matched_features],
+            )
     return HybridSearchProvider().search(
         message,
         intent,

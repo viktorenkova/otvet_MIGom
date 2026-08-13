@@ -17,8 +17,6 @@ def clear_cache():
 
 
 @pytest.mark.parametrize(("message", "scenario_id"), [
-    ("где находится офис", "support.office_visit"),
-    ("как приехать к вам в офис", "support.office_visit"),
     ("мне нужен пропуск в офис", "support.office_visit"),
     ("у меня проблема с документами по лоту", "support.lot_case_review"),
     ("когда вопрос передают сотруднику", "support.manual_review_scope"),
@@ -45,9 +43,13 @@ def test_office_visit_requires_confirmation_and_protects_personal_data():
     assert any(action["type"] == "open_ticket" for action in scenario.actions)
 
 
-def test_generic_visit_question_clarifies_office_inspection_or_pickup():
+@pytest.mark.parametrize(
+    "message",
+    ["как к вам попасть", "как приехать к вам в офис", "где находится офис", "где ваш адрес"],
+)
+def test_generic_visit_question_clarifies_office_inspection_or_pickup(message):
     response = process_chat_message(
-        ChatRequest(message="как к вам попасть", session_id=f"office-purpose-clarification-{uuid4()}")
+        ChatRequest(message=message, session_id=f"office-purpose-clarification-{uuid4()}")
     )
 
     assert response.resolution == "clarified"

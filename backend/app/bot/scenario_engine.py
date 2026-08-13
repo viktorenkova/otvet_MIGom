@@ -7,7 +7,7 @@ from pathlib import Path
 import re
 from typing import Any
 
-from backend.app.bot.text_processing import correct_typos, normalize_text, tokenize
+from backend.app.bot.text_processing import correct_typos, load_matching_config, normalize_text, tokenize
 from backend.app.config import get_settings
 
 
@@ -115,6 +115,26 @@ def _normal(text: str) -> str:
     return correct_typos(normalize_text(text))
 
 
+def _is_named_seller_silence(text: str) -> bool:
+    organizations = load_matching_config().get("domain_organizations", [])
+    has_organization = bool(
+        isinstance(organizations, list)
+        and any(
+            re.search(rf"(?<!\w){re.escape(_normal(str(name)))}(?!\w)", text)
+            for name in organizations
+            if _normal(str(name))
+        )
+    ) or bool(re.search(r"\bстрахов\w*\b", text))
+    has_silence = bool(
+        re.search(
+            r"\b(?:молчит|тишин\w*|игнор\w*|гасит\w*|гасится|пропал\w*|"
+            r"не\s+отвеч\w*|не\s+выходит\w*(?:\s+на\s+связь)?)\b",
+            text,
+        )
+    )
+    return has_organization and has_silence
+
+
 def extract_query_facets(message: str) -> QueryFacets:
     text = _normal(message)
     objects = frozenset(name for name, pattern in OBJECT_PATTERNS.items() if re.search(pattern, text))
@@ -210,11 +230,28 @@ def _example_score(message: str, example: str) -> int:
 def match_scenario(message: str, role: str) -> ScenarioDecision:
     text = _normal(message)
     facets = extract_query_facets(message)
-    if re.fullmatch(
-        r"(?:как|можно|хочу|куда)\s+(?:(?:мне|нам)\s+)?(?:к\s+вам\s+)?(?:попасть|приехать|доехать|добраться|ехать)"
-        r"|как\s+до\s+вас\s+добраться",
-        text,
-    ):
+    if _is_named_seller_silence(text):
+        scenario = get_scenario("transfer.seller_no_response")
+        if scenario:
+            return ScenarioDecision(
+                scenario,
+                240,
+                "high",
+                facets,
+                ("scenario_route:named_seller_silence",),
+            )
+    asks_for_visit_or_address = bool(
+        re.fullmatch(
+            r"(?:как|можно|хочу|куда|нужно|собираюсь)\s+"
+            r"(?:(?:мне|нам)\s+)?(?:к\s+вам\s+)?(?:в\s+офис\s+)?"
+            r"(?:попасть|приехать|доехать|добраться|ехать)(?:\s+(?:к\s+вам\s+)?в\s+офис)?"
+            r"|как\s+до\s+вас\s+добраться"
+            r"|(?:где(?:\s+находится)?|какой|подскажите)\s+(?:(?:у\s+вас|ваш|вашего)\s+)?(?:адрес|офис)"
+            r"|(?:где|какой)\s+(?:адрес|офис)\s+(?:migtorg|мигторг)",
+            text,
+        )
+    )
+    if asks_for_visit_or_address:
         candidate_ids = ("support.office_visit", "inspection.arrange", "pickup.access_issuer")
         scenarios_by_id = {item.scenario_id: item for item in load_scenarios()}
         candidates = tuple(scenarios_by_id[item] for item in candidate_ids if item in scenarios_by_id)
@@ -224,7 +261,7 @@ def match_scenario(message: str, role: str) -> ScenarioDecision:
             "medium",
             facets,
             ("scenario_ambiguity:visit_purpose",),
-            "Уточните цель визита: вы хотите приехать в офис MIGTORG, осмотреть автомобиль или получить выигранный автомобиль у продавца?",
+            "Уточните цель визита: вам нужен офис MIGTORG, осмотр автомобиля или место получения выигранного автомобиля?",
             candidates,
         )
     if re.fullmatch(r"регистрац\w*\s+(?:и|или)\s+вход", text):
@@ -257,8 +294,23 @@ def match_scenario(message: str, role: str) -> ScenarioDecision:
             candidates,
         )
     if re.fullmatch(
+        r"(?:шаблон|форма|образец)(?:\s+заявлен\w*)?(?:\s+на)?\s+возврат\w*"
+        r"|(?:пришл\w*|нужен|нужна)\s+(?:шаблон|форма)(?:\s+заявлен\w*)?(?:\s+на)?\s+возврат\w*",
+        text,
+    ):
+        scenario = get_scenario("refund.application")
+        if scenario:
+            return ScenarioDecision(
+                scenario,
+                230,
+                "high",
+                facets,
+                ("scenario_route:refund_template",),
+            )
+    if re.fullmatch(
         r"(?:(?:как|можно|хочу|нужно)\s+)?(?:вернуть|вывести|получить\s+обратно)(?:\s+(?:мои|свои))?\s+(?:деньги|средства)"
-        r"|(?:хочу|нужен|оформить)\s+возврат",
+        r"|(?:хочу|нужен|оформить)\s+возврат"
+        r"|возврат(?:\s+(?:денежн\w+\s+средств|денег|средств))?",
         text,
     ):
         candidate_ids = (

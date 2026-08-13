@@ -545,6 +545,10 @@ button {
   background: #fff;
 }
 
+.chat__navigation[hidden] {
+  display: none;
+}
+
 .chat__home {
   min-height: 32px;
   padding: 0 12px;

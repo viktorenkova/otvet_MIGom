@@ -15,12 +15,13 @@ def test_widget_files_are_not_cached_after_ui_updates():
 def test_served_widget_contains_ticket_description_clear_action():
     response = TestClient(app).get("/widget/")
 
-    assert "20260812-chat-home" in response.text
+    assert "20260813-answer-quality" in response.text
     assert "Очистить и написать своё" in response.text
     assert '<select name="topic">' in response.text
     assert "Удобное время звонка" not in response.text
     assert "preferred_callback_time" not in response.text
     assert 'class="chat__home"' in response.text
+    assert 'class="chat__navigation" aria-label="Навигация по чату" hidden' in response.text
     assert "Вернуться в начало и начать новый диалог" in response.text
 
 
@@ -41,3 +42,5 @@ def test_widget_home_action_starts_a_fresh_chat_session():
     assert 'localStorage.removeItem("migtorg_chat_session_id")' in response.text
     assert "messages.replaceChildren(...homeMessageNodes)" in response.text
     assert "chatGeneration += 1" in response.text
+    assert "setHomeVisible(false)" in response.text
+    assert "setHomeVisible(true)" in response.text

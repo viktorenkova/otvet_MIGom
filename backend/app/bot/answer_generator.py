@@ -93,7 +93,106 @@ def _redact_for_llm(text: str) -> str:
         "[VIN]",
         redacted,
     )
-    return re.sub(r"\b\d{7,}\b", "[идентификатор]", redacted)
+    redacted = re.sub(r"\b\d{7,}\b", "[идентификатор]", redacted)
+    if _is_employee_connection_request(text):
+        redacted = _redact_requested_employee_name(redacted, "[имя сотрудника]")
+    return redacted
+
+
+def _is_employee_connection_request(text: str) -> bool:
+    normalized = text.casefold().replace("ё", "е")
+    if re.search(r"\b(?:продавц\w*|страхов\w*)\b", normalized):
+        return False
+    asks_to_connect = bool(
+        re.search(
+            r"\b(?:соедин\w*|переключ\w*|позов\w*|приглас\w*|"
+            r"дай(?:те)?|позвон\w*|связ\w*)\b",
+            normalized,
+        )
+    )
+    mentions_staff = bool(
+        re.search(r"\b(?:сотрудник\w*|менеджер\w*|оператор\w*|специалист\w*)\b", normalized)
+    )
+    names_person = bool(
+        re.search(r"\b(?:с|со)\s+(?!вами\b|мной\b|нами\b)[а-я]{3,}\b", normalized)
+        or re.search(r"\b(?:свяж\w*|позвон\w*|перезвон\w*|ответ\w*|позов\w*|дай(?:те)?)\s+[а-я]{3,}\b", normalized)
+        or re.search(r"\b(?:сотрудник\w*|менеджер\w*|оператор\w*|специалист\w*)\s+[а-я]{3,}\b", normalized)
+    )
+    return asks_to_connect and (mentions_staff or names_person)
+
+
+def _requested_employee_name_roots(message: str) -> list[str]:
+    if not _is_employee_connection_request(message):
+        return []
+    generic_words = {
+        "вами",
+        "мной",
+        "нами",
+        "сотрудником",
+        "сотрудницей",
+        "менеджером",
+        "оператором",
+        "специалистом",
+        "поддержкой",
+    }
+    roots: list[str] = []
+    name_patterns = (
+        r"\b(?:с|со)\s+([А-ЯЁа-яё]{3,})",
+        r"\b(?:свяж\w*|позвон\w*|перезвон\w*|ответ\w*|позов\w*|дай(?:те)?)\s+([А-ЯЁа-яё]{3,})",
+        r"\b(?:сотрудник\w*|менеджер\w*|оператор\w*|специалист\w*)\s+([А-ЯЁа-яё]{3,})",
+    )
+    matches = (match for pattern in name_patterns for match in re.finditer(pattern, message, flags=re.IGNORECASE))
+    for match in matches:
+        word = match.group(1).casefold().replace("ё", "е")
+        if word in generic_words:
+            continue
+        for suffix in ("иями", "ями", "ами", "ому", "ему", "ого", "его", "ой", "ей", "ом", "ем", "ам", "ям", "ах", "ях", "у", "ю", "а", "я", "е", "и", "ы"):
+            if word.endswith(suffix) and len(word) - len(suffix) >= 3:
+                word = word[: -len(suffix)]
+                break
+        roots.append(word)
+    return list(dict.fromkeys(roots))
+
+
+def _redact_requested_employee_name(text: str, replacement: str = "конкретным сотрудником") -> str:
+    result = text
+    for root in _requested_employee_name_roots(text):
+        result = re.sub(rf"\b{re.escape(root)}[а-яё]*\b", replacement, result, flags=re.IGNORECASE)
+    return result
+
+
+def _redact_employee_names_from_answer(answer: str, message: str) -> str:
+    result = answer
+    for root in _requested_employee_name_roots(message):
+        result = re.sub(rf"\b{re.escape(root)}[а-яё]*\b", "конкретного сотрудника", result, flags=re.IGNORECASE)
+    return result
+
+
+def _echoes_requested_employee_name(answer: str, message: str) -> bool:
+    return any(
+        re.search(rf"\b{re.escape(root)}[а-яё]*\b", answer, flags=re.IGNORECASE)
+        for root in _requested_employee_name_roots(message)
+    )
+
+
+def _deduplicate_answer(text: str) -> str:
+    parts = re.split(r"(?<=[.!?])\s+|[\r\n]+", re.sub(r"\s+", " ", text).strip())
+    seen: set[str] = set()
+    kept: list[str] = []
+    for part in parts:
+        sentence = part.strip()
+        if not sentence:
+            continue
+        key = re.sub(r"[^a-zа-яё0-9]+", "", sentence.casefold())
+        if key in seen:
+            continue
+        seen.add(key)
+        kept.append(sentence)
+    return " ".join(kept)
+
+
+def _finalize_answer(text: str, message: str) -> str:
+    return _deduplicate_answer(_redact_employee_names_from_answer(text, message))
 
 
 def _article_answer(article: KnowledgeArticle | None) -> str | None:
@@ -136,6 +235,34 @@ def generate_answer(
 ) -> GeneratedAnswer:
     base = _article_answer(article) or _fallback_answer(intent)
     message_lower = message.lower()
+    if article and article.scenario == "tariff.connect" and "премиум" in message_lower:
+        base = (
+            "Войдите в личный кабинет, откройте раздел «Тарифы», выберите «Премиум» и завершите оплату и активацию. "
+            "Одного пополнения баланса недостаточно — тариф нужно выбрать отдельно. "
+            "После оплаты проверьте статус тарифа; если доступ не появился, создайте обращение по платежу."
+        )
+    elif article and article.scenario == "refund.application" and any(
+        word in message_lower for word in ("шаблон", "форма", "образец")
+    ):
+        base = (
+            "Шаблон заявления на возврат депозита приложен ниже. "
+            "Укажите номер и дату договора, сумму, данные и банковские реквизиты получателя, подпишите заявление и направьте его на info@migtorg.com. "
+            "Не указывайте полный номер карты, CVC/CVV, пароль или код из SMS."
+        )
+    elif article and article.scenario == "bid.price_terms" and re.fullmatch(
+        r"\s*(?:(?:что\s+(?:такое|значит)\s+)?ставка|ставка\s+(?:это|что))\s*[?!.]*\s*",
+        message_lower,
+    ):
+        base = (
+            "Ставка — это ценовое предложение участника купить конкретный лот за указанную сумму. "
+            "Подтверждайте её только после проверки карточки и условий: победная ставка означает готовность к покупке, если продавец подтвердит передачу лота."
+        )
+    elif article and article.scenario in {"support.contact", "support.callback"} and _is_employee_connection_request(message):
+        base = (
+            "Поддержка работает по переписке; я не соединяю пользователей напрямую с конкретными сотрудниками по имени. "
+            "Создайте письменное обращение: кратко опишите вопрос и добавьте номер лота или платежа, если он относится к ситуации. "
+            "Ответ придёт по указанному вами официальному контакту."
+        )
     base_lower = base.lower()
     if (
         intent in {"bidding", "lot", "transfer"}
@@ -225,6 +352,8 @@ def generate_answer(
     if needs_ticket and ticket_id:
         base += f" Обращение создано. Номер: {ticket_id}."
 
+    base = _finalize_answer(base, message)
+
     if settings is None or not settings.llm_enabled:
         return GeneratedAnswer(answer=base)
     if needs_ticket:
@@ -233,8 +362,9 @@ def generate_answer(
         return GeneratedAnswer(answer=base)
 
     prompt = (
-        "Сформулируйте ответ пользователю на основе контекста ниже. "
-        "Не добавляйте новых фактов и не решайте спорные вопросы.\n\n"
+        "Дайте прямой ответ пользователю на основе контекста ниже. Используйте 2–4 коротких предложения. "
+        "Оставьте только сведения, которые отвечают на заданный вопрос. Не повторяйте мысли и не добавляйте новых фактов. "
+        "Не называйте и не повторяйте имена сотрудников, даже если имя было в вопросе.\n\n"
         f"Вопрос пользователя: {_redact_for_llm(message)}\n\n"
         f"Тема: {intent}\n"
         f"Роль пользователя: {role}\n\n"
@@ -256,4 +386,13 @@ def generate_answer(
             safety_flags=safety_flags or [],
         )
     )
-    return GeneratedAnswer(answer=result.text if result.success else base, llm_result=result)
+    candidate = (
+        _finalize_answer(result.text, message)
+        if result.success and not _echoes_requested_employee_name(result.text, message)
+        else base
+    )
+    max_reasonable_length = min(1200, max(600, int(len(base) * 1.5)))
+    if not candidate or len(candidate) > max_reasonable_length:
+        candidate = base
+    result.text = candidate
+    return GeneratedAnswer(answer=candidate, llm_result=result)

@@ -9,6 +9,7 @@
   const toggle = document.querySelector(".chat__toggle");
   const close = document.querySelector(".chat__close");
   const messages = document.querySelector(".chat__messages");
+  const navigation = document.querySelector(".chat__navigation");
   const homeButton = document.querySelector(".chat__home");
   const form = document.querySelector(".chat__form");
   const input = document.querySelector(".chat__input");
@@ -26,7 +27,7 @@
   let latestTicketContext = null;
   let latestMessageId = null;
 
-  if (!root || !toggle || !close || !messages || !homeButton || !form || !input || !ticketButton || !ticketForm) {
+  if (!root || !toggle || !close || !messages || !navigation || !homeButton || !form || !input || !ticketButton || !ticketForm) {
     console.warn("MIGTORG chat widget: shell markup is incomplete.");
     return;
   }
@@ -70,7 +71,7 @@
           </div>
         </div>
 
-        <nav class="chat__navigation" aria-label="Навигация по чату">
+        <nav class="chat__navigation" aria-label="Навигация по чату" hidden>
           <button class="chat__home" type="button" aria-label="Вернуться в начало и начать новый диалог">В начало</button>
         </nav>
 
@@ -125,7 +126,7 @@
     const link = document.createElement("link");
     link.id = "migtorg-chat-widget-style";
     link.rel = "stylesheet";
-    link.href = new URL("style.css?v=20260812-chat-home", assetBase).toString();
+    link.href = new URL("style.css?v=20260813-answer-quality", assetBase).toString();
     document.head.appendChild(link);
   }
 
@@ -138,6 +139,12 @@
   }
 
   const homeMessageNodes = Array.from(messages.children);
+
+  function setHomeVisible(isVisible) {
+    navigation.hidden = !isVisible;
+  }
+
+  setHomeVisible(false);
 
   function returnToStart() {
     chatGeneration += 1;
@@ -154,6 +161,7 @@
     resetTicketFormState();
     setTicketFormOpen(false);
     setTicketButtonVisible(false);
+    setHomeVisible(false);
     if (debugOutput) debugOutput.textContent = "";
     input.focus();
   }
@@ -425,6 +433,7 @@
     const message = text.trim();
     if (!message) return;
     const generationAtSend = chatGeneration;
+    setHomeVisible(true);
     setTicketButtonVisible(false);
     appendMessage(message, "user");
     const loading = appendMessage("Разбираю ситуацию...", "bot", "loading");

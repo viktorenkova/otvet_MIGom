@@ -26,8 +26,8 @@ SCREENSHOT_CASES = (
     ScreenshotCase(2, "где авто", "lot.location", "lot", "answered", ("карточке лота", "адрес")),
     ScreenshotCase(3, "как участвовать", "buyer.get_started", "bidding", "answered", ("зарегистр", "ставк")),
     ScreenshotCase(4, "документы где мои", "payment.accounting_documents", "payment", "escalated", ("info@migtorg.com",)),
-    ScreenshotCase(5, "тинкоф молчит", "documents.preparation_delay", "transfer", "escalated", ("номер лота", "продавец")),
-    ScreenshotCase(6, "ресо гасится", "documents.preparation_delay", "transfer", "escalated", ("номер лота", "продавец")),
+    ScreenshotCase(5, "тинкоф молчит", "transfer.seller_no_response", "transfer", "escalated", ("номер лота", "продавц")),
+    ScreenshotCase(6, "ресо гасится", "transfer.seller_no_response", "transfer", "escalated", ("номер лота", "продавц")),
     ScreenshotCase(
         7,
         "топ продавцов",

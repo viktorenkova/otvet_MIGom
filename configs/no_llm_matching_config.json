@@ -15,12 +15,15 @@
     "тинькофф",
     "тинькоф",
     "тинкоф",
+    "тинек",
     "т-страхование",
     "альфастрахование",
+    "альфа",
     "ингосстрах",
     "росгосстрах",
     "согаз",
     "ренессанс страхование",
+    "реник",
     "вск"
   ],
   "synonyms": {
@@ -392,6 +395,9 @@
     "fallback": 0.0
   },
   "structured_routes": {
+    "support_employee_request": {
+      "article_id": "support.contact"
+    },
     "beginner_participation": {
       "article_id": "kb-045-как-сделать-ставку"
     },
@@ -414,7 +420,7 @@
       "article_id": "kb-035-как-читать-карточку-лота"
     },
     "seller_contact_delay": {
-      "article_id": "manual-review-2026-07-11-remaining54-q-078-страховая-не-выходит-на-связь"
+      "article_id": "transfer.seller_no_response"
     },
     "property_category_query": {
       "article_id": "kb-004-что-продается-на-площадке"

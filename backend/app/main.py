@@ -45,6 +45,10 @@ email_ticket_provider = EmailTicketProvider(settings)
 langfuse_client = LangfuseClient(settings)
 status_provider = build_status_provider(settings)
 MAX_CONTEXT_FOLLOWUPS = 2
+REFUND_APPLICATION_TEMPLATE = {
+    "label": "Шаблон_заявления_на_возврат_депозита.docx",
+    "url": "/static/templates/Шаблон_заявления_на_возврат_депозита.docx",
+}
 
 
 @asynccontextmanager
@@ -649,6 +653,13 @@ def process_chat_message(request: ChatRequest) -> ChatResponse:
         clarifying_options = search_result.clarifying_options or (
             pattern_match.clarifying_options if pattern_match else fallback_labels
         )
+        clarification_intents = {
+            option_intent
+            for option_intent in search_result.clarifying_intents
+            if option_intent != "unknown"
+        }
+        if article is None and len(clarification_intents) > 1:
+            intent = "unknown"
         if search_result.fallback_reason == "out_of_scope":
             answer = (
                 "Я отвечаю только на вопросы о работе MIGTORG — лотах, торгах, тарифах, оплате и документах. "
@@ -743,13 +754,23 @@ def process_chat_message(request: ChatRequest) -> ChatResponse:
     ) or bool(article and article.needs_ticket)
     if article and article.scenario == "insurer_owner_vehicle_listing":
         should_create_ticket = False
+    if article and article.scenario == "refund.eligibility":
+        # Eligibility is an informational policy answer. A ticket is offered
+        # only after the user chooses a concrete refund operation.
+        should_create_ticket = False
+    if article and article.scenario == "lot.location" and not request.context.lot_id:
+        # General location guidance must not become an individual case merely
+        # because the query contains the word "address".
+        should_create_ticket = False
     message_lower = effective_message.lower()
     template_request_words = ("форма", "шаблон", "заявлен", "заполнить", "документ")
     is_template_request = any(word in message_lower for word in template_request_words)
     refusal_issue_words = ("не соответств", "поврежд", "расхожд", "дефект", "не совпад", "разбит", "отсутств")
     has_refusal_issue_details = any(word in message_lower for word in refusal_issue_words)
     is_deposit_refund_template_request = bool(
-        article and article.scenario == "deposit_refund_template" and is_template_request
+        article
+        and article.scenario in {"deposit_refund_template", "refund.application"}
+        and is_template_request
     )
     is_motivated_refusal_document_request = bool(
         article
@@ -819,6 +840,8 @@ def process_chat_message(request: ChatRequest) -> ChatResponse:
     safety_after = post_check(answer)
     safety_categories = list(dict.fromkeys([*safety_before.categories, *safety_after.categories]))
     template_links = [article.template] if article and article.template and safety_after.allowed else []
+    if is_deposit_refund_template_request and safety_after.allowed and not template_links:
+        template_links = [REFUND_APPLICATION_TEMPLATE]
     attachments = [link["url"] for link in template_links]
     if not safety_after.allowed:
         answer = safety_after.answer_override or answer

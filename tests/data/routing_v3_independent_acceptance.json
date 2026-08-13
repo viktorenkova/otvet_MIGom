@@ -1,0 +1,2512 @@
+{
+  "schema_version": 1,
+  "version": "routing-v3-independent-mutations-1",
+  "purpose": "Deterministically generated acceptance set; do not use generated phrases as routing rules.",
+  "source_sha256": "c4a756c8aa158e05683a5e75b198f68e4f1f351e7ab9825caabdf9a9c90afa16",
+  "case_count": 116,
+  "cases_sha256": "cd3dec16204f4f84834e5b72c719591d2bf20a57347c861b3727b81c3bf539b8",
+  "global_forbidden_answer_fragments": [
+    "для демо",
+    "демо-доступа"
+  ],
+  "release_gates": {
+    "transport_ok_pct": 100.0,
+    "route_hit_pct": 85.0,
+    "answer_hit_pct": 80.0,
+    "typo_answer_hit_pct": 80.0,
+    "transposed_letters_answer_hit_pct": 75.0,
+    "morphology_answer_hit_pct": 85.0,
+    "no_response_answer_hit_pct": 90.0,
+    "ambiguous_answer_hit_pct": 90.0,
+    "dialogue_completion_pct": 0.0,
+    "forbidden_content_ok_pct": 100.0,
+    "confident_wrong_max": 2
+  },
+  "dialogues": [],
+  "cases": [
+    {
+      "id": "mutation-insurer-typo",
+      "source": "routing_v3_acceptance_seeds",
+      "group": "insurer_no_response",
+      "class": "typo",
+      "text": "страховая компания не отвечает по передаче автомбиля",
+      "expected": {
+        "expected_scenario_ids": [
+          "transfer.seller_no_response"
+        ],
+        "expected_intents": [
+          "transfer"
+        ],
+        "allowed_resolutions": [
+          "answered",
+          "status",
+          "escalated"
+        ],
+        "expect_direct": true
+      }
+    },
+    {
+      "id": "mutation-insurer-transposed_letters",
+      "source": "routing_v3_acceptance_seeds",
+      "group": "insurer_no_response",
+      "class": "transposed_letters",
+      "text": "страховая компания не отвечает по передаче автоомбиля",
+      "expected": {
+        "expected_scenario_ids": [
+          "transfer.seller_no_response"
+        ],
+        "expected_intents": [
+          "transfer"
+        ],
+        "allowed_resolutions": [
+          "answered",
+          "status",
+          "escalated"
+        ],
+        "expect_direct": true
+      }
+    },
+    {
+      "id": "mutation-insurer-morphology",
+      "source": "routing_v3_acceptance_seeds",
+      "group": "insurer_no_response",
+      "class": "morphology",
+      "text": "страховая компания не отвечает по передаче автомобилю",
+      "expected": {
+        "expected_scenario_ids": [
+          "transfer.seller_no_response"
+        ],
+        "expected_intents": [
+          "transfer"
+        ],
+        "allowed_resolutions": [
+          "answered",
+          "status",
+          "escalated"
+        ],
+        "expect_direct": true
+      }
+    },
+    {
+      "id": "mutation-insurer-word_order",
+      "source": "routing_v3_acceptance_seeds",
+      "group": "insurer_no_response",
+      "class": "word_order",
+      "text": "отвечает по передаче автомобиля страховая компания не",
+      "expected": {
+        "expected_scenario_ids": [
+          "transfer.seller_no_response"
+        ],
+        "expected_intents": [
+          "transfer"
+        ],
+        "allowed_resolutions": [
+          "answered",
+          "status",
+          "escalated"
+        ],
+        "expect_direct": true
+      }
+    },
+    {
+      "id": "mutation-premium-connect-typo",
+      "source": "routing_v3_acceptance_seeds",
+      "group": "premium_connect",
+      "class": "typo",
+      "text": "нужно подключить премиальный доступ к автомоильным торгам",
+      "expected": {
+        "expected_scenario_ids": [
+          "tariff.connect"
+        ],
+        "expected_intents": [
+          "tariffs"
+        ],
+        "allowed_resolutions": [
+          "answered",
+          "status",
+          "escalated"
+        ],
+        "expect_direct": true
+      }
+    },
+    {
+      "id": "mutation-premium-connect-transposed_letters",
+      "source": "routing_v3_acceptance_seeds",
+      "group": "premium_connect",
+      "class": "transposed_letters",
+      "text": "нужно подключить премиальный доступ к автомбоильным торгам",
+      "expected": {
+        "expected_scenario_ids": [
+          "tariff.connect"
+        ],
+        "expected_intents": [
+          "tariffs"
+        ],
+        "allowed_resolutions": [
+          "answered",
+          "status",
+          "escalated"
+        ],
+        "expect_direct": true
+      }
+    },
+    {
+      "id": "mutation-premium-connect-morphology",
+      "source": "routing_v3_acceptance_seeds",
+      "group": "premium_connect",
+      "class": "morphology",
+      "text": "по вопросу нужно подключить премиальный доступ к автомобильным торгам",
+      "expected": {
+        "expected_scenario_ids": [
+          "tariff.connect"
+        ],
+        "expected_intents": [
+          "tariffs"
+        ],
+        "allowed_resolutions": [
+          "answered",
+          "status",
+          "escalated"
+        ],
+        "expect_direct": true
+      }
+    },
+    {
+      "id": "mutation-premium-connect-word_order",
+      "source": "routing_v3_acceptance_seeds",
+      "group": "premium_connect",
+      "class": "word_order",
+      "text": "доступ к автомобильным торгам нужно подключить премиальный",
+      "expected": {
+        "expected_scenario_ids": [
+          "tariff.connect"
+        ],
+        "expected_intents": [
+          "tariffs"
+        ],
+        "allowed_resolutions": [
+          "answered",
+          "status",
+          "escalated"
+        ],
+        "expect_direct": true
+      }
+    },
+    {
+      "id": "mutation-payment-checkout-typo",
+      "source": "routing_v3_acceptance_seeds",
+      "group": "payment_checkout_problem",
+      "class": "typo",
+      "text": "карта отклояется при оплате доступа",
+      "expected": {
+        "expected_scenario_ids": [
+          "payment.checkout_problem"
+        ],
+        "expected_intents": [
+          "payment"
+        ],
+        "allowed_resolutions": [
+          "answered",
+          "status",
+          "escalated"
+        ],
+        "expect_direct": true
+      }
+    },
+    {
+      "id": "mutation-payment-checkout-transposed_letters",
+      "source": "routing_v3_acceptance_seeds",
+      "group": "payment_checkout_problem",
+      "class": "transposed_letters",
+      "text": "карта отклнояется при оплате доступа",
+      "expected": {
+        "expected_scenario_ids": [
+          "payment.checkout_problem"
+        ],
+        "expected_intents": [
+          "payment"
+        ],
+        "allowed_resolutions": [
+          "answered",
+          "status",
+          "escalated"
+        ],
+        "expect_direct": true
+      }
+    },
+    {
+      "id": "mutation-payment-checkout-morphology",
+      "source": "routing_v3_acceptance_seeds",
+      "group": "payment_checkout_problem",
+      "class": "morphology",
+      "text": "по вопросу карта отклоняется при оплате доступа",
+      "expected": {
+        "expected_scenario_ids": [
+          "payment.checkout_problem"
+        ],
+        "expected_intents": [
+          "payment"
+        ],
+        "allowed_resolutions": [
+          "answered",
+          "status",
+          "escalated"
+        ],
+        "expect_direct": true
+      }
+    },
+    {
+      "id": "mutation-payment-checkout-word_order",
+      "source": "routing_v3_acceptance_seeds",
+      "group": "payment_checkout_problem",
+      "class": "word_order",
+      "text": "при оплате доступа карта отклоняется",
+      "expected": {
+        "expected_scenario_ids": [
+          "payment.checkout_problem"
+        ],
+        "expected_intents": [
+          "payment"
+        ],
+        "allowed_resolutions": [
+          "answered",
+          "status",
+          "escalated"
+        ],
+        "expect_direct": true
+      }
+    },
+    {
+      "id": "mutation-refund-ambiguous-typo",
+      "source": "routing_v3_acceptance_seeds",
+      "group": "refund_ambiguous",
+      "class": "typo",
+      "text": "хочу офорить возврат средств",
+      "expected": {
+        "expected_scenario_ids": [
+          null,
+          "refund.eligibility",
+          "refund.application",
+          "refund.timing_status"
+        ],
+        "expected_intents": [
+          "refund",
+          "unknown"
+        ],
+        "allowed_resolutions": [
+          "answered",
+          "status",
+          "escalated",
+          "clarified"
+        ],
+        "expect_direct": false
+      }
+    },
+    {
+      "id": "mutation-refund-ambiguous-transposed_letters",
+      "source": "routing_v3_acceptance_seeds",
+      "group": "refund_ambiguous",
+      "class": "transposed_letters",
+      "text": "хочу офомрить возврат средств",
+      "expected": {
+        "expected_scenario_ids": [
+          null,
+          "refund.eligibility",
+          "refund.application",
+          "refund.timing_status"
+        ],
+        "expected_intents": [
+          "refund",
+          "unknown"
+        ],
+        "allowed_resolutions": [
+          "answered",
+          "status",
+          "escalated",
+          "clarified"
+        ],
+        "expect_direct": false
+      }
+    },
+    {
+      "id": "mutation-refund-ambiguous-morphology",
+      "source": "routing_v3_acceptance_seeds",
+      "group": "refund_ambiguous",
+      "class": "morphology",
+      "text": "хочу оформить возвращение средств",
+      "expected": {
+        "expected_scenario_ids": [
+          null,
+          "refund.eligibility",
+          "refund.application",
+          "refund.timing_status"
+        ],
+        "expected_intents": [
+          "refund",
+          "unknown"
+        ],
+        "allowed_resolutions": [
+          "answered",
+          "status",
+          "escalated",
+          "clarified"
+        ],
+        "expect_direct": false
+      }
+    },
+    {
+      "id": "mutation-refund-ambiguous-word_order",
+      "source": "routing_v3_acceptance_seeds",
+      "group": "refund_ambiguous",
+      "class": "word_order",
+      "text": "возврат средств хочу оформить",
+      "expected": {
+        "expected_scenario_ids": [
+          null,
+          "refund.eligibility",
+          "refund.application",
+          "refund.timing_status"
+        ],
+        "expected_intents": [
+          "refund",
+          "unknown"
+        ],
+        "allowed_resolutions": [
+          "answered",
+          "status",
+          "escalated",
+          "clarified"
+        ],
+        "expect_direct": false
+      }
+    },
+    {
+      "id": "mutation-refund-eligibility-typo",
+      "source": "routing_v3_acceptance_seeds",
+      "group": "refund_eligibility",
+      "class": "typo",
+      "text": "можно возвртить оплату тарифа если я не торговался",
+      "expected": {
+        "expected_scenario_ids": [
+          "refund.eligibility"
+        ],
+        "expected_intents": [
+          "refund"
+        ],
+        "allowed_resolutions": [
+          "answered",
+          "status",
+          "escalated"
+        ],
+        "expect_direct": true
+      }
+    },
+    {
+      "id": "mutation-refund-eligibility-transposed_letters",
+      "source": "routing_v3_acceptance_seeds",
+      "group": "refund_eligibility",
+      "class": "transposed_letters",
+      "text": "можно возвартить оплату тарифа если я не торговался",
+      "expected": {
+        "expected_scenario_ids": [
+          "refund.eligibility"
+        ],
+        "expected_intents": [
+          "refund"
+        ],
+        "allowed_resolutions": [
+          "answered",
+          "status",
+          "escalated"
+        ],
+        "expect_direct": true
+      }
+    },
+    {
+      "id": "mutation-refund-eligibility-morphology",
+      "source": "routing_v3_acceptance_seeds",
+      "group": "refund_eligibility",
+      "class": "morphology",
+      "text": "можно возвращать оплату тарифа если я не торговался",
+      "expected": {
+        "expected_scenario_ids": [
+          "refund.eligibility"
+        ],
+        "expected_intents": [
+          "refund"
+        ],
+        "allowed_resolutions": [
+          "answered",
+          "status",
+          "escalated"
+        ],
+        "expect_direct": true
+      }
+    },
+    {
+      "id": "mutation-refund-eligibility-word_order",
+      "source": "routing_v3_acceptance_seeds",
+      "group": "refund_eligibility",
+      "class": "word_order",
+      "text": "если я не торговался можно возвратить оплату тарифа",
+      "expected": {
+        "expected_scenario_ids": [
+          "refund.eligibility"
+        ],
+        "expected_intents": [
+          "refund"
+        ],
+        "allowed_resolutions": [
+          "answered",
+          "status",
+          "escalated"
+        ],
+        "expect_direct": true
+      }
+    },
+    {
+      "id": "mutation-refund-application-typo",
+      "source": "routing_v3_acceptance_seeds",
+      "group": "refund_application",
+      "class": "typo",
+      "text": "куда напралять заявление о возврате депозита",
+      "expected": {
+        "expected_scenario_ids": [
+          "refund.application"
+        ],
+        "expected_intents": [
+          "refund"
+        ],
+        "allowed_resolutions": [
+          "answered",
+          "status",
+          "escalated"
+        ],
+        "expect_direct": true
+      }
+    },
+    {
+      "id": "mutation-refund-application-transposed_letters",
+      "source": "routing_v3_acceptance_seeds",
+      "group": "refund_application",
+      "class": "transposed_letters",
+      "text": "куда напрвалять заявление о возврате депозита",
+      "expected": {
+        "expected_scenario_ids": [
+          "refund.application"
+        ],
+        "expected_intents": [
+          "refund"
+        ],
+        "allowed_resolutions": [
+          "answered",
+          "status",
+          "escalated"
+        ],
+        "expect_direct": true
+      }
+    },
+    {
+      "id": "mutation-refund-application-morphology",
+      "source": "routing_v3_acceptance_seeds",
+      "group": "refund_application",
+      "class": "morphology",
+      "text": "куда направлять заявления о возврате депозита",
+      "expected": {
+        "expected_scenario_ids": [
+          "refund.application"
+        ],
+        "expected_intents": [
+          "refund"
+        ],
+        "allowed_resolutions": [
+          "answered",
+          "status",
+          "escalated"
+        ],
+        "expect_direct": true
+      }
+    },
+    {
+      "id": "mutation-refund-application-word_order",
+      "source": "routing_v3_acceptance_seeds",
+      "group": "refund_application",
+      "class": "word_order",
+      "text": "о возврате депозита куда направлять заявление",
+      "expected": {
+        "expected_scenario_ids": [
+          "refund.application"
+        ],
+        "expected_intents": [
+          "refund"
+        ],
+        "allowed_resolutions": [
+          "answered",
+          "status",
+          "escalated"
+        ],
+        "expect_direct": true
+      }
+    },
+    {
+      "id": "mutation-refund-status-typo",
+      "source": "routing_v3_acceptance_seeds",
+      "group": "refund_status",
+      "class": "typo",
+      "text": "когда перечслят мой депозит обратно",
+      "expected": {
+        "expected_scenario_ids": [
+          "refund.timing_status"
+        ],
+        "expected_intents": [
+          "refund"
+        ],
+        "allowed_resolutions": [
+          "answered",
+          "status",
+          "escalated"
+        ],
+        "expect_direct": true
+      }
+    },
+    {
+      "id": "mutation-refund-status-transposed_letters",
+      "source": "routing_v3_acceptance_seeds",
+      "group": "refund_status",
+      "class": "transposed_letters",
+      "text": "когда переичслят мой депозит обратно",
+      "expected": {
+        "expected_scenario_ids": [
+          "refund.timing_status"
+        ],
+        "expected_intents": [
+          "refund"
+        ],
+        "allowed_resolutions": [
+          "answered",
+          "status",
+          "escalated"
+        ],
+        "expect_direct": true
+      }
+    },
+    {
+      "id": "mutation-refund-status-morphology",
+      "source": "routing_v3_acceptance_seeds",
+      "group": "refund_status",
+      "class": "morphology",
+      "text": "по вопросу когда перечислят мой депозит обратно",
+      "expected": {
+        "expected_scenario_ids": [
+          "refund.timing_status"
+        ],
+        "expected_intents": [
+          "refund"
+        ],
+        "allowed_resolutions": [
+          "answered",
+          "status",
+          "escalated"
+        ],
+        "expect_direct": true
+      }
+    },
+    {
+      "id": "mutation-refund-status-word_order",
+      "source": "routing_v3_acceptance_seeds",
+      "group": "refund_status",
+      "class": "word_order",
+      "text": "мой депозит обратно когда перечислят",
+      "expected": {
+        "expected_scenario_ids": [
+          "refund.timing_status"
+        ],
+        "expected_intents": [
+          "refund"
+        ],
+        "allowed_resolutions": [
+          "answered",
+          "status",
+          "escalated"
+        ],
+        "expect_direct": true
+      }
+    },
+    {
+      "id": "mutation-bid-place-typo",
+      "source": "routing_v3_acceptance_seeds",
+      "group": "bid_place",
+      "class": "typo",
+      "text": "где нажимать чтобы подать ставку на автомбиль",
+      "expected": {
+        "expected_scenario_ids": [
+          "bid.place"
+        ],
+        "expected_intents": [
+          "bidding"
+        ],
+        "allowed_resolutions": [
+          "answered",
+          "status",
+          "escalated"
+        ],
+        "expect_direct": true
+      }
+    },
+    {
+      "id": "mutation-bid-place-transposed_letters",
+      "source": "routing_v3_acceptance_seeds",
+      "group": "bid_place",
+      "class": "transposed_letters",
+      "text": "где нажимать чтобы подать ставку на автоомбиль",
+      "expected": {
+        "expected_scenario_ids": [
+          "bid.place"
+        ],
+        "expected_intents": [
+          "bidding"
+        ],
+        "allowed_resolutions": [
+          "answered",
+          "status",
+          "escalated"
+        ],
+        "expect_direct": true
+      }
+    },
+    {
+      "id": "mutation-bid-place-morphology",
+      "source": "routing_v3_acceptance_seeds",
+      "group": "bid_place",
+      "class": "morphology",
+      "text": "где нажимать чтобы подать ставки на автомобиль",
+      "expected": {
+        "expected_scenario_ids": [
+          "bid.place"
+        ],
+        "expected_intents": [
+          "bidding"
+        ],
+        "allowed_resolutions": [
+          "answered",
+          "status",
+          "escalated"
+        ],
+        "expect_direct": true
+      }
+    },
+    {
+      "id": "mutation-bid-place-word_order",
+      "source": "routing_v3_acceptance_seeds",
+      "group": "bid_place",
+      "class": "word_order",
+      "text": "подать ставку на автомобиль где нажимать чтобы",
+      "expected": {
+        "expected_scenario_ids": [
+          "bid.place"
+        ],
+        "expected_intents": [
+          "bidding"
+        ],
+        "allowed_resolutions": [
+          "answered",
+          "status",
+          "escalated"
+        ],
+        "expect_direct": true
+      }
+    },
+    {
+      "id": "mutation-bid-visibility-typo",
+      "source": "routing_v3_acceptance_seeds",
+      "group": "bid_not_visible",
+      "class": "typo",
+      "text": "предложение цены не отобраается в карточке",
+      "expected": {
+        "expected_scenario_ids": [
+          "bid.not_visible"
+        ],
+        "expected_intents": [
+          "bidding"
+        ],
+        "allowed_resolutions": [
+          "answered",
+          "status",
+          "escalated"
+        ],
+        "expect_direct": true
+      }
+    },
+    {
+      "id": "mutation-bid-visibility-transposed_letters",
+      "source": "routing_v3_acceptance_seeds",
+      "group": "bid_not_visible",
+      "class": "transposed_letters",
+      "text": "предложение цены не отобржаается в карточке",
+      "expected": {
+        "expected_scenario_ids": [
+          "bid.not_visible"
+        ],
+        "expected_intents": [
+          "bidding"
+        ],
+        "allowed_resolutions": [
+          "answered",
+          "status",
+          "escalated"
+        ],
+        "expect_direct": true
+      }
+    },
+    {
+      "id": "mutation-bid-visibility-morphology",
+      "source": "routing_v3_acceptance_seeds",
+      "group": "bid_not_visible",
+      "class": "morphology",
+      "text": "по вопросу предложение цены не отображается в карточке",
+      "expected": {
+        "expected_scenario_ids": [
+          "bid.not_visible"
+        ],
+        "expected_intents": [
+          "bidding"
+        ],
+        "allowed_resolutions": [
+          "answered",
+          "status",
+          "escalated"
+        ],
+        "expect_direct": true
+      }
+    },
+    {
+      "id": "mutation-bid-visibility-word_order",
+      "source": "routing_v3_acceptance_seeds",
+      "group": "bid_not_visible",
+      "class": "word_order",
+      "text": "отображается в карточке предложение цены не",
+      "expected": {
+        "expected_scenario_ids": [
+          "bid.not_visible"
+        ],
+        "expected_intents": [
+          "bidding"
+        ],
+        "allowed_resolutions": [
+          "answered",
+          "status",
+          "escalated"
+        ],
+        "expect_direct": true
+      }
+    },
+    {
+      "id": "mutation-bid-cancel-typo",
+      "source": "routing_v3_acceptance_seeds",
+      "group": "bid_modify_cancel",
+      "class": "typo",
+      "text": "хочу убрать предлжение из закрытых торгов",
+      "expected": {
+        "expected_scenario_ids": [
+          "bid.modify_cancel"
+        ],
+        "expected_intents": [
+          "bidding"
+        ],
+        "allowed_resolutions": [
+          "answered",
+          "status",
+          "escalated"
+        ],
+        "expect_direct": true
+      }
+    },
+    {
+      "id": "mutation-bid-cancel-transposed_letters",
+      "source": "routing_v3_acceptance_seeds",
+      "group": "bid_modify_cancel",
+      "class": "transposed_letters",
+      "text": "хочу убрать предолжение из закрытых торгов",
+      "expected": {
+        "expected_scenario_ids": [
+          "bid.modify_cancel"
+        ],
+        "expected_intents": [
+          "bidding"
+        ],
+        "allowed_resolutions": [
+          "answered",
+          "status",
+          "escalated"
+        ],
+        "expect_direct": true
+      }
+    },
+    {
+      "id": "mutation-bid-cancel-morphology",
+      "source": "routing_v3_acceptance_seeds",
+      "group": "bid_modify_cancel",
+      "class": "morphology",
+      "text": "хочу убрать предложение из закрытых торгах",
+      "expected": {
+        "expected_scenario_ids": [
+          "bid.modify_cancel"
+        ],
+        "expected_intents": [
+          "bidding"
+        ],
+        "allowed_resolutions": [
+          "answered",
+          "status",
+          "escalated"
+        ],
+        "expect_direct": true
+      }
+    },
+    {
+      "id": "mutation-bid-cancel-word_order",
+      "source": "routing_v3_acceptance_seeds",
+      "group": "bid_modify_cancel",
+      "class": "word_order",
+      "text": "из закрытых торгов хочу убрать предложение",
+      "expected": {
+        "expected_scenario_ids": [
+          "bid.modify_cancel"
+        ],
+        "expected_intents": [
+          "bidding"
+        ],
+        "allowed_resolutions": [
+          "answered",
+          "status",
+          "escalated"
+        ],
+        "expect_direct": true
+      }
+    },
+    {
+      "id": "mutation-auction-format-typo",
+      "source": "routing_v3_acceptance_seeds",
+      "group": "auction_formats",
+      "class": "typo",
+      "text": "объяните отличие открытого аукциона от закрытого",
+      "expected": {
+        "expected_scenario_ids": [
+          "auction.formats"
+        ],
+        "expected_intents": [
+          "bidding"
+        ],
+        "allowed_resolutions": [
+          "answered",
+          "status",
+          "escalated"
+        ],
+        "expect_direct": true
+      }
+    },
+    {
+      "id": "mutation-auction-format-transposed_letters",
+      "source": "routing_v3_acceptance_seeds",
+      "group": "auction_formats",
+      "class": "transposed_letters",
+      "text": "объсяните отличие открытого аукциона от закрытого",
+      "expected": {
+        "expected_scenario_ids": [
+          "auction.formats"
+        ],
+        "expected_intents": [
+          "bidding"
+        ],
+        "allowed_resolutions": [
+          "answered",
+          "status",
+          "escalated"
+        ],
+        "expect_direct": true
+      }
+    },
+    {
+      "id": "mutation-auction-format-morphology",
+      "source": "routing_v3_acceptance_seeds",
+      "group": "auction_formats",
+      "class": "morphology",
+      "text": "по вопросу объясните отличие открытого аукциона от закрытого",
+      "expected": {
+        "expected_scenario_ids": [
+          "auction.formats"
+        ],
+        "expected_intents": [
+          "bidding"
+        ],
+        "allowed_resolutions": [
+          "answered",
+          "status",
+          "escalated"
+        ],
+        "expect_direct": true
+      }
+    },
+    {
+      "id": "mutation-auction-format-word_order",
+      "source": "routing_v3_acceptance_seeds",
+      "group": "auction_formats",
+      "class": "word_order",
+      "text": "аукциона от закрытого объясните отличие открытого",
+      "expected": {
+        "expected_scenario_ids": [
+          "auction.formats"
+        ],
+        "expected_intents": [
+          "bidding"
+        ],
+        "allowed_resolutions": [
+          "answered",
+          "status",
+          "escalated"
+        ],
+        "expect_direct": true
+      }
+    },
+    {
+      "id": "mutation-auction-status-typo",
+      "source": "routing_v3_acceptance_seeds",
+      "group": "auction_status",
+      "class": "typo",
+      "text": "как проверить заверились ли торги",
+      "expected": {
+        "expected_scenario_ids": [
+          "auction.status"
+        ],
+        "expected_intents": [
+          "lot"
+        ],
+        "allowed_resolutions": [
+          "answered",
+          "status",
+          "escalated"
+        ],
+        "expect_direct": true
+      }
+    },
+    {
+      "id": "mutation-auction-status-transposed_letters",
+      "source": "routing_v3_acceptance_seeds",
+      "group": "auction_status",
+      "class": "transposed_letters",
+      "text": "как проверить завешрились ли торги",
+      "expected": {
+        "expected_scenario_ids": [
+          "auction.status"
+        ],
+        "expected_intents": [
+          "lot"
+        ],
+        "allowed_resolutions": [
+          "answered",
+          "status",
+          "escalated"
+        ],
+        "expect_direct": true
+      }
+    },
+    {
+      "id": "mutation-auction-status-morphology",
+      "source": "routing_v3_acceptance_seeds",
+      "group": "auction_status",
+      "class": "morphology",
+      "text": "по вопросу как проверить завершились ли торги",
+      "expected": {
+        "expected_scenario_ids": [
+          "auction.status"
+        ],
+        "expected_intents": [
+          "lot"
+        ],
+        "allowed_resolutions": [
+          "answered",
+          "status",
+          "escalated"
+        ],
+        "expect_direct": true
+      }
+    },
+    {
+      "id": "mutation-auction-status-word_order",
+      "source": "routing_v3_acceptance_seeds",
+      "group": "auction_status",
+      "class": "word_order",
+      "text": "завершились ли торги как проверить",
+      "expected": {
+        "expected_scenario_ids": [
+          "auction.status"
+        ],
+        "expected_intents": [
+          "lot"
+        ],
+        "allowed_resolutions": [
+          "answered",
+          "status",
+          "escalated"
+        ],
+        "expect_direct": true
+      }
+    },
+    {
+      "id": "mutation-technical-site-typo",
+      "source": "routing_v3_acceptance_seeds",
+      "group": "technical_site",
+      "class": "typo",
+      "text": "страница сайта пустая и не загруается",
+      "expected": {
+        "expected_scenario_ids": [
+          "technical.site_error"
+        ],
+        "expected_intents": [
+          "support"
+        ],
+        "allowed_resolutions": [
+          "answered",
+          "status",
+          "escalated"
+        ],
+        "expect_direct": true
+      }
+    },
+    {
+      "id": "mutation-technical-site-transposed_letters",
+      "source": "routing_v3_acceptance_seeds",
+      "group": "technical_site",
+      "class": "transposed_letters",
+      "text": "страница сайта пустая и не загржуается",
+      "expected": {
+        "expected_scenario_ids": [
+          "technical.site_error"
+        ],
+        "expected_intents": [
+          "support"
+        ],
+        "allowed_resolutions": [
+          "answered",
+          "status",
+          "escalated"
+        ],
+        "expect_direct": true
+      }
+    },
+    {
+      "id": "mutation-technical-site-morphology",
+      "source": "routing_v3_acceptance_seeds",
+      "group": "technical_site",
+      "class": "morphology",
+      "text": "по вопросу страница сайта пустая и не загружается",
+      "expected": {
+        "expected_scenario_ids": [
+          "technical.site_error"
+        ],
+        "expected_intents": [
+          "support"
+        ],
+        "allowed_resolutions": [
+          "answered",
+          "status",
+          "escalated"
+        ],
+        "expect_direct": true
+      }
+    },
+    {
+      "id": "mutation-technical-site-word_order",
+      "source": "routing_v3_acceptance_seeds",
+      "group": "technical_site",
+      "class": "word_order",
+      "text": "и не загружается страница сайта пустая",
+      "expected": {
+        "expected_scenario_ids": [
+          "technical.site_error"
+        ],
+        "expected_intents": [
+          "support"
+        ],
+        "allowed_resolutions": [
+          "answered",
+          "status",
+          "escalated"
+        ],
+        "expect_direct": true
+      }
+    },
+    {
+      "id": "mutation-technical-filter-typo",
+      "source": "routing_v3_acceptance_seeds",
+      "group": "technical_filters",
+      "class": "typo",
+      "text": "фильтр региона выдаёт неподхдящие лоты",
+      "expected": {
+        "expected_scenario_ids": [
+          "technical.catalog_search_filter"
+        ],
+        "expected_intents": [
+          "support"
+        ],
+        "allowed_resolutions": [
+          "answered",
+          "status",
+          "escalated"
+        ],
+        "expect_direct": true
+      }
+    },
+    {
+      "id": "mutation-technical-filter-transposed_letters",
+      "source": "routing_v3_acceptance_seeds",
+      "group": "technical_filters",
+      "class": "transposed_letters",
+      "text": "фильтр региона выдаёт неподохдящие лоты",
+      "expected": {
+        "expected_scenario_ids": [
+          "technical.catalog_search_filter"
+        ],
+        "expected_intents": [
+          "support"
+        ],
+        "allowed_resolutions": [
+          "answered",
+          "status",
+          "escalated"
+        ],
+        "expect_direct": true
+      }
+    },
+    {
+      "id": "mutation-technical-filter-morphology",
+      "source": "routing_v3_acceptance_seeds",
+      "group": "technical_filters",
+      "class": "morphology",
+      "text": "фильтры региона выдаёт неподходящие лоты",
+      "expected": {
+        "expected_scenario_ids": [
+          "technical.catalog_search_filter"
+        ],
+        "expected_intents": [
+          "support"
+        ],
+        "allowed_resolutions": [
+          "answered",
+          "status",
+          "escalated"
+        ],
+        "expect_direct": true
+      }
+    },
+    {
+      "id": "mutation-technical-filter-word_order",
+      "source": "routing_v3_acceptance_seeds",
+      "group": "technical_filters",
+      "class": "word_order",
+      "text": "выдаёт неподходящие лоты фильтр региона",
+      "expected": {
+        "expected_scenario_ids": [
+          "technical.catalog_search_filter"
+        ],
+        "expected_intents": [
+          "support"
+        ],
+        "allowed_resolutions": [
+          "answered",
+          "status",
+          "escalated"
+        ],
+        "expect_direct": true
+      }
+    },
+    {
+      "id": "mutation-documents-delay-typo",
+      "source": "routing_v3_acceptance_seeds",
+      "group": "documents_delay",
+      "class": "typo",
+      "text": "после передачи автомбиля документы так и не прислали",
+      "expected": {
+        "expected_scenario_ids": [
+          "documents.preparation_delay"
+        ],
+        "expected_intents": [
+          "transfer"
+        ],
+        "allowed_resolutions": [
+          "answered",
+          "status",
+          "escalated"
+        ],
+        "expect_direct": true
+      }
+    },
+    {
+      "id": "mutation-documents-delay-transposed_letters",
+      "source": "routing_v3_acceptance_seeds",
+      "group": "documents_delay",
+      "class": "transposed_letters",
+      "text": "после передачи автоомбиля документы так и не прислали",
+      "expected": {
+        "expected_scenario_ids": [
+          "documents.preparation_delay"
+        ],
+        "expected_intents": [
+          "transfer"
+        ],
+        "allowed_resolutions": [
+          "answered",
+          "status",
+          "escalated"
+        ],
+        "expect_direct": true
+      }
+    },
+    {
+      "id": "mutation-documents-delay-morphology",
+      "source": "routing_v3_acceptance_seeds",
+      "group": "documents_delay",
+      "class": "morphology",
+      "text": "после передачи автомобилю документы так и не прислали",
+      "expected": {
+        "expected_scenario_ids": [
+          "documents.preparation_delay"
+        ],
+        "expected_intents": [
+          "transfer"
+        ],
+        "allowed_resolutions": [
+          "answered",
+          "status",
+          "escalated"
+        ],
+        "expect_direct": true
+      }
+    },
+    {
+      "id": "mutation-documents-delay-word_order",
+      "source": "routing_v3_acceptance_seeds",
+      "group": "documents_delay",
+      "class": "word_order",
+      "text": "так и не прислали после передачи автомобиля документы",
+      "expected": {
+        "expected_scenario_ids": [
+          "documents.preparation_delay"
+        ],
+        "expected_intents": [
+          "transfer"
+        ],
+        "allowed_resolutions": [
+          "answered",
+          "status",
+          "escalated"
+        ],
+        "expect_direct": true
+      }
+    },
+    {
+      "id": "mutation-office-ambiguous-typo",
+      "source": "routing_v3_acceptance_seeds",
+      "group": "office_ambiguous",
+      "class": "typo",
+      "text": "подскжите куда к вам можно приехать",
+      "expected": {
+        "expected_scenario_ids": [
+          null,
+          "support.office_visit"
+        ],
+        "expected_intents": [
+          "support",
+          "unknown"
+        ],
+        "allowed_resolutions": [
+          "answered",
+          "status",
+          "escalated",
+          "clarified"
+        ],
+        "expect_direct": false
+      }
+    },
+    {
+      "id": "mutation-office-ambiguous-transposed_letters",
+      "source": "routing_v3_acceptance_seeds",
+      "group": "office_ambiguous",
+      "class": "transposed_letters",
+      "text": "подсакжите куда к вам можно приехать",
+      "expected": {
+        "expected_scenario_ids": [
+          null,
+          "support.office_visit"
+        ],
+        "expected_intents": [
+          "support",
+          "unknown"
+        ],
+        "allowed_resolutions": [
+          "answered",
+          "status",
+          "escalated",
+          "clarified"
+        ],
+        "expect_direct": false
+      }
+    },
+    {
+      "id": "mutation-office-ambiguous-morphology",
+      "source": "routing_v3_acceptance_seeds",
+      "group": "office_ambiguous",
+      "class": "morphology",
+      "text": "по вопросу подскажите куда к вам можно приехать",
+      "expected": {
+        "expected_scenario_ids": [
+          null,
+          "support.office_visit"
+        ],
+        "expected_intents": [
+          "support",
+          "unknown"
+        ],
+        "allowed_resolutions": [
+          "answered",
+          "status",
+          "escalated",
+          "clarified"
+        ],
+        "expect_direct": false
+      }
+    },
+    {
+      "id": "mutation-office-ambiguous-word_order",
+      "source": "routing_v3_acceptance_seeds",
+      "group": "office_ambiguous",
+      "class": "word_order",
+      "text": "вам можно приехать подскажите куда к",
+      "expected": {
+        "expected_scenario_ids": [
+          null,
+          "support.office_visit"
+        ],
+        "expected_intents": [
+          "support",
+          "unknown"
+        ],
+        "allowed_resolutions": [
+          "answered",
+          "status",
+          "escalated",
+          "clarified"
+        ],
+        "expect_direct": false
+      }
+    },
+    {
+      "id": "mutation-office-explicit-typo",
+      "source": "routing_v3_acceptance_seeds",
+      "group": "office_explicit",
+      "class": "typo",
+      "text": "хочу приехать в офис площадки подпсать договор",
+      "expected": {
+        "expected_scenario_ids": [
+          "support.office_visit"
+        ],
+        "expected_intents": [
+          "support"
+        ],
+        "allowed_resolutions": [
+          "answered",
+          "status",
+          "escalated"
+        ],
+        "expect_direct": true
+      }
+    },
+    {
+      "id": "mutation-office-explicit-transposed_letters",
+      "source": "routing_v3_acceptance_seeds",
+      "group": "office_explicit",
+      "class": "transposed_letters",
+      "text": "хочу приехать в офис площадки подипсать договор",
+      "expected": {
+        "expected_scenario_ids": [
+          "support.office_visit"
+        ],
+        "expected_intents": [
+          "support"
+        ],
+        "allowed_resolutions": [
+          "answered",
+          "status",
+          "escalated"
+        ],
+        "expect_direct": true
+      }
+    },
+    {
+      "id": "mutation-office-explicit-morphology",
+      "source": "routing_v3_acceptance_seeds",
+      "group": "office_explicit",
+      "class": "morphology",
+      "text": "по вопросу хочу приехать в офис площадки подписать договор",
+      "expected": {
+        "expected_scenario_ids": [
+          "support.office_visit"
+        ],
+        "expected_intents": [
+          "support"
+        ],
+        "allowed_resolutions": [
+          "answered",
+          "status",
+          "escalated"
+        ],
+        "expect_direct": true
+      }
+    },
+    {
+      "id": "mutation-office-explicit-word_order",
+      "source": "routing_v3_acceptance_seeds",
+      "group": "office_explicit",
+      "class": "word_order",
+      "text": "офис площадки подписать договор хочу приехать в",
+      "expected": {
+        "expected_scenario_ids": [
+          "support.office_visit"
+        ],
+        "expected_intents": [
+          "support"
+        ],
+        "allowed_resolutions": [
+          "answered",
+          "status",
+          "escalated"
+        ],
+        "expect_direct": true
+      }
+    },
+    {
+      "id": "mutation-employee-contact-typo",
+      "source": "routing_v3_acceptance_seeds",
+      "group": "employee_contact",
+      "class": "typo",
+      "text": "ваш сотрдник не выходит со мной на связь",
+      "expected": {
+        "expected_scenario_ids": [
+          "support.callback",
+          "support.contact",
+          "support.email_no_response"
+        ],
+        "expected_intents": [
+          "support"
+        ],
+        "allowed_resolutions": [
+          "answered",
+          "status",
+          "escalated"
+        ],
+        "expect_direct": true
+      }
+    },
+    {
+      "id": "mutation-employee-contact-transposed_letters",
+      "source": "routing_v3_acceptance_seeds",
+      "group": "employee_contact",
+      "class": "transposed_letters",
+      "text": "ваш сотурдник не выходит со мной на связь",
+      "expected": {
+        "expected_scenario_ids": [
+          "support.callback",
+          "support.contact",
+          "support.email_no_response"
+        ],
+        "expected_intents": [
+          "support"
+        ],
+        "allowed_resolutions": [
+          "answered",
+          "status",
+          "escalated"
+        ],
+        "expect_direct": true
+      }
+    },
+    {
+      "id": "mutation-employee-contact-morphology",
+      "source": "routing_v3_acceptance_seeds",
+      "group": "employee_contact",
+      "class": "morphology",
+      "text": "по вопросу ваш сотрудник не выходит со мной на связь",
+      "expected": {
+        "expected_scenario_ids": [
+          "support.callback",
+          "support.contact",
+          "support.email_no_response"
+        ],
+        "expected_intents": [
+          "support"
+        ],
+        "allowed_resolutions": [
+          "answered",
+          "status",
+          "escalated"
+        ],
+        "expect_direct": true
+      }
+    },
+    {
+      "id": "mutation-employee-contact-word_order",
+      "source": "routing_v3_acceptance_seeds",
+      "group": "employee_contact",
+      "class": "word_order",
+      "text": "со мной на связь ваш сотрудник не выходит",
+      "expected": {
+        "expected_scenario_ids": [
+          "support.callback",
+          "support.contact",
+          "support.email_no_response"
+        ],
+        "expected_intents": [
+          "support"
+        ],
+        "allowed_resolutions": [
+          "answered",
+          "status",
+          "escalated"
+        ],
+        "expect_direct": true
+      }
+    },
+    {
+      "id": "mutation-email-no-response-typo",
+      "source": "routing_v3_acceptance_seeds",
+      "group": "email_no_response",
+      "class": "typo",
+      "text": "на электонное письмо поддержка не ответила",
+      "expected": {
+        "expected_scenario_ids": [
+          "support.email_no_response"
+        ],
+        "expected_intents": [
+          "support"
+        ],
+        "allowed_resolutions": [
+          "answered",
+          "status",
+          "escalated"
+        ],
+        "expect_direct": true
+      }
+    },
+    {
+      "id": "mutation-email-no-response-transposed_letters",
+      "source": "routing_v3_acceptance_seeds",
+      "group": "email_no_response",
+      "class": "transposed_letters",
+      "text": "на элекртонное письмо поддержка не ответила",
+      "expected": {
+        "expected_scenario_ids": [
+          "support.email_no_response"
+        ],
+        "expected_intents": [
+          "support"
+        ],
+        "allowed_resolutions": [
+          "answered",
+          "status",
+          "escalated"
+        ],
+        "expect_direct": true
+      }
+    },
+    {
+      "id": "mutation-email-no-response-morphology",
+      "source": "routing_v3_acceptance_seeds",
+      "group": "email_no_response",
+      "class": "morphology",
+      "text": "на электронное письма поддержка не ответила",
+      "expected": {
+        "expected_scenario_ids": [
+          "support.email_no_response"
+        ],
+        "expected_intents": [
+          "support"
+        ],
+        "allowed_resolutions": [
+          "answered",
+          "status",
+          "escalated"
+        ],
+        "expect_direct": true
+      }
+    },
+    {
+      "id": "mutation-email-no-response-word_order",
+      "source": "routing_v3_acceptance_seeds",
+      "group": "email_no_response",
+      "class": "word_order",
+      "text": "поддержка не ответила на электронное письмо",
+      "expected": {
+        "expected_scenario_ids": [
+          "support.email_no_response"
+        ],
+        "expected_intents": [
+          "support"
+        ],
+        "allowed_resolutions": [
+          "answered",
+          "status",
+          "escalated"
+        ],
+        "expect_direct": true
+      }
+    },
+    {
+      "id": "mutation-catalog-search-typo",
+      "source": "routing_v3_acceptance_seeds",
+      "group": "catalog_search",
+      "class": "typo",
+      "text": "как отыскать автомбиль по номеру лота",
+      "expected": {
+        "expected_scenario_ids": [
+          "lot.catalog_search"
+        ],
+        "expected_intents": [
+          "lot"
+        ],
+        "allowed_resolutions": [
+          "answered",
+          "status",
+          "escalated"
+        ],
+        "expect_direct": true
+      }
+    },
+    {
+      "id": "mutation-catalog-search-transposed_letters",
+      "source": "routing_v3_acceptance_seeds",
+      "group": "catalog_search",
+      "class": "transposed_letters",
+      "text": "как отыскать автоомбиль по номеру лота",
+      "expected": {
+        "expected_scenario_ids": [
+          "lot.catalog_search"
+        ],
+        "expected_intents": [
+          "lot"
+        ],
+        "allowed_resolutions": [
+          "answered",
+          "status",
+          "escalated"
+        ],
+        "expect_direct": true
+      }
+    },
+    {
+      "id": "mutation-catalog-search-morphology",
+      "source": "routing_v3_acceptance_seeds",
+      "group": "catalog_search",
+      "class": "morphology",
+      "text": "как отыскать автомобили по номеру лота",
+      "expected": {
+        "expected_scenario_ids": [
+          "lot.catalog_search"
+        ],
+        "expected_intents": [
+          "lot"
+        ],
+        "allowed_resolutions": [
+          "answered",
+          "status",
+          "escalated"
+        ],
+        "expect_direct": true
+      }
+    },
+    {
+      "id": "mutation-catalog-search-word_order",
+      "source": "routing_v3_acceptance_seeds",
+      "group": "catalog_search",
+      "class": "word_order",
+      "text": "по номеру лота как отыскать автомобиль",
+      "expected": {
+        "expected_scenario_ids": [
+          "lot.catalog_search"
+        ],
+        "expected_intents": [
+          "lot"
+        ],
+        "allowed_resolutions": [
+          "answered",
+          "status",
+          "escalated"
+        ],
+        "expect_direct": true
+      }
+    },
+    {
+      "id": "mutation-lot-location-typo",
+      "source": "routing_v3_acceptance_seeds",
+      "group": "lot_location",
+      "class": "typo",
+      "text": "где нахоится стоянка выбранной машины",
+      "expected": {
+        "expected_scenario_ids": [
+          "lot.location"
+        ],
+        "expected_intents": [
+          "lot"
+        ],
+        "allowed_resolutions": [
+          "answered",
+          "status",
+          "escalated"
+        ],
+        "expect_direct": true
+      }
+    },
+    {
+      "id": "mutation-lot-location-transposed_letters",
+      "source": "routing_v3_acceptance_seeds",
+      "group": "lot_location",
+      "class": "transposed_letters",
+      "text": "где нахдоится стоянка выбранной машины",
+      "expected": {
+        "expected_scenario_ids": [
+          "lot.location"
+        ],
+        "expected_intents": [
+          "lot"
+        ],
+        "allowed_resolutions": [
+          "answered",
+          "status",
+          "escalated"
+        ],
+        "expect_direct": true
+      }
+    },
+    {
+      "id": "mutation-lot-location-morphology",
+      "source": "routing_v3_acceptance_seeds",
+      "group": "lot_location",
+      "class": "morphology",
+      "text": "по вопросу где находится стоянка выбранной машины",
+      "expected": {
+        "expected_scenario_ids": [
+          "lot.location"
+        ],
+        "expected_intents": [
+          "lot"
+        ],
+        "allowed_resolutions": [
+          "answered",
+          "status",
+          "escalated"
+        ],
+        "expect_direct": true
+      }
+    },
+    {
+      "id": "mutation-lot-location-word_order",
+      "source": "routing_v3_acceptance_seeds",
+      "group": "lot_location",
+      "class": "word_order",
+      "text": "стоянка выбранной машины где находится",
+      "expected": {
+        "expected_scenario_ids": [
+          "lot.location"
+        ],
+        "expected_intents": [
+          "lot"
+        ],
+        "allowed_resolutions": [
+          "answered",
+          "status",
+          "escalated"
+        ],
+        "expect_direct": true
+      }
+    },
+    {
+      "id": "mutation-account-login-typo",
+      "source": "routing_v3_acceptance_seeds",
+      "group": "account_login",
+      "class": "typo",
+      "text": "не получается авторизваться в личном кабинете",
+      "expected": {
+        "expected_scenario_ids": [
+          "account.login_problem"
+        ],
+        "expected_intents": [
+          "registration"
+        ],
+        "allowed_resolutions": [
+          "answered",
+          "status",
+          "escalated"
+        ],
+        "expect_direct": true
+      }
+    },
+    {
+      "id": "mutation-account-login-transposed_letters",
+      "source": "routing_v3_acceptance_seeds",
+      "group": "account_login",
+      "class": "transposed_letters",
+      "text": "не получается авториозваться в личном кабинете",
+      "expected": {
+        "expected_scenario_ids": [
+          "account.login_problem"
+        ],
+        "expected_intents": [
+          "registration"
+        ],
+        "allowed_resolutions": [
+          "answered",
+          "status",
+          "escalated"
+        ],
+        "expect_direct": true
+      }
+    },
+    {
+      "id": "mutation-account-login-morphology",
+      "source": "routing_v3_acceptance_seeds",
+      "group": "account_login",
+      "class": "morphology",
+      "text": "по вопросу не получается авторизоваться в личном кабинете",
+      "expected": {
+        "expected_scenario_ids": [
+          "account.login_problem"
+        ],
+        "expected_intents": [
+          "registration"
+        ],
+        "allowed_resolutions": [
+          "answered",
+          "status",
+          "escalated"
+        ],
+        "expect_direct": true
+      }
+    },
+    {
+      "id": "mutation-account-login-word_order",
+      "source": "routing_v3_acceptance_seeds",
+      "group": "account_login",
+      "class": "word_order",
+      "text": "в личном кабинете не получается авторизоваться",
+      "expected": {
+        "expected_scenario_ids": [
+          "account.login_problem"
+        ],
+        "expected_intents": [
+          "registration"
+        ],
+        "allowed_resolutions": [
+          "answered",
+          "status",
+          "escalated"
+        ],
+        "expect_direct": true
+      }
+    },
+    {
+      "id": "mutation-account-registration-typo",
+      "source": "routing_v3_acceptance_seeds",
+      "group": "account_registration",
+      "class": "typo",
+      "text": "как физическому лицу зарегистрроваться на площадке",
+      "expected": {
+        "expected_scenario_ids": [
+          "account.registration"
+        ],
+        "expected_intents": [
+          "account"
+        ],
+        "allowed_resolutions": [
+          "answered",
+          "status",
+          "escalated"
+        ],
+        "expect_direct": true
+      }
+    },
+    {
+      "id": "mutation-account-registration-transposed_letters",
+      "source": "routing_v3_acceptance_seeds",
+      "group": "account_registration",
+      "class": "transposed_letters",
+      "text": "как физическому лицу зарегистирроваться на площадке",
+      "expected": {
+        "expected_scenario_ids": [
+          "account.registration"
+        ],
+        "expected_intents": [
+          "account"
+        ],
+        "allowed_resolutions": [
+          "answered",
+          "status",
+          "escalated"
+        ],
+        "expect_direct": true
+      }
+    },
+    {
+      "id": "mutation-account-registration-morphology",
+      "source": "routing_v3_acceptance_seeds",
+      "group": "account_registration",
+      "class": "morphology",
+      "text": "как физическому лицу зарегистрироваться на площадку",
+      "expected": {
+        "expected_scenario_ids": [
+          "account.registration"
+        ],
+        "expected_intents": [
+          "account"
+        ],
+        "allowed_resolutions": [
+          "answered",
+          "status",
+          "escalated"
+        ],
+        "expect_direct": true
+      }
+    },
+    {
+      "id": "mutation-account-registration-word_order",
+      "source": "routing_v3_acceptance_seeds",
+      "group": "account_registration",
+      "class": "word_order",
+      "text": "зарегистрироваться на площадке как физическому лицу",
+      "expected": {
+        "expected_scenario_ids": [
+          "account.registration"
+        ],
+        "expected_intents": [
+          "account"
+        ],
+        "allowed_resolutions": [
+          "answered",
+          "status",
+          "escalated"
+        ],
+        "expect_direct": true
+      }
+    },
+    {
+      "id": "mutation-pickup-typo",
+      "source": "routing_v3_acceptance_seeds",
+      "group": "pickup_receive",
+      "class": "typo",
+      "text": "какие бумаги взять для получения автомбиля",
+      "expected": {
+        "expected_scenario_ids": [
+          "pickup.receive_lot"
+        ],
+        "expected_intents": [
+          "pickup"
+        ],
+        "allowed_resolutions": [
+          "answered",
+          "status",
+          "escalated"
+        ],
+        "expect_direct": true
+      }
+    },
+    {
+      "id": "mutation-pickup-transposed_letters",
+      "source": "routing_v3_acceptance_seeds",
+      "group": "pickup_receive",
+      "class": "transposed_letters",
+      "text": "какие бумаги взять для получения автоомбиля",
+      "expected": {
+        "expected_scenario_ids": [
+          "pickup.receive_lot"
+        ],
+        "expected_intents": [
+          "pickup"
+        ],
+        "allowed_resolutions": [
+          "answered",
+          "status",
+          "escalated"
+        ],
+        "expect_direct": true
+      }
+    },
+    {
+      "id": "mutation-pickup-morphology",
+      "source": "routing_v3_acceptance_seeds",
+      "group": "pickup_receive",
+      "class": "morphology",
+      "text": "какие бумаги взять для получения автомобилю",
+      "expected": {
+        "expected_scenario_ids": [
+          "pickup.receive_lot"
+        ],
+        "expected_intents": [
+          "pickup"
+        ],
+        "allowed_resolutions": [
+          "answered",
+          "status",
+          "escalated"
+        ],
+        "expect_direct": true
+      }
+    },
+    {
+      "id": "mutation-pickup-word_order",
+      "source": "routing_v3_acceptance_seeds",
+      "group": "pickup_receive",
+      "class": "word_order",
+      "text": "для получения автомобиля какие бумаги взять",
+      "expected": {
+        "expected_scenario_ids": [
+          "pickup.receive_lot"
+        ],
+        "expected_intents": [
+          "pickup"
+        ],
+        "allowed_resolutions": [
+          "answered",
+          "status",
+          "escalated"
+        ],
+        "expect_direct": true
+      }
+    },
+    {
+      "id": "mutation-tariff-status-typo",
+      "source": "routing_v3_acceptance_seeds",
+      "group": "tariff_status",
+      "class": "typo",
+      "text": "оплаченный тариф всё ещё не активрован",
+      "expected": {
+        "expected_scenario_ids": [
+          "tariff.status"
+        ],
+        "expected_intents": [
+          "tariffs"
+        ],
+        "allowed_resolutions": [
+          "answered",
+          "status",
+          "escalated"
+        ],
+        "expect_direct": true
+      }
+    },
+    {
+      "id": "mutation-tariff-status-transposed_letters",
+      "source": "routing_v3_acceptance_seeds",
+      "group": "tariff_status",
+      "class": "transposed_letters",
+      "text": "оплаченный тариф всё ещё не актииврован",
+      "expected": {
+        "expected_scenario_ids": [
+          "tariff.status"
+        ],
+        "expected_intents": [
+          "tariffs"
+        ],
+        "allowed_resolutions": [
+          "answered",
+          "status",
+          "escalated"
+        ],
+        "expect_direct": true
+      }
+    },
+    {
+      "id": "mutation-tariff-status-morphology",
+      "source": "routing_v3_acceptance_seeds",
+      "group": "tariff_status",
+      "class": "morphology",
+      "text": "по вопросу оплаченный тариф всё ещё не активирован",
+      "expected": {
+        "expected_scenario_ids": [
+          "tariff.status"
+        ],
+        "expected_intents": [
+          "tariffs"
+        ],
+        "allowed_resolutions": [
+          "answered",
+          "status",
+          "escalated"
+        ],
+        "expect_direct": true
+      }
+    },
+    {
+      "id": "mutation-tariff-status-word_order",
+      "source": "routing_v3_acceptance_seeds",
+      "group": "tariff_status",
+      "class": "word_order",
+      "text": "ещё не активирован оплаченный тариф всё",
+      "expected": {
+        "expected_scenario_ids": [
+          "tariff.status"
+        ],
+        "expected_intents": [
+          "tariffs"
+        ],
+        "allowed_resolutions": [
+          "answered",
+          "status",
+          "escalated"
+        ],
+        "expect_direct": true
+      }
+    },
+    {
+      "id": "mutation-payment-visibility-typo",
+      "source": "routing_v3_acceptance_seeds",
+      "group": "payment_not_visible",
+      "class": "typo",
+      "text": "банк списал платёж но баланс не пополился",
+      "expected": {
+        "expected_scenario_ids": [
+          "payment.not_visible"
+        ],
+        "expected_intents": [
+          "payment"
+        ],
+        "allowed_resolutions": [
+          "answered",
+          "status",
+          "escalated"
+        ],
+        "expect_direct": true
+      }
+    },
+    {
+      "id": "mutation-payment-visibility-transposed_letters",
+      "source": "routing_v3_acceptance_seeds",
+      "group": "payment_not_visible",
+      "class": "transposed_letters",
+      "text": "банк списал платёж но баланс не попонлился",
+      "expected": {
+        "expected_scenario_ids": [
+          "payment.not_visible"
+        ],
+        "expected_intents": [
+          "payment"
+        ],
+        "allowed_resolutions": [
+          "answered",
+          "status",
+          "escalated"
+        ],
+        "expect_direct": true
+      }
+    },
+    {
+      "id": "mutation-payment-visibility-morphology",
+      "source": "routing_v3_acceptance_seeds",
+      "group": "payment_not_visible",
+      "class": "morphology",
+      "text": "банк списал платежа но баланс не пополнился",
+      "expected": {
+        "expected_scenario_ids": [
+          "payment.not_visible"
+        ],
+        "expected_intents": [
+          "payment"
+        ],
+        "allowed_resolutions": [
+          "answered",
+          "status",
+          "escalated"
+        ],
+        "expect_direct": true
+      }
+    },
+    {
+      "id": "mutation-payment-visibility-word_order",
+      "source": "routing_v3_acceptance_seeds",
+      "group": "payment_not_visible",
+      "class": "word_order",
+      "text": "но баланс не пополнился банк списал платёж",
+      "expected": {
+        "expected_scenario_ids": [
+          "payment.not_visible"
+        ],
+        "expected_intents": [
+          "payment"
+        ],
+        "allowed_resolutions": [
+          "answered",
+          "status",
+          "escalated"
+        ],
+        "expect_direct": true
+      }
+    },
+    {
+      "id": "mutation-lot-images-typo",
+      "source": "routing_v3_acceptance_seeds",
+      "group": "lot_images",
+      "class": "typo",
+      "text": "изобржения автомобиля не открываются",
+      "expected": {
+        "expected_scenario_ids": [
+          "technical.lot_image_missing"
+        ],
+        "expected_intents": [
+          "support"
+        ],
+        "allowed_resolutions": [
+          "answered",
+          "status",
+          "escalated"
+        ],
+        "expect_direct": true
+      }
+    },
+    {
+      "id": "mutation-lot-images-transposed_letters",
+      "source": "routing_v3_acceptance_seeds",
+      "group": "lot_images",
+      "class": "transposed_letters",
+      "text": "изобаржения автомобиля не открываются",
+      "expected": {
+        "expected_scenario_ids": [
+          "technical.lot_image_missing"
+        ],
+        "expected_intents": [
+          "support"
+        ],
+        "allowed_resolutions": [
+          "answered",
+          "status",
+          "escalated"
+        ],
+        "expect_direct": true
+      }
+    },
+    {
+      "id": "mutation-lot-images-morphology",
+      "source": "routing_v3_acceptance_seeds",
+      "group": "lot_images",
+      "class": "morphology",
+      "text": "изображение автомобиля не открываются",
+      "expected": {
+        "expected_scenario_ids": [
+          "technical.lot_image_missing"
+        ],
+        "expected_intents": [
+          "support"
+        ],
+        "allowed_resolutions": [
+          "answered",
+          "status",
+          "escalated"
+        ],
+        "expect_direct": true
+      }
+    },
+    {
+      "id": "mutation-lot-images-word_order",
+      "source": "routing_v3_acceptance_seeds",
+      "group": "lot_images",
+      "class": "word_order",
+      "text": "не открываются изображения автомобиля",
+      "expected": {
+        "expected_scenario_ids": [
+          "technical.lot_image_missing"
+        ],
+        "expected_intents": [
+          "support"
+        ],
+        "allowed_resolutions": [
+          "answered",
+          "status",
+          "escalated"
+        ],
+        "expect_direct": true
+      }
+    },
+    {
+      "id": "mutation-improvement-typo",
+      "source": "routing_v3_acceptance_seeds",
+      "group": "feedback_improvement",
+      "class": "typo",
+      "text": "предлагаю улучшить сохраение настроек фильтра",
+      "expected": {
+        "expected_scenario_ids": [
+          "feedback.improvement_suggestion"
+        ],
+        "expected_intents": [
+          "feedback"
+        ],
+        "allowed_resolutions": [
+          "answered",
+          "status",
+          "escalated"
+        ],
+        "expect_direct": true
+      }
+    },
+    {
+      "id": "mutation-improvement-transposed_letters",
+      "source": "routing_v3_acceptance_seeds",
+      "group": "feedback_improvement",
+      "class": "transposed_letters",
+      "text": "предлагаю улучшить сохрнаение настроек фильтра",
+      "expected": {
+        "expected_scenario_ids": [
+          "feedback.improvement_suggestion"
+        ],
+        "expected_intents": [
+          "feedback"
+        ],
+        "allowed_resolutions": [
+          "answered",
+          "status",
+          "escalated"
+        ],
+        "expect_direct": true
+      }
+    },
+    {
+      "id": "mutation-improvement-morphology",
+      "source": "routing_v3_acceptance_seeds",
+      "group": "feedback_improvement",
+      "class": "morphology",
+      "text": "по вопросу предлагаю улучшить сохранение настроек фильтра",
+      "expected": {
+        "expected_scenario_ids": [
+          "feedback.improvement_suggestion"
+        ],
+        "expected_intents": [
+          "feedback"
+        ],
+        "allowed_resolutions": [
+          "answered",
+          "status",
+          "escalated"
+        ],
+        "expect_direct": true
+      }
+    },
+    {
+      "id": "mutation-improvement-word_order",
+      "source": "routing_v3_acceptance_seeds",
+      "group": "feedback_improvement",
+      "class": "word_order",
+      "text": "сохранение настроек фильтра предлагаю улучшить",
+      "expected": {
+        "expected_scenario_ids": [
+          "feedback.improvement_suggestion"
+        ],
+        "expected_intents": [
+          "feedback"
+        ],
+        "allowed_resolutions": [
+          "answered",
+          "status",
+          "escalated"
+        ],
+        "expect_direct": true
+      }
+    },
+    {
+      "id": "mutation-complaint-typo",
+      "source": "routing_v3_acceptance_seeds",
+      "group": "feedback_complaint",
+      "class": "typo",
+      "text": "сайт постоянно сбрасвает выбранные фильтры",
+      "expected": {
+        "expected_scenario_ids": [
+          "feedback.platform_complaint",
+          "technical.catalog_search_filter"
+        ],
+        "expected_intents": [
+          "feedback",
+          "support"
+        ],
+        "allowed_resolutions": [
+          "answered",
+          "status",
+          "escalated"
+        ],
+        "expect_direct": true
+      }
+    },
+    {
+      "id": "mutation-complaint-transposed_letters",
+      "source": "routing_v3_acceptance_seeds",
+      "group": "feedback_complaint",
+      "class": "transposed_letters",
+      "text": "сайт постоянно сбраысвает выбранные фильтры",
+      "expected": {
+        "expected_scenario_ids": [
+          "feedback.platform_complaint",
+          "technical.catalog_search_filter"
+        ],
+        "expected_intents": [
+          "feedback",
+          "support"
+        ],
+        "allowed_resolutions": [
+          "answered",
+          "status",
+          "escalated"
+        ],
+        "expect_direct": true
+      }
+    },
+    {
+      "id": "mutation-complaint-morphology",
+      "source": "routing_v3_acceptance_seeds",
+      "group": "feedback_complaint",
+      "class": "morphology",
+      "text": "по вопросу сайт постоянно сбрасывает выбранные фильтры",
+      "expected": {
+        "expected_scenario_ids": [
+          "feedback.platform_complaint",
+          "technical.catalog_search_filter"
+        ],
+        "expected_intents": [
+          "feedback",
+          "support"
+        ],
+        "allowed_resolutions": [
+          "answered",
+          "status",
+          "escalated"
+        ],
+        "expect_direct": true
+      }
+    },
+    {
+      "id": "mutation-complaint-word_order",
+      "source": "routing_v3_acceptance_seeds",
+      "group": "feedback_complaint",
+      "class": "word_order",
+      "text": "сбрасывает выбранные фильтры сайт постоянно",
+      "expected": {
+        "expected_scenario_ids": [
+          "feedback.platform_complaint",
+          "technical.catalog_search_filter"
+        ],
+        "expected_intents": [
+          "feedback",
+          "support"
+        ],
+        "allowed_resolutions": [
+          "answered",
+          "status",
+          "escalated"
+        ],
+        "expect_direct": true
+      }
+    }
+  ]
+}

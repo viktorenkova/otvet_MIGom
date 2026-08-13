@@ -1,0 +1,496 @@
+{
+  "version": "2026-08-13.1",
+  "purpose": "Independent end-to-end audit set. Phrases are not copied from scenario positive_examples.",
+  "global_forbidden_answer_fragments": [
+    "Михаил",
+    "Реник",
+    "Алексей"
+  ],
+  "groups": [
+    {
+      "name": "insurer_no_response",
+      "expected_scenario_ids": ["transfer.seller_no_response"],
+      "expected_intents": ["transfer"],
+      "allowed_resolutions": ["escalated", "answered"],
+      "expect_direct": true,
+      "required_any_groups": [["лот", "страхов", "продав"], ["ответ", "связ", "письм", "статус"]],
+      "queries": [
+        {"id": "ins-001", "class": "insurer_alias", "text": "после победы РЕСО перестали выходить на связь"},
+        {"id": "ins-002", "class": "insurer_alias", "text": "альфастрахование молчит по выигранной машине"},
+        {"id": "ins-003", "class": "insurer_alias", "text": "т страхование не отвечает по переданному лоту"},
+        {"id": "ins-004", "class": "insurer_alias", "text": "ингосстрах пропал после завершения торгов"},
+        {"id": "ins-005", "class": "insurer_alias", "text": "росгосстрах игнорирует мои письма по авто"},
+        {"id": "ins-006", "class": "insurer_alias", "text": "ВСК не присылает инструкции после выигрыша"},
+        {"id": "ins-007", "class": "insurer_alias", "text": "страховая Согласие не выходит на связь по лоту"},
+        {"id": "ins-008", "class": "insurer_alias", "text": "ренессанс второй день молчит насчет машины"},
+        {"id": "ins-009", "class": "insurer_alias", "text": "сбер страхование не отвечает после передачи"},
+        {"id": "ins-010", "class": "insurer_alias", "text": "совкомбанк страхование потерялись после торгов"},
+        {"id": "ins-011", "class": "insurer_alias", "text": "зетта ничего не пишет по выигранному лоту"},
+        {"id": "ins-012", "class": "insurer_alias", "text": "югория не отвечает что дальше с автомобилем"},
+        {"id": "ins-013", "class": "typo", "text": "ресо не выхоит на свзяь по выйграному лоту"},
+        {"id": "ins-014", "class": "transposed_letters", "text": "алфьа молчит по лтоу после победы"},
+        {"id": "ins-015", "class": "typo", "text": "тинкоф страхоавние не отвеачет по машние"},
+        {"id": "ins-016", "class": "word_order", "text": "по автомобилю после выигрыша ответа от ингосстраха нет"},
+        {"id": "ins-017", "class": "morphology", "text": "с росгосстрахом связаться по выигранному автомобилю не получается"},
+        {"id": "ins-018", "class": "colloquial", "text": "ресо гасится после выигрыша тачки"},
+        {"id": "ins-019", "class": "colloquial", "text": "альфа ушла в тишину по переданной машине"},
+        {"id": "ins-020", "class": "word_order", "text": "лот передали а от т-страхования ни ответа ни привета"}
+      ]
+    },
+    {
+      "name": "premium_connect",
+      "expected_scenario_ids": ["tariff.connect"],
+      "expected_intents": ["tariffs"],
+      "allowed_resolutions": ["answered"],
+      "expect_direct": true,
+      "required_any_groups": [["тариф", "премиум"], ["кабинет", "раздел", "подключ"], ["оплат"]],
+      "forbidden_answer_fragments": ["для демо", "демо-доступа", "демо доступа"],
+      "queries": [
+        {"id": "tar-001", "class": "natural", "text": "что сделать чтобы оформить премиум"},
+        {"id": "tar-002", "class": "typo", "text": "как подкючить премиум тарифф"},
+        {"id": "tar-003", "class": "transposed_letters", "text": "премиум как потклюичть"},
+        {"id": "tar-004", "class": "word_order", "text": "тариф мне премиальный подключить где"},
+        {"id": "tar-005", "class": "morphology", "text": "нужна инструкция по подключению премиального доступа"}
+      ]
+    },
+    {
+      "name": "premium_about",
+      "expected_scenario_ids": ["tariff.premium"],
+      "expected_intents": ["tariffs"],
+      "allowed_resolutions": ["answered"],
+      "expect_direct": true,
+      "required_any_groups": [["премиум"], ["став", "торг", "тариф", "доступ"]],
+      "queries": [
+        {"id": "tar-006", "class": "natural", "text": "объясните возможности премиального тарифа"},
+        {"id": "tar-007", "class": "typo", "text": "что входт в премиуим"},
+        {"id": "tar-008", "class": "transposed_letters", "text": "премуим что дает"},
+        {"id": "tar-009", "class": "word_order", "text": "оплата у премиума ежегодная или разовая"},
+        {"id": "tar-010", "class": "morphology", "text": "расскажите о премиальном доступе к торгам"}
+      ]
+    },
+    {
+      "name": "payment_not_visible",
+      "expected_scenario_ids": ["payment.not_visible"],
+      "expected_intents": ["payment"],
+      "allowed_resolutions": ["escalated", "answered"],
+      "expect_direct": true,
+      "required_any_groups": [["плат", "деньг", "баланс"], ["истор", "проверк", "обращ", "зачис"]],
+      "queries": [
+        {"id": "pay-001", "class": "natural", "text": "карта списала деньги но в кабинете их нет"},
+        {"id": "pay-002", "class": "typo", "text": "оплта прошла а баласн не изменился"},
+        {"id": "pay-003", "class": "transposed_letters", "text": "платже вижу в банке но не у вас"},
+        {"id": "pay-004", "class": "word_order", "text": "на счете нет хотя деньги вчера перечислил"},
+        {"id": "pay-005", "class": "morphology", "text": "пополнение не отразилось в истории платежей"}
+      ]
+    },
+    {
+      "name": "payment_checkout_problem",
+      "expected_scenario_ids": ["payment.checkout_problem"],
+      "expected_intents": ["payment"],
+      "allowed_resolutions": ["escalated", "answered"],
+      "expect_direct": true,
+      "required_any_groups": [["оплат", "платеж", "банк"], ["ошиб", "повтор", "обращ", "проверь"]],
+      "queries": [
+        {"id": "pay-006", "class": "natural", "text": "при оплате площадка выдает ошибку"},
+        {"id": "pay-007", "class": "typo", "text": "не могу оплотить доступ картой"},
+        {"id": "pay-008", "class": "transposed_letters", "text": "кнпока оплтаы ничего не делает"},
+        {"id": "pay-009", "class": "word_order", "text": "тариф оплатить банк мне не дает"},
+        {"id": "pay-010", "class": "morphology", "text": "платежи отклоняются при пополнении"}
+      ]
+    },
+    {
+      "name": "refund_ambiguous",
+      "expected_scenario_ids": [null, "refund.eligibility", "refund.application", "refund.timing_status"],
+      "expected_intents": ["refund", "unknown"],
+      "allowed_resolutions": ["clarified"],
+      "required_any_groups": [["уточн", "возврат", "выберите"]],
+      "forbidden_answer_fragments": ["нажмите «Создать обращение»", "нажмите \"Создать обращение\""],
+      "queries": [
+        {"id": "ref-001", "class": "ambiguous", "text": "возврат"},
+        {"id": "ref-002", "class": "ambiguous", "text": "хочу обратно деньги"},
+        {"id": "ref-003", "class": "typo", "text": "вернть денги"},
+        {"id": "ref-004", "class": "word_order", "text": "деньги обратно как"},
+        {"id": "ref-005", "class": "morphology", "text": "интересует возвращение средств"}
+      ]
+    },
+    {
+      "name": "refund_eligibility",
+      "expected_scenario_ids": ["refund.eligibility"],
+      "expected_intents": ["refund"],
+      "allowed_resolutions": ["answered"],
+      "expect_direct": true,
+      "required_any_groups": [["возврат", "вернуть"], ["баланс", "депозит", "платеж", "средств"]],
+      "queries": [
+        {"id": "ref-006", "class": "natural", "text": "остаток после несостоявшейся сделки можно вывести"},
+        {"id": "ref-007", "class": "typo", "text": "возврощают ли депозт премиума"},
+        {"id": "ref-008", "class": "transposed_letters", "text": "ошибочно пополнил можно ли венруть"},
+        {"id": "ref-009", "class": "word_order", "text": "с баланса какие средства возврату подлежат"},
+        {"id": "ref-010", "class": "morphology", "text": "условия возвращения обеспечительного платежа"}
+      ]
+    },
+    {
+      "name": "refund_application",
+      "expected_scenario_ids": ["refund.application"],
+      "expected_intents": ["refund"],
+      "allowed_resolutions": ["escalated", "answered"],
+      "expect_direct": true,
+      "required_any_groups": [["возврат"], ["заявлен", "обращ", "документ", "напис"]],
+      "queries": [
+        {"id": "ref-011", "class": "natural", "text": "каким способом оформить заявление чтобы вернули депозит"},
+        {"id": "ref-012", "class": "typo", "text": "куда напрвить заявлние на возварт"},
+        {"id": "ref-013", "class": "transposed_letters", "text": "как подтаь запрос на возрват"},
+        {"id": "ref-014", "class": "word_order", "text": "для возврата документы какие отправлять"},
+        {"id": "ref-015", "class": "morphology", "text": "порядок подачи возвратного заявления"}
+      ]
+    },
+    {
+      "name": "refund_status",
+      "expected_scenario_ids": ["refund.timing_status"],
+      "expected_intents": ["refund"],
+      "allowed_resolutions": ["escalated", "answered"],
+      "expect_direct": true,
+      "required_any_groups": [["возврат"], ["срок", "статус", "проверк", "ожид"]],
+      "queries": [
+        {"id": "ref-016", "class": "natural", "text": "заявление уже отправлено когда ждать зачисление"},
+        {"id": "ref-017", "class": "typo", "text": "сколко идет возварт депозита"},
+        {"id": "ref-018", "class": "transposed_letters", "text": "сттаус возрвата где узнать"},
+        {"id": "ref-019", "class": "word_order", "text": "вернут когда деньги по заявлению"},
+        {"id": "ref-020", "class": "morphology", "text": "проверка состояния возвратной операции"}
+      ]
+    },
+    {
+      "name": "bid_place",
+      "expected_scenario_ids": ["bid.place"],
+      "expected_intents": ["bidding"],
+      "allowed_resolutions": ["answered"],
+      "expect_direct": true,
+      "required_any_groups": [["ставк"], ["лот", "карточ", "сумм", "подтверд"]],
+      "queries": [
+        {"id": "bid-001", "class": "natural", "text": "подскажите последовательность действий для первой ставки"},
+        {"id": "bid-002", "class": "typo", "text": "как зделать стовку на машыну"},
+        {"id": "bid-003", "class": "transposed_letters", "text": "где ввести суммму и потдвердить ставку"},
+        {"id": "bid-004", "class": "word_order", "text": "на выбранный лот ставку поставить хочу"},
+        {"id": "bid-005", "class": "morphology", "text": "инструкция по совершению ставок"}
+      ]
+    },
+    {
+      "name": "bid_not_visible",
+      "expected_scenario_ids": ["bid.not_visible"],
+      "expected_intents": ["bidding"],
+      "allowed_resolutions": ["escalated", "answered"],
+      "expect_direct": true,
+      "required_any_groups": [["ставк"], ["статус", "проверк", "отображ", "лот"]],
+      "queries": [
+        {"id": "bid-006", "class": "natural", "text": "отправил предложение цены и оно исчезло"},
+        {"id": "bid-007", "class": "typo", "text": "моя ствака не отбражается"},
+        {"id": "bid-008", "class": "transposed_letters", "text": "ставку сндеал но ее нигде нет"},
+        {"id": "bid-009", "class": "word_order", "text": "после подтверждения в активных ставку не вижу"},
+        {"id": "bid-010", "class": "morphology", "text": "пропало отображение сделанной ставки"}
+      ]
+    },
+    {
+      "name": "bid_modify_cancel",
+      "expected_scenario_ids": ["bid.modify_cancel"],
+      "expected_intents": ["bidding"],
+      "allowed_resolutions": ["answered", "escalated"],
+      "expect_direct": true,
+      "required_any_groups": [["ставк"], ["отмен", "измен", "уменьш"]],
+      "queries": [
+        {"id": "bid-011", "class": "natural", "text": "передумал участвовать можно убрать предложение"},
+        {"id": "bid-012", "class": "typo", "text": "как атменить уже сдеалную ставку"},
+        {"id": "bid-013", "class": "transposed_letters", "text": "можно понизтьи сумму стваки"},
+        {"id": "bid-014", "class": "word_order", "text": "в закрытом аукционе ставку изменить реально"},
+        {"id": "bid-015", "class": "morphology", "text": "правила изменения ранее поданной ставки"}
+      ]
+    },
+    {
+      "name": "auction_formats",
+      "expected_scenario_ids": ["auction.formats"],
+      "expected_intents": ["bidding"],
+      "allowed_resolutions": ["answered"],
+      "expect_direct": true,
+      "required_any_groups": [["открыт", "закрыт"], ["ставк", "торг", "аукцион"]],
+      "queries": [
+        {"id": "auc-001", "class": "natural", "text": "в каком формате участники видят цены друг друга"},
+        {"id": "auc-002", "class": "typo", "text": "чем закрыте тарги отличаюца от открытых"},
+        {"id": "auc-003", "class": "transposed_letters", "text": "объясните закртыый акуцион"},
+        {"id": "auc-004", "class": "word_order", "text": "чужие почему ставки не показываются"},
+        {"id": "auc-005", "class": "morphology", "text": "различия между открытой и закрытой формами торгов"}
+      ]
+    },
+    {
+      "name": "auction_status",
+      "expected_scenario_ids": ["auction.status"],
+      "expected_intents": ["lot"],
+      "allowed_resolutions": ["escalated", "answered"],
+      "expect_direct": true,
+      "required_any_groups": [["торг", "аукцион", "лот"], ["статус", "заверш", "проверк"]],
+      "queries": [
+        {"id": "auc-006", "class": "natural", "text": "как понять что аукцион уже окончен"},
+        {"id": "auc-007", "class": "typo", "text": "где сматреть саттус торгов"},
+        {"id": "auc-008", "class": "transposed_letters", "text": "торги кончились а стаутс прежний"},
+        {"id": "auc-009", "class": "word_order", "text": "аукциона текущий статус проверить где"},
+        {"id": "auc-010", "class": "morphology", "text": "проверка завершенности торгов по лоту"}
+      ]
+    },
+    {
+      "name": "technical_site",
+      "expected_scenario_ids": ["technical.site_error"],
+      "expected_intents": ["support"],
+      "allowed_resolutions": ["escalated", "answered"],
+      "expect_direct": true,
+      "required_any_groups": [["сайт", "страниц", "кабинет", "кнопк"], ["ошиб", "браузер", "обращ", "скрин"]],
+      "queries": [
+        {"id": "tec-001", "class": "natural", "text": "карточка автомобиля открывается белым экраном"},
+        {"id": "tec-002", "class": "typo", "text": "сайт зависет и выдает ашибку"},
+        {"id": "tec-003", "class": "transposed_letters", "text": "лиынй кабинет не загружается"},
+        {"id": "tec-004", "class": "word_order", "text": "на странице ничего кнопка не делает"},
+        {"id": "tec-005", "class": "morphology", "text": "наблюдаются сбои при открытии сайта"}
+      ]
+    },
+    {
+      "name": "technical_filters",
+      "expected_scenario_ids": ["technical.catalog_search_filter"],
+      "expected_intents": ["support"],
+      "allowed_resolutions": ["escalated", "answered"],
+      "expect_direct": true,
+      "required_any_groups": [["фильтр", "поиск"], ["ошиб", "работ", "результ", "обращ"]],
+      "queries": [
+        {"id": "tec-006", "class": "natural", "text": "выбираю год а каталог показывает все подряд"},
+        {"id": "tec-007", "class": "typo", "text": "филтр не отбирает машыны"},
+        {"id": "tec-008", "class": "transposed_letters", "text": "поиск выдате неверные лтоы"},
+        {"id": "tec-009", "class": "word_order", "text": "по марке результаты фильтр не меняет"},
+        {"id": "tec-010", "class": "morphology", "text": "некорректная фильтрация каталога автомобилей"}
+      ]
+    },
+    {
+      "name": "documents_delay",
+      "expected_scenario_ids": ["documents.preparation_delay"],
+      "expected_intents": ["transfer"],
+      "allowed_resolutions": ["escalated", "answered"],
+      "expect_direct": true,
+      "required_any_groups": [["документ", "договор", "счет", "дкп"], ["срок", "готов", "ответ", "обращ"]],
+      "queries": [
+        {"id": "doc-001", "class": "natural", "text": "машину передали но договор до сих пор не выслали"},
+        {"id": "doc-002", "class": "typo", "text": "сколко ждать докуметы после пердачи"},
+        {"id": "doc-003", "class": "transposed_letters", "text": "счте и дкп не присллаи"},
+        {"id": "doc-004", "class": "word_order", "text": "после передачи готовить договор долго будут"},
+        {"id": "doc-005", "class": "morphology", "text": "затянулась подготовка договорной документации"}
+      ]
+    },
+    {
+      "name": "office_ambiguous",
+      "expected_scenario_ids": [null, "support.office_visit"],
+      "expected_intents": ["support", "unknown"],
+      "allowed_resolutions": ["clarified"],
+      "required_any_groups": [["уточн", "адрес", "офис", "лот"]],
+      "forbidden_answer_fragments": ["Смирновская", "строение 16", "стр. 16", "код 30"],
+      "queries": [
+        {"id": "off-001", "class": "ambiguous", "text": "ваш адрес"},
+        {"id": "off-002", "class": "ambiguous", "text": "куда к вам ехать"},
+        {"id": "off-003", "class": "typo", "text": "скажыте адресс"},
+        {"id": "off-004", "class": "word_order", "text": "находитесь вы где"},
+        {"id": "off-005", "class": "morphology", "text": "интересует местонахождение вашей организации"}
+      ]
+    },
+    {
+      "name": "office_explicit",
+      "expected_scenario_ids": ["support.office_visit"],
+      "expected_intents": ["support"],
+      "allowed_resolutions": ["escalated", "answered"],
+      "expect_direct": true,
+      "required_any_groups": [["офис", "визит", "пропуск"], ["запис", "сообщ", "обращ", "фио", "автомоб"]],
+      "queries": [
+        {"id": "off-006", "class": "natural", "text": "визит уже согласован как оформить пропуск на машину"},
+        {"id": "off-007", "class": "typo", "text": "нужен пропсук для вьезда в офис"},
+        {"id": "off-008", "class": "transposed_letters", "text": "как зараене записаться на визти"},
+        {"id": "off-009", "class": "word_order", "text": "в офис приехать по записи хочу"},
+        {"id": "off-010", "class": "morphology", "text": "условия оформления автомобильного пропуска для офисного визита"}
+      ]
+    },
+    {
+      "name": "employee_contact",
+      "expected_scenario_ids": ["support.callback", "support.contact", "support.email_no_response"],
+      "expected_intents": ["support"],
+      "allowed_resolutions": ["escalated", "answered"],
+      "expect_direct": true,
+      "required_any_groups": [["обращ", "поддерж", "письм", "контакт"]],
+      "queries": [
+        {"id": "emp-001", "class": "employee_name", "text": "соедините меня с Михаилом", "expected_scenario_ids": ["support.callback", "support.contact"]},
+        {"id": "emp-002", "class": "employee_name", "text": "пусть Алексей мне перезвонит", "expected_scenario_ids": ["support.callback"]},
+        {"id": "emp-003", "class": "employee_name", "text": "Реник опять не отвечает", "expected_scenario_ids": ["support.callback", "support.email_no_response", "support.contact"]},
+        {"id": "emp-004", "class": "employee_name", "text": "дайте прямой номер Михаила", "expected_scenario_ids": ["support.contact", "support.callback"]},
+        {"id": "emp-005", "class": "employee_name", "text": "хочу поговорить лично с Алексеем из поддержки", "expected_scenario_ids": ["support.contact", "support.callback"]}
+      ]
+    },
+    {
+      "name": "email_no_response",
+      "expected_scenario_ids": ["support.email_no_response"],
+      "expected_intents": ["support"],
+      "allowed_resolutions": ["escalated", "answered"],
+      "expect_direct": true,
+      "required_any_groups": [["письм", "почт", "ветк", "спам"], ["обращ", "ответ", "статус"]],
+      "queries": [
+        {"id": "sup-001", "class": "natural", "text": "написал на почту неделю назад и тишина"},
+        {"id": "sup-002", "class": "typo", "text": "подержка не отвчает на писмо"},
+        {"id": "sup-003", "class": "transposed_letters", "text": "ответа в почтвоой ветке нте"},
+        {"id": "sup-004", "class": "word_order", "text": "по моему письму от вас ответа когда ждать"},
+        {"id": "sup-005", "class": "morphology", "text": "осталась без ответа электронная переписка с поддержкой"}
+      ]
+    },
+    {
+      "name": "catalog_search",
+      "expected_scenario_ids": ["lot.catalog_search"],
+      "expected_intents": ["lot"],
+      "allowed_resolutions": ["answered", "escalated"],
+      "expect_direct": true,
+      "required_any_groups": [["каталог", "лот", "автомоб", "машин"], ["поиск", "фильтр", "найт"]],
+      "queries": [
+        {"id": "lot-001", "class": "natural", "text": "как подобрать объявления только нужной марки"},
+        {"id": "lot-002", "class": "typo", "text": "где искть лты с авто"},
+        {"id": "lot-003", "class": "transposed_letters", "text": "как найит машниу по году"},
+        {"id": "lot-004", "class": "word_order", "text": "в каталоге конкретную модель найти надо"},
+        {"id": "lot-005", "class": "morphology", "text": "поиск автомобильных лотов по параметрам"}
+      ]
+    },
+    {
+      "name": "lot_location",
+      "expected_scenario_ids": ["lot.location"],
+      "expected_intents": ["lot"],
+      "allowed_resolutions": ["answered"],
+      "expect_direct": true,
+      "required_any_groups": [["лот", "автомоб", "машин", "стоянк"], ["карточ", "адрес", "мест", "локац"]],
+      "queries": [
+        {"id": "lot-006", "class": "natural", "text": "в каком месте стоит выставленный автомобиль"},
+        {"id": "lot-007", "class": "typo", "text": "адрес стаянки машыны где"},
+        {"id": "lot-008", "class": "transposed_letters", "text": "локаиця лтоа указана где"},
+        {"id": "lot-009", "class": "word_order", "text": "автомобиль физически находится где"},
+        {"id": "lot-010", "class": "morphology", "text": "местонахождение транспортного средства из объявления"}
+      ]
+    },
+    {
+      "name": "account_login",
+      "expected_scenario_ids": ["account.login_problem"],
+      "expected_intents": ["registration"],
+      "allowed_resolutions": ["escalated", "answered"],
+      "expect_direct": true,
+      "required_any_groups": [["кабинет", "аккаунт", "вход", "парол", "код"], ["восстанов", "обращ", "проверь"]],
+      "queries": [
+        {"id": "acc-001", "class": "natural", "text": "учетная запись не принимает мой пароль"},
+        {"id": "acc-002", "class": "typo", "text": "не палучается зайти в акаунт"},
+        {"id": "acc-003", "class": "transposed_letters", "text": "код для вхдоа не приходит"},
+        {"id": "acc-004", "class": "word_order", "text": "в личный кабинет доступ восстановить как"},
+        {"id": "acc-005", "class": "morphology", "text": "проблема с авторизацией в пользовательском кабинете"}
+      ]
+    },
+    {
+      "name": "account_registration",
+      "expected_scenario_ids": ["account.registration"],
+      "expected_intents": ["account"],
+      "allowed_resolutions": ["answered"],
+      "expect_direct": true,
+      "required_any_groups": [["регистрац", "аккаунт"], ["телефон", "почт", "данн", "форм"]],
+      "queries": [
+        {"id": "acc-006", "class": "natural", "text": "какие сведения потребуются новому покупателю для аккаунта"},
+        {"id": "acc-007", "class": "typo", "text": "как зарегестрироватся физ лицу"},
+        {"id": "acc-008", "class": "transposed_letters", "text": "где созадть новый акканут"},
+        {"id": "acc-009", "class": "word_order", "text": "для регистрации документы нужны какие"},
+        {"id": "acc-010", "class": "morphology", "text": "порядок регистрирования покупателя на площадке"}
+      ]
+    },
+    {
+      "name": "pickup_receive",
+      "expected_scenario_ids": ["pickup.receive_lot"],
+      "expected_intents": ["pickup"],
+      "allowed_resolutions": ["escalated", "answered"],
+      "expect_direct": true,
+      "required_any_groups": [["лот", "автомоб", "машин"], ["получ", "забрат", "выдач", "документ"]],
+      "queries": [
+        {"id": "pic-001", "class": "natural", "text": "после оплаты когда разрешат забрать автомобиль"},
+        {"id": "pic-002", "class": "typo", "text": "как палучить выйграный лот"},
+        {"id": "pic-003", "class": "transposed_letters", "text": "что нуожно для выдаич машниы"},
+        {"id": "pic-004", "class": "word_order", "text": "авто после сделки забрать где и когда"},
+        {"id": "pic-005", "class": "morphology", "text": "процедура получения оплаченного транспортного средства"}
+      ]
+    },
+    {
+      "name": "out_of_scope",
+      "expected_scenario_ids": [null],
+      "expected_intents": ["unknown"],
+      "allowed_resolutions": ["out_of_scope", "clarified"],
+      "required_any_groups": [["MIGTORG", "площадк", "лот", "торг"]],
+      "queries": [
+        {"id": "oos-001", "class": "out_of_scope", "text": "какая завтра погода в Москве"},
+        {"id": "oos-002", "class": "out_of_scope", "text": "сочини поздравление с днем рождения"},
+        {"id": "oos-003", "class": "out_of_scope", "text": "кто выиграл вчера футбольный матч"},
+        {"id": "oos-004", "class": "out_of_scope", "text": "как сварить борщ"},
+        {"id": "oos-005", "class": "out_of_scope", "text": "переведи hello world на французский"}
+      ]
+    },
+    {
+      "name": "abusive_domain",
+      "expected_scenario_ids": ["technical.site_error", "technical.catalog_search_filter", "payment.checkout_problem", "bid.not_visible", "support.email_no_response"],
+      "expected_intents": ["support", "payment", "bidding"],
+      "allowed_resolutions": ["escalated", "answered"],
+      "expect_direct": true,
+      "required_any_groups": [["обращ", "проверь", "повтор", "почт", "ставк", "фильтр", "оплат"]],
+      "queries": [
+        {"id": "abu-001", "class": "abusive_domain", "text": "сайт опять тупит что за хрень", "expected_scenario_ids": ["technical.site_error"]},
+        {"id": "abu-002", "class": "abusive_domain", "text": "долбаный фильтр вообще не работает", "expected_scenario_ids": ["technical.catalog_search_filter"]},
+        {"id": "abu-003", "class": "abusive_domain", "text": "какого черта оплата не проходит", "expected_scenario_ids": ["payment.checkout_problem"]},
+        {"id": "abu-004", "class": "abusive_domain", "text": "что за фигня моя ставка исчезла", "expected_scenario_ids": ["bid.not_visible"]},
+        {"id": "abu-005", "class": "abusive_domain", "text": "вы там уснули почему на письмо не отвечаете", "expected_scenario_ids": ["support.email_no_response"]}
+      ]
+    },
+    {
+      "name": "repeated_input",
+      "expected_intents": ["tariffs", "bidding", "refund", "support"],
+      "allowed_resolutions": ["answered", "clarified", "escalated"],
+      "expect_direct": true,
+      "queries": [
+        {"id": "rep-001", "class": "repeated_input", "text": "какие у вас тарифы какие у вас тарифы", "expected_scenario_ids": ["tariff.choose", "tariff.one_time", "tariff.premium"], "expected_intents": ["tariffs"], "required_any_groups": [["тариф"]]},
+        {"id": "rep-002", "class": "repeated_input", "text": "как сделать ставку как сделать ставку", "expected_scenario_ids": ["bid.place"], "expected_intents": ["bidding"], "required_any_groups": [["ставк"]]},
+        {"id": "rep-003", "class": "repeated_input", "text": "возврат возврат возврат", "expected_scenario_ids": [null, "refund.eligibility", "refund.application", "refund.timing_status"], "expected_intents": ["refund", "unknown"], "allowed_resolutions": ["clarified"], "expect_direct": false, "required_any_groups": [["возврат", "уточн", "вернуть"]]},
+        {"id": "rep-004", "class": "repeated_input", "text": "сайт не работает сайт не работает", "expected_scenario_ids": ["technical.site_error"], "expected_intents": ["support"], "required_any_groups": [["сайт", "ошиб", "браузер", "обращ"]]},
+        {"id": "rep-005", "class": "repeated_input", "text": "где офис где офис", "expected_scenario_ids": ["support.office_visit"], "expected_intents": ["support"], "required_any_groups": [["офис", "визит", "пропуск"]]}
+      ]
+    }
+  ],
+  "dialogues": [
+    {
+      "id": "dlg-office",
+      "turns": [
+        {"text": "подскажите ваш адрес", "allowed_resolutions": ["clarified"], "forbidden_answer_fragments": ["Смирновская", "стр. 16", "код 30"]},
+        {"select_option_contains": "офис", "expected_scenario_ids": ["support.office_visit"], "expected_intents": ["support"], "allowed_resolutions": ["answered", "escalated"]}
+      ]
+    },
+    {
+      "id": "dlg-refund",
+      "turns": [
+        {"text": "нужен возврат", "allowed_resolutions": ["clarified"]},
+        {"select_option_contains": "подать", "expected_scenario_ids": ["refund.application"], "expected_intents": ["refund"], "allowed_resolutions": ["answered", "escalated"]}
+      ]
+    },
+    {
+      "id": "dlg-premium-action",
+      "turns": [
+        {"text": "что дает премиальный тариф", "expected_scenario_ids": ["tariff.premium"], "allowed_resolutions": ["answered"]},
+        {"select_action_contains": "Подключить", "expected_scenario_ids": ["tariff.connect"], "expected_intents": ["tariffs"], "allowed_resolutions": ["answered"]}
+      ]
+    },
+    {
+      "id": "dlg-bid-problem",
+      "turns": [
+        {"text": "как поставить цену на автомобиль", "expected_scenario_ids": ["bid.place"], "allowed_resolutions": ["answered"]},
+        {"select_action_contains": "не появилась", "expected_scenario_ids": ["bid.not_visible"], "expected_intents": ["bidding"], "allowed_resolutions": ["answered", "escalated"]}
+      ]
+    },
+    {
+      "id": "dlg-new-topic-after-clarify",
+      "turns": [
+        {"text": "вернуть", "allowed_resolutions": ["clarified"]},
+        {"text": "как сделать ставку на лот", "expected_scenario_ids": ["bid.place"], "expected_intents": ["bidding"], "allowed_resolutions": ["answered"]}
+      ]
+    }
+  ]
+}
