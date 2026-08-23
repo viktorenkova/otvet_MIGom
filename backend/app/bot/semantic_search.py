@@ -39,7 +39,14 @@ class TfidfSemanticIndex:
         ngram_min = max(2, int(config.get("char_ngram_min", 2)))
         ngram_max = max(ngram_min, int(config.get("char_ngram_max", 5)))
         self.intent_boost = max(0.0, float(config.get("intent_boost", 0.025)))
-        self.vectorizer = TfidfVectorizer(
+        self.char_weight = max(0.0, float(config.get("lexical_char_weight", 0.65)))
+        self.word_weight = max(0.0, float(config.get("lexical_word_weight", 0.35)))
+        lexical_total = self.char_weight + self.word_weight
+        if lexical_total <= 0:
+            self.char_weight, self.word_weight, lexical_total = 1.0, 0.0, 1.0
+        self.char_weight /= lexical_total
+        self.word_weight /= lexical_total
+        self.char_vectorizer = TfidfVectorizer(
             analyzer="char_wb",
             ngram_range=(ngram_min, ngram_max),
             lowercase=False,
@@ -47,15 +54,27 @@ class TfidfSemanticIndex:
             sublinear_tf=True,
             dtype=np.float32,
         )
+        self.word_vectorizer = TfidfVectorizer(
+            preprocessor=normalize_text,
+            analyzer="word",
+            ngram_range=(1, 2),
+            min_df=1,
+            sublinear_tf=True,
+            dtype=np.float32,
+        )
         documents = [self._article_document(article) for article in self.articles]
-        self.matrix = self.vectorizer.fit_transform(documents)
+        self.char_matrix = self.char_vectorizer.fit_transform(documents)
+        self.word_matrix = self.word_vectorizer.fit_transform(documents)
 
     def similarities(self, message: str):
         query = normalize_text(message)
         if not query:
             return None
-        query_vector = self.vectorizer.transform([query])
-        return (self.matrix @ query_vector.T).toarray().ravel()
+        char_query = self.char_vectorizer.transform([query])
+        word_query = self.word_vectorizer.transform([query])
+        char_values = (self.char_matrix @ char_query.T).toarray().ravel()
+        word_values = (self.word_matrix @ word_query.T).toarray().ravel()
+        return char_values * self.char_weight + word_values * self.word_weight
 
     def _article_document(self, article: Any) -> str:
         search_document = str(getattr(article, "search_document", "") or "")
