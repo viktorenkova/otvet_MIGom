@@ -19,6 +19,29 @@ TOKEN_RE = re.compile(r"[a-zа-я0-9@._+\-]+", re.IGNORECASE)
 EMAIL_RE = re.compile(r"[A-Za-z0-9._%+\-]+@[A-Za-z0-9.\-]+\.[A-Za-z]{2,}")
 PHONE_RE = re.compile(r"(?:\+7|8)[\s\-()]*\d{3}[\s\-()]*\d{3}[\s\-]*\d{2}[\s\-]*\d{2}")
 
+_EN_TO_RU_LAYOUT = str.maketrans(
+    "qwertyuiop[]asdfghjkl;'zxcvbnm,.",
+    "йцукенгшщзхъфывапролджэячсмитьбю",
+)
+_RU_TRANSLIT = (
+    ("shch", "щ"), ("sch", "щ"), ("yo", "е"), ("zh", "ж"),
+    ("kh", "х"), ("ts", "ц"), ("ch", "ч"), ("sh", "ш"),
+    ("yu", "ю"), ("ya", "я"), ("ye", "е"),
+)
+_RU_TRANSLIT_CHARS = str.maketrans(
+    "abvgdezijklmnoprstufhcy",
+    "абвгдезийклмнопрстуфхцы",
+)
+_SLANG_ALIASES = {
+    "тачка": "машина",
+    "доки": "документы",
+    "комса": "комиссия",
+    "акк": "аккаунт",
+    "личка": "личный кабинет",
+    "регаться": "регистрация",
+    "бид": "ставка",
+}
+
 
 @dataclass(frozen=True)
 class TextAnalysis:
@@ -130,6 +153,107 @@ def apply_synonyms(text: str) -> str:
     return " ".join(tokens)
 
 
+def _iter_string_values(value: Any):
+    if isinstance(value, str):
+        yield value
+    elif isinstance(value, dict):
+        for item in value.values():
+            yield from _iter_string_values(item)
+    elif isinstance(value, list):
+        for item in value:
+            yield from _iter_string_values(item)
+
+
+@lru_cache(maxsize=1)
+def _matching_vocabulary() -> frozenset[str]:
+    """Domain vocabulary shared by routing, intent and knowledge matching."""
+    words: set[str] = set()
+    sources = (
+        _read_json(TYPO_CORRECTIONS_PATH, {}),
+        _read_json(SYNONYM_GROUPS_PATH, {}),
+        _read_json(INTENT_PATTERNS_PATH, {}),
+        _read_json(MATCHING_CONFIG_PATH, {}),
+    )
+    for source in sources:
+        for value in _iter_string_values(source):
+            words.update(tokenize(value))
+    return frozenset(word for word in words if re.fullmatch(r"[а-я]+", word))
+
+
+def _transliterate_token(token: str) -> str:
+    converted = token
+    for source, target in _RU_TRANSLIT:
+        converted = converted.replace(source, target)
+    return converted.translate(_RU_TRANSLIT_CHARS)
+
+
+def _known_token_score(token: str, vocabulary: frozenset[str]) -> float:
+    if token in vocabulary:
+        return 1.0
+    if len(token) < 4:
+        return 0.0
+    best = 0.0
+    for candidate in vocabulary:
+        if abs(len(token) - len(candidate)) > 2:
+            continue
+        ratio = SequenceMatcher(None, token, candidate).ratio()
+        if ratio > best:
+            best = ratio
+    return best
+
+
+def _convert_latin_words(text: str) -> str:
+    """Convert keyboard-layout mistakes or Russian translit when domain evidence supports it."""
+    vocabulary = _matching_vocabulary()
+    tokens = text.lower().split()
+    latin_positions = [index for index, token in enumerate(tokens) if re.search(r"[a-z]", token)]
+    if not latin_positions:
+        return normalize_text(text).replace("-", " ")
+
+    candidates: list[tuple[float, list[str]]] = []
+    for converter in (lambda value: value.translate(_EN_TO_RU_LAYOUT), _transliterate_token):
+        converted = list(tokens)
+        scores: list[float] = []
+        for index in latin_positions:
+            converted[index] = converter(tokens[index])
+            converted_tokens = tokenize(converted[index])
+            scores.append(max((_known_token_score(item, vocabulary) for item in converted_tokens), default=0.0))
+        evidence = sum(score >= 0.82 for score in scores)
+        average = sum(scores) / len(scores)
+        coverage = evidence / len(scores)
+        candidates.append((coverage + average, converted))
+
+    score, converted = max(candidates, key=lambda item: item[0])
+    # Do not rewrite ordinary English, identifiers, e-mails or URLs on weak evidence.
+    selected = " ".join(converted) if score >= 1.25 else text
+    return normalize_text(selected).replace("-", " ")
+
+
+def _repair_matching_token(token: str) -> str:
+    vocabulary = _matching_vocabulary()
+    if token in vocabulary or len(token) < 5 or not re.fullmatch(r"[а-я]+", token):
+        return token
+    candidates = (
+        candidate for candidate in vocabulary
+        if candidate[0] == token[0] and abs(len(candidate) - len(token)) <= 1
+    )
+    best = max(candidates, key=lambda candidate: SequenceMatcher(None, token, candidate).ratio(), default=token)
+    return best if SequenceMatcher(None, token, best).ratio() >= 0.9 else token
+
+
+@lru_cache(maxsize=32_768)
+def normalize_matching_text(text: str) -> str:
+    """Canonical representation for every no-LLM matching layer.
+
+    The order is intentional: base cleanup, guarded layout/translit recovery,
+    curated typo correction, then shared synonym canonicalization.
+    """
+    converted = _convert_latin_words(text)
+    corrected = correct_typos(converted)
+    repaired = (_repair_matching_token(token) for token in tokenize(corrected))
+    return " ".join(_SLANG_ALIASES.get(token, token) for token in repaired)
+
+
 @lru_cache(maxsize=65_536)
 def fuzzy_ratio(left: str, right: str) -> float:
     if len(left) < 4 or len(right) < 4:
@@ -167,7 +291,7 @@ def token_matches(term: str, tokens: set[str], synonym_tokens: set[str] | None =
 @lru_cache(maxsize=65_536)
 def phrase_matches(message: str, phrase: str) -> tuple[bool, str]:
     normalized_message = normalize_text(message)
-    corrected_message = correct_typos(normalized_message)
+    corrected_message = normalize_matching_text(message)
     synonym_message = apply_synonyms(corrected_message)
     normalized_phrase = normalize_text(phrase)
     corrected_phrase = correct_typos(normalized_phrase)
@@ -232,7 +356,7 @@ def extract_entities(message: str, context: Any | None = None) -> dict[str, list
 
 def analyze_text(message: str, context: Any | None = None) -> TextAnalysis:
     normalized = normalize_text(message)
-    corrected = correct_typos(normalized)
+    corrected = normalize_matching_text(message)
     synonym_normalized = apply_synonyms(corrected)
     return TextAnalysis(
         original=message,

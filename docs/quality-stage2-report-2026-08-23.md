@@ -10,10 +10,10 @@
 
 | Корпус | Baseline до v3.1 | После этапа 1 | Финал | Изменение к baseline |
 |---|---:|---:|---:|---:|
-| Live 160 | 94,38% | 92,50% | 95,62% | +1,24 п. п. |
-| Adjudicated closed 270 | 80,37% | 78,52% | 81,48% | +1,11 п. п. |
+| Live 160 | 94,38% | 92,50% | 94,38% | 0,00 п. п. |
+| Adjudicated closed 270 | 80,37% | 78,52% | 80,37% | 0,00 п. п. |
 
-Transport и forbidden-content gate равны 100% на обоих финальных прогонах. На live confident wrong равен 0.
+Потеря этапа 1 полностью восстановлена: +1,88 п. п. на live и +1,85 п. п. на closed. Transport и forbidden-content gate равны 100% на обоих финальных прогонах; live dialogue quality — 100%, confident wrong — 1. Прежние 95,62%/81,48% были получены из dirty working tree и после унификации нормализатора не воспроизвелись. В отчёте оставлены только метрики повторного прогона текущего кода; отдельные frozen-фразы не переносились в правила для возврата прежних значений.
 
 ## Candidate retrieval API
 
@@ -26,7 +26,7 @@ Transport и forbidden-content gate равны 100% на обоих финаль
 - intent boost;
 - признак фактической доступности dense-канала.
 
-Routing и lexical semantic index используют единый `routing_normalize`: нормализацию регистра/символов, исправление доменных опечаток и перестановок, синонимизацию и лёгкий русский stemming. Для offline evaluation query embeddings кодируются пакетно и кэшируются по model/dataset fingerprint.
+Route, intent, knowledge search и scenario engine используют единый `normalize_matching_text`: нормализацию регистра/символов, восстановление неверной раскладки и русского транслита, исправление доменных опечаток и безопасные сленговые алиасы. Широкая синонимизация и лёгкий русский stemming применяются только как признаки retrieval/pattern matching и не подменяют канонический смысл сообщения. Для offline evaluation query embeddings кодируются пакетно и кэшируются по model/dataset fingerprint.
 
 Candidate fusion отделён от answer fallback. Для Recall@10 используются веса lexical 0,75 / dense 0,25; прежние runtime-веса answer fallback 0,30 / 0,70 не изменены.
 
@@ -34,9 +34,10 @@ Candidate fusion отделён от answer fallback. Для Recall@10 испо�
 
 | Набор | Recall@1 | Recall@5 | Recall@10 |
 |---|---:|---:|---:|
-| Development 372 | 91,40% | 96,77% | 98,66% |
+| Development 372 | 90,86% | 96,77% | 98,66% |
 | Validation 99 | 91,92% | 100,00% | 100,00% |
 | Independent 116 | — | — | 100,00% |
+| Language validation 30 | — | — | 100,00% |
 
 Срезы development/validation:
 
@@ -54,14 +55,23 @@ Independent 116:
 - word order — 29/29;
 - каждая тематическая группа имеет Recall@10 не ниже 90%.
 
+Отдельный language validation без точных пересечений с frozen-корпусами:
+
+- неверная раскладка — 10/10;
+- русский транслит — 10/10;
+- разговорные формы и сленг — 10/10;
+- dense доступен для всех 30 запросов.
+
 ## Артефакты
 
 - `reports/quality-recovery-v31-live-160.json`;
 - `reports/quality-recovery-v31-closed-270.json`;
 - `reports/semantic-retrieval-v31-development-validation.json`;
 - `reports/candidate-retrieval-v31-independent-116.json`;
+- `reports/stage2-language-validation.json`;
 - `backend/tools/evaluate_semantic_retrieval_v31.py`;
 - `backend/tools/evaluate_candidate_retrieval_blind.py`.
+- `backend/tools/evaluate_stage2_gates.py`.
 
 ## Следующий этап
 

@@ -472,8 +472,8 @@
       ],
       "candidate_scenario_ids": [
         "refund.application",
-        "refund.destination",
         "refund.timing_status",
+        "refund.destination",
         "finance.status.clarify",
         "refund.eligibility",
         "refund.denied_or_blocked",
@@ -496,8 +496,8 @@
       ],
       "candidate_scenario_ids": [
         "refund.application",
-        "refund.destination",
         "refund.timing_status",
+        "refund.destination",
         "finance.status.clarify",
         "refund.eligibility",
         "refund.denied_or_blocked",
@@ -814,8 +814,8 @@
         "payment.document_policy",
         "support.manual_review_scope",
         "documents.preparation_delay",
-        "lot.missing",
         "pickup.representative",
+        "lot.missing",
         "loyalty.unconfirmed_details"
       ],
       "hit_at_10": true,
@@ -857,8 +857,8 @@
         "buyer.get_started",
         "lot.location",
         "pickup.receive_lot",
-        "tariff.demo",
         "vehicle.registration_after_purchase",
+        "tariff.demo",
         "pickup.access_issuer",
         "inspection.arrange"
       ],
@@ -898,8 +898,8 @@
         "bid.place",
         "seller.publish_lot",
         "lot.location",
-        "vehicle.legal_check",
         "buyer.get_started",
+        "vehicle.legal_check",
         "pickup.receive_lot",
         "vehicle.registration_after_purchase",
         "pickup.access_issuer",
@@ -944,8 +944,8 @@
         "bid.place",
         "lot.missing",
         "lot.insufficient_information",
-        "lot.card_information",
         "payment.not_visible",
+        "lot.card_information",
         "insurance.osago_rules",
         "property.inspection_documents",
         "vehicle.encumbrance_detected"
@@ -1034,8 +1034,8 @@
         "refusal.change_mind",
         "partnership.official_proposal",
         "auction.other_platform_offer",
-        "bid.place",
         "feedback.improvement_suggestion",
+        "bid.place",
         "tariff.connect"
       ],
       "hit_at_10": true,
@@ -1073,8 +1073,8 @@
       "candidate_scenario_ids": [
         "auction.formats",
         "bid.modify_cancel",
-        "auction.result",
         "bid.position_service",
+        "auction.result",
         "auction.other_platform_offer",
         "refusal.change_mind",
         "partnership.official_proposal",
@@ -1096,8 +1096,8 @@
         "auction.formats",
         "bid.modify_cancel",
         "auction.other_platform_offer",
-        "bid.position_service",
         "auction.result",
+        "bid.position_service",
         "lot.definition",
         "bid.autobid_extension",
         "buyer.get_started",
@@ -1118,9 +1118,9 @@
         "auction.formats",
         "bid.modify_cancel",
         "auction.other_platform_offer",
-        "bid.position_service",
         "auction.result",
         "lot.definition",
+        "bid.position_service",
         "bid.autobid_extension",
         "buyer.get_started",
         "platform.about",
@@ -1140,8 +1140,8 @@
         "auction.formats",
         "bid.modify_cancel",
         "auction.other_platform_offer",
-        "bid.position_service",
         "auction.result",
+        "bid.position_service",
         "lot.definition",
         "bid.autobid_extension",
         "buyer.get_started",
@@ -1162,12 +1162,12 @@
         "auction.formats",
         "bid.modify_cancel",
         "auction.other_platform_offer",
-        "bid.position_service",
         "auction.result",
-        "bid.autobid_extension",
+        "bid.position_service",
         "lot.definition",
-        "buyer.get_started",
+        "bid.autobid_extension",
         "platform.about",
+        "buyer.get_started",
         "lot.status_guide"
       ],
       "hit_at_10": true,
@@ -1190,7 +1190,7 @@
         "buyer.first_bid_checklist",
         "bid.expired",
         "auction.formats",
-        "bid.not_visible"
+        "lot.status_guide"
       ],
       "hit_at_10": true,
       "dense_available": true
@@ -1234,7 +1234,7 @@
         "vehicle.autoteka_visibility",
         "auction.formats",
         "buyer.first_bid_checklist",
-        "vehicle.legal_check"
+        "win.next_steps"
       ],
       "hit_at_10": true,
       "dense_available": true
@@ -1341,8 +1341,8 @@
         "payment.checkout_problem",
         "feedback.platform_complaint",
         "inspection.problem",
-        "support.callback",
         "feedback.improvement_suggestion",
+        "support.callback",
         "account.login_problem",
         "lot.missing"
       ],
@@ -1450,11 +1450,11 @@
         "vehicle.registration_after_purchase",
         "contract.parties_signing",
         "pickup.receive_lot",
-        "refusal.evidence",
         "property.inspection_documents",
+        "refusal.evidence",
+        "vehicle.legal_check",
         "vehicle.registration_penalty_details",
-        "inspection.arrange",
-        "vehicle.legal_check"
+        "inspection.arrange"
       ],
       "hit_at_10": true,
       "dense_available": true
@@ -1472,11 +1472,11 @@
         "vehicle.registration_after_purchase",
         "contract.parties_signing",
         "pickup.receive_lot",
-        "refusal.evidence",
         "property.inspection_documents",
+        "vehicle.legal_check",
         "vehicle.registration_penalty_details",
-        "inspection.arrange",
-        "support.manual_review_scope"
+        "refusal.evidence",
+        "inspection.arrange"
       ],
       "hit_at_10": true,
       "dense_available": true
@@ -1496,9 +1496,9 @@
         "pickup.receive_lot",
         "refusal.evidence",
         "inspection.arrange",
-        "property.inspection_documents",
+        "vehicle.legal_check",
         "vehicle.registration_penalty_details",
-        "vehicle.legal_check"
+        "property.inspection_documents"
       ],
       "hit_at_10": true,
       "dense_available": true
@@ -1516,11 +1516,11 @@
         "vehicle.registration_after_purchase",
         "pickup.receive_lot",
         "contract.parties_signing",
-        "refusal.evidence",
+        "vehicle.legal_check",
         "inspection.arrange",
+        "refusal.evidence",
         "property.inspection_documents",
-        "vehicle.registration_penalty_details",
-        "vehicle.legal_check"
+        "vehicle.registration_penalty_details"
       ],
       "hit_at_10": true,
       "dense_available": true
@@ -1540,8 +1540,8 @@
         "support.callback",
         "tariff.choose",
         "pickup.access_issuer",
-        "bid.not_visible",
         "support.email_no_response",
+        "bid.not_visible",
         "support.contact"
       ],
       "hit_at_10": true,
@@ -1562,8 +1562,8 @@
         "tariff.choose",
         "support.callback",
         "pickup.access_issuer",
-        "bid.not_visible",
         "support.email_no_response",
+        "bid.not_visible",
         "refund.application"
       ],
       "hit_at_10": true,
@@ -1607,8 +1607,8 @@
         "lot.missing",
         "support.contact",
         "feedback.platform_complaint",
-        "bid.not_visible",
-        "finance.status.clarify"
+        "finance.status.clarify",
+        "bid.not_visible"
       ],
       "hit_at_10": true,
       "dense_available": true
@@ -1622,15 +1622,15 @@
       ],
       "candidate_scenario_ids": [
         "support.office_visit",
-        "pickup.access_issuer",
-        "partnership.official_proposal",
-        "contract.receive",
-        "complaint.formal_dispute",
         "contract.parties_signing",
-        "refusal.no_response",
+        "contract.receive",
+        "partnership.official_proposal",
+        "complaint.formal_dispute",
         "feedback.improvement_suggestion",
+        "feedback.platform_complaint",
         "account.identification_for_contract",
-        "feedback.platform_complaint"
+        "support.contact",
+        "documents.preparation_delay"
       ],
       "hit_at_10": true,
       "dense_available": true
@@ -1651,8 +1651,8 @@
         "documents.preparation_delay",
         "feedback.improvement_suggestion",
         "support.contact",
-        "transfer.requisites",
-        "feedback.platform_complaint"
+        "feedback.platform_complaint",
+        "pickup.access_issuer"
       ],
       "hit_at_10": true,
       "dense_available": true
@@ -1694,8 +1694,8 @@
         "complaint.formal_dispute",
         "feedback.improvement_suggestion",
         "account.identification_for_contract",
-        "pickup.access_issuer",
         "documents.preparation_delay",
+        "pickup.access_issuer",
         "feedback.platform_complaint"
       ],
       "hit_at_10": true,
@@ -1829,8 +1829,8 @@
       "candidate_scenario_ids": [
         "support.email_no_response",
         "feedback.bot_answer_complaint",
-        "support.contact",
         "notification.delivery_problem",
+        "support.contact",
         "refusal.no_response",
         "support.callback",
         "feedback.platform_complaint",
@@ -1893,8 +1893,8 @@
         "lot.catalog_search"
       ],
       "candidate_scenario_ids": [
-        "lot.definition",
         "lot.card_information",
+        "lot.definition",
         "lot.catalog_search",
         "pickup.receive_lot",
         "vehicle.vin_request",
@@ -1915,8 +1915,8 @@
         "lot.catalog_search"
       ],
       "candidate_scenario_ids": [
-        "lot.definition",
         "lot.card_information",
+        "lot.definition",
         "lot.catalog_search",
         "pickup.receive_lot",
         "inspection.arrange",
@@ -1942,8 +1942,8 @@
         "lot.catalog_search",
         "pickup.receive_lot",
         "inspection.arrange",
-        "seller.publish_lot",
         "vehicle.vin_request",
+        "seller.publish_lot",
         "buyer.beginner_lot_selection",
         "lot.location",
         "vehicle.owner_listing_dispute"
@@ -1959,8 +1959,8 @@
         "lot.catalog_search"
       ],
       "candidate_scenario_ids": [
-        "lot.definition",
         "lot.card_information",
+        "lot.definition",
         "pickup.receive_lot",
         "lot.catalog_search",
         "buyer.beginner_lot_selection",
@@ -1988,8 +1988,8 @@
         "inspection.problem",
         "pickup.receive_lot",
         "technical.catalog_search_filter",
-        "lot.definition",
         "lot.catalog_search",
+        "lot.definition",
         "buyer.beginner_lot_selection"
       ],
       "hit_at_10": true,
@@ -2051,8 +2051,8 @@
         "pickup.access_issuer",
         "vehicle.insurance_catalog",
         "pickup.delay",
-        "lot.definition",
         "inspection.problem",
+        "lot.definition",
         "pickup.receive_lot",
         "technical.catalog_search_filter",
         "lot.catalog_search",
@@ -2274,8 +2274,8 @@
         "buyer.personal_purchase",
         "pickup.representative",
         "win.next_steps",
-        "vehicle.legal_check",
         "buyer.resale_strategy",
+        "vehicle.legal_check",
         "registration.accreditation"
       ],
       "hit_at_10": true,
@@ -2517,8 +2517,8 @@
         "vehicle.legal_check",
         "vehicle.registration_after_purchase",
         "inspection.arrange",
-        "bid.not_visible",
-        "vehicle.owner_listing_dispute"
+        "vehicle.owner_listing_dispute",
+        "lot.missing"
       ],
       "hit_at_10": true,
       "dense_available": true
@@ -2536,8 +2536,8 @@
         "technical.site_error",
         "vehicle.encumbrance_detected",
         "pickup.receive_lot",
-        "vehicle.legal_check",
         "inspection.arrange",
+        "vehicle.legal_check",
         "vehicle.owner_listing_dispute",
         "vehicle.registration_after_purchase",
         "lot.missing"
@@ -2557,12 +2557,12 @@
         "property.section_error",
         "technical.site_error",
         "vehicle.encumbrance_detected",
-        "bid.not_visible",
         "lot.missing",
         "vehicle.owner_listing_dispute",
+        "bid.not_visible",
         "pickup.receive_lot",
-        "vehicle.legal_check",
-        "vehicle.registration_after_purchase"
+        "vehicle.registration_after_purchase",
+        "lot.card_information"
       ],
       "hit_at_10": true,
       "dense_available": true
@@ -2579,12 +2579,12 @@
         "property.section_error",
         "technical.site_error",
         "vehicle.encumbrance_detected",
-        "bid.not_visible",
         "lot.missing",
         "pickup.receive_lot",
         "vehicle.owner_listing_dispute",
-        "vehicle.legal_check",
-        "vehicle.registration_after_purchase"
+        "bid.not_visible",
+        "vehicle.registration_after_purchase",
+        "inspection.arrange"
       ],
       "hit_at_10": true,
       "dense_available": true

@@ -1,0 +1,282 @@
+{
+  "schema_version": 1,
+  "version": "2026.08.23.1",
+  "purpose": "Independent language-slice validation for layout, Russian transliteration and slang; seeds are not copied from frozen regression queries.",
+  "manifest_sha256": "bcc92c943e8a35dbc3a98c0a32d1d20a13c18edef85c1d9ed0bc691ae7c85b1f",
+  "case_count": 30,
+  "exact_frozen_overlap_count": 0,
+  "exact_frozen_overlap_case_ids": [],
+  "cases_sha256": "234a2fb24b75263f9f1680166785d8b717e513ed0038355f295318e21b7212a2",
+  "cases": [
+    {
+      "id": "bid.not_visible::keyboard_layout",
+      "class": "keyboard_layout",
+      "text": "cnfdrf yt jnj,hf;ftncz",
+      "expected_scenario_ids": [
+        "bid.not_visible"
+      ],
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "bid.not_visible::transliteration",
+      "class": "transliteration",
+      "text": "stavka ne otobrazhaetsya",
+      "expected_scenario_ids": [
+        "bid.not_visible"
+      ],
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "bid.not_visible::slang",
+      "class": "slang",
+      "text": "бид не видно",
+      "expected_scenario_ids": [
+        "bid.not_visible"
+      ],
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "bid.place::keyboard_layout",
+      "class": "keyboard_layout",
+      "text": "rfr cltkfnm cnfdre",
+      "expected_scenario_ids": [
+        "bid.place"
+      ],
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "bid.place::transliteration",
+      "class": "transliteration",
+      "text": "kak sdelat stavku",
+      "expected_scenario_ids": [
+        "bid.place"
+      ],
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "bid.place::slang",
+      "class": "slang",
+      "text": "как кинуть бид",
+      "expected_scenario_ids": [
+        "bid.place"
+      ],
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "pickup.receive_lot::keyboard_layout",
+      "class": "keyboard_layout",
+      "text": "ljrevtyns lkz gjkextybz fdnjvj,bkz",
+      "expected_scenario_ids": [
+        "pickup.receive_lot"
+      ],
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "pickup.receive_lot::transliteration",
+      "class": "transliteration",
+      "text": "dokumenty dlya polucheniya avtomobilya",
+      "expected_scenario_ids": [
+        "pickup.receive_lot"
+      ],
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "pickup.receive_lot::slang",
+      "class": "slang",
+      "text": "какие доки нужны чтобы забрать тачку",
+      "expected_scenario_ids": [
+        "pickup.receive_lot"
+      ],
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "commission.explained::keyboard_layout",
+      "class": "keyboard_layout",
+      "text": "rfr ecnhjtyf rjvbccbz gkjoflrb",
+      "expected_scenario_ids": [
+        "commission.explained"
+      ],
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "commission.explained::transliteration",
+      "class": "transliteration",
+      "text": "kak ustroena komissiya ploshchadki",
+      "expected_scenario_ids": [
+        "commission.explained"
+      ],
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "commission.explained::slang",
+      "class": "slang",
+      "text": "что за комса на площадке",
+      "expected_scenario_ids": [
+        "commission.explained"
+      ],
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "account.blocked::keyboard_layout",
+      "class": "keyboard_layout",
+      "text": "frrfeyn pf,kjrbhjdfy",
+      "expected_scenario_ids": [
+        "account.blocked"
+      ],
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "account.blocked::transliteration",
+      "class": "transliteration",
+      "text": "akkaunt zablokirovan",
+      "expected_scenario_ids": [
+        "account.blocked"
+      ],
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "account.blocked::slang",
+      "class": "slang",
+      "text": "акк заблокирован",
+      "expected_scenario_ids": [
+        "account.blocked"
+      ],
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "account.registration::keyboard_layout",
+      "class": "keyboard_layout",
+      "text": "rfr ghjqnb htubcnhfwb. frrfeynf",
+      "expected_scenario_ids": [
+        "account.registration"
+      ],
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "account.registration::transliteration",
+      "class": "transliteration",
+      "text": "kak proyti registratsiyu akkaunta",
+      "expected_scenario_ids": [
+        "account.registration"
+      ],
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "account.registration::slang",
+      "class": "slang",
+      "text": "как регаться на площадке",
+      "expected_scenario_ids": [
+        "account.registration"
+      ],
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "payment.not_visible::keyboard_layout",
+      "class": "keyboard_layout",
+      "text": "gkfnt; cgbcfkcz yj yt jnj,hf;ftncz",
+      "expected_scenario_ids": [
+        "payment.not_visible"
+      ],
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "payment.not_visible::transliteration",
+      "class": "transliteration",
+      "text": "platezh spisalsya no ne otobrazhaetsya",
+      "expected_scenario_ids": [
+        "payment.not_visible"
+      ],
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "payment.not_visible::slang",
+      "class": "slang",
+      "text": "оплата ушла но в личке пусто",
+      "expected_scenario_ids": [
+        "payment.not_visible"
+      ],
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "seller.publish_lot::keyboard_layout",
+      "class": "keyboard_layout",
+      "text": "rfr dscnfdbnm fdnjvj,bkm yf ghjlf;e",
+      "expected_scenario_ids": [
+        "seller.publish_lot"
+      ],
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "seller.publish_lot::transliteration",
+      "class": "transliteration",
+      "text": "kak vystavit avtomobil na prodazhu",
+      "expected_scenario_ids": [
+        "seller.publish_lot"
+      ],
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "seller.publish_lot::slang",
+      "class": "slang",
+      "text": "как выставить тачку на продажу",
+      "expected_scenario_ids": [
+        "seller.publish_lot"
+      ],
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "contract.receive::keyboard_layout",
+      "class": "keyboard_layout",
+      "text": "ult gjkexbnm ljrevtyns gj ljujdjhe",
+      "expected_scenario_ids": [
+        "contract.receive"
+      ],
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "contract.receive::transliteration",
+      "class": "transliteration",
+      "text": "gde poluchit dokumenty po dogovoru",
+      "expected_scenario_ids": [
+        "contract.receive"
+      ],
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "contract.receive::slang",
+      "class": "slang",
+      "text": "где доки по договору",
+      "expected_scenario_ids": [
+        "contract.receive"
+      ],
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "inspection.arrange::keyboard_layout",
+      "class": "keyboard_layout",
+      "text": "rfr jhufybpjdfnm jcvjnh fdnjvj,bkz",
+      "expected_scenario_ids": [
+        "inspection.arrange"
+      ],
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "inspection.arrange::transliteration",
+      "class": "transliteration",
+      "text": "kak organizovat osmotr avtomobilya",
+      "expected_scenario_ids": [
+        "inspection.arrange"
+      ],
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "inspection.arrange::slang",
+      "class": "slang",
+      "text": "как посмотреть тачку вживую",
+      "expected_scenario_ids": [
+        "inspection.arrange"
+      ],
+      "exact_frozen_overlap": false
+    }
+  ]
+}

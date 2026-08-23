@@ -19,6 +19,7 @@ from backend.app.bot.text_processing import (
     correct_typos,
     load_matching_config,
     normalize_text,
+    normalize_matching_text,
     phrase_matches,
     tokenize,
 )
@@ -389,7 +390,7 @@ class TfidfSemanticSearchProvider:
 
 
 def _normalize(text: str) -> str:
-    return correct_typos(normalize_text(text))
+    return normalize_matching_text(text)
 
 
 def _tokens(text: str) -> list[str]:

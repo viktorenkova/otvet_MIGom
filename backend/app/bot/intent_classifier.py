@@ -1,6 +1,6 @@
 import re
 
-from backend.app.bot.text_processing import best_intent_pattern, correct_typos, normalize_text
+from backend.app.bot.text_processing import best_intent_pattern, normalize_matching_text
 from backend.app.bot.topic_router import route_topic
 
 
@@ -140,7 +140,7 @@ def _contains_any(text: str, phrases: tuple[str, ...]) -> bool:
 
 
 def _normalize(text: str) -> str:
-    text = correct_typos(normalize_text(text))
+    text = normalize_matching_text(text)
     replacements = {
         "оплотил": "оплатил",
         "оплотила": "оплатила",

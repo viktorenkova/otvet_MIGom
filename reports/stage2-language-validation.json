@@ -1,0 +1,701 @@
+{
+  "schema_version": 1,
+  "dataset": {
+    "version": "2026.08.23.1",
+    "case_count": 30,
+    "cases_sha256": "234a2fb24b75263f9f1680166785d8b717e513ed0038355f295318e21b7212a2",
+    "purpose": "Independent language-slice validation for layout, Russian transliteration and slang; seeds are not copied from frozen regression queries."
+  },
+  "overall": {
+    "total": 30,
+    "passed": 30,
+    "recall_at_10_pct": 100.0
+  },
+  "by_class": {
+    "keyboard_layout": {
+      "total": 10,
+      "passed": 10,
+      "recall_at_10_pct": 100.0
+    },
+    "slang": {
+      "total": 10,
+      "passed": 10,
+      "recall_at_10_pct": 100.0
+    },
+    "transliteration": {
+      "total": 10,
+      "passed": 10,
+      "recall_at_10_pct": 100.0
+    }
+  },
+  "checks": {
+    "no_exact_frozen_overlap": true,
+    "overall_recall_at_10_gte_97": true,
+    "each_language_class_recall_at_10_gte_90": true,
+    "dense_channel_available": true
+  },
+  "passed": true,
+  "failures": [],
+  "results": [
+    {
+      "id": "bid.not_visible::keyboard_layout",
+      "class": "keyboard_layout",
+      "text": "cnfdrf yt jnj,hf;ftncz",
+      "expected_scenario_ids": [
+        "bid.not_visible"
+      ],
+      "candidate_scenario_ids": [
+        "bid.not_visible",
+        "lot.missing",
+        "technical.lot_image_missing",
+        "payment.not_visible",
+        "vehicle.autoteka_visibility",
+        "technical.catalog_search_filter",
+        "penalty.explain_or_dispute",
+        "bid.place",
+        "privacy.rights_withdrawal",
+        "feedback.platform_complaint"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "bid.not_visible::transliteration",
+      "class": "transliteration",
+      "text": "stavka ne otobrazhaetsya",
+      "expected_scenario_ids": [
+        "bid.not_visible"
+      ],
+      "candidate_scenario_ids": [
+        "bid.not_visible",
+        "lot.missing",
+        "payment.not_visible",
+        "technical.lot_image_missing",
+        "vehicle.autoteka_visibility",
+        "technical.catalog_search_filter",
+        "penalty.explain_or_dispute",
+        "auction.formats",
+        "bid.place",
+        "buyer.first_bid_checklist"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "bid.not_visible::slang",
+      "class": "slang",
+      "text": "бид не видно",
+      "expected_scenario_ids": [
+        "bid.not_visible"
+      ],
+      "candidate_scenario_ids": [
+        "bid.not_visible",
+        "auction.formats",
+        "tariff.demo",
+        "lot.missing",
+        "technical.lot_image_missing",
+        "tariff.status",
+        "technical.catalog_search_filter",
+        "bid.modify_cancel",
+        "vehicle.autoteka_visibility",
+        "payment.not_visible"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "bid.place::keyboard_layout",
+      "class": "keyboard_layout",
+      "text": "rfr cltkfnm cnfdre",
+      "expected_scenario_ids": [
+        "bid.place"
+      ],
+      "candidate_scenario_ids": [
+        "bid.place",
+        "bid.not_visible",
+        "tariff.demo",
+        "bid.modify_cancel",
+        "account.mobile_access",
+        "penalty.explain_or_dispute",
+        "feedback.platform_complaint",
+        "bid.expired",
+        "commission.explained",
+        "auction.result"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "bid.place::transliteration",
+      "class": "transliteration",
+      "text": "kak sdelat stavku",
+      "expected_scenario_ids": [
+        "bid.place"
+      ],
+      "candidate_scenario_ids": [
+        "bid.place",
+        "bid.not_visible",
+        "bid.modify_cancel",
+        "tariff.demo",
+        "account.mobile_access",
+        "penalty.explain_or_dispute",
+        "bid.expired",
+        "auction.result",
+        "commission.explained",
+        "feedback.platform_complaint"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "bid.place::slang",
+      "class": "slang",
+      "text": "как кинуть бид",
+      "expected_scenario_ids": [
+        "bid.place"
+      ],
+      "candidate_scenario_ids": [
+        "bid.modify_cancel",
+        "balance.topup.commission",
+        "auction.formats",
+        "bid.not_visible",
+        "bid.place",
+        "bid.price_terms",
+        "bid.maximum_budget",
+        "buyer.first_bid_checklist",
+        "buyer.get_started",
+        "seller.publish_lot"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "pickup.receive_lot::keyboard_layout",
+      "class": "keyboard_layout",
+      "text": "ljrevtyns lkz gjkextybz fdnjvj,bkz",
+      "expected_scenario_ids": [
+        "pickup.receive_lot"
+      ],
+      "candidate_scenario_ids": [
+        "pickup.receive_lot",
+        "payment.accounting_documents",
+        "registration.accreditation",
+        "pickup.access_issuer",
+        "contract.receive",
+        "pickup.representative",
+        "property.inspection_documents",
+        "refusal.evidence",
+        "win.next_steps",
+        "account.login_problem"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "pickup.receive_lot::transliteration",
+      "class": "transliteration",
+      "text": "dokumenty dlya polucheniya avtomobilya",
+      "expected_scenario_ids": [
+        "pickup.receive_lot"
+      ],
+      "candidate_scenario_ids": [
+        "pickup.receive_lot",
+        "payment.accounting_documents",
+        "registration.accreditation",
+        "refusal.evidence",
+        "pickup.access_issuer",
+        "buyer.personal_purchase",
+        "contract.receive",
+        "pickup.representative",
+        "property.inspection_documents",
+        "buyer.resale_strategy"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "pickup.receive_lot::slang",
+      "class": "slang",
+      "text": "какие доки нужны чтобы забрать тачку",
+      "expected_scenario_ids": [
+        "pickup.receive_lot"
+      ],
+      "candidate_scenario_ids": [
+        "pickup.receive_lot",
+        "refusal.evidence",
+        "registration.accreditation",
+        "contract.receive",
+        "account.registration",
+        "tariff.choose",
+        "property.inspection_documents",
+        "account.identification_for_contract",
+        "payment.accounting_documents",
+        "pickup.representative"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "commission.explained::keyboard_layout",
+      "class": "keyboard_layout",
+      "text": "rfr ecnhjtyf rjvbccbz gkjoflrb",
+      "expected_scenario_ids": [
+        "commission.explained"
+      ],
+      "candidate_scenario_ids": [
+        "commission.explained",
+        "commission.unpaid",
+        "balance.topup.commission",
+        "payment.methods",
+        "auction.formats",
+        "feedback.platform_complaint",
+        "commission.discount",
+        "refund.eligibility",
+        "refund.application",
+        "partnership.official_proposal"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "commission.explained::transliteration",
+      "class": "transliteration",
+      "text": "kak ustroena komissiya ploshchadki",
+      "expected_scenario_ids": [
+        "commission.explained"
+      ],
+      "candidate_scenario_ids": [
+        "commission.explained",
+        "balance.topup.commission",
+        "commission.unpaid",
+        "payment.methods",
+        "auction.formats",
+        "commission.discount",
+        "refund.eligibility",
+        "feedback.platform_complaint",
+        "complaint.formal_dispute",
+        "refund.application"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "commission.explained::slang",
+      "class": "slang",
+      "text": "что за комса на площадке",
+      "expected_scenario_ids": [
+        "commission.explained"
+      ],
+      "candidate_scenario_ids": [
+        "commission.explained",
+        "balance.topup.commission",
+        "commission.unpaid",
+        "commission.discount",
+        "payment.methods",
+        "refund.destination",
+        "refund.eligibility",
+        "refund.application",
+        "platform.about",
+        "feedback.platform_complaint"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "account.blocked::keyboard_layout",
+      "class": "keyboard_layout",
+      "text": "frrfeyn pf,kjrbhjdfy",
+      "expected_scenario_ids": [
+        "account.blocked"
+      ],
+      "candidate_scenario_ids": [
+        "account.blocked",
+        "penalty.explain_or_dispute",
+        "commission.unpaid",
+        "account.activation_pending",
+        "refund.denied_or_blocked",
+        "privacy.rights_withdrawal",
+        "account.login_problem",
+        "contract.termination_and_restriction",
+        "account.credential_responsibility",
+        "registration.accreditation"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "account.blocked::transliteration",
+      "class": "transliteration",
+      "text": "akkaunt zablokirovan",
+      "expected_scenario_ids": [
+        "account.blocked"
+      ],
+      "candidate_scenario_ids": [
+        "account.blocked",
+        "penalty.explain_or_dispute",
+        "commission.unpaid",
+        "account.activation_pending",
+        "refund.denied_or_blocked",
+        "contract.termination_and_restriction",
+        "account.credential_responsibility",
+        "registration.accreditation",
+        "account.login_problem",
+        "privacy.rights_withdrawal"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "account.blocked::slang",
+      "class": "slang",
+      "text": "акк заблокирован",
+      "expected_scenario_ids": [
+        "account.blocked"
+      ],
+      "candidate_scenario_ids": [
+        "account.blocked",
+        "commission.unpaid",
+        "penalty.explain_or_dispute",
+        "account.activation_pending",
+        "contract.termination_and_restriction",
+        "registration.accreditation",
+        "account.credential_responsibility",
+        "refund.denied_or_blocked",
+        "account.login_problem",
+        "support.manual_review_scope"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "account.registration::keyboard_layout",
+      "class": "keyboard_layout",
+      "text": "rfr ghjqnb htubcnhfwb. frrfeynf",
+      "expected_scenario_ids": [
+        "account.registration"
+      ],
+      "candidate_scenario_ids": [
+        "account.activation_pending",
+        "account.registration",
+        "vehicle.registration_after_purchase",
+        "vehicle.registration_penalty_details",
+        "account.blocked",
+        "account.login_problem",
+        "vehicle.encumbrance_detected",
+        "seller.get_started",
+        "penalty.explain_or_dispute",
+        "tariff.status"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "account.registration::transliteration",
+      "class": "transliteration",
+      "text": "kak proyti registratsiyu akkaunta",
+      "expected_scenario_ids": [
+        "account.registration"
+      ],
+      "candidate_scenario_ids": [
+        "account.activation_pending",
+        "account.registration",
+        "vehicle.registration_penalty_details",
+        "vehicle.registration_after_purchase",
+        "account.blocked",
+        "seller.get_started",
+        "vehicle.encumbrance_detected",
+        "registration.accreditation",
+        "account.login_problem",
+        "account.credential_responsibility"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "account.registration::slang",
+      "class": "slang",
+      "text": "как регаться на площадке",
+      "expected_scenario_ids": [
+        "account.registration"
+      ],
+      "candidate_scenario_ids": [
+        "account.registration",
+        "account.activation_pending",
+        "vehicle.registration_after_purchase",
+        "vehicle.registration_penalty_details",
+        "feedback.improvement_suggestion",
+        "safety.reported_threat",
+        "feedback.platform_complaint",
+        "seller.training",
+        "complaint.formal_dispute",
+        "vehicle.encumbrance_detected"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "payment.not_visible::keyboard_layout",
+      "class": "keyboard_layout",
+      "text": "gkfnt; cgbcfkcz yj yt jnj,hf;ftncz",
+      "expected_scenario_ids": [
+        "payment.not_visible"
+      ],
+      "candidate_scenario_ids": [
+        "payment.not_visible",
+        "tariff.status",
+        "bid.not_visible",
+        "lot.missing",
+        "technical.lot_image_missing",
+        "finance.status.clarify",
+        "account.activation_pending",
+        "payment.checkout_problem",
+        "feedback.platform_complaint",
+        "penalty.explain_or_dispute"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "payment.not_visible::transliteration",
+      "class": "transliteration",
+      "text": "platezh spisalsya no ne otobrazhaetsya",
+      "expected_scenario_ids": [
+        "payment.not_visible"
+      ],
+      "candidate_scenario_ids": [
+        "payment.not_visible",
+        "tariff.status",
+        "bid.not_visible",
+        "lot.missing",
+        "technical.lot_image_missing",
+        "payment.checkout_problem",
+        "account.activation_pending",
+        "finance.status.clarify",
+        "technical.site_error",
+        "feedback.platform_complaint"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "payment.not_visible::slang",
+      "class": "slang",
+      "text": "оплата ушла но в личке пусто",
+      "expected_scenario_ids": [
+        "payment.not_visible"
+      ],
+      "candidate_scenario_ids": [
+        "payment.not_visible",
+        "tariff.status",
+        "support.callback",
+        "inspection.problem",
+        "payment.methods",
+        "finance.status.clarify",
+        "payment.checkout_problem",
+        "penalty.explain_or_dispute",
+        "contract.unconfirmed_details",
+        "bid.not_visible"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "seller.publish_lot::keyboard_layout",
+      "class": "keyboard_layout",
+      "text": "rfr dscnfdbnm fdnjvj,bkm yf ghjlf;e",
+      "expected_scenario_ids": [
+        "seller.publish_lot"
+      ],
+      "candidate_scenario_ids": [
+        "seller.publish_lot",
+        "buyer.resale_strategy",
+        "vehicle.registration_after_purchase",
+        "buyer.get_started",
+        "tariff.choose",
+        "vehicle.legal_check",
+        "bid.maximum_budget",
+        "lot.location",
+        "inspection.arrange",
+        "vehicle.registration_penalty_details"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "seller.publish_lot::transliteration",
+      "class": "transliteration",
+      "text": "kak vystavit avtomobil na prodazhu",
+      "expected_scenario_ids": [
+        "seller.publish_lot"
+      ],
+      "candidate_scenario_ids": [
+        "seller.publish_lot",
+        "buyer.resale_strategy",
+        "vehicle.owner_listing_dispute",
+        "platform.about",
+        "vehicle.registration_after_purchase",
+        "buyer.get_started",
+        "inspection.arrange",
+        "tariff.choose",
+        "vehicle.business_use_cases",
+        "buyer.beginner_lot_selection"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "seller.publish_lot::slang",
+      "class": "slang",
+      "text": "как выставить тачку на продажу",
+      "expected_scenario_ids": [
+        "seller.publish_lot"
+      ],
+      "candidate_scenario_ids": [
+        "seller.publish_lot",
+        "tariff.choose",
+        "vehicle.registration_after_purchase",
+        "bid.place",
+        "buyer.get_started",
+        "buyer.resale_strategy",
+        "inspection.arrange",
+        "bid.maximum_budget",
+        "buyer.beginner_lot_selection",
+        "vehicle.owner_listing_dispute"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "contract.receive::keyboard_layout",
+      "class": "keyboard_layout",
+      "text": "ult gjkexbnm ljrevtyns gj ljujdjhe",
+      "expected_scenario_ids": [
+        "contract.receive"
+      ],
+      "candidate_scenario_ids": [
+        "contract.receive",
+        "documents.preparation_delay",
+        "contract.parties_signing",
+        "payment.accounting_documents",
+        "transfer.requisites",
+        "support.office_visit",
+        "contract.unconfirmed_details",
+        "registration.accreditation",
+        "property.inspection_documents",
+        "pickup.receive_lot"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "contract.receive::transliteration",
+      "class": "transliteration",
+      "text": "gde poluchit dokumenty po dogovoru",
+      "expected_scenario_ids": [
+        "contract.receive"
+      ],
+      "candidate_scenario_ids": [
+        "contract.receive",
+        "contract.parties_signing",
+        "documents.preparation_delay",
+        "payment.accounting_documents",
+        "support.office_visit",
+        "transfer.requisites",
+        "registration.accreditation",
+        "property.inspection_documents",
+        "pickup.receive_lot",
+        "contract.unconfirmed_details"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "contract.receive::slang",
+      "class": "slang",
+      "text": "где доки по договору",
+      "expected_scenario_ids": [
+        "contract.receive"
+      ],
+      "candidate_scenario_ids": [
+        "contract.receive",
+        "contract.parties_signing",
+        "documents.preparation_delay",
+        "support.office_visit",
+        "transfer.requisites",
+        "account.identification_for_contract",
+        "contract.unconfirmed_details",
+        "property.inspection_documents",
+        "seller.contract_term",
+        "payment.accounting_documents"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "inspection.arrange::keyboard_layout",
+      "class": "keyboard_layout",
+      "text": "rfr jhufybpjdfnm jcvjnh fdnjvj,bkz",
+      "expected_scenario_ids": [
+        "inspection.arrange"
+      ],
+      "candidate_scenario_ids": [
+        "inspection.arrange",
+        "property.inspection_documents",
+        "buyer.get_started",
+        "seller.publish_lot",
+        "inspection.problem",
+        "refusal.change_mind",
+        "pickup.receive_lot",
+        "vehicle.legal_check",
+        "lot.catalog_search",
+        "lot.location"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "inspection.arrange::transliteration",
+      "class": "transliteration",
+      "text": "kak organizovat osmotr avtomobilya",
+      "expected_scenario_ids": [
+        "inspection.arrange"
+      ],
+      "candidate_scenario_ids": [
+        "inspection.arrange",
+        "seller.publish_lot",
+        "property.inspection_documents",
+        "buyer.get_started",
+        "vehicle.owner_listing_dispute",
+        "pickup.receive_lot",
+        "lot.location",
+        "seller.categories",
+        "vehicle.registration_after_purchase",
+        "vehicle.insurance_catalog"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "inspection.arrange::slang",
+      "class": "slang",
+      "text": "как посмотреть тачку вживую",
+      "expected_scenario_ids": [
+        "inspection.arrange"
+      ],
+      "candidate_scenario_ids": [
+        "inspection.arrange",
+        "pickup.receive_lot",
+        "lot.location",
+        "buyer.get_started",
+        "property.inspection_documents",
+        "vehicle.vin_request",
+        "seller.publish_lot",
+        "lot.catalog_search",
+        "lot.payment.start",
+        "tariff.demo"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    }
+  ]
+}

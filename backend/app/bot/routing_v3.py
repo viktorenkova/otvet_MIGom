@@ -11,7 +11,7 @@ import numpy as np
 from sklearn.feature_extraction.text import TfidfVectorizer
 
 from backend.app.bot.scenario_engine import QueryFacets, Scenario, extract_query_facets, load_scenarios
-from backend.app.bot.text_processing import apply_synonyms, correct_typos, normalize_text, tokenize
+from backend.app.bot.text_processing import apply_synonyms, correct_typos, normalize_matching_text, normalize_text, tokenize
 
 
 _CONCEPTS: dict[str, tuple[str, ...]] = {
@@ -240,9 +240,8 @@ def _repair_domain_token(token: str) -> str:
 
 @lru_cache(maxsize=65_536)
 def routing_normalize(text: str) -> str:
-    normalized = normalize_text(text).replace("-", " ")
-    corrected = correct_typos(normalized)
-    repaired = " ".join(_repair_domain_token(token) for token in tokenize(corrected))
+    canonical = normalize_matching_text(text)
+    repaired = " ".join(_repair_domain_token(token) for token in tokenize(canonical))
     synonymized = apply_synonyms(repaired)
     return " ".join(_stem(token) for token in tokenize(synonymized))
 
@@ -271,7 +270,7 @@ def _token_similar(left: str, right: str) -> bool:
 
 
 def _basic_tokens(text: str) -> tuple[str, ...]:
-    return tuple(_stem(token) for token in tokenize(correct_typos(normalize_text(text).replace("-", " "))))
+    return tuple(_stem(token) for token in tokenize(normalize_matching_text(text)))
 
 
 def _phrase_present(query_tokens: tuple[str, ...], phrase: str) -> bool:

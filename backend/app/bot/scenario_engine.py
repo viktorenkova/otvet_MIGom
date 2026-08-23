@@ -7,7 +7,7 @@ from pathlib import Path
 import re
 from typing import Any
 
-from backend.app.bot.text_processing import correct_typos, load_matching_config, normalize_text, tokenize
+from backend.app.bot.text_processing import load_matching_config, normalize_matching_text, tokenize
 from backend.app.config import get_settings
 
 
@@ -120,7 +120,7 @@ STATE_PATTERNS = {
 
 
 def _normal(text: str) -> str:
-    return correct_typos(normalize_text(text))
+    return normalize_matching_text(text)
 
 
 def _is_named_seller_silence(text: str) -> bool:

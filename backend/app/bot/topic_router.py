@@ -3,7 +3,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Iterable
 
-from backend.app.bot.text_processing import normalize_text
+from backend.app.bot.text_processing import normalize_matching_text
 
 
 @dataclass(frozen=True)
@@ -172,7 +172,7 @@ def _composite_evidence(intent: str, text: str, evidence: tuple[str, ...]) -> tu
 
 
 def route_topic(message: str, allowed_intents: Iterable[str] | None = None) -> TopicRoute:
-    text = normalize_text(message)
+    text = normalize_matching_text(message)
     allowed = set(allowed_intents or TOPIC_GROUPS)
     ranked: list[tuple[int, str, tuple[str, ...]]] = []
     for intent, groups in TOPIC_GROUPS.items():
