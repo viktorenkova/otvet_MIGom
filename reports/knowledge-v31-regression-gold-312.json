@@ -1,0 +1,13 @@
+{
+  "total": 312,
+  "scenario_accuracy": 1.0,
+  "confident_wrong_rate": 0.0,
+  "required_facts_coverage": 1.0,
+  "forbidden_promises_rate": 0.0,
+  "escalation_accuracy": 0.9963,
+  "unnecessary_escalation_rate": 0.0037,
+  "clarification_guess_rate": 0.0,
+  "release_gate_passed": true,
+  "production_gate_passed": true,
+  "errors": []
+}

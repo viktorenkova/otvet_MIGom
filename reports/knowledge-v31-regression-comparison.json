@@ -1,0 +1,123 @@
+{
+  "schema_version": 1,
+  "knowledge_version": "2026.08.23.1",
+  "gate": {
+    "maximum_allowed_degradation_pp": 2.0
+  },
+  "passed": true,
+  "errors": [],
+  "corpora": [
+    {
+      "corpus": "gold_312",
+      "baseline_report": "reports\\scenario-gold-production-gate-2026-08-13.json",
+      "current_report": "reports\\knowledge-v31-regression-gold-312.json",
+      "baseline": {
+        "total": 312,
+        "route_pct": 100.0,
+        "quality_pct": 100.0,
+        "transport_pct": 100.0
+      },
+      "current": {
+        "total": 312,
+        "route_pct": 100.0,
+        "quality_pct": 100.0,
+        "transport_pct": 100.0
+      },
+      "delta_pp": {
+        "route": 0.0,
+        "quality": 0.0
+      },
+      "checks": {
+        "same_case_count": true,
+        "transport_100_pct": true,
+        "route_degradation_within_2pp": true,
+        "quality_degradation_within_2pp": true
+      },
+      "passed": true
+    },
+    {
+      "corpus": "independent_116",
+      "baseline_report": "reports\\routing-v3-independent-acceptance.json",
+      "current_report": "reports\\knowledge-v31-regression-independent-116.json",
+      "baseline": {
+        "total": 116,
+        "route_pct": 100.0,
+        "quality_pct": 100.0,
+        "transport_pct": 100.0
+      },
+      "current": {
+        "total": 116,
+        "route_pct": 100.0,
+        "quality_pct": 100.0,
+        "transport_pct": 100.0
+      },
+      "delta_pp": {
+        "route": 0.0,
+        "quality": 0.0
+      },
+      "checks": {
+        "same_case_count": true,
+        "transport_100_pct": true,
+        "route_degradation_within_2pp": true,
+        "quality_degradation_within_2pp": true
+      },
+      "passed": true
+    },
+    {
+      "corpus": "live_160",
+      "baseline_report": "reports\\routing-v3-live-query-final.json",
+      "current_report": "reports\\knowledge-v31-regression-live-160.json",
+      "baseline": {
+        "total": 160,
+        "route_pct": 95.62,
+        "quality_pct": 94.38,
+        "transport_pct": 100.0
+      },
+      "current": {
+        "total": 160,
+        "route_pct": 93.75,
+        "quality_pct": 92.5,
+        "transport_pct": 100.0
+      },
+      "delta_pp": {
+        "route": -1.87,
+        "quality": -1.88
+      },
+      "checks": {
+        "same_case_count": true,
+        "transport_100_pct": true,
+        "route_degradation_within_2pp": true,
+        "quality_degradation_within_2pp": true
+      },
+      "passed": true
+    },
+    {
+      "corpus": "closed_270_adjudicated",
+      "baseline_report": "reports\\quality-stage0-adjudicated-local.json",
+      "current_report": "reports\\knowledge-v31-regression-closed-270.json",
+      "baseline": {
+        "total": 270,
+        "route_pct": 81.48,
+        "quality_pct": 80.37,
+        "transport_pct": 100.0
+      },
+      "current": {
+        "total": 270,
+        "route_pct": 79.63,
+        "quality_pct": 78.52,
+        "transport_pct": 100.0
+      },
+      "delta_pp": {
+        "route": -1.85,
+        "quality": -1.85
+      },
+      "checks": {
+        "same_case_count": true,
+        "transport_100_pct": true,
+        "route_degradation_within_2pp": true,
+        "quality_degradation_within_2pp": true
+      },
+      "passed": true
+    }
+  ]
+}
