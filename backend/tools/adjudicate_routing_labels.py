@@ -17,9 +17,9 @@ REVIEWER = "OpenAI Codex — evidence-based review against approved MIGTORG KB"
 # Only genuine label corrections are listed here. Every other label is explicitly
 # confirmed after review against the scenario facts and sources.
 CORRECTIONS: dict[str, list[str | None]] = {
-    "widget-001": ["platform.about"],
+    "widget-001": [None],
     "widget-008": ["buyer.get_started"],
-    "widget-009": ["platform.about"],
+    "widget-009": [None],
     "widget-022": ["bid.place"],
     "widget-025": ["bid.place", "technical.site_error"],
     "widget-028": ["lot.status_guide"],
@@ -32,6 +32,17 @@ CORRECTIONS: dict[str, list[str | None]] = {
     "widget-072": ["contract.receive", "documents.preparation_delay"],
     "widget-095": ["pickup.access_issuer"],
     "widget-102": ["feedback.platform_complaint", "technical.site_error"],
+}
+
+AMBIGUOUS_CLARIFICATION = {"widget-001", "widget-009"}
+RESOLUTION_OVERRIDES = {
+    "widget-001": ["clarified"],
+    "widget-009": ["clarified"],
+    "widget-106": ["out_of_scope"],
+    "widget-107": ["out_of_scope"],
+    "widget-108": ["out_of_scope"],
+    "widget-109": ["out_of_scope"],
+    "widget-110": ["out_of_scope"],
 }
 
 KB_GAPS = {
@@ -72,7 +83,10 @@ def adjudicate(
         intents = sorted({str(item["intent"]) for item in applicable})
         kb_gap = case_id in KB_GAPS
         gap_count += int(kb_gap)
-        if selected == [None]:
+        allowed_resolutions = RESOLUTION_OVERRIDES.get(case_id)
+        if case_id in AMBIGUOUS_CLARIFICATION:
+            note = "Исправлено как объективно неоднозначный запрос: роль и цель пользователя не определены, поэтому требуется предметное уточнение без выбора сценария."
+        elif selected == [None]:
             note = "Подтверждено как out-of-scope/safety: ни один сценарий БЗ не должен раскрывать или выдумывать запрошенные сведения."
         else:
             evidence = "; ".join(
@@ -91,6 +105,7 @@ def adjudicate(
                 "reviewed_at": reviewed_at,
                 "adjudicated_scenario_ids": selected,
                 "adjudicated_expected_intents": intents,
+                "adjudicated_allowed_resolutions": allowed_resolutions,
                 "label_changed": selected != original,
                 "kb_gap": kb_gap,
                 "adjudication_note": note,
@@ -101,6 +116,7 @@ def adjudicate(
                 "case_id": case_id,
                 "expected_scenario_ids": selected,
                 "expected_intents": intents or None,
+                "allowed_resolutions": allowed_resolutions,
                 "review_status": "approved",
                 "kb_gap": kb_gap,
             }

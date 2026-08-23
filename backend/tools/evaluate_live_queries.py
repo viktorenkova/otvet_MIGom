@@ -100,6 +100,8 @@ def load_dataset(
                 case["expected"].pop("expected_intents", None)
             else:
                 case["expected"]["expected_intents"] = update["expected_intents"]
+            if update.get("allowed_resolutions") is not None:
+                case["expected"]["allowed_resolutions"] = update["allowed_resolutions"]
             applied += 1
         if applied != overlay.get("record_count"):
             raise ValueError(

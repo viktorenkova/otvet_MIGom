@@ -54,6 +54,8 @@ def test_domain_adjudication_approves_all_labels_and_exports_overlay(tmp_path: P
     dataset, cases = load_dataset(dataset_path, overlay_path)
     by_id = {item["id"]: item for item in cases}
     assert dataset["adjudication"]["record_count"] == 110
-    assert by_id["widget-001"]["expected"]["expected_scenario_ids"] == ["platform.about"]
+    assert by_id["widget-001"]["expected"]["expected_scenario_ids"] == [None]
+    assert by_id["widget-001"]["expected"]["allowed_resolutions"] == ["clarified"]
     assert by_id["widget-068"]["expected"]["expected_scenario_ids"] == ["transfer.not_confirmed"]
     assert by_id["widget-110"]["expected"]["expected_scenario_ids"] == [None]
+    assert by_id["widget-110"]["expected"]["allowed_resolutions"] == ["out_of_scope"]

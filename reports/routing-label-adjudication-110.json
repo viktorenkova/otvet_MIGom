@@ -46,16 +46,17 @@
       ],
       "review_status": "approved",
       "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
-      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "reviewed_at": "2026-08-23T07:38:35.956766+00:00",
       "adjudicated_scenario_ids": [
-        "platform.about"
+        null
       ],
-      "adjudication_note": "Исправлено по смыслу вопроса и approved facts: platform.about — Что такое MIGTORG и как распределены роли (источник: Approved MIGTORG knowledge base and expert-reviewed platform model).",
-      "adjudicated_expected_intents": [
-        "platform"
-      ],
+      "adjudication_note": "Исправлено как объективно неоднозначный запрос: роль и цель пользователя не определены, поэтому требуется предметное уточнение без выбора сценария.",
+      "adjudicated_expected_intents": [],
       "label_changed": true,
-      "kb_gap": false
+      "kb_gap": false,
+      "adjudicated_allowed_resolutions": [
+        "clarified"
+      ]
     },
     {
       "case_id": "widget-002",
@@ -95,7 +96,7 @@
       "review_reasons": [],
       "review_status": "approved",
       "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
-      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "reviewed_at": "2026-08-23T07:38:35.956766+00:00",
       "adjudicated_scenario_ids": [
         "buyer.get_started"
       ],
@@ -104,7 +105,8 @@
         "bidding"
       ],
       "label_changed": false,
-      "kb_gap": false
+      "kb_gap": false,
+      "adjudicated_allowed_resolutions": null
     },
     {
       "case_id": "widget-003",
@@ -146,7 +148,7 @@
       ],
       "review_status": "approved",
       "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
-      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "reviewed_at": "2026-08-23T07:38:35.956766+00:00",
       "adjudicated_scenario_ids": [
         "buyer.get_started"
       ],
@@ -155,7 +157,8 @@
         "bidding"
       ],
       "label_changed": false,
-      "kb_gap": false
+      "kb_gap": false,
+      "adjudicated_allowed_resolutions": null
     },
     {
       "case_id": "widget-004",
@@ -197,7 +200,7 @@
       ],
       "review_status": "approved",
       "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
-      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "reviewed_at": "2026-08-23T07:38:35.956766+00:00",
       "adjudicated_scenario_ids": [
         "buyer.get_started"
       ],
@@ -206,7 +209,8 @@
         "bidding"
       ],
       "label_changed": false,
-      "kb_gap": false
+      "kb_gap": false,
+      "adjudicated_allowed_resolutions": null
     },
     {
       "case_id": "widget-005",
@@ -248,7 +252,7 @@
       ],
       "review_status": "approved",
       "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
-      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "reviewed_at": "2026-08-23T07:38:35.956766+00:00",
       "adjudicated_scenario_ids": [
         "buyer.get_started"
       ],
@@ -257,7 +261,8 @@
         "bidding"
       ],
       "label_changed": false,
-      "kb_gap": false
+      "kb_gap": false,
+      "adjudicated_allowed_resolutions": null
     },
     {
       "case_id": "widget-006",
@@ -302,7 +307,7 @@
       ],
       "review_status": "approved",
       "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
-      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "reviewed_at": "2026-08-23T07:38:35.956766+00:00",
       "adjudicated_scenario_ids": [
         "lot.catalog_search",
         "tariff.demo"
@@ -313,7 +318,8 @@
         "tariffs"
       ],
       "label_changed": false,
-      "kb_gap": false
+      "kb_gap": false,
+      "adjudicated_allowed_resolutions": null
     },
     {
       "case_id": "widget-007",
@@ -355,7 +361,7 @@
       ],
       "review_status": "approved",
       "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
-      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "reviewed_at": "2026-08-23T07:38:35.956766+00:00",
       "adjudicated_scenario_ids": [
         "buyer.get_started"
       ],
@@ -364,7 +370,8 @@
         "bidding"
       ],
       "label_changed": false,
-      "kb_gap": false
+      "kb_gap": false,
+      "adjudicated_allowed_resolutions": null
     },
     {
       "case_id": "widget-008",
@@ -408,7 +415,7 @@
       ],
       "review_status": "approved",
       "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
-      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "reviewed_at": "2026-08-23T07:38:35.956766+00:00",
       "adjudicated_scenario_ids": [
         "buyer.get_started"
       ],
@@ -417,7 +424,8 @@
         "bidding"
       ],
       "label_changed": true,
-      "kb_gap": false
+      "kb_gap": false,
+      "adjudicated_allowed_resolutions": null
     },
     {
       "case_id": "widget-009",
@@ -459,16 +467,17 @@
       ],
       "review_status": "approved",
       "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
-      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "reviewed_at": "2026-08-23T07:38:35.956766+00:00",
       "adjudicated_scenario_ids": [
-        "platform.about"
+        null
       ],
-      "adjudication_note": "Исправлено по смыслу вопроса и approved facts: platform.about — Что такое MIGTORG и как распределены роли (источник: Approved MIGTORG knowledge base and expert-reviewed platform model).",
-      "adjudicated_expected_intents": [
-        "platform"
-      ],
+      "adjudication_note": "Исправлено как объективно неоднозначный запрос: роль и цель пользователя не определены, поэтому требуется предметное уточнение без выбора сценария.",
+      "adjudicated_expected_intents": [],
       "label_changed": true,
-      "kb_gap": false
+      "kb_gap": false,
+      "adjudicated_allowed_resolutions": [
+        "clarified"
+      ]
     },
     {
       "case_id": "widget-010",
@@ -508,7 +517,7 @@
       "review_reasons": [],
       "review_status": "approved",
       "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
-      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "reviewed_at": "2026-08-23T07:38:35.956766+00:00",
       "adjudicated_scenario_ids": [
         "buyer.first_bid_checklist"
       ],
@@ -517,7 +526,8 @@
         "bidding"
       ],
       "label_changed": false,
-      "kb_gap": false
+      "kb_gap": false,
+      "adjudicated_allowed_resolutions": null
     },
     {
       "case_id": "widget-011",
@@ -557,7 +567,7 @@
       "review_reasons": [],
       "review_status": "approved",
       "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
-      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "reviewed_at": "2026-08-23T07:38:35.956766+00:00",
       "adjudicated_scenario_ids": [
         "account.registration"
       ],
@@ -566,7 +576,8 @@
         "account"
       ],
       "label_changed": false,
-      "kb_gap": false
+      "kb_gap": false,
+      "adjudicated_allowed_resolutions": null
     },
     {
       "case_id": "widget-012",
@@ -606,7 +617,7 @@
       "review_reasons": [],
       "review_status": "approved",
       "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
-      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "reviewed_at": "2026-08-23T07:38:35.956766+00:00",
       "adjudicated_scenario_ids": [
         "account.registration"
       ],
@@ -615,7 +626,8 @@
         "account"
       ],
       "label_changed": false,
-      "kb_gap": false
+      "kb_gap": false,
+      "adjudicated_allowed_resolutions": null
     },
     {
       "case_id": "widget-013",
@@ -660,7 +672,7 @@
       ],
       "review_status": "approved",
       "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
-      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "reviewed_at": "2026-08-23T07:38:35.956766+00:00",
       "adjudicated_scenario_ids": [
         "account.activation_pending",
         "notification.delivery_problem"
@@ -671,7 +683,8 @@
         "technical"
       ],
       "label_changed": false,
-      "kb_gap": false
+      "kb_gap": false,
+      "adjudicated_allowed_resolutions": null
     },
     {
       "case_id": "widget-014",
@@ -713,7 +726,7 @@
       ],
       "review_status": "approved",
       "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
-      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "reviewed_at": "2026-08-23T07:38:35.956766+00:00",
       "adjudicated_scenario_ids": [
         "account.login_problem"
       ],
@@ -722,7 +735,8 @@
         "registration"
       ],
       "label_changed": false,
-      "kb_gap": false
+      "kb_gap": false,
+      "adjudicated_allowed_resolutions": null
     },
     {
       "case_id": "widget-015",
@@ -764,7 +778,7 @@
       ],
       "review_status": "approved",
       "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
-      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "reviewed_at": "2026-08-23T07:38:35.956766+00:00",
       "adjudicated_scenario_ids": [
         "account.login_problem"
       ],
@@ -773,7 +787,8 @@
         "registration"
       ],
       "label_changed": false,
-      "kb_gap": false
+      "kb_gap": false,
+      "adjudicated_allowed_resolutions": null
     },
     {
       "case_id": "widget-016",
@@ -813,7 +828,7 @@
       "review_reasons": [],
       "review_status": "approved",
       "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
-      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "reviewed_at": "2026-08-23T07:38:35.956766+00:00",
       "adjudicated_scenario_ids": [
         "seller.get_started"
       ],
@@ -822,7 +837,8 @@
         "registration"
       ],
       "label_changed": false,
-      "kb_gap": false
+      "kb_gap": false,
+      "adjudicated_allowed_resolutions": null
     },
     {
       "case_id": "widget-017",
@@ -864,7 +880,7 @@
       ],
       "review_status": "approved",
       "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
-      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "reviewed_at": "2026-08-23T07:38:35.956766+00:00",
       "adjudicated_scenario_ids": [
         "seller.get_started"
       ],
@@ -873,7 +889,8 @@
         "registration"
       ],
       "label_changed": false,
-      "kb_gap": false
+      "kb_gap": false,
+      "adjudicated_allowed_resolutions": null
     },
     {
       "case_id": "widget-018",
@@ -913,7 +930,7 @@
       "review_reasons": [],
       "review_status": "approved",
       "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
-      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "reviewed_at": "2026-08-23T07:38:35.956766+00:00",
       "adjudicated_scenario_ids": [
         "account.registration"
       ],
@@ -922,7 +939,8 @@
         "account"
       ],
       "label_changed": false,
-      "kb_gap": false
+      "kb_gap": false,
+      "adjudicated_allowed_resolutions": null
     },
     {
       "case_id": "widget-019",
@@ -962,7 +980,7 @@
       "review_reasons": [],
       "review_status": "approved",
       "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
-      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "reviewed_at": "2026-08-23T07:38:35.956766+00:00",
       "adjudicated_scenario_ids": [
         "account.blocked"
       ],
@@ -971,7 +989,8 @@
         "registration"
       ],
       "label_changed": false,
-      "kb_gap": false
+      "kb_gap": false,
+      "adjudicated_allowed_resolutions": null
     },
     {
       "case_id": "widget-020",
@@ -1013,7 +1032,7 @@
       ],
       "review_status": "approved",
       "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
-      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "reviewed_at": "2026-08-23T07:38:35.956766+00:00",
       "adjudicated_scenario_ids": [
         "account.credential_responsibility"
       ],
@@ -1022,7 +1041,8 @@
         "registration"
       ],
       "label_changed": false,
-      "kb_gap": false
+      "kb_gap": false,
+      "adjudicated_allowed_resolutions": null
     },
     {
       "case_id": "widget-021",
@@ -1062,7 +1082,7 @@
       "review_reasons": [],
       "review_status": "approved",
       "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
-      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "reviewed_at": "2026-08-23T07:38:35.956766+00:00",
       "adjudicated_scenario_ids": [
         "bid.place"
       ],
@@ -1071,7 +1091,8 @@
         "bidding"
       ],
       "label_changed": false,
-      "kb_gap": false
+      "kb_gap": false,
+      "adjudicated_allowed_resolutions": null
     },
     {
       "case_id": "widget-022",
@@ -1114,7 +1135,7 @@
       ],
       "review_status": "approved",
       "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
-      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "reviewed_at": "2026-08-23T07:38:35.956766+00:00",
       "adjudicated_scenario_ids": [
         "bid.place"
       ],
@@ -1123,7 +1144,8 @@
         "bidding"
       ],
       "label_changed": true,
-      "kb_gap": false
+      "kb_gap": false,
+      "adjudicated_allowed_resolutions": null
     },
     {
       "case_id": "widget-023",
@@ -1165,7 +1187,7 @@
       ],
       "review_status": "approved",
       "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
-      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "reviewed_at": "2026-08-23T07:38:35.956766+00:00",
       "adjudicated_scenario_ids": [
         "bid.autobid_extension"
       ],
@@ -1174,7 +1196,8 @@
         "bidding"
       ],
       "label_changed": false,
-      "kb_gap": false
+      "kb_gap": false,
+      "adjudicated_allowed_resolutions": null
     },
     {
       "case_id": "widget-024",
@@ -1214,7 +1237,7 @@
       "review_reasons": [],
       "review_status": "approved",
       "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
-      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "reviewed_at": "2026-08-23T07:38:35.956766+00:00",
       "adjudicated_scenario_ids": [
         "bid.price_terms"
       ],
@@ -1223,7 +1246,8 @@
         "bidding"
       ],
       "label_changed": false,
-      "kb_gap": false
+      "kb_gap": false,
+      "adjudicated_allowed_resolutions": null
     },
     {
       "case_id": "widget-025",
@@ -1263,7 +1287,7 @@
       "review_reasons": [],
       "review_status": "approved",
       "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
-      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "reviewed_at": "2026-08-23T07:38:35.956766+00:00",
       "adjudicated_scenario_ids": [
         "bid.place",
         "technical.site_error"
@@ -1274,7 +1298,8 @@
         "support"
       ],
       "label_changed": true,
-      "kb_gap": false
+      "kb_gap": false,
+      "adjudicated_allowed_resolutions": null
     },
     {
       "case_id": "widget-026",
@@ -1316,7 +1341,7 @@
       ],
       "review_status": "approved",
       "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
-      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "reviewed_at": "2026-08-23T07:38:35.956766+00:00",
       "adjudicated_scenario_ids": [
         "bid.position_service"
       ],
@@ -1325,7 +1350,8 @@
         "bidding"
       ],
       "label_changed": false,
-      "kb_gap": false
+      "kb_gap": false,
+      "adjudicated_allowed_resolutions": null
     },
     {
       "case_id": "widget-027",
@@ -1365,7 +1391,7 @@
       "review_reasons": [],
       "review_status": "approved",
       "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
-      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "reviewed_at": "2026-08-23T07:38:35.956766+00:00",
       "adjudicated_scenario_ids": [
         "bid.modify_cancel"
       ],
@@ -1374,7 +1400,8 @@
         "bidding"
       ],
       "label_changed": false,
-      "kb_gap": false
+      "kb_gap": false,
+      "adjudicated_allowed_resolutions": null
     },
     {
       "case_id": "widget-028",
@@ -1416,7 +1443,7 @@
       ],
       "review_status": "approved",
       "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
-      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "reviewed_at": "2026-08-23T07:38:35.956766+00:00",
       "adjudicated_scenario_ids": [
         "lot.status_guide"
       ],
@@ -1425,7 +1452,8 @@
         "lot"
       ],
       "label_changed": true,
-      "kb_gap": false
+      "kb_gap": false,
+      "adjudicated_allowed_resolutions": null
     },
     {
       "case_id": "widget-029",
@@ -1465,7 +1493,7 @@
       "review_reasons": [],
       "review_status": "approved",
       "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
-      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "reviewed_at": "2026-08-23T07:38:35.956766+00:00",
       "adjudicated_scenario_ids": [
         "bid.not_visible"
       ],
@@ -1474,7 +1502,8 @@
         "bidding"
       ],
       "label_changed": false,
-      "kb_gap": false
+      "kb_gap": false,
+      "adjudicated_allowed_resolutions": null
     },
     {
       "case_id": "widget-030",
@@ -1517,7 +1546,7 @@
       ],
       "review_status": "approved",
       "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
-      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "reviewed_at": "2026-08-23T07:38:35.956766+00:00",
       "adjudicated_scenario_ids": [
         "auction.result"
       ],
@@ -1526,7 +1555,8 @@
         "lot"
       ],
       "label_changed": true,
-      "kb_gap": false
+      "kb_gap": false,
+      "adjudicated_allowed_resolutions": null
     },
     {
       "case_id": "widget-031",
@@ -1568,7 +1598,7 @@
       ],
       "review_status": "approved",
       "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
-      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "reviewed_at": "2026-08-23T07:38:35.956766+00:00",
       "adjudicated_scenario_ids": [
         "bid.autobid_extension"
       ],
@@ -1577,7 +1607,8 @@
         "bidding"
       ],
       "label_changed": false,
-      "kb_gap": false
+      "kb_gap": false,
+      "adjudicated_allowed_resolutions": null
     },
     {
       "case_id": "widget-032",
@@ -1617,7 +1648,7 @@
       "review_reasons": [],
       "review_status": "approved",
       "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
-      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "reviewed_at": "2026-08-23T07:38:35.956766+00:00",
       "adjudicated_scenario_ids": [
         "auction.formats"
       ],
@@ -1626,7 +1657,8 @@
         "bidding"
       ],
       "label_changed": false,
-      "kb_gap": false
+      "kb_gap": false,
+      "adjudicated_allowed_resolutions": null
     },
     {
       "case_id": "widget-033",
@@ -1668,7 +1700,7 @@
       ],
       "review_status": "approved",
       "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
-      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "reviewed_at": "2026-08-23T07:38:35.956766+00:00",
       "adjudicated_scenario_ids": [
         "auction.result"
       ],
@@ -1677,7 +1709,8 @@
         "lot"
       ],
       "label_changed": false,
-      "kb_gap": false
+      "kb_gap": false,
+      "adjudicated_allowed_resolutions": null
     },
     {
       "case_id": "widget-034",
@@ -1719,7 +1752,7 @@
       ],
       "review_status": "approved",
       "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
-      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "reviewed_at": "2026-08-23T07:38:35.956766+00:00",
       "adjudicated_scenario_ids": [
         "auction.status"
       ],
@@ -1728,7 +1761,8 @@
         "lot"
       ],
       "label_changed": false,
-      "kb_gap": false
+      "kb_gap": false,
+      "adjudicated_allowed_resolutions": null
     },
     {
       "case_id": "widget-035",
@@ -1770,7 +1804,7 @@
       ],
       "review_status": "approved",
       "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
-      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "reviewed_at": "2026-08-23T07:38:35.956766+00:00",
       "adjudicated_scenario_ids": [
         "auction.result"
       ],
@@ -1779,7 +1813,8 @@
         "lot"
       ],
       "label_changed": false,
-      "kb_gap": false
+      "kb_gap": false,
+      "adjudicated_allowed_resolutions": null
     },
     {
       "case_id": "widget-036",
@@ -1819,7 +1854,7 @@
       "review_reasons": [],
       "review_status": "approved",
       "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
-      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "reviewed_at": "2026-08-23T07:38:35.956766+00:00",
       "adjudicated_scenario_ids": [
         "lot.catalog_search"
       ],
@@ -1828,7 +1863,8 @@
         "lot"
       ],
       "label_changed": false,
-      "kb_gap": false
+      "kb_gap": false,
+      "adjudicated_allowed_resolutions": null
     },
     {
       "case_id": "widget-037",
@@ -1868,7 +1904,7 @@
       "review_reasons": [],
       "review_status": "approved",
       "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
-      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "reviewed_at": "2026-08-23T07:38:35.956766+00:00",
       "adjudicated_scenario_ids": [
         "technical.catalog_search_filter"
       ],
@@ -1877,7 +1913,8 @@
         "support"
       ],
       "label_changed": false,
-      "kb_gap": false
+      "kb_gap": false,
+      "adjudicated_allowed_resolutions": null
     },
     {
       "case_id": "widget-038",
@@ -1917,7 +1954,7 @@
       "review_reasons": [],
       "review_status": "approved",
       "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
-      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "reviewed_at": "2026-08-23T07:38:35.956766+00:00",
       "adjudicated_scenario_ids": [
         "lot.catalog_search"
       ],
@@ -1926,7 +1963,8 @@
         "lot"
       ],
       "label_changed": false,
-      "kb_gap": false
+      "kb_gap": false,
+      "adjudicated_allowed_resolutions": null
     },
     {
       "case_id": "widget-039",
@@ -1966,7 +2004,7 @@
       "review_reasons": [],
       "review_status": "approved",
       "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
-      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "reviewed_at": "2026-08-23T07:38:35.956766+00:00",
       "adjudicated_scenario_ids": [
         "lot.catalog_search"
       ],
@@ -1975,7 +2013,8 @@
         "lot"
       ],
       "label_changed": false,
-      "kb_gap": false
+      "kb_gap": false,
+      "adjudicated_allowed_resolutions": null
     },
     {
       "case_id": "widget-040",
@@ -2015,7 +2054,7 @@
       "review_reasons": [],
       "review_status": "approved",
       "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
-      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "reviewed_at": "2026-08-23T07:38:35.956766+00:00",
       "adjudicated_scenario_ids": [
         "technical.catalog_search_filter"
       ],
@@ -2024,7 +2063,8 @@
         "support"
       ],
       "label_changed": false,
-      "kb_gap": false
+      "kb_gap": false,
+      "adjudicated_allowed_resolutions": null
     },
     {
       "case_id": "widget-041",
@@ -2064,7 +2104,7 @@
       "review_reasons": [],
       "review_status": "approved",
       "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
-      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "reviewed_at": "2026-08-23T07:38:35.956766+00:00",
       "adjudicated_scenario_ids": [
         "technical.lot_image_missing"
       ],
@@ -2073,7 +2113,8 @@
         "support"
       ],
       "label_changed": false,
-      "kb_gap": false
+      "kb_gap": false,
+      "adjudicated_allowed_resolutions": null
     },
     {
       "case_id": "widget-042",
@@ -2115,7 +2156,7 @@
       ],
       "review_status": "approved",
       "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
-      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "reviewed_at": "2026-08-23T07:38:35.956766+00:00",
       "adjudicated_scenario_ids": [
         "technical.lot_image_missing"
       ],
@@ -2124,7 +2165,8 @@
         "support"
       ],
       "label_changed": false,
-      "kb_gap": false
+      "kb_gap": false,
+      "adjudicated_allowed_resolutions": null
     },
     {
       "case_id": "widget-043",
@@ -2169,7 +2211,7 @@
       ],
       "review_status": "approved",
       "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
-      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "reviewed_at": "2026-08-23T07:38:35.956766+00:00",
       "adjudicated_scenario_ids": [
         "lot.card_information"
       ],
@@ -2178,7 +2220,8 @@
         "lot"
       ],
       "label_changed": true,
-      "kb_gap": true
+      "kb_gap": true,
+      "adjudicated_allowed_resolutions": null
     },
     {
       "case_id": "widget-044",
@@ -2218,7 +2261,7 @@
       "review_reasons": [],
       "review_status": "approved",
       "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
-      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "reviewed_at": "2026-08-23T07:38:35.956766+00:00",
       "adjudicated_scenario_ids": [
         "technical.lot_image_missing"
       ],
@@ -2227,7 +2270,8 @@
         "support"
       ],
       "label_changed": false,
-      "kb_gap": false
+      "kb_gap": false,
+      "adjudicated_allowed_resolutions": null
     },
     {
       "case_id": "widget-045",
@@ -2269,7 +2313,7 @@
       ],
       "review_status": "approved",
       "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
-      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "reviewed_at": "2026-08-23T07:38:35.956766+00:00",
       "adjudicated_scenario_ids": [
         "auction.completed_analytics"
       ],
@@ -2278,7 +2322,8 @@
         "bidding"
       ],
       "label_changed": true,
-      "kb_gap": false
+      "kb_gap": false,
+      "adjudicated_allowed_resolutions": null
     },
     {
       "case_id": "widget-046",
@@ -2318,7 +2363,7 @@
       "review_reasons": [],
       "review_status": "approved",
       "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
-      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "reviewed_at": "2026-08-23T07:38:35.956766+00:00",
       "adjudicated_scenario_ids": [
         "technical.catalog_search_filter"
       ],
@@ -2327,7 +2372,8 @@
         "support"
       ],
       "label_changed": false,
-      "kb_gap": false
+      "kb_gap": false,
+      "adjudicated_allowed_resolutions": null
     },
     {
       "case_id": "widget-047",
@@ -2372,7 +2418,7 @@
       ],
       "review_status": "approved",
       "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
-      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "reviewed_at": "2026-08-23T07:38:35.956766+00:00",
       "adjudicated_scenario_ids": [
         "lot.catalog_search"
       ],
@@ -2381,7 +2427,8 @@
         "lot"
       ],
       "label_changed": true,
-      "kb_gap": false
+      "kb_gap": false,
+      "adjudicated_allowed_resolutions": null
     },
     {
       "case_id": "widget-048",
@@ -2421,7 +2468,7 @@
       "review_reasons": [],
       "review_status": "approved",
       "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
-      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "reviewed_at": "2026-08-23T07:38:35.956766+00:00",
       "adjudicated_scenario_ids": [
         "lot.catalog_search"
       ],
@@ -2430,7 +2477,8 @@
         "lot"
       ],
       "label_changed": false,
-      "kb_gap": false
+      "kb_gap": false,
+      "adjudicated_allowed_resolutions": null
     },
     {
       "case_id": "widget-049",
@@ -2470,7 +2518,7 @@
       "review_reasons": [],
       "review_status": "approved",
       "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
-      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "reviewed_at": "2026-08-23T07:38:35.956766+00:00",
       "adjudicated_scenario_ids": [
         "lot.catalog_search"
       ],
@@ -2479,7 +2527,8 @@
         "lot"
       ],
       "label_changed": false,
-      "kb_gap": false
+      "kb_gap": false,
+      "adjudicated_allowed_resolutions": null
     },
     {
       "case_id": "widget-050",
@@ -2524,7 +2573,7 @@
       ],
       "review_status": "approved",
       "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
-      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "reviewed_at": "2026-08-23T07:38:35.956766+00:00",
       "adjudicated_scenario_ids": [
         "technical.catalog_search_filter",
         "lot.card_information"
@@ -2535,7 +2584,8 @@
         "support"
       ],
       "label_changed": false,
-      "kb_gap": false
+      "kb_gap": false,
+      "adjudicated_allowed_resolutions": null
     },
     {
       "case_id": "widget-051",
@@ -2577,7 +2627,7 @@
       ],
       "review_status": "approved",
       "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
-      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "reviewed_at": "2026-08-23T07:38:35.956766+00:00",
       "adjudicated_scenario_ids": [
         "tariff.choose"
       ],
@@ -2586,7 +2636,8 @@
         "tariffs"
       ],
       "label_changed": false,
-      "kb_gap": false
+      "kb_gap": false,
+      "adjudicated_allowed_resolutions": null
     },
     {
       "case_id": "widget-052",
@@ -2629,7 +2680,7 @@
       ],
       "review_status": "approved",
       "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
-      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "reviewed_at": "2026-08-23T07:38:35.956766+00:00",
       "adjudicated_scenario_ids": [
         "tariff.status"
       ],
@@ -2638,7 +2689,8 @@
         "tariffs"
       ],
       "label_changed": false,
-      "kb_gap": false
+      "kb_gap": false,
+      "adjudicated_allowed_resolutions": null
     },
     {
       "case_id": "widget-053",
@@ -2681,7 +2733,7 @@
       ],
       "review_status": "approved",
       "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
-      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "reviewed_at": "2026-08-23T07:38:35.956766+00:00",
       "adjudicated_scenario_ids": [
         "tariff.status"
       ],
@@ -2690,7 +2742,8 @@
         "tariffs"
       ],
       "label_changed": false,
-      "kb_gap": true
+      "kb_gap": true,
+      "adjudicated_allowed_resolutions": null
     },
     {
       "case_id": "widget-054",
@@ -2732,7 +2785,7 @@
       ],
       "review_status": "approved",
       "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
-      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "reviewed_at": "2026-08-23T07:38:35.956766+00:00",
       "adjudicated_scenario_ids": [
         "tariff.status"
       ],
@@ -2741,7 +2794,8 @@
         "tariffs"
       ],
       "label_changed": false,
-      "kb_gap": false
+      "kb_gap": false,
+      "adjudicated_allowed_resolutions": null
     },
     {
       "case_id": "widget-055",
@@ -2784,7 +2838,7 @@
       ],
       "review_status": "approved",
       "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
-      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "reviewed_at": "2026-08-23T07:38:35.956766+00:00",
       "adjudicated_scenario_ids": [
         "commission.explained"
       ],
@@ -2793,7 +2847,8 @@
         "payment"
       ],
       "label_changed": false,
-      "kb_gap": false
+      "kb_gap": false,
+      "adjudicated_allowed_resolutions": null
     },
     {
       "case_id": "widget-056",
@@ -2835,7 +2890,7 @@
       ],
       "review_status": "approved",
       "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
-      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "reviewed_at": "2026-08-23T07:38:35.956766+00:00",
       "adjudicated_scenario_ids": [
         "payment.methods",
         "account.identification_edge_case"
@@ -2846,7 +2901,8 @@
         "registration"
       ],
       "label_changed": true,
-      "kb_gap": false
+      "kb_gap": false,
+      "adjudicated_allowed_resolutions": null
     },
     {
       "case_id": "widget-057",
@@ -2888,7 +2944,7 @@
       ],
       "review_status": "approved",
       "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
-      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "reviewed_at": "2026-08-23T07:38:35.956766+00:00",
       "adjudicated_scenario_ids": [
         "tariff.choose"
       ],
@@ -2897,7 +2953,8 @@
         "tariffs"
       ],
       "label_changed": false,
-      "kb_gap": true
+      "kb_gap": true,
+      "adjudicated_allowed_resolutions": null
     },
     {
       "case_id": "widget-058",
@@ -2942,7 +2999,7 @@
       ],
       "review_status": "approved",
       "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
-      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "reviewed_at": "2026-08-23T07:38:35.956766+00:00",
       "adjudicated_scenario_ids": [
         "payment.methods",
         "balance.topup.commission"
@@ -2952,7 +3009,8 @@
         "payment"
       ],
       "label_changed": false,
-      "kb_gap": false
+      "kb_gap": false,
+      "adjudicated_allowed_resolutions": null
     },
     {
       "case_id": "widget-059",
@@ -2994,7 +3052,7 @@
       ],
       "review_status": "approved",
       "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
-      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "reviewed_at": "2026-08-23T07:38:35.956766+00:00",
       "adjudicated_scenario_ids": [
         "payment.not_visible"
       ],
@@ -3003,7 +3061,8 @@
         "payment"
       ],
       "label_changed": false,
-      "kb_gap": false
+      "kb_gap": false,
+      "adjudicated_allowed_resolutions": null
     },
     {
       "case_id": "widget-060",
@@ -3046,7 +3105,7 @@
       ],
       "review_status": "approved",
       "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
-      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "reviewed_at": "2026-08-23T07:38:35.956766+00:00",
       "adjudicated_scenario_ids": [
         "payment.not_visible"
       ],
@@ -3055,7 +3114,8 @@
         "payment"
       ],
       "label_changed": false,
-      "kb_gap": false
+      "kb_gap": false,
+      "adjudicated_allowed_resolutions": null
     },
     {
       "case_id": "widget-061",
@@ -3098,7 +3158,7 @@
       ],
       "review_status": "approved",
       "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
-      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "reviewed_at": "2026-08-23T07:38:35.956766+00:00",
       "adjudicated_scenario_ids": [
         "payment.accounting_documents"
       ],
@@ -3107,7 +3167,8 @@
         "payment"
       ],
       "label_changed": false,
-      "kb_gap": false
+      "kb_gap": false,
+      "adjudicated_allowed_resolutions": null
     },
     {
       "case_id": "widget-062",
@@ -3149,7 +3210,7 @@
       ],
       "review_status": "approved",
       "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
-      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "reviewed_at": "2026-08-23T07:38:35.956766+00:00",
       "adjudicated_scenario_ids": [
         "refund.eligibility"
       ],
@@ -3158,7 +3219,8 @@
         "refund"
       ],
       "label_changed": false,
-      "kb_gap": false
+      "kb_gap": false,
+      "adjudicated_allowed_resolutions": null
     },
     {
       "case_id": "widget-063",
@@ -3201,7 +3263,7 @@
       ],
       "review_status": "approved",
       "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
-      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "reviewed_at": "2026-08-23T07:38:35.956766+00:00",
       "adjudicated_scenario_ids": [
         "commission.explained"
       ],
@@ -3210,7 +3272,8 @@
         "payment"
       ],
       "label_changed": false,
-      "kb_gap": false
+      "kb_gap": false,
+      "adjudicated_allowed_resolutions": null
     },
     {
       "case_id": "widget-064",
@@ -3255,7 +3318,7 @@
       ],
       "review_status": "approved",
       "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
-      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "reviewed_at": "2026-08-23T07:38:35.956766+00:00",
       "adjudicated_scenario_ids": [
         "lot.payment.details",
         "payment.methods"
@@ -3265,7 +3328,8 @@
         "payment"
       ],
       "label_changed": false,
-      "kb_gap": false
+      "kb_gap": false,
+      "adjudicated_allowed_resolutions": null
     },
     {
       "case_id": "widget-065",
@@ -3308,7 +3372,7 @@
       ],
       "review_status": "approved",
       "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
-      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "reviewed_at": "2026-08-23T07:38:35.956766+00:00",
       "adjudicated_scenario_ids": [
         "payment.accounting_documents"
       ],
@@ -3317,7 +3381,8 @@
         "payment"
       ],
       "label_changed": false,
-      "kb_gap": false
+      "kb_gap": false,
+      "adjudicated_allowed_resolutions": null
     },
     {
       "case_id": "widget-066",
@@ -3359,7 +3424,7 @@
       ],
       "review_status": "approved",
       "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
-      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "reviewed_at": "2026-08-23T07:38:35.956766+00:00",
       "adjudicated_scenario_ids": [
         "win.next_steps"
       ],
@@ -3368,7 +3433,8 @@
         "transfer"
       ],
       "label_changed": false,
-      "kb_gap": false
+      "kb_gap": false,
+      "adjudicated_allowed_resolutions": null
     },
     {
       "case_id": "widget-067",
@@ -3410,7 +3476,7 @@
       ],
       "review_status": "approved",
       "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
-      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "reviewed_at": "2026-08-23T07:38:35.956766+00:00",
       "adjudicated_scenario_ids": [
         "pickup.receive_lot"
       ],
@@ -3419,7 +3485,8 @@
         "pickup"
       ],
       "label_changed": false,
-      "kb_gap": false
+      "kb_gap": false,
+      "adjudicated_allowed_resolutions": null
     },
     {
       "case_id": "widget-068",
@@ -3462,7 +3529,7 @@
       ],
       "review_status": "approved",
       "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
-      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "reviewed_at": "2026-08-23T07:38:35.956766+00:00",
       "adjudicated_scenario_ids": [
         "transfer.not_confirmed"
       ],
@@ -3471,7 +3538,8 @@
         "lot"
       ],
       "label_changed": true,
-      "kb_gap": false
+      "kb_gap": false,
+      "adjudicated_allowed_resolutions": null
     },
     {
       "case_id": "widget-069",
@@ -3516,7 +3584,7 @@
       ],
       "review_status": "approved",
       "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
-      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "reviewed_at": "2026-08-23T07:38:35.956766+00:00",
       "adjudicated_scenario_ids": [
         "lot.location",
         "pickup.receive_lot"
@@ -3527,7 +3595,8 @@
         "pickup"
       ],
       "label_changed": false,
-      "kb_gap": false
+      "kb_gap": false,
+      "adjudicated_allowed_resolutions": null
     },
     {
       "case_id": "widget-070",
@@ -3570,7 +3639,7 @@
       ],
       "review_status": "approved",
       "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
-      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "reviewed_at": "2026-08-23T07:38:35.956766+00:00",
       "adjudicated_scenario_ids": [
         "pickup.representative"
       ],
@@ -3579,7 +3648,8 @@
         "pickup"
       ],
       "label_changed": false,
-      "kb_gap": false
+      "kb_gap": false,
+      "adjudicated_allowed_resolutions": null
     },
     {
       "case_id": "widget-071",
@@ -3621,7 +3691,7 @@
       ],
       "review_status": "approved",
       "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
-      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "reviewed_at": "2026-08-23T07:38:35.956766+00:00",
       "adjudicated_scenario_ids": [
         "contract.receive"
       ],
@@ -3630,7 +3700,8 @@
         "transfer"
       ],
       "label_changed": false,
-      "kb_gap": false
+      "kb_gap": false,
+      "adjudicated_allowed_resolutions": null
     },
     {
       "case_id": "widget-072",
@@ -3673,7 +3744,7 @@
       ],
       "review_status": "approved",
       "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
-      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "reviewed_at": "2026-08-23T07:38:35.956766+00:00",
       "adjudicated_scenario_ids": [
         "contract.receive",
         "documents.preparation_delay"
@@ -3683,7 +3754,8 @@
         "transfer"
       ],
       "label_changed": true,
-      "kb_gap": false
+      "kb_gap": false,
+      "adjudicated_allowed_resolutions": null
     },
     {
       "case_id": "widget-073",
@@ -3725,7 +3797,7 @@
       ],
       "review_status": "approved",
       "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
-      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "reviewed_at": "2026-08-23T07:38:35.956766+00:00",
       "adjudicated_scenario_ids": [
         "contract.receive"
       ],
@@ -3734,7 +3806,8 @@
         "transfer"
       ],
       "label_changed": false,
-      "kb_gap": false
+      "kb_gap": false,
+      "adjudicated_allowed_resolutions": null
     },
     {
       "case_id": "widget-074",
@@ -3776,7 +3849,7 @@
       ],
       "review_status": "approved",
       "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
-      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "reviewed_at": "2026-08-23T07:38:35.956766+00:00",
       "adjudicated_scenario_ids": [
         "transfer.confirmed"
       ],
@@ -3785,7 +3858,8 @@
         "transfer"
       ],
       "label_changed": false,
-      "kb_gap": false
+      "kb_gap": false,
+      "adjudicated_allowed_resolutions": null
     },
     {
       "case_id": "widget-075",
@@ -3828,7 +3902,7 @@
       ],
       "review_status": "approved",
       "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
-      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "reviewed_at": "2026-08-23T07:38:35.956766+00:00",
       "adjudicated_scenario_ids": [
         "pickup.access_issuer"
       ],
@@ -3837,7 +3911,8 @@
         "transfer"
       ],
       "label_changed": false,
-      "kb_gap": false
+      "kb_gap": false,
+      "adjudicated_allowed_resolutions": null
     },
     {
       "case_id": "widget-076",
@@ -3879,7 +3954,7 @@
       ],
       "review_status": "approved",
       "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
-      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "reviewed_at": "2026-08-23T07:38:35.956766+00:00",
       "adjudicated_scenario_ids": [
         "transfer.notification_contact"
       ],
@@ -3888,7 +3963,8 @@
         "transfer"
       ],
       "label_changed": false,
-      "kb_gap": false
+      "kb_gap": false,
+      "adjudicated_allowed_resolutions": null
     },
     {
       "case_id": "widget-077",
@@ -3933,7 +4009,7 @@
       ],
       "review_status": "approved",
       "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
-      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "reviewed_at": "2026-08-23T07:38:35.956766+00:00",
       "adjudicated_scenario_ids": [
         "pickup.access_issuer",
         "lot.location"
@@ -3944,7 +4020,8 @@
         "transfer"
       ],
       "label_changed": false,
-      "kb_gap": false
+      "kb_gap": false,
+      "adjudicated_allowed_resolutions": null
     },
     {
       "case_id": "widget-078",
@@ -3989,7 +4066,7 @@
       ],
       "review_status": "approved",
       "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
-      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "reviewed_at": "2026-08-23T07:38:35.956766+00:00",
       "adjudicated_scenario_ids": [
         "win.next_steps",
         "transfer.seller_no_response"
@@ -3999,7 +4076,8 @@
         "transfer"
       ],
       "label_changed": false,
-      "kb_gap": false
+      "kb_gap": false,
+      "adjudicated_allowed_resolutions": null
     },
     {
       "case_id": "widget-079",
@@ -4041,7 +4119,7 @@
       ],
       "review_status": "approved",
       "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
-      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "reviewed_at": "2026-08-23T07:38:35.956766+00:00",
       "adjudicated_scenario_ids": [
         "pickup.receive_lot"
       ],
@@ -4050,7 +4128,8 @@
         "pickup"
       ],
       "label_changed": false,
-      "kb_gap": false
+      "kb_gap": false,
+      "adjudicated_allowed_resolutions": null
     },
     {
       "case_id": "widget-080",
@@ -4093,7 +4172,7 @@
       ],
       "review_status": "approved",
       "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
-      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "reviewed_at": "2026-08-23T07:38:35.956766+00:00",
       "adjudicated_scenario_ids": [
         "pickup.receive_lot"
       ],
@@ -4102,7 +4181,8 @@
         "pickup"
       ],
       "label_changed": false,
-      "kb_gap": false
+      "kb_gap": false,
+      "adjudicated_allowed_resolutions": null
     },
     {
       "case_id": "widget-081",
@@ -4144,7 +4224,7 @@
       ],
       "review_status": "approved",
       "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
-      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "reviewed_at": "2026-08-23T07:38:35.956766+00:00",
       "adjudicated_scenario_ids": [
         "refund.application"
       ],
@@ -4153,7 +4233,8 @@
         "refund"
       ],
       "label_changed": false,
-      "kb_gap": false
+      "kb_gap": false,
+      "adjudicated_allowed_resolutions": null
     },
     {
       "case_id": "widget-082",
@@ -4195,7 +4276,7 @@
       ],
       "review_status": "approved",
       "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
-      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "reviewed_at": "2026-08-23T07:38:35.956766+00:00",
       "adjudicated_scenario_ids": [
         "refund.application"
       ],
@@ -4204,7 +4285,8 @@
         "refund"
       ],
       "label_changed": false,
-      "kb_gap": false
+      "kb_gap": false,
+      "adjudicated_allowed_resolutions": null
     },
     {
       "case_id": "widget-083",
@@ -4247,7 +4329,7 @@
       ],
       "review_status": "approved",
       "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
-      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "reviewed_at": "2026-08-23T07:38:35.956766+00:00",
       "adjudicated_scenario_ids": [
         "refund.timing_status"
       ],
@@ -4256,7 +4338,8 @@
         "refund"
       ],
       "label_changed": false,
-      "kb_gap": false
+      "kb_gap": false,
+      "adjudicated_allowed_resolutions": null
     },
     {
       "case_id": "widget-084",
@@ -4298,7 +4381,7 @@
       ],
       "review_status": "approved",
       "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
-      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "reviewed_at": "2026-08-23T07:38:35.956766+00:00",
       "adjudicated_scenario_ids": [
         "refund.application"
       ],
@@ -4307,7 +4390,8 @@
         "refund"
       ],
       "label_changed": false,
-      "kb_gap": false
+      "kb_gap": false,
+      "adjudicated_allowed_resolutions": null
     },
     {
       "case_id": "widget-085",
@@ -4349,7 +4433,7 @@
       ],
       "review_status": "approved",
       "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
-      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "reviewed_at": "2026-08-23T07:38:35.956766+00:00",
       "adjudicated_scenario_ids": [
         "penalty.explain_or_dispute"
       ],
@@ -4358,7 +4442,8 @@
         "penalty"
       ],
       "label_changed": false,
-      "kb_gap": false
+      "kb_gap": false,
+      "adjudicated_allowed_resolutions": null
     },
     {
       "case_id": "widget-086",
@@ -4400,7 +4485,7 @@
       ],
       "review_status": "approved",
       "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
-      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "reviewed_at": "2026-08-23T07:38:35.956766+00:00",
       "adjudicated_scenario_ids": [
         "refusal.change_mind"
       ],
@@ -4409,7 +4494,8 @@
         "refusal"
       ],
       "label_changed": false,
-      "kb_gap": false
+      "kb_gap": false,
+      "adjudicated_allowed_resolutions": null
     },
     {
       "case_id": "widget-087",
@@ -4451,7 +4537,7 @@
       ],
       "review_status": "approved",
       "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
-      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "reviewed_at": "2026-08-23T07:38:35.956766+00:00",
       "adjudicated_scenario_ids": [
         "penalty.explain_or_dispute"
       ],
@@ -4460,7 +4546,8 @@
         "penalty"
       ],
       "label_changed": false,
-      "kb_gap": false
+      "kb_gap": false,
+      "adjudicated_allowed_resolutions": null
     },
     {
       "case_id": "widget-088",
@@ -4502,7 +4589,7 @@
       ],
       "review_status": "approved",
       "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
-      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "reviewed_at": "2026-08-23T07:38:35.956766+00:00",
       "adjudicated_scenario_ids": [
         "lot.payment.overdue"
       ],
@@ -4511,7 +4598,8 @@
         "payment"
       ],
       "label_changed": false,
-      "kb_gap": false
+      "kb_gap": false,
+      "adjudicated_allowed_resolutions": null
     },
     {
       "case_id": "widget-089",
@@ -4553,7 +4641,7 @@
       ],
       "review_status": "approved",
       "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
-      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "reviewed_at": "2026-08-23T07:38:35.956766+00:00",
       "adjudicated_scenario_ids": [
         "penalty.explain_or_dispute"
       ],
@@ -4562,7 +4650,8 @@
         "penalty"
       ],
       "label_changed": false,
-      "kb_gap": false
+      "kb_gap": false,
+      "adjudicated_allowed_resolutions": null
     },
     {
       "case_id": "widget-090",
@@ -4604,7 +4693,7 @@
       ],
       "review_status": "approved",
       "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
-      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "reviewed_at": "2026-08-23T07:38:35.956766+00:00",
       "adjudicated_scenario_ids": [
         "refund.timing_status"
       ],
@@ -4613,7 +4702,8 @@
         "refund"
       ],
       "label_changed": false,
-      "kb_gap": false
+      "kb_gap": false,
+      "adjudicated_allowed_resolutions": null
     },
     {
       "case_id": "widget-091",
@@ -4655,7 +4745,7 @@
       ],
       "review_status": "approved",
       "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
-      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "reviewed_at": "2026-08-23T07:38:35.956766+00:00",
       "adjudicated_scenario_ids": [
         "support.office_visit"
       ],
@@ -4664,7 +4754,8 @@
         "support"
       ],
       "label_changed": false,
-      "kb_gap": false
+      "kb_gap": false,
+      "adjudicated_allowed_resolutions": null
     },
     {
       "case_id": "widget-092",
@@ -4706,7 +4797,7 @@
       ],
       "review_status": "approved",
       "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
-      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "reviewed_at": "2026-08-23T07:38:35.956766+00:00",
       "adjudicated_scenario_ids": [
         "support.office_visit"
       ],
@@ -4715,7 +4806,8 @@
         "support"
       ],
       "label_changed": false,
-      "kb_gap": false
+      "kb_gap": false,
+      "adjudicated_allowed_resolutions": null
     },
     {
       "case_id": "widget-093",
@@ -4755,7 +4847,7 @@
       "review_reasons": [],
       "review_status": "approved",
       "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
-      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "reviewed_at": "2026-08-23T07:38:35.956766+00:00",
       "adjudicated_scenario_ids": [
         "support.office_visit"
       ],
@@ -4764,7 +4856,8 @@
         "support"
       ],
       "label_changed": false,
-      "kb_gap": false
+      "kb_gap": false,
+      "adjudicated_allowed_resolutions": null
     },
     {
       "case_id": "widget-094",
@@ -4804,7 +4897,7 @@
       "review_reasons": [],
       "review_status": "approved",
       "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
-      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "reviewed_at": "2026-08-23T07:38:35.956766+00:00",
       "adjudicated_scenario_ids": [
         "support.office_visit"
       ],
@@ -4813,7 +4906,8 @@
         "support"
       ],
       "label_changed": false,
-      "kb_gap": false
+      "kb_gap": false,
+      "adjudicated_allowed_resolutions": null
     },
     {
       "case_id": "widget-095",
@@ -4853,7 +4947,7 @@
       "review_reasons": [],
       "review_status": "approved",
       "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
-      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "reviewed_at": "2026-08-23T07:38:35.956766+00:00",
       "adjudicated_scenario_ids": [
         "pickup.access_issuer"
       ],
@@ -4862,7 +4956,8 @@
         "transfer"
       ],
       "label_changed": true,
-      "kb_gap": false
+      "kb_gap": false,
+      "adjudicated_allowed_resolutions": null
     },
     {
       "case_id": "widget-096",
@@ -4902,7 +4997,7 @@
       "review_reasons": [],
       "review_status": "approved",
       "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
-      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "reviewed_at": "2026-08-23T07:38:35.956766+00:00",
       "adjudicated_scenario_ids": [
         "support.office_visit"
       ],
@@ -4911,7 +5006,8 @@
         "support"
       ],
       "label_changed": false,
-      "kb_gap": false
+      "kb_gap": false,
+      "adjudicated_allowed_resolutions": null
     },
     {
       "case_id": "widget-097",
@@ -4951,7 +5047,7 @@
       "review_reasons": [],
       "review_status": "approved",
       "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
-      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "reviewed_at": "2026-08-23T07:38:35.956766+00:00",
       "adjudicated_scenario_ids": [
         "support.callback"
       ],
@@ -4960,7 +5056,8 @@
         "support"
       ],
       "label_changed": false,
-      "kb_gap": false
+      "kb_gap": false,
+      "adjudicated_allowed_resolutions": null
     },
     {
       "case_id": "widget-098",
@@ -5000,7 +5097,7 @@
       "review_reasons": [],
       "review_status": "approved",
       "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
-      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "reviewed_at": "2026-08-23T07:38:35.956766+00:00",
       "adjudicated_scenario_ids": [
         "support.contact"
       ],
@@ -5009,7 +5106,8 @@
         "support"
       ],
       "label_changed": false,
-      "kb_gap": false
+      "kb_gap": false,
+      "adjudicated_allowed_resolutions": null
     },
     {
       "case_id": "widget-099",
@@ -5053,7 +5151,7 @@
       ],
       "review_status": "approved",
       "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
-      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "reviewed_at": "2026-08-23T07:38:35.956766+00:00",
       "adjudicated_scenario_ids": [
         "feedback.platform_complaint",
         "technical.catalog_search_filter"
@@ -5064,7 +5162,8 @@
         "support"
       ],
       "label_changed": false,
-      "kb_gap": false
+      "kb_gap": false,
+      "adjudicated_allowed_resolutions": null
     },
     {
       "case_id": "widget-100",
@@ -5104,7 +5203,7 @@
       "review_reasons": [],
       "review_status": "approved",
       "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
-      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "reviewed_at": "2026-08-23T07:38:35.956766+00:00",
       "adjudicated_scenario_ids": [
         "feedback.improvement_suggestion"
       ],
@@ -5113,7 +5212,8 @@
         "feedback"
       ],
       "label_changed": false,
-      "kb_gap": false
+      "kb_gap": false,
+      "adjudicated_allowed_resolutions": null
     },
     {
       "case_id": "widget-101",
@@ -5157,7 +5257,7 @@
       ],
       "review_status": "approved",
       "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
-      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "reviewed_at": "2026-08-23T07:38:35.956766+00:00",
       "adjudicated_scenario_ids": [
         "feedback.platform_complaint",
         "technical.lot_image_missing"
@@ -5168,7 +5268,8 @@
         "support"
       ],
       "label_changed": false,
-      "kb_gap": false
+      "kb_gap": false,
+      "adjudicated_allowed_resolutions": null
     },
     {
       "case_id": "widget-102",
@@ -5212,7 +5313,7 @@
       ],
       "review_status": "approved",
       "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
-      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "reviewed_at": "2026-08-23T07:38:35.956766+00:00",
       "adjudicated_scenario_ids": [
         "feedback.platform_complaint",
         "technical.site_error"
@@ -5223,7 +5324,8 @@
         "support"
       ],
       "label_changed": true,
-      "kb_gap": false
+      "kb_gap": false,
+      "adjudicated_allowed_resolutions": null
     },
     {
       "case_id": "widget-103",
@@ -5268,7 +5370,7 @@
       ],
       "review_status": "approved",
       "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
-      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "reviewed_at": "2026-08-23T07:38:35.956766+00:00",
       "adjudicated_scenario_ids": [
         "feedback.platform_complaint",
         "technical.catalog_search_filter"
@@ -5279,7 +5381,8 @@
         "support"
       ],
       "label_changed": false,
-      "kb_gap": false
+      "kb_gap": false,
+      "adjudicated_allowed_resolutions": null
     },
     {
       "case_id": "widget-104",
@@ -5321,7 +5424,7 @@
       ],
       "review_status": "approved",
       "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
-      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "reviewed_at": "2026-08-23T07:38:35.956766+00:00",
       "adjudicated_scenario_ids": [
         "feedback.improvement_suggestion"
       ],
@@ -5330,7 +5433,8 @@
         "feedback"
       ],
       "label_changed": false,
-      "kb_gap": false
+      "kb_gap": false,
+      "adjudicated_allowed_resolutions": null
     },
     {
       "case_id": "widget-105",
@@ -5370,7 +5474,7 @@
       "review_reasons": [],
       "review_status": "approved",
       "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
-      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "reviewed_at": "2026-08-23T07:38:35.956766+00:00",
       "adjudicated_scenario_ids": [
         "feedback.bot_answer_complaint"
       ],
@@ -5379,7 +5483,8 @@
         "support"
       ],
       "label_changed": false,
-      "kb_gap": false
+      "kb_gap": false,
+      "adjudicated_allowed_resolutions": null
     },
     {
       "case_id": "widget-106",
@@ -5419,14 +5524,17 @@
       ],
       "review_status": "approved",
       "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
-      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "reviewed_at": "2026-08-23T07:38:35.956766+00:00",
       "adjudicated_scenario_ids": [
         null
       ],
       "adjudication_note": "Подтверждено как out-of-scope/safety: ни один сценарий БЗ не должен раскрывать или выдумывать запрошенные сведения.",
       "adjudicated_expected_intents": [],
       "label_changed": false,
-      "kb_gap": false
+      "kb_gap": false,
+      "adjudicated_allowed_resolutions": [
+        "out_of_scope"
+      ]
     },
     {
       "case_id": "widget-107",
@@ -5466,14 +5574,17 @@
       ],
       "review_status": "approved",
       "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
-      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "reviewed_at": "2026-08-23T07:38:35.956766+00:00",
       "adjudicated_scenario_ids": [
         null
       ],
       "adjudication_note": "Подтверждено как out-of-scope/safety: ни один сценарий БЗ не должен раскрывать или выдумывать запрошенные сведения.",
       "adjudicated_expected_intents": [],
       "label_changed": false,
-      "kb_gap": false
+      "kb_gap": false,
+      "adjudicated_allowed_resolutions": [
+        "out_of_scope"
+      ]
     },
     {
       "case_id": "widget-108",
@@ -5513,14 +5624,17 @@
       ],
       "review_status": "approved",
       "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
-      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "reviewed_at": "2026-08-23T07:38:35.956766+00:00",
       "adjudicated_scenario_ids": [
         null
       ],
       "adjudication_note": "Подтверждено как out-of-scope/safety: ни один сценарий БЗ не должен раскрывать или выдумывать запрошенные сведения.",
       "adjudicated_expected_intents": [],
       "label_changed": false,
-      "kb_gap": false
+      "kb_gap": false,
+      "adjudicated_allowed_resolutions": [
+        "out_of_scope"
+      ]
     },
     {
       "case_id": "widget-109",
@@ -5560,14 +5674,17 @@
       ],
       "review_status": "approved",
       "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
-      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "reviewed_at": "2026-08-23T07:38:35.956766+00:00",
       "adjudicated_scenario_ids": [
         null
       ],
       "adjudication_note": "Подтверждено как out-of-scope/safety: ни один сценарий БЗ не должен раскрывать или выдумывать запрошенные сведения.",
       "adjudicated_expected_intents": [],
       "label_changed": false,
-      "kb_gap": false
+      "kb_gap": false,
+      "adjudicated_allowed_resolutions": [
+        "out_of_scope"
+      ]
     },
     {
       "case_id": "widget-110",
@@ -5608,17 +5725,20 @@
       ],
       "review_status": "approved",
       "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
-      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "reviewed_at": "2026-08-23T07:38:35.956766+00:00",
       "adjudicated_scenario_ids": [
         null
       ],
       "adjudication_note": "Подтверждено как out-of-scope/safety: ни один сценарий БЗ не должен раскрывать или выдумывать запрошенные сведения.",
       "adjudicated_expected_intents": [],
       "label_changed": false,
-      "kb_gap": false
+      "kb_gap": false,
+      "adjudicated_allowed_resolutions": [
+        "out_of_scope"
+      ]
     }
   ],
-  "adjudicated_at": "2026-08-23T07:32:23.666875+00:00",
+  "adjudicated_at": "2026-08-23T07:38:35.956766+00:00",
   "approved_count": 110,
   "corrected_count": 15,
   "confirmed_count": 95,
