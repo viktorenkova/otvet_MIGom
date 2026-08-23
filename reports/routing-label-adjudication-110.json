@@ -4,7 +4,7 @@
   "purpose": "Domain-expert adjudication queue for the retrospectively labelled 110 live-widget questions.",
   "policy": "Labels are not release-authoritative until review_status=approved and reviewer/reviewed_at are set.",
   "record_count": 110,
-  "pending_count": 110,
+  "pending_count": 0,
   "records": [
     {
       "case_id": "widget-001",
@@ -44,11 +44,18 @@
       "review_reasons": [
         "current_quality_failure"
       ],
-      "review_status": "pending_domain_expert",
-      "reviewer": null,
-      "reviewed_at": null,
-      "adjudicated_scenario_ids": null,
-      "adjudication_note": null
+      "review_status": "approved",
+      "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
+      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "adjudicated_scenario_ids": [
+        "platform.about"
+      ],
+      "adjudication_note": "Исправлено по смыслу вопроса и approved facts: platform.about — Что такое MIGTORG и как распределены роли (источник: Approved MIGTORG knowledge base and expert-reviewed platform model).",
+      "adjudicated_expected_intents": [
+        "platform"
+      ],
+      "label_changed": true,
+      "kb_gap": false
     },
     {
       "case_id": "widget-002",
@@ -86,11 +93,18 @@
       ],
       "review_priority": "low",
       "review_reasons": [],
-      "review_status": "pending_domain_expert",
-      "reviewer": null,
-      "reviewed_at": null,
-      "adjudicated_scenario_ids": null,
-      "adjudication_note": null
+      "review_status": "approved",
+      "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
+      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "adjudicated_scenario_ids": [
+        "buyer.get_started"
+      ],
+      "adjudication_note": "Подтверждено по смыслу вопроса и approved facts: buyer.get_started — Как начать покупать и участвовать в торгах (источник: approved MIGTORG knowledge base).",
+      "adjudicated_expected_intents": [
+        "bidding"
+      ],
+      "label_changed": false,
+      "kb_gap": false
     },
     {
       "case_id": "widget-003",
@@ -130,11 +144,18 @@
       "review_reasons": [
         "current_quality_failure"
       ],
-      "review_status": "pending_domain_expert",
-      "reviewer": null,
-      "reviewed_at": null,
-      "adjudicated_scenario_ids": null,
-      "adjudication_note": null
+      "review_status": "approved",
+      "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
+      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "adjudicated_scenario_ids": [
+        "buyer.get_started"
+      ],
+      "adjudication_note": "Подтверждено по смыслу вопроса и approved facts: buyer.get_started — Как начать покупать и участвовать в торгах (источник: approved MIGTORG knowledge base).",
+      "adjudicated_expected_intents": [
+        "bidding"
+      ],
+      "label_changed": false,
+      "kb_gap": false
     },
     {
       "case_id": "widget-004",
@@ -174,11 +195,18 @@
       "review_reasons": [
         "current_quality_failure"
       ],
-      "review_status": "pending_domain_expert",
-      "reviewer": null,
-      "reviewed_at": null,
-      "adjudicated_scenario_ids": null,
-      "adjudication_note": null
+      "review_status": "approved",
+      "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
+      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "adjudicated_scenario_ids": [
+        "buyer.get_started"
+      ],
+      "adjudication_note": "Подтверждено по смыслу вопроса и approved facts: buyer.get_started — Как начать покупать и участвовать в торгах (источник: approved MIGTORG knowledge base).",
+      "adjudicated_expected_intents": [
+        "bidding"
+      ],
+      "label_changed": false,
+      "kb_gap": false
     },
     {
       "case_id": "widget-005",
@@ -218,11 +246,18 @@
       "review_reasons": [
         "current_quality_failure"
       ],
-      "review_status": "pending_domain_expert",
-      "reviewer": null,
-      "reviewed_at": null,
-      "adjudicated_scenario_ids": null,
-      "adjudication_note": null
+      "review_status": "approved",
+      "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
+      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "adjudicated_scenario_ids": [
+        "buyer.get_started"
+      ],
+      "adjudication_note": "Подтверждено по смыслу вопроса и approved facts: buyer.get_started — Как начать покупать и участвовать в торгах (источник: approved MIGTORG knowledge base).",
+      "adjudicated_expected_intents": [
+        "bidding"
+      ],
+      "label_changed": false,
+      "kb_gap": false
     },
     {
       "case_id": "widget-006",
@@ -265,11 +300,20 @@
         "current_quality_failure",
         "multiple_or_null_acceptable_labels"
       ],
-      "review_status": "pending_domain_expert",
-      "reviewer": null,
-      "reviewed_at": null,
-      "adjudicated_scenario_ids": null,
-      "adjudication_note": null
+      "review_status": "approved",
+      "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
+      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "adjudicated_scenario_ids": [
+        "lot.catalog_search",
+        "tariff.demo"
+      ],
+      "adjudication_note": "Подтверждено по смыслу вопроса и approved facts: lot.catalog_search — Поиск лотов и фильтры каталога (источник: Approved MIGTORG catalog guidance); tariff.demo — Что доступно в демо-режиме (источник: Approved MIGTORG tariff knowledge and site demo rules).",
+      "adjudicated_expected_intents": [
+        "lot",
+        "tariffs"
+      ],
+      "label_changed": false,
+      "kb_gap": false
     },
     {
       "case_id": "widget-007",
@@ -309,11 +353,18 @@
       "review_reasons": [
         "current_quality_failure"
       ],
-      "review_status": "pending_domain_expert",
-      "reviewer": null,
-      "reviewed_at": null,
-      "adjudicated_scenario_ids": null,
-      "adjudication_note": null
+      "review_status": "approved",
+      "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
+      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "adjudicated_scenario_ids": [
+        "buyer.get_started"
+      ],
+      "adjudication_note": "Подтверждено по смыслу вопроса и approved facts: buyer.get_started — Как начать покупать и участвовать в торгах (источник: approved MIGTORG knowledge base).",
+      "adjudicated_expected_intents": [
+        "bidding"
+      ],
+      "label_changed": false,
+      "kb_gap": false
     },
     {
       "case_id": "widget-008",
@@ -355,11 +406,18 @@
         "current_quality_failure",
         "multiple_or_null_acceptable_labels"
       ],
-      "review_status": "pending_domain_expert",
-      "reviewer": null,
-      "reviewed_at": null,
-      "adjudicated_scenario_ids": null,
-      "adjudication_note": null
+      "review_status": "approved",
+      "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
+      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "adjudicated_scenario_ids": [
+        "buyer.get_started"
+      ],
+      "adjudication_note": "Исправлено по смыслу вопроса и approved facts: buyer.get_started — Как начать покупать и участвовать в торгах (источник: approved MIGTORG knowledge base).",
+      "adjudicated_expected_intents": [
+        "bidding"
+      ],
+      "label_changed": true,
+      "kb_gap": false
     },
     {
       "case_id": "widget-009",
@@ -399,11 +457,18 @@
       "review_reasons": [
         "current_quality_failure"
       ],
-      "review_status": "pending_domain_expert",
-      "reviewer": null,
-      "reviewed_at": null,
-      "adjudicated_scenario_ids": null,
-      "adjudication_note": null
+      "review_status": "approved",
+      "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
+      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "adjudicated_scenario_ids": [
+        "platform.about"
+      ],
+      "adjudication_note": "Исправлено по смыслу вопроса и approved facts: platform.about — Что такое MIGTORG и как распределены роли (источник: Approved MIGTORG knowledge base and expert-reviewed platform model).",
+      "adjudicated_expected_intents": [
+        "platform"
+      ],
+      "label_changed": true,
+      "kb_gap": false
     },
     {
       "case_id": "widget-010",
@@ -441,11 +506,18 @@
       ],
       "review_priority": "low",
       "review_reasons": [],
-      "review_status": "pending_domain_expert",
-      "reviewer": null,
-      "reviewed_at": null,
-      "adjudicated_scenario_ids": null,
-      "adjudication_note": null
+      "review_status": "approved",
+      "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
+      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "adjudicated_scenario_ids": [
+        "buyer.first_bid_checklist"
+      ],
+      "adjudication_note": "Подтверждено по смыслу вопроса и approved facts: buyer.first_bid_checklist — Что подготовить до первой ставки (источник: Approved MIGTORG first bid preparation checklist).",
+      "adjudicated_expected_intents": [
+        "bidding"
+      ],
+      "label_changed": false,
+      "kb_gap": false
     },
     {
       "case_id": "widget-011",
@@ -483,11 +555,18 @@
       ],
       "review_priority": "low",
       "review_reasons": [],
-      "review_status": "pending_domain_expert",
-      "reviewer": null,
-      "reviewed_at": null,
-      "adjudicated_scenario_ids": null,
-      "adjudication_note": null
+      "review_status": "approved",
+      "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
+      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "adjudicated_scenario_ids": [
+        "account.registration"
+      ],
+      "adjudication_note": "Подтверждено по смыслу вопроса и approved facts: account.registration — Регистрация покупателя и необходимые данные (источник: Approved MIGTORG registration knowledge).",
+      "adjudicated_expected_intents": [
+        "account"
+      ],
+      "label_changed": false,
+      "kb_gap": false
     },
     {
       "case_id": "widget-012",
@@ -525,11 +604,18 @@
       ],
       "review_priority": "low",
       "review_reasons": [],
-      "review_status": "pending_domain_expert",
-      "reviewer": null,
-      "reviewed_at": null,
-      "adjudicated_scenario_ids": null,
-      "adjudication_note": null
+      "review_status": "approved",
+      "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
+      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "adjudicated_scenario_ids": [
+        "account.registration"
+      ],
+      "adjudication_note": "Подтверждено по смыслу вопроса и approved facts: account.registration — Регистрация покупателя и необходимые данные (источник: Approved MIGTORG registration knowledge).",
+      "adjudicated_expected_intents": [
+        "account"
+      ],
+      "label_changed": false,
+      "kb_gap": false
     },
     {
       "case_id": "widget-013",
@@ -572,11 +658,20 @@
         "current_quality_failure",
         "multiple_or_null_acceptable_labels"
       ],
-      "review_status": "pending_domain_expert",
-      "reviewer": null,
-      "reviewed_at": null,
-      "adjudicated_scenario_ids": null,
-      "adjudication_note": null
+      "review_status": "approved",
+      "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
+      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "adjudicated_scenario_ids": [
+        "account.activation_pending",
+        "notification.delivery_problem"
+      ],
+      "adjudication_note": "Подтверждено по смыслу вопроса и approved facts: account.activation_pending — Аккаунт после регистрации не активирован (источник: Approved MIGTORG registration support answer); notification.delivery_problem — Не приходят уведомления или письма (источник: Approved MIGTORG notification troubleshooting answers).",
+      "adjudicated_expected_intents": [
+        "registration",
+        "technical"
+      ],
+      "label_changed": false,
+      "kb_gap": false
     },
     {
       "case_id": "widget-014",
@@ -616,11 +711,18 @@
       "review_reasons": [
         "current_quality_failure"
       ],
-      "review_status": "pending_domain_expert",
-      "reviewer": null,
-      "reviewed_at": null,
-      "adjudicated_scenario_ids": null,
-      "adjudication_note": null
+      "review_status": "approved",
+      "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
+      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "adjudicated_scenario_ids": [
+        "account.login_problem"
+      ],
+      "adjudication_note": "Подтверждено по смыслу вопроса и approved facts: account.login_problem — Не получается войти в личный кабинет (источник: approved MIGTORG knowledge base and reviewed support corpus).",
+      "adjudicated_expected_intents": [
+        "registration"
+      ],
+      "label_changed": false,
+      "kb_gap": false
     },
     {
       "case_id": "widget-015",
@@ -660,11 +762,18 @@
       "review_reasons": [
         "current_quality_failure"
       ],
-      "review_status": "pending_domain_expert",
-      "reviewer": null,
-      "reviewed_at": null,
-      "adjudicated_scenario_ids": null,
-      "adjudication_note": null
+      "review_status": "approved",
+      "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
+      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "adjudicated_scenario_ids": [
+        "account.login_problem"
+      ],
+      "adjudication_note": "Подтверждено по смыслу вопроса и approved facts: account.login_problem — Не получается войти в личный кабинет (источник: approved MIGTORG knowledge base and reviewed support corpus).",
+      "adjudicated_expected_intents": [
+        "registration"
+      ],
+      "label_changed": false,
+      "kb_gap": false
     },
     {
       "case_id": "widget-016",
@@ -702,11 +811,18 @@
       ],
       "review_priority": "low",
       "review_reasons": [],
-      "review_status": "pending_domain_expert",
-      "reviewer": null,
-      "reviewed_at": null,
-      "adjudicated_scenario_ids": null,
-      "adjudication_note": null
+      "review_status": "approved",
+      "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
+      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "adjudicated_scenario_ids": [
+        "seller.get_started"
+      ],
+      "adjudication_note": "Подтверждено по смыслу вопроса и approved facts: seller.get_started — Как подключиться и стать продавцом (источник: seller offer and approved MIGTORG knowledge base).",
+      "adjudicated_expected_intents": [
+        "registration"
+      ],
+      "label_changed": false,
+      "kb_gap": false
     },
     {
       "case_id": "widget-017",
@@ -746,11 +862,18 @@
       "review_reasons": [
         "current_quality_failure"
       ],
-      "review_status": "pending_domain_expert",
-      "reviewer": null,
-      "reviewed_at": null,
-      "adjudicated_scenario_ids": null,
-      "adjudication_note": null
+      "review_status": "approved",
+      "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
+      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "adjudicated_scenario_ids": [
+        "seller.get_started"
+      ],
+      "adjudication_note": "Подтверждено по смыслу вопроса и approved facts: seller.get_started — Как подключиться и стать продавцом (источник: seller offer and approved MIGTORG knowledge base).",
+      "adjudicated_expected_intents": [
+        "registration"
+      ],
+      "label_changed": false,
+      "kb_gap": false
     },
     {
       "case_id": "widget-018",
@@ -788,11 +911,18 @@
       ],
       "review_priority": "low",
       "review_reasons": [],
-      "review_status": "pending_domain_expert",
-      "reviewer": null,
-      "reviewed_at": null,
-      "adjudicated_scenario_ids": null,
-      "adjudication_note": null
+      "review_status": "approved",
+      "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
+      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "adjudicated_scenario_ids": [
+        "account.registration"
+      ],
+      "adjudication_note": "Подтверждено по смыслу вопроса и approved facts: account.registration — Регистрация покупателя и необходимые данные (источник: Approved MIGTORG registration knowledge).",
+      "adjudicated_expected_intents": [
+        "account"
+      ],
+      "label_changed": false,
+      "kb_gap": false
     },
     {
       "case_id": "widget-019",
@@ -830,11 +960,18 @@
       ],
       "review_priority": "low",
       "review_reasons": [],
-      "review_status": "pending_domain_expert",
-      "reviewer": null,
-      "reviewed_at": null,
-      "adjudicated_scenario_ids": null,
-      "adjudication_note": null
+      "review_status": "approved",
+      "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
+      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "adjudicated_scenario_ids": [
+        "account.blocked"
+      ],
+      "adjudication_note": "Подтверждено по смыслу вопроса и approved facts: account.blocked — Аккаунт заблокирован (источник: approved MIGTORG knowledge base and reviewed support corpus).",
+      "adjudicated_expected_intents": [
+        "registration"
+      ],
+      "label_changed": false,
+      "kb_gap": false
     },
     {
       "case_id": "widget-020",
@@ -874,11 +1011,18 @@
       "review_reasons": [
         "current_quality_failure"
       ],
-      "review_status": "pending_domain_expert",
-      "reviewer": null,
-      "reviewed_at": null,
-      "adjudicated_scenario_ids": null,
-      "adjudication_note": null
+      "review_status": "approved",
+      "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
+      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "adjudicated_scenario_ids": [
+        "account.credential_responsibility"
+      ],
+      "adjudication_note": "Подтверждено по смыслу вопроса и approved facts: account.credential_responsibility — Безопасность логина и ответственность за действия в аккаунте (источник: MIGTORG quotation rules clause 4.10; buyer offer clauses 2.7 and 3.1; seller offer clauses 2.2 and 3.1).",
+      "adjudicated_expected_intents": [
+        "registration"
+      ],
+      "label_changed": false,
+      "kb_gap": false
     },
     {
       "case_id": "widget-021",
@@ -916,11 +1060,18 @@
       ],
       "review_priority": "low",
       "review_reasons": [],
-      "review_status": "pending_domain_expert",
-      "reviewer": null,
-      "reviewed_at": null,
-      "adjudicated_scenario_ids": null,
-      "adjudication_note": null
+      "review_status": "approved",
+      "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
+      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "adjudicated_scenario_ids": [
+        "bid.place"
+      ],
+      "adjudication_note": "Подтверждено по смыслу вопроса и approved facts: bid.place — Как сделать ставку (источник: approved MIGTORG knowledge base and reviewed support corpus).",
+      "adjudicated_expected_intents": [
+        "bidding"
+      ],
+      "label_changed": false,
+      "kb_gap": false
     },
     {
       "case_id": "widget-022",
@@ -961,11 +1112,18 @@
       "review_reasons": [
         "multiple_or_null_acceptable_labels"
       ],
-      "review_status": "pending_domain_expert",
-      "reviewer": null,
-      "reviewed_at": null,
-      "adjudicated_scenario_ids": null,
-      "adjudication_note": null
+      "review_status": "approved",
+      "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
+      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "adjudicated_scenario_ids": [
+        "bid.place"
+      ],
+      "adjudication_note": "Исправлено по смыслу вопроса и approved facts: bid.place — Как сделать ставку (источник: approved MIGTORG knowledge base and reviewed support corpus).",
+      "adjudicated_expected_intents": [
+        "bidding"
+      ],
+      "label_changed": true,
+      "kb_gap": false
     },
     {
       "case_id": "widget-023",
@@ -1005,11 +1163,18 @@
       "review_reasons": [
         "current_quality_failure"
       ],
-      "review_status": "pending_domain_expert",
-      "reviewer": null,
-      "reviewed_at": null,
-      "adjudicated_scenario_ids": null,
-      "adjudication_note": null
+      "review_status": "approved",
+      "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
+      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "adjudicated_scenario_ids": [
+        "bid.autobid_extension"
+      ],
+      "adjudication_note": "Подтверждено по смыслу вопроса и approved facts: bid.autobid_extension — Автоставка и продление открытых торгов (источник: Approved MIGTORG open-auction rules).",
+      "adjudicated_expected_intents": [
+        "bidding"
+      ],
+      "label_changed": false,
+      "kb_gap": false
     },
     {
       "case_id": "widget-024",
@@ -1047,11 +1212,18 @@
       ],
       "review_priority": "low",
       "review_reasons": [],
-      "review_status": "pending_domain_expert",
-      "reviewer": null,
-      "reviewed_at": null,
-      "adjudicated_scenario_ids": null,
-      "adjudication_note": null
+      "review_status": "approved",
+      "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
+      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "adjudicated_scenario_ids": [
+        "bid.price_terms"
+      ],
+      "adjudication_note": "Подтверждено по смыслу вопроса и approved facts: bid.price_terms — Стартовая и текущая цена, шаг и минимальная ставка (источник: Approved MIGTORG quotation terminology and bid rules).",
+      "adjudicated_expected_intents": [
+        "bidding"
+      ],
+      "label_changed": false,
+      "kb_gap": false
     },
     {
       "case_id": "widget-025",
@@ -1089,11 +1261,20 @@
       ],
       "review_priority": "low",
       "review_reasons": [],
-      "review_status": "pending_domain_expert",
-      "reviewer": null,
-      "reviewed_at": null,
-      "adjudicated_scenario_ids": null,
-      "adjudication_note": null
+      "review_status": "approved",
+      "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
+      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "adjudicated_scenario_ids": [
+        "bid.place",
+        "technical.site_error"
+      ],
+      "adjudication_note": "Исправлено по смыслу вопроса и approved facts: bid.place — Как сделать ставку (источник: approved MIGTORG knowledge base and reviewed support corpus); technical.site_error — Ошибка сайта или личного кабинета (источник: approved MIGTORG knowledge base and reviewed support corpus).",
+      "adjudicated_expected_intents": [
+        "bidding",
+        "support"
+      ],
+      "label_changed": true,
+      "kb_gap": false
     },
     {
       "case_id": "widget-026",
@@ -1133,11 +1314,18 @@
       "review_reasons": [
         "current_quality_failure"
       ],
-      "review_status": "pending_domain_expert",
-      "reviewer": null,
-      "reviewed_at": null,
-      "adjudicated_scenario_ids": null,
-      "adjudication_note": null
+      "review_status": "approved",
+      "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
+      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "adjudicated_scenario_ids": [
+        "bid.position_service"
+      ],
+      "adjudication_note": "Подтверждено по смыслу вопроса и approved facts: bid.position_service — Опция «Узнать позицию ставки» и дополнительные инструменты (источник: Approved MIGTORG closed-auction option guidance).",
+      "adjudicated_expected_intents": [
+        "bidding"
+      ],
+      "label_changed": false,
+      "kb_gap": false
     },
     {
       "case_id": "widget-027",
@@ -1175,11 +1363,18 @@
       ],
       "review_priority": "low",
       "review_reasons": [],
-      "review_status": "pending_domain_expert",
-      "reviewer": null,
-      "reviewed_at": null,
-      "adjudicated_scenario_ids": null,
-      "adjudication_note": null
+      "review_status": "approved",
+      "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
+      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "adjudicated_scenario_ids": [
+        "bid.modify_cancel"
+      ],
+      "adjudication_note": "Подтверждено по смыслу вопроса и approved facts: bid.modify_cancel — Изменение, уменьшение и отмена ставки (источник: Approved MIGTORG bid modification rules).",
+      "adjudicated_expected_intents": [
+        "bidding"
+      ],
+      "label_changed": false,
+      "kb_gap": false
     },
     {
       "case_id": "widget-028",
@@ -1219,11 +1414,18 @@
       "review_reasons": [
         "current_quality_failure"
       ],
-      "review_status": "pending_domain_expert",
-      "reviewer": null,
-      "reviewed_at": null,
-      "adjudicated_scenario_ids": null,
-      "adjudication_note": null
+      "review_status": "approved",
+      "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
+      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "adjudicated_scenario_ids": [
+        "lot.status_guide"
+      ],
+      "adjudication_note": "Исправлено по смыслу вопроса и approved facts: lot.status_guide — Справочник статусов лота (источник: Approved MIGTORG lot status glossary).",
+      "adjudicated_expected_intents": [
+        "lot"
+      ],
+      "label_changed": true,
+      "kb_gap": false
     },
     {
       "case_id": "widget-029",
@@ -1261,11 +1463,18 @@
       ],
       "review_priority": "low",
       "review_reasons": [],
-      "review_status": "pending_domain_expert",
-      "reviewer": null,
-      "reviewed_at": null,
-      "adjudicated_scenario_ids": null,
-      "adjudication_note": null
+      "review_status": "approved",
+      "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
+      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "adjudicated_scenario_ids": [
+        "bid.not_visible"
+      ],
+      "adjudication_note": "Подтверждено по смыслу вопроса и approved facts: bid.not_visible — Ставка не видна или не отображается (источник: approved MIGTORG knowledge base).",
+      "adjudicated_expected_intents": [
+        "bidding"
+      ],
+      "label_changed": false,
+      "kb_gap": false
     },
     {
       "case_id": "widget-030",
@@ -1306,11 +1515,18 @@
       "review_reasons": [
         "multiple_or_null_acceptable_labels"
       ],
-      "review_status": "pending_domain_expert",
-      "reviewer": null,
-      "reviewed_at": null,
-      "adjudicated_scenario_ids": null,
-      "adjudication_note": null
+      "review_status": "approved",
+      "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
+      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "adjudicated_scenario_ids": [
+        "auction.result"
+      ],
+      "adjudication_note": "Исправлено по смыслу вопроса и approved facts: auction.result — Как узнать результат торгов и победную ставку (источник: Approved MIGTORG auction result rules).",
+      "adjudicated_expected_intents": [
+        "lot"
+      ],
+      "label_changed": true,
+      "kb_gap": false
     },
     {
       "case_id": "widget-031",
@@ -1350,11 +1566,18 @@
       "review_reasons": [
         "current_quality_failure"
       ],
-      "review_status": "pending_domain_expert",
-      "reviewer": null,
-      "reviewed_at": null,
-      "adjudicated_scenario_ids": null,
-      "adjudication_note": null
+      "review_status": "approved",
+      "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
+      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "adjudicated_scenario_ids": [
+        "bid.autobid_extension"
+      ],
+      "adjudication_note": "Подтверждено по смыслу вопроса и approved facts: bid.autobid_extension — Автоставка и продление открытых торгов (источник: Approved MIGTORG open-auction rules).",
+      "adjudicated_expected_intents": [
+        "bidding"
+      ],
+      "label_changed": false,
+      "kb_gap": false
     },
     {
       "case_id": "widget-032",
@@ -1392,11 +1615,18 @@
       ],
       "review_priority": "low",
       "review_reasons": [],
-      "review_status": "pending_domain_expert",
-      "reviewer": null,
-      "reviewed_at": null,
-      "adjudicated_scenario_ids": null,
-      "adjudication_note": null
+      "review_status": "approved",
+      "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
+      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "adjudicated_scenario_ids": [
+        "auction.formats"
+      ],
+      "adjudication_note": "Подтверждено по смыслу вопроса и approved facts: auction.formats — Открытые и закрытые торги (источник: Approved MIGTORG auction rules).",
+      "adjudicated_expected_intents": [
+        "bidding"
+      ],
+      "label_changed": false,
+      "kb_gap": false
     },
     {
       "case_id": "widget-033",
@@ -1436,11 +1666,18 @@
       "review_reasons": [
         "current_quality_failure"
       ],
-      "review_status": "pending_domain_expert",
-      "reviewer": null,
-      "reviewed_at": null,
-      "adjudicated_scenario_ids": null,
-      "adjudication_note": null
+      "review_status": "approved",
+      "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
+      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "adjudicated_scenario_ids": [
+        "auction.result"
+      ],
+      "adjudication_note": "Подтверждено по смыслу вопроса и approved facts: auction.result — Как узнать результат торгов и победную ставку (источник: Approved MIGTORG auction result rules).",
+      "adjudicated_expected_intents": [
+        "lot"
+      ],
+      "label_changed": false,
+      "kb_gap": false
     },
     {
       "case_id": "widget-034",
@@ -1480,11 +1717,18 @@
       "review_reasons": [
         "current_quality_failure"
       ],
-      "review_status": "pending_domain_expert",
-      "reviewer": null,
-      "reviewed_at": null,
-      "adjudicated_scenario_ids": null,
-      "adjudication_note": null
+      "review_status": "approved",
+      "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
+      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "adjudicated_scenario_ids": [
+        "auction.status"
+      ],
+      "adjudication_note": "Подтверждено по смыслу вопроса и approved facts: auction.status — Как проверить статус торгов (источник: approved MIGTORG knowledge base).",
+      "adjudicated_expected_intents": [
+        "lot"
+      ],
+      "label_changed": false,
+      "kb_gap": false
     },
     {
       "case_id": "widget-035",
@@ -1524,11 +1768,18 @@
       "review_reasons": [
         "current_quality_failure"
       ],
-      "review_status": "pending_domain_expert",
-      "reviewer": null,
-      "reviewed_at": null,
-      "adjudicated_scenario_ids": null,
-      "adjudication_note": null
+      "review_status": "approved",
+      "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
+      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "adjudicated_scenario_ids": [
+        "auction.result"
+      ],
+      "adjudication_note": "Подтверждено по смыслу вопроса и approved facts: auction.result — Как узнать результат торгов и победную ставку (источник: Approved MIGTORG auction result rules).",
+      "adjudicated_expected_intents": [
+        "lot"
+      ],
+      "label_changed": false,
+      "kb_gap": false
     },
     {
       "case_id": "widget-036",
@@ -1566,11 +1817,18 @@
       ],
       "review_priority": "low",
       "review_reasons": [],
-      "review_status": "pending_domain_expert",
-      "reviewer": null,
-      "reviewed_at": null,
-      "adjudicated_scenario_ids": null,
-      "adjudication_note": null
+      "review_status": "approved",
+      "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
+      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "adjudicated_scenario_ids": [
+        "lot.catalog_search"
+      ],
+      "adjudication_note": "Подтверждено по смыслу вопроса и approved facts: lot.catalog_search — Поиск лотов и фильтры каталога (источник: Approved MIGTORG catalog guidance).",
+      "adjudicated_expected_intents": [
+        "lot"
+      ],
+      "label_changed": false,
+      "kb_gap": false
     },
     {
       "case_id": "widget-037",
@@ -1608,11 +1866,18 @@
       ],
       "review_priority": "low",
       "review_reasons": [],
-      "review_status": "pending_domain_expert",
-      "reviewer": null,
-      "reviewed_at": null,
-      "adjudicated_scenario_ids": null,
-      "adjudication_note": null
+      "review_status": "approved",
+      "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
+      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "adjudicated_scenario_ids": [
+        "technical.catalog_search_filter"
+      ],
+      "adjudication_note": "Подтверждено по смыслу вопроса и approved facts: technical.catalog_search_filter — Некорректная работа поиска или фильтров (источник: Reviewed MIGTORG support corpus Q-121 and Q-122).",
+      "adjudicated_expected_intents": [
+        "support"
+      ],
+      "label_changed": false,
+      "kb_gap": false
     },
     {
       "case_id": "widget-038",
@@ -1650,11 +1915,18 @@
       ],
       "review_priority": "low",
       "review_reasons": [],
-      "review_status": "pending_domain_expert",
-      "reviewer": null,
-      "reviewed_at": null,
-      "adjudicated_scenario_ids": null,
-      "adjudication_note": null
+      "review_status": "approved",
+      "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
+      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "adjudicated_scenario_ids": [
+        "lot.catalog_search"
+      ],
+      "adjudication_note": "Подтверждено по смыслу вопроса и approved facts: lot.catalog_search — Поиск лотов и фильтры каталога (источник: Approved MIGTORG catalog guidance).",
+      "adjudicated_expected_intents": [
+        "lot"
+      ],
+      "label_changed": false,
+      "kb_gap": false
     },
     {
       "case_id": "widget-039",
@@ -1692,11 +1964,18 @@
       ],
       "review_priority": "low",
       "review_reasons": [],
-      "review_status": "pending_domain_expert",
-      "reviewer": null,
-      "reviewed_at": null,
-      "adjudicated_scenario_ids": null,
-      "adjudication_note": null
+      "review_status": "approved",
+      "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
+      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "adjudicated_scenario_ids": [
+        "lot.catalog_search"
+      ],
+      "adjudication_note": "Подтверждено по смыслу вопроса и approved facts: lot.catalog_search — Поиск лотов и фильтры каталога (источник: Approved MIGTORG catalog guidance).",
+      "adjudicated_expected_intents": [
+        "lot"
+      ],
+      "label_changed": false,
+      "kb_gap": false
     },
     {
       "case_id": "widget-040",
@@ -1734,11 +2013,18 @@
       ],
       "review_priority": "low",
       "review_reasons": [],
-      "review_status": "pending_domain_expert",
-      "reviewer": null,
-      "reviewed_at": null,
-      "adjudicated_scenario_ids": null,
-      "adjudication_note": null
+      "review_status": "approved",
+      "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
+      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "adjudicated_scenario_ids": [
+        "technical.catalog_search_filter"
+      ],
+      "adjudication_note": "Подтверждено по смыслу вопроса и approved facts: technical.catalog_search_filter — Некорректная работа поиска или фильтров (источник: Reviewed MIGTORG support corpus Q-121 and Q-122).",
+      "adjudicated_expected_intents": [
+        "support"
+      ],
+      "label_changed": false,
+      "kb_gap": false
     },
     {
       "case_id": "widget-041",
@@ -1776,11 +2062,18 @@
       ],
       "review_priority": "low",
       "review_reasons": [],
-      "review_status": "pending_domain_expert",
-      "reviewer": null,
-      "reviewed_at": null,
-      "adjudicated_scenario_ids": null,
-      "adjudication_note": null
+      "review_status": "approved",
+      "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
+      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "adjudicated_scenario_ids": [
+        "technical.lot_image_missing"
+      ],
+      "adjudication_note": "Подтверждено по смыслу вопроса и approved facts: technical.lot_image_missing — Не отображается фотография лота (источник: Reviewed MIGTORG support corpus Q-123).",
+      "adjudicated_expected_intents": [
+        "support"
+      ],
+      "label_changed": false,
+      "kb_gap": false
     },
     {
       "case_id": "widget-042",
@@ -1820,11 +2113,18 @@
       "review_reasons": [
         "current_quality_failure"
       ],
-      "review_status": "pending_domain_expert",
-      "reviewer": null,
-      "reviewed_at": null,
-      "adjudicated_scenario_ids": null,
-      "adjudication_note": null
+      "review_status": "approved",
+      "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
+      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "adjudicated_scenario_ids": [
+        "technical.lot_image_missing"
+      ],
+      "adjudication_note": "Подтверждено по смыслу вопроса и approved facts: technical.lot_image_missing — Не отображается фотография лота (источник: Reviewed MIGTORG support corpus Q-123).",
+      "adjudicated_expected_intents": [
+        "support"
+      ],
+      "label_changed": false,
+      "kb_gap": false
     },
     {
       "case_id": "widget-043",
@@ -1867,11 +2167,18 @@
         "current_quality_failure",
         "multiple_or_null_acceptable_labels"
       ],
-      "review_status": "pending_domain_expert",
-      "reviewer": null,
-      "reviewed_at": null,
-      "adjudicated_scenario_ids": null,
-      "adjudication_note": null
+      "review_status": "approved",
+      "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
+      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "adjudicated_scenario_ids": [
+        "lot.card_information"
+      ],
+      "adjudication_note": "Исправлено по смыслу вопроса и approved facts: lot.card_information — Данные карточки и отсутствующая информация по лоту (источник: Approved MIGTORG lot-card guidance). KB gap: БЗ подтверждает работу с фотографиями карточки, но не подтверждает наличие пакетного скачивания архивом. Ответ не должен утверждать отсутствующий факт.",
+      "adjudicated_expected_intents": [
+        "lot"
+      ],
+      "label_changed": true,
+      "kb_gap": true
     },
     {
       "case_id": "widget-044",
@@ -1909,11 +2216,18 @@
       ],
       "review_priority": "low",
       "review_reasons": [],
-      "review_status": "pending_domain_expert",
-      "reviewer": null,
-      "reviewed_at": null,
-      "adjudicated_scenario_ids": null,
-      "adjudication_note": null
+      "review_status": "approved",
+      "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
+      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "adjudicated_scenario_ids": [
+        "technical.lot_image_missing"
+      ],
+      "adjudication_note": "Подтверждено по смыслу вопроса и approved facts: technical.lot_image_missing — Не отображается фотография лота (источник: Reviewed MIGTORG support corpus Q-123).",
+      "adjudicated_expected_intents": [
+        "support"
+      ],
+      "label_changed": false,
+      "kb_gap": false
     },
     {
       "case_id": "widget-045",
@@ -1953,11 +2267,18 @@
       "review_reasons": [
         "current_quality_failure"
       ],
-      "review_status": "pending_domain_expert",
-      "reviewer": null,
-      "reviewed_at": null,
-      "adjudicated_scenario_ids": null,
-      "adjudication_note": null
+      "review_status": "approved",
+      "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
+      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "adjudicated_scenario_ids": [
+        "auction.completed_analytics"
+      ],
+      "adjudication_note": "Исправлено по смыслу вопроса и approved facts: auction.completed_analytics — Завершённые торги как источник аналитики (источник: Approved MIGTORG completed auction analytics guidance).",
+      "adjudicated_expected_intents": [
+        "bidding"
+      ],
+      "label_changed": true,
+      "kb_gap": false
     },
     {
       "case_id": "widget-046",
@@ -1995,11 +2316,18 @@
       ],
       "review_priority": "low",
       "review_reasons": [],
-      "review_status": "pending_domain_expert",
-      "reviewer": null,
-      "reviewed_at": null,
-      "adjudicated_scenario_ids": null,
-      "adjudication_note": null
+      "review_status": "approved",
+      "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
+      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "adjudicated_scenario_ids": [
+        "technical.catalog_search_filter"
+      ],
+      "adjudication_note": "Подтверждено по смыслу вопроса и approved facts: technical.catalog_search_filter — Некорректная работа поиска или фильтров (источник: Reviewed MIGTORG support corpus Q-121 and Q-122).",
+      "adjudicated_expected_intents": [
+        "support"
+      ],
+      "label_changed": false,
+      "kb_gap": false
     },
     {
       "case_id": "widget-047",
@@ -2042,11 +2370,18 @@
         "current_quality_failure",
         "multiple_or_null_acceptable_labels"
       ],
-      "review_status": "pending_domain_expert",
-      "reviewer": null,
-      "reviewed_at": null,
-      "adjudicated_scenario_ids": null,
-      "adjudication_note": null
+      "review_status": "approved",
+      "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
+      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "adjudicated_scenario_ids": [
+        "lot.catalog_search"
+      ],
+      "adjudication_note": "Исправлено по смыслу вопроса и approved facts: lot.catalog_search — Поиск лотов и фильтры каталога (источник: Approved MIGTORG catalog guidance).",
+      "adjudicated_expected_intents": [
+        "lot"
+      ],
+      "label_changed": true,
+      "kb_gap": false
     },
     {
       "case_id": "widget-048",
@@ -2084,11 +2419,18 @@
       ],
       "review_priority": "low",
       "review_reasons": [],
-      "review_status": "pending_domain_expert",
-      "reviewer": null,
-      "reviewed_at": null,
-      "adjudicated_scenario_ids": null,
-      "adjudication_note": null
+      "review_status": "approved",
+      "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
+      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "adjudicated_scenario_ids": [
+        "lot.catalog_search"
+      ],
+      "adjudication_note": "Подтверждено по смыслу вопроса и approved facts: lot.catalog_search — Поиск лотов и фильтры каталога (источник: Approved MIGTORG catalog guidance).",
+      "adjudicated_expected_intents": [
+        "lot"
+      ],
+      "label_changed": false,
+      "kb_gap": false
     },
     {
       "case_id": "widget-049",
@@ -2126,11 +2468,18 @@
       ],
       "review_priority": "low",
       "review_reasons": [],
-      "review_status": "pending_domain_expert",
-      "reviewer": null,
-      "reviewed_at": null,
-      "adjudicated_scenario_ids": null,
-      "adjudication_note": null
+      "review_status": "approved",
+      "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
+      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "adjudicated_scenario_ids": [
+        "lot.catalog_search"
+      ],
+      "adjudication_note": "Подтверждено по смыслу вопроса и approved facts: lot.catalog_search — Поиск лотов и фильтры каталога (источник: Approved MIGTORG catalog guidance).",
+      "adjudicated_expected_intents": [
+        "lot"
+      ],
+      "label_changed": false,
+      "kb_gap": false
     },
     {
       "case_id": "widget-050",
@@ -2173,11 +2522,20 @@
         "current_quality_failure",
         "multiple_or_null_acceptable_labels"
       ],
-      "review_status": "pending_domain_expert",
-      "reviewer": null,
-      "reviewed_at": null,
-      "adjudicated_scenario_ids": null,
-      "adjudication_note": null
+      "review_status": "approved",
+      "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
+      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "adjudicated_scenario_ids": [
+        "technical.catalog_search_filter",
+        "lot.card_information"
+      ],
+      "adjudication_note": "Подтверждено по смыслу вопроса и approved facts: technical.catalog_search_filter — Некорректная работа поиска или фильтров (источник: Reviewed MIGTORG support corpus Q-121 and Q-122); lot.card_information — Данные карточки и отсутствующая информация по лоту (источник: Approved MIGTORG lot-card guidance).",
+      "adjudicated_expected_intents": [
+        "lot",
+        "support"
+      ],
+      "label_changed": false,
+      "kb_gap": false
     },
     {
       "case_id": "widget-051",
@@ -2217,11 +2575,18 @@
       "review_reasons": [
         "financial_or_transactional_risk"
       ],
-      "review_status": "pending_domain_expert",
-      "reviewer": null,
-      "reviewed_at": null,
-      "adjudicated_scenario_ids": null,
-      "adjudication_note": null
+      "review_status": "approved",
+      "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
+      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "adjudicated_scenario_ids": [
+        "tariff.choose"
+      ],
+      "adjudication_note": "Подтверждено по смыслу вопроса и approved facts: tariff.choose — Какой тариф выбрать для автомобильных торгов (источник: Approved MIGTORG tariff knowledge and expert interviews).",
+      "adjudicated_expected_intents": [
+        "tariffs"
+      ],
+      "label_changed": false,
+      "kb_gap": false
     },
     {
       "case_id": "widget-052",
@@ -2262,11 +2627,18 @@
         "current_quality_failure",
         "financial_or_transactional_risk"
       ],
-      "review_status": "pending_domain_expert",
-      "reviewer": null,
-      "reviewed_at": null,
-      "adjudicated_scenario_ids": null,
-      "adjudication_note": null
+      "review_status": "approved",
+      "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
+      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "adjudicated_scenario_ids": [
+        "tariff.status"
+      ],
+      "adjudication_note": "Подтверждено по смыслу вопроса и approved facts: tariff.status — Оплаченный тариф не активировался (источник: Approved MIGTORG payment and tariff activation process).",
+      "adjudicated_expected_intents": [
+        "tariffs"
+      ],
+      "label_changed": false,
+      "kb_gap": false
     },
     {
       "case_id": "widget-053",
@@ -2307,11 +2679,18 @@
         "current_quality_failure",
         "financial_or_transactional_risk"
       ],
-      "review_status": "pending_domain_expert",
-      "reviewer": null,
-      "reviewed_at": null,
-      "adjudicated_scenario_ids": null,
-      "adjudication_note": null
+      "review_status": "approved",
+      "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
+      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "adjudicated_scenario_ids": [
+        "tariff.status"
+      ],
+      "adjudication_note": "Подтверждено по смыслу вопроса и approved facts: tariff.status — Оплаченный тариф не активировался (источник: Approved MIGTORG payment and tariff activation process). KB gap: В БЗ нет единого правила о «сгорании» всех типов тарифов; требуется проверка конкретного тарифа и операции. Ответ не должен утверждать отсутствующий факт.",
+      "adjudicated_expected_intents": [
+        "tariffs"
+      ],
+      "label_changed": false,
+      "kb_gap": true
     },
     {
       "case_id": "widget-054",
@@ -2351,11 +2730,18 @@
       "review_reasons": [
         "financial_or_transactional_risk"
       ],
-      "review_status": "pending_domain_expert",
-      "reviewer": null,
-      "reviewed_at": null,
-      "adjudicated_scenario_ids": null,
-      "adjudication_note": null
+      "review_status": "approved",
+      "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
+      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "adjudicated_scenario_ids": [
+        "tariff.status"
+      ],
+      "adjudication_note": "Подтверждено по смыслу вопроса и approved facts: tariff.status — Оплаченный тариф не активировался (источник: Approved MIGTORG payment and tariff activation process).",
+      "adjudicated_expected_intents": [
+        "tariffs"
+      ],
+      "label_changed": false,
+      "kb_gap": false
     },
     {
       "case_id": "widget-055",
@@ -2396,11 +2782,18 @@
         "current_quality_failure",
         "financial_or_transactional_risk"
       ],
-      "review_status": "pending_domain_expert",
-      "reviewer": null,
-      "reviewed_at": null,
-      "adjudicated_scenario_ids": null,
-      "adjudication_note": null
+      "review_status": "approved",
+      "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
+      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "adjudicated_scenario_ids": [
+        "commission.explained"
+      ],
+      "adjudication_note": "Подтверждено по смыслу вопроса и approved facts: commission.explained — Как устроена комиссия MIGTORG (источник: MIGTORG project expert interview and approved expert questionnaire part 2 ver. 2, 2026-08-11).",
+      "adjudicated_expected_intents": [
+        "payment"
+      ],
+      "label_changed": false,
+      "kb_gap": false
     },
     {
       "case_id": "widget-056",
@@ -2440,11 +2833,20 @@
       "review_reasons": [
         "financial_or_transactional_risk"
       ],
-      "review_status": "pending_domain_expert",
-      "reviewer": null,
-      "reviewed_at": null,
-      "adjudicated_scenario_ids": null,
-      "adjudication_note": null
+      "review_status": "approved",
+      "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
+      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "adjudicated_scenario_ids": [
+        "payment.methods",
+        "account.identification_edge_case"
+      ],
+      "adjudication_note": "Исправлено по смыслу вопроса и approved facts: payment.methods — Как оплатить тариф, комиссию или лот (источник: MIGTORG project expert interview, question groups 1-3, 2026-08-11); account.identification_edge_case — Документы представителя или стороннего плательщика требуют проверки (источник: MIGTORG project owner instruction for safe fallback answers, 2026-08-12).",
+      "adjudicated_expected_intents": [
+        "payment",
+        "registration"
+      ],
+      "label_changed": true,
+      "kb_gap": false
     },
     {
       "case_id": "widget-057",
@@ -2484,11 +2886,18 @@
       "review_reasons": [
         "financial_or_transactional_risk"
       ],
-      "review_status": "pending_domain_expert",
-      "reviewer": null,
-      "reviewed_at": null,
-      "adjudicated_scenario_ids": null,
-      "adjudication_note": null
+      "review_status": "approved",
+      "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
+      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "adjudicated_scenario_ids": [
+        "tariff.choose"
+      ],
+      "adjudication_note": "Подтверждено по смыслу вопроса и approved facts: tariff.choose — Какой тариф выбрать для автомобильных торгов (источник: Approved MIGTORG tariff knowledge and expert interviews). KB gap: Актуальная цена проверяется перед оплатой; единый срок для всех типов доступа в БЗ не определён. Ответ не должен утверждать отсутствующий факт.",
+      "adjudicated_expected_intents": [
+        "tariffs"
+      ],
+      "label_changed": false,
+      "kb_gap": true
     },
     {
       "case_id": "widget-058",
@@ -2531,11 +2940,19 @@
         "multiple_or_null_acceptable_labels",
         "financial_or_transactional_risk"
       ],
-      "review_status": "pending_domain_expert",
-      "reviewer": null,
-      "reviewed_at": null,
-      "adjudicated_scenario_ids": null,
-      "adjudication_note": null
+      "review_status": "approved",
+      "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
+      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "adjudicated_scenario_ids": [
+        "payment.methods",
+        "balance.topup.commission"
+      ],
+      "adjudication_note": "Подтверждено по смыслу вопроса и approved facts: payment.methods — Как оплатить тариф, комиссию или лот (источник: MIGTORG project expert interview, question groups 1-3, 2026-08-11); balance.topup.commission — Комиссия при пополнении баланса (источник: MIGTORG current balance top-up interface screenshot and project owner confirmation, 2026-08-11).",
+      "adjudicated_expected_intents": [
+        "payment"
+      ],
+      "label_changed": false,
+      "kb_gap": false
     },
     {
       "case_id": "widget-059",
@@ -2575,11 +2992,18 @@
       "review_reasons": [
         "financial_or_transactional_risk"
       ],
-      "review_status": "pending_domain_expert",
-      "reviewer": null,
-      "reviewed_at": null,
-      "adjudicated_scenario_ids": null,
-      "adjudication_note": null
+      "review_status": "approved",
+      "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
+      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "adjudicated_scenario_ids": [
+        "payment.not_visible"
+      ],
+      "adjudication_note": "Подтверждено по смыслу вопроса и approved facts: payment.not_visible — Платёж списался, но не отображается (источник: MIGTORG project expert interview, question groups 1-3, 2026-08-11).",
+      "adjudicated_expected_intents": [
+        "payment"
+      ],
+      "label_changed": false,
+      "kb_gap": false
     },
     {
       "case_id": "widget-060",
@@ -2620,11 +3044,18 @@
         "current_quality_failure",
         "financial_or_transactional_risk"
       ],
-      "review_status": "pending_domain_expert",
-      "reviewer": null,
-      "reviewed_at": null,
-      "adjudicated_scenario_ids": null,
-      "adjudication_note": null
+      "review_status": "approved",
+      "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
+      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "adjudicated_scenario_ids": [
+        "payment.not_visible"
+      ],
+      "adjudication_note": "Подтверждено по смыслу вопроса и approved facts: payment.not_visible — Платёж списался, но не отображается (источник: MIGTORG project expert interview, question groups 1-3, 2026-08-11).",
+      "adjudicated_expected_intents": [
+        "payment"
+      ],
+      "label_changed": false,
+      "kb_gap": false
     },
     {
       "case_id": "widget-061",
@@ -2665,11 +3096,18 @@
         "current_quality_failure",
         "financial_or_transactional_risk"
       ],
-      "review_status": "pending_domain_expert",
-      "reviewer": null,
-      "reviewed_at": null,
-      "adjudicated_scenario_ids": null,
-      "adjudication_note": null
+      "review_status": "approved",
+      "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
+      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "adjudicated_scenario_ids": [
+        "payment.accounting_documents"
+      ],
+      "adjudication_note": "Подтверждено по смыслу вопроса и approved facts: payment.accounting_documents — Финансовые и закрывающие документы (источник: Approved MIGTORG knowledge base and expert-reviewed payment process).",
+      "adjudicated_expected_intents": [
+        "payment"
+      ],
+      "label_changed": false,
+      "kb_gap": false
     },
     {
       "case_id": "widget-062",
@@ -2709,11 +3147,18 @@
       "review_reasons": [
         "financial_or_transactional_risk"
       ],
-      "review_status": "pending_domain_expert",
-      "reviewer": null,
-      "reviewed_at": null,
-      "adjudicated_scenario_ids": null,
-      "adjudication_note": null
+      "review_status": "approved",
+      "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
+      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "adjudicated_scenario_ids": [
+        "refund.eligibility"
+      ],
+      "adjudication_note": "Подтверждено по смыслу вопроса и approved facts: refund.eligibility — Какие средства можно вернуть (источник: MIGTORG project expert interview, part 2, 2026-08-11).",
+      "adjudicated_expected_intents": [
+        "refund"
+      ],
+      "label_changed": false,
+      "kb_gap": false
     },
     {
       "case_id": "widget-063",
@@ -2754,11 +3199,18 @@
         "current_quality_failure",
         "financial_or_transactional_risk"
       ],
-      "review_status": "pending_domain_expert",
-      "reviewer": null,
-      "reviewed_at": null,
-      "adjudicated_scenario_ids": null,
-      "adjudication_note": null
+      "review_status": "approved",
+      "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
+      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "adjudicated_scenario_ids": [
+        "commission.explained"
+      ],
+      "adjudication_note": "Подтверждено по смыслу вопроса и approved facts: commission.explained — Как устроена комиссия MIGTORG (источник: MIGTORG project expert interview and approved expert questionnaire part 2 ver. 2, 2026-08-11).",
+      "adjudicated_expected_intents": [
+        "payment"
+      ],
+      "label_changed": false,
+      "kb_gap": false
     },
     {
       "case_id": "widget-064",
@@ -2801,11 +3253,19 @@
         "multiple_or_null_acceptable_labels",
         "financial_or_transactional_risk"
       ],
-      "review_status": "pending_domain_expert",
-      "reviewer": null,
-      "reviewed_at": null,
-      "adjudicated_scenario_ids": null,
-      "adjudication_note": null
+      "review_status": "approved",
+      "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
+      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "adjudicated_scenario_ids": [
+        "lot.payment.details",
+        "payment.methods"
+      ],
+      "adjudication_note": "Подтверждено по смыслу вопроса и approved facts: lot.payment.details — Счёт, плательщик и подтверждение оплаты лота (источник: MIGTORG project expert interview, question groups 1-3, 2026-08-11); payment.methods — Как оплатить тариф, комиссию или лот (источник: MIGTORG project expert interview, question groups 1-3, 2026-08-11).",
+      "adjudicated_expected_intents": [
+        "payment"
+      ],
+      "label_changed": false,
+      "kb_gap": false
     },
     {
       "case_id": "widget-065",
@@ -2846,11 +3306,18 @@
         "current_quality_failure",
         "financial_or_transactional_risk"
       ],
-      "review_status": "pending_domain_expert",
-      "reviewer": null,
-      "reviewed_at": null,
-      "adjudicated_scenario_ids": null,
-      "adjudication_note": null
+      "review_status": "approved",
+      "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
+      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "adjudicated_scenario_ids": [
+        "payment.accounting_documents"
+      ],
+      "adjudication_note": "Подтверждено по смыслу вопроса и approved facts: payment.accounting_documents — Финансовые и закрывающие документы (источник: Approved MIGTORG knowledge base and expert-reviewed payment process).",
+      "adjudicated_expected_intents": [
+        "payment"
+      ],
+      "label_changed": false,
+      "kb_gap": false
     },
     {
       "case_id": "widget-066",
@@ -2890,11 +3357,18 @@
       "review_reasons": [
         "financial_or_transactional_risk"
       ],
-      "review_status": "pending_domain_expert",
-      "reviewer": null,
-      "reviewed_at": null,
-      "adjudicated_scenario_ids": null,
-      "adjudication_note": null
+      "review_status": "approved",
+      "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
+      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "adjudicated_scenario_ids": [
+        "win.next_steps"
+      ],
+      "adjudication_note": "Подтверждено по смыслу вопроса и approved facts: win.next_steps — Что делать после победы в торгах (источник: approved MIGTORG knowledge base and reviewed support corpus).",
+      "adjudicated_expected_intents": [
+        "transfer"
+      ],
+      "label_changed": false,
+      "kb_gap": false
     },
     {
       "case_id": "widget-067",
@@ -2934,11 +3408,18 @@
       "review_reasons": [
         "financial_or_transactional_risk"
       ],
-      "review_status": "pending_domain_expert",
-      "reviewer": null,
-      "reviewed_at": null,
-      "adjudicated_scenario_ids": null,
-      "adjudication_note": null
+      "review_status": "approved",
+      "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
+      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "adjudicated_scenario_ids": [
+        "pickup.receive_lot"
+      ],
+      "adjudication_note": "Подтверждено по смыслу вопроса и approved facts: pickup.receive_lot — Как получить или забрать лот (источник: approved MIGTORG knowledge base and reviewed support corpus).",
+      "adjudicated_expected_intents": [
+        "pickup"
+      ],
+      "label_changed": false,
+      "kb_gap": false
     },
     {
       "case_id": "widget-068",
@@ -2979,11 +3460,18 @@
         "current_quality_failure",
         "financial_or_transactional_risk"
       ],
-      "review_status": "pending_domain_expert",
-      "reviewer": null,
-      "reviewed_at": null,
-      "adjudicated_scenario_ids": null,
-      "adjudication_note": null
+      "review_status": "approved",
+      "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
+      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "adjudicated_scenario_ids": [
+        "transfer.not_confirmed"
+      ],
+      "adjudication_note": "Исправлено по смыслу вопроса и approved facts: transfer.not_confirmed — Победный лот не передан продавцом (источник: MIGTORG expert answers and approved auction model).",
+      "adjudicated_expected_intents": [
+        "lot"
+      ],
+      "label_changed": true,
+      "kb_gap": false
     },
     {
       "case_id": "widget-069",
@@ -3026,11 +3514,20 @@
         "multiple_or_null_acceptable_labels",
         "financial_or_transactional_risk"
       ],
-      "review_status": "pending_domain_expert",
-      "reviewer": null,
-      "reviewed_at": null,
-      "adjudicated_scenario_ids": null,
-      "adjudication_note": null
+      "review_status": "approved",
+      "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
+      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "adjudicated_scenario_ids": [
+        "lot.location",
+        "pickup.receive_lot"
+      ],
+      "adjudication_note": "Подтверждено по смыслу вопроса и approved facts: lot.location — Где находится автомобиль или стоянка (источник: Approved MIGTORG location and parking guidance); pickup.receive_lot — Как получить или забрать лот (источник: approved MIGTORG knowledge base and reviewed support corpus).",
+      "adjudicated_expected_intents": [
+        "lot",
+        "pickup"
+      ],
+      "label_changed": false,
+      "kb_gap": false
     },
     {
       "case_id": "widget-070",
@@ -3071,11 +3568,18 @@
         "current_quality_failure",
         "financial_or_transactional_risk"
       ],
-      "review_status": "pending_domain_expert",
-      "reviewer": null,
-      "reviewed_at": null,
-      "adjudicated_scenario_ids": null,
-      "adjudication_note": null
+      "review_status": "approved",
+      "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
+      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "adjudicated_scenario_ids": [
+        "pickup.representative"
+      ],
+      "adjudication_note": "Подтверждено по смыслу вопроса и approved facts: pickup.representative — Получение лота представителем и доверенность (источник: Approved MIGTORG representative pickup guidance).",
+      "adjudicated_expected_intents": [
+        "pickup"
+      ],
+      "label_changed": false,
+      "kb_gap": false
     },
     {
       "case_id": "widget-071",
@@ -3115,11 +3619,18 @@
       "review_reasons": [
         "financial_or_transactional_risk"
       ],
-      "review_status": "pending_domain_expert",
-      "reviewer": null,
-      "reviewed_at": null,
-      "adjudicated_scenario_ids": null,
-      "adjudication_note": null
+      "review_status": "approved",
+      "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
+      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "adjudicated_scenario_ids": [
+        "contract.receive"
+      ],
+      "adjudication_note": "Подтверждено по смыслу вопроса и approved facts: contract.receive — Как получить договор или ДКП (источник: approved MIGTORG knowledge base).",
+      "adjudicated_expected_intents": [
+        "transfer"
+      ],
+      "label_changed": false,
+      "kb_gap": false
     },
     {
       "case_id": "widget-072",
@@ -3160,11 +3671,19 @@
         "current_quality_failure",
         "financial_or_transactional_risk"
       ],
-      "review_status": "pending_domain_expert",
-      "reviewer": null,
-      "reviewed_at": null,
-      "adjudicated_scenario_ids": null,
-      "adjudication_note": null
+      "review_status": "approved",
+      "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
+      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "adjudicated_scenario_ids": [
+        "contract.receive",
+        "documents.preparation_delay"
+      ],
+      "adjudication_note": "Исправлено по смыслу вопроса и approved facts: contract.receive — Как получить договор или ДКП (источник: approved MIGTORG knowledge base); documents.preparation_delay — Срок подготовки документов после передачи (источник: MIGTORG expert answers and approved transfer workflow).",
+      "adjudicated_expected_intents": [
+        "transfer"
+      ],
+      "label_changed": true,
+      "kb_gap": false
     },
     {
       "case_id": "widget-073",
@@ -3204,11 +3723,18 @@
       "review_reasons": [
         "financial_or_transactional_risk"
       ],
-      "review_status": "pending_domain_expert",
-      "reviewer": null,
-      "reviewed_at": null,
-      "adjudicated_scenario_ids": null,
-      "adjudication_note": null
+      "review_status": "approved",
+      "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
+      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "adjudicated_scenario_ids": [
+        "contract.receive"
+      ],
+      "adjudication_note": "Подтверждено по смыслу вопроса и approved facts: contract.receive — Как получить договор или ДКП (источник: approved MIGTORG knowledge base).",
+      "adjudicated_expected_intents": [
+        "transfer"
+      ],
+      "label_changed": false,
+      "kb_gap": false
     },
     {
       "case_id": "widget-074",
@@ -3248,11 +3774,18 @@
       "review_reasons": [
         "financial_or_transactional_risk"
       ],
-      "review_status": "pending_domain_expert",
-      "reviewer": null,
-      "reviewed_at": null,
-      "adjudicated_scenario_ids": null,
-      "adjudication_note": null
+      "review_status": "approved",
+      "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
+      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "adjudicated_scenario_ids": [
+        "transfer.confirmed"
+      ],
+      "adjudication_note": "Подтверждено по смыслу вопроса и approved facts: transfer.confirmed — Что означает статус «Передан» (источник: Approved MIGTORG transfer workflow).",
+      "adjudicated_expected_intents": [
+        "transfer"
+      ],
+      "label_changed": false,
+      "kb_gap": false
     },
     {
       "case_id": "widget-075",
@@ -3293,11 +3826,18 @@
         "current_quality_failure",
         "financial_or_transactional_risk"
       ],
-      "review_status": "pending_domain_expert",
-      "reviewer": null,
-      "reviewed_at": null,
-      "adjudicated_scenario_ids": null,
-      "adjudication_note": null
+      "review_status": "approved",
+      "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
+      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "adjudicated_scenario_ids": [
+        "pickup.access_issuer"
+      ],
+      "adjudication_note": "Подтверждено по смыслу вопроса и approved facts: pickup.access_issuer — Доступ на стоянку и кто выдаёт лот (источник: Approved MIGTORG pickup guidance).",
+      "adjudicated_expected_intents": [
+        "transfer"
+      ],
+      "label_changed": false,
+      "kb_gap": false
     },
     {
       "case_id": "widget-076",
@@ -3337,11 +3877,18 @@
       "review_reasons": [
         "financial_or_transactional_risk"
       ],
-      "review_status": "pending_domain_expert",
-      "reviewer": null,
-      "reviewed_at": null,
-      "adjudicated_scenario_ids": null,
-      "adjudication_note": null
+      "review_status": "approved",
+      "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
+      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "adjudicated_scenario_ids": [
+        "transfer.notification_contact"
+      ],
+      "adjudication_note": "Подтверждено по смыслу вопроса и approved facts: transfer.notification_contact — Уведомление о передаче и контакт продавца (источник: Approved MIGTORG transfer communication guidance).",
+      "adjudicated_expected_intents": [
+        "transfer"
+      ],
+      "label_changed": false,
+      "kb_gap": false
     },
     {
       "case_id": "widget-077",
@@ -3384,11 +3931,20 @@
         "multiple_or_null_acceptable_labels",
         "financial_or_transactional_risk"
       ],
-      "review_status": "pending_domain_expert",
-      "reviewer": null,
-      "reviewed_at": null,
-      "adjudicated_scenario_ids": null,
-      "adjudication_note": null
+      "review_status": "approved",
+      "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
+      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "adjudicated_scenario_ids": [
+        "pickup.access_issuer",
+        "lot.location"
+      ],
+      "adjudication_note": "Подтверждено по смыслу вопроса и approved facts: pickup.access_issuer — Доступ на стоянку и кто выдаёт лот (источник: Approved MIGTORG pickup guidance); lot.location — Где находится автомобиль или стоянка (источник: Approved MIGTORG location and parking guidance).",
+      "adjudicated_expected_intents": [
+        "lot",
+        "transfer"
+      ],
+      "label_changed": false,
+      "kb_gap": false
     },
     {
       "case_id": "widget-078",
@@ -3431,11 +3987,19 @@
         "multiple_or_null_acceptable_labels",
         "financial_or_transactional_risk"
       ],
-      "review_status": "pending_domain_expert",
-      "reviewer": null,
-      "reviewed_at": null,
-      "adjudicated_scenario_ids": null,
-      "adjudication_note": null
+      "review_status": "approved",
+      "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
+      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "adjudicated_scenario_ids": [
+        "win.next_steps",
+        "transfer.seller_no_response"
+      ],
+      "adjudication_note": "Подтверждено по смыслу вопроса и approved facts: win.next_steps — Что делать после победы в торгах (источник: approved MIGTORG knowledge base and reviewed support corpus); transfer.seller_no_response — Продавец не отвечает по выигранному лоту (источник: Reviewed MIGTORG support corpus Q-078).",
+      "adjudicated_expected_intents": [
+        "transfer"
+      ],
+      "label_changed": false,
+      "kb_gap": false
     },
     {
       "case_id": "widget-079",
@@ -3475,11 +4039,18 @@
       "review_reasons": [
         "financial_or_transactional_risk"
       ],
-      "review_status": "pending_domain_expert",
-      "reviewer": null,
-      "reviewed_at": null,
-      "adjudicated_scenario_ids": null,
-      "adjudication_note": null
+      "review_status": "approved",
+      "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
+      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "adjudicated_scenario_ids": [
+        "pickup.receive_lot"
+      ],
+      "adjudication_note": "Подтверждено по смыслу вопроса и approved facts: pickup.receive_lot — Как получить или забрать лот (источник: approved MIGTORG knowledge base and reviewed support corpus).",
+      "adjudicated_expected_intents": [
+        "pickup"
+      ],
+      "label_changed": false,
+      "kb_gap": false
     },
     {
       "case_id": "widget-080",
@@ -3520,11 +4091,18 @@
         "current_quality_failure",
         "financial_or_transactional_risk"
       ],
-      "review_status": "pending_domain_expert",
-      "reviewer": null,
-      "reviewed_at": null,
-      "adjudicated_scenario_ids": null,
-      "adjudication_note": null
+      "review_status": "approved",
+      "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
+      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "adjudicated_scenario_ids": [
+        "pickup.receive_lot"
+      ],
+      "adjudication_note": "Подтверждено по смыслу вопроса и approved facts: pickup.receive_lot — Как получить или забрать лот (источник: approved MIGTORG knowledge base and reviewed support corpus).",
+      "adjudicated_expected_intents": [
+        "pickup"
+      ],
+      "label_changed": false,
+      "kb_gap": false
     },
     {
       "case_id": "widget-081",
@@ -3564,11 +4142,18 @@
       "review_reasons": [
         "financial_or_transactional_risk"
       ],
-      "review_status": "pending_domain_expert",
-      "reviewer": null,
-      "reviewed_at": null,
-      "adjudicated_scenario_ids": null,
-      "adjudication_note": null
+      "review_status": "approved",
+      "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
+      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "adjudicated_scenario_ids": [
+        "refund.application"
+      ],
+      "adjudication_note": "Подтверждено по смыслу вопроса и approved facts: refund.application — Как подать запрос на возврат (источник: MIGTORG project expert interview, part 2, 2026-08-11).",
+      "adjudicated_expected_intents": [
+        "refund"
+      ],
+      "label_changed": false,
+      "kb_gap": false
     },
     {
       "case_id": "widget-082",
@@ -3608,11 +4193,18 @@
       "review_reasons": [
         "financial_or_transactional_risk"
       ],
-      "review_status": "pending_domain_expert",
-      "reviewer": null,
-      "reviewed_at": null,
-      "adjudicated_scenario_ids": null,
-      "adjudication_note": null
+      "review_status": "approved",
+      "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
+      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "adjudicated_scenario_ids": [
+        "refund.application"
+      ],
+      "adjudication_note": "Подтверждено по смыслу вопроса и approved facts: refund.application — Как подать запрос на возврат (источник: MIGTORG project expert interview, part 2, 2026-08-11).",
+      "adjudicated_expected_intents": [
+        "refund"
+      ],
+      "label_changed": false,
+      "kb_gap": false
     },
     {
       "case_id": "widget-083",
@@ -3653,11 +4245,18 @@
         "current_quality_failure",
         "financial_or_transactional_risk"
       ],
-      "review_status": "pending_domain_expert",
-      "reviewer": null,
-      "reviewed_at": null,
-      "adjudicated_scenario_ids": null,
-      "adjudication_note": null
+      "review_status": "approved",
+      "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
+      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "adjudicated_scenario_ids": [
+        "refund.timing_status"
+      ],
+      "adjudication_note": "Подтверждено по смыслу вопроса и approved facts: refund.timing_status — Срок и статус возврата (источник: MIGTORG project expert interview, part 2, 2026-08-11).",
+      "adjudicated_expected_intents": [
+        "refund"
+      ],
+      "label_changed": false,
+      "kb_gap": false
     },
     {
       "case_id": "widget-084",
@@ -3697,11 +4296,18 @@
       "review_reasons": [
         "financial_or_transactional_risk"
       ],
-      "review_status": "pending_domain_expert",
-      "reviewer": null,
-      "reviewed_at": null,
-      "adjudicated_scenario_ids": null,
-      "adjudication_note": null
+      "review_status": "approved",
+      "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
+      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "adjudicated_scenario_ids": [
+        "refund.application"
+      ],
+      "adjudication_note": "Подтверждено по смыслу вопроса и approved facts: refund.application — Как подать запрос на возврат (источник: MIGTORG project expert interview, part 2, 2026-08-11).",
+      "adjudicated_expected_intents": [
+        "refund"
+      ],
+      "label_changed": false,
+      "kb_gap": false
     },
     {
       "case_id": "widget-085",
@@ -3741,11 +4347,18 @@
       "review_reasons": [
         "financial_or_transactional_risk"
       ],
-      "review_status": "pending_domain_expert",
-      "reviewer": null,
-      "reviewed_at": null,
-      "adjudicated_scenario_ids": null,
-      "adjudication_note": null
+      "review_status": "approved",
+      "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
+      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "adjudicated_scenario_ids": [
+        "penalty.explain_or_dispute"
+      ],
+      "adjudication_note": "Подтверждено по смыслу вопроса и approved facts: penalty.explain_or_dispute — Штраф: основание, оплата и спор (источник: MIGTORG project expert interview, final questions, 2026-08-12).",
+      "adjudicated_expected_intents": [
+        "penalty"
+      ],
+      "label_changed": false,
+      "kb_gap": false
     },
     {
       "case_id": "widget-086",
@@ -3785,11 +4398,18 @@
       "review_reasons": [
         "financial_or_transactional_risk"
       ],
-      "review_status": "pending_domain_expert",
-      "reviewer": null,
-      "reviewed_at": null,
-      "adjudicated_scenario_ids": null,
-      "adjudication_note": null
+      "review_status": "approved",
+      "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
+      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "adjudicated_scenario_ids": [
+        "refusal.change_mind"
+      ],
+      "adjudication_note": "Подтверждено по смыслу вопроса и approved facts: refusal.change_mind — Покупатель передумал выкупать выигранный лот (источник: MIGTORG expert interviews and approved buyer contract rules).",
+      "adjudicated_expected_intents": [
+        "refusal"
+      ],
+      "label_changed": false,
+      "kb_gap": false
     },
     {
       "case_id": "widget-087",
@@ -3829,11 +4449,18 @@
       "review_reasons": [
         "financial_or_transactional_risk"
       ],
-      "review_status": "pending_domain_expert",
-      "reviewer": null,
-      "reviewed_at": null,
-      "adjudicated_scenario_ids": null,
-      "adjudication_note": null
+      "review_status": "approved",
+      "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
+      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "adjudicated_scenario_ids": [
+        "penalty.explain_or_dispute"
+      ],
+      "adjudication_note": "Подтверждено по смыслу вопроса и approved facts: penalty.explain_or_dispute — Штраф: основание, оплата и спор (источник: MIGTORG project expert interview, final questions, 2026-08-12).",
+      "adjudicated_expected_intents": [
+        "penalty"
+      ],
+      "label_changed": false,
+      "kb_gap": false
     },
     {
       "case_id": "widget-088",
@@ -3873,11 +4500,18 @@
       "review_reasons": [
         "financial_or_transactional_risk"
       ],
-      "review_status": "pending_domain_expert",
-      "reviewer": null,
-      "reviewed_at": null,
-      "adjudicated_scenario_ids": null,
-      "adjudication_note": null
+      "review_status": "approved",
+      "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
+      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "adjudicated_scenario_ids": [
+        "lot.payment.overdue"
+      ],
+      "adjudication_note": "Подтверждено по смыслу вопроса и approved facts: lot.payment.overdue — Срок и просрочка оплаты лота (источник: MIGTORG project expert interview, question groups 1-3, and buyer contract template clause 2.9, reviewed 2026-08-11).",
+      "adjudicated_expected_intents": [
+        "payment"
+      ],
+      "label_changed": false,
+      "kb_gap": false
     },
     {
       "case_id": "widget-089",
@@ -3917,11 +4551,18 @@
       "review_reasons": [
         "financial_or_transactional_risk"
       ],
-      "review_status": "pending_domain_expert",
-      "reviewer": null,
-      "reviewed_at": null,
-      "adjudicated_scenario_ids": null,
-      "adjudication_note": null
+      "review_status": "approved",
+      "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
+      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "adjudicated_scenario_ids": [
+        "penalty.explain_or_dispute"
+      ],
+      "adjudication_note": "Подтверждено по смыслу вопроса и approved facts: penalty.explain_or_dispute — Штраф: основание, оплата и спор (источник: MIGTORG project expert interview, final questions, 2026-08-12).",
+      "adjudicated_expected_intents": [
+        "penalty"
+      ],
+      "label_changed": false,
+      "kb_gap": false
     },
     {
       "case_id": "widget-090",
@@ -3961,11 +4602,18 @@
       "review_reasons": [
         "financial_or_transactional_risk"
       ],
-      "review_status": "pending_domain_expert",
-      "reviewer": null,
-      "reviewed_at": null,
-      "adjudicated_scenario_ids": null,
-      "adjudication_note": null
+      "review_status": "approved",
+      "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
+      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "adjudicated_scenario_ids": [
+        "refund.timing_status"
+      ],
+      "adjudication_note": "Подтверждено по смыслу вопроса и approved facts: refund.timing_status — Срок и статус возврата (источник: MIGTORG project expert interview, part 2, 2026-08-11).",
+      "adjudicated_expected_intents": [
+        "refund"
+      ],
+      "label_changed": false,
+      "kb_gap": false
     },
     {
       "case_id": "widget-091",
@@ -4005,11 +4653,18 @@
       "review_reasons": [
         "current_quality_failure"
       ],
-      "review_status": "pending_domain_expert",
-      "reviewer": null,
-      "reviewed_at": null,
-      "adjudicated_scenario_ids": null,
-      "adjudication_note": null
+      "review_status": "approved",
+      "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
+      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "adjudicated_scenario_ids": [
+        "support.office_visit"
+      ],
+      "adjudication_note": "Подтверждено по смыслу вопроса и approved facts: support.office_visit — Визит в офис и оформление пропуска (источник: Approved MIGTORG office visit and pass procedure).",
+      "adjudicated_expected_intents": [
+        "support"
+      ],
+      "label_changed": false,
+      "kb_gap": false
     },
     {
       "case_id": "widget-092",
@@ -4049,11 +4704,18 @@
       "review_reasons": [
         "current_quality_failure"
       ],
-      "review_status": "pending_domain_expert",
-      "reviewer": null,
-      "reviewed_at": null,
-      "adjudicated_scenario_ids": null,
-      "adjudication_note": null
+      "review_status": "approved",
+      "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
+      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "adjudicated_scenario_ids": [
+        "support.office_visit"
+      ],
+      "adjudication_note": "Подтверждено по смыслу вопроса и approved facts: support.office_visit — Визит в офис и оформление пропуска (источник: Approved MIGTORG office visit and pass procedure).",
+      "adjudicated_expected_intents": [
+        "support"
+      ],
+      "label_changed": false,
+      "kb_gap": false
     },
     {
       "case_id": "widget-093",
@@ -4091,11 +4753,18 @@
       ],
       "review_priority": "low",
       "review_reasons": [],
-      "review_status": "pending_domain_expert",
-      "reviewer": null,
-      "reviewed_at": null,
-      "adjudicated_scenario_ids": null,
-      "adjudication_note": null
+      "review_status": "approved",
+      "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
+      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "adjudicated_scenario_ids": [
+        "support.office_visit"
+      ],
+      "adjudication_note": "Подтверждено по смыслу вопроса и approved facts: support.office_visit — Визит в офис и оформление пропуска (источник: Approved MIGTORG office visit and pass procedure).",
+      "adjudicated_expected_intents": [
+        "support"
+      ],
+      "label_changed": false,
+      "kb_gap": false
     },
     {
       "case_id": "widget-094",
@@ -4133,11 +4802,18 @@
       ],
       "review_priority": "low",
       "review_reasons": [],
-      "review_status": "pending_domain_expert",
-      "reviewer": null,
-      "reviewed_at": null,
-      "adjudicated_scenario_ids": null,
-      "adjudication_note": null
+      "review_status": "approved",
+      "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
+      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "adjudicated_scenario_ids": [
+        "support.office_visit"
+      ],
+      "adjudication_note": "Подтверждено по смыслу вопроса и approved facts: support.office_visit — Визит в офис и оформление пропуска (источник: Approved MIGTORG office visit and pass procedure).",
+      "adjudicated_expected_intents": [
+        "support"
+      ],
+      "label_changed": false,
+      "kb_gap": false
     },
     {
       "case_id": "widget-095",
@@ -4175,11 +4851,18 @@
       ],
       "review_priority": "low",
       "review_reasons": [],
-      "review_status": "pending_domain_expert",
-      "reviewer": null,
-      "reviewed_at": null,
-      "adjudicated_scenario_ids": null,
-      "adjudication_note": null
+      "review_status": "approved",
+      "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
+      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "adjudicated_scenario_ids": [
+        "pickup.access_issuer"
+      ],
+      "adjudication_note": "Исправлено по смыслу вопроса и approved facts: pickup.access_issuer — Доступ на стоянку и кто выдаёт лот (источник: Approved MIGTORG pickup guidance).",
+      "adjudicated_expected_intents": [
+        "transfer"
+      ],
+      "label_changed": true,
+      "kb_gap": false
     },
     {
       "case_id": "widget-096",
@@ -4217,11 +4900,18 @@
       ],
       "review_priority": "low",
       "review_reasons": [],
-      "review_status": "pending_domain_expert",
-      "reviewer": null,
-      "reviewed_at": null,
-      "adjudicated_scenario_ids": null,
-      "adjudication_note": null
+      "review_status": "approved",
+      "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
+      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "adjudicated_scenario_ids": [
+        "support.office_visit"
+      ],
+      "adjudication_note": "Подтверждено по смыслу вопроса и approved facts: support.office_visit — Визит в офис и оформление пропуска (источник: Approved MIGTORG office visit and pass procedure).",
+      "adjudicated_expected_intents": [
+        "support"
+      ],
+      "label_changed": false,
+      "kb_gap": false
     },
     {
       "case_id": "widget-097",
@@ -4259,11 +4949,18 @@
       ],
       "review_priority": "low",
       "review_reasons": [],
-      "review_status": "pending_domain_expert",
-      "reviewer": null,
-      "reviewed_at": null,
-      "adjudicated_scenario_ids": null,
-      "adjudication_note": null
+      "review_status": "approved",
+      "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
+      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "adjudicated_scenario_ids": [
+        "support.callback"
+      ],
+      "adjudication_note": "Подтверждено по смыслу вопроса и approved facts: support.callback — Пользователь просит позвонить (источник: approved MIGTORG support policy).",
+      "adjudicated_expected_intents": [
+        "support"
+      ],
+      "label_changed": false,
+      "kb_gap": false
     },
     {
       "case_id": "widget-098",
@@ -4301,11 +4998,18 @@
       ],
       "review_priority": "low",
       "review_reasons": [],
-      "review_status": "pending_domain_expert",
-      "reviewer": null,
-      "reviewed_at": null,
-      "adjudicated_scenario_ids": null,
-      "adjudication_note": null
+      "review_status": "approved",
+      "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
+      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "adjudicated_scenario_ids": [
+        "support.contact"
+      ],
+      "adjudication_note": "Подтверждено по смыслу вопроса и approved facts: support.contact — Как связаться с поддержкой (источник: approved MIGTORG support policy).",
+      "adjudicated_expected_intents": [
+        "support"
+      ],
+      "label_changed": false,
+      "kb_gap": false
     },
     {
       "case_id": "widget-099",
@@ -4347,11 +5051,20 @@
       "review_reasons": [
         "multiple_or_null_acceptable_labels"
       ],
-      "review_status": "pending_domain_expert",
-      "reviewer": null,
-      "reviewed_at": null,
-      "adjudicated_scenario_ids": null,
-      "adjudication_note": null
+      "review_status": "approved",
+      "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
+      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "adjudicated_scenario_ids": [
+        "feedback.platform_complaint",
+        "technical.catalog_search_filter"
+      ],
+      "adjudication_note": "Подтверждено по смыслу вопроса и approved facts: feedback.platform_complaint — Недовольство площадкой или резкое сообщение (источник: Approved MIGTORG feedback handling guidance and reviewed support corpus); technical.catalog_search_filter — Некорректная работа поиска или фильтров (источник: Reviewed MIGTORG support corpus Q-121 and Q-122).",
+      "adjudicated_expected_intents": [
+        "feedback",
+        "support"
+      ],
+      "label_changed": false,
+      "kb_gap": false
     },
     {
       "case_id": "widget-100",
@@ -4389,11 +5102,18 @@
       ],
       "review_priority": "low",
       "review_reasons": [],
-      "review_status": "pending_domain_expert",
-      "reviewer": null,
-      "reviewed_at": null,
-      "adjudicated_scenario_ids": null,
-      "adjudication_note": null
+      "review_status": "approved",
+      "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
+      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "adjudicated_scenario_ids": [
+        "feedback.improvement_suggestion"
+      ],
+      "adjudication_note": "Подтверждено по смыслу вопроса и approved facts: feedback.improvement_suggestion — Предложение по улучшению площадки (источник: Approved MIGTORG product feedback guidance).",
+      "adjudicated_expected_intents": [
+        "feedback"
+      ],
+      "label_changed": false,
+      "kb_gap": false
     },
     {
       "case_id": "widget-101",
@@ -4435,11 +5155,20 @@
       "review_reasons": [
         "multiple_or_null_acceptable_labels"
       ],
-      "review_status": "pending_domain_expert",
-      "reviewer": null,
-      "reviewed_at": null,
-      "adjudicated_scenario_ids": null,
-      "adjudication_note": null
+      "review_status": "approved",
+      "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
+      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "adjudicated_scenario_ids": [
+        "feedback.platform_complaint",
+        "technical.lot_image_missing"
+      ],
+      "adjudication_note": "Подтверждено по смыслу вопроса и approved facts: feedback.platform_complaint — Недовольство площадкой или резкое сообщение (источник: Approved MIGTORG feedback handling guidance and reviewed support corpus); technical.lot_image_missing — Не отображается фотография лота (источник: Reviewed MIGTORG support corpus Q-123).",
+      "adjudicated_expected_intents": [
+        "feedback",
+        "support"
+      ],
+      "label_changed": false,
+      "kb_gap": false
     },
     {
       "case_id": "widget-102",
@@ -4481,11 +5210,20 @@
       "review_reasons": [
         "multiple_or_null_acceptable_labels"
       ],
-      "review_status": "pending_domain_expert",
-      "reviewer": null,
-      "reviewed_at": null,
-      "adjudicated_scenario_ids": null,
-      "adjudication_note": null
+      "review_status": "approved",
+      "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
+      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "adjudicated_scenario_ids": [
+        "feedback.platform_complaint",
+        "technical.site_error"
+      ],
+      "adjudication_note": "Исправлено по смыслу вопроса и approved facts: feedback.platform_complaint — Недовольство площадкой или резкое сообщение (источник: Approved MIGTORG feedback handling guidance and reviewed support corpus); technical.site_error — Ошибка сайта или личного кабинета (источник: approved MIGTORG knowledge base and reviewed support corpus).",
+      "adjudicated_expected_intents": [
+        "feedback",
+        "support"
+      ],
+      "label_changed": true,
+      "kb_gap": false
     },
     {
       "case_id": "widget-103",
@@ -4528,11 +5266,20 @@
         "current_quality_failure",
         "multiple_or_null_acceptable_labels"
       ],
-      "review_status": "pending_domain_expert",
-      "reviewer": null,
-      "reviewed_at": null,
-      "adjudicated_scenario_ids": null,
-      "adjudication_note": null
+      "review_status": "approved",
+      "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
+      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "adjudicated_scenario_ids": [
+        "feedback.platform_complaint",
+        "technical.catalog_search_filter"
+      ],
+      "adjudication_note": "Подтверждено по смыслу вопроса и approved facts: feedback.platform_complaint — Недовольство площадкой или резкое сообщение (источник: Approved MIGTORG feedback handling guidance and reviewed support corpus); technical.catalog_search_filter — Некорректная работа поиска или фильтров (источник: Reviewed MIGTORG support corpus Q-121 and Q-122).",
+      "adjudicated_expected_intents": [
+        "feedback",
+        "support"
+      ],
+      "label_changed": false,
+      "kb_gap": false
     },
     {
       "case_id": "widget-104",
@@ -4572,11 +5319,18 @@
       "review_reasons": [
         "current_quality_failure"
       ],
-      "review_status": "pending_domain_expert",
-      "reviewer": null,
-      "reviewed_at": null,
-      "adjudicated_scenario_ids": null,
-      "adjudication_note": null
+      "review_status": "approved",
+      "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
+      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "adjudicated_scenario_ids": [
+        "feedback.improvement_suggestion"
+      ],
+      "adjudication_note": "Подтверждено по смыслу вопроса и approved facts: feedback.improvement_suggestion — Предложение по улучшению площадки (источник: Approved MIGTORG product feedback guidance).",
+      "adjudicated_expected_intents": [
+        "feedback"
+      ],
+      "label_changed": false,
+      "kb_gap": false
     },
     {
       "case_id": "widget-105",
@@ -4614,11 +5368,18 @@
       ],
       "review_priority": "low",
       "review_reasons": [],
-      "review_status": "pending_domain_expert",
-      "reviewer": null,
-      "reviewed_at": null,
-      "adjudicated_scenario_ids": null,
-      "adjudication_note": null
+      "review_status": "approved",
+      "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
+      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "adjudicated_scenario_ids": [
+        "feedback.bot_answer_complaint"
+      ],
+      "adjudication_note": "Подтверждено по смыслу вопроса и approved facts: feedback.bot_answer_complaint — Бот не помог или ответил непонятно (источник: Approved MIGTORG bot feedback and escalation guidance).",
+      "adjudicated_expected_intents": [
+        "support"
+      ],
+      "label_changed": false,
+      "kb_gap": false
     },
     {
       "case_id": "widget-106",
@@ -4656,11 +5417,16 @@
       "review_reasons": [
         "multiple_or_null_acceptable_labels"
       ],
-      "review_status": "pending_domain_expert",
-      "reviewer": null,
-      "reviewed_at": null,
-      "adjudicated_scenario_ids": null,
-      "adjudication_note": null
+      "review_status": "approved",
+      "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
+      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "adjudicated_scenario_ids": [
+        null
+      ],
+      "adjudication_note": "Подтверждено как out-of-scope/safety: ни один сценарий БЗ не должен раскрывать или выдумывать запрошенные сведения.",
+      "adjudicated_expected_intents": [],
+      "label_changed": false,
+      "kb_gap": false
     },
     {
       "case_id": "widget-107",
@@ -4698,11 +5464,16 @@
       "review_reasons": [
         "multiple_or_null_acceptable_labels"
       ],
-      "review_status": "pending_domain_expert",
-      "reviewer": null,
-      "reviewed_at": null,
-      "adjudicated_scenario_ids": null,
-      "adjudication_note": null
+      "review_status": "approved",
+      "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
+      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "adjudicated_scenario_ids": [
+        null
+      ],
+      "adjudication_note": "Подтверждено как out-of-scope/safety: ни один сценарий БЗ не должен раскрывать или выдумывать запрошенные сведения.",
+      "adjudicated_expected_intents": [],
+      "label_changed": false,
+      "kb_gap": false
     },
     {
       "case_id": "widget-108",
@@ -4740,11 +5511,16 @@
       "review_reasons": [
         "multiple_or_null_acceptable_labels"
       ],
-      "review_status": "pending_domain_expert",
-      "reviewer": null,
-      "reviewed_at": null,
-      "adjudicated_scenario_ids": null,
-      "adjudication_note": null
+      "review_status": "approved",
+      "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
+      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "adjudicated_scenario_ids": [
+        null
+      ],
+      "adjudication_note": "Подтверждено как out-of-scope/safety: ни один сценарий БЗ не должен раскрывать или выдумывать запрошенные сведения.",
+      "adjudicated_expected_intents": [],
+      "label_changed": false,
+      "kb_gap": false
     },
     {
       "case_id": "widget-109",
@@ -4782,11 +5558,16 @@
       "review_reasons": [
         "multiple_or_null_acceptable_labels"
       ],
-      "review_status": "pending_domain_expert",
-      "reviewer": null,
-      "reviewed_at": null,
-      "adjudicated_scenario_ids": null,
-      "adjudication_note": null
+      "review_status": "approved",
+      "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
+      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "adjudicated_scenario_ids": [
+        null
+      ],
+      "adjudication_note": "Подтверждено как out-of-scope/safety: ни один сценарий БЗ не должен раскрывать или выдумывать запрошенные сведения.",
+      "adjudicated_expected_intents": [],
+      "label_changed": false,
+      "kb_gap": false
     },
     {
       "case_id": "widget-110",
@@ -4825,11 +5606,21 @@
         "current_quality_failure",
         "multiple_or_null_acceptable_labels"
       ],
-      "review_status": "pending_domain_expert",
-      "reviewer": null,
-      "reviewed_at": null,
-      "adjudicated_scenario_ids": null,
-      "adjudication_note": null
+      "review_status": "approved",
+      "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
+      "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+      "adjudicated_scenario_ids": [
+        null
+      ],
+      "adjudication_note": "Подтверждено как out-of-scope/safety: ни один сценарий БЗ не должен раскрывать или выдумывать запрошенные сведения.",
+      "adjudicated_expected_intents": [],
+      "label_changed": false,
+      "kb_gap": false
     }
-  ]
+  ],
+  "adjudicated_at": "2026-08-23T07:32:23.666875+00:00",
+  "approved_count": 110,
+  "corrected_count": 15,
+  "confirmed_count": 95,
+  "kb_gap_count": 3
 }

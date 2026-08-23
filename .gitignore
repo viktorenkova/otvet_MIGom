@@ -27,6 +27,7 @@ data/
 tests/data/*
 !tests/data/regression_corpora_manifest.json
 !tests/data/routing_content_leakage_baseline.json
+!tests/data/routing_label_adjudication_110.json
 storage/
 tickets/
 .work/

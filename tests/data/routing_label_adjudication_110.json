@@ -1,0 +1,1238 @@
+{
+  "schema_version": 1,
+  "dataset_id": "routing-v3-closed-control-270",
+  "base_dataset_sha256": "603982053d24941b3b96a43ac109c28f471fc3f0b63793b52d49ea865a2a7c75",
+  "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
+  "reviewed_at": "2026-08-23T07:32:23.666875+00:00",
+  "record_count": 110,
+  "corrected_count": 15,
+  "kb_gap_count": 3,
+  "records": [
+    {
+      "case_id": "widget-001",
+      "expected_scenario_ids": [
+        "platform.about"
+      ],
+      "expected_intents": [
+        "platform"
+      ],
+      "review_status": "approved",
+      "kb_gap": false
+    },
+    {
+      "case_id": "widget-002",
+      "expected_scenario_ids": [
+        "buyer.get_started"
+      ],
+      "expected_intents": [
+        "bidding"
+      ],
+      "review_status": "approved",
+      "kb_gap": false
+    },
+    {
+      "case_id": "widget-003",
+      "expected_scenario_ids": [
+        "buyer.get_started"
+      ],
+      "expected_intents": [
+        "bidding"
+      ],
+      "review_status": "approved",
+      "kb_gap": false
+    },
+    {
+      "case_id": "widget-004",
+      "expected_scenario_ids": [
+        "buyer.get_started"
+      ],
+      "expected_intents": [
+        "bidding"
+      ],
+      "review_status": "approved",
+      "kb_gap": false
+    },
+    {
+      "case_id": "widget-005",
+      "expected_scenario_ids": [
+        "buyer.get_started"
+      ],
+      "expected_intents": [
+        "bidding"
+      ],
+      "review_status": "approved",
+      "kb_gap": false
+    },
+    {
+      "case_id": "widget-006",
+      "expected_scenario_ids": [
+        "lot.catalog_search",
+        "tariff.demo"
+      ],
+      "expected_intents": [
+        "lot",
+        "tariffs"
+      ],
+      "review_status": "approved",
+      "kb_gap": false
+    },
+    {
+      "case_id": "widget-007",
+      "expected_scenario_ids": [
+        "buyer.get_started"
+      ],
+      "expected_intents": [
+        "bidding"
+      ],
+      "review_status": "approved",
+      "kb_gap": false
+    },
+    {
+      "case_id": "widget-008",
+      "expected_scenario_ids": [
+        "buyer.get_started"
+      ],
+      "expected_intents": [
+        "bidding"
+      ],
+      "review_status": "approved",
+      "kb_gap": false
+    },
+    {
+      "case_id": "widget-009",
+      "expected_scenario_ids": [
+        "platform.about"
+      ],
+      "expected_intents": [
+        "platform"
+      ],
+      "review_status": "approved",
+      "kb_gap": false
+    },
+    {
+      "case_id": "widget-010",
+      "expected_scenario_ids": [
+        "buyer.first_bid_checklist"
+      ],
+      "expected_intents": [
+        "bidding"
+      ],
+      "review_status": "approved",
+      "kb_gap": false
+    },
+    {
+      "case_id": "widget-011",
+      "expected_scenario_ids": [
+        "account.registration"
+      ],
+      "expected_intents": [
+        "account"
+      ],
+      "review_status": "approved",
+      "kb_gap": false
+    },
+    {
+      "case_id": "widget-012",
+      "expected_scenario_ids": [
+        "account.registration"
+      ],
+      "expected_intents": [
+        "account"
+      ],
+      "review_status": "approved",
+      "kb_gap": false
+    },
+    {
+      "case_id": "widget-013",
+      "expected_scenario_ids": [
+        "account.activation_pending",
+        "notification.delivery_problem"
+      ],
+      "expected_intents": [
+        "registration",
+        "technical"
+      ],
+      "review_status": "approved",
+      "kb_gap": false
+    },
+    {
+      "case_id": "widget-014",
+      "expected_scenario_ids": [
+        "account.login_problem"
+      ],
+      "expected_intents": [
+        "registration"
+      ],
+      "review_status": "approved",
+      "kb_gap": false
+    },
+    {
+      "case_id": "widget-015",
+      "expected_scenario_ids": [
+        "account.login_problem"
+      ],
+      "expected_intents": [
+        "registration"
+      ],
+      "review_status": "approved",
+      "kb_gap": false
+    },
+    {
+      "case_id": "widget-016",
+      "expected_scenario_ids": [
+        "seller.get_started"
+      ],
+      "expected_intents": [
+        "registration"
+      ],
+      "review_status": "approved",
+      "kb_gap": false
+    },
+    {
+      "case_id": "widget-017",
+      "expected_scenario_ids": [
+        "seller.get_started"
+      ],
+      "expected_intents": [
+        "registration"
+      ],
+      "review_status": "approved",
+      "kb_gap": false
+    },
+    {
+      "case_id": "widget-018",
+      "expected_scenario_ids": [
+        "account.registration"
+      ],
+      "expected_intents": [
+        "account"
+      ],
+      "review_status": "approved",
+      "kb_gap": false
+    },
+    {
+      "case_id": "widget-019",
+      "expected_scenario_ids": [
+        "account.blocked"
+      ],
+      "expected_intents": [
+        "registration"
+      ],
+      "review_status": "approved",
+      "kb_gap": false
+    },
+    {
+      "case_id": "widget-020",
+      "expected_scenario_ids": [
+        "account.credential_responsibility"
+      ],
+      "expected_intents": [
+        "registration"
+      ],
+      "review_status": "approved",
+      "kb_gap": false
+    },
+    {
+      "case_id": "widget-021",
+      "expected_scenario_ids": [
+        "bid.place"
+      ],
+      "expected_intents": [
+        "bidding"
+      ],
+      "review_status": "approved",
+      "kb_gap": false
+    },
+    {
+      "case_id": "widget-022",
+      "expected_scenario_ids": [
+        "bid.place"
+      ],
+      "expected_intents": [
+        "bidding"
+      ],
+      "review_status": "approved",
+      "kb_gap": false
+    },
+    {
+      "case_id": "widget-023",
+      "expected_scenario_ids": [
+        "bid.autobid_extension"
+      ],
+      "expected_intents": [
+        "bidding"
+      ],
+      "review_status": "approved",
+      "kb_gap": false
+    },
+    {
+      "case_id": "widget-024",
+      "expected_scenario_ids": [
+        "bid.price_terms"
+      ],
+      "expected_intents": [
+        "bidding"
+      ],
+      "review_status": "approved",
+      "kb_gap": false
+    },
+    {
+      "case_id": "widget-025",
+      "expected_scenario_ids": [
+        "bid.place",
+        "technical.site_error"
+      ],
+      "expected_intents": [
+        "bidding",
+        "support"
+      ],
+      "review_status": "approved",
+      "kb_gap": false
+    },
+    {
+      "case_id": "widget-026",
+      "expected_scenario_ids": [
+        "bid.position_service"
+      ],
+      "expected_intents": [
+        "bidding"
+      ],
+      "review_status": "approved",
+      "kb_gap": false
+    },
+    {
+      "case_id": "widget-027",
+      "expected_scenario_ids": [
+        "bid.modify_cancel"
+      ],
+      "expected_intents": [
+        "bidding"
+      ],
+      "review_status": "approved",
+      "kb_gap": false
+    },
+    {
+      "case_id": "widget-028",
+      "expected_scenario_ids": [
+        "lot.status_guide"
+      ],
+      "expected_intents": [
+        "lot"
+      ],
+      "review_status": "approved",
+      "kb_gap": false
+    },
+    {
+      "case_id": "widget-029",
+      "expected_scenario_ids": [
+        "bid.not_visible"
+      ],
+      "expected_intents": [
+        "bidding"
+      ],
+      "review_status": "approved",
+      "kb_gap": false
+    },
+    {
+      "case_id": "widget-030",
+      "expected_scenario_ids": [
+        "auction.result"
+      ],
+      "expected_intents": [
+        "lot"
+      ],
+      "review_status": "approved",
+      "kb_gap": false
+    },
+    {
+      "case_id": "widget-031",
+      "expected_scenario_ids": [
+        "bid.autobid_extension"
+      ],
+      "expected_intents": [
+        "bidding"
+      ],
+      "review_status": "approved",
+      "kb_gap": false
+    },
+    {
+      "case_id": "widget-032",
+      "expected_scenario_ids": [
+        "auction.formats"
+      ],
+      "expected_intents": [
+        "bidding"
+      ],
+      "review_status": "approved",
+      "kb_gap": false
+    },
+    {
+      "case_id": "widget-033",
+      "expected_scenario_ids": [
+        "auction.result"
+      ],
+      "expected_intents": [
+        "lot"
+      ],
+      "review_status": "approved",
+      "kb_gap": false
+    },
+    {
+      "case_id": "widget-034",
+      "expected_scenario_ids": [
+        "auction.status"
+      ],
+      "expected_intents": [
+        "lot"
+      ],
+      "review_status": "approved",
+      "kb_gap": false
+    },
+    {
+      "case_id": "widget-035",
+      "expected_scenario_ids": [
+        "auction.result"
+      ],
+      "expected_intents": [
+        "lot"
+      ],
+      "review_status": "approved",
+      "kb_gap": false
+    },
+    {
+      "case_id": "widget-036",
+      "expected_scenario_ids": [
+        "lot.catalog_search"
+      ],
+      "expected_intents": [
+        "lot"
+      ],
+      "review_status": "approved",
+      "kb_gap": false
+    },
+    {
+      "case_id": "widget-037",
+      "expected_scenario_ids": [
+        "technical.catalog_search_filter"
+      ],
+      "expected_intents": [
+        "support"
+      ],
+      "review_status": "approved",
+      "kb_gap": false
+    },
+    {
+      "case_id": "widget-038",
+      "expected_scenario_ids": [
+        "lot.catalog_search"
+      ],
+      "expected_intents": [
+        "lot"
+      ],
+      "review_status": "approved",
+      "kb_gap": false
+    },
+    {
+      "case_id": "widget-039",
+      "expected_scenario_ids": [
+        "lot.catalog_search"
+      ],
+      "expected_intents": [
+        "lot"
+      ],
+      "review_status": "approved",
+      "kb_gap": false
+    },
+    {
+      "case_id": "widget-040",
+      "expected_scenario_ids": [
+        "technical.catalog_search_filter"
+      ],
+      "expected_intents": [
+        "support"
+      ],
+      "review_status": "approved",
+      "kb_gap": false
+    },
+    {
+      "case_id": "widget-041",
+      "expected_scenario_ids": [
+        "technical.lot_image_missing"
+      ],
+      "expected_intents": [
+        "support"
+      ],
+      "review_status": "approved",
+      "kb_gap": false
+    },
+    {
+      "case_id": "widget-042",
+      "expected_scenario_ids": [
+        "technical.lot_image_missing"
+      ],
+      "expected_intents": [
+        "support"
+      ],
+      "review_status": "approved",
+      "kb_gap": false
+    },
+    {
+      "case_id": "widget-043",
+      "expected_scenario_ids": [
+        "lot.card_information"
+      ],
+      "expected_intents": [
+        "lot"
+      ],
+      "review_status": "approved",
+      "kb_gap": true
+    },
+    {
+      "case_id": "widget-044",
+      "expected_scenario_ids": [
+        "technical.lot_image_missing"
+      ],
+      "expected_intents": [
+        "support"
+      ],
+      "review_status": "approved",
+      "kb_gap": false
+    },
+    {
+      "case_id": "widget-045",
+      "expected_scenario_ids": [
+        "auction.completed_analytics"
+      ],
+      "expected_intents": [
+        "bidding"
+      ],
+      "review_status": "approved",
+      "kb_gap": false
+    },
+    {
+      "case_id": "widget-046",
+      "expected_scenario_ids": [
+        "technical.catalog_search_filter"
+      ],
+      "expected_intents": [
+        "support"
+      ],
+      "review_status": "approved",
+      "kb_gap": false
+    },
+    {
+      "case_id": "widget-047",
+      "expected_scenario_ids": [
+        "lot.catalog_search"
+      ],
+      "expected_intents": [
+        "lot"
+      ],
+      "review_status": "approved",
+      "kb_gap": false
+    },
+    {
+      "case_id": "widget-048",
+      "expected_scenario_ids": [
+        "lot.catalog_search"
+      ],
+      "expected_intents": [
+        "lot"
+      ],
+      "review_status": "approved",
+      "kb_gap": false
+    },
+    {
+      "case_id": "widget-049",
+      "expected_scenario_ids": [
+        "lot.catalog_search"
+      ],
+      "expected_intents": [
+        "lot"
+      ],
+      "review_status": "approved",
+      "kb_gap": false
+    },
+    {
+      "case_id": "widget-050",
+      "expected_scenario_ids": [
+        "technical.catalog_search_filter",
+        "lot.card_information"
+      ],
+      "expected_intents": [
+        "lot",
+        "support"
+      ],
+      "review_status": "approved",
+      "kb_gap": false
+    },
+    {
+      "case_id": "widget-051",
+      "expected_scenario_ids": [
+        "tariff.choose"
+      ],
+      "expected_intents": [
+        "tariffs"
+      ],
+      "review_status": "approved",
+      "kb_gap": false
+    },
+    {
+      "case_id": "widget-052",
+      "expected_scenario_ids": [
+        "tariff.status"
+      ],
+      "expected_intents": [
+        "tariffs"
+      ],
+      "review_status": "approved",
+      "kb_gap": false
+    },
+    {
+      "case_id": "widget-053",
+      "expected_scenario_ids": [
+        "tariff.status"
+      ],
+      "expected_intents": [
+        "tariffs"
+      ],
+      "review_status": "approved",
+      "kb_gap": true
+    },
+    {
+      "case_id": "widget-054",
+      "expected_scenario_ids": [
+        "tariff.status"
+      ],
+      "expected_intents": [
+        "tariffs"
+      ],
+      "review_status": "approved",
+      "kb_gap": false
+    },
+    {
+      "case_id": "widget-055",
+      "expected_scenario_ids": [
+        "commission.explained"
+      ],
+      "expected_intents": [
+        "payment"
+      ],
+      "review_status": "approved",
+      "kb_gap": false
+    },
+    {
+      "case_id": "widget-056",
+      "expected_scenario_ids": [
+        "payment.methods",
+        "account.identification_edge_case"
+      ],
+      "expected_intents": [
+        "payment",
+        "registration"
+      ],
+      "review_status": "approved",
+      "kb_gap": false
+    },
+    {
+      "case_id": "widget-057",
+      "expected_scenario_ids": [
+        "tariff.choose"
+      ],
+      "expected_intents": [
+        "tariffs"
+      ],
+      "review_status": "approved",
+      "kb_gap": true
+    },
+    {
+      "case_id": "widget-058",
+      "expected_scenario_ids": [
+        "payment.methods",
+        "balance.topup.commission"
+      ],
+      "expected_intents": [
+        "payment"
+      ],
+      "review_status": "approved",
+      "kb_gap": false
+    },
+    {
+      "case_id": "widget-059",
+      "expected_scenario_ids": [
+        "payment.not_visible"
+      ],
+      "expected_intents": [
+        "payment"
+      ],
+      "review_status": "approved",
+      "kb_gap": false
+    },
+    {
+      "case_id": "widget-060",
+      "expected_scenario_ids": [
+        "payment.not_visible"
+      ],
+      "expected_intents": [
+        "payment"
+      ],
+      "review_status": "approved",
+      "kb_gap": false
+    },
+    {
+      "case_id": "widget-061",
+      "expected_scenario_ids": [
+        "payment.accounting_documents"
+      ],
+      "expected_intents": [
+        "payment"
+      ],
+      "review_status": "approved",
+      "kb_gap": false
+    },
+    {
+      "case_id": "widget-062",
+      "expected_scenario_ids": [
+        "refund.eligibility"
+      ],
+      "expected_intents": [
+        "refund"
+      ],
+      "review_status": "approved",
+      "kb_gap": false
+    },
+    {
+      "case_id": "widget-063",
+      "expected_scenario_ids": [
+        "commission.explained"
+      ],
+      "expected_intents": [
+        "payment"
+      ],
+      "review_status": "approved",
+      "kb_gap": false
+    },
+    {
+      "case_id": "widget-064",
+      "expected_scenario_ids": [
+        "lot.payment.details",
+        "payment.methods"
+      ],
+      "expected_intents": [
+        "payment"
+      ],
+      "review_status": "approved",
+      "kb_gap": false
+    },
+    {
+      "case_id": "widget-065",
+      "expected_scenario_ids": [
+        "payment.accounting_documents"
+      ],
+      "expected_intents": [
+        "payment"
+      ],
+      "review_status": "approved",
+      "kb_gap": false
+    },
+    {
+      "case_id": "widget-066",
+      "expected_scenario_ids": [
+        "win.next_steps"
+      ],
+      "expected_intents": [
+        "transfer"
+      ],
+      "review_status": "approved",
+      "kb_gap": false
+    },
+    {
+      "case_id": "widget-067",
+      "expected_scenario_ids": [
+        "pickup.receive_lot"
+      ],
+      "expected_intents": [
+        "pickup"
+      ],
+      "review_status": "approved",
+      "kb_gap": false
+    },
+    {
+      "case_id": "widget-068",
+      "expected_scenario_ids": [
+        "transfer.not_confirmed"
+      ],
+      "expected_intents": [
+        "lot"
+      ],
+      "review_status": "approved",
+      "kb_gap": false
+    },
+    {
+      "case_id": "widget-069",
+      "expected_scenario_ids": [
+        "lot.location",
+        "pickup.receive_lot"
+      ],
+      "expected_intents": [
+        "lot",
+        "pickup"
+      ],
+      "review_status": "approved",
+      "kb_gap": false
+    },
+    {
+      "case_id": "widget-070",
+      "expected_scenario_ids": [
+        "pickup.representative"
+      ],
+      "expected_intents": [
+        "pickup"
+      ],
+      "review_status": "approved",
+      "kb_gap": false
+    },
+    {
+      "case_id": "widget-071",
+      "expected_scenario_ids": [
+        "contract.receive"
+      ],
+      "expected_intents": [
+        "transfer"
+      ],
+      "review_status": "approved",
+      "kb_gap": false
+    },
+    {
+      "case_id": "widget-072",
+      "expected_scenario_ids": [
+        "contract.receive",
+        "documents.preparation_delay"
+      ],
+      "expected_intents": [
+        "transfer"
+      ],
+      "review_status": "approved",
+      "kb_gap": false
+    },
+    {
+      "case_id": "widget-073",
+      "expected_scenario_ids": [
+        "contract.receive"
+      ],
+      "expected_intents": [
+        "transfer"
+      ],
+      "review_status": "approved",
+      "kb_gap": false
+    },
+    {
+      "case_id": "widget-074",
+      "expected_scenario_ids": [
+        "transfer.confirmed"
+      ],
+      "expected_intents": [
+        "transfer"
+      ],
+      "review_status": "approved",
+      "kb_gap": false
+    },
+    {
+      "case_id": "widget-075",
+      "expected_scenario_ids": [
+        "pickup.access_issuer"
+      ],
+      "expected_intents": [
+        "transfer"
+      ],
+      "review_status": "approved",
+      "kb_gap": false
+    },
+    {
+      "case_id": "widget-076",
+      "expected_scenario_ids": [
+        "transfer.notification_contact"
+      ],
+      "expected_intents": [
+        "transfer"
+      ],
+      "review_status": "approved",
+      "kb_gap": false
+    },
+    {
+      "case_id": "widget-077",
+      "expected_scenario_ids": [
+        "pickup.access_issuer",
+        "lot.location"
+      ],
+      "expected_intents": [
+        "lot",
+        "transfer"
+      ],
+      "review_status": "approved",
+      "kb_gap": false
+    },
+    {
+      "case_id": "widget-078",
+      "expected_scenario_ids": [
+        "win.next_steps",
+        "transfer.seller_no_response"
+      ],
+      "expected_intents": [
+        "transfer"
+      ],
+      "review_status": "approved",
+      "kb_gap": false
+    },
+    {
+      "case_id": "widget-079",
+      "expected_scenario_ids": [
+        "pickup.receive_lot"
+      ],
+      "expected_intents": [
+        "pickup"
+      ],
+      "review_status": "approved",
+      "kb_gap": false
+    },
+    {
+      "case_id": "widget-080",
+      "expected_scenario_ids": [
+        "pickup.receive_lot"
+      ],
+      "expected_intents": [
+        "pickup"
+      ],
+      "review_status": "approved",
+      "kb_gap": false
+    },
+    {
+      "case_id": "widget-081",
+      "expected_scenario_ids": [
+        "refund.application"
+      ],
+      "expected_intents": [
+        "refund"
+      ],
+      "review_status": "approved",
+      "kb_gap": false
+    },
+    {
+      "case_id": "widget-082",
+      "expected_scenario_ids": [
+        "refund.application"
+      ],
+      "expected_intents": [
+        "refund"
+      ],
+      "review_status": "approved",
+      "kb_gap": false
+    },
+    {
+      "case_id": "widget-083",
+      "expected_scenario_ids": [
+        "refund.timing_status"
+      ],
+      "expected_intents": [
+        "refund"
+      ],
+      "review_status": "approved",
+      "kb_gap": false
+    },
+    {
+      "case_id": "widget-084",
+      "expected_scenario_ids": [
+        "refund.application"
+      ],
+      "expected_intents": [
+        "refund"
+      ],
+      "review_status": "approved",
+      "kb_gap": false
+    },
+    {
+      "case_id": "widget-085",
+      "expected_scenario_ids": [
+        "penalty.explain_or_dispute"
+      ],
+      "expected_intents": [
+        "penalty"
+      ],
+      "review_status": "approved",
+      "kb_gap": false
+    },
+    {
+      "case_id": "widget-086",
+      "expected_scenario_ids": [
+        "refusal.change_mind"
+      ],
+      "expected_intents": [
+        "refusal"
+      ],
+      "review_status": "approved",
+      "kb_gap": false
+    },
+    {
+      "case_id": "widget-087",
+      "expected_scenario_ids": [
+        "penalty.explain_or_dispute"
+      ],
+      "expected_intents": [
+        "penalty"
+      ],
+      "review_status": "approved",
+      "kb_gap": false
+    },
+    {
+      "case_id": "widget-088",
+      "expected_scenario_ids": [
+        "lot.payment.overdue"
+      ],
+      "expected_intents": [
+        "payment"
+      ],
+      "review_status": "approved",
+      "kb_gap": false
+    },
+    {
+      "case_id": "widget-089",
+      "expected_scenario_ids": [
+        "penalty.explain_or_dispute"
+      ],
+      "expected_intents": [
+        "penalty"
+      ],
+      "review_status": "approved",
+      "kb_gap": false
+    },
+    {
+      "case_id": "widget-090",
+      "expected_scenario_ids": [
+        "refund.timing_status"
+      ],
+      "expected_intents": [
+        "refund"
+      ],
+      "review_status": "approved",
+      "kb_gap": false
+    },
+    {
+      "case_id": "widget-091",
+      "expected_scenario_ids": [
+        "support.office_visit"
+      ],
+      "expected_intents": [
+        "support"
+      ],
+      "review_status": "approved",
+      "kb_gap": false
+    },
+    {
+      "case_id": "widget-092",
+      "expected_scenario_ids": [
+        "support.office_visit"
+      ],
+      "expected_intents": [
+        "support"
+      ],
+      "review_status": "approved",
+      "kb_gap": false
+    },
+    {
+      "case_id": "widget-093",
+      "expected_scenario_ids": [
+        "support.office_visit"
+      ],
+      "expected_intents": [
+        "support"
+      ],
+      "review_status": "approved",
+      "kb_gap": false
+    },
+    {
+      "case_id": "widget-094",
+      "expected_scenario_ids": [
+        "support.office_visit"
+      ],
+      "expected_intents": [
+        "support"
+      ],
+      "review_status": "approved",
+      "kb_gap": false
+    },
+    {
+      "case_id": "widget-095",
+      "expected_scenario_ids": [
+        "pickup.access_issuer"
+      ],
+      "expected_intents": [
+        "transfer"
+      ],
+      "review_status": "approved",
+      "kb_gap": false
+    },
+    {
+      "case_id": "widget-096",
+      "expected_scenario_ids": [
+        "support.office_visit"
+      ],
+      "expected_intents": [
+        "support"
+      ],
+      "review_status": "approved",
+      "kb_gap": false
+    },
+    {
+      "case_id": "widget-097",
+      "expected_scenario_ids": [
+        "support.callback"
+      ],
+      "expected_intents": [
+        "support"
+      ],
+      "review_status": "approved",
+      "kb_gap": false
+    },
+    {
+      "case_id": "widget-098",
+      "expected_scenario_ids": [
+        "support.contact"
+      ],
+      "expected_intents": [
+        "support"
+      ],
+      "review_status": "approved",
+      "kb_gap": false
+    },
+    {
+      "case_id": "widget-099",
+      "expected_scenario_ids": [
+        "feedback.platform_complaint",
+        "technical.catalog_search_filter"
+      ],
+      "expected_intents": [
+        "feedback",
+        "support"
+      ],
+      "review_status": "approved",
+      "kb_gap": false
+    },
+    {
+      "case_id": "widget-100",
+      "expected_scenario_ids": [
+        "feedback.improvement_suggestion"
+      ],
+      "expected_intents": [
+        "feedback"
+      ],
+      "review_status": "approved",
+      "kb_gap": false
+    },
+    {
+      "case_id": "widget-101",
+      "expected_scenario_ids": [
+        "feedback.platform_complaint",
+        "technical.lot_image_missing"
+      ],
+      "expected_intents": [
+        "feedback",
+        "support"
+      ],
+      "review_status": "approved",
+      "kb_gap": false
+    },
+    {
+      "case_id": "widget-102",
+      "expected_scenario_ids": [
+        "feedback.platform_complaint",
+        "technical.site_error"
+      ],
+      "expected_intents": [
+        "feedback",
+        "support"
+      ],
+      "review_status": "approved",
+      "kb_gap": false
+    },
+    {
+      "case_id": "widget-103",
+      "expected_scenario_ids": [
+        "feedback.platform_complaint",
+        "technical.catalog_search_filter"
+      ],
+      "expected_intents": [
+        "feedback",
+        "support"
+      ],
+      "review_status": "approved",
+      "kb_gap": false
+    },
+    {
+      "case_id": "widget-104",
+      "expected_scenario_ids": [
+        "feedback.improvement_suggestion"
+      ],
+      "expected_intents": [
+        "feedback"
+      ],
+      "review_status": "approved",
+      "kb_gap": false
+    },
+    {
+      "case_id": "widget-105",
+      "expected_scenario_ids": [
+        "feedback.bot_answer_complaint"
+      ],
+      "expected_intents": [
+        "support"
+      ],
+      "review_status": "approved",
+      "kb_gap": false
+    },
+    {
+      "case_id": "widget-106",
+      "expected_scenario_ids": [
+        null
+      ],
+      "expected_intents": null,
+      "review_status": "approved",
+      "kb_gap": false
+    },
+    {
+      "case_id": "widget-107",
+      "expected_scenario_ids": [
+        null
+      ],
+      "expected_intents": null,
+      "review_status": "approved",
+      "kb_gap": false
+    },
+    {
+      "case_id": "widget-108",
+      "expected_scenario_ids": [
+        null
+      ],
+      "expected_intents": null,
+      "review_status": "approved",
+      "kb_gap": false
+    },
+    {
+      "case_id": "widget-109",
+      "expected_scenario_ids": [
+        null
+      ],
+      "expected_intents": null,
+      "review_status": "approved",
+      "kb_gap": false
+    },
+    {
+      "case_id": "widget-110",
+      "expected_scenario_ids": [
+        null
+      ],
+      "expected_intents": null,
+      "review_status": "approved",
+      "kb_gap": false
+    }
+  ]
+}

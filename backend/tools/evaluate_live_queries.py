@@ -50,9 +50,13 @@ def _merge_expectations(group: dict[str, Any], query: dict[str, Any]) -> dict[st
     return expected
 
 
-def load_dataset(path: Path) -> tuple[dict[str, Any], list[dict[str, Any]]]:
+def load_dataset(
+    path: Path,
+    adjudication_overlay: Path | None = None,
+) -> tuple[dict[str, Any], list[dict[str, Any]]]:
     raw = path.read_bytes()
     dataset = json.loads(raw.decode("utf-8"))
+    source_sha256 = hashlib.sha256(raw).hexdigest()
     cases: list[dict[str, Any]] = []
     if "cases" in dataset:
         for case in dataset["cases"]:
@@ -77,7 +81,44 @@ def load_dataset(path: Path) -> tuple[dict[str, Any], list[dict[str, Any]]]:
                         "expected": _merge_expectations(group, query),
                     }
                 )
-    dataset["sha256"] = hashlib.sha256(raw).hexdigest()
+    dataset["source_sha256"] = source_sha256
+    if adjudication_overlay is not None:
+        overlay_raw = adjudication_overlay.read_bytes()
+        overlay = json.loads(overlay_raw.decode("utf-8"))
+        if overlay.get("base_dataset_sha256") != source_sha256:
+            raise ValueError("Adjudication overlay does not match the source dataset SHA-256")
+        updates = {item["case_id"]: item for item in overlay["records"]}
+        applied = 0
+        for case in cases:
+            update = updates.get(case["id"])
+            if not update:
+                continue
+            if update.get("review_status") != "approved":
+                raise ValueError(f"Adjudication for {case['id']} is not approved")
+            case["expected"]["expected_scenario_ids"] = update["expected_scenario_ids"]
+            if update.get("expected_intents") is None:
+                case["expected"].pop("expected_intents", None)
+            else:
+                case["expected"]["expected_intents"] = update["expected_intents"]
+            applied += 1
+        if applied != overlay.get("record_count"):
+            raise ValueError(
+                f"Applied {applied} adjudications, expected {overlay.get('record_count')}"
+            )
+        overlay_sha256 = hashlib.sha256(overlay_raw).hexdigest()
+        dataset["adjudication"] = {
+            "path": str(adjudication_overlay),
+            "sha256": overlay_sha256,
+            "record_count": applied,
+            "reviewer": overlay.get("reviewer"),
+            "reviewed_at": overlay.get("reviewed_at"),
+        }
+        dataset["sha256"] = hashlib.sha256(
+            raw + b"\0adjudication\0" + overlay_raw
+        ).hexdigest()
+    else:
+        dataset["adjudication"] = None
+        dataset["sha256"] = source_sha256
     return dataset, cases
 
 
@@ -488,6 +529,11 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Run the independent MIGTORG live-query audit set.")
     parser.add_argument("--mode", choices=("local", "remote"), required=True)
     parser.add_argument("--dataset", type=Path, default=DEFAULT_DATASET)
+    parser.add_argument(
+        "--adjudication-overlay",
+        type=Path,
+        help="Approved label overlay; its base dataset SHA must match --dataset.",
+    )
     parser.add_argument("--endpoint", default=DEFAULT_ENDPOINT)
     parser.add_argument(
         "--health-endpoint",
@@ -506,7 +552,7 @@ def parse_args() -> argparse.Namespace:
 
 def main() -> int:
     args = parse_args()
-    dataset, cases = load_dataset(args.dataset)
+    dataset, cases = load_dataset(args.dataset, args.adjudication_overlay)
     args.output.parent.mkdir(parents=True, exist_ok=True)
     run_id = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
     global_forbidden = list(dataset.get("global_forbidden_answer_fragments", []))
@@ -561,6 +607,8 @@ def main() -> int:
             "path": str(args.dataset),
             "version": dataset.get("version"),
             "sha256": dataset["sha256"],
+            "source_sha256": dataset["source_sha256"],
+            "adjudication": dataset["adjudication"],
             "single_turn_count": len(cases),
             "dialogue_count": len(dataset.get("dialogues", [])),
             "dialogue_turn_count": len(dialogue_results),
