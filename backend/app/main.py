@@ -29,6 +29,7 @@ from backend.app.bot.text_processing import analyze_text, best_intent_pattern, l
 from backend.app.bot.topic_router import route_topic
 from backend.app.bot.ticket_builder import build_ticket
 from backend.app.config import get_settings
+from backend.app.build_manifest import build_runtime_manifest
 from backend.app.delivery.email_provider import EmailTicketProvider
 from backend.app.delivery.local_provider import LocalDatabaseTicketProvider
 from backend.app.integrations.langfuse_client import LangfuseClient
@@ -953,7 +954,9 @@ def process_chat_message(request: ChatRequest) -> ChatResponse:
 
 
 @app.get("/health")
+@app.get("/api/health")
 def health() -> dict:
+    build_manifest = build_runtime_manifest(settings)
     return {
         "status": "ok",
         "app_name": settings.app_name,
@@ -965,6 +968,7 @@ def health() -> dict:
         "knowledge_mode": "v2"
         if settings.knowledge_v2_enabled and not settings.knowledge_v2_shadow_mode
         else "legacy_or_shadow",
+        "build_manifest": build_manifest,
     }
 
 

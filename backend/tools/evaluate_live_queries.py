@@ -361,6 +361,35 @@ def build_remote_sender(endpoint: str, timeout_seconds: float) -> Callable[[dict
     return send
 
 
+def _health_endpoint_candidates(endpoint: str, explicit_endpoint: str | None = None) -> list[str]:
+    if explicit_endpoint:
+        return [explicit_endpoint]
+    origin = endpoint.split("/api/", 1)[0].rstrip("/")
+    return [f"{origin}/api/health", f"{origin}/health"]
+
+
+def fetch_remote_manifest(
+    endpoint: str,
+    timeout_seconds: float,
+    health_endpoint: str | None = None,
+) -> dict[str, Any] | None:
+    for candidate in _health_endpoint_candidates(endpoint, health_endpoint):
+        request = Request(
+            candidate,
+            method="GET",
+            headers={"Accept": "application/json", "User-Agent": "MIGTORG-KB-Audit/manifest-v1"},
+        )
+        try:
+            with urlopen(request, timeout=timeout_seconds) as response:
+                payload = json.loads(response.read().decode("utf-8"))
+        except (HTTPError, URLError, TimeoutError, json.JSONDecodeError):
+            continue
+        manifest = payload.get("build_manifest")
+        if isinstance(manifest, dict):
+            return dict(manifest)
+    return None
+
+
 def run_case(
     case: dict[str, Any],
     sender: Callable[[dict[str, Any]], dict[str, Any]],
@@ -460,6 +489,10 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--mode", choices=("local", "remote"), required=True)
     parser.add_argument("--dataset", type=Path, default=DEFAULT_DATASET)
     parser.add_argument("--endpoint", default=DEFAULT_ENDPOINT)
+    parser.add_argument(
+        "--health-endpoint",
+        help="Optional manifest endpoint; by default /api/health then /health are tried.",
+    )
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--workers", type=int, default=4)
     parser.add_argument("--timeout-seconds", type=float, default=40.0)
@@ -481,8 +514,17 @@ def main() -> int:
     with tempfile.TemporaryDirectory(prefix="live-query-runtime-", dir=args.output.parent) as temp_dir:
         if args.mode == "local":
             sender = build_local_sender(Path(temp_dir) / "audit.sqlite3")
+            from backend.app.build_manifest import build_runtime_manifest
+            from backend.app.config import get_settings
+
+            runtime_manifest = build_runtime_manifest(get_settings())
         else:
             sender = build_remote_sender(args.endpoint, args.timeout_seconds)
+            runtime_manifest = fetch_remote_manifest(
+                args.endpoint,
+                args.timeout_seconds,
+                args.health_endpoint,
+            )
 
         results: list[dict[str, Any]] = []
         workers = 1 if args.mode == "local" else max(1, args.workers)
@@ -514,6 +556,7 @@ def main() -> int:
         "mode": args.mode,
         "endpoint": args.endpoint if args.mode == "remote" else "local FastAPI /api/chat/message (LLM disabled)",
         "run_id": run_id,
+        "runtime_manifest": runtime_manifest,
         "dataset": {
             "path": str(args.dataset),
             "version": dataset.get("version"),

@@ -23,6 +23,10 @@ htmlcov/
 *.db-journal
 *.sqlite3-*
 data/
+!tests/data/
+tests/data/*
+!tests/data/regression_corpora_manifest.json
+!tests/data/routing_content_leakage_baseline.json
 storage/
 tickets/
 .work/

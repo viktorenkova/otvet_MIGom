@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "locked_at": "2026-08-21",
+  "policy": "Regression-only corpora. Any content or label change requires an explicit reviewed manifest update. Corpus phrases must not be copied into routing rules, aliases or search cards.",
+  "corpora": [
+    {
+      "path": "tests/data/scenario_gold.jsonl",
+      "case_count": 312,
+      "sha256": "7af1270a84aedc8b062b833651969c70b1a7ee66f1553722c95af7f7b2fae559",
+      "role": "known-phrase-regression"
+    },
+    {
+      "path": "tests/data/live_query_audit_2026_08_13.json",
+      "case_count": 160,
+      "sha256": "0e7ce70358d96b1000392ff3e15ba4011d71dba30ea413c0f220bbab3bc6a69f",
+      "role": "exposed-independent-regression"
+    },
+    {
+      "path": "tests/data/routing_v3_independent_acceptance.json",
+      "case_count": 116,
+      "sha256": "e6545510a7bafcd711c337a086e77977d56017ce8c5f5670bca1df3bdf29e45c",
+      "role": "synthetic-normalizer-regression"
+    },
+    {
+      "path": "tests/data/routing_v3_closed_control_270.json",
+      "case_count": 270,
+      "sha256": "603982053d24941b3b96a43ac109c28f471fc3f0b63793b52d49ea865a2a7c75",
+      "role": "closed-historical-regression"
+    }
+  ]
+}

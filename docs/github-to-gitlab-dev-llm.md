@@ -121,7 +121,7 @@ python -m uvicorn --env-file .env.dev backend.app.main:app --host 0.0.0.0 --port
 Invoke-RestMethod https://DEV_CHAT_BACKEND/health
 ```
 
-Ожидаются правильный `deploy_version`, `knowledge_mode=v2` и `widget_ready=true`.
+Ожидаются правильный `deploy_version`, `knowledge_mode=v2`, `widget_ready=true` и объект `build_manifest`. Reverse proxy должен явно передавать backend-маршрут `/health`; если корневой `/health` обслуживает frontend, настройте отдельный backend URL до запуска сравнительного аудита. В manifest сверяются как минимум `git_sha`, `application_bundle_sha256`, `knowledge_sha256`, `routing_bundle_sha256`, `prompt_bundle_sha256` и версии LLM.
 
 Затем отправьте обычный справочный вопрос, не требующий обращения:
 

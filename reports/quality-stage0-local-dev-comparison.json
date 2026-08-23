@@ -1,0 +1,3075 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-08-23T06:40:06.488738+00:00",
+  "local_report": "reports\\quality-stage0-local.json",
+  "remote_report": "reports\\quality-stage0-dev.json",
+  "manifest_available": false,
+  "same_build": false,
+  "same_dataset": true,
+  "manifest_checks": {
+    "git_sha": false,
+    "knowledge_sha256": false,
+    "scenarios_sha256": false,
+    "matching_config_sha256": false,
+    "routing_bundle_sha256": false,
+    "prompt_bundle_sha256": false,
+    "knowledge_mode": false,
+    "llm_enabled": false,
+    "llm_provider": false,
+    "llm_primary_model": false
+  },
+  "case_count_local": 270,
+  "case_count_remote": 270,
+  "common_case_count": 270,
+  "matching_route_response_count": 101,
+  "mismatch_count": 169,
+  "deterministic_gate_passed": false,
+  "blocking_reasons": [
+    "remote_manifest_missing",
+    "more_than_one_route_result_mismatch"
+  ],
+  "mismatches": [
+    {
+      "id": "independent-abu-001",
+      "local": {
+        "scenario_id": "technical.site_error",
+        "intent": "support",
+        "resolution": "escalated"
+      },
+      "remote": {
+        "scenario_id": null,
+        "intent": "unknown",
+        "resolution": "out_of_scope"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": false,
+        "resolution": false
+      }
+    },
+    {
+      "id": "independent-abu-002",
+      "local": {
+        "scenario_id": "technical.catalog_search_filter",
+        "intent": "support",
+        "resolution": "escalated"
+      },
+      "remote": {
+        "scenario_id": null,
+        "intent": "unknown",
+        "resolution": "out_of_scope"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": false,
+        "resolution": false
+      }
+    },
+    {
+      "id": "independent-acc-003",
+      "local": {
+        "scenario_id": "account.login_problem",
+        "intent": "registration",
+        "resolution": "escalated"
+      },
+      "remote": {
+        "scenario_id": null,
+        "intent": "registration",
+        "resolution": "clarified"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": true,
+        "resolution": false
+      }
+    },
+    {
+      "id": "independent-acc-004",
+      "local": {
+        "scenario_id": "account.login_problem",
+        "intent": "registration",
+        "resolution": "escalated"
+      },
+      "remote": {
+        "scenario_id": null,
+        "intent": "unknown",
+        "resolution": "clarified"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": false,
+        "resolution": false
+      }
+    },
+    {
+      "id": "independent-acc-005",
+      "local": {
+        "scenario_id": "account.login_problem",
+        "intent": "registration",
+        "resolution": "escalated"
+      },
+      "remote": {
+        "scenario_id": "lot.missing",
+        "intent": "lot",
+        "resolution": "escalated"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": false,
+        "resolution": true
+      }
+    },
+    {
+      "id": "independent-acc-006",
+      "local": {
+        "scenario_id": "account.registration",
+        "intent": "account",
+        "resolution": "answered"
+      },
+      "remote": {
+        "scenario_id": "account.identification_edge_case",
+        "intent": "registration",
+        "resolution": "answered"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": false,
+        "resolution": true
+      }
+    },
+    {
+      "id": "independent-acc-007",
+      "local": {
+        "scenario_id": "account.registration",
+        "intent": "account",
+        "resolution": "answered"
+      },
+      "remote": {
+        "scenario_id": null,
+        "intent": "unknown",
+        "resolution": "out_of_scope"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": false,
+        "resolution": false
+      }
+    },
+    {
+      "id": "independent-acc-008",
+      "local": {
+        "scenario_id": "account.registration",
+        "intent": "account",
+        "resolution": "answered"
+      },
+      "remote": {
+        "scenario_id": null,
+        "intent": "unknown",
+        "resolution": "out_of_scope"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": false,
+        "resolution": false
+      }
+    },
+    {
+      "id": "independent-auc-003",
+      "local": {
+        "scenario_id": "auction.formats",
+        "intent": "bidding",
+        "resolution": "answered"
+      },
+      "remote": {
+        "scenario_id": null,
+        "intent": "unknown",
+        "resolution": "out_of_scope"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": false,
+        "resolution": false
+      }
+    },
+    {
+      "id": "independent-auc-004",
+      "local": {
+        "scenario_id": "auction.formats",
+        "intent": "bidding",
+        "resolution": "answered"
+      },
+      "remote": {
+        "scenario_id": "bid.position_service",
+        "intent": "bidding",
+        "resolution": "answered"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": true,
+        "resolution": true
+      }
+    },
+    {
+      "id": "independent-auc-006",
+      "local": {
+        "scenario_id": "auction.status",
+        "intent": "lot",
+        "resolution": "answered"
+      },
+      "remote": {
+        "scenario_id": "auction.other_platform_offer",
+        "intent": "bidding",
+        "resolution": "answered"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": false,
+        "resolution": true
+      }
+    },
+    {
+      "id": "independent-auc-007",
+      "local": {
+        "scenario_id": "auction.status",
+        "intent": "lot",
+        "resolution": "answered"
+      },
+      "remote": {
+        "scenario_id": "insurance.osago_rules",
+        "intent": "bidding",
+        "resolution": "answered"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": false,
+        "resolution": true
+      }
+    },
+    {
+      "id": "independent-auc-008",
+      "local": {
+        "scenario_id": "auction.status",
+        "intent": "lot",
+        "resolution": "answered"
+      },
+      "remote": {
+        "scenario_id": "bid.expired",
+        "intent": "bidding",
+        "resolution": "answered"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": false,
+        "resolution": true
+      }
+    },
+    {
+      "id": "independent-auc-009",
+      "local": {
+        "scenario_id": "auction.status",
+        "intent": "lot",
+        "resolution": "escalated"
+      },
+      "remote": {
+        "scenario_id": null,
+        "intent": "unknown",
+        "resolution": "clarified"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": false,
+        "resolution": false
+      }
+    },
+    {
+      "id": "independent-auc-010",
+      "local": {
+        "scenario_id": "auction.status",
+        "intent": "lot",
+        "resolution": "answered"
+      },
+      "remote": {
+        "scenario_id": "bid.validity",
+        "intent": "bidding",
+        "resolution": "answered"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": false,
+        "resolution": true
+      }
+    },
+    {
+      "id": "independent-bid-001",
+      "local": {
+        "scenario_id": "bid.place",
+        "intent": "bidding",
+        "resolution": "answered"
+      },
+      "remote": {
+        "scenario_id": "buyer.first_bid_checklist",
+        "intent": "bidding",
+        "resolution": "answered"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": true,
+        "resolution": true
+      }
+    },
+    {
+      "id": "independent-bid-004",
+      "local": {
+        "scenario_id": "bid.place",
+        "intent": "bidding",
+        "resolution": "answered"
+      },
+      "remote": {
+        "scenario_id": null,
+        "intent": "bidding",
+        "resolution": "clarified"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": true,
+        "resolution": false
+      }
+    },
+    {
+      "id": "independent-bid-005",
+      "local": {
+        "scenario_id": "bid.place",
+        "intent": "bidding",
+        "resolution": "answered"
+      },
+      "remote": {
+        "scenario_id": null,
+        "intent": "unknown",
+        "resolution": "out_of_scope"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": false,
+        "resolution": false
+      }
+    },
+    {
+      "id": "independent-bid-007",
+      "local": {
+        "scenario_id": "bid.not_visible",
+        "intent": "bidding",
+        "resolution": "escalated"
+      },
+      "remote": {
+        "scenario_id": null,
+        "intent": "unknown",
+        "resolution": "out_of_scope"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": false,
+        "resolution": false
+      }
+    },
+    {
+      "id": "independent-bid-008",
+      "local": {
+        "scenario_id": "bid.not_visible",
+        "intent": "bidding",
+        "resolution": "escalated"
+      },
+      "remote": {
+        "scenario_id": "tariff.demo",
+        "intent": "tariffs",
+        "resolution": "answered"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": false,
+        "resolution": false
+      }
+    },
+    {
+      "id": "independent-bid-011",
+      "local": {
+        "scenario_id": "bid.modify_cancel",
+        "intent": "bidding",
+        "resolution": "answered"
+      },
+      "remote": {
+        "scenario_id": "refusal.change_mind",
+        "intent": "refusal",
+        "resolution": "escalated"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": false,
+        "resolution": false
+      }
+    },
+    {
+      "id": "independent-bid-013",
+      "local": {
+        "scenario_id": "bid.modify_cancel",
+        "intent": "bidding",
+        "resolution": "answered"
+      },
+      "remote": {
+        "scenario_id": null,
+        "intent": "unknown",
+        "resolution": "out_of_scope"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": false,
+        "resolution": false
+      }
+    },
+    {
+      "id": "independent-bid-015",
+      "local": {
+        "scenario_id": "bid.modify_cancel",
+        "intent": "bidding",
+        "resolution": "answered"
+      },
+      "remote": {
+        "scenario_id": "insurance.osago_rules",
+        "intent": "bidding",
+        "resolution": "answered"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": true,
+        "resolution": true
+      }
+    },
+    {
+      "id": "independent-doc-001",
+      "local": {
+        "scenario_id": "documents.preparation_delay",
+        "intent": "transfer",
+        "resolution": "escalated"
+      },
+      "remote": {
+        "scenario_id": "transfer.confirmed",
+        "intent": "transfer",
+        "resolution": "answered"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": true,
+        "resolution": false
+      }
+    },
+    {
+      "id": "independent-doc-003",
+      "local": {
+        "scenario_id": "documents.preparation_delay",
+        "intent": "transfer",
+        "resolution": "escalated"
+      },
+      "remote": {
+        "scenario_id": "contract.receive",
+        "intent": "transfer",
+        "resolution": "escalated"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": true,
+        "resolution": true
+      }
+    },
+    {
+      "id": "independent-emp-001",
+      "local": {
+        "scenario_id": "support.callback",
+        "intent": "support",
+        "resolution": "answered"
+      },
+      "remote": {
+        "scenario_id": null,
+        "intent": "unknown",
+        "resolution": "out_of_scope"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": false,
+        "resolution": false
+      }
+    },
+    {
+      "id": "independent-emp-003",
+      "local": {
+        "scenario_id": "support.callback",
+        "intent": "support",
+        "resolution": "answered"
+      },
+      "remote": {
+        "scenario_id": "support.email_no_response",
+        "intent": "support",
+        "resolution": "escalated"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": true,
+        "resolution": false
+      }
+    },
+    {
+      "id": "independent-emp-005",
+      "local": {
+        "scenario_id": "support.callback",
+        "intent": "support",
+        "resolution": "answered"
+      },
+      "remote": {
+        "scenario_id": "support.contact",
+        "intent": "support",
+        "resolution": "answered"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": true,
+        "resolution": true
+      }
+    },
+    {
+      "id": "independent-ins-001",
+      "local": {
+        "scenario_id": "transfer.seller_no_response",
+        "intent": "transfer",
+        "resolution": "escalated"
+      },
+      "remote": {
+        "scenario_id": "documents.preparation_delay",
+        "intent": "transfer",
+        "resolution": "escalated"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": true,
+        "resolution": true
+      }
+    },
+    {
+      "id": "independent-ins-002",
+      "local": {
+        "scenario_id": "transfer.seller_no_response",
+        "intent": "transfer",
+        "resolution": "escalated"
+      },
+      "remote": {
+        "scenario_id": null,
+        "intent": "transfer",
+        "resolution": "clarified"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": true,
+        "resolution": false
+      }
+    },
+    {
+      "id": "independent-ins-003",
+      "local": {
+        "scenario_id": "transfer.seller_no_response",
+        "intent": "transfer",
+        "resolution": "escalated"
+      },
+      "remote": {
+        "scenario_id": "lot.card_information",
+        "intent": "lot",
+        "resolution": "escalated"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": false,
+        "resolution": true
+      }
+    },
+    {
+      "id": "independent-ins-004",
+      "local": {
+        "scenario_id": "transfer.seller_no_response",
+        "intent": "transfer",
+        "resolution": "escalated"
+      },
+      "remote": {
+        "scenario_id": "bid.not_visible",
+        "intent": "bidding",
+        "resolution": "escalated"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": false,
+        "resolution": true
+      }
+    },
+    {
+      "id": "independent-ins-005",
+      "local": {
+        "scenario_id": "transfer.seller_no_response",
+        "intent": "transfer",
+        "resolution": "escalated"
+      },
+      "remote": {
+        "scenario_id": "lot.location",
+        "intent": "lot",
+        "resolution": "answered"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": false,
+        "resolution": false
+      }
+    },
+    {
+      "id": "independent-ins-006",
+      "local": {
+        "scenario_id": "transfer.seller_no_response",
+        "intent": "transfer",
+        "resolution": "escalated"
+      },
+      "remote": {
+        "scenario_id": null,
+        "intent": "transfer",
+        "resolution": "clarified"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": true,
+        "resolution": false
+      }
+    },
+    {
+      "id": "independent-ins-007",
+      "local": {
+        "scenario_id": "transfer.seller_no_response",
+        "intent": "transfer",
+        "resolution": "escalated"
+      },
+      "remote": {
+        "scenario_id": "documents.preparation_delay",
+        "intent": "transfer",
+        "resolution": "escalated"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": true,
+        "resolution": true
+      }
+    },
+    {
+      "id": "independent-ins-008",
+      "local": {
+        "scenario_id": "transfer.seller_no_response",
+        "intent": "transfer",
+        "resolution": "escalated"
+      },
+      "remote": {
+        "scenario_id": null,
+        "intent": "transfer",
+        "resolution": "clarified"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": true,
+        "resolution": false
+      }
+    },
+    {
+      "id": "independent-ins-009",
+      "local": {
+        "scenario_id": "transfer.seller_no_response",
+        "intent": "transfer",
+        "resolution": "escalated"
+      },
+      "remote": {
+        "scenario_id": "documents.preparation_delay",
+        "intent": "transfer",
+        "resolution": "escalated"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": true,
+        "resolution": true
+      }
+    },
+    {
+      "id": "independent-ins-010",
+      "local": {
+        "scenario_id": "transfer.seller_no_response",
+        "intent": "transfer",
+        "resolution": "escalated"
+      },
+      "remote": {
+        "scenario_id": "insurance.osago_rules",
+        "intent": "bidding",
+        "resolution": "answered"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": false,
+        "resolution": false
+      }
+    },
+    {
+      "id": "independent-ins-011",
+      "local": {
+        "scenario_id": "transfer.seller_no_response",
+        "intent": "transfer",
+        "resolution": "escalated"
+      },
+      "remote": {
+        "scenario_id": "lot.card_information",
+        "intent": "lot",
+        "resolution": "escalated"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": false,
+        "resolution": true
+      }
+    },
+    {
+      "id": "independent-ins-012",
+      "local": {
+        "scenario_id": "transfer.seller_no_response",
+        "intent": "transfer",
+        "resolution": "escalated"
+      },
+      "remote": {
+        "scenario_id": null,
+        "intent": "lot",
+        "resolution": "clarified"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": false,
+        "resolution": false
+      }
+    },
+    {
+      "id": "independent-ins-013",
+      "local": {
+        "scenario_id": "transfer.seller_no_response",
+        "intent": "transfer",
+        "resolution": "escalated"
+      },
+      "remote": {
+        "scenario_id": "lot.card_information",
+        "intent": "lot",
+        "resolution": "escalated"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": false,
+        "resolution": true
+      }
+    },
+    {
+      "id": "independent-ins-014",
+      "local": {
+        "scenario_id": "transfer.seller_no_response",
+        "intent": "transfer",
+        "resolution": "escalated"
+      },
+      "remote": {
+        "scenario_id": null,
+        "intent": "transfer",
+        "resolution": "out_of_scope"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": true,
+        "resolution": false
+      }
+    },
+    {
+      "id": "independent-ins-015",
+      "local": {
+        "scenario_id": "transfer.seller_no_response",
+        "intent": "transfer",
+        "resolution": "escalated"
+      },
+      "remote": {
+        "scenario_id": null,
+        "intent": "feedback",
+        "resolution": "clarified"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": false,
+        "resolution": false
+      }
+    },
+    {
+      "id": "independent-ins-016",
+      "local": {
+        "scenario_id": "transfer.seller_no_response",
+        "intent": "transfer",
+        "resolution": "escalated"
+      },
+      "remote": {
+        "scenario_id": "win.next_steps",
+        "intent": "transfer",
+        "resolution": "answered"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": true,
+        "resolution": false
+      }
+    },
+    {
+      "id": "independent-ins-017",
+      "local": {
+        "scenario_id": "transfer.seller_no_response",
+        "intent": "transfer",
+        "resolution": "escalated"
+      },
+      "remote": {
+        "scenario_id": null,
+        "intent": "transfer",
+        "resolution": "clarified"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": true,
+        "resolution": false
+      }
+    },
+    {
+      "id": "independent-ins-018",
+      "local": {
+        "scenario_id": "transfer.seller_no_response",
+        "intent": "transfer",
+        "resolution": "escalated"
+      },
+      "remote": {
+        "scenario_id": "documents.preparation_delay",
+        "intent": "transfer",
+        "resolution": "escalated"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": true,
+        "resolution": true
+      }
+    },
+    {
+      "id": "independent-ins-019",
+      "local": {
+        "scenario_id": "transfer.seller_no_response",
+        "intent": "transfer",
+        "resolution": "escalated"
+      },
+      "remote": {
+        "scenario_id": "vehicle.registration_after_purchase",
+        "intent": "transfer",
+        "resolution": "escalated"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": true,
+        "resolution": true
+      }
+    },
+    {
+      "id": "independent-ins-020",
+      "local": {
+        "scenario_id": "transfer.seller_no_response",
+        "intent": "transfer",
+        "resolution": "escalated"
+      },
+      "remote": {
+        "scenario_id": "transfer.confirmed",
+        "intent": "transfer",
+        "resolution": "answered"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": true,
+        "resolution": false
+      }
+    },
+    {
+      "id": "independent-lot-001",
+      "local": {
+        "scenario_id": "lot.catalog_search",
+        "intent": "lot",
+        "resolution": "answered"
+      },
+      "remote": {
+        "scenario_id": null,
+        "intent": "unknown",
+        "resolution": "out_of_scope"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": false,
+        "resolution": false
+      }
+    },
+    {
+      "id": "independent-lot-002",
+      "local": {
+        "scenario_id": "lot.catalog_search",
+        "intent": "lot",
+        "resolution": "answered"
+      },
+      "remote": {
+        "scenario_id": null,
+        "intent": "unknown",
+        "resolution": "clarified"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": false,
+        "resolution": false
+      }
+    },
+    {
+      "id": "independent-lot-007",
+      "local": {
+        "scenario_id": "lot.location",
+        "intent": "lot",
+        "resolution": "answered"
+      },
+      "remote": {
+        "scenario_id": "lot.location",
+        "intent": "lot",
+        "resolution": "escalated"
+      },
+      "equal": {
+        "scenario_id": true,
+        "intent": true,
+        "resolution": false
+      }
+    },
+    {
+      "id": "independent-lot-008",
+      "local": {
+        "scenario_id": "lot.location",
+        "intent": "lot",
+        "resolution": "answered"
+      },
+      "remote": {
+        "scenario_id": null,
+        "intent": "unknown",
+        "resolution": "out_of_scope"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": false,
+        "resolution": false
+      }
+    },
+    {
+      "id": "independent-lot-010",
+      "local": {
+        "scenario_id": null,
+        "intent": "unknown",
+        "resolution": "clarified"
+      },
+      "remote": {
+        "scenario_id": "lot.location",
+        "intent": "lot",
+        "resolution": "answered"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": false,
+        "resolution": false
+      }
+    },
+    {
+      "id": "independent-off-001",
+      "local": {
+        "scenario_id": null,
+        "intent": "unknown",
+        "resolution": "clarified"
+      },
+      "remote": {
+        "scenario_id": null,
+        "intent": "lot",
+        "resolution": "out_of_scope"
+      },
+      "equal": {
+        "scenario_id": true,
+        "intent": false,
+        "resolution": false
+      }
+    },
+    {
+      "id": "independent-off-003",
+      "local": {
+        "scenario_id": null,
+        "intent": "unknown",
+        "resolution": "clarified"
+      },
+      "remote": {
+        "scenario_id": null,
+        "intent": "lot",
+        "resolution": "out_of_scope"
+      },
+      "equal": {
+        "scenario_id": true,
+        "intent": false,
+        "resolution": false
+      }
+    },
+    {
+      "id": "independent-off-004",
+      "local": {
+        "scenario_id": null,
+        "intent": "unknown",
+        "resolution": "clarified"
+      },
+      "remote": {
+        "scenario_id": null,
+        "intent": "unknown",
+        "resolution": "out_of_scope"
+      },
+      "equal": {
+        "scenario_id": true,
+        "intent": true,
+        "resolution": false
+      }
+    },
+    {
+      "id": "independent-off-005",
+      "local": {
+        "scenario_id": null,
+        "intent": "unknown",
+        "resolution": "clarified"
+      },
+      "remote": {
+        "scenario_id": null,
+        "intent": "unknown",
+        "resolution": "out_of_scope"
+      },
+      "equal": {
+        "scenario_id": true,
+        "intent": true,
+        "resolution": false
+      }
+    },
+    {
+      "id": "independent-pay-002",
+      "local": {
+        "scenario_id": "payment.not_visible",
+        "intent": "payment",
+        "resolution": "escalated"
+      },
+      "remote": {
+        "scenario_id": null,
+        "intent": "unknown",
+        "resolution": "out_of_scope"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": false,
+        "resolution": false
+      }
+    },
+    {
+      "id": "independent-pay-003",
+      "local": {
+        "scenario_id": "payment.not_visible",
+        "intent": "payment",
+        "resolution": "escalated"
+      },
+      "remote": {
+        "scenario_id": null,
+        "intent": "unknown",
+        "resolution": "out_of_scope"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": false,
+        "resolution": false
+      }
+    },
+    {
+      "id": "independent-pay-006",
+      "local": {
+        "scenario_id": "payment.checkout_problem",
+        "intent": "payment",
+        "resolution": "escalated"
+      },
+      "remote": {
+        "scenario_id": "feedback.platform_complaint",
+        "intent": "feedback",
+        "resolution": "escalated"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": false,
+        "resolution": true
+      }
+    },
+    {
+      "id": "independent-pay-007",
+      "local": {
+        "scenario_id": "payment.checkout_problem",
+        "intent": "payment",
+        "resolution": "escalated"
+      },
+      "remote": {
+        "scenario_id": "tariff.status",
+        "intent": "tariffs",
+        "resolution": "escalated"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": false,
+        "resolution": true
+      }
+    },
+    {
+      "id": "independent-pay-008",
+      "local": {
+        "scenario_id": "payment.checkout_problem",
+        "intent": "payment",
+        "resolution": "escalated"
+      },
+      "remote": {
+        "scenario_id": null,
+        "intent": "unknown",
+        "resolution": "out_of_scope"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": false,
+        "resolution": false
+      }
+    },
+    {
+      "id": "independent-pay-009",
+      "local": {
+        "scenario_id": "payment.checkout_problem",
+        "intent": "payment",
+        "resolution": "escalated"
+      },
+      "remote": {
+        "scenario_id": "tariff.one_time",
+        "intent": "tariffs",
+        "resolution": "answered"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": false,
+        "resolution": false
+      }
+    },
+    {
+      "id": "independent-pic-001",
+      "local": {
+        "scenario_id": "pickup.receive_lot",
+        "intent": "pickup",
+        "resolution": "answered"
+      },
+      "remote": {
+        "scenario_id": null,
+        "intent": "pickup",
+        "resolution": "clarified"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": true,
+        "resolution": false
+      }
+    },
+    {
+      "id": "independent-pic-002",
+      "local": {
+        "scenario_id": "pickup.receive_lot",
+        "intent": "pickup",
+        "resolution": "answered"
+      },
+      "remote": {
+        "scenario_id": "transfer.not_confirmed",
+        "intent": "lot",
+        "resolution": "answered"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": false,
+        "resolution": true
+      }
+    },
+    {
+      "id": "independent-pic-004",
+      "local": {
+        "scenario_id": "pickup.receive_lot",
+        "intent": "pickup",
+        "resolution": "answered"
+      },
+      "remote": {
+        "scenario_id": null,
+        "intent": "pickup",
+        "resolution": "clarified"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": true,
+        "resolution": false
+      }
+    },
+    {
+      "id": "independent-pic-005",
+      "local": {
+        "scenario_id": "pickup.receive_lot",
+        "intent": "pickup",
+        "resolution": "answered"
+      },
+      "remote": {
+        "scenario_id": "support.office_visit",
+        "intent": "support",
+        "resolution": "escalated"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": false,
+        "resolution": false
+      }
+    },
+    {
+      "id": "independent-ref-001",
+      "local": {
+        "scenario_id": null,
+        "intent": "refund",
+        "resolution": "clarified"
+      },
+      "remote": {
+        "scenario_id": null,
+        "intent": "refund",
+        "resolution": "escalated"
+      },
+      "equal": {
+        "scenario_id": true,
+        "intent": true,
+        "resolution": false
+      }
+    },
+    {
+      "id": "independent-ref-002",
+      "local": {
+        "scenario_id": null,
+        "intent": "unknown",
+        "resolution": "clarified"
+      },
+      "remote": {
+        "scenario_id": "finance.status.clarify",
+        "intent": "payment",
+        "resolution": "clarified"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": false,
+        "resolution": true
+      }
+    },
+    {
+      "id": "independent-ref-003",
+      "local": {
+        "scenario_id": null,
+        "intent": "refund",
+        "resolution": "clarified"
+      },
+      "remote": {
+        "scenario_id": null,
+        "intent": "refund",
+        "resolution": "escalated"
+      },
+      "equal": {
+        "scenario_id": true,
+        "intent": true,
+        "resolution": false
+      }
+    },
+    {
+      "id": "independent-ref-004",
+      "local": {
+        "scenario_id": null,
+        "intent": "unknown",
+        "resolution": "clarified"
+      },
+      "remote": {
+        "scenario_id": null,
+        "intent": "unknown",
+        "resolution": "out_of_scope"
+      },
+      "equal": {
+        "scenario_id": true,
+        "intent": true,
+        "resolution": false
+      }
+    },
+    {
+      "id": "independent-ref-005",
+      "local": {
+        "scenario_id": null,
+        "intent": "unknown",
+        "resolution": "clarified"
+      },
+      "remote": {
+        "scenario_id": null,
+        "intent": "unknown",
+        "resolution": "out_of_scope"
+      },
+      "equal": {
+        "scenario_id": true,
+        "intent": true,
+        "resolution": false
+      }
+    },
+    {
+      "id": "independent-ref-006",
+      "local": {
+        "scenario_id": "refund.eligibility",
+        "intent": "refund",
+        "resolution": "answered"
+      },
+      "remote": {
+        "scenario_id": "refund.eligibility",
+        "intent": "refund",
+        "resolution": "escalated"
+      },
+      "equal": {
+        "scenario_id": true,
+        "intent": true,
+        "resolution": false
+      }
+    },
+    {
+      "id": "independent-ref-007",
+      "local": {
+        "scenario_id": "refund.eligibility",
+        "intent": "refund",
+        "resolution": "answered"
+      },
+      "remote": {
+        "scenario_id": null,
+        "intent": "tariffs",
+        "resolution": "out_of_scope"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": false,
+        "resolution": false
+      }
+    },
+    {
+      "id": "independent-ref-008",
+      "local": {
+        "scenario_id": "refund.eligibility",
+        "intent": "refund",
+        "resolution": "answered"
+      },
+      "remote": {
+        "scenario_id": null,
+        "intent": "unknown",
+        "resolution": "out_of_scope"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": false,
+        "resolution": false
+      }
+    },
+    {
+      "id": "independent-ref-009",
+      "local": {
+        "scenario_id": "refund.eligibility",
+        "intent": "refund",
+        "resolution": "answered"
+      },
+      "remote": {
+        "scenario_id": "refund.eligibility",
+        "intent": "refund",
+        "resolution": "escalated"
+      },
+      "equal": {
+        "scenario_id": true,
+        "intent": true,
+        "resolution": false
+      }
+    },
+    {
+      "id": "independent-ref-010",
+      "local": {
+        "scenario_id": "refund.eligibility",
+        "intent": "refund",
+        "resolution": "answered"
+      },
+      "remote": {
+        "scenario_id": "deposit.explained",
+        "intent": "refund",
+        "resolution": "escalated"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": true,
+        "resolution": false
+      }
+    },
+    {
+      "id": "independent-ref-011",
+      "local": {
+        "scenario_id": "refund.application",
+        "intent": "refund",
+        "resolution": "answered"
+      },
+      "remote": {
+        "scenario_id": "refund.application",
+        "intent": "refund",
+        "resolution": "escalated"
+      },
+      "equal": {
+        "scenario_id": true,
+        "intent": true,
+        "resolution": false
+      }
+    },
+    {
+      "id": "independent-ref-012",
+      "local": {
+        "scenario_id": "refund.application",
+        "intent": "refund",
+        "resolution": "escalated"
+      },
+      "remote": {
+        "scenario_id": null,
+        "intent": "unknown",
+        "resolution": "out_of_scope"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": false,
+        "resolution": false
+      }
+    },
+    {
+      "id": "independent-ref-014",
+      "local": {
+        "scenario_id": "refund.application",
+        "intent": "refund",
+        "resolution": "answered"
+      },
+      "remote": {
+        "scenario_id": "refund.application",
+        "intent": "refund",
+        "resolution": "escalated"
+      },
+      "equal": {
+        "scenario_id": true,
+        "intent": true,
+        "resolution": false
+      }
+    },
+    {
+      "id": "independent-ref-015",
+      "local": {
+        "scenario_id": "refund.application",
+        "intent": "refund",
+        "resolution": "answered"
+      },
+      "remote": {
+        "scenario_id": "refund.application",
+        "intent": "refund",
+        "resolution": "escalated"
+      },
+      "equal": {
+        "scenario_id": true,
+        "intent": true,
+        "resolution": false
+      }
+    },
+    {
+      "id": "independent-ref-016",
+      "local": {
+        "scenario_id": "refund.timing_status",
+        "intent": "refund",
+        "resolution": "escalated"
+      },
+      "remote": {
+        "scenario_id": null,
+        "intent": "payment",
+        "resolution": "out_of_scope"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": false,
+        "resolution": false
+      }
+    },
+    {
+      "id": "independent-ref-018",
+      "local": {
+        "scenario_id": "refund.timing_status",
+        "intent": "refund",
+        "resolution": "escalated"
+      },
+      "remote": {
+        "scenario_id": null,
+        "intent": "unknown",
+        "resolution": "out_of_scope"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": false,
+        "resolution": false
+      }
+    },
+    {
+      "id": "independent-ref-019",
+      "local": {
+        "scenario_id": "refund.timing_status",
+        "intent": "refund",
+        "resolution": "escalated"
+      },
+      "remote": {
+        "scenario_id": "refund.destination",
+        "intent": "refund",
+        "resolution": "escalated"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": true,
+        "resolution": true
+      }
+    },
+    {
+      "id": "independent-rep-002",
+      "local": {
+        "scenario_id": "bid.place",
+        "intent": "bidding",
+        "resolution": "answered"
+      },
+      "remote": {
+        "scenario_id": null,
+        "intent": "bidding",
+        "resolution": "clarified"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": true,
+        "resolution": false
+      }
+    },
+    {
+      "id": "independent-rep-003",
+      "local": {
+        "scenario_id": null,
+        "intent": "refund",
+        "resolution": "clarified"
+      },
+      "remote": {
+        "scenario_id": null,
+        "intent": "refund",
+        "resolution": "escalated"
+      },
+      "equal": {
+        "scenario_id": true,
+        "intent": true,
+        "resolution": false
+      }
+    },
+    {
+      "id": "independent-rep-004",
+      "local": {
+        "scenario_id": "technical.site_error",
+        "intent": "support",
+        "resolution": "escalated"
+      },
+      "remote": {
+        "scenario_id": null,
+        "intent": "unknown",
+        "resolution": "out_of_scope"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": false,
+        "resolution": false
+      }
+    },
+    {
+      "id": "independent-tar-001",
+      "local": {
+        "scenario_id": "tariff.connect",
+        "intent": "tariffs",
+        "resolution": "answered"
+      },
+      "remote": {
+        "scenario_id": null,
+        "intent": "tariffs",
+        "resolution": "out_of_scope"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": true,
+        "resolution": false
+      }
+    },
+    {
+      "id": "independent-tar-003",
+      "local": {
+        "scenario_id": "tariff.connect",
+        "intent": "tariffs",
+        "resolution": "answered"
+      },
+      "remote": {
+        "scenario_id": null,
+        "intent": "tariffs",
+        "resolution": "out_of_scope"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": true,
+        "resolution": false
+      }
+    },
+    {
+      "id": "independent-tar-004",
+      "local": {
+        "scenario_id": "tariff.connect",
+        "intent": "tariffs",
+        "resolution": "answered"
+      },
+      "remote": {
+        "scenario_id": null,
+        "intent": "tariffs",
+        "resolution": "clarified"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": true,
+        "resolution": false
+      }
+    },
+    {
+      "id": "independent-tar-006",
+      "local": {
+        "scenario_id": "tariff.premium",
+        "intent": "tariffs",
+        "resolution": "answered"
+      },
+      "remote": {
+        "scenario_id": "tariff.promotion",
+        "intent": "tariffs",
+        "resolution": "answered"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": true,
+        "resolution": true
+      }
+    },
+    {
+      "id": "independent-tar-008",
+      "local": {
+        "scenario_id": "tariff.premium",
+        "intent": "tariffs",
+        "resolution": "answered"
+      },
+      "remote": {
+        "scenario_id": null,
+        "intent": "unknown",
+        "resolution": "out_of_scope"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": false,
+        "resolution": false
+      }
+    },
+    {
+      "id": "independent-tar-009",
+      "local": {
+        "scenario_id": "tariff.premium",
+        "intent": "tariffs",
+        "resolution": "answered"
+      },
+      "remote": {
+        "scenario_id": "payment.checkout_problem",
+        "intent": "payment",
+        "resolution": "escalated"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": false,
+        "resolution": false
+      }
+    },
+    {
+      "id": "independent-tar-010",
+      "local": {
+        "scenario_id": "tariff.premium",
+        "intent": "tariffs",
+        "resolution": "answered"
+      },
+      "remote": {
+        "scenario_id": "tariff.connect",
+        "intent": "tariffs",
+        "resolution": "answered"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": true,
+        "resolution": true
+      }
+    },
+    {
+      "id": "independent-tec-001",
+      "local": {
+        "scenario_id": "technical.site_error",
+        "intent": "support",
+        "resolution": "escalated"
+      },
+      "remote": {
+        "scenario_id": "vehicle.vin_request",
+        "intent": "lot",
+        "resolution": "escalated"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": false,
+        "resolution": true
+      }
+    },
+    {
+      "id": "independent-tec-002",
+      "local": {
+        "scenario_id": "technical.site_error",
+        "intent": "support",
+        "resolution": "escalated"
+      },
+      "remote": {
+        "scenario_id": null,
+        "intent": "unknown",
+        "resolution": "out_of_scope"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": false,
+        "resolution": false
+      }
+    },
+    {
+      "id": "independent-tec-003",
+      "local": {
+        "scenario_id": "technical.site_error",
+        "intent": "support",
+        "resolution": "escalated"
+      },
+      "remote": {
+        "scenario_id": "account.login_problem",
+        "intent": "registration",
+        "resolution": "escalated"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": false,
+        "resolution": true
+      }
+    },
+    {
+      "id": "independent-tec-005",
+      "local": {
+        "scenario_id": "technical.site_error",
+        "intent": "support",
+        "resolution": "escalated"
+      },
+      "remote": {
+        "scenario_id": null,
+        "intent": "unknown",
+        "resolution": "out_of_scope"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": false,
+        "resolution": false
+      }
+    },
+    {
+      "id": "independent-tec-006",
+      "local": {
+        "scenario_id": "technical.catalog_search_filter",
+        "intent": "support",
+        "resolution": "escalated"
+      },
+      "remote": {
+        "scenario_id": "lot.catalog_search",
+        "intent": "lot",
+        "resolution": "answered"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": false,
+        "resolution": false
+      }
+    },
+    {
+      "id": "independent-tec-007",
+      "local": {
+        "scenario_id": "technical.catalog_search_filter",
+        "intent": "support",
+        "resolution": "escalated"
+      },
+      "remote": {
+        "scenario_id": null,
+        "intent": "unknown",
+        "resolution": "out_of_scope"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": false,
+        "resolution": false
+      }
+    },
+    {
+      "id": "widget-002",
+      "local": {
+        "scenario_id": "buyer.get_started",
+        "intent": "bidding",
+        "resolution": "answered"
+      },
+      "remote": {
+        "scenario_id": null,
+        "intent": "unknown",
+        "resolution": "clarified"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": false,
+        "resolution": false
+      }
+    },
+    {
+      "id": "widget-003",
+      "local": {
+        "scenario_id": "pickup.receive_lot",
+        "intent": "pickup",
+        "resolution": "answered"
+      },
+      "remote": {
+        "scenario_id": "account.activation_pending",
+        "intent": "registration",
+        "resolution": "answered"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": false,
+        "resolution": true
+      }
+    },
+    {
+      "id": "widget-004",
+      "local": {
+        "scenario_id": "bid.place",
+        "intent": "bidding",
+        "resolution": "answered"
+      },
+      "remote": {
+        "scenario_id": null,
+        "intent": "bidding",
+        "resolution": "answered"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": true,
+        "resolution": true
+      }
+    },
+    {
+      "id": "widget-005",
+      "local": {
+        "scenario_id": "account.registration",
+        "intent": "account",
+        "resolution": "answered"
+      },
+      "remote": {
+        "scenario_id": null,
+        "intent": "unknown",
+        "resolution": "clarified"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": false,
+        "resolution": false
+      }
+    },
+    {
+      "id": "widget-006",
+      "local": {
+        "scenario_id": "account.registration",
+        "intent": "account",
+        "resolution": "answered"
+      },
+      "remote": {
+        "scenario_id": null,
+        "intent": "registration",
+        "resolution": "clarified"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": false,
+        "resolution": false
+      }
+    },
+    {
+      "id": "widget-007",
+      "local": {
+        "scenario_id": "bid.place",
+        "intent": "bidding",
+        "resolution": "answered"
+      },
+      "remote": {
+        "scenario_id": "tariff.status",
+        "intent": "tariffs",
+        "resolution": "escalated"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": false,
+        "resolution": false
+      }
+    },
+    {
+      "id": "widget-008",
+      "local": {
+        "scenario_id": "support.contact",
+        "intent": "support",
+        "resolution": "answered"
+      },
+      "remote": {
+        "scenario_id": "vehicle.business_use_cases",
+        "intent": "bidding",
+        "resolution": "answered"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": false,
+        "resolution": true
+      }
+    },
+    {
+      "id": "widget-010",
+      "local": {
+        "scenario_id": "buyer.first_bid_checklist",
+        "intent": "bidding",
+        "resolution": "answered"
+      },
+      "remote": {
+        "scenario_id": null,
+        "intent": "bidding",
+        "resolution": "clarified"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": true,
+        "resolution": false
+      }
+    },
+    {
+      "id": "widget-011",
+      "local": {
+        "scenario_id": "account.registration",
+        "intent": "account",
+        "resolution": "answered"
+      },
+      "remote": {
+        "scenario_id": null,
+        "intent": "registration",
+        "resolution": "clarified"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": false,
+        "resolution": false
+      }
+    },
+    {
+      "id": "widget-012",
+      "local": {
+        "scenario_id": "account.registration",
+        "intent": "account",
+        "resolution": "answered"
+      },
+      "remote": {
+        "scenario_id": "contract.termination_and_restriction",
+        "intent": "registration",
+        "resolution": "escalated"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": false,
+        "resolution": false
+      }
+    },
+    {
+      "id": "widget-013",
+      "local": {
+        "scenario_id": "technical.site_error",
+        "intent": "support",
+        "resolution": "escalated"
+      },
+      "remote": {
+        "scenario_id": null,
+        "intent": "registration",
+        "resolution": "clarified"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": false,
+        "resolution": false
+      }
+    },
+    {
+      "id": "widget-015",
+      "local": {
+        "scenario_id": "tariff.choose",
+        "intent": "tariffs",
+        "resolution": "clarified"
+      },
+      "remote": {
+        "scenario_id": null,
+        "intent": "registration",
+        "resolution": "clarified"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": false,
+        "resolution": true
+      }
+    },
+    {
+      "id": "widget-017",
+      "local": {
+        "scenario_id": null,
+        "intent": "registration",
+        "resolution": "clarified"
+      },
+      "remote": {
+        "scenario_id": null,
+        "intent": "platform",
+        "resolution": "clarified"
+      },
+      "equal": {
+        "scenario_id": true,
+        "intent": false,
+        "resolution": true
+      }
+    },
+    {
+      "id": "widget-020",
+      "local": {
+        "scenario_id": "support.callback",
+        "intent": "support",
+        "resolution": "answered"
+      },
+      "remote": {
+        "scenario_id": "account.blocked",
+        "intent": "registration",
+        "resolution": "escalated"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": false,
+        "resolution": false
+      }
+    },
+    {
+      "id": "widget-021",
+      "local": {
+        "scenario_id": "bid.place",
+        "intent": "bidding",
+        "resolution": "answered"
+      },
+      "remote": {
+        "scenario_id": null,
+        "intent": "bidding",
+        "resolution": "clarified"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": true,
+        "resolution": false
+      }
+    },
+    {
+      "id": "widget-022",
+      "local": {
+        "scenario_id": "bid.place",
+        "intent": "bidding",
+        "resolution": "answered"
+      },
+      "remote": {
+        "scenario_id": "bid.not_visible",
+        "intent": "bidding",
+        "resolution": "escalated"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": true,
+        "resolution": false
+      }
+    },
+    {
+      "id": "widget-023",
+      "local": {
+        "scenario_id": "bid.place",
+        "intent": "bidding",
+        "resolution": "answered"
+      },
+      "remote": {
+        "scenario_id": null,
+        "intent": "bidding",
+        "resolution": "clarified"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": true,
+        "resolution": false
+      }
+    },
+    {
+      "id": "widget-025",
+      "local": {
+        "scenario_id": "bid.place",
+        "intent": "bidding",
+        "resolution": "answered"
+      },
+      "remote": {
+        "scenario_id": "bid.not_visible",
+        "intent": "bidding",
+        "resolution": "escalated"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": true,
+        "resolution": false
+      }
+    },
+    {
+      "id": "widget-026",
+      "local": {
+        "scenario_id": "bid.place",
+        "intent": "bidding",
+        "resolution": "answered"
+      },
+      "remote": {
+        "scenario_id": null,
+        "intent": "bidding",
+        "resolution": "clarified"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": true,
+        "resolution": false
+      }
+    },
+    {
+      "id": "widget-027",
+      "local": {
+        "scenario_id": "bid.modify_cancel",
+        "intent": "bidding",
+        "resolution": "answered"
+      },
+      "remote": {
+        "scenario_id": null,
+        "intent": "bidding",
+        "resolution": "clarified"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": true,
+        "resolution": false
+      }
+    },
+    {
+      "id": "widget-028",
+      "local": {
+        "scenario_id": "transfer.not_confirmed",
+        "intent": "lot",
+        "resolution": "escalated"
+      },
+      "remote": {
+        "scenario_id": null,
+        "intent": "bidding",
+        "resolution": "clarified"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": false,
+        "resolution": false
+      }
+    },
+    {
+      "id": "widget-029",
+      "local": {
+        "scenario_id": "bid.not_visible",
+        "intent": "bidding",
+        "resolution": "escalated"
+      },
+      "remote": {
+        "scenario_id": "bid.position_service",
+        "intent": "bidding",
+        "resolution": "answered"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": true,
+        "resolution": false
+      }
+    },
+    {
+      "id": "widget-030",
+      "local": {
+        "scenario_id": "auction.result",
+        "intent": "lot",
+        "resolution": "answered"
+      },
+      "remote": {
+        "scenario_id": null,
+        "intent": "bidding",
+        "resolution": "clarified"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": false,
+        "resolution": false
+      }
+    },
+    {
+      "id": "widget-031",
+      "local": {
+        "scenario_id": "bid.place",
+        "intent": "bidding",
+        "resolution": "answered"
+      },
+      "remote": {
+        "scenario_id": "bid.maximum_budget",
+        "intent": "bidding",
+        "resolution": "answered"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": true,
+        "resolution": true
+      }
+    },
+    {
+      "id": "widget-032",
+      "local": {
+        "scenario_id": "auction.formats",
+        "intent": "bidding",
+        "resolution": "answered"
+      },
+      "remote": {
+        "scenario_id": null,
+        "intent": "bidding",
+        "resolution": "clarified"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": true,
+        "resolution": false
+      }
+    },
+    {
+      "id": "widget-034",
+      "local": {
+        "scenario_id": "bid.place",
+        "intent": "bidding",
+        "resolution": "answered"
+      },
+      "remote": {
+        "scenario_id": "bid.validity",
+        "intent": "bidding",
+        "resolution": "answered"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": true,
+        "resolution": true
+      }
+    },
+    {
+      "id": "widget-035",
+      "local": {
+        "scenario_id": "auction.status",
+        "intent": "lot",
+        "resolution": "answered"
+      },
+      "remote": {
+        "scenario_id": "auction.formats",
+        "intent": "bidding",
+        "resolution": "answered"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": false,
+        "resolution": true
+      }
+    },
+    {
+      "id": "widget-036",
+      "local": {
+        "scenario_id": "lot.catalog_search",
+        "intent": "lot",
+        "resolution": "answered"
+      },
+      "remote": {
+        "scenario_id": null,
+        "intent": "unknown",
+        "resolution": "clarified"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": false,
+        "resolution": false
+      }
+    },
+    {
+      "id": "widget-038",
+      "local": {
+        "scenario_id": "lot.catalog_search",
+        "intent": "lot",
+        "resolution": "escalated"
+      },
+      "remote": {
+        "scenario_id": null,
+        "intent": "lot",
+        "resolution": "clarified"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": true,
+        "resolution": false
+      }
+    },
+    {
+      "id": "widget-039",
+      "local": {
+        "scenario_id": "lot.catalog_search",
+        "intent": "lot",
+        "resolution": "answered"
+      },
+      "remote": {
+        "scenario_id": null,
+        "intent": "unknown",
+        "resolution": "clarified"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": false,
+        "resolution": false
+      }
+    },
+    {
+      "id": "widget-040",
+      "local": {
+        "scenario_id": "technical.catalog_search_filter",
+        "intent": "support",
+        "resolution": "escalated"
+      },
+      "remote": {
+        "scenario_id": null,
+        "intent": "unknown",
+        "resolution": "out_of_scope"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": false,
+        "resolution": false
+      }
+    },
+    {
+      "id": "widget-041",
+      "local": {
+        "scenario_id": "technical.lot_image_missing",
+        "intent": "support",
+        "resolution": "escalated"
+      },
+      "remote": {
+        "scenario_id": null,
+        "intent": "safety",
+        "resolution": "out_of_scope"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": false,
+        "resolution": false
+      }
+    },
+    {
+      "id": "widget-042",
+      "local": {
+        "scenario_id": "technical.site_error",
+        "intent": "support",
+        "resolution": "escalated"
+      },
+      "remote": {
+        "scenario_id": "technical.lot_image_missing",
+        "intent": "support",
+        "resolution": "escalated"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": true,
+        "resolution": true
+      }
+    },
+    {
+      "id": "widget-044",
+      "local": {
+        "scenario_id": "technical.lot_image_missing",
+        "intent": "support",
+        "resolution": "escalated"
+      },
+      "remote": {
+        "scenario_id": "tariff.one_time",
+        "intent": "tariffs",
+        "resolution": "answered"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": false,
+        "resolution": false
+      }
+    },
+    {
+      "id": "widget-046",
+      "local": {
+        "scenario_id": "technical.catalog_search_filter",
+        "intent": "support",
+        "resolution": "escalated"
+      },
+      "remote": {
+        "scenario_id": null,
+        "intent": "unknown",
+        "resolution": "out_of_scope"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": false,
+        "resolution": false
+      }
+    },
+    {
+      "id": "widget-048",
+      "local": {
+        "scenario_id": "lot.catalog_search",
+        "intent": "lot",
+        "resolution": "answered"
+      },
+      "remote": {
+        "scenario_id": null,
+        "intent": "lot",
+        "resolution": "answered"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": true,
+        "resolution": true
+      }
+    },
+    {
+      "id": "widget-050",
+      "local": {
+        "scenario_id": "auction.formats",
+        "intent": "bidding",
+        "resolution": "answered"
+      },
+      "remote": {
+        "scenario_id": "technical.catalog_search_filter",
+        "intent": "support",
+        "resolution": "escalated"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": false,
+        "resolution": false
+      }
+    },
+    {
+      "id": "widget-051",
+      "local": {
+        "scenario_id": "tariff.choose",
+        "intent": "tariffs",
+        "resolution": "clarified"
+      },
+      "remote": {
+        "scenario_id": null,
+        "intent": "tariffs",
+        "resolution": "clarified"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": true,
+        "resolution": true
+      }
+    },
+    {
+      "id": "widget-052",
+      "local": {
+        "scenario_id": "tariff.choose",
+        "intent": "tariffs",
+        "resolution": "clarified"
+      },
+      "remote": {
+        "scenario_id": "tariff.status",
+        "intent": "tariffs",
+        "resolution": "escalated"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": true,
+        "resolution": false
+      }
+    },
+    {
+      "id": "widget-053",
+      "local": {
+        "scenario_id": "tariff.choose",
+        "intent": "tariffs",
+        "resolution": "clarified"
+      },
+      "remote": {
+        "scenario_id": "tariff.status",
+        "intent": "tariffs",
+        "resolution": "escalated"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": true,
+        "resolution": false
+      }
+    },
+    {
+      "id": "widget-056",
+      "local": {
+        "scenario_id": "payment.methods",
+        "intent": "payment",
+        "resolution": "answered"
+      },
+      "remote": {
+        "scenario_id": null,
+        "intent": "payment",
+        "resolution": "clarified"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": true,
+        "resolution": false
+      }
+    },
+    {
+      "id": "widget-057",
+      "local": {
+        "scenario_id": "tariff.choose",
+        "intent": "tariffs",
+        "resolution": "clarified"
+      },
+      "remote": {
+        "scenario_id": "contract.termination_and_restriction",
+        "intent": "registration",
+        "resolution": "escalated"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": false,
+        "resolution": false
+      }
+    },
+    {
+      "id": "widget-060",
+      "local": {
+        "scenario_id": "transfer.seller_no_response",
+        "intent": "transfer",
+        "resolution": "escalated"
+      },
+      "remote": {
+        "scenario_id": "documents.preparation_delay",
+        "intent": "transfer",
+        "resolution": "escalated"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": true,
+        "resolution": true
+      }
+    },
+    {
+      "id": "widget-061",
+      "local": {
+        "scenario_id": "tariff.connect",
+        "intent": "tariffs",
+        "resolution": "answered"
+      },
+      "remote": {
+        "scenario_id": null,
+        "intent": "tariffs",
+        "resolution": "clarified"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": true,
+        "resolution": false
+      }
+    },
+    {
+      "id": "widget-062",
+      "local": {
+        "scenario_id": "refund.eligibility",
+        "intent": "refund",
+        "resolution": "answered"
+      },
+      "remote": {
+        "scenario_id": null,
+        "intent": "refund",
+        "resolution": "clarified"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": true,
+        "resolution": false
+      }
+    },
+    {
+      "id": "widget-064",
+      "local": {
+        "scenario_id": null,
+        "intent": "lot",
+        "resolution": "answered"
+      },
+      "remote": {
+        "scenario_id": null,
+        "intent": "lot",
+        "resolution": "clarified"
+      },
+      "equal": {
+        "scenario_id": true,
+        "intent": true,
+        "resolution": false
+      }
+    },
+    {
+      "id": "widget-065",
+      "local": {
+        "scenario_id": "tariff.choose",
+        "intent": "tariffs",
+        "resolution": "clarified"
+      },
+      "remote": {
+        "scenario_id": "payment.accounting_documents",
+        "intent": "payment",
+        "resolution": "escalated"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": false,
+        "resolution": false
+      }
+    },
+    {
+      "id": "widget-066",
+      "local": {
+        "scenario_id": "win.next_steps",
+        "intent": "transfer",
+        "resolution": "answered"
+      },
+      "remote": {
+        "scenario_id": null,
+        "intent": "unknown",
+        "resolution": "clarified"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": false,
+        "resolution": false
+      }
+    },
+    {
+      "id": "widget-067",
+      "local": {
+        "scenario_id": "pickup.receive_lot",
+        "intent": "pickup",
+        "resolution": "answered"
+      },
+      "remote": {
+        "scenario_id": null,
+        "intent": "transfer",
+        "resolution": "clarified"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": false,
+        "resolution": false
+      }
+    },
+    {
+      "id": "widget-068",
+      "local": {
+        "scenario_id": "transfer.not_confirmed",
+        "intent": "lot",
+        "resolution": "escalated"
+      },
+      "remote": {
+        "scenario_id": null,
+        "intent": "lot",
+        "resolution": "clarified"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": true,
+        "resolution": false
+      }
+    },
+    {
+      "id": "widget-069",
+      "local": {
+        "scenario_id": "lot.location",
+        "intent": "lot",
+        "resolution": "answered"
+      },
+      "remote": {
+        "scenario_id": "lot.location",
+        "intent": "lot",
+        "resolution": "escalated"
+      },
+      "equal": {
+        "scenario_id": true,
+        "intent": true,
+        "resolution": false
+      }
+    },
+    {
+      "id": "widget-070",
+      "local": {
+        "scenario_id": "pickup.receive_lot",
+        "intent": "pickup",
+        "resolution": "answered"
+      },
+      "remote": {
+        "scenario_id": null,
+        "intent": "pickup",
+        "resolution": "clarified"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": true,
+        "resolution": false
+      }
+    },
+    {
+      "id": "widget-071",
+      "local": {
+        "scenario_id": "contract.receive",
+        "intent": "transfer",
+        "resolution": "escalated"
+      },
+      "remote": {
+        "scenario_id": "contract.parties_signing",
+        "intent": "transfer",
+        "resolution": "answered"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": true,
+        "resolution": false
+      }
+    },
+    {
+      "id": "widget-072",
+      "local": {
+        "scenario_id": "documents.preparation_delay",
+        "intent": "transfer",
+        "resolution": "escalated"
+      },
+      "remote": {
+        "scenario_id": "contract.receive",
+        "intent": "transfer",
+        "resolution": "escalated"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": true,
+        "resolution": true
+      }
+    },
+    {
+      "id": "widget-075",
+      "local": {
+        "scenario_id": "pickup.delay",
+        "intent": "pickup",
+        "resolution": "answered"
+      },
+      "remote": {
+        "scenario_id": "vehicle.registration_after_purchase",
+        "intent": "transfer",
+        "resolution": "escalated"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": false,
+        "resolution": false
+      }
+    },
+    {
+      "id": "widget-078",
+      "local": {
+        "scenario_id": "lot.status_guide",
+        "intent": "lot",
+        "resolution": "answered"
+      },
+      "remote": {
+        "scenario_id": null,
+        "intent": "lot",
+        "resolution": "clarified"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": true,
+        "resolution": false
+      }
+    },
+    {
+      "id": "widget-079",
+      "local": {
+        "scenario_id": "pickup.receive_lot",
+        "intent": "pickup",
+        "resolution": "answered"
+      },
+      "remote": {
+        "scenario_id": "lot.payment.start",
+        "intent": "payment",
+        "resolution": "answered"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": false,
+        "resolution": true
+      }
+    },
+    {
+      "id": "widget-080",
+      "local": {
+        "scenario_id": "pickup.access_issuer",
+        "intent": "transfer",
+        "resolution": "answered"
+      },
+      "remote": {
+        "scenario_id": "vehicle.registration_penalty_details",
+        "intent": "transfer",
+        "resolution": "escalated"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": true,
+        "resolution": false
+      }
+    },
+    {
+      "id": "widget-082",
+      "local": {
+        "scenario_id": "refund.application",
+        "intent": "refund",
+        "resolution": "answered"
+      },
+      "remote": {
+        "scenario_id": null,
+        "intent": "refund",
+        "resolution": "escalated"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": true,
+        "resolution": false
+      }
+    },
+    {
+      "id": "widget-083",
+      "local": {
+        "scenario_id": "refund.eligibility",
+        "intent": "refund",
+        "resolution": "answered"
+      },
+      "remote": {
+        "scenario_id": "refund.eligibility",
+        "intent": "refund",
+        "resolution": "escalated"
+      },
+      "equal": {
+        "scenario_id": true,
+        "intent": true,
+        "resolution": false
+      }
+    },
+    {
+      "id": "widget-091",
+      "local": {
+        "scenario_id": null,
+        "intent": "unknown",
+        "resolution": "clarified"
+      },
+      "remote": {
+        "scenario_id": "support.office_visit",
+        "intent": "support",
+        "resolution": "escalated"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": false,
+        "resolution": false
+      }
+    },
+    {
+      "id": "widget-092",
+      "local": {
+        "scenario_id": "tariff.choose",
+        "intent": "tariffs",
+        "resolution": "clarified"
+      },
+      "remote": {
+        "scenario_id": null,
+        "intent": "transfer",
+        "resolution": "clarified"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": false,
+        "resolution": true
+      }
+    },
+    {
+      "id": "widget-095",
+      "local": {
+        "scenario_id": "lot.location",
+        "intent": "lot",
+        "resolution": "answered"
+      },
+      "remote": {
+        "scenario_id": null,
+        "intent": "pickup",
+        "resolution": "clarified"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": false,
+        "resolution": false
+      }
+    },
+    {
+      "id": "widget-097",
+      "local": {
+        "scenario_id": "support.callback",
+        "intent": "support",
+        "resolution": "answered"
+      },
+      "remote": {
+        "scenario_id": null,
+        "intent": "support",
+        "resolution": "clarified"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": true,
+        "resolution": false
+      }
+    },
+    {
+      "id": "widget-100",
+      "local": {
+        "scenario_id": "feedback.improvement_suggestion",
+        "intent": "feedback",
+        "resolution": "escalated"
+      },
+      "remote": {
+        "scenario_id": null,
+        "intent": "unknown",
+        "resolution": "out_of_scope"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": false,
+        "resolution": false
+      }
+    },
+    {
+      "id": "widget-101",
+      "local": {
+        "scenario_id": "technical.lot_image_missing",
+        "intent": "support",
+        "resolution": "escalated"
+      },
+      "remote": {
+        "scenario_id": null,
+        "intent": "support",
+        "resolution": "out_of_scope"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": true,
+        "resolution": false
+      }
+    },
+    {
+      "id": "widget-102",
+      "local": {
+        "scenario_id": "bid.place",
+        "intent": "bidding",
+        "resolution": "answered"
+      },
+      "remote": {
+        "scenario_id": "bid.not_visible",
+        "intent": "bidding",
+        "resolution": "escalated"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": true,
+        "resolution": false
+      }
+    },
+    {
+      "id": "widget-103",
+      "local": {
+        "scenario_id": "feedback.improvement_suggestion",
+        "intent": "feedback",
+        "resolution": "escalated"
+      },
+      "remote": {
+        "scenario_id": "feedback.platform_complaint",
+        "intent": "feedback",
+        "resolution": "escalated"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": true,
+        "resolution": true
+      }
+    },
+    {
+      "id": "widget-105",
+      "local": {
+        "scenario_id": "feedback.bot_answer_complaint",
+        "intent": "support",
+        "resolution": "answered"
+      },
+      "remote": {
+        "scenario_id": "support.lot_case_review",
+        "intent": "support",
+        "resolution": "escalated"
+      },
+      "equal": {
+        "scenario_id": false,
+        "intent": true,
+        "resolution": false
+      }
+    }
+  ]
+}
