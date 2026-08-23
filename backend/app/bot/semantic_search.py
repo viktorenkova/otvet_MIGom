@@ -8,6 +8,7 @@ from pathlib import Path
 import tempfile
 from typing import Any, Iterable
 
+from backend.app.bot.routing_v3 import routing_normalize
 from backend.app.bot.text_processing import normalize_text
 
 
@@ -20,6 +21,19 @@ class SemanticMatch:
     lexical_similarity: float = 0.0
     dense_similarity: float = 0.0
     dense_available: bool = False
+
+
+@dataclass(frozen=True)
+class SemanticCandidate:
+    article_id: str
+    score: float
+    lexical_score: float
+    char_score: float
+    word_score: float
+    dense_score: float
+    dense_similarity: float
+    intent_boost: float
+    dense_available: bool
 
 
 class TfidfSemanticIndex:
@@ -55,7 +69,7 @@ class TfidfSemanticIndex:
             dtype=np.float32,
         )
         self.word_vectorizer = TfidfVectorizer(
-            preprocessor=normalize_text,
+            preprocessor=routing_normalize,
             analyzer="word",
             ngram_range=(1, 2),
             min_df=1,
@@ -66,15 +80,20 @@ class TfidfSemanticIndex:
         self.char_matrix = self.char_vectorizer.fit_transform(documents)
         self.word_matrix = self.word_vectorizer.fit_transform(documents)
 
-    def similarities(self, message: str):
-        query = normalize_text(message)
+    def similarity_channels(self, message: str):
+        query = routing_normalize(message)
         if not query:
             return None
         char_query = self.char_vectorizer.transform([query])
         word_query = self.word_vectorizer.transform([query])
         char_values = (self.char_matrix @ char_query.T).toarray().ravel()
         word_values = (self.word_matrix @ word_query.T).toarray().ravel()
-        return char_values * self.char_weight + word_values * self.word_weight
+        combined = char_values * self.char_weight + word_values * self.word_weight
+        return char_values, word_values, combined
+
+    def similarities(self, message: str):
+        channels = self.similarity_channels(message)
+        return channels[2] if channels is not None else None
 
     def _article_document(self, article: Any) -> str:
         search_document = str(getattr(article, "search_document", "") or "")
@@ -86,7 +105,7 @@ class TfidfSemanticIndex:
             *[str(item) for item in article.keywords],
             search_document or str(article.user_answer or ""),
         ]
-        return normalize_text(" ".join(part for part in parts if part))
+        return routing_normalize(" ".join(part for part in parts if part))
 
     def search(
         self,
@@ -276,6 +295,39 @@ class MultilingualHybridSemanticIndex:
         )[0]
         return self.dense_matrix @ vector
 
+    def dense_similarities_many(self, messages: list[str]):
+        """Encode evaluation/offline query batches without changing scoring."""
+        if self.model is None or self.dense_matrix is None or not messages:
+            return None
+        query_prefix = str(self.config.get("dense_query_prefix") or "query: ")
+        cache_path = self._cache_path(
+            str(self.config.get("dense_model") or "intfloat/multilingual-e5-small") + "-queries",
+            messages,
+        )
+        try:
+            if cache_path.is_file():
+                with self._np.load(cache_path, allow_pickle=False) as cached:
+                    similarities = cached["similarities"]
+                if similarities.shape == (len(messages), len(self.article_ids)):
+                    return similarities
+        except Exception:
+            pass
+        vectors = self.model.encode(
+            [query_prefix + normalize_text(message) for message in messages],
+            batch_size=max(1, int(self.config.get("dense_batch_size", 32))),
+            normalize_embeddings=True,
+            show_progress_bar=False,
+        )
+        similarities = vectors @ self.dense_matrix.T
+        temporary = cache_path.with_suffix(".tmp.npz")
+        try:
+            cache_path.parent.mkdir(parents=True, exist_ok=True)
+            self._np.savez_compressed(temporary, similarities=similarities)
+            os.replace(temporary, cache_path)
+        except Exception as exc:
+            logging.getLogger(__name__).warning("Could not persist dense query cache: %s", exc)
+        return similarities
+
     def _normalized_dense(self, similarities):
         denominator = max(1e-6, 1.0 - self.dense_floor)
         return self._np.clip((similarities - self.dense_floor) / denominator, 0.0, 1.0)
@@ -288,38 +340,15 @@ class MultilingualHybridSemanticIndex:
     ) -> SemanticMatch | None:
         if not candidate_ids:
             return None
-        lexical = self.lexical.similarities(message)
-        if lexical is None:
+        ranked_candidates = self.rank(message, candidate_ids, intent)
+        if not ranked_candidates:
             return None
-        dense = self._dense_similarities(message)
-        dense_available = dense is not None
-        if dense_available:
-            combined = (
-                self.lexical_weight * lexical
-                + self.dense_weight * self._normalized_dense(dense)
-            )
-        else:
-            combined = lexical.copy()
-
-        ranked: list[tuple[float, float, int]] = []
-        for article_id in candidate_ids:
-            position = self.article_positions.get(article_id)
-            if position is None:
-                continue
-            raw = float(combined[position])
-            adjusted = raw
-            if intent != "unknown" and self.article_intents[position] in {intent, "unknown"}:
-                adjusted += self.intent_boost
-            ranked.append((adjusted, raw, position))
-        if not ranked:
-            return None
-
-        ranked.sort(key=lambda item: item[0], reverse=True)
-        best_adjusted, best_similarity, best_position = ranked[0]
-        second_adjusted = ranked[1][0] if len(ranked) > 1 else 0.0
+        best = ranked_candidates[0]
+        second_score = ranked_candidates[1].score if len(ranked_candidates) > 1 else 0.0
         candidate_article_ids: list[str] = []
         seen_intents: set[str] = set()
-        for _, _, position in ranked:
+        for candidate in ranked_candidates:
+            position = self.article_positions[candidate.article_id]
             candidate_intent = self.article_intents[position]
             if candidate_intent in seen_intents:
                 continue
@@ -328,11 +357,69 @@ class MultilingualHybridSemanticIndex:
             if len(candidate_article_ids) == 3:
                 break
         return SemanticMatch(
-            article_id=self.article_ids[best_position],
-            similarity=best_similarity,
-            margin=max(0.0, best_adjusted - second_adjusted),
+            article_id=best.article_id,
+            similarity=best.lexical_score * self.lexical_weight + best.dense_score * self.dense_weight if best.dense_available else best.lexical_score,
+            margin=max(0.0, best.score - second_score),
             candidate_article_ids=tuple(candidate_article_ids),
-            lexical_similarity=float(lexical[best_position]),
-            dense_similarity=float(dense[best_position]) if dense_available else 0.0,
-            dense_available=dense_available,
+            lexical_similarity=best.lexical_score,
+            dense_similarity=best.dense_similarity,
+            dense_available=best.dense_available,
         )
+
+    def rank(
+        self,
+        message: str,
+        candidate_ids: set[str],
+        intent: str = "unknown",
+        top_k: int | None = None,
+        dense_similarities=None,
+        lexical_weight: float | None = None,
+        dense_weight: float | None = None,
+    ) -> tuple[SemanticCandidate, ...]:
+        """Return candidates only, with an auditable per-channel score trace."""
+        if not candidate_ids:
+            return ()
+        channels = self.lexical.similarity_channels(message)
+        if channels is None:
+            return ()
+        char_values, word_values, lexical = channels
+        dense = dense_similarities if dense_similarities is not None else self._dense_similarities(message)
+        dense_available = dense is not None
+        dense_scores = self._normalized_dense(dense) if dense_available else None
+        effective_lexical_weight = self.lexical_weight if lexical_weight is None else max(0.0, lexical_weight)
+        effective_dense_weight = self.dense_weight if dense_weight is None else max(0.0, dense_weight)
+        effective_total = effective_lexical_weight + effective_dense_weight
+        if effective_total <= 0:
+            effective_lexical_weight, effective_dense_weight, effective_total = 1.0, 0.0, 1.0
+        effective_lexical_weight /= effective_total
+        effective_dense_weight /= effective_total
+        combined = (
+            effective_lexical_weight * lexical + effective_dense_weight * dense_scores
+            if dense_available
+            else lexical
+        )
+        ranked: list[SemanticCandidate] = []
+        for article_id in candidate_ids:
+            position = self.article_positions.get(article_id)
+            if position is None:
+                continue
+            boost = (
+                self.intent_boost
+                if intent != "unknown" and self.article_intents[position] in {intent, "unknown"}
+                else 0.0
+            )
+            ranked.append(
+                SemanticCandidate(
+                    article_id=article_id,
+                    score=float(combined[position]) + boost,
+                    lexical_score=float(lexical[position]),
+                    char_score=float(char_values[position]),
+                    word_score=float(word_values[position]),
+                    dense_score=float(dense_scores[position]) if dense_available else 0.0,
+                    dense_similarity=float(dense[position]) if dense_available else 0.0,
+                    intent_boost=boost,
+                    dense_available=dense_available,
+                )
+            )
+        ranked.sort(key=lambda item: (item.score, item.article_id), reverse=True)
+        return tuple(ranked[:top_k] if top_k is not None else ranked)

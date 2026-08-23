@@ -50,14 +50,16 @@ _CONCEPTS: dict[str, tuple[str, ...]] = {
     "organization": ("ваша организация", "ваша компания", "вы находитесь", "ваш адрес"),
     "payment": ("оплата", "оплатить", "платеж", "деньги", "перечислил", "списал", "пополнил"),
     "payment_done": ("прошел", "списался", "списал", "в банке", "перечислил", "оплаченный", "деньги сняли"),
+    "prepare": ("подготовить", "подготовиться", "учесть заранее", "проверить заранее"),
     "pickup": ("забрать", "получить", "выдача", "отдадут", "отдают", "выдают"),
     "premium": ("премиум", "премиальный"),
     "refund": ("возврат", "вернуть", "возвратить", "возвращать", "вернули", "возвращают", "обратно деньги", "депозит обратно", "возвращение средств", "вывести", "возвратный"),
     "refund_application": ("заявление", "запрос", "подать", "направить", "отправить", "куда писать", "шаблон"),
     "registration": ("регистрация", "регистрирование", "зарегистрироваться", "создать аккаунт", "новый покупатель"),
     "recover": ("восстановить", "забыл пароль", "не принимает пароль", "не могу войти", "не получается войти"),
-    "seller": ("продавец", "страховая", "страхование", "страхования", "ресо", "альфа", "ингосстрах", "росгосстрах", "вск", "согласие", "ренессанс", "сбер страхование", "совкомбанк", "зетта", "югория", "тинькофф", "т страхование"),
+    "seller": ("продавец", "страховая", "страховщик", "страхование", "страхования", "ресо", "альфа", "ингосстрах", "росгосстрах", "вск", "согласие", "ренессанс", "сбер страхование", "совкомбанк", "зетта", "югория", "тинькофф", "т страхование"),
     "status": ("статус", "состояние", "когда", "сколько ждать", "сколько идет", "завершенность", "завершились", "закончились", "окончены", "итог", "результат"),
+    "outcome": ("победил", "выиграл", "победитель", "результат торгов", "итог торгов"),
     "support": ("поддержка", "почтовая ветка", "письмо", "электронная переписка"),
     "bot": ("бот", "не помогло", "ваш ответ"),
     "tariff": ("тариф", "доступ", "подписка"),
@@ -119,6 +121,10 @@ _PROFILES: tuple[tuple[str, tuple[str, ...], tuple[str, ...], tuple[str, ...]], 
     ("feedback.platform_complaint", ("complaint",), ("filter", "image", "payment", "bid"), ("feedback", "error")),
     ("feedback.bot_answer_complaint", ("bot",), ("support",), ("employee",)),
     ("support.office_visit", ("visit", "location"), (), ("lot",)),
+    ("support.office_visit", ("visit",), (), ("lot", "pickup")),
+    ("buyer.first_bid_checklist", ("prepare", "auction"), (), ("bid_place",)),
+    ("buyer.first_bid_checklist", ("prepare", "bid"), (), ("bid_place",)),
+    ("auction.result", ("auction", "outcome"), (), ("not_visible", "bid_change")),
     ("tariff.choose", ("tariff_explicit",), (), ("premium", "connect", "payment_done", "account", "refund")),
     ("account.registration", ("legal_form",), ("registration",), ()),
 )
@@ -290,11 +296,24 @@ def _phrase_present(query_tokens: tuple[str, ...], phrase: str) -> bool:
 
 def _matched_concepts(message: str) -> frozenset[str]:
     query_tokens = tuple(dict.fromkeys([*routing_normalize(message).split(), *_basic_tokens(message)]))
-    return frozenset(
+    concepts = {
         name
         for name, aliases in _CONCEPTS.items()
         if any(_phrase_present(query_tokens, alias) for alias in aliases)
-    )
+    }
+    # Detect a negated communication action compositionally. This covers
+    # inflected verbs and word reordering without adding audit sentences (or
+    # every possible "X does not write/call back" phrase) to the vocabulary.
+    negation = any(token in {"не", "нет", "без", "ничего"} for token in query_tokens)
+    communication_stems = ("ответ", "пис", "пиш", "связ", "звон")
+    if negation and any(token.startswith(communication_stems) for token in query_tokens):
+        concepts.add("no_response")
+    # Mail-channel roots remain identifiable even when a suffix contains a
+    # transposition that the conservative token repair intentionally leaves
+    # untouched.
+    if any(token.startswith(("почт", "письм", "email")) for token in query_tokens):
+        concepts.add("support")
+    return frozenset(concepts)
 
 
 def _profile_scores(message: str) -> dict[str, tuple[float, tuple[str, ...]]]:
@@ -430,7 +449,19 @@ class HybridScenarioRouter:
             return RoutingDecision(None, "low", 0.0, 0.0, (), normalized)
         best = candidates[0]
         margin = best.score - (candidates[1].score if len(candidates) > 1 else 0.0)
-        if best.score >= 0.58 and margin >= 0.045:
+        profile_evidence = sum(
+            feature.startswith("concept:") for feature in best.matched_features
+        )
+        # A conflict profile is decisive only when at least two independent
+        # concepts agree and the candidate still leads the lexical/facet rank.
+        # This keeps one broad keyword from turning a close retrieval into an
+        # overconfident route while allowing compositional paraphrases through.
+        decisive_profile = (
+            profile_evidence >= 2
+            and best.score >= 0.76
+            and margin >= 0.015
+        )
+        if (best.score >= 0.58 and margin >= 0.045) or decisive_profile:
             confidence = "high"
             scenario = best.scenario
         elif best.score >= 0.36:
@@ -446,7 +477,11 @@ class HybridScenarioRouter:
             margin=margin,
             candidates=candidates,
             normalized_query=normalized,
-            matched_features=best.matched_features,
+            matched_features=(
+                (*best.matched_features, "decisive_conflict_profile")
+                if decisive_profile and margin < 0.045
+                else best.matched_features
+            ),
         )
 
 

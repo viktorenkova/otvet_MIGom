@@ -588,6 +588,8 @@
     "dense_passage_prefix": "passage: ",
     "dense_weight": 0.7,
     "lexical_weight": 0.3,
+    "candidate_dense_weight": 0.25,
+    "candidate_lexical_weight": 0.75,
     "dense_similarity_floor": 0.78,
     "dense_answer_similarity": 0.29,
     "dense_answer_margin": 0.035,

@@ -1,0 +1,2773 @@
+{
+  "schema_version": 1,
+  "dataset": {
+    "path": "tests\\data\\routing_v3_independent_acceptance.json",
+    "version": "routing-v3-independent-mutations-1",
+    "case_count": 116,
+    "cases_sha256": "cd3dec16204f4f84834e5b72c719591d2bf20a57347c861b3727b81c3bf539b8",
+    "policy": "Deterministically generated acceptance set; do not use generated phrases as routing rules."
+  },
+  "retrieval_contract": {
+    "output": "Top-10 candidates only; no final scenario decision",
+    "fusion_weights": {
+      "lexical": 0.75,
+      "dense": 0.25
+    }
+  },
+  "overall": {
+    "total": 116,
+    "passed": 116,
+    "recall_at_10_pct": 100.0
+  },
+  "by_group": {
+    "account_login": {
+      "total": 4,
+      "passed": 4,
+      "recall_at_10_pct": 100.0
+    },
+    "account_registration": {
+      "total": 4,
+      "passed": 4,
+      "recall_at_10_pct": 100.0
+    },
+    "auction_formats": {
+      "total": 4,
+      "passed": 4,
+      "recall_at_10_pct": 100.0
+    },
+    "auction_status": {
+      "total": 4,
+      "passed": 4,
+      "recall_at_10_pct": 100.0
+    },
+    "bid_modify_cancel": {
+      "total": 4,
+      "passed": 4,
+      "recall_at_10_pct": 100.0
+    },
+    "bid_not_visible": {
+      "total": 4,
+      "passed": 4,
+      "recall_at_10_pct": 100.0
+    },
+    "bid_place": {
+      "total": 4,
+      "passed": 4,
+      "recall_at_10_pct": 100.0
+    },
+    "catalog_search": {
+      "total": 4,
+      "passed": 4,
+      "recall_at_10_pct": 100.0
+    },
+    "documents_delay": {
+      "total": 4,
+      "passed": 4,
+      "recall_at_10_pct": 100.0
+    },
+    "email_no_response": {
+      "total": 4,
+      "passed": 4,
+      "recall_at_10_pct": 100.0
+    },
+    "employee_contact": {
+      "total": 4,
+      "passed": 4,
+      "recall_at_10_pct": 100.0
+    },
+    "feedback_complaint": {
+      "total": 4,
+      "passed": 4,
+      "recall_at_10_pct": 100.0
+    },
+    "feedback_improvement": {
+      "total": 4,
+      "passed": 4,
+      "recall_at_10_pct": 100.0
+    },
+    "insurer_no_response": {
+      "total": 4,
+      "passed": 4,
+      "recall_at_10_pct": 100.0
+    },
+    "lot_images": {
+      "total": 4,
+      "passed": 4,
+      "recall_at_10_pct": 100.0
+    },
+    "lot_location": {
+      "total": 4,
+      "passed": 4,
+      "recall_at_10_pct": 100.0
+    },
+    "office_ambiguous": {
+      "total": 4,
+      "passed": 4,
+      "recall_at_10_pct": 100.0
+    },
+    "office_explicit": {
+      "total": 4,
+      "passed": 4,
+      "recall_at_10_pct": 100.0
+    },
+    "payment_checkout_problem": {
+      "total": 4,
+      "passed": 4,
+      "recall_at_10_pct": 100.0
+    },
+    "payment_not_visible": {
+      "total": 4,
+      "passed": 4,
+      "recall_at_10_pct": 100.0
+    },
+    "pickup_receive": {
+      "total": 4,
+      "passed": 4,
+      "recall_at_10_pct": 100.0
+    },
+    "premium_connect": {
+      "total": 4,
+      "passed": 4,
+      "recall_at_10_pct": 100.0
+    },
+    "refund_ambiguous": {
+      "total": 4,
+      "passed": 4,
+      "recall_at_10_pct": 100.0
+    },
+    "refund_application": {
+      "total": 4,
+      "passed": 4,
+      "recall_at_10_pct": 100.0
+    },
+    "refund_eligibility": {
+      "total": 4,
+      "passed": 4,
+      "recall_at_10_pct": 100.0
+    },
+    "refund_status": {
+      "total": 4,
+      "passed": 4,
+      "recall_at_10_pct": 100.0
+    },
+    "tariff_status": {
+      "total": 4,
+      "passed": 4,
+      "recall_at_10_pct": 100.0
+    },
+    "technical_filters": {
+      "total": 4,
+      "passed": 4,
+      "recall_at_10_pct": 100.0
+    },
+    "technical_site": {
+      "total": 4,
+      "passed": 4,
+      "recall_at_10_pct": 100.0
+    }
+  },
+  "by_class": {
+    "morphology": {
+      "total": 29,
+      "passed": 29,
+      "recall_at_10_pct": 100.0
+    },
+    "transposed_letters": {
+      "total": 29,
+      "passed": 29,
+      "recall_at_10_pct": 100.0
+    },
+    "typo": {
+      "total": 29,
+      "passed": 29,
+      "recall_at_10_pct": 100.0
+    },
+    "word_order": {
+      "total": 29,
+      "passed": 29,
+      "recall_at_10_pct": 100.0
+    }
+  },
+  "checks": {
+    "blind_recall_at_10_gte_95": true,
+    "each_group_recall_at_10_gte_90": true,
+    "each_language_class_recall_at_10_gte_90": true,
+    "dense_channel_available": true
+  },
+  "passed": true,
+  "failures": [],
+  "results": [
+    {
+      "id": "mutation-insurer-typo",
+      "group": "insurer_no_response",
+      "class": "typo",
+      "expected_scenario_ids": [
+        "transfer.seller_no_response"
+      ],
+      "candidate_scenario_ids": [
+        "vehicle.owner_listing_dispute",
+        "transfer.seller_no_response",
+        "refusal.seller_decision",
+        "contract.parties_signing",
+        "documents.preparation_delay",
+        "seller.access_security",
+        "refusal.no_response",
+        "seller.buyer_nonpayment",
+        "support.email_no_response",
+        "vehicle.registration_after_purchase"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "mutation-insurer-transposed_letters",
+      "group": "insurer_no_response",
+      "class": "transposed_letters",
+      "expected_scenario_ids": [
+        "transfer.seller_no_response"
+      ],
+      "candidate_scenario_ids": [
+        "vehicle.owner_listing_dispute",
+        "transfer.seller_no_response",
+        "refusal.seller_decision",
+        "contract.parties_signing",
+        "documents.preparation_delay",
+        "seller.access_security",
+        "refusal.no_response",
+        "support.email_no_response",
+        "seller.buyer_nonpayment",
+        "vehicle.registration_after_purchase"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "mutation-insurer-morphology",
+      "group": "insurer_no_response",
+      "class": "morphology",
+      "expected_scenario_ids": [
+        "transfer.seller_no_response"
+      ],
+      "candidate_scenario_ids": [
+        "vehicle.owner_listing_dispute",
+        "transfer.seller_no_response",
+        "refusal.seller_decision",
+        "contract.parties_signing",
+        "documents.preparation_delay",
+        "vehicle.registration_after_purchase",
+        "seller.access_security",
+        "refusal.no_response",
+        "seller.buyer_nonpayment",
+        "support.email_no_response"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "mutation-insurer-word_order",
+      "group": "insurer_no_response",
+      "class": "word_order",
+      "expected_scenario_ids": [
+        "transfer.seller_no_response"
+      ],
+      "candidate_scenario_ids": [
+        "vehicle.owner_listing_dispute",
+        "transfer.seller_no_response",
+        "refusal.seller_decision",
+        "contract.parties_signing",
+        "documents.preparation_delay",
+        "vehicle.registration_after_purchase",
+        "seller.access_security",
+        "seller.buyer_nonpayment",
+        "pickup.access_issuer",
+        "refusal.no_response"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "mutation-premium-connect-typo",
+      "group": "premium_connect",
+      "class": "typo",
+      "expected_scenario_ids": [
+        "tariff.connect"
+      ],
+      "candidate_scenario_ids": [
+        "tariff.connect",
+        "tariff.choose",
+        "tariff.premium",
+        "buyer.get_started",
+        "seller.get_started",
+        "tariff.promotion",
+        "tariff.one_time",
+        "account.identification_for_contract",
+        "tariff.demo",
+        "pickup.representative"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "mutation-premium-connect-transposed_letters",
+      "group": "premium_connect",
+      "class": "transposed_letters",
+      "expected_scenario_ids": [
+        "tariff.connect"
+      ],
+      "candidate_scenario_ids": [
+        "tariff.connect",
+        "tariff.premium",
+        "tariff.choose",
+        "buyer.get_started",
+        "seller.get_started",
+        "tariff.promotion",
+        "tariff.one_time",
+        "account.identification_for_contract",
+        "tariff.demo",
+        "pickup.representative"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "mutation-premium-connect-morphology",
+      "group": "premium_connect",
+      "class": "morphology",
+      "expected_scenario_ids": [
+        "tariff.connect"
+      ],
+      "candidate_scenario_ids": [
+        "tariff.connect",
+        "tariff.premium",
+        "tariff.choose",
+        "buyer.get_started",
+        "tariff.one_time",
+        "seller.get_started",
+        "tariff.promotion",
+        "tariff.demo",
+        "account.identification_for_contract",
+        "pickup.representative"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "mutation-premium-connect-word_order",
+      "group": "premium_connect",
+      "class": "word_order",
+      "expected_scenario_ids": [
+        "tariff.connect"
+      ],
+      "candidate_scenario_ids": [
+        "tariff.connect",
+        "tariff.premium",
+        "tariff.choose",
+        "buyer.get_started",
+        "tariff.one_time",
+        "seller.get_started",
+        "tariff.promotion",
+        "account.identification_for_contract",
+        "tariff.demo",
+        "pickup.representative"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "mutation-payment-checkout-typo",
+      "group": "payment_checkout_problem",
+      "class": "typo",
+      "expected_scenario_ids": [
+        "payment.checkout_problem"
+      ],
+      "candidate_scenario_ids": [
+        "payment.checkout_problem",
+        "balance.topup.commission",
+        "payment.methods",
+        "tariff.status",
+        "refund.denied_or_blocked",
+        "tariff.connect",
+        "refund.destination",
+        "lot.payment.details",
+        "payment.document_policy",
+        "commission.unpaid"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "mutation-payment-checkout-transposed_letters",
+      "group": "payment_checkout_problem",
+      "class": "transposed_letters",
+      "expected_scenario_ids": [
+        "payment.checkout_problem"
+      ],
+      "candidate_scenario_ids": [
+        "payment.checkout_problem",
+        "balance.topup.commission",
+        "tariff.status",
+        "payment.methods",
+        "refund.denied_or_blocked",
+        "tariff.connect",
+        "payment.document_policy",
+        "refund.destination",
+        "contract.unconfirmed_details",
+        "lot.payment.details"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "mutation-payment-checkout-morphology",
+      "group": "payment_checkout_problem",
+      "class": "morphology",
+      "expected_scenario_ids": [
+        "payment.checkout_problem"
+      ],
+      "candidate_scenario_ids": [
+        "payment.checkout_problem",
+        "balance.topup.commission",
+        "payment.methods",
+        "support.manual_review_scope",
+        "refund.denied_or_blocked",
+        "feedback.bot_answer_complaint",
+        "tariff.status",
+        "tariff.connect",
+        "contract.unconfirmed_details",
+        "inspection.problem"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "mutation-payment-checkout-word_order",
+      "group": "payment_checkout_problem",
+      "class": "word_order",
+      "expected_scenario_ids": [
+        "payment.checkout_problem"
+      ],
+      "candidate_scenario_ids": [
+        "payment.checkout_problem",
+        "balance.topup.commission",
+        "payment.methods",
+        "refund.denied_or_blocked",
+        "tariff.status",
+        "tariff.connect",
+        "tariff.promotion",
+        "payment.document_policy",
+        "refund.destination",
+        "contract.unconfirmed_details"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "mutation-refund-ambiguous-typo",
+      "group": "refund_ambiguous",
+      "class": "typo",
+      "expected_scenario_ids": [
+        "refund.eligibility",
+        "refund.application",
+        "refund.timing_status"
+      ],
+      "candidate_scenario_ids": [
+        "refund.application",
+        "refund.destination",
+        "refund.timing_status",
+        "finance.status.clarify",
+        "refund.eligibility",
+        "refund.denied_or_blocked",
+        "deposit.explained",
+        "payment.document_policy",
+        "support.office_visit",
+        "privacy.rights_withdrawal"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "mutation-refund-ambiguous-transposed_letters",
+      "group": "refund_ambiguous",
+      "class": "transposed_letters",
+      "expected_scenario_ids": [
+        "refund.eligibility",
+        "refund.application",
+        "refund.timing_status"
+      ],
+      "candidate_scenario_ids": [
+        "refund.application",
+        "refund.destination",
+        "refund.timing_status",
+        "finance.status.clarify",
+        "refund.eligibility",
+        "refund.denied_or_blocked",
+        "deposit.explained",
+        "payment.document_policy",
+        "privacy.rights_withdrawal",
+        "support.office_visit"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "mutation-refund-ambiguous-morphology",
+      "group": "refund_ambiguous",
+      "class": "morphology",
+      "expected_scenario_ids": [
+        "refund.eligibility",
+        "refund.application",
+        "refund.timing_status"
+      ],
+      "candidate_scenario_ids": [
+        "refund.eligibility",
+        "refund.application",
+        "refund.destination",
+        "refund.denied_or_blocked",
+        "refund.timing_status",
+        "finance.status.clarify",
+        "deposit.explained",
+        "payment.document_policy",
+        "support.office_visit",
+        "support.manual_review_scope"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "mutation-refund-ambiguous-word_order",
+      "group": "refund_ambiguous",
+      "class": "word_order",
+      "expected_scenario_ids": [
+        "refund.eligibility",
+        "refund.application",
+        "refund.timing_status"
+      ],
+      "candidate_scenario_ids": [
+        "refund.application",
+        "refund.timing_status",
+        "refund.destination",
+        "refund.eligibility",
+        "finance.status.clarify",
+        "refund.denied_or_blocked",
+        "deposit.explained",
+        "payment.document_policy",
+        "support.office_visit",
+        "privacy.rights_withdrawal"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "mutation-refund-eligibility-typo",
+      "group": "refund_eligibility",
+      "class": "typo",
+      "expected_scenario_ids": [
+        "refund.eligibility"
+      ],
+      "candidate_scenario_ids": [
+        "refund.eligibility",
+        "refund.denied_or_blocked",
+        "tariff.status",
+        "refund.timing_status",
+        "refund.destination",
+        "deposit.explained",
+        "refund.application",
+        "tariff.connect",
+        "finance.status.clarify",
+        "payment.methods"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "mutation-refund-eligibility-transposed_letters",
+      "group": "refund_eligibility",
+      "class": "transposed_letters",
+      "expected_scenario_ids": [
+        "refund.eligibility"
+      ],
+      "candidate_scenario_ids": [
+        "refund.eligibility",
+        "tariff.status",
+        "refund.denied_or_blocked",
+        "refund.timing_status",
+        "refund.destination",
+        "deposit.explained",
+        "refund.application",
+        "tariff.connect",
+        "finance.status.clarify",
+        "payment.methods"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "mutation-refund-eligibility-morphology",
+      "group": "refund_eligibility",
+      "class": "morphology",
+      "expected_scenario_ids": [
+        "refund.eligibility"
+      ],
+      "candidate_scenario_ids": [
+        "refund.eligibility",
+        "refund.denied_or_blocked",
+        "refund.destination",
+        "refund.timing_status",
+        "tariff.status",
+        "refund.application",
+        "deposit.explained",
+        "finance.status.clarify",
+        "tariff.connect",
+        "payment.methods"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "mutation-refund-eligibility-word_order",
+      "group": "refund_eligibility",
+      "class": "word_order",
+      "expected_scenario_ids": [
+        "refund.eligibility"
+      ],
+      "candidate_scenario_ids": [
+        "refund.eligibility",
+        "refund.denied_or_blocked",
+        "tariff.status",
+        "refund.timing_status",
+        "refund.destination",
+        "deposit.explained",
+        "refund.application",
+        "tariff.connect",
+        "finance.status.clarify",
+        "payment.checkout_problem"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "mutation-refund-application-typo",
+      "group": "refund_application",
+      "class": "typo",
+      "expected_scenario_ids": [
+        "refund.application"
+      ],
+      "candidate_scenario_ids": [
+        "refund.application",
+        "refund.timing_status",
+        "deposit.explained",
+        "payment.document_policy",
+        "refund.destination",
+        "refund.eligibility",
+        "complaint.formal_dispute",
+        "finance.status.clarify",
+        "refund.denied_or_blocked",
+        "privacy.rights_withdrawal"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "mutation-refund-application-transposed_letters",
+      "group": "refund_application",
+      "class": "transposed_letters",
+      "expected_scenario_ids": [
+        "refund.application"
+      ],
+      "candidate_scenario_ids": [
+        "refund.application",
+        "deposit.explained",
+        "refund.timing_status",
+        "refund.destination",
+        "refund.eligibility",
+        "payment.document_policy",
+        "finance.status.clarify",
+        "refund.denied_or_blocked",
+        "complaint.formal_dispute",
+        "lot.missing"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "mutation-refund-application-morphology",
+      "group": "refund_application",
+      "class": "morphology",
+      "expected_scenario_ids": [
+        "refund.application"
+      ],
+      "candidate_scenario_ids": [
+        "refund.application",
+        "refund.timing_status",
+        "deposit.explained",
+        "payment.document_policy",
+        "refund.destination",
+        "refund.eligibility",
+        "complaint.formal_dispute",
+        "finance.status.clarify",
+        "refund.denied_or_blocked",
+        "privacy.rights_withdrawal"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "mutation-refund-application-word_order",
+      "group": "refund_application",
+      "class": "word_order",
+      "expected_scenario_ids": [
+        "refund.application"
+      ],
+      "candidate_scenario_ids": [
+        "refund.application",
+        "refund.timing_status",
+        "deposit.explained",
+        "payment.document_policy",
+        "refund.destination",
+        "refund.eligibility",
+        "complaint.formal_dispute",
+        "finance.status.clarify",
+        "refund.denied_or_blocked",
+        "privacy.rights_withdrawal"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "mutation-refund-status-typo",
+      "group": "refund_status",
+      "class": "typo",
+      "expected_scenario_ids": [
+        "refund.timing_status"
+      ],
+      "candidate_scenario_ids": [
+        "deposit.explained",
+        "refund.timing_status",
+        "refund.eligibility",
+        "refund.application",
+        "payment.document_policy",
+        "support.manual_review_scope",
+        "lot.missing",
+        "contract.receive",
+        "documents.preparation_delay",
+        "support.callback"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "mutation-refund-status-transposed_letters",
+      "group": "refund_status",
+      "class": "transposed_letters",
+      "expected_scenario_ids": [
+        "refund.timing_status"
+      ],
+      "candidate_scenario_ids": [
+        "deposit.explained",
+        "refund.timing_status",
+        "refund.eligibility",
+        "refund.application",
+        "support.manual_review_scope",
+        "payment.document_policy",
+        "lot.missing",
+        "contract.receive",
+        "support.callback",
+        "documents.preparation_delay"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "mutation-refund-status-morphology",
+      "group": "refund_status",
+      "class": "morphology",
+      "expected_scenario_ids": [
+        "refund.timing_status"
+      ],
+      "candidate_scenario_ids": [
+        "deposit.explained",
+        "refund.timing_status",
+        "support.manual_review_scope",
+        "refund.application",
+        "refund.eligibility",
+        "payment.document_policy",
+        "documents.preparation_delay",
+        "feedback.bot_answer_complaint",
+        "pickup.representative",
+        "loyalty.unconfirmed_details"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "mutation-refund-status-word_order",
+      "group": "refund_status",
+      "class": "word_order",
+      "expected_scenario_ids": [
+        "refund.timing_status"
+      ],
+      "candidate_scenario_ids": [
+        "deposit.explained",
+        "refund.timing_status",
+        "refund.eligibility",
+        "refund.application",
+        "payment.document_policy",
+        "support.manual_review_scope",
+        "documents.preparation_delay",
+        "lot.missing",
+        "pickup.representative",
+        "loyalty.unconfirmed_details"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "mutation-bid-place-typo",
+      "group": "bid_place",
+      "class": "typo",
+      "expected_scenario_ids": [
+        "bid.place"
+      ],
+      "candidate_scenario_ids": [
+        "bid.place",
+        "seller.publish_lot",
+        "buyer.get_started",
+        "vehicle.legal_check",
+        "tariff.demo",
+        "lot.location",
+        "pickup.receive_lot",
+        "vehicle.autoteka_visibility",
+        "vehicle.registration_after_purchase",
+        "pickup.access_issuer"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "mutation-bid-place-transposed_letters",
+      "group": "bid_place",
+      "class": "transposed_letters",
+      "expected_scenario_ids": [
+        "bid.place"
+      ],
+      "candidate_scenario_ids": [
+        "bid.place",
+        "seller.publish_lot",
+        "vehicle.legal_check",
+        "buyer.get_started",
+        "lot.location",
+        "pickup.receive_lot",
+        "tariff.demo",
+        "vehicle.registration_after_purchase",
+        "pickup.access_issuer",
+        "inspection.arrange"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "mutation-bid-place-morphology",
+      "group": "bid_place",
+      "class": "morphology",
+      "expected_scenario_ids": [
+        "bid.place"
+      ],
+      "candidate_scenario_ids": [
+        "bid.place",
+        "seller.publish_lot",
+        "vehicle.legal_check",
+        "buyer.get_started",
+        "lot.location",
+        "vehicle.registration_after_purchase",
+        "tariff.demo",
+        "pickup.receive_lot",
+        "inspection.arrange",
+        "pickup.access_issuer"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "mutation-bid-place-word_order",
+      "group": "bid_place",
+      "class": "word_order",
+      "expected_scenario_ids": [
+        "bid.place"
+      ],
+      "candidate_scenario_ids": [
+        "bid.place",
+        "seller.publish_lot",
+        "lot.location",
+        "vehicle.legal_check",
+        "buyer.get_started",
+        "pickup.receive_lot",
+        "vehicle.registration_after_purchase",
+        "pickup.access_issuer",
+        "inspection.arrange",
+        "tariff.demo"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "mutation-bid-visibility-typo",
+      "group": "bid_not_visible",
+      "class": "typo",
+      "expected_scenario_ids": [
+        "bid.not_visible"
+      ],
+      "candidate_scenario_ids": [
+        "technical.lot_image_missing",
+        "bid.not_visible",
+        "bid.place",
+        "lot.missing",
+        "lot.insufficient_information",
+        "payment.not_visible",
+        "lot.card_information",
+        "property.inspection_documents",
+        "insurance.osago_rules",
+        "vehicle.encumbrance_detected"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "mutation-bid-visibility-transposed_letters",
+      "group": "bid_not_visible",
+      "class": "transposed_letters",
+      "expected_scenario_ids": [
+        "bid.not_visible"
+      ],
+      "candidate_scenario_ids": [
+        "technical.lot_image_missing",
+        "bid.not_visible",
+        "bid.place",
+        "lot.missing",
+        "lot.insufficient_information",
+        "lot.card_information",
+        "payment.not_visible",
+        "insurance.osago_rules",
+        "property.inspection_documents",
+        "vehicle.encumbrance_detected"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "mutation-bid-visibility-morphology",
+      "group": "bid_not_visible",
+      "class": "morphology",
+      "expected_scenario_ids": [
+        "bid.not_visible"
+      ],
+      "candidate_scenario_ids": [
+        "technical.lot_image_missing",
+        "bid.not_visible",
+        "bid.place",
+        "lot.insufficient_information",
+        "lot.missing",
+        "payment.not_visible",
+        "lot.card_information",
+        "property.inspection_documents",
+        "feedback.bot_answer_complaint",
+        "insurance.osago_rules"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "mutation-bid-visibility-word_order",
+      "group": "bid_not_visible",
+      "class": "word_order",
+      "expected_scenario_ids": [
+        "bid.not_visible"
+      ],
+      "candidate_scenario_ids": [
+        "technical.lot_image_missing",
+        "bid.not_visible",
+        "bid.place",
+        "lot.insufficient_information",
+        "lot.missing",
+        "lot.card_information",
+        "payment.not_visible",
+        "property.inspection_documents",
+        "lot.definition",
+        "bid.price_terms"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "mutation-bid-cancel-typo",
+      "group": "bid_modify_cancel",
+      "class": "typo",
+      "expected_scenario_ids": [
+        "bid.modify_cancel"
+      ],
+      "candidate_scenario_ids": [
+        "auction.formats",
+        "bid.modify_cancel",
+        "auction.result",
+        "bid.position_service",
+        "refusal.change_mind",
+        "partnership.official_proposal",
+        "auction.other_platform_offer",
+        "bid.place",
+        "feedback.improvement_suggestion",
+        "tariff.connect"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "mutation-bid-cancel-transposed_letters",
+      "group": "bid_modify_cancel",
+      "class": "transposed_letters",
+      "expected_scenario_ids": [
+        "bid.modify_cancel"
+      ],
+      "candidate_scenario_ids": [
+        "auction.formats",
+        "bid.modify_cancel",
+        "auction.result",
+        "bid.position_service",
+        "refusal.change_mind",
+        "partnership.official_proposal",
+        "auction.other_platform_offer",
+        "bid.place",
+        "feedback.improvement_suggestion",
+        "tariff.connect"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "mutation-bid-cancel-morphology",
+      "group": "bid_modify_cancel",
+      "class": "morphology",
+      "expected_scenario_ids": [
+        "bid.modify_cancel"
+      ],
+      "candidate_scenario_ids": [
+        "auction.formats",
+        "bid.modify_cancel",
+        "bid.position_service",
+        "auction.result",
+        "auction.other_platform_offer",
+        "refusal.change_mind",
+        "partnership.official_proposal",
+        "bid.place",
+        "feedback.improvement_suggestion",
+        "buyer.get_started"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "mutation-bid-cancel-word_order",
+      "group": "bid_modify_cancel",
+      "class": "word_order",
+      "expected_scenario_ids": [
+        "bid.modify_cancel"
+      ],
+      "candidate_scenario_ids": [
+        "auction.formats",
+        "bid.modify_cancel",
+        "auction.result",
+        "bid.position_service",
+        "auction.other_platform_offer",
+        "refusal.change_mind",
+        "partnership.official_proposal",
+        "tariff.connect",
+        "bid.place",
+        "feedback.improvement_suggestion"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "mutation-auction-format-typo",
+      "group": "auction_formats",
+      "class": "typo",
+      "expected_scenario_ids": [
+        "auction.formats"
+      ],
+      "candidate_scenario_ids": [
+        "auction.formats",
+        "bid.modify_cancel",
+        "auction.other_platform_offer",
+        "bid.position_service",
+        "auction.result",
+        "lot.definition",
+        "bid.autobid_extension",
+        "buyer.get_started",
+        "lot.status_guide",
+        "platform.about"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "mutation-auction-format-transposed_letters",
+      "group": "auction_formats",
+      "class": "transposed_letters",
+      "expected_scenario_ids": [
+        "auction.formats"
+      ],
+      "candidate_scenario_ids": [
+        "auction.formats",
+        "bid.modify_cancel",
+        "auction.other_platform_offer",
+        "bid.position_service",
+        "auction.result",
+        "lot.definition",
+        "bid.autobid_extension",
+        "buyer.get_started",
+        "platform.about",
+        "lot.status_guide"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "mutation-auction-format-morphology",
+      "group": "auction_formats",
+      "class": "morphology",
+      "expected_scenario_ids": [
+        "auction.formats"
+      ],
+      "candidate_scenario_ids": [
+        "auction.formats",
+        "bid.modify_cancel",
+        "auction.other_platform_offer",
+        "bid.position_service",
+        "auction.result",
+        "lot.definition",
+        "bid.autobid_extension",
+        "buyer.get_started",
+        "platform.about",
+        "lot.status_guide"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "mutation-auction-format-word_order",
+      "group": "auction_formats",
+      "class": "word_order",
+      "expected_scenario_ids": [
+        "auction.formats"
+      ],
+      "candidate_scenario_ids": [
+        "auction.formats",
+        "bid.modify_cancel",
+        "auction.other_platform_offer",
+        "bid.position_service",
+        "auction.result",
+        "bid.autobid_extension",
+        "lot.definition",
+        "buyer.get_started",
+        "platform.about",
+        "lot.status_guide"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "mutation-auction-status-typo",
+      "group": "auction_status",
+      "class": "typo",
+      "expected_scenario_ids": [
+        "auction.status"
+      ],
+      "candidate_scenario_ids": [
+        "auction.status",
+        "auction.completed_analytics",
+        "bid.modify_cancel",
+        "auction.result",
+        "vehicle.legal_check",
+        "vehicle.autoteka_visibility",
+        "buyer.first_bid_checklist",
+        "bid.expired",
+        "auction.formats",
+        "bid.not_visible"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "mutation-auction-status-transposed_letters",
+      "group": "auction_status",
+      "class": "transposed_letters",
+      "expected_scenario_ids": [
+        "auction.status"
+      ],
+      "candidate_scenario_ids": [
+        "auction.status",
+        "auction.completed_analytics",
+        "bid.modify_cancel",
+        "auction.result",
+        "vehicle.legal_check",
+        "vehicle.autoteka_visibility",
+        "bid.expired",
+        "buyer.first_bid_checklist",
+        "lot.status_guide",
+        "auction.formats"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "mutation-auction-status-morphology",
+      "group": "auction_status",
+      "class": "morphology",
+      "expected_scenario_ids": [
+        "auction.status"
+      ],
+      "candidate_scenario_ids": [
+        "auction.status",
+        "auction.completed_analytics",
+        "bid.modify_cancel",
+        "auction.result",
+        "support.manual_review_scope",
+        "bid.expired",
+        "vehicle.autoteka_visibility",
+        "auction.formats",
+        "buyer.first_bid_checklist",
+        "vehicle.legal_check"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "mutation-auction-status-word_order",
+      "group": "auction_status",
+      "class": "word_order",
+      "expected_scenario_ids": [
+        "auction.status"
+      ],
+      "candidate_scenario_ids": [
+        "auction.status",
+        "auction.completed_analytics",
+        "bid.modify_cancel",
+        "auction.result",
+        "bid.expired",
+        "vehicle.legal_check",
+        "auction.formats",
+        "bid.autobid_extension",
+        "vehicle.autoteka_visibility",
+        "bid.validity"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "mutation-technical-site-typo",
+      "group": "technical_site",
+      "class": "typo",
+      "expected_scenario_ids": [
+        "technical.site_error"
+      ],
+      "candidate_scenario_ids": [
+        "property.section_error",
+        "technical.site_error",
+        "technical.lot_image_missing",
+        "payment.checkout_problem",
+        "feedback.platform_complaint",
+        "feedback.improvement_suggestion",
+        "support.callback",
+        "inspection.problem",
+        "lot.missing",
+        "account.login_problem"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "mutation-technical-site-transposed_letters",
+      "group": "technical_site",
+      "class": "transposed_letters",
+      "expected_scenario_ids": [
+        "technical.site_error"
+      ],
+      "candidate_scenario_ids": [
+        "property.section_error",
+        "technical.site_error",
+        "technical.lot_image_missing",
+        "payment.checkout_problem",
+        "feedback.platform_complaint",
+        "support.callback",
+        "feedback.improvement_suggestion",
+        "inspection.problem",
+        "lot.missing",
+        "account.registration"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "mutation-technical-site-morphology",
+      "group": "technical_site",
+      "class": "morphology",
+      "expected_scenario_ids": [
+        "technical.site_error"
+      ],
+      "candidate_scenario_ids": [
+        "property.section_error",
+        "technical.site_error",
+        "technical.lot_image_missing",
+        "payment.checkout_problem",
+        "feedback.platform_complaint",
+        "feedback.bot_answer_complaint",
+        "inspection.problem",
+        "support.callback",
+        "feedback.improvement_suggestion",
+        "support.manual_review_scope"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "mutation-technical-site-word_order",
+      "group": "technical_site",
+      "class": "word_order",
+      "expected_scenario_ids": [
+        "technical.site_error"
+      ],
+      "candidate_scenario_ids": [
+        "property.section_error",
+        "technical.site_error",
+        "technical.lot_image_missing",
+        "payment.checkout_problem",
+        "feedback.platform_complaint",
+        "inspection.problem",
+        "support.callback",
+        "feedback.improvement_suggestion",
+        "account.login_problem",
+        "lot.missing"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "mutation-technical-filter-typo",
+      "group": "technical_filters",
+      "class": "typo",
+      "expected_scenario_ids": [
+        "technical.catalog_search_filter"
+      ],
+      "candidate_scenario_ids": [
+        "lot.catalog_search",
+        "feedback.improvement_suggestion",
+        "technical.catalog_search_filter",
+        "pickup.access_issuer",
+        "account.dashboard_sections",
+        "pickup.receive_lot",
+        "feedback.bot_answer_complaint",
+        "buyer.beginner_lot_selection",
+        "seller.training",
+        "contract.termination_and_restriction"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "mutation-technical-filter-transposed_letters",
+      "group": "technical_filters",
+      "class": "transposed_letters",
+      "expected_scenario_ids": [
+        "technical.catalog_search_filter"
+      ],
+      "candidate_scenario_ids": [
+        "lot.catalog_search",
+        "feedback.improvement_suggestion",
+        "technical.catalog_search_filter",
+        "pickup.access_issuer",
+        "account.dashboard_sections",
+        "pickup.receive_lot",
+        "feedback.bot_answer_complaint",
+        "buyer.beginner_lot_selection",
+        "contract.termination_and_restriction",
+        "lot.missing"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "mutation-technical-filter-morphology",
+      "group": "technical_filters",
+      "class": "morphology",
+      "expected_scenario_ids": [
+        "technical.catalog_search_filter"
+      ],
+      "candidate_scenario_ids": [
+        "lot.catalog_search",
+        "technical.catalog_search_filter",
+        "feedback.improvement_suggestion",
+        "pickup.access_issuer",
+        "account.dashboard_sections",
+        "buyer.beginner_lot_selection",
+        "pickup.receive_lot",
+        "feedback.bot_answer_complaint",
+        "lot.missing",
+        "vehicle.encumbrance_detected"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "mutation-technical-filter-word_order",
+      "group": "technical_filters",
+      "class": "word_order",
+      "expected_scenario_ids": [
+        "technical.catalog_search_filter"
+      ],
+      "candidate_scenario_ids": [
+        "lot.catalog_search",
+        "technical.catalog_search_filter",
+        "feedback.improvement_suggestion",
+        "pickup.access_issuer",
+        "account.dashboard_sections",
+        "buyer.beginner_lot_selection",
+        "pickup.receive_lot",
+        "feedback.bot_answer_complaint",
+        "vehicle.encumbrance_detected",
+        "lot.missing"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "mutation-documents-delay-typo",
+      "group": "documents_delay",
+      "class": "typo",
+      "expected_scenario_ids": [
+        "documents.preparation_delay"
+      ],
+      "candidate_scenario_ids": [
+        "documents.preparation_delay",
+        "seller.buyer_nonpayment",
+        "vehicle.registration_after_purchase",
+        "contract.parties_signing",
+        "pickup.receive_lot",
+        "refusal.evidence",
+        "property.inspection_documents",
+        "vehicle.registration_penalty_details",
+        "inspection.arrange",
+        "vehicle.legal_check"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "mutation-documents-delay-transposed_letters",
+      "group": "documents_delay",
+      "class": "transposed_letters",
+      "expected_scenario_ids": [
+        "documents.preparation_delay"
+      ],
+      "candidate_scenario_ids": [
+        "documents.preparation_delay",
+        "seller.buyer_nonpayment",
+        "vehicle.registration_after_purchase",
+        "contract.parties_signing",
+        "pickup.receive_lot",
+        "refusal.evidence",
+        "property.inspection_documents",
+        "vehicle.registration_penalty_details",
+        "inspection.arrange",
+        "support.manual_review_scope"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "mutation-documents-delay-morphology",
+      "group": "documents_delay",
+      "class": "morphology",
+      "expected_scenario_ids": [
+        "documents.preparation_delay"
+      ],
+      "candidate_scenario_ids": [
+        "documents.preparation_delay",
+        "seller.buyer_nonpayment",
+        "vehicle.registration_after_purchase",
+        "contract.parties_signing",
+        "pickup.receive_lot",
+        "refusal.evidence",
+        "inspection.arrange",
+        "property.inspection_documents",
+        "vehicle.registration_penalty_details",
+        "vehicle.legal_check"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "mutation-documents-delay-word_order",
+      "group": "documents_delay",
+      "class": "word_order",
+      "expected_scenario_ids": [
+        "documents.preparation_delay"
+      ],
+      "candidate_scenario_ids": [
+        "documents.preparation_delay",
+        "seller.buyer_nonpayment",
+        "vehicle.registration_after_purchase",
+        "pickup.receive_lot",
+        "contract.parties_signing",
+        "refusal.evidence",
+        "inspection.arrange",
+        "property.inspection_documents",
+        "vehicle.registration_penalty_details",
+        "vehicle.legal_check"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "mutation-office-ambiguous-typo",
+      "group": "office_ambiguous",
+      "class": "typo",
+      "expected_scenario_ids": [
+        "support.office_visit"
+      ],
+      "candidate_scenario_ids": [
+        "support.office_visit",
+        "refund.destination",
+        "feedback.platform_complaint",
+        "lot.missing",
+        "support.callback",
+        "tariff.choose",
+        "pickup.access_issuer",
+        "bid.not_visible",
+        "support.email_no_response",
+        "support.contact"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "mutation-office-ambiguous-transposed_letters",
+      "group": "office_ambiguous",
+      "class": "transposed_letters",
+      "expected_scenario_ids": [
+        "support.office_visit"
+      ],
+      "candidate_scenario_ids": [
+        "support.office_visit",
+        "refund.destination",
+        "feedback.platform_complaint",
+        "lot.missing",
+        "tariff.choose",
+        "support.callback",
+        "pickup.access_issuer",
+        "bid.not_visible",
+        "support.email_no_response",
+        "refund.application"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "mutation-office-ambiguous-morphology",
+      "group": "office_ambiguous",
+      "class": "morphology",
+      "expected_scenario_ids": [
+        "support.office_visit"
+      ],
+      "candidate_scenario_ids": [
+        "support.office_visit",
+        "support.manual_review_scope",
+        "feedback.bot_answer_complaint",
+        "support.callback",
+        "tariff.choose",
+        "refund.destination",
+        "pickup.access_issuer",
+        "lot.missing",
+        "feedback.platform_complaint",
+        "refusal.seller_decision"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "mutation-office-ambiguous-word_order",
+      "group": "office_ambiguous",
+      "class": "word_order",
+      "expected_scenario_ids": [
+        "support.office_visit"
+      ],
+      "candidate_scenario_ids": [
+        "support.office_visit",
+        "tariff.choose",
+        "refund.destination",
+        "support.callback",
+        "pickup.access_issuer",
+        "lot.missing",
+        "support.contact",
+        "feedback.platform_complaint",
+        "bid.not_visible",
+        "finance.status.clarify"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "mutation-office-explicit-typo",
+      "group": "office_explicit",
+      "class": "typo",
+      "expected_scenario_ids": [
+        "support.office_visit"
+      ],
+      "candidate_scenario_ids": [
+        "support.office_visit",
+        "pickup.access_issuer",
+        "partnership.official_proposal",
+        "contract.receive",
+        "complaint.formal_dispute",
+        "contract.parties_signing",
+        "refusal.no_response",
+        "feedback.improvement_suggestion",
+        "account.identification_for_contract",
+        "feedback.platform_complaint"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "mutation-office-explicit-transposed_letters",
+      "group": "office_explicit",
+      "class": "transposed_letters",
+      "expected_scenario_ids": [
+        "support.office_visit"
+      ],
+      "candidate_scenario_ids": [
+        "support.office_visit",
+        "contract.receive",
+        "partnership.official_proposal",
+        "contract.parties_signing",
+        "complaint.formal_dispute",
+        "documents.preparation_delay",
+        "feedback.improvement_suggestion",
+        "support.contact",
+        "transfer.requisites",
+        "feedback.platform_complaint"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "mutation-office-explicit-morphology",
+      "group": "office_explicit",
+      "class": "morphology",
+      "expected_scenario_ids": [
+        "support.office_visit"
+      ],
+      "candidate_scenario_ids": [
+        "support.office_visit",
+        "contract.parties_signing",
+        "complaint.formal_dispute",
+        "contract.receive",
+        "partnership.official_proposal",
+        "feedback.bot_answer_complaint",
+        "transfer.requisites",
+        "documents.preparation_delay",
+        "feedback.improvement_suggestion",
+        "support.manual_review_scope"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "mutation-office-explicit-word_order",
+      "group": "office_explicit",
+      "class": "word_order",
+      "expected_scenario_ids": [
+        "support.office_visit"
+      ],
+      "candidate_scenario_ids": [
+        "support.office_visit",
+        "contract.parties_signing",
+        "contract.receive",
+        "partnership.official_proposal",
+        "complaint.formal_dispute",
+        "feedback.improvement_suggestion",
+        "account.identification_for_contract",
+        "pickup.access_issuer",
+        "documents.preparation_delay",
+        "feedback.platform_complaint"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "mutation-employee-contact-typo",
+      "group": "employee_contact",
+      "class": "typo",
+      "expected_scenario_ids": [
+        "support.callback",
+        "support.contact",
+        "support.email_no_response"
+      ],
+      "candidate_scenario_ids": [
+        "transfer.seller_no_response",
+        "support.callback",
+        "seller.training",
+        "refusal.no_response",
+        "support.manual_review_scope",
+        "support.lot_case_review",
+        "win.next_steps",
+        "feedback.platform_complaint",
+        "support.staff_only_details",
+        "commission.explained"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "mutation-employee-contact-transposed_letters",
+      "group": "employee_contact",
+      "class": "transposed_letters",
+      "expected_scenario_ids": [
+        "support.callback",
+        "support.contact",
+        "support.email_no_response"
+      ],
+      "candidate_scenario_ids": [
+        "transfer.seller_no_response",
+        "support.callback",
+        "refusal.no_response",
+        "seller.training",
+        "support.manual_review_scope",
+        "support.lot_case_review",
+        "win.next_steps",
+        "feedback.platform_complaint",
+        "support.staff_only_details",
+        "partnership.official_proposal"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "mutation-employee-contact-morphology",
+      "group": "employee_contact",
+      "class": "morphology",
+      "expected_scenario_ids": [
+        "support.callback",
+        "support.contact",
+        "support.email_no_response"
+      ],
+      "candidate_scenario_ids": [
+        "support.manual_review_scope",
+        "transfer.seller_no_response",
+        "support.callback",
+        "seller.training",
+        "refusal.no_response",
+        "support.lot_case_review",
+        "feedback.bot_answer_complaint",
+        "support.staff_only_details",
+        "feedback.platform_complaint",
+        "partnership.official_proposal"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "mutation-employee-contact-word_order",
+      "group": "employee_contact",
+      "class": "word_order",
+      "expected_scenario_ids": [
+        "support.callback",
+        "support.contact",
+        "support.email_no_response"
+      ],
+      "candidate_scenario_ids": [
+        "transfer.seller_no_response",
+        "seller.training",
+        "support.callback",
+        "support.manual_review_scope",
+        "refusal.no_response",
+        "support.lot_case_review",
+        "support.staff_only_details",
+        "feedback.platform_complaint",
+        "win.next_steps",
+        "partnership.official_proposal"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "mutation-email-no-response-typo",
+      "group": "email_no_response",
+      "class": "typo",
+      "expected_scenario_ids": [
+        "support.email_no_response"
+      ],
+      "candidate_scenario_ids": [
+        "support.email_no_response",
+        "support.contact",
+        "notification.delivery_problem",
+        "feedback.bot_answer_complaint",
+        "refusal.no_response",
+        "support.callback",
+        "feedback.platform_complaint",
+        "transfer.confirmed",
+        "support.staff_only_details",
+        "transfer.seller_no_response"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "mutation-email-no-response-transposed_letters",
+      "group": "email_no_response",
+      "class": "transposed_letters",
+      "expected_scenario_ids": [
+        "support.email_no_response"
+      ],
+      "candidate_scenario_ids": [
+        "support.email_no_response",
+        "feedback.bot_answer_complaint",
+        "support.contact",
+        "notification.delivery_problem",
+        "refusal.no_response",
+        "support.callback",
+        "feedback.platform_complaint",
+        "transfer.confirmed",
+        "support.staff_only_details",
+        "technical.site_error"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "mutation-email-no-response-morphology",
+      "group": "email_no_response",
+      "class": "morphology",
+      "expected_scenario_ids": [
+        "support.email_no_response"
+      ],
+      "candidate_scenario_ids": [
+        "support.email_no_response",
+        "notification.delivery_problem",
+        "feedback.bot_answer_complaint",
+        "support.contact",
+        "refusal.no_response",
+        "support.callback",
+        "feedback.platform_complaint",
+        "support.staff_only_details",
+        "transfer.confirmed",
+        "technical.site_error"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "mutation-email-no-response-word_order",
+      "group": "email_no_response",
+      "class": "word_order",
+      "expected_scenario_ids": [
+        "support.email_no_response"
+      ],
+      "candidate_scenario_ids": [
+        "support.email_no_response",
+        "feedback.bot_answer_complaint",
+        "notification.delivery_problem",
+        "support.contact",
+        "refusal.no_response",
+        "support.callback",
+        "feedback.platform_complaint",
+        "support.staff_only_details",
+        "transfer.confirmed",
+        "technical.site_error"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "mutation-catalog-search-typo",
+      "group": "catalog_search",
+      "class": "typo",
+      "expected_scenario_ids": [
+        "lot.catalog_search"
+      ],
+      "candidate_scenario_ids": [
+        "lot.definition",
+        "lot.card_information",
+        "lot.catalog_search",
+        "pickup.receive_lot",
+        "vehicle.vin_request",
+        "inspection.arrange",
+        "seller.publish_lot",
+        "buyer.beginner_lot_selection",
+        "vehicle.owner_listing_dispute",
+        "buyer.get_started"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "mutation-catalog-search-transposed_letters",
+      "group": "catalog_search",
+      "class": "transposed_letters",
+      "expected_scenario_ids": [
+        "lot.catalog_search"
+      ],
+      "candidate_scenario_ids": [
+        "lot.definition",
+        "lot.card_information",
+        "lot.catalog_search",
+        "pickup.receive_lot",
+        "inspection.arrange",
+        "vehicle.vin_request",
+        "seller.publish_lot",
+        "vehicle.owner_listing_dispute",
+        "buyer.beginner_lot_selection",
+        "lot.location"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "mutation-catalog-search-morphology",
+      "group": "catalog_search",
+      "class": "morphology",
+      "expected_scenario_ids": [
+        "lot.catalog_search"
+      ],
+      "candidate_scenario_ids": [
+        "lot.definition",
+        "lot.card_information",
+        "lot.catalog_search",
+        "pickup.receive_lot",
+        "inspection.arrange",
+        "seller.publish_lot",
+        "vehicle.vin_request",
+        "buyer.beginner_lot_selection",
+        "lot.location",
+        "vehicle.owner_listing_dispute"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "mutation-catalog-search-word_order",
+      "group": "catalog_search",
+      "class": "word_order",
+      "expected_scenario_ids": [
+        "lot.catalog_search"
+      ],
+      "candidate_scenario_ids": [
+        "lot.definition",
+        "lot.card_information",
+        "pickup.receive_lot",
+        "lot.catalog_search",
+        "buyer.beginner_lot_selection",
+        "inspection.arrange",
+        "seller.publish_lot",
+        "lot.location",
+        "vehicle.vin_request",
+        "vehicle.owner_listing_dispute"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "mutation-lot-location-typo",
+      "group": "lot_location",
+      "class": "typo",
+      "expected_scenario_ids": [
+        "lot.location"
+      ],
+      "candidate_scenario_ids": [
+        "lot.location",
+        "pickup.access_issuer",
+        "vehicle.insurance_catalog",
+        "pickup.delay",
+        "inspection.problem",
+        "pickup.receive_lot",
+        "technical.catalog_search_filter",
+        "lot.definition",
+        "lot.catalog_search",
+        "buyer.beginner_lot_selection"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "mutation-lot-location-transposed_letters",
+      "group": "lot_location",
+      "class": "transposed_letters",
+      "expected_scenario_ids": [
+        "lot.location"
+      ],
+      "candidate_scenario_ids": [
+        "lot.location",
+        "pickup.access_issuer",
+        "vehicle.insurance_catalog",
+        "pickup.delay",
+        "inspection.problem",
+        "pickup.receive_lot",
+        "technical.catalog_search_filter",
+        "lot.definition",
+        "lot.catalog_search",
+        "vehicle.owner_listing_dispute"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "mutation-lot-location-morphology",
+      "group": "lot_location",
+      "class": "morphology",
+      "expected_scenario_ids": [
+        "lot.location"
+      ],
+      "candidate_scenario_ids": [
+        "lot.location",
+        "pickup.access_issuer",
+        "vehicle.insurance_catalog",
+        "pickup.delay",
+        "inspection.problem",
+        "pickup.receive_lot",
+        "inspection.arrange",
+        "vehicle.vin_request",
+        "lot.catalog_search",
+        "technical.catalog_search_filter"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "mutation-lot-location-word_order",
+      "group": "lot_location",
+      "class": "word_order",
+      "expected_scenario_ids": [
+        "lot.location"
+      ],
+      "candidate_scenario_ids": [
+        "lot.location",
+        "pickup.access_issuer",
+        "vehicle.insurance_catalog",
+        "pickup.delay",
+        "lot.definition",
+        "inspection.problem",
+        "pickup.receive_lot",
+        "technical.catalog_search_filter",
+        "lot.catalog_search",
+        "vehicle.owner_listing_dispute"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "mutation-account-login-typo",
+      "group": "account_login",
+      "class": "typo",
+      "expected_scenario_ids": [
+        "account.login_problem"
+      ],
+      "candidate_scenario_ids": [
+        "account.login_problem",
+        "lot.missing",
+        "account.blocked",
+        "account.dashboard_sections",
+        "account.activation_pending",
+        "technical.site_error",
+        "tariff.connect",
+        "support.lot_case_review",
+        "notification.delivery_problem",
+        "privacy.rights_withdrawal"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "mutation-account-login-transposed_letters",
+      "group": "account_login",
+      "class": "transposed_letters",
+      "expected_scenario_ids": [
+        "account.login_problem"
+      ],
+      "candidate_scenario_ids": [
+        "account.login_problem",
+        "lot.missing",
+        "account.blocked",
+        "account.dashboard_sections",
+        "account.activation_pending",
+        "technical.site_error",
+        "tariff.connect",
+        "support.lot_case_review",
+        "notification.delivery_problem",
+        "privacy.rights_withdrawal"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "mutation-account-login-morphology",
+      "group": "account_login",
+      "class": "morphology",
+      "expected_scenario_ids": [
+        "account.login_problem"
+      ],
+      "candidate_scenario_ids": [
+        "account.login_problem",
+        "lot.missing",
+        "feedback.bot_answer_complaint",
+        "account.blocked",
+        "account.dashboard_sections",
+        "support.manual_review_scope",
+        "support.lot_case_review",
+        "account.activation_pending",
+        "technical.site_error",
+        "tariff.connect"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "mutation-account-login-word_order",
+      "group": "account_login",
+      "class": "word_order",
+      "expected_scenario_ids": [
+        "account.login_problem"
+      ],
+      "candidate_scenario_ids": [
+        "account.login_problem",
+        "lot.missing",
+        "account.dashboard_sections",
+        "account.blocked",
+        "account.activation_pending",
+        "technical.site_error",
+        "notification.delivery_problem",
+        "tariff.connect",
+        "support.lot_case_review",
+        "registration.accreditation"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "mutation-account-registration-typo",
+      "group": "account_registration",
+      "class": "typo",
+      "expected_scenario_ids": [
+        "account.registration"
+      ],
+      "candidate_scenario_ids": [
+        "account.registration",
+        "account.activation_pending",
+        "refusal.deadline_and_submission",
+        "vehicle.registration_penalty_details",
+        "account.identification_for_contract",
+        "complaint.formal_dispute",
+        "vehicle.registration_after_purchase",
+        "registration.accreditation",
+        "support.office_visit",
+        "feedback.improvement_suggestion"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "mutation-account-registration-transposed_letters",
+      "group": "account_registration",
+      "class": "transposed_letters",
+      "expected_scenario_ids": [
+        "account.registration"
+      ],
+      "candidate_scenario_ids": [
+        "account.registration",
+        "account.activation_pending",
+        "refusal.deadline_and_submission",
+        "vehicle.registration_penalty_details",
+        "account.identification_for_contract",
+        "vehicle.registration_after_purchase",
+        "complaint.formal_dispute",
+        "registration.accreditation",
+        "feedback.improvement_suggestion",
+        "privacy.data_categories"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "mutation-account-registration-morphology",
+      "group": "account_registration",
+      "class": "morphology",
+      "expected_scenario_ids": [
+        "account.registration"
+      ],
+      "candidate_scenario_ids": [
+        "account.registration",
+        "account.activation_pending",
+        "refusal.deadline_and_submission",
+        "account.identification_for_contract",
+        "complaint.formal_dispute",
+        "registration.accreditation",
+        "vehicle.registration_penalty_details",
+        "seller.training",
+        "feedback.improvement_suggestion",
+        "privacy.data_categories"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "mutation-account-registration-word_order",
+      "group": "account_registration",
+      "class": "word_order",
+      "expected_scenario_ids": [
+        "account.registration"
+      ],
+      "candidate_scenario_ids": [
+        "account.registration",
+        "account.activation_pending",
+        "refusal.deadline_and_submission",
+        "complaint.formal_dispute",
+        "account.identification_for_contract",
+        "privacy.data_categories",
+        "registration.accreditation",
+        "feedback.improvement_suggestion",
+        "vehicle.registration_penalty_details",
+        "seller.training"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "mutation-pickup-typo",
+      "group": "pickup_receive",
+      "class": "typo",
+      "expected_scenario_ids": [
+        "pickup.receive_lot"
+      ],
+      "candidate_scenario_ids": [
+        "pickup.receive_lot",
+        "pickup.access_issuer",
+        "contract.receive",
+        "inspection.arrange",
+        "buyer.personal_purchase",
+        "pickup.representative",
+        "win.next_steps",
+        "buyer.resale_strategy",
+        "vehicle.legal_check",
+        "buyer.get_started"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "mutation-pickup-transposed_letters",
+      "group": "pickup_receive",
+      "class": "transposed_letters",
+      "expected_scenario_ids": [
+        "pickup.receive_lot"
+      ],
+      "candidate_scenario_ids": [
+        "pickup.receive_lot",
+        "pickup.access_issuer",
+        "contract.receive",
+        "inspection.arrange",
+        "buyer.personal_purchase",
+        "pickup.representative",
+        "win.next_steps",
+        "vehicle.legal_check",
+        "buyer.resale_strategy",
+        "registration.accreditation"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "mutation-pickup-morphology",
+      "group": "pickup_receive",
+      "class": "morphology",
+      "expected_scenario_ids": [
+        "pickup.receive_lot"
+      ],
+      "candidate_scenario_ids": [
+        "pickup.receive_lot",
+        "pickup.access_issuer",
+        "contract.receive",
+        "inspection.arrange",
+        "buyer.personal_purchase",
+        "pickup.representative",
+        "buyer.resale_strategy",
+        "lot.catalog_search",
+        "buyer.get_started",
+        "win.next_steps"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "mutation-pickup-word_order",
+      "group": "pickup_receive",
+      "class": "word_order",
+      "expected_scenario_ids": [
+        "pickup.receive_lot"
+      ],
+      "candidate_scenario_ids": [
+        "pickup.receive_lot",
+        "pickup.access_issuer",
+        "contract.receive",
+        "inspection.arrange",
+        "buyer.personal_purchase",
+        "pickup.representative",
+        "buyer.resale_strategy",
+        "buyer.get_started",
+        "lot.catalog_search",
+        "vehicle.legal_check"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "mutation-tariff-status-typo",
+      "group": "tariff_status",
+      "class": "typo",
+      "expected_scenario_ids": [
+        "tariff.status"
+      ],
+      "candidate_scenario_ids": [
+        "tariff.status",
+        "account.activation_pending",
+        "commission.unpaid",
+        "payment.checkout_problem",
+        "tariff.connect",
+        "tariff.choose",
+        "tariff.promotion",
+        "feedback.platform_complaint",
+        "technical.site_error",
+        "account.blocked"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "mutation-tariff-status-transposed_letters",
+      "group": "tariff_status",
+      "class": "transposed_letters",
+      "expected_scenario_ids": [
+        "tariff.status"
+      ],
+      "candidate_scenario_ids": [
+        "tariff.status",
+        "account.activation_pending",
+        "commission.unpaid",
+        "tariff.choose",
+        "payment.checkout_problem",
+        "tariff.connect",
+        "tariff.promotion",
+        "refusal.seller_decision",
+        "penalty.explain_or_dispute",
+        "contract.unconfirmed_details"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "mutation-tariff-status-morphology",
+      "group": "tariff_status",
+      "class": "morphology",
+      "expected_scenario_ids": [
+        "tariff.status"
+      ],
+      "candidate_scenario_ids": [
+        "tariff.status",
+        "account.activation_pending",
+        "commission.unpaid",
+        "feedback.bot_answer_complaint",
+        "payment.checkout_problem",
+        "tariff.connect",
+        "support.manual_review_scope",
+        "refusal.seller_decision",
+        "tariff.promotion",
+        "account.blocked"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "mutation-tariff-status-word_order",
+      "group": "tariff_status",
+      "class": "word_order",
+      "expected_scenario_ids": [
+        "tariff.status"
+      ],
+      "candidate_scenario_ids": [
+        "tariff.status",
+        "account.activation_pending",
+        "commission.unpaid",
+        "payment.checkout_problem",
+        "tariff.connect",
+        "tariff.choose",
+        "tariff.promotion",
+        "technical.site_error",
+        "account.blocked",
+        "feedback.platform_complaint"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "mutation-payment-visibility-typo",
+      "group": "payment_not_visible",
+      "class": "typo",
+      "expected_scenario_ids": [
+        "payment.not_visible"
+      ],
+      "candidate_scenario_ids": [
+        "payment.not_visible",
+        "payment.checkout_problem",
+        "tariff.status",
+        "balance.topup.commission",
+        "payment.methods",
+        "refund.eligibility",
+        "refund.denied_or_blocked",
+        "finance.status.clarify",
+        "refund.destination",
+        "payment.document_policy"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "mutation-payment-visibility-transposed_letters",
+      "group": "payment_not_visible",
+      "class": "transposed_letters",
+      "expected_scenario_ids": [
+        "payment.not_visible"
+      ],
+      "candidate_scenario_ids": [
+        "payment.not_visible",
+        "payment.checkout_problem",
+        "tariff.status",
+        "balance.topup.commission",
+        "payment.methods",
+        "refund.denied_or_blocked",
+        "refund.eligibility",
+        "finance.status.clarify",
+        "refund.destination",
+        "payment.document_policy"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "mutation-payment-visibility-morphology",
+      "group": "payment_not_visible",
+      "class": "morphology",
+      "expected_scenario_ids": [
+        "payment.not_visible"
+      ],
+      "candidate_scenario_ids": [
+        "payment.not_visible",
+        "payment.checkout_problem",
+        "tariff.status",
+        "balance.topup.commission",
+        "payment.methods",
+        "refund.eligibility",
+        "refund.denied_or_blocked",
+        "finance.status.clarify",
+        "refund.destination",
+        "payment.document_policy"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "mutation-payment-visibility-word_order",
+      "group": "payment_not_visible",
+      "class": "word_order",
+      "expected_scenario_ids": [
+        "payment.not_visible"
+      ],
+      "candidate_scenario_ids": [
+        "payment.not_visible",
+        "payment.checkout_problem",
+        "tariff.status",
+        "balance.topup.commission",
+        "payment.methods",
+        "refund.eligibility",
+        "refund.denied_or_blocked",
+        "finance.status.clarify",
+        "refund.destination",
+        "payment.document_policy"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "mutation-lot-images-typo",
+      "group": "lot_images",
+      "class": "typo",
+      "expected_scenario_ids": [
+        "technical.lot_image_missing"
+      ],
+      "candidate_scenario_ids": [
+        "technical.lot_image_missing",
+        "property.section_error",
+        "technical.site_error",
+        "vehicle.encumbrance_detected",
+        "pickup.receive_lot",
+        "vehicle.legal_check",
+        "vehicle.registration_after_purchase",
+        "inspection.arrange",
+        "bid.not_visible",
+        "vehicle.owner_listing_dispute"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "mutation-lot-images-transposed_letters",
+      "group": "lot_images",
+      "class": "transposed_letters",
+      "expected_scenario_ids": [
+        "technical.lot_image_missing"
+      ],
+      "candidate_scenario_ids": [
+        "technical.lot_image_missing",
+        "property.section_error",
+        "technical.site_error",
+        "vehicle.encumbrance_detected",
+        "pickup.receive_lot",
+        "vehicle.legal_check",
+        "inspection.arrange",
+        "vehicle.owner_listing_dispute",
+        "vehicle.registration_after_purchase",
+        "lot.missing"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "mutation-lot-images-morphology",
+      "group": "lot_images",
+      "class": "morphology",
+      "expected_scenario_ids": [
+        "technical.lot_image_missing"
+      ],
+      "candidate_scenario_ids": [
+        "technical.lot_image_missing",
+        "property.section_error",
+        "technical.site_error",
+        "vehicle.encumbrance_detected",
+        "bid.not_visible",
+        "lot.missing",
+        "vehicle.owner_listing_dispute",
+        "pickup.receive_lot",
+        "vehicle.legal_check",
+        "vehicle.registration_after_purchase"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "mutation-lot-images-word_order",
+      "group": "lot_images",
+      "class": "word_order",
+      "expected_scenario_ids": [
+        "technical.lot_image_missing"
+      ],
+      "candidate_scenario_ids": [
+        "technical.lot_image_missing",
+        "property.section_error",
+        "technical.site_error",
+        "vehicle.encumbrance_detected",
+        "bid.not_visible",
+        "lot.missing",
+        "pickup.receive_lot",
+        "vehicle.owner_listing_dispute",
+        "vehicle.legal_check",
+        "vehicle.registration_after_purchase"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "mutation-improvement-typo",
+      "group": "feedback_improvement",
+      "class": "typo",
+      "expected_scenario_ids": [
+        "feedback.improvement_suggestion"
+      ],
+      "candidate_scenario_ids": [
+        "feedback.improvement_suggestion",
+        "technical.catalog_search_filter",
+        "lot.catalog_search",
+        "partnership.official_proposal",
+        "auction.other_platform_offer",
+        "privacy.rights_withdrawal",
+        "feedback.bot_answer_complaint",
+        "buyer.beginner_lot_selection",
+        "feedback.platform_complaint",
+        "tariff.demo"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "mutation-improvement-transposed_letters",
+      "group": "feedback_improvement",
+      "class": "transposed_letters",
+      "expected_scenario_ids": [
+        "feedback.improvement_suggestion"
+      ],
+      "candidate_scenario_ids": [
+        "feedback.improvement_suggestion",
+        "technical.catalog_search_filter",
+        "lot.catalog_search",
+        "partnership.official_proposal",
+        "auction.other_platform_offer",
+        "privacy.rights_withdrawal",
+        "feedback.bot_answer_complaint",
+        "feedback.platform_complaint",
+        "buyer.beginner_lot_selection",
+        "tariff.demo"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "mutation-improvement-morphology",
+      "group": "feedback_improvement",
+      "class": "morphology",
+      "expected_scenario_ids": [
+        "feedback.improvement_suggestion"
+      ],
+      "candidate_scenario_ids": [
+        "feedback.improvement_suggestion",
+        "lot.catalog_search",
+        "technical.catalog_search_filter",
+        "feedback.bot_answer_complaint",
+        "partnership.official_proposal",
+        "support.manual_review_scope",
+        "auction.other_platform_offer",
+        "bid.modify_cancel",
+        "privacy.rights_withdrawal",
+        "auction.completed_analytics"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "mutation-improvement-word_order",
+      "group": "feedback_improvement",
+      "class": "word_order",
+      "expected_scenario_ids": [
+        "feedback.improvement_suggestion"
+      ],
+      "candidate_scenario_ids": [
+        "feedback.improvement_suggestion",
+        "technical.catalog_search_filter",
+        "lot.catalog_search",
+        "partnership.official_proposal",
+        "auction.other_platform_offer",
+        "feedback.bot_answer_complaint",
+        "bid.modify_cancel",
+        "privacy.rights_withdrawal",
+        "tariff.demo",
+        "feedback.platform_complaint"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "mutation-complaint-typo",
+      "group": "feedback_complaint",
+      "class": "typo",
+      "expected_scenario_ids": [
+        "feedback.platform_complaint",
+        "technical.catalog_search_filter"
+      ],
+      "candidate_scenario_ids": [
+        "technical.catalog_search_filter",
+        "feedback.platform_complaint",
+        "feedback.improvement_suggestion",
+        "lot.catalog_search",
+        "technical.site_error",
+        "payment.checkout_problem",
+        "account.blocked",
+        "privacy.rights_withdrawal",
+        "lot.missing",
+        "pickup.access_issuer"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "mutation-complaint-transposed_letters",
+      "group": "feedback_complaint",
+      "class": "transposed_letters",
+      "expected_scenario_ids": [
+        "feedback.platform_complaint",
+        "technical.catalog_search_filter"
+      ],
+      "candidate_scenario_ids": [
+        "technical.catalog_search_filter",
+        "feedback.platform_complaint",
+        "feedback.improvement_suggestion",
+        "lot.catalog_search",
+        "technical.site_error",
+        "payment.checkout_problem",
+        "account.blocked",
+        "privacy.rights_withdrawal",
+        "lot.missing",
+        "pickup.access_issuer"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "mutation-complaint-morphology",
+      "group": "feedback_complaint",
+      "class": "morphology",
+      "expected_scenario_ids": [
+        "feedback.platform_complaint",
+        "technical.catalog_search_filter"
+      ],
+      "candidate_scenario_ids": [
+        "technical.catalog_search_filter",
+        "feedback.platform_complaint",
+        "feedback.improvement_suggestion",
+        "lot.catalog_search",
+        "feedback.bot_answer_complaint",
+        "technical.site_error",
+        "payment.checkout_problem",
+        "support.manual_review_scope",
+        "privacy.rights_withdrawal",
+        "account.blocked"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    },
+    {
+      "id": "mutation-complaint-word_order",
+      "group": "feedback_complaint",
+      "class": "word_order",
+      "expected_scenario_ids": [
+        "feedback.platform_complaint",
+        "technical.catalog_search_filter"
+      ],
+      "candidate_scenario_ids": [
+        "technical.catalog_search_filter",
+        "feedback.platform_complaint",
+        "feedback.improvement_suggestion",
+        "lot.catalog_search",
+        "technical.site_error",
+        "payment.checkout_problem",
+        "account.blocked",
+        "privacy.rights_withdrawal",
+        "lot.missing",
+        "pickup.access_issuer"
+      ],
+      "hit_at_10": true,
+      "dense_available": true
+    }
+  ]
+}

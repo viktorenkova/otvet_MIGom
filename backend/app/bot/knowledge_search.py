@@ -889,6 +889,47 @@ def warm_knowledge_indexes() -> None:
         _semantic_index()
 
 
+def retrieve_knowledge_candidates(
+    message: str,
+    role: UserRole = "guest",
+    *,
+    intent: str = "unknown",
+    top_k: int = 10,
+) -> list[dict[str, Any]]:
+    """Return an auditable Top-K without selecting the final answer route."""
+    allowed_sections = {"public", "guest"} if role == "guest" else {"public", "guest", "authorized"}
+    allowed_ids = {
+        article.slug
+        for article in load_articles()
+        if article.section in allowed_sections and article.intent != "prohibited"
+    }
+    config = _semantic_config()
+    ranked = _semantic_index().rank(
+        message,
+        allowed_ids,
+        intent,
+        top_k=max(1, top_k),
+        lexical_weight=float(config.get("candidate_lexical_weight", 0.75)),
+        dense_weight=float(config.get("candidate_dense_weight", 0.25)),
+    )
+    return [
+        {
+            "scenario_id": item.article_id,
+            "score": item.score,
+            "channels": {
+                "lexical": item.lexical_score,
+                "char": item.char_score,
+                "word": item.word_score,
+                "dense": item.dense_score,
+                "dense_similarity": item.dense_similarity,
+                "intent_boost": item.intent_boost,
+            },
+            "dense_available": item.dense_available,
+        }
+        for item in ranked
+    ]
+
+
 def get_article_by_id(article_id: str, role: UserRole) -> KnowledgeArticle | None:
     allowed = {"public", "guest"} if role == "guest" else {"public", "guest", "authorized"}
     return next(
