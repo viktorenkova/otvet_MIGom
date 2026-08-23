@@ -8,40 +8,55 @@
   },
   "development": {
     "total": 372,
-    "recall_at_1_pct": 77.96,
-    "recall_at_5_pct": 98.39,
-    "recall_at_10_pct": 99.46
+    "recall_at_1_pct": 93.55,
+    "recall_at_5_pct": 98.66,
+    "recall_at_10_pct": 99.46,
+    "high_confidence_coverage_pct": 94.09,
+    "high_confidence_accuracy_pct": 96.0
   },
   "validation": {
     "total": 99,
-    "recall_at_1_pct": 76.77,
+    "recall_at_1_pct": 88.89,
     "recall_at_5_pct": 98.99,
-    "recall_at_10_pct": 100.0
+    "recall_at_10_pct": 100.0,
+    "high_confidence_coverage_pct": 89.9,
+    "high_confidence_accuracy_pct": 94.38
   },
   "by_variant": {
     "taxonomy_paraphrase": {
       "total": 157,
-      "recall_at_1_pct": 65.61,
-      "recall_at_5_pct": 97.45,
-      "recall_at_10_pct": 100.0
+      "recall_at_1_pct": 91.72,
+      "recall_at_5_pct": 98.09,
+      "recall_at_10_pct": 100.0,
+      "high_confidence_coverage_pct": 91.08,
+      "high_confidence_accuracy_pct": 95.1
     },
     "transposed_letters": {
       "total": 157,
-      "recall_at_1_pct": 78.98,
+      "recall_at_1_pct": 90.45,
       "recall_at_5_pct": 99.36,
-      "recall_at_10_pct": 99.36
+      "recall_at_10_pct": 99.36,
+      "high_confidence_coverage_pct": 92.99,
+      "high_confidence_accuracy_pct": 95.21
     },
     "word_order": {
       "total": 157,
-      "recall_at_1_pct": 88.54,
+      "recall_at_1_pct": 95.54,
       "recall_at_5_pct": 98.73,
-      "recall_at_10_pct": 99.36
+      "recall_at_10_pct": 99.36,
+      "high_confidence_coverage_pct": 95.54,
+      "high_confidence_accuracy_pct": 96.67
     }
   },
   "checks": {
     "no_exact_frozen_overlap": true,
+    "development_recall_at_1_gte_90": true,
+    "validation_recall_at_1_gte_85": true,
+    "development_high_confidence_accuracy_gte_93": true,
+    "validation_high_confidence_accuracy_gte_93": true,
     "development_recall_at_10_gte_97": true,
     "validation_recall_at_10_gte_97": true,
+    "each_variant_recall_at_1_gte_85": true,
     "each_variant_recall_at_10_gte_90": true
   },
   "passed": true,
@@ -63,6 +78,9 @@
         "lot.payment.start",
         "bid.position_service"
       ],
+      "confidence": "medium",
+      "score": 0.389759,
+      "margin": 0.014622,
       "hit_at_1": false,
       "hit_at_5": false,
       "hit_at_10": false
@@ -84,6 +102,9 @@
         "commission.explained",
         "lot.payment.start"
       ],
+      "confidence": "medium",
+      "score": 0.384815,
+      "margin": 0.014959,
       "hit_at_1": false,
       "hit_at_5": false,
       "hit_at_10": false
@@ -96,8 +117,8 @@
       "variant": "taxonomy_paraphrase",
       "expected_scenario_id": "buyer.get_started",
       "candidate_scenario_ids": [
-        "bid.place",
         "buyer.get_started",
+        "bid.place",
         "lot.status_guide",
         "compliance.private_arrangement",
         "auction.other_platform_offer",
@@ -107,7 +128,10 @@
         "lot.definition",
         "tariff.premium"
       ],
-      "hit_at_1": false,
+      "confidence": "medium",
+      "score": 0.719536,
+      "margin": 0.039614,
+      "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
     },
@@ -128,6 +152,9 @@
         "safety.reported_threat",
         "tariff.connect"
       ],
+      "confidence": "high",
+      "score": 0.836772,
+      "margin": 0.591391,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -149,6 +176,9 @@
         "account.registration",
         "tariff.demo"
       ],
+      "confidence": "high",
+      "score": 0.953664,
+      "margin": 0.622381,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -170,6 +200,9 @@
         "account.blocked",
         "contract.parties_signing"
       ],
+      "confidence": "high",
+      "score": 0.660306,
+      "margin": 0.216044,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -191,6 +224,9 @@
         "bid.validity",
         "seller.information_status"
       ],
+      "confidence": "high",
+      "score": 0.77275,
+      "margin": 0.500699,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -212,6 +248,9 @@
         "tariff.status",
         "bid.validity"
       ],
+      "confidence": "high",
+      "score": 0.887701,
+      "margin": 0.433981,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -222,8 +261,8 @@
       "variant": "taxonomy_paraphrase",
       "expected_scenario_id": "seller.publish_lot",
       "candidate_scenario_ids": [
-        "bid.place",
         "seller.publish_lot",
+        "bid.place",
         "seller.information_status",
         "platform.about",
         "partnership.official_proposal",
@@ -233,7 +272,10 @@
         "seller.categories",
         "bid.validity"
       ],
-      "hit_at_1": false,
+      "confidence": "high",
+      "score": 0.703464,
+      "margin": 0.167237,
+      "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
     },
@@ -254,6 +296,9 @@
         "transfer.seller_no_response",
         "pickup.access_issuer"
       ],
+      "confidence": "high",
+      "score": 0.718179,
+      "margin": 0.535141,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -264,8 +309,8 @@
       "variant": "word_order",
       "expected_scenario_id": "seller.publish_lot",
       "candidate_scenario_ids": [
-        "bid.place",
         "seller.publish_lot",
+        "bid.place",
         "auction.formats",
         "bid.maximum_budget",
         "seller.categories",
@@ -275,7 +320,10 @@
         "bid.modify_cancel",
         "buyer.beginner_lot_selection"
       ],
-      "hit_at_1": false,
+      "confidence": "high",
+      "score": 0.872274,
+      "margin": 0.263349,
+      "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
     },
@@ -286,7 +334,6 @@
       "expected_scenario_id": "bid.not_visible",
       "candidate_scenario_ids": [
         "bid.not_visible",
-        "feedback.improvement_suggestion",
         "buyer.first_bid_checklist",
         "bid.place",
         "auction.formats",
@@ -294,8 +341,12 @@
         "bid.price_terms",
         "bid.maximum_budget",
         "compliance.off_platform_payment",
+        "feedback.improvement_suggestion",
         "insurance.osago_rules"
       ],
+      "confidence": "high",
+      "score": 0.849921,
+      "margin": 0.450539,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -317,6 +368,9 @@
         "bid.price_terms",
         "seller.publish_lot"
       ],
+      "confidence": "high",
+      "score": 1.085,
+      "margin": 0.719655,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -338,6 +392,9 @@
         "bid.price_terms",
         "seller.publish_lot"
       ],
+      "confidence": "high",
+      "score": 1.047098,
+      "margin": 0.669871,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -359,6 +416,9 @@
         "property.bulk_goods",
         "auction.formats"
       ],
+      "confidence": "high",
+      "score": 0.883086,
+      "margin": 0.488163,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -380,6 +440,9 @@
         "buyer.get_started",
         "registration.accreditation"
       ],
+      "confidence": "high",
+      "score": 0.882817,
+      "margin": 0.523609,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -401,6 +464,9 @@
         "insurance.osago_rules",
         "property.evaluate"
       ],
+      "confidence": "high",
+      "score": 0.969129,
+      "margin": 0.661338,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -422,6 +488,9 @@
         "property.business",
         "vehicle.legal_check"
       ],
+      "confidence": "medium",
+      "score": 0.334,
+      "margin": 0.024736,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -443,6 +512,9 @@
         "buyer.first_bid_checklist",
         "seller.publish_lot"
       ],
+      "confidence": "high",
+      "score": 0.401904,
+      "margin": 0.070977,
       "hit_at_1": false,
       "hit_at_5": true,
       "hit_at_10": true
@@ -464,6 +536,9 @@
         "lot.card_information",
         "pickup.receive_lot"
       ],
+      "confidence": "high",
+      "score": 0.408406,
+      "margin": 0.112886,
       "hit_at_1": false,
       "hit_at_5": true,
       "hit_at_10": true
@@ -485,6 +560,9 @@
         "buyer.first_bid_checklist",
         "vehicle.encumbrance_detected"
       ],
+      "confidence": "high",
+      "score": 0.587632,
+      "margin": 0.210504,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -506,6 +584,9 @@
         "support.email_no_response",
         "buyer.first_bid_checklist"
       ],
+      "confidence": "high",
+      "score": 0.349619,
+      "margin": 0.068844,
       "hit_at_1": false,
       "hit_at_5": true,
       "hit_at_10": true
@@ -527,6 +608,9 @@
         "tariff.connect",
         "seller.get_started"
       ],
+      "confidence": "high",
+      "score": 0.784532,
+      "margin": 0.541159,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -548,6 +632,9 @@
         "vehicle.owner_listing_dispute",
         "property.inspection_documents"
       ],
+      "confidence": "high",
+      "score": 0.651363,
+      "margin": 0.220223,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -569,6 +656,9 @@
         "loyalty.unconfirmed_details",
         "pickup.access_issuer"
       ],
+      "confidence": "high",
+      "score": 0.711287,
+      "margin": 0.432064,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -590,6 +680,9 @@
         "vehicle.owner_listing_dispute",
         "transfer.seller_no_response"
       ],
+      "confidence": "high",
+      "score": 0.875462,
+      "margin": 0.422647,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -611,6 +704,9 @@
         "vehicle.credit_lease_pledge",
         "tariff.one_time"
       ],
+      "confidence": "high",
+      "score": 0.628702,
+      "margin": 0.189233,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -632,6 +728,9 @@
         "pickup.access_issuer",
         "buyer.personal_purchase"
       ],
+      "confidence": "high",
+      "score": 0.763886,
+      "margin": 0.400029,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -653,6 +752,9 @@
         "finance.status.clarify",
         "support.telegram_channels"
       ],
+      "confidence": "high",
+      "score": 0.845738,
+      "margin": 0.547911,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -663,8 +765,8 @@
       "variant": "taxonomy_paraphrase",
       "expected_scenario_id": "win.next_steps",
       "candidate_scenario_ids": [
-        "bid.place",
         "win.next_steps",
+        "bid.place",
         "partnership.official_proposal",
         "safety.reported_threat",
         "lot.status_guide",
@@ -674,7 +776,10 @@
         "bid.price_terms",
         "bid.validity"
       ],
-      "hit_at_1": false,
+      "confidence": "high",
+      "score": 0.80786,
+      "margin": 0.391996,
+      "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
     },
@@ -695,6 +800,9 @@
         "platform.about",
         "auction.other_platform_offer"
       ],
+      "confidence": "high",
+      "score": 0.745408,
+      "margin": 0.430825,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -716,6 +824,9 @@
         "buyer.first_bid_checklist",
         "bid.validity"
       ],
+      "confidence": "high",
+      "score": 0.909934,
+      "margin": 0.661763,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -737,6 +848,9 @@
         "account.credential_responsibility",
         "payment.not_visible"
       ],
+      "confidence": "high",
+      "score": 0.702312,
+      "margin": 0.206055,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -758,6 +872,9 @@
         "complaint.formal_dispute",
         "tariff.connect"
       ],
+      "confidence": "high",
+      "score": 0.544111,
+      "margin": 0.159204,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -779,6 +896,9 @@
         "account.credential_responsibility",
         "payment.checkout_problem"
       ],
+      "confidence": "high",
+      "score": 0.859131,
+      "margin": 0.477737,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -800,6 +920,9 @@
         "compliance.private_arrangement",
         "account.blocked"
       ],
+      "confidence": "high",
+      "score": 0.697968,
+      "margin": 0.239457,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -810,8 +933,8 @@
       "variant": "transposed_letters",
       "expected_scenario_id": "contract.termination_and_restriction",
       "candidate_scenario_ids": [
-        "tariff.choose",
         "contract.termination_and_restriction",
+        "tariff.choose",
         "documents.preparation_delay",
         "compliance.private_arrangement",
         "documents.actual_amount",
@@ -821,7 +944,10 @@
         "contract.receive",
         "seller.contract_term"
       ],
-      "hit_at_1": false,
+      "confidence": "high",
+      "score": 0.709579,
+      "margin": 0.413328,
+      "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
     },
@@ -842,6 +968,9 @@
         "contract.parties_signing",
         "documents.preparation_delay"
       ],
+      "confidence": "high",
+      "score": 0.855445,
+      "margin": 0.565988,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -863,6 +992,9 @@
         "inspection.problem",
         "contract.parties_signing"
       ],
+      "confidence": "high",
+      "score": 0.884104,
+      "margin": 0.529175,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -884,6 +1016,9 @@
         "contract.parties_signing",
         "feedback.improvement_suggestion"
       ],
+      "confidence": "high",
+      "score": 1.06,
+      "margin": 0.72727,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -905,6 +1040,9 @@
         "contract.parties_signing",
         "feedback.improvement_suggestion"
       ],
+      "confidence": "high",
+      "score": 1.021659,
+      "margin": 0.733113,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -916,7 +1054,6 @@
       "expected_scenario_id": "pickup.receive_lot",
       "candidate_scenario_ids": [
         "pickup.receive_lot",
-        "auction.status",
         "buyer.personal_purchase",
         "buyer.beginner_lot_selection",
         "vehicle.vin_request",
@@ -924,8 +1061,12 @@
         "win.next_steps",
         "lot.catalog_search",
         "vehicle.legal_check",
-        "vehicle.encumbrance_detected"
+        "vehicle.encumbrance_detected",
+        "buyer.resale_strategy"
       ],
+      "confidence": "high",
+      "score": 0.649982,
+      "margin": 0.212921,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -947,6 +1088,9 @@
         "account.credential_responsibility",
         "tariff.connect"
       ],
+      "confidence": "high",
+      "score": 0.508377,
+      "margin": 0.212116,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -968,6 +1112,9 @@
         "tariff.connect",
         "partnership.official_proposal"
       ],
+      "confidence": "high",
+      "score": 0.488108,
+      "margin": 0.212979,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -989,6 +1136,9 @@
         "lot.catalog_search",
         "buyer.resale_strategy"
       ],
+      "confidence": "high",
+      "score": 0.640689,
+      "margin": 0.210583,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -1010,6 +1160,9 @@
         "property.inspection_documents",
         "contract.parties_signing"
       ],
+      "confidence": "high",
+      "score": 0.765048,
+      "margin": 0.437929,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -1031,6 +1184,9 @@
         "property.inspection_documents",
         "property.business"
       ],
+      "confidence": "high",
+      "score": 0.703781,
+      "margin": 0.342665,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -1042,7 +1198,6 @@
       "expected_scenario_id": "bid.place",
       "candidate_scenario_ids": [
         "bid.place",
-        "feedback.improvement_suggestion",
         "auction.other_platform_offer",
         "auction.formats",
         "bid.price_terms",
@@ -1050,8 +1205,12 @@
         "buyer.first_bid_checklist",
         "seller.information_status",
         "bid.maximum_budget",
-        "bid.not_visible"
+        "bid.not_visible",
+        "lot.status_guide"
       ],
+      "confidence": "high",
+      "score": 0.856475,
+      "margin": 0.326581,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -1073,6 +1232,9 @@
         "bid.maximum_budget",
         "win.next_steps"
       ],
+      "confidence": "high",
+      "score": 1.051,
+      "margin": 0.628891,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -1094,6 +1256,9 @@
         "tariff.premium",
         "buyer.first_bid_checklist"
       ],
+      "confidence": "high",
+      "score": 0.948108,
+      "margin": 0.509437,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -1115,6 +1280,9 @@
         "inspection.problem",
         "platform.about"
       ],
+      "confidence": "high",
+      "score": 0.661817,
+      "margin": 0.122669,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -1136,6 +1304,9 @@
         "buyer.beginner_lot_selection",
         "pickup.receive_lot"
       ],
+      "confidence": "high",
+      "score": 0.694695,
+      "margin": 0.370634,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -1157,6 +1328,9 @@
         "vehicle.legal_check",
         "seller.categories"
       ],
+      "confidence": "high",
+      "score": 0.837577,
+      "margin": 0.560225,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -1178,6 +1352,9 @@
         "complaint.formal_dispute",
         "account.registration"
       ],
+      "confidence": "high",
+      "score": 0.886555,
+      "margin": 0.352332,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -1199,6 +1376,9 @@
         "pickup.access_issuer",
         "contract.receive"
       ],
+      "confidence": "high",
+      "score": 1.091,
+      "margin": 0.806965,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -1220,6 +1400,9 @@
         "pickup.access_issuer",
         "pickup.receive_lot"
       ],
+      "confidence": "high",
+      "score": 1.05462,
+      "margin": 0.732422,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -1241,6 +1424,9 @@
         "property.section_error",
         "lot.status_guide"
       ],
+      "confidence": "high",
+      "score": 0.9232,
+      "margin": 0.616062,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -1262,6 +1448,9 @@
         "account.blocked",
         "feedback.improvement_suggestion"
       ],
+      "confidence": "high",
+      "score": 1.119,
+      "margin": 0.816112,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -1283,6 +1472,9 @@
         "account.credential_responsibility",
         "seller.get_started"
       ],
+      "confidence": "high",
+      "score": 1.10085,
+      "margin": 0.789011,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -1304,6 +1496,9 @@
         "account.credential_responsibility",
         "seller.categories"
       ],
+      "confidence": "high",
+      "score": 0.739942,
+      "margin": 0.302731,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -1325,6 +1520,9 @@
         "tariff.one_time",
         "tariff.premium"
       ],
+      "confidence": "high",
+      "score": 0.885,
+      "margin": 0.351879,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -1346,6 +1544,9 @@
         "payment.not_visible",
         "refund.eligibility"
       ],
+      "confidence": "high",
+      "score": 0.859654,
+      "margin": 0.353824,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -1367,6 +1568,9 @@
         "refund.denied_or_blocked",
         "payment.not_visible"
       ],
+      "confidence": "high",
+      "score": 0.54701,
+      "margin": 0.046285,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -1388,6 +1592,9 @@
         "lot.payment.details",
         "refund.denied_or_blocked"
       ],
+      "confidence": "high",
+      "score": 0.529657,
+      "margin": 0.213687,
       "hit_at_1": false,
       "hit_at_5": true,
       "hit_at_10": true
@@ -1409,6 +1616,9 @@
         "lot.payment.details",
         "commission.discount"
       ],
+      "confidence": "high",
+      "score": 0.631337,
+      "margin": 0.063605,
       "hit_at_1": false,
       "hit_at_5": true,
       "hit_at_10": true
@@ -1419,7 +1629,6 @@
       "variant": "taxonomy_paraphrase",
       "expected_scenario_id": "payment.methods",
       "candidate_scenario_ids": [
-        "tariff.choose",
         "payment.methods",
         "balance.topup.commission",
         "tariff.status",
@@ -1428,9 +1637,13 @@
         "finance.status.clarify",
         "refund.destination",
         "tariff.promotion",
-        "refund.denied_or_blocked"
+        "refund.denied_or_blocked",
+        "refund.timing_status"
       ],
-      "hit_at_1": false,
+      "confidence": "high",
+      "score": 0.538825,
+      "margin": 0.076051,
+      "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
     },
@@ -1451,6 +1664,9 @@
         "documents.actual_amount",
         "refund.eligibility"
       ],
+      "confidence": "medium",
+      "score": 0.443415,
+      "margin": 0.002543,
       "hit_at_1": false,
       "hit_at_5": true,
       "hit_at_10": true
@@ -1472,6 +1688,9 @@
         "tariff.connect",
         "commission.explained"
       ],
+      "confidence": "medium",
+      "score": 0.450094,
+      "margin": 0.009645,
       "hit_at_1": false,
       "hit_at_5": false,
       "hit_at_10": true
@@ -1493,6 +1712,9 @@
         "refund.destination",
         "payment.not_visible"
       ],
+      "confidence": "high",
+      "score": 0.69586,
+      "margin": 0.151222,
       "hit_at_1": false,
       "hit_at_5": true,
       "hit_at_10": true
@@ -1514,6 +1736,9 @@
         "finance.status.clarify",
         "complaint.formal_dispute"
       ],
+      "confidence": "high",
+      "score": 0.796912,
+      "margin": 0.372043,
       "hit_at_1": false,
       "hit_at_5": true,
       "hit_at_10": true
@@ -1535,6 +1760,9 @@
         "finance.status.clarify",
         "compliance.off_platform_payment"
       ],
+      "confidence": "high",
+      "score": 0.802482,
+      "margin": 0.350051,
       "hit_at_1": false,
       "hit_at_5": true,
       "hit_at_10": true
@@ -1556,6 +1784,9 @@
         "bid.position_service",
         "lot.payment.start"
       ],
+      "confidence": "medium",
+      "score": 0.487016,
+      "margin": 0.010034,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -1577,6 +1808,9 @@
         "lot.payment.start",
         "bid.position_service"
       ],
+      "confidence": "medium",
+      "score": 0.389759,
+      "margin": 0.014622,
       "hit_at_1": false,
       "hit_at_5": false,
       "hit_at_10": false
@@ -1598,6 +1832,9 @@
         "commission.explained",
         "lot.payment.start"
       ],
+      "confidence": "medium",
+      "score": 0.384815,
+      "margin": 0.014959,
       "hit_at_1": false,
       "hit_at_5": false,
       "hit_at_10": false
@@ -1619,6 +1856,9 @@
         "documents.actual_amount",
         "payment.methods"
       ],
+      "confidence": "medium",
+      "score": 0.360072,
+      "margin": 0.008872,
       "hit_at_1": false,
       "hit_at_5": false,
       "hit_at_10": true
@@ -1640,6 +1880,9 @@
         "payment.document_policy",
         "lot.payment.overdue"
       ],
+      "confidence": "medium",
+      "score": 0.530429,
+      "margin": 0.022527,
       "hit_at_1": false,
       "hit_at_5": true,
       "hit_at_10": true
@@ -1650,8 +1893,8 @@
       "variant": "word_order",
       "expected_scenario_id": "payment.methods",
       "candidate_scenario_ids": [
-        "support.office_visit",
         "payment.methods",
+        "support.office_visit",
         "lot.payment.details",
         "pickup.access_issuer",
         "finance.status.clarify",
@@ -1661,7 +1904,10 @@
         "payment.document_policy",
         "lot.payment.overdue"
       ],
-      "hit_at_1": false,
+      "confidence": "high",
+      "score": 0.695416,
+      "margin": 0.234179,
+      "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
     },
@@ -1682,6 +1928,9 @@
         "lot.payment.overdue",
         "lot.payment.details"
       ],
+      "confidence": "high",
+      "score": 0.909028,
+      "margin": 0.558158,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -1703,6 +1952,9 @@
         "account.activation_pending",
         "payment.document_policy"
       ],
+      "confidence": "high",
+      "score": 1.057,
+      "margin": 0.675624,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -1724,6 +1976,9 @@
         "lot.payment.details",
         "account.activation_pending"
       ],
+      "confidence": "high",
+      "score": 1.013757,
+      "margin": 0.596188,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -1745,6 +2000,9 @@
         "documents.actual_amount",
         "refund.application"
       ],
+      "confidence": "high",
+      "score": 0.734991,
+      "margin": 0.320698,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -1766,6 +2024,9 @@
         "vehicle.owner_listing_dispute",
         "balance.topup.commission"
       ],
+      "confidence": "high",
+      "score": 0.789064,
+      "margin": 0.44516,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -1787,6 +2048,9 @@
         "seller.get_started",
         "vehicle.owner_listing_dispute"
       ],
+      "confidence": "high",
+      "score": 0.939544,
+      "margin": 0.486938,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -1808,6 +2072,9 @@
         "tariff.status",
         "feedback.platform_complaint"
       ],
+      "confidence": "high",
+      "score": 0.630288,
+      "margin": 0.230695,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -1829,6 +2096,9 @@
         "inspection.problem",
         "lot.card_information"
       ],
+      "confidence": "high",
+      "score": 0.745119,
+      "margin": 0.551324,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -1850,6 +2120,9 @@
         "privacy.processing_purposes",
         "privacy.data_categories"
       ],
+      "confidence": "high",
+      "score": 0.828481,
+      "margin": 0.661303,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -1860,8 +2133,8 @@
       "variant": "taxonomy_paraphrase",
       "expected_scenario_id": "commission.unpaid",
       "candidate_scenario_ids": [
-        "commission.explained",
         "commission.unpaid",
+        "commission.explained",
         "lot.payment.overdue",
         "balance.topup.commission",
         "insurance.osago_rules",
@@ -1871,7 +2144,10 @@
         "vehicle.registration_after_purchase",
         "refusal.deadline_and_submission"
       ],
-      "hit_at_1": false,
+      "confidence": "high",
+      "score": 0.684091,
+      "margin": 0.099368,
+      "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
     },
@@ -1881,8 +2157,8 @@
       "variant": "transposed_letters",
       "expected_scenario_id": "commission.unpaid",
       "candidate_scenario_ids": [
-        "commission.explained",
         "commission.unpaid",
+        "commission.explained",
         "payment.methods",
         "lot.payment.overdue",
         "penalty.unconfirmed_details",
@@ -1892,7 +2168,10 @@
         "refund.timing_status",
         "lot.payment.details"
       ],
-      "hit_at_1": false,
+      "confidence": "high",
+      "score": 0.761805,
+      "margin": 0.159781,
+      "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
     },
@@ -1913,6 +2192,9 @@
         "contract.unconfirmed_details",
         "penalty.explain_or_dispute"
       ],
+      "confidence": "high",
+      "score": 0.930728,
+      "margin": 0.445144,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -1923,18 +2205,21 @@
       "variant": "taxonomy_paraphrase",
       "expected_scenario_id": "lot.payment.start",
       "candidate_scenario_ids": [
-        "auction.status",
         "lot.payment.start",
         "win.next_steps",
         "partnership.official_proposal",
         "safety.reported_threat",
         "pickup.receive_lot",
+        "auction.status",
         "compliance.off_platform_payment",
         "refusal.change_mind",
         "transfer.not_confirmed",
         "lot.payment.details"
       ],
-      "hit_at_1": false,
+      "confidence": "high",
+      "score": 0.714446,
+      "margin": 0.354215,
+      "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
     },
@@ -1955,6 +2240,9 @@
         "support.lot_case_review",
         "bid.expired"
       ],
+      "confidence": "high",
+      "score": 0.732013,
+      "margin": 0.247533,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -1976,6 +2264,9 @@
         "pickup.delay",
         "support.lot_case_review"
       ],
+      "confidence": "high",
+      "score": 0.853238,
+      "margin": 0.458147,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -1997,6 +2288,9 @@
         "property.bulk_goods",
         "property.business"
       ],
+      "confidence": "high",
+      "score": 0.51651,
+      "margin": 0.133501,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -2018,6 +2312,9 @@
         "lot.payment.overdue",
         "commission.discount"
       ],
+      "confidence": "high",
+      "score": 0.423593,
+      "margin": 0.167936,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -2039,6 +2336,9 @@
         "lot.payment.overdue",
         "commission.discount"
       ],
+      "confidence": "high",
+      "score": 0.558691,
+      "margin": 0.337244,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -2060,6 +2360,9 @@
         "property.evaluate",
         "property.bulk_goods"
       ],
+      "confidence": "medium",
+      "score": 0.313621,
+      "margin": 0.0,
       "hit_at_1": false,
       "hit_at_5": true,
       "hit_at_10": true
@@ -2081,6 +2384,9 @@
         "support.manual_review_scope",
         "payment.not_visible"
       ],
+      "confidence": "medium",
+      "score": 0.33628,
+      "margin": 0.039706,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -2102,6 +2408,9 @@
         "commission.discount",
         "documents.actual_amount"
       ],
+      "confidence": "high",
+      "score": 0.405531,
+      "margin": 0.127635,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -2123,6 +2432,9 @@
         "tariff.promotion",
         "insurance.osago_rules"
       ],
+      "confidence": "medium",
+      "score": 0.471544,
+      "margin": 0.024273,
       "hit_at_1": false,
       "hit_at_5": true,
       "hit_at_10": true
@@ -2144,6 +2456,9 @@
         "payment.document_policy",
         "commission.discount"
       ],
+      "confidence": "high",
+      "score": 0.369099,
+      "margin": 0.053652,
       "hit_at_1": false,
       "hit_at_5": true,
       "hit_at_10": true
@@ -2165,6 +2480,9 @@
         "safety.reported_threat",
         "pickup.access_issuer"
       ],
+      "confidence": "medium",
+      "score": 0.356439,
+      "margin": 0.012086,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -2186,6 +2504,9 @@
         "payment.document_policy",
         "commission.discount"
       ],
+      "confidence": "high",
+      "score": 0.596601,
+      "margin": 0.135131,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -2207,6 +2528,9 @@
         "payment.document_policy",
         "documents.preparation_delay"
       ],
+      "confidence": "high",
+      "score": 0.697492,
+      "margin": 0.358447,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -2228,6 +2552,9 @@
         "tariff.connect",
         "transfer.not_confirmed"
       ],
+      "confidence": "high",
+      "score": 0.90393,
+      "margin": 0.627519,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -2249,6 +2576,9 @@
         "commission.unpaid",
         "complaint.formal_dispute"
       ],
+      "confidence": "high",
+      "score": 0.805231,
+      "margin": 0.374035,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -2270,6 +2600,9 @@
         "payment.not_visible",
         "loyalty.unconfirmed_details"
       ],
+      "confidence": "high",
+      "score": 0.824168,
+      "margin": 0.487507,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -2291,6 +2624,9 @@
         "account.dashboard_sections",
         "refund.destination"
       ],
+      "confidence": "high",
+      "score": 1.069614,
+      "margin": 0.485966,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -2312,6 +2648,9 @@
         "tariff.status",
         "commission.discount"
       ],
+      "confidence": "high",
+      "score": 0.831355,
+      "margin": 0.304951,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -2333,6 +2672,9 @@
         "buyer.personal_purchase",
         "buyer.beginner_lot_selection"
       ],
+      "confidence": "high",
+      "score": 1.085,
+      "margin": 0.697119,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -2354,6 +2696,9 @@
         "buyer.personal_purchase",
         "buyer.beginner_lot_selection"
       ],
+      "confidence": "high",
+      "score": 1.022852,
+      "margin": 0.611857,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -2375,6 +2720,9 @@
         "support.manual_review_scope",
         "tariff.promotion"
       ],
+      "confidence": "medium",
+      "score": 0.683875,
+      "margin": 0.017652,
       "hit_at_1": false,
       "hit_at_5": true,
       "hit_at_10": true
@@ -2396,6 +2744,9 @@
         "finance.status.clarify",
         "tariff.choose"
       ],
+      "confidence": "high",
+      "score": 0.562177,
+      "margin": 0.07002,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -2417,6 +2768,9 @@
         "tariff.connect",
         "tariff.promotion"
       ],
+      "confidence": "medium",
+      "score": 0.722129,
+      "margin": 0.01467,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -2427,8 +2781,8 @@
       "variant": "taxonomy_paraphrase",
       "expected_scenario_id": "refund.application",
       "candidate_scenario_ids": [
-        "tariff.premium",
         "refund.timing_status",
+        "tariff.premium",
         "payment.document_policy",
         "refund.eligibility",
         "finance.status.clarify",
@@ -2438,6 +2792,9 @@
         "tariff.connect",
         "tariff.status"
       ],
+      "confidence": "medium",
+      "score": 0.415779,
+      "margin": 0.03126,
       "hit_at_1": false,
       "hit_at_5": false,
       "hit_at_10": true
@@ -2448,8 +2805,8 @@
       "variant": "transposed_letters",
       "expected_scenario_id": "refund.application",
       "candidate_scenario_ids": [
-        "tariff.premium",
         "refund.timing_status",
+        "tariff.premium",
         "refund.eligibility",
         "payment.document_policy",
         "refund.application",
@@ -2459,6 +2816,9 @@
         "tariff.promotion",
         "support.manual_review_scope"
       ],
+      "confidence": "medium",
+      "score": 0.466851,
+      "margin": 0.009026,
       "hit_at_1": false,
       "hit_at_5": true,
       "hit_at_10": true
@@ -2469,9 +2829,9 @@
       "variant": "word_order",
       "expected_scenario_id": "refund.application",
       "candidate_scenario_ids": [
-        "tariff.premium",
         "refund.application",
         "refund.timing_status",
+        "tariff.premium",
         "refund.eligibility",
         "payment.document_policy",
         "finance.status.clarify",
@@ -2480,7 +2840,10 @@
         "tariff.promotion",
         "support.manual_review_scope"
       ],
-      "hit_at_1": false,
+      "confidence": "medium",
+      "score": 0.413868,
+      "margin": 0.007193,
+      "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
     },
@@ -2501,6 +2864,9 @@
         "support.manual_review_scope",
         "payment.not_visible"
       ],
+      "confidence": "high",
+      "score": 0.536372,
+      "margin": 0.063341,
       "hit_at_1": false,
       "hit_at_5": true,
       "hit_at_10": true
@@ -2522,6 +2888,9 @@
         "finance.status.clarify",
         "transfer.not_confirmed"
       ],
+      "confidence": "medium",
+      "score": 0.376857,
+      "margin": 0.018184,
       "hit_at_1": false,
       "hit_at_5": true,
       "hit_at_10": true
@@ -2543,6 +2912,9 @@
         "finance.status.clarify",
         "transfer.not_confirmed"
       ],
+      "confidence": "medium",
+      "score": 0.424859,
+      "margin": 0.030927,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -2564,6 +2936,9 @@
         "support.manual_review_scope",
         "documents.actual_amount"
       ],
+      "confidence": "high",
+      "score": 0.749669,
+      "margin": 0.270671,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -2585,6 +2960,9 @@
         "refund.eligibility",
         "lot.missing"
       ],
+      "confidence": "high",
+      "score": 0.543203,
+      "margin": 0.136111,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -2606,6 +2984,9 @@
         "documents.actual_amount",
         "bid.not_visible"
       ],
+      "confidence": "high",
+      "score": 0.854344,
+      "margin": 0.547577,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -2627,6 +3008,9 @@
         "lot.payment.overdue",
         "insurance.osago_rules"
       ],
+      "confidence": "high",
+      "score": 0.965182,
+      "margin": 0.519474,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -2648,6 +3032,9 @@
         "bid.validity",
         "payment.document_policy"
       ],
+      "confidence": "high",
+      "score": 1.06,
+      "margin": 0.751431,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -2669,6 +3056,9 @@
         "finance.status.clarify",
         "auction.other_platform_offer"
       ],
+      "confidence": "high",
+      "score": 1.007574,
+      "margin": 0.700549,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -2690,6 +3080,9 @@
         "refund.eligibility",
         "finance.status.clarify"
       ],
+      "confidence": "high",
+      "score": 0.741128,
+      "margin": 0.327679,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -2701,9 +3094,9 @@
       "expected_scenario_id": "refund.denied_or_blocked",
       "candidate_scenario_ids": [
         "refund.denied_or_blocked",
-        "technical.site_error",
         "payment.checkout_problem",
         "refund.destination",
+        "technical.site_error",
         "refund.application",
         "refund.timing_status",
         "deposit.explained",
@@ -2711,6 +3104,9 @@
         "refund.eligibility",
         "finance.status.clarify"
       ],
+      "confidence": "high",
+      "score": 0.765674,
+      "margin": 0.446516,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -2732,6 +3128,9 @@
         "tariff.status",
         "payment.document_policy"
       ],
+      "confidence": "high",
+      "score": 0.892448,
+      "margin": 0.563011,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -2753,6 +3152,9 @@
         "account.blocked",
         "lot.status_guide"
       ],
+      "confidence": "high",
+      "score": 0.650757,
+      "margin": 0.394585,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -2763,8 +3165,8 @@
       "variant": "transposed_letters",
       "expected_scenario_id": "penalty.explain_or_dispute",
       "candidate_scenario_ids": [
-        "commission.explained",
         "penalty.explain_or_dispute",
+        "commission.explained",
         "support.manual_review_scope",
         "penalty.unconfirmed_details",
         "balance.topup.commission",
@@ -2774,7 +3176,10 @@
         "commission.discount",
         "lot.payment.details"
       ],
-      "hit_at_1": false,
+      "confidence": "high",
+      "score": 0.716955,
+      "margin": 0.288103,
+      "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
     },
@@ -2795,6 +3200,9 @@
         "contract.termination_and_restriction",
         "commission.discount"
       ],
+      "confidence": "high",
+      "score": 0.860769,
+      "margin": 0.466838,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -2816,6 +3224,9 @@
         "tariff.connect",
         "pickup.receive_lot"
       ],
+      "confidence": "high",
+      "score": 0.698619,
+      "margin": 0.221095,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -2837,6 +3248,9 @@
         "registration.accreditation",
         "compliance.private_arrangement"
       ],
+      "confidence": "high",
+      "score": 0.771876,
+      "margin": 0.324178,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -2858,6 +3272,9 @@
         "compliance.private_arrangement",
         "tariff.demo"
       ],
+      "confidence": "high",
+      "score": 0.833452,
+      "margin": 0.4253,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -2879,6 +3296,9 @@
         "refusal.evidence",
         "insurance.osago_rules"
       ],
+      "confidence": "high",
+      "score": 0.680003,
+      "margin": 0.282763,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -2900,6 +3320,9 @@
         "seller.publish_lot",
         "buyer.get_started"
       ],
+      "confidence": "high",
+      "score": 0.885,
+      "margin": 0.495539,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -2921,6 +3344,9 @@
         "seller.get_started",
         "seller.publish_lot"
       ],
+      "confidence": "high",
+      "score": 0.835315,
+      "margin": 0.429068,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -2942,6 +3368,9 @@
         "seller.categories",
         "platform.about"
       ],
+      "confidence": "high",
+      "score": 0.704582,
+      "margin": 0.37713,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -2963,6 +3392,9 @@
         "vehicle.encumbrance_detected",
         "support.manual_review_scope"
       ],
+      "confidence": "high",
+      "score": 0.800287,
+      "margin": 0.487308,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -2984,6 +3416,9 @@
         "vehicle.encumbrance_detected",
         "support.manual_review_scope"
       ],
+      "confidence": "high",
+      "score": 0.885214,
+      "margin": 0.634367,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -3005,6 +3440,9 @@
         "payment.methods",
         "penalty.explain_or_dispute"
       ],
+      "confidence": "high",
+      "score": 0.81831,
+      "margin": 0.489777,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -3026,6 +3464,9 @@
         "contract.parties_signing",
         "documents.preparation_delay"
       ],
+      "confidence": "high",
+      "score": 0.782232,
+      "margin": 0.554915,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -3047,6 +3488,9 @@
         "contract.parties_signing",
         "account.identification_for_contract"
       ],
+      "confidence": "high",
+      "score": 0.854515,
+      "margin": 0.550376,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -3068,6 +3512,9 @@
         "seller.buyer_refusal",
         "penalty.explain_or_dispute"
       ],
+      "confidence": "high",
+      "score": 0.742497,
+      "margin": 0.521286,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -3089,6 +3536,9 @@
         "seller.buyer_nonpayment",
         "refusal.deadline_and_submission"
       ],
+      "confidence": "high",
+      "score": 0.756224,
+      "margin": 0.564275,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -3110,6 +3560,9 @@
         "refusal.deadline_and_submission",
         "seller.buyer_nonpayment"
       ],
+      "confidence": "high",
+      "score": 0.826648,
+      "margin": 0.546987,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -3131,6 +3584,9 @@
         "account.dashboard_sections",
         "contract.termination_and_restriction"
       ],
+      "confidence": "high",
+      "score": 0.606302,
+      "margin": 0.118298,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -3152,6 +3608,9 @@
         "platform.about",
         "contract.unconfirmed_details"
       ],
+      "confidence": "high",
+      "score": 0.7792,
+      "margin": 0.612721,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -3173,6 +3632,9 @@
         "platform.about",
         "bid.validity"
       ],
+      "confidence": "high",
+      "score": 0.840451,
+      "margin": 0.684502,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -3194,6 +3656,9 @@
         "seller.training",
         "payment.accounting_documents"
       ],
+      "confidence": "high",
+      "score": 0.730745,
+      "margin": 0.416449,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -3215,6 +3680,9 @@
         "payment.not_visible",
         "property.business"
       ],
+      "confidence": "high",
+      "score": 0.829792,
+      "margin": 0.566075,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -3236,6 +3704,9 @@
         "account.identification_for_contract",
         "property.business"
       ],
+      "confidence": "high",
+      "score": 0.879326,
+      "margin": 0.63245,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -3246,7 +3717,6 @@
       "variant": "taxonomy_paraphrase",
       "expected_scenario_id": "vehicle.registration_penalty_details",
       "candidate_scenario_ids": [
-        "bid.place",
         "vehicle.registration_penalty_details",
         "vehicle.registration_after_purchase",
         "buyer.resale_strategy",
@@ -3255,9 +3725,13 @@
         "buyer.beginner_lot_selection",
         "seller.publish_lot",
         "bid.maximum_budget",
+        "bid.place",
         "tariff.premium"
       ],
-      "hit_at_1": false,
+      "confidence": "high",
+      "score": 0.634728,
+      "margin": 0.235007,
+      "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
     },
@@ -3278,6 +3752,9 @@
         "lot.location",
         "penalty.explain_or_dispute"
       ],
+      "confidence": "high",
+      "score": 0.925,
+      "margin": 0.59599,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -3299,6 +3776,9 @@
         "pickup.delay",
         "contract.unconfirmed_details"
       ],
+      "confidence": "high",
+      "score": 0.906617,
+      "margin": 0.573543,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -3309,8 +3789,8 @@
       "variant": "taxonomy_paraphrase",
       "expected_scenario_id": "support.staff_only_details",
       "candidate_scenario_ids": [
-        "support.callback",
         "support.staff_only_details",
+        "support.callback",
         "support.telegram_channels",
         "feedback.platform_complaint",
         "feedback.bot_answer_complaint",
@@ -3320,7 +3800,10 @@
         "seller.training",
         "support.manual_review_scope"
       ],
-      "hit_at_1": false,
+      "confidence": "high",
+      "score": 0.657812,
+      "margin": 0.194842,
+      "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
     },
@@ -3341,6 +3824,9 @@
         "payment.methods",
         "payment.document_policy"
       ],
+      "confidence": "high",
+      "score": 0.755563,
+      "margin": 0.56923,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -3362,6 +3848,9 @@
         "vehicle.autoteka_visibility",
         "vehicle.legal_check"
       ],
+      "confidence": "high",
+      "score": 0.874506,
+      "margin": 0.642633,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -3372,18 +3861,21 @@
       "variant": "taxonomy_paraphrase",
       "expected_scenario_id": "refusal.invalid_reasons",
       "candidate_scenario_ids": [
-        "technical.site_error",
         "refusal.invalid_reasons",
         "refusal.unconfirmed_details",
         "partnership.official_proposal",
         "safety.reported_threat",
+        "technical.site_error",
         "refusal.seller_decision",
         "platform.about",
         "lot.status_guide",
         "compliance.private_arrangement",
         "property.business"
       ],
-      "hit_at_1": false,
+      "confidence": "high",
+      "score": 0.736358,
+      "margin": 0.444876,
+      "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
     },
@@ -3404,6 +3896,9 @@
         "lot.payment.start",
         "lot.payment.details"
       ],
+      "confidence": "high",
+      "score": 0.749262,
+      "margin": 0.450789,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -3425,6 +3920,9 @@
         "lot.payment.start",
         "refusal.deadline_and_submission"
       ],
+      "confidence": "high",
+      "score": 0.801705,
+      "margin": 0.449732,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -3446,6 +3944,9 @@
         "payment.accounting_documents",
         "account.identification_edge_case"
       ],
+      "confidence": "high",
+      "score": 0.672903,
+      "margin": 0.191525,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -3467,6 +3968,9 @@
         "refusal.invalid_reasons",
         "payment.not_visible"
       ],
+      "confidence": "high",
+      "score": 0.885,
+      "margin": 0.437044,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -3488,6 +3992,9 @@
         "refusal.invalid_reasons",
         "payment.not_visible"
       ],
+      "confidence": "high",
+      "score": 0.82105,
+      "margin": 0.374131,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -3509,6 +4016,9 @@
         "seller.contract_term",
         "bid.maximum_budget"
       ],
+      "confidence": "high",
+      "score": 0.744494,
+      "margin": 0.368367,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -3530,6 +4040,9 @@
         "bid.price_terms",
         "penalty.unconfirmed_details"
       ],
+      "confidence": "high",
+      "score": 0.697518,
+      "margin": 0.312993,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -3551,6 +4064,9 @@
         "lot.definition",
         "documents.preparation_delay"
       ],
+      "confidence": "high",
+      "score": 0.810791,
+      "margin": 0.48064,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -3572,6 +4088,9 @@
         "seller.publish_lot",
         "penalty.unconfirmed_details"
       ],
+      "confidence": "high",
+      "score": 0.683979,
+      "margin": 0.330686,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -3593,6 +4112,9 @@
         "refusal.deadline_and_submission",
         "compliance.private_arrangement"
       ],
+      "confidence": "high",
+      "score": 0.743717,
+      "margin": 0.191606,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -3614,6 +4136,9 @@
         "seller.buyer_refusal",
         "refusal.deadline_and_submission"
       ],
+      "confidence": "high",
+      "score": 0.800081,
+      "margin": 0.318774,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -3635,6 +4160,9 @@
         "documents.preparation_delay",
         "payment.methods"
       ],
+      "confidence": "high",
+      "score": 0.582554,
+      "margin": 0.13716,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -3656,6 +4184,9 @@
         "account.identification_for_contract",
         "contract.receive"
       ],
+      "confidence": "high",
+      "score": 0.672573,
+      "margin": 0.386863,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -3677,6 +4208,9 @@
         "account.identification_for_contract",
         "contract.receive"
       ],
+      "confidence": "high",
+      "score": 0.744292,
+      "margin": 0.492581,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -3698,6 +4232,9 @@
         "payment.methods",
         "documents.preparation_delay"
       ],
+      "confidence": "medium",
+      "score": 0.467996,
+      "margin": 0.035339,
       "hit_at_1": false,
       "hit_at_5": true,
       "hit_at_10": true
@@ -3719,6 +4256,9 @@
         "contract.receive",
         "property.inspection_documents"
       ],
+      "confidence": "medium",
+      "score": 0.263319,
+      "margin": 0.004027,
       "hit_at_1": false,
       "hit_at_5": true,
       "hit_at_10": true
@@ -3740,6 +4280,9 @@
         "contract.receive",
         "property.inspection_documents"
       ],
+      "confidence": "medium",
+      "score": 0.313121,
+      "margin": 0.062879,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -3761,6 +4304,9 @@
         "lot.definition",
         "bid.price_terms"
       ],
+      "confidence": "high",
+      "score": 0.772221,
+      "margin": 0.349899,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -3782,6 +4328,9 @@
         "refund.denied_or_blocked",
         "bid.position_service"
       ],
+      "confidence": "high",
+      "score": 0.95,
+      "margin": 0.450216,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -3803,6 +4352,9 @@
         "refund.denied_or_blocked",
         "platform.about"
       ],
+      "confidence": "high",
+      "score": 0.91982,
+      "margin": 0.41258,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -3824,6 +4376,9 @@
         "property.overview",
         "transfer.confirmed"
       ],
+      "confidence": "high",
+      "score": 0.65548,
+      "margin": 0.363642,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -3845,6 +4400,9 @@
         "property.section_error",
         "penalty.explain_or_dispute"
       ],
+      "confidence": "high",
+      "score": 0.885,
+      "margin": 0.577275,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -3866,6 +4424,9 @@
         "property.section_error",
         "payment.methods"
       ],
+      "confidence": "high",
+      "score": 0.812284,
+      "margin": 0.507376,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -3887,6 +4448,9 @@
         "insurance.osago_rules",
         "compliance.off_platform_payment"
       ],
+      "confidence": "high",
+      "score": 0.592389,
+      "margin": 0.061492,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -3908,6 +4472,9 @@
         "lot.payment.details",
         "lot.payment.overdue"
       ],
+      "confidence": "high",
+      "score": 0.833416,
+      "margin": 0.452974,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -3929,6 +4496,9 @@
         "lot.payment.details",
         "lot.payment.overdue"
       ],
+      "confidence": "high",
+      "score": 0.922887,
+      "margin": 0.563536,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -3950,6 +4520,9 @@
         "vehicle.business_use_cases",
         "tariff.connect"
       ],
+      "confidence": "high",
+      "score": 0.627658,
+      "margin": 0.168833,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -3971,6 +4544,9 @@
         "tariff.one_time",
         "inspection.problem"
       ],
+      "confidence": "high",
+      "score": 0.618279,
+      "margin": 0.121879,
       "hit_at_1": false,
       "hit_at_5": true,
       "hit_at_10": true
@@ -3981,8 +4557,8 @@
       "variant": "word_order",
       "expected_scenario_id": "tariff.choose",
       "candidate_scenario_ids": [
-        "tariff.premium",
         "tariff.choose",
+        "tariff.premium",
         "refund.eligibility",
         "tariff.one_time",
         "refund.application",
@@ -3992,7 +4568,10 @@
         "tariff.status",
         "tariff.demo"
       ],
-      "hit_at_1": false,
+      "confidence": "high",
+      "score": 0.605322,
+      "margin": 0.069206,
+      "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
     },
@@ -4013,6 +4592,9 @@
         "vehicle.encumbrance_detected",
         "vehicle.insurance_catalog"
       ],
+      "confidence": "high",
+      "score": 0.563505,
+      "margin": 0.145106,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -4023,8 +4605,8 @@
       "variant": "transposed_letters",
       "expected_scenario_id": "tariff.choose",
       "candidate_scenario_ids": [
-        "tariff.choose",
         "tariff.connect",
+        "tariff.choose",
         "property.overview",
         "account.credential_responsibility",
         "property.bulk_goods",
@@ -4034,7 +4616,10 @@
         "tariff.status",
         "support.office_visit"
       ],
-      "hit_at_1": true,
+      "confidence": "medium",
+      "score": 0.379012,
+      "margin": 0.030347,
+      "hit_at_1": false,
       "hit_at_5": true,
       "hit_at_10": true
     },
@@ -4044,9 +4629,9 @@
       "variant": "word_order",
       "expected_scenario_id": "tariff.choose",
       "candidate_scenario_ids": [
-        "tariff.choose",
         "property.overview",
         "property.section_error",
+        "tariff.choose",
         "tariff.connect",
         "property.inspection_documents",
         "account.credential_responsibility",
@@ -4055,7 +4640,10 @@
         "account.login_problem",
         "property.evaluate"
       ],
-      "hit_at_1": true,
+      "confidence": "high",
+      "score": 0.565224,
+      "margin": 0.068269,
+      "hit_at_1": false,
       "hit_at_5": true,
       "hit_at_10": true
     },
@@ -4076,6 +4664,9 @@
         "vehicle.encumbrance_detected",
         "buyer.personal_purchase"
       ],
+      "confidence": "high",
+      "score": 0.486021,
+      "margin": 0.139519,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -4097,6 +4688,9 @@
         "refund.timing_status",
         "tariff.connect"
       ],
+      "confidence": "medium",
+      "score": 0.347774,
+      "margin": 0.035431,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -4118,6 +4712,9 @@
         "tariff.demo",
         "payment.checkout_problem"
       ],
+      "confidence": "high",
+      "score": 0.492186,
+      "margin": 0.140631,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -4128,8 +4725,8 @@
       "variant": "taxonomy_paraphrase",
       "expected_scenario_id": "tariff.one_time",
       "candidate_scenario_ids": [
-        "tariff.choose",
         "tariff.one_time",
+        "tariff.choose",
         "tariff.premium",
         "refund.application",
         "refund.eligibility",
@@ -4139,7 +4736,10 @@
         "vehicle.business_use_cases",
         "buyer.personal_purchase"
       ],
-      "hit_at_1": false,
+      "confidence": "high",
+      "score": 0.629578,
+      "margin": 0.139897,
+      "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
     },
@@ -4160,6 +4760,9 @@
         "tariff.demo",
         "tariff.connect"
       ],
+      "confidence": "medium",
+      "score": 0.760948,
+      "margin": 0.003528,
       "hit_at_1": false,
       "hit_at_5": true,
       "hit_at_10": true
@@ -4181,6 +4784,9 @@
         "tariff.demo",
         "lot.location"
       ],
+      "confidence": "high",
+      "score": 0.90848,
+      "margin": 0.225417,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -4202,6 +4808,9 @@
         "vehicle.encumbrance_detected",
         "vehicle.insurance_catalog"
       ],
+      "confidence": "high",
+      "score": 0.739992,
+      "margin": 0.365546,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -4223,6 +4832,9 @@
         "tariff.demo",
         "tariff.status"
       ],
+      "confidence": "high",
+      "score": 0.956374,
+      "margin": 0.558651,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -4244,6 +4856,9 @@
         "refund.timing_status",
         "buyer.beginner_lot_selection"
       ],
+      "confidence": "high",
+      "score": 1.060795,
+      "margin": 0.611956,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -4254,8 +4869,8 @@
       "variant": "taxonomy_paraphrase",
       "expected_scenario_id": "tariff.demo",
       "candidate_scenario_ids": [
-        "tariff.choose",
         "tariff.demo",
+        "tariff.choose",
         "tariff.one_time",
         "tariff.premium",
         "buyer.resale_strategy",
@@ -4265,7 +4880,10 @@
         "bid.maximum_budget",
         "commission.discount"
       ],
-      "hit_at_1": false,
+      "confidence": "high",
+      "score": 0.654582,
+      "margin": 0.211513,
+      "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
     },
@@ -4286,6 +4904,9 @@
         "commission.discount",
         "bid.price_terms"
       ],
+      "confidence": "high",
+      "score": 0.691582,
+      "margin": 0.592444,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -4307,6 +4928,9 @@
         "refund.application",
         "refund.timing_status"
       ],
+      "confidence": "high",
+      "score": 0.845459,
+      "margin": 0.540718,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -4328,6 +4952,9 @@
         "vehicle.legal_check",
         "tariff.one_time"
       ],
+      "confidence": "high",
+      "score": 0.737197,
+      "margin": 0.323199,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -4349,6 +4976,9 @@
         "tariff.one_time",
         "tariff.premium"
       ],
+      "confidence": "high",
+      "score": 1.057,
+      "margin": 0.607905,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -4370,6 +5000,9 @@
         "refund.timing_status",
         "tariff.premium"
       ],
+      "confidence": "high",
+      "score": 1.017512,
+      "margin": 0.551251,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -4380,8 +5013,8 @@
       "variant": "taxonomy_paraphrase",
       "expected_scenario_id": "tariff.promotion",
       "candidate_scenario_ids": [
-        "tariff.choose",
         "tariff.promotion",
+        "tariff.choose",
         "commission.discount",
         "tariff.status",
         "refund.timing_status",
@@ -4391,7 +5024,10 @@
         "tariff.one_time",
         "tariff.premium"
       ],
-      "hit_at_1": false,
+      "confidence": "medium",
+      "score": 0.664355,
+      "margin": 0.038587,
+      "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
     },
@@ -4412,6 +5048,9 @@
         "tariff.premium",
         "pickup.access_issuer"
       ],
+      "confidence": "high",
+      "score": 0.784268,
+      "margin": 0.497652,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -4433,6 +5072,9 @@
         "seller.categories",
         "tariff.one_time"
       ],
+      "confidence": "high",
+      "score": 0.899891,
+      "margin": 0.447251,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -4454,6 +5096,9 @@
         "seller.publish_lot",
         "seller.information_status"
       ],
+      "confidence": "high",
+      "score": 0.690324,
+      "margin": 0.312,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -4475,6 +5120,9 @@
         "seller.buyer_refusal",
         "buyer.get_started"
       ],
+      "confidence": "high",
+      "score": 0.885,
+      "margin": 0.520431,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -4496,6 +5144,9 @@
         "account.dashboard_sections",
         "property.bulk_goods"
       ],
+      "confidence": "high",
+      "score": 0.80264,
+      "margin": 0.440008,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -4517,6 +5168,9 @@
         "seller.information_status",
         "pickup.access_issuer"
       ],
+      "confidence": "high",
+      "score": 0.720103,
+      "margin": 0.423044,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -4538,6 +5192,9 @@
         "bid.validity",
         "platform.about"
       ],
+      "confidence": "high",
+      "score": 0.925,
+      "margin": 0.386088,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -4559,6 +5216,9 @@
         "seller.information_status",
         "bid.validity"
       ],
+      "confidence": "high",
+      "score": 0.884364,
+      "margin": 0.331965,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -4580,6 +5240,9 @@
         "seller.information_status",
         "property.evaluate"
       ],
+      "confidence": "high",
+      "score": 0.712281,
+      "margin": 0.425471,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -4601,6 +5264,9 @@
         "seller.contract_term",
         "refusal.seller_decision"
       ],
+      "confidence": "high",
+      "score": 0.885,
+      "margin": 0.510308,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -4622,6 +5288,9 @@
         "property.inspection_documents",
         "seller.contract_term"
       ],
+      "confidence": "high",
+      "score": 0.851707,
+      "margin": 0.470582,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -4632,18 +5301,21 @@
       "variant": "taxonomy_paraphrase",
       "expected_scenario_id": "bid.validity",
       "candidate_scenario_ids": [
+        "bid.validity",
         "bid.place",
         "bid.price_terms",
-        "feedback.improvement_suggestion",
-        "bid.validity",
         "auction.other_platform_offer",
         "auction.formats",
         "buyer.first_bid_checklist",
         "compliance.off_platform_payment",
         "seller.information_status",
-        "bid.not_visible"
+        "bid.not_visible",
+        "bid.maximum_budget"
       ],
-      "hit_at_1": false,
+      "confidence": "medium",
+      "score": 0.61443,
+      "margin": 0.017663,
+      "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
     },
@@ -4653,8 +5325,8 @@
       "variant": "transposed_letters",
       "expected_scenario_id": "bid.validity",
       "candidate_scenario_ids": [
-        "bid.place",
         "bid.validity",
+        "bid.place",
         "insurance.osago_rules",
         "transfer.not_confirmed",
         "auction.formats",
@@ -4664,7 +5336,10 @@
         "win.next_steps",
         "refund.timing_status"
       ],
-      "hit_at_1": false,
+      "confidence": "high",
+      "score": 0.668244,
+      "margin": 0.291003,
+      "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
     },
@@ -4674,8 +5349,8 @@
       "variant": "word_order",
       "expected_scenario_id": "bid.validity",
       "candidate_scenario_ids": [
-        "bid.place",
         "bid.validity",
+        "bid.place",
         "insurance.osago_rules",
         "loyalty.unconfirmed_details",
         "transfer.not_confirmed",
@@ -4685,7 +5360,10 @@
         "lot.payment.overdue",
         "complaint.formal_dispute"
       ],
-      "hit_at_1": false,
+      "confidence": "high",
+      "score": 0.82967,
+      "margin": 0.473181,
+      "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
     },
@@ -4695,18 +5373,21 @@
       "variant": "taxonomy_paraphrase",
       "expected_scenario_id": "bid.expired",
       "candidate_scenario_ids": [
-        "bid.place",
-        "feedback.improvement_suggestion",
         "bid.expired",
+        "bid.place",
         "bid.validity",
         "auction.other_platform_offer",
         "bid.autobid_extension",
         "auction.formats",
         "bid.price_terms",
         "buyer.first_bid_checklist",
-        "compliance.off_platform_payment"
+        "compliance.off_platform_payment",
+        "bid.position_service"
       ],
-      "hit_at_1": false,
+      "confidence": "high",
+      "score": 0.654646,
+      "margin": 0.059519,
+      "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
     },
@@ -4716,8 +5397,8 @@
       "variant": "transposed_letters",
       "expected_scenario_id": "bid.expired",
       "candidate_scenario_ids": [
-        "bid.place",
         "bid.expired",
+        "bid.place",
         "bid.validity",
         "transfer.not_confirmed",
         "auction.formats",
@@ -4727,7 +5408,10 @@
         "seller.publish_lot",
         "refund.timing_status"
       ],
-      "hit_at_1": false,
+      "confidence": "high",
+      "score": 0.674441,
+      "margin": 0.295282,
+      "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
     },
@@ -4737,9 +5421,9 @@
       "variant": "word_order",
       "expected_scenario_id": "bid.expired",
       "candidate_scenario_ids": [
-        "bid.place",
         "bid.expired",
         "bid.validity",
+        "bid.place",
         "auction.result",
         "insurance.osago_rules",
         "transfer.not_confirmed",
@@ -4748,7 +5432,10 @@
         "bid.price_terms",
         "win.next_steps"
       ],
-      "hit_at_1": false,
+      "confidence": "high",
+      "score": 0.847888,
+      "margin": 0.420643,
+      "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
     },
@@ -4769,6 +5456,9 @@
         "property.inspection_documents",
         "inspection.arrange"
       ],
+      "confidence": "high",
+      "score": 0.733025,
+      "margin": 0.406989,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -4790,6 +5480,9 @@
         "compliance.off_platform_payment",
         "property.inspection_documents"
       ],
+      "confidence": "high",
+      "score": 0.669302,
+      "margin": 0.401374,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -4811,6 +5504,9 @@
         "inspection.arrange",
         "property.inspection_documents"
       ],
+      "confidence": "high",
+      "score": 0.841777,
+      "margin": 0.618606,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -4821,8 +5517,8 @@
       "variant": "taxonomy_paraphrase",
       "expected_scenario_id": "pickup.delay",
       "candidate_scenario_ids": [
-        "pickup.receive_lot",
         "pickup.delay",
+        "pickup.receive_lot",
         "buyer.personal_purchase",
         "buyer.beginner_lot_selection",
         "buyer.resale_strategy",
@@ -4832,7 +5528,10 @@
         "seller.publish_lot",
         "vehicle.autoteka_visibility"
       ],
-      "hit_at_1": false,
+      "confidence": "high",
+      "score": 0.660473,
+      "margin": 0.069935,
+      "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
     },
@@ -4853,6 +5552,9 @@
         "feedback.platform_complaint",
         "feedback.bot_answer_complaint"
       ],
+      "confidence": "high",
+      "score": 0.743572,
+      "margin": 0.550413,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -4874,6 +5576,9 @@
         "support.telegram_channels",
         "feedback.platform_complaint"
       ],
+      "confidence": "high",
+      "score": 0.836077,
+      "margin": 0.656026,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -4895,6 +5600,9 @@
         "buyer.personal_purchase",
         "buyer.beginner_lot_selection"
       ],
+      "confidence": "high",
+      "score": 0.646731,
+      "margin": 0.337707,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -4916,6 +5624,9 @@
         "seller.get_started",
         "property.section_error"
       ],
+      "confidence": "high",
+      "score": 0.735467,
+      "margin": 0.481977,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -4937,6 +5648,9 @@
         "seller.get_started",
         "platform.about"
       ],
+      "confidence": "high",
+      "score": 0.827937,
+      "margin": 0.610476,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -4947,8 +5661,8 @@
       "variant": "taxonomy_paraphrase",
       "expected_scenario_id": "seller.access_security",
       "candidate_scenario_ids": [
-        "account.login_problem",
         "seller.access_security",
+        "account.login_problem",
         "seller.training",
         "seller.get_started",
         "seller.buyer_refusal",
@@ -4958,7 +5672,10 @@
         "seller.publish_lot",
         "refusal.no_response"
       ],
-      "hit_at_1": false,
+      "confidence": "high",
+      "score": 0.736409,
+      "margin": 0.392294,
+      "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
     },
@@ -4968,9 +5685,9 @@
       "variant": "transposed_letters",
       "expected_scenario_id": "seller.access_security",
       "candidate_scenario_ids": [
-        "tariff.choose",
         "seller.access_security",
         "seller.get_started",
+        "tariff.choose",
         "account.credential_responsibility",
         "seller.information_status",
         "tariff.status",
@@ -4979,7 +5696,10 @@
         "transfer.notification_contact",
         "account.dashboard_sections"
       ],
-      "hit_at_1": false,
+      "confidence": "high",
+      "score": 0.685623,
+      "margin": 0.307793,
+      "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
     },
@@ -4990,9 +5710,9 @@
       "expected_scenario_id": "seller.access_security",
       "candidate_scenario_ids": [
         "seller.access_security",
-        "tariff.choose",
         "account.credential_responsibility",
         "seller.get_started",
+        "tariff.choose",
         "tariff.status",
         "tariff.connect",
         "payment.methods",
@@ -5000,6 +5720,9 @@
         "seller.information_status",
         "seller.contract_term"
       ],
+      "confidence": "high",
+      "score": 0.851071,
+      "margin": 0.427054,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -5021,6 +5744,9 @@
         "contract.parties_signing",
         "lot.payment.overdue"
       ],
+      "confidence": "high",
+      "score": 0.733301,
+      "margin": 0.438791,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -5042,6 +5768,9 @@
         "auction.other_platform_offer",
         "platform.about"
       ],
+      "confidence": "high",
+      "score": 0.885,
+      "margin": 0.582754,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -5063,6 +5792,9 @@
         "vehicle.credit_lease_pledge",
         "platform.about"
       ],
+      "confidence": "high",
+      "score": 0.848633,
+      "margin": 0.543304,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -5084,6 +5816,9 @@
         "platform.about",
         "seller.buyer_refusal"
       ],
+      "confidence": "high",
+      "score": 0.655034,
+      "margin": 0.36196,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -5105,6 +5840,9 @@
         "transfer.seller_no_response",
         "seller.buyer_nonpayment"
       ],
+      "confidence": "high",
+      "score": 0.583665,
+      "margin": 0.346896,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -5126,6 +5864,9 @@
         "transfer.not_confirmed",
         "contract.parties_signing"
       ],
+      "confidence": "high",
+      "score": 0.819461,
+      "margin": 0.497778,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -5147,6 +5888,9 @@
         "seller.publish_lot",
         "vehicle.credit_lease_pledge"
       ],
+      "confidence": "high",
+      "score": 0.765903,
+      "margin": 0.455072,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -5168,6 +5912,9 @@
         "contract.unconfirmed_details",
         "transfer.requisites"
       ],
+      "confidence": "high",
+      "score": 0.6873,
+      "margin": 0.391988,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -5189,6 +5936,9 @@
         "refusal.deadline_and_submission",
         "contract.unconfirmed_details"
       ],
+      "confidence": "high",
+      "score": 0.868395,
+      "margin": 0.626985,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -5210,6 +5960,9 @@
         "payment.not_visible",
         "tariff.status"
       ],
+      "confidence": "high",
+      "score": 0.717252,
+      "margin": 0.489287,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -5231,6 +5984,9 @@
         "compliance.private_arrangement",
         "loyalty.unconfirmed_details"
       ],
+      "confidence": "high",
+      "score": 0.83072,
+      "margin": 0.674317,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -5252,6 +6008,9 @@
         "insurance.osago_rules",
         "contract.receive"
       ],
+      "confidence": "high",
+      "score": 0.868102,
+      "margin": 0.678007,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -5262,10 +6021,10 @@
       "variant": "taxonomy_paraphrase",
       "expected_scenario_id": "platform.about",
       "candidate_scenario_ids": [
-        "bid.place",
-        "bid.price_terms",
         "platform.about",
+        "bid.price_terms",
         "lot.definition",
+        "bid.place",
         "auction.formats",
         "bid.validity",
         "contract.parties_signing",
@@ -5273,7 +6032,10 @@
         "seller.information_status",
         "pickup.access_issuer"
       ],
-      "hit_at_1": false,
+      "confidence": "high",
+      "score": 0.626518,
+      "margin": 0.047034,
+      "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
     },
@@ -5294,6 +6056,9 @@
         "vehicle.owner_listing_dispute",
         "auction.formats"
       ],
+      "confidence": "high",
+      "score": 0.71993,
+      "margin": 0.461582,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -5315,6 +6080,9 @@
         "vehicle.owner_listing_dispute",
         "property.overview"
       ],
+      "confidence": "high",
+      "score": 0.83379,
+      "margin": 0.604979,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -5336,6 +6104,9 @@
         "account.login_problem",
         "complaint.formal_dispute"
       ],
+      "confidence": "high",
+      "score": 0.837281,
+      "margin": 0.393306,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -5357,6 +6128,9 @@
         "seller.get_started",
         "support.manual_review_scope"
       ],
+      "confidence": "high",
+      "score": 1.008,
+      "margin": 0.741639,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -5378,6 +6152,9 @@
         "support.manual_review_scope",
         "platform.about"
       ],
+      "confidence": "high",
+      "score": 1.052746,
+      "margin": 0.836875,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -5399,6 +6176,9 @@
         "inspection.arrange",
         "lot.location"
       ],
+      "confidence": "high",
+      "score": 0.734709,
+      "margin": 0.281455,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -5420,6 +6200,9 @@
         "vehicle.business_use_cases",
         "vehicle.autoteka_visibility"
       ],
+      "confidence": "high",
+      "score": 0.724334,
+      "margin": 0.427502,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -5441,6 +6224,9 @@
         "tariff.choose",
         "vehicle.credit_lease_pledge"
       ],
+      "confidence": "high",
+      "score": 0.882216,
+      "margin": 0.604546,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -5451,18 +6237,21 @@
       "variant": "taxonomy_paraphrase",
       "expected_scenario_id": "auction.result",
       "candidate_scenario_ids": [
-        "bid.place",
-        "feedback.improvement_suggestion",
         "auction.result",
+        "bid.place",
         "buyer.first_bid_checklist",
         "auction.other_platform_offer",
         "bid.price_terms",
         "auction.formats",
         "bid.autobid_extension",
         "seller.information_status",
-        "bid.validity"
+        "bid.validity",
+        "bid.maximum_budget"
       ],
-      "hit_at_1": false,
+      "confidence": "high",
+      "score": 0.668167,
+      "margin": 0.057442,
+      "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
     },
@@ -5473,16 +6262,19 @@
       "expected_scenario_id": "auction.result",
       "candidate_scenario_ids": [
         "auction.result",
-        "auction.status",
         "tariff.demo",
         "bid.validity",
         "bid.expired",
         "auction.formats",
+        "auction.status",
         "auction.completed_analytics",
         "bid.price_terms",
         "win.next_steps",
         "transfer.not_confirmed"
       ],
+      "confidence": "high",
+      "score": 0.95,
+      "margin": 0.543365,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -5494,16 +6286,19 @@
       "expected_scenario_id": "auction.result",
       "candidate_scenario_ids": [
         "auction.result",
-        "auction.status",
         "bid.validity",
         "bid.expired",
         "tariff.demo",
         "auction.formats",
+        "auction.status",
         "auction.completed_analytics",
         "bid.price_terms",
         "win.next_steps",
         "transfer.not_confirmed"
       ],
+      "confidence": "high",
+      "score": 0.902679,
+      "margin": 0.531918,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -5525,6 +6320,9 @@
         "property.business",
         "transfer.not_confirmed"
       ],
+      "confidence": "high",
+      "score": 0.886744,
+      "margin": 0.591989,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -5546,6 +6344,9 @@
         "account.credential_responsibility",
         "bid.validity"
       ],
+      "confidence": "high",
+      "score": 0.948912,
+      "margin": 0.571384,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -5567,6 +6368,9 @@
         "contract.receive",
         "pickup.access_issuer"
       ],
+      "confidence": "high",
+      "score": 1.040767,
+      "margin": 0.638251,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -5577,18 +6381,21 @@
       "variant": "taxonomy_paraphrase",
       "expected_scenario_id": "transfer.not_confirmed",
       "candidate_scenario_ids": [
-        "pickup.receive_lot",
         "transfer.not_confirmed",
         "partnership.official_proposal",
         "safety.reported_threat",
         "lot.payment.overdue",
+        "pickup.receive_lot",
         "seller.information_status",
         "contract.parties_signing",
         "lot.payment.details",
         "documents.preparation_delay",
         "vehicle.owner_listing_dispute"
       ],
-      "hit_at_1": false,
+      "confidence": "high",
+      "score": 0.606661,
+      "margin": 0.19597,
+      "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
     },
@@ -5609,6 +6416,9 @@
         "transfer.seller_no_response",
         "commission.discount"
       ],
+      "confidence": "high",
+      "score": 0.736839,
+      "margin": 0.463031,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -5630,6 +6440,9 @@
         "lot.payment.details",
         "inspection.problem"
       ],
+      "confidence": "high",
+      "score": 0.884642,
+      "margin": 0.576284,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -5651,6 +6464,9 @@
         "refusal.change_mind",
         "refusal.unconfirmed_details"
       ],
+      "confidence": "high",
+      "score": 0.579263,
+      "margin": 0.114819,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -5672,6 +6488,9 @@
         "lot.payment.details",
         "documents.preparation_delay"
       ],
+      "confidence": "high",
+      "score": 0.9,
+      "margin": 0.20396,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -5693,6 +6512,9 @@
         "lot.payment.details",
         "documents.preparation_delay"
       ],
+      "confidence": "high",
+      "score": 0.797841,
+      "margin": 0.204363,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -5714,6 +6536,9 @@
         "vehicle.owner_listing_dispute",
         "seller.categories"
       ],
+      "confidence": "high",
+      "score": 0.828788,
+      "margin": 0.39255,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -5735,6 +6560,9 @@
         "vehicle.encumbrance_detected",
         "lot.payment.overdue"
       ],
+      "confidence": "high",
+      "score": 1.045,
+      "margin": 0.69369,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -5756,6 +6584,9 @@
         "vehicle.encumbrance_detected",
         "lot.payment.overdue"
       ],
+      "confidence": "high",
+      "score": 1.014135,
+      "margin": 0.656258,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -5777,6 +6608,9 @@
         "buyer.resale_strategy",
         "vehicle.business_use_cases"
       ],
+      "confidence": "high",
+      "score": 0.59957,
+      "margin": 0.154549,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -5798,6 +6632,9 @@
         "privacy.data_categories",
         "property.inspection_documents"
       ],
+      "confidence": "high",
+      "score": 0.768263,
+      "margin": 0.434979,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -5819,6 +6656,9 @@
         "privacy.data_categories",
         "bid.place"
       ],
+      "confidence": "high",
+      "score": 0.858475,
+      "margin": 0.498703,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -5840,6 +6680,9 @@
         "lot.catalog_search",
         "platform.about"
       ],
+      "confidence": "high",
+      "score": 0.619858,
+      "margin": 0.258191,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -5861,6 +6704,9 @@
         "inspection.problem",
         "technical.site_error"
       ],
+      "confidence": "high",
+      "score": 0.717312,
+      "margin": 0.367542,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -5882,6 +6728,9 @@
         "inspection.problem",
         "technical.site_error"
       ],
+      "confidence": "high",
+      "score": 0.830365,
+      "margin": 0.525592,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -5903,6 +6752,9 @@
         "lot.catalog_search",
         "tariff.one_time"
       ],
+      "confidence": "high",
+      "score": 0.613587,
+      "margin": 0.175307,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -5924,6 +6776,9 @@
         "pickup.receive_lot",
         "lot.catalog_search"
       ],
+      "confidence": "high",
+      "score": 0.9,
+      "margin": 0.659189,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -5945,6 +6800,9 @@
         "refund.application",
         "lot.catalog_search"
       ],
+      "confidence": "high",
+      "score": 0.899916,
+      "margin": 0.631216,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -5966,6 +6824,9 @@
         "seller.categories",
         "buyer.resale_strategy"
       ],
+      "confidence": "high",
+      "score": 0.758784,
+      "margin": 0.332011,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -5987,6 +6848,9 @@
         "seller.publish_lot",
         "vehicle.legal_check"
       ],
+      "confidence": "high",
+      "score": 1.02,
+      "margin": 0.616702,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -6008,6 +6872,9 @@
         "seller.publish_lot",
         "vehicle.legal_check"
       ],
+      "confidence": "high",
+      "score": 0.964791,
+      "margin": 0.563734,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -6029,6 +6896,9 @@
         "commission.unpaid",
         "complaint.formal_dispute"
       ],
+      "confidence": "high",
+      "score": 0.581142,
+      "margin": 0.157179,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -6050,6 +6920,9 @@
         "support.callback",
         "technical.lot_image_missing"
       ],
+      "confidence": "high",
+      "score": 0.79495,
+      "margin": 0.449964,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -6071,6 +6944,9 @@
         "technical.catalog_search_filter",
         "support.manual_review_scope"
       ],
+      "confidence": "high",
+      "score": 0.848033,
+      "margin": 0.44473,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -6081,18 +6957,21 @@
       "variant": "taxonomy_paraphrase",
       "expected_scenario_id": "auction.formats",
       "candidate_scenario_ids": [
-        "bid.place",
-        "feedback.improvement_suggestion",
         "auction.formats",
+        "bid.place",
         "buyer.first_bid_checklist",
         "auction.other_platform_offer",
         "bid.price_terms",
         "insurance.osago_rules",
         "compliance.off_platform_payment",
         "bid.maximum_budget",
-        "seller.information_status"
+        "seller.information_status",
+        "bid.not_visible"
       ],
-      "hit_at_1": false,
+      "confidence": "medium",
+      "score": 0.667556,
+      "margin": 0.030295,
+      "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
     },
@@ -6103,8 +6982,8 @@
       "expected_scenario_id": "auction.formats",
       "candidate_scenario_ids": [
         "auction.formats",
-        "bid.place",
         "bid.modify_cancel",
+        "bid.place",
         "auction.other_platform_offer",
         "bid.price_terms",
         "seller.publish_lot",
@@ -6113,6 +6992,9 @@
         "tariff.demo",
         "auction.status"
       ],
+      "confidence": "high",
+      "score": 1.045,
+      "margin": 0.662858,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -6124,8 +7006,8 @@
       "expected_scenario_id": "auction.formats",
       "candidate_scenario_ids": [
         "auction.formats",
-        "bid.place",
         "bid.modify_cancel",
+        "bid.place",
         "auction.other_platform_offer",
         "bid.price_terms",
         "seller.publish_lot",
@@ -6134,6 +7016,9 @@
         "tariff.demo",
         "auction.status"
       ],
+      "confidence": "high",
+      "score": 0.996282,
+      "margin": 0.604038,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -6144,18 +7029,21 @@
       "variant": "taxonomy_paraphrase",
       "expected_scenario_id": "bid.price_terms",
       "candidate_scenario_ids": [
-        "bid.place",
-        "feedback.improvement_suggestion",
         "bid.price_terms",
+        "bid.place",
         "buyer.first_bid_checklist",
         "auction.other_platform_offer",
         "auction.formats",
         "insurance.osago_rules",
         "seller.information_status",
         "bid.not_visible",
-        "bid.maximum_budget"
+        "bid.maximum_budget",
+        "compliance.off_platform_payment"
       ],
-      "hit_at_1": false,
+      "confidence": "high",
+      "score": 0.671339,
+      "margin": 0.104692,
+      "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
     },
@@ -6165,8 +7053,8 @@
       "variant": "transposed_letters",
       "expected_scenario_id": "bid.price_terms",
       "candidate_scenario_ids": [
-        "bid.place",
         "bid.price_terms",
+        "bid.place",
         "tariff.demo",
         "auction.completed_analytics",
         "insurance.osago_rules",
@@ -6176,7 +7064,10 @@
         "buyer.first_bid_checklist",
         "bid.modify_cancel"
       ],
-      "hit_at_1": false,
+      "confidence": "high",
+      "score": 0.588029,
+      "margin": 0.266589,
+      "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
     },
@@ -6186,8 +7077,8 @@
       "variant": "word_order",
       "expected_scenario_id": "bid.price_terms",
       "candidate_scenario_ids": [
-        "bid.place",
         "bid.price_terms",
+        "bid.place",
         "tariff.demo",
         "auction.completed_analytics",
         "insurance.osago_rules",
@@ -6197,7 +7088,10 @@
         "bid.validity",
         "transfer.seller_no_response"
       ],
-      "hit_at_1": false,
+      "confidence": "high",
+      "score": 0.589875,
+      "margin": 0.283531,
+      "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
     },
@@ -6207,19 +7101,22 @@
       "variant": "taxonomy_paraphrase",
       "expected_scenario_id": "bid.price_terms",
       "candidate_scenario_ids": [
-        "bid.place",
         "auction.formats",
-        "feedback.improvement_suggestion",
+        "bid.place",
         "buyer.first_bid_checklist",
         "auction.other_platform_offer",
         "bid.price_terms",
         "bid.modify_cancel",
         "seller.information_status",
         "bid.not_visible",
-        "bid.maximum_budget"
+        "bid.maximum_budget",
+        "insurance.osago_rules"
       ],
+      "confidence": "high",
+      "score": 0.665688,
+      "margin": 0.099228,
       "hit_at_1": false,
-      "hit_at_5": false,
+      "hit_at_5": true,
       "hit_at_10": true
     },
     {
@@ -6239,6 +7136,9 @@
         "tariff.promotion",
         "buyer.get_started"
       ],
+      "confidence": "high",
+      "score": 0.756959,
+      "margin": 0.348066,
       "hit_at_1": false,
       "hit_at_5": true,
       "hit_at_10": true
@@ -6260,6 +7160,9 @@
         "tariff.promotion",
         "buyer.get_started"
       ],
+      "confidence": "high",
+      "score": 0.776398,
+      "margin": 0.379766,
       "hit_at_1": false,
       "hit_at_5": true,
       "hit_at_10": true
@@ -6271,7 +7174,6 @@
       "expected_scenario_id": "bid.autobid_extension",
       "candidate_scenario_ids": [
         "bid.place",
-        "feedback.improvement_suggestion",
         "buyer.first_bid_checklist",
         "auction.other_platform_offer",
         "auction.formats",
@@ -6279,8 +7181,12 @@
         "bid.autobid_extension",
         "bid.maximum_budget",
         "insurance.osago_rules",
-        "seller.information_status"
+        "seller.information_status",
+        "bid.not_visible"
       ],
+      "confidence": "high",
+      "score": 0.565624,
+      "margin": 0.089341,
       "hit_at_1": false,
       "hit_at_5": false,
       "hit_at_10": true
@@ -6291,8 +7197,8 @@
       "variant": "transposed_letters",
       "expected_scenario_id": "bid.autobid_extension",
       "candidate_scenario_ids": [
-        "bid.place",
         "bid.autobid_extension",
+        "bid.place",
         "auction.formats",
         "buyer.get_started",
         "bid.price_terms",
@@ -6302,7 +7208,10 @@
         "vehicle.legal_check",
         "bid.validity"
       ],
-      "hit_at_1": false,
+      "confidence": "medium",
+      "score": 0.389522,
+      "margin": 0.043618,
+      "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
     },
@@ -6312,8 +7221,8 @@
       "variant": "word_order",
       "expected_scenario_id": "bid.autobid_extension",
       "candidate_scenario_ids": [
-        "bid.place",
         "bid.autobid_extension",
+        "bid.place",
         "seller.contract_term",
         "refusal.unconfirmed_details",
         "contract.unconfirmed_details",
@@ -6323,7 +7232,10 @@
         "seller.publish_lot",
         "buyer.first_bid_checklist"
       ],
-      "hit_at_1": false,
+      "confidence": "high",
+      "score": 0.596718,
+      "margin": 0.27483,
+      "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
     },
@@ -6333,18 +7245,21 @@
       "variant": "taxonomy_paraphrase",
       "expected_scenario_id": "bid.autobid_extension",
       "candidate_scenario_ids": [
-        "bid.place",
-        "feedback.improvement_suggestion",
         "bid.autobid_extension",
+        "bid.place",
         "buyer.first_bid_checklist",
         "auction.other_platform_offer",
         "auction.formats",
         "bid.price_terms",
+        "feedback.improvement_suggestion",
         "bid.not_visible",
         "seller.information_status",
         "insurance.osago_rules"
       ],
-      "hit_at_1": false,
+      "confidence": "high",
+      "score": 0.703777,
+      "margin": 0.218015,
+      "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
     },
@@ -6354,8 +7269,8 @@
       "variant": "transposed_letters",
       "expected_scenario_id": "bid.autobid_extension",
       "candidate_scenario_ids": [
-        "bid.place",
         "bid.autobid_extension",
+        "bid.place",
         "bid.modify_cancel",
         "auction.result",
         "tariff.demo",
@@ -6365,7 +7280,10 @@
         "bid.position_service",
         "bid.expired"
       ],
-      "hit_at_1": false,
+      "confidence": "high",
+      "score": 0.541432,
+      "margin": 0.124073,
+      "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
     },
@@ -6375,8 +7293,8 @@
       "variant": "word_order",
       "expected_scenario_id": "bid.autobid_extension",
       "candidate_scenario_ids": [
-        "bid.place",
         "bid.autobid_extension",
+        "bid.place",
         "bid.modify_cancel",
         "tariff.demo",
         "win.next_steps",
@@ -6386,7 +7304,10 @@
         "lot.payment.overdue",
         "bid.validity"
       ],
-      "hit_at_1": false,
+      "confidence": "high",
+      "score": 0.523027,
+      "margin": 0.113316,
+      "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
     },
@@ -6397,7 +7318,6 @@
       "expected_scenario_id": "bid.autobid_extension",
       "candidate_scenario_ids": [
         "bid.place",
-        "feedback.improvement_suggestion",
         "bid.autobid_extension",
         "buyer.first_bid_checklist",
         "auction.other_platform_offer",
@@ -6405,8 +7325,12 @@
         "bid.price_terms",
         "seller.information_status",
         "bid.not_visible",
+        "feedback.improvement_suggestion",
         "bid.maximum_budget"
       ],
+      "confidence": "high",
+      "score": 0.559117,
+      "margin": 0.099659,
       "hit_at_1": false,
       "hit_at_5": true,
       "hit_at_10": true
@@ -6428,6 +7352,9 @@
         "account.blocked",
         "privacy.rights_withdrawal"
       ],
+      "confidence": "high",
+      "score": 0.538605,
+      "margin": 0.286115,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -6449,6 +7376,9 @@
         "privacy.processing_purposes",
         "account.blocked"
       ],
+      "confidence": "high",
+      "score": 0.521676,
+      "margin": 0.277671,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -6470,6 +7400,9 @@
         "insurance.osago_rules",
         "bid.maximum_budget"
       ],
+      "confidence": "high",
+      "score": 0.85916,
+      "margin": 0.356286,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -6491,6 +7424,9 @@
         "lot.card_information",
         "property.evaluate"
       ],
+      "confidence": "high",
+      "score": 0.872662,
+      "margin": 0.61674,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -6512,6 +7448,9 @@
         "commission.discount",
         "lot.card_information"
       ],
+      "confidence": "high",
+      "score": 1.017722,
+      "margin": 0.799656,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -6522,18 +7461,21 @@
       "variant": "taxonomy_paraphrase",
       "expected_scenario_id": "bid.position_service",
       "candidate_scenario_ids": [
-        "bid.place",
-        "bid.price_terms",
-        "feedback.improvement_suggestion",
         "bid.position_service",
+        "bid.price_terms",
+        "bid.place",
         "buyer.first_bid_checklist",
         "auction.other_platform_offer",
         "refund.eligibility",
         "auction.formats",
         "bid.autobid_extension",
-        "insurance.osago_rules"
+        "insurance.osago_rules",
+        "bid.not_visible"
       ],
-      "hit_at_1": false,
+      "confidence": "high",
+      "score": 0.701868,
+      "margin": 0.078205,
+      "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
     },
@@ -6543,10 +7485,10 @@
       "variant": "transposed_letters",
       "expected_scenario_id": "bid.position_service",
       "candidate_scenario_ids": [
-        "bid.place",
         "bid.position_service",
         "refund.eligibility",
         "auction.formats",
+        "bid.place",
         "bid.price_terms",
         "auction.result",
         "auction.other_platform_offer",
@@ -6554,7 +7496,10 @@
         "bid.modify_cancel",
         "bid.autobid_extension"
       ],
-      "hit_at_1": false,
+      "confidence": "high",
+      "score": 0.813997,
+      "margin": 0.45675,
+      "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
     },
@@ -6565,8 +7510,8 @@
       "expected_scenario_id": "bid.position_service",
       "candidate_scenario_ids": [
         "bid.position_service",
-        "bid.place",
         "auction.formats",
+        "bid.place",
         "refund.eligibility",
         "refusal.invalid_reasons",
         "inspection.problem",
@@ -6575,6 +7520,9 @@
         "auction.other_platform_offer",
         "buyer.first_bid_checklist"
       ],
+      "confidence": "high",
+      "score": 0.906588,
+      "margin": 0.618524,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -6585,18 +7533,21 @@
       "variant": "taxonomy_paraphrase",
       "expected_scenario_id": "transfer.notification_contact",
       "candidate_scenario_ids": [
-        "pickup.receive_lot",
-        "bid.modify_cancel",
         "transfer.notification_contact",
         "partnership.official_proposal",
         "safety.reported_threat",
+        "pickup.receive_lot",
+        "bid.modify_cancel",
         "seller.information_status",
         "seller.publish_lot",
         "seller.buyer_refusal",
         "platform.about",
         "lot.insufficient_information"
       ],
-      "hit_at_1": false,
+      "confidence": "high",
+      "score": 0.671265,
+      "margin": 0.334248,
+      "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
     },
@@ -6617,6 +7568,9 @@
         "refusal.unconfirmed_details",
         "seller.contract_term"
       ],
+      "confidence": "high",
+      "score": 0.817575,
+      "margin": 0.487562,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -6638,6 +7592,9 @@
         "refusal.change_mind",
         "refusal.unconfirmed_details"
       ],
+      "confidence": "high",
+      "score": 0.896996,
+      "margin": 0.376728,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -6659,6 +7616,9 @@
         "compliance.private_arrangement",
         "support.email_no_response"
       ],
+      "confidence": "high",
+      "score": 0.686514,
+      "margin": 0.332466,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -6680,6 +7640,9 @@
         "refusal.evidence",
         "support.lot_case_review"
       ],
+      "confidence": "high",
+      "score": 0.791677,
+      "margin": 0.376598,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -6701,6 +7664,9 @@
         "refund.application",
         "payment.accounting_documents"
       ],
+      "confidence": "high",
+      "score": 0.857749,
+      "margin": 0.447455,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -6711,18 +7677,21 @@
       "variant": "taxonomy_paraphrase",
       "expected_scenario_id": "contract.parties_signing",
       "candidate_scenario_ids": [
-        "tariff.choose",
         "contract.parties_signing",
         "support.office_visit",
         "contract.receive",
         "documents.actual_amount",
+        "tariff.choose",
         "documents.preparation_delay",
         "seller.information_status",
         "vehicle.credit_lease_pledge",
         "compliance.private_arrangement",
         "vehicle.owner_listing_dispute"
       ],
-      "hit_at_1": false,
+      "confidence": "high",
+      "score": 0.703929,
+      "margin": 0.35948,
+      "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
     },
@@ -6743,6 +7712,9 @@
         "commission.discount",
         "transfer.not_confirmed"
       ],
+      "confidence": "high",
+      "score": 0.711177,
+      "margin": 0.481219,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -6764,6 +7736,9 @@
         "commission.discount",
         "transfer.not_confirmed"
       ],
+      "confidence": "high",
+      "score": 0.852489,
+      "margin": 0.650869,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -6785,6 +7760,9 @@
         "seller.publish_lot",
         "lot.catalog_search"
       ],
+      "confidence": "high",
+      "score": 0.70131,
+      "margin": 0.259982,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -6796,8 +7774,8 @@
       "expected_scenario_id": "inspection.problem",
       "candidate_scenario_ids": [
         "inspection.problem",
-        "tariff.choose",
         "inspection.arrange",
+        "tariff.choose",
         "property.inspection_documents",
         "technical.lot_image_missing",
         "tariff.status",
@@ -6806,6 +7784,9 @@
         "tariff.promotion",
         "tariff.one_time"
       ],
+      "confidence": "high",
+      "score": 0.791025,
+      "margin": 0.450082,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -6817,9 +7798,9 @@
       "expected_scenario_id": "inspection.problem",
       "candidate_scenario_ids": [
         "inspection.problem",
-        "tariff.choose",
         "property.inspection_documents",
         "inspection.arrange",
+        "tariff.choose",
         "technical.lot_image_missing",
         "tariff.status",
         "tariff.connect",
@@ -6827,6 +7808,9 @@
         "tariff.demo",
         "tariff.one_time"
       ],
+      "confidence": "high",
+      "score": 0.87219,
+      "margin": 0.486372,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -6837,8 +7821,8 @@
       "variant": "taxonomy_paraphrase",
       "expected_scenario_id": "pickup.access_issuer",
       "candidate_scenario_ids": [
-        "lot.location",
         "pickup.access_issuer",
+        "lot.location",
         "inspection.problem",
         "partnership.official_proposal",
         "safety.reported_threat",
@@ -6848,7 +7832,10 @@
         "lot.status_guide",
         "compliance.private_arrangement"
       ],
-      "hit_at_1": false,
+      "confidence": "high",
+      "score": 0.668819,
+      "margin": 0.216794,
+      "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
     },
@@ -6860,15 +7847,18 @@
       "candidate_scenario_ids": [
         "pickup.access_issuer",
         "lot.location",
-        "pickup.receive_lot",
         "tariff.choose",
         "inspection.problem",
+        "pickup.receive_lot",
         "tariff.one_time",
         "tariff.status",
         "payment.checkout_problem",
         "lot.definition",
         "tariff.connect"
       ],
+      "confidence": "high",
+      "score": 0.885,
+      "margin": 0.383955,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -6881,15 +7871,18 @@
       "candidate_scenario_ids": [
         "pickup.access_issuer",
         "lot.location",
-        "pickup.receive_lot",
-        "tariff.choose",
         "inspection.problem",
+        "tariff.choose",
+        "pickup.receive_lot",
         "tariff.one_time",
         "tariff.status",
         "payment.checkout_problem",
         "lot.definition",
         "tariff.connect"
       ],
+      "confidence": "high",
+      "score": 0.856246,
+      "margin": 0.350252,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -6900,8 +7893,8 @@
       "variant": "taxonomy_paraphrase",
       "expected_scenario_id": "pickup.representative",
       "candidate_scenario_ids": [
-        "pickup.receive_lot",
         "pickup.representative",
+        "pickup.receive_lot",
         "account.identification_edge_case",
         "pickup.access_issuer",
         "vehicle.vin_request",
@@ -6911,7 +7904,10 @@
         "buyer.beginner_lot_selection",
         "partnership.official_proposal"
       ],
-      "hit_at_1": false,
+      "confidence": "high",
+      "score": 0.750143,
+      "margin": 0.228117,
+      "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
     },
@@ -6921,8 +7917,8 @@
       "variant": "transposed_letters",
       "expected_scenario_id": "pickup.representative",
       "candidate_scenario_ids": [
-        "pickup.receive_lot",
         "pickup.representative",
+        "pickup.receive_lot",
         "account.identification_edge_case",
         "pickup.access_issuer",
         "win.next_steps",
@@ -6932,7 +7928,10 @@
         "notification.delivery_problem",
         "transfer.confirmed"
       ],
-      "hit_at_1": false,
+      "confidence": "high",
+      "score": 0.752743,
+      "margin": 0.26029,
+      "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
     },
@@ -6953,6 +7952,9 @@
         "transfer.confirmed",
         "notification.delivery_problem"
       ],
+      "confidence": "high",
+      "score": 0.885723,
+      "margin": 0.433383,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -6963,7 +7965,6 @@
       "variant": "taxonomy_paraphrase",
       "expected_scenario_id": "documents.payer_change",
       "candidate_scenario_ids": [
-        "auction.formats",
         "documents.payer_change",
         "lot.payment.details",
         "pickup.representative",
@@ -6972,9 +7973,13 @@
         "commission.explained",
         "partnership.official_proposal",
         "safety.reported_threat",
+        "auction.formats",
         "penalty.explain_or_dispute"
       ],
-      "hit_at_1": false,
+      "confidence": "high",
+      "score": 0.736393,
+      "margin": 0.173502,
+      "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
     },
@@ -6985,7 +7990,6 @@
       "expected_scenario_id": "documents.payer_change",
       "candidate_scenario_ids": [
         "documents.payer_change",
-        "auction.formats",
         "lot.payment.details",
         "finance.status.clarify",
         "compliance.off_platform_payment",
@@ -6993,8 +7997,12 @@
         "commission.explained",
         "payment.methods",
         "balance.topup.commission",
-        "lot.payment.overdue"
+        "lot.payment.overdue",
+        "payment.document_policy"
       ],
+      "confidence": "high",
+      "score": 0.810793,
+      "margin": 0.388184,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -7006,7 +8014,6 @@
       "expected_scenario_id": "documents.payer_change",
       "candidate_scenario_ids": [
         "documents.payer_change",
-        "auction.formats",
         "lot.payment.details",
         "account.identification_edge_case",
         "finance.status.clarify",
@@ -7014,8 +8021,12 @@
         "compliance.off_platform_payment",
         "commission.explained",
         "bid.position_service",
-        "payment.methods"
+        "payment.methods",
+        "balance.topup.commission"
       ],
+      "confidence": "high",
+      "score": 0.87213,
+      "margin": 0.475596,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -7026,18 +8037,21 @@
       "variant": "taxonomy_paraphrase",
       "expected_scenario_id": "documents.actual_amount",
       "candidate_scenario_ids": [
-        "contract.receive",
-        "auction.formats",
         "documents.actual_amount",
+        "contract.receive",
         "lot.payment.details",
         "compliance.private_arrangement",
         "auction.other_platform_offer",
         "documents.preparation_delay",
         "contract.parties_signing",
         "payment.document_policy",
-        "refund.application"
+        "refund.application",
+        "support.office_visit"
       ],
-      "hit_at_1": false,
+      "confidence": "high",
+      "score": 0.75897,
+      "margin": 0.33255,
+      "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
     },
@@ -7058,6 +8072,9 @@
         "property.inspection_documents",
         "bid.place"
       ],
+      "confidence": "high",
+      "score": 0.791338,
+      "margin": 0.537923,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -7079,6 +8096,9 @@
         "property.inspection_documents",
         "bid.place"
       ],
+      "confidence": "high",
+      "score": 0.888824,
+      "margin": 0.656974,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -7100,6 +8120,9 @@
         "lot.catalog_search",
         "tariff.one_time"
       ],
+      "confidence": "medium",
+      "score": 0.591656,
+      "margin": 0.02673,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -7121,6 +8144,9 @@
         "vehicle.business_use_cases",
         "property.inspection_documents"
       ],
+      "confidence": "high",
+      "score": 0.759991,
+      "margin": 0.353797,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -7142,6 +8168,9 @@
         "vehicle.business_use_cases",
         "vehicle.owner_listing_dispute"
       ],
+      "confidence": "high",
+      "score": 0.822674,
+      "margin": 0.370629,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -7163,6 +8192,9 @@
         "platform.about",
         "seller.categories"
       ],
+      "confidence": "high",
+      "score": 0.595948,
+      "margin": 0.171032,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -7184,6 +8216,9 @@
         "seller.publish_lot",
         "inspection.arrange"
       ],
+      "confidence": "high",
+      "score": 0.757856,
+      "margin": 0.447263,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -7205,6 +8240,9 @@
         "seller.publish_lot",
         "inspection.arrange"
       ],
+      "confidence": "high",
+      "score": 0.842133,
+      "margin": 0.566075,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -7226,6 +8264,9 @@
         "platform.about",
         "tariff.one_time"
       ],
+      "confidence": "high",
+      "score": 0.731533,
+      "margin": 0.250549,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -7247,6 +8288,9 @@
         "bid.modify_cancel",
         "tariff.choose"
       ],
+      "confidence": "high",
+      "score": 0.728229,
+      "margin": 0.486314,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -7268,6 +8312,9 @@
         "partnership.official_proposal",
         "safety.reported_threat"
       ],
+      "confidence": "high",
+      "score": 0.839536,
+      "margin": 0.674223,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -7289,6 +8336,9 @@
         "buyer.beginner_lot_selection",
         "bid.maximum_budget"
       ],
+      "confidence": "high",
+      "score": 0.679112,
+      "margin": 0.159251,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -7310,6 +8360,9 @@
         "lot.insufficient_information",
         "buyer.personal_purchase"
       ],
+      "confidence": "high",
+      "score": 0.772239,
+      "margin": 0.25947,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -7331,6 +8384,9 @@
         "lot.insufficient_information",
         "lot.card_information"
       ],
+      "confidence": "high",
+      "score": 0.851311,
+      "margin": 0.374189,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -7341,8 +8397,8 @@
       "variant": "taxonomy_paraphrase",
       "expected_scenario_id": "insurance.osago_rules",
       "candidate_scenario_ids": [
-        "bid.place",
         "insurance.osago_rules",
+        "bid.place",
         "buyer.resale_strategy",
         "vehicle.business_use_cases",
         "buyer.personal_purchase",
@@ -7352,7 +8408,10 @@
         "platform.about",
         "vehicle.autoteka_visibility"
       ],
-      "hit_at_1": false,
+      "confidence": "high",
+      "score": 0.667393,
+      "margin": 0.313299,
+      "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
     },
@@ -7373,6 +8432,9 @@
         "safety.reported_threat",
         "tariff.premium"
       ],
+      "confidence": "high",
+      "score": 0.745839,
+      "margin": 0.568819,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -7394,6 +8456,9 @@
         "loyalty.unconfirmed_details",
         "safety.reported_threat"
       ],
+      "confidence": "high",
+      "score": 0.851478,
+      "margin": 0.698077,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -7415,6 +8480,9 @@
         "auction.formats",
         "lot.catalog_search"
       ],
+      "confidence": "high",
+      "score": 0.612158,
+      "margin": 0.212333,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -7436,6 +8504,9 @@
         "seller.categories",
         "win.next_steps"
       ],
+      "confidence": "high",
+      "score": 0.672598,
+      "margin": 0.128873,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -7457,6 +8528,9 @@
         "seller.categories",
         "support.telegram_channels"
       ],
+      "confidence": "high",
+      "score": 0.777788,
+      "margin": 0.296759,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -7478,6 +8552,9 @@
         "property.business",
         "lot.catalog_search"
       ],
+      "confidence": "high",
+      "score": 0.738142,
+      "margin": 0.294251,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -7488,8 +8565,8 @@
       "variant": "transposed_letters",
       "expected_scenario_id": "property.evaluate",
       "candidate_scenario_ids": [
-        "bid.modify_cancel",
         "property.evaluate",
+        "bid.modify_cancel",
         "property.business",
         "auction.formats",
         "bid.price_terms",
@@ -7499,7 +8576,10 @@
         "buyer.first_bid_checklist",
         "vehicle.autoteka_visibility"
       ],
-      "hit_at_1": false,
+      "confidence": "high",
+      "score": 0.764684,
+      "margin": 0.235455,
+      "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
     },
@@ -7520,6 +8600,9 @@
         "property.bulk_goods",
         "buyer.get_started"
       ],
+      "confidence": "high",
+      "score": 0.878883,
+      "margin": 0.390473,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -7541,6 +8624,9 @@
         "account.mobile_access",
         "property.business"
       ],
+      "confidence": "high",
+      "score": 0.752629,
+      "margin": 0.323493,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -7562,6 +8648,9 @@
         "account.login_problem",
         "buyer.first_bid_checklist"
       ],
+      "confidence": "high",
+      "score": 0.710623,
+      "margin": 0.407848,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -7583,6 +8672,9 @@
         "lot.card_information",
         "buyer.resale_strategy"
       ],
+      "confidence": "high",
+      "score": 0.834318,
+      "margin": 0.547125,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -7604,6 +8696,9 @@
         "lot.status_guide",
         "compliance.private_arrangement"
       ],
+      "confidence": "high",
+      "score": 0.65754,
+      "margin": 0.373072,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -7625,6 +8720,9 @@
         "seller.publish_lot",
         "inspection.arrange"
       ],
+      "confidence": "high",
+      "score": 0.754982,
+      "margin": 0.447031,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -7646,6 +8744,9 @@
         "buyer.first_bid_checklist",
         "seller.publish_lot"
       ],
+      "confidence": "high",
+      "score": 0.825515,
+      "margin": 0.557591,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -7667,6 +8768,9 @@
         "property.bulk_goods",
         "inspection.arrange"
       ],
+      "confidence": "high",
+      "score": 0.736243,
+      "margin": 0.420086,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -7688,6 +8792,9 @@
         "contract.receive",
         "property.overview"
       ],
+      "confidence": "high",
+      "score": 0.790709,
+      "margin": 0.517964,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -7709,6 +8816,9 @@
         "lot.catalog_search",
         "lot.payment.details"
       ],
+      "confidence": "high",
+      "score": 0.922136,
+      "margin": 0.507481,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -7719,8 +8829,8 @@
       "variant": "taxonomy_paraphrase",
       "expected_scenario_id": "property.section_error",
       "candidate_scenario_ids": [
-        "technical.site_error",
         "property.section_error",
+        "technical.site_error",
         "property.overview",
         "refund.eligibility",
         "payment.checkout_problem",
@@ -7730,7 +8840,10 @@
         "refund.application",
         "account.credential_responsibility"
       ],
-      "hit_at_1": false,
+      "confidence": "high",
+      "score": 0.58436,
+      "margin": 0.089883,
+      "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
     },
@@ -7751,6 +8864,9 @@
         "support.telegram_channels",
         "vehicle.insurance_catalog"
       ],
+      "confidence": "high",
+      "score": 0.86,
+      "margin": 0.353672,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -7761,8 +8877,8 @@
       "variant": "word_order",
       "expected_scenario_id": "property.section_error",
       "candidate_scenario_ids": [
-        "technical.site_error",
         "property.section_error",
+        "technical.site_error",
         "property.overview",
         "property.inspection_documents",
         "property.bulk_goods",
@@ -7772,7 +8888,10 @@
         "support.telegram_channels",
         "vehicle.insurance_catalog"
       ],
-      "hit_at_1": false,
+      "confidence": "high",
+      "score": 0.760922,
+      "margin": 0.217482,
+      "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
     },
@@ -7782,8 +8901,8 @@
       "variant": "taxonomy_paraphrase",
       "expected_scenario_id": "vehicle.insurance_catalog",
       "candidate_scenario_ids": [
-        "lot.catalog_search",
         "vehicle.insurance_catalog",
+        "lot.catalog_search",
         "technical.catalog_search_filter",
         "lot.definition",
         "buyer.resale_strategy",
@@ -7793,7 +8912,10 @@
         "buyer.beginner_lot_selection",
         "lot.location"
       ],
-      "hit_at_1": false,
+      "confidence": "high",
+      "score": 0.645984,
+      "margin": 0.22642,
+      "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
     },
@@ -7814,6 +8936,9 @@
         "inspection.arrange",
         "buyer.get_started"
       ],
+      "confidence": "high",
+      "score": 0.728639,
+      "margin": 0.519615,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -7835,6 +8960,9 @@
         "inspection.arrange",
         "buyer.get_started"
       ],
+      "confidence": "high",
+      "score": 0.857589,
+      "margin": 0.596736,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -7845,9 +8973,9 @@
       "variant": "taxonomy_paraphrase",
       "expected_scenario_id": "lot.definition",
       "candidate_scenario_ids": [
-        "bid.place",
         "bid.price_terms",
         "lot.definition",
+        "bid.place",
         "partnership.official_proposal",
         "safety.reported_threat",
         "lot.status_guide",
@@ -7856,6 +8984,9 @@
         "auction.other_platform_offer",
         "property.evaluate"
       ],
+      "confidence": "high",
+      "score": 0.645664,
+      "margin": 0.064717,
       "hit_at_1": false,
       "hit_at_5": true,
       "hit_at_10": true
@@ -7877,6 +9008,9 @@
         "pickup.access_issuer",
         "pickup.receive_lot"
       ],
+      "confidence": "high",
+      "score": 0.767938,
+      "margin": 0.32753,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -7898,6 +9032,9 @@
         "registration.accreditation",
         "buyer.first_bid_checklist"
       ],
+      "confidence": "high",
+      "score": 0.68207,
+      "margin": 0.264179,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -7919,6 +9056,9 @@
         "tariff.status",
         "complaint.formal_dispute"
       ],
+      "confidence": "high",
+      "score": 0.700032,
+      "margin": 0.299507,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -7940,6 +9080,9 @@
         "tariff.connect",
         "payment.not_visible"
       ],
+      "confidence": "high",
+      "score": 0.885,
+      "margin": 0.32114,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -7961,6 +9104,9 @@
         "tariff.connect",
         "payment.not_visible"
       ],
+      "confidence": "high",
+      "score": 0.851313,
+      "margin": 0.354986,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -7982,6 +9128,9 @@
         "seller.get_started",
         "tariff.connect"
       ],
+      "confidence": "high",
+      "score": 0.70058,
+      "margin": 0.298826,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -8003,6 +9152,9 @@
         "account.credential_responsibility",
         "property.section_error"
       ],
+      "confidence": "high",
+      "score": 0.86,
+      "margin": 0.531074,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -8024,6 +9176,9 @@
         "refusal.deadline_and_submission",
         "account.activation_pending"
       ],
+      "confidence": "high",
+      "score": 0.832209,
+      "margin": 0.473301,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -8034,9 +9189,9 @@
       "variant": "taxonomy_paraphrase",
       "expected_scenario_id": "lot.status_guide",
       "candidate_scenario_ids": [
+        "lot.status_guide",
         "auction.status",
         "bid.price_terms",
-        "lot.status_guide",
         "partnership.official_proposal",
         "safety.reported_threat",
         "compliance.private_arrangement",
@@ -8045,7 +9200,10 @@
         "auction.formats",
         "seller.information_status"
       ],
-      "hit_at_1": false,
+      "confidence": "high",
+      "score": 0.702538,
+      "margin": 0.188327,
+      "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
     },
@@ -8066,6 +9224,9 @@
         "vehicle.owner_listing_dispute",
         "lot.insufficient_information"
       ],
+      "confidence": "high",
+      "score": 0.625223,
+      "margin": 0.254835,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -8087,6 +9248,9 @@
         "lot.definition",
         "tariff.choose"
       ],
+      "confidence": "high",
+      "score": 0.821487,
+      "margin": 0.55501,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -8097,8 +9261,8 @@
       "variant": "taxonomy_paraphrase",
       "expected_scenario_id": "notification.delivery_problem",
       "candidate_scenario_ids": [
-        "technical.site_error",
         "notification.delivery_problem",
+        "technical.site_error",
         "documents.preparation_delay",
         "partnership.official_proposal",
         "safety.reported_threat",
@@ -8108,7 +9272,10 @@
         "payment.checkout_problem",
         "lot.status_guide"
       ],
-      "hit_at_1": false,
+      "confidence": "high",
+      "score": 0.585528,
+      "margin": 0.243667,
+      "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
     },
@@ -8118,7 +9285,6 @@
       "variant": "transposed_letters",
       "expected_scenario_id": "notification.delivery_problem",
       "candidate_scenario_ids": [
-        "technical.site_error",
         "notification.delivery_problem",
         "documents.preparation_delay",
         "payment.checkout_problem",
@@ -8127,9 +9293,13 @@
         "loyalty.unconfirmed_details",
         "buyer.personal_purchase",
         "transfer.not_confirmed",
-        "transfer.confirmed"
+        "transfer.confirmed",
+        "transfer.requisites"
       ],
-      "hit_at_1": false,
+      "confidence": "high",
+      "score": 0.679738,
+      "margin": 0.26028,
+      "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
     },
@@ -8140,7 +9310,6 @@
       "expected_scenario_id": "notification.delivery_problem",
       "candidate_scenario_ids": [
         "notification.delivery_problem",
-        "technical.site_error",
         "documents.preparation_delay",
         "account.login_problem",
         "payment.checkout_problem",
@@ -8148,8 +9317,12 @@
         "transfer.notification_contact",
         "support.email_no_response",
         "loyalty.unconfirmed_details",
-        "transfer.not_confirmed"
+        "transfer.not_confirmed",
+        "buyer.personal_purchase"
       ],
+      "confidence": "high",
+      "score": 0.822982,
+      "margin": 0.462629,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -8171,6 +9344,9 @@
         "support.manual_review_scope",
         "support.office_visit"
       ],
+      "confidence": "medium",
+      "score": 0.592431,
+      "margin": 0.011371,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -8192,6 +9368,9 @@
         "property.inspection_documents",
         "loyalty.unconfirmed_details"
       ],
+      "confidence": "high",
+      "score": 0.768094,
+      "margin": 0.634457,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -8213,6 +9392,9 @@
         "support.contact",
         "pickup.access_issuer"
       ],
+      "confidence": "high",
+      "score": 0.837748,
+      "margin": 0.651058,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -8234,6 +9416,9 @@
         "payment.not_visible",
         "account.login_problem"
       ],
+      "confidence": "high",
+      "score": 0.780336,
+      "margin": 0.371639,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -8255,6 +9440,9 @@
         "seller.categories",
         "payment.checkout_problem"
       ],
+      "confidence": "high",
+      "score": 0.722954,
+      "margin": 0.351071,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -8276,6 +9464,9 @@
         "account.login_problem",
         "seller.categories"
       ],
+      "confidence": "high",
+      "score": 0.826794,
+      "margin": 0.471047,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -8297,6 +9488,9 @@
         "tariff.one_time",
         "lot.catalog_search"
       ],
+      "confidence": "high",
+      "score": 0.726539,
+      "margin": 0.277804,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -8318,6 +9512,9 @@
         "buyer.first_bid_checklist",
         "property.bulk_goods"
       ],
+      "confidence": "high",
+      "score": 0.86,
+      "margin": 0.427572,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -8339,6 +9536,9 @@
         "inspection.arrange",
         "buyer.beginner_lot_selection"
       ],
+      "confidence": "high",
+      "score": 0.851896,
+      "margin": 0.44382,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -8360,6 +9560,9 @@
         "lot.catalog_search",
         "vehicle.legal_check"
       ],
+      "confidence": "high",
+      "score": 0.686554,
+      "margin": 0.170733,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -8381,6 +9584,9 @@
         "tariff.choose",
         "privacy.processing_purposes"
       ],
+      "confidence": "high",
+      "score": 0.731113,
+      "margin": 0.450125,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -8402,6 +9608,9 @@
         "platform.about",
         "buyer.beginner_lot_selection"
       ],
+      "confidence": "high",
+      "score": 0.846895,
+      "margin": 0.505546,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -8412,18 +9621,21 @@
       "variant": "taxonomy_paraphrase",
       "expected_scenario_id": "buyer.first_bid_checklist",
       "candidate_scenario_ids": [
-        "bid.place",
-        "feedback.improvement_suggestion",
         "buyer.first_bid_checklist",
+        "bid.place",
         "auction.other_platform_offer",
         "auction.formats",
         "bid.price_terms",
         "seller.information_status",
         "bid.validity",
         "insurance.osago_rules",
-        "bid.not_visible"
+        "bid.not_visible",
+        "feedback.improvement_suggestion"
       ],
-      "hit_at_1": false,
+      "confidence": "high",
+      "score": 0.711546,
+      "margin": 0.17588,
+      "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
     },
@@ -8433,8 +9645,8 @@
       "variant": "transposed_letters",
       "expected_scenario_id": "buyer.first_bid_checklist",
       "candidate_scenario_ids": [
-        "bid.place",
         "buyer.first_bid_checklist",
+        "bid.place",
         "bid.price_terms",
         "auction.formats",
         "buyer.beginner_lot_selection",
@@ -8444,7 +9656,10 @@
         "bid.modify_cancel",
         "seller.publish_lot"
       ],
-      "hit_at_1": false,
+      "confidence": "high",
+      "score": 0.671422,
+      "margin": 0.073367,
+      "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
     },
@@ -8454,8 +9669,8 @@
       "variant": "word_order",
       "expected_scenario_id": "buyer.first_bid_checklist",
       "candidate_scenario_ids": [
-        "bid.place",
         "buyer.first_bid_checklist",
+        "bid.place",
         "bid.price_terms",
         "auction.formats",
         "documents.preparation_delay",
@@ -8465,7 +9680,10 @@
         "property.business",
         "insurance.osago_rules"
       ],
-      "hit_at_1": false,
+      "confidence": "high",
+      "score": 0.815753,
+      "margin": 0.311281,
+      "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
     },
@@ -8486,6 +9704,9 @@
         "partnership.official_proposal",
         "safety.reported_threat"
       ],
+      "confidence": "high",
+      "score": 0.680875,
+      "margin": 0.287488,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -8507,6 +9728,9 @@
         "inspection.arrange",
         "tariff.one_time"
       ],
+      "confidence": "high",
+      "score": 0.765105,
+      "margin": 0.568599,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -8528,6 +9752,9 @@
         "platform.about",
         "tariff.premium"
       ],
+      "confidence": "high",
+      "score": 0.842003,
+      "margin": 0.623001,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -8549,6 +9776,9 @@
         "lot.catalog_search",
         "tariff.one_time"
       ],
+      "confidence": "high",
+      "score": 0.714689,
+      "margin": 0.241489,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -8570,6 +9800,9 @@
         "buyer.beginner_lot_selection",
         "inspection.arrange"
       ],
+      "confidence": "high",
+      "score": 0.718098,
+      "margin": 0.43848,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -8591,6 +9824,9 @@
         "buyer.personal_purchase",
         "buyer.beginner_lot_selection"
       ],
+      "confidence": "high",
+      "score": 0.856256,
+      "margin": 0.580818,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -8601,18 +9837,21 @@
       "variant": "taxonomy_paraphrase",
       "expected_scenario_id": "bid.maximum_budget",
       "candidate_scenario_ids": [
-        "bid.place",
-        "feedback.improvement_suggestion",
         "bid.maximum_budget",
+        "bid.place",
         "buyer.first_bid_checklist",
         "insurance.osago_rules",
         "auction.other_platform_offer",
         "auction.formats",
         "bid.price_terms",
         "seller.information_status",
-        "buyer.resale_strategy"
+        "buyer.resale_strategy",
+        "vehicle.business_use_cases"
       ],
-      "hit_at_1": false,
+      "confidence": "high",
+      "score": 0.609919,
+      "margin": 0.088857,
+      "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
     },
@@ -8622,8 +9861,8 @@
       "variant": "transposed_letters",
       "expected_scenario_id": "bid.maximum_budget",
       "candidate_scenario_ids": [
-        "bid.place",
         "bid.maximum_budget",
+        "bid.place",
         "auction.formats",
         "seller.publish_lot",
         "bid.price_terms",
@@ -8633,7 +9872,10 @@
         "compliance.off_platform_payment",
         "platform.about"
       ],
-      "hit_at_1": false,
+      "confidence": "high",
+      "score": 0.644853,
+      "margin": 0.235585,
+      "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
     },
@@ -8643,8 +9885,8 @@
       "variant": "word_order",
       "expected_scenario_id": "bid.maximum_budget",
       "candidate_scenario_ids": [
-        "bid.place",
         "bid.maximum_budget",
+        "bid.place",
         "auction.formats",
         "auction.completed_analytics",
         "seller.publish_lot",
@@ -8654,7 +9896,10 @@
         "auction.other_platform_offer",
         "compliance.off_platform_payment"
       ],
-      "hit_at_1": false,
+      "confidence": "high",
+      "score": 0.805602,
+      "margin": 0.423867,
+      "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
     },
@@ -8664,8 +9909,8 @@
       "variant": "taxonomy_paraphrase",
       "expected_scenario_id": "auction.completed_analytics",
       "candidate_scenario_ids": [
-        "auction.status",
         "auction.completed_analytics",
+        "auction.status",
         "bid.modify_cancel",
         "win.next_steps",
         "auction.formats",
@@ -8675,7 +9920,10 @@
         "bid.price_terms",
         "lot.definition"
       ],
-      "hit_at_1": false,
+      "confidence": "high",
+      "score": 0.759444,
+      "margin": 0.28774,
+      "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
     },
@@ -8685,8 +9933,8 @@
       "variant": "transposed_letters",
       "expected_scenario_id": "auction.completed_analytics",
       "candidate_scenario_ids": [
-        "bid.place",
         "auction.completed_analytics",
+        "bid.place",
         "auction.formats",
         "bid.modify_cancel",
         "seller.publish_lot",
@@ -8696,7 +9944,10 @@
         "auction.other_platform_offer",
         "bid.not_visible"
       ],
-      "hit_at_1": false,
+      "confidence": "high",
+      "score": 0.776016,
+      "margin": 0.414269,
+      "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
     },
@@ -8717,6 +9968,9 @@
         "bid.price_terms",
         "auction.other_platform_offer"
       ],
+      "confidence": "high",
+      "score": 0.897218,
+      "margin": 0.561788,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -8738,6 +9992,9 @@
         "buyer.first_bid_checklist",
         "account.blocked"
       ],
+      "confidence": "high",
+      "score": 0.672533,
+      "margin": 0.312806,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -8759,6 +10016,9 @@
         "payment.document_policy",
         "refund.timing_status"
       ],
+      "confidence": "high",
+      "score": 0.876059,
+      "margin": 0.67635,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -8780,6 +10040,9 @@
         "payment.document_policy",
         "refund.timing_status"
       ],
+      "confidence": "high",
+      "score": 0.986915,
+      "margin": 0.808829,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -8801,6 +10064,9 @@
         "complaint.formal_dispute",
         "refusal.deadline_and_submission"
       ],
+      "confidence": "high",
+      "score": 0.769328,
+      "margin": 0.44224,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -8822,6 +10088,9 @@
         "lot.insufficient_information",
         "lot.card_information"
       ],
+      "confidence": "high",
+      "score": 0.758343,
+      "margin": 0.499119,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -8843,6 +10112,9 @@
         "lot.insufficient_information",
         "inspection.problem"
       ],
+      "confidence": "high",
+      "score": 0.830806,
+      "margin": 0.59871,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -8853,18 +10125,21 @@
       "variant": "taxonomy_paraphrase",
       "expected_scenario_id": "support.manual_review_scope",
       "candidate_scenario_ids": [
-        "auction.status",
-        "support.callback",
         "support.manual_review_scope",
         "compliance.off_platform_payment",
+        "auction.status",
         "partnership.official_proposal",
         "safety.reported_threat",
         "lot.payment.overdue",
         "feedback.bot_answer_complaint",
         "lot.payment.details",
-        "lot.status_guide"
+        "lot.status_guide",
+        "compliance.private_arrangement"
       ],
-      "hit_at_1": false,
+      "confidence": "high",
+      "score": 0.681565,
+      "margin": 0.316915,
+      "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
     },
@@ -8875,7 +10150,6 @@
       "expected_scenario_id": "support.manual_review_scope",
       "candidate_scenario_ids": [
         "support.manual_review_scope",
-        "support.callback",
         "loyalty.unconfirmed_details",
         "payment.not_visible",
         "vehicle.vin_request",
@@ -8883,8 +10157,12 @@
         "contract.receive",
         "refund.timing_status",
         "vehicle.legal_check",
-        "documents.preparation_delay"
+        "documents.preparation_delay",
+        "win.next_steps"
       ],
+      "confidence": "high",
+      "score": 0.755131,
+      "margin": 0.571275,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -8896,7 +10174,6 @@
       "expected_scenario_id": "support.manual_review_scope",
       "candidate_scenario_ids": [
         "support.manual_review_scope",
-        "support.callback",
         "compliance.off_platform_payment",
         "loyalty.unconfirmed_details",
         "vehicle.vin_request",
@@ -8904,8 +10181,12 @@
         "pickup.receive_lot",
         "contract.receive",
         "refund.timing_status",
-        "vehicle.legal_check"
+        "vehicle.legal_check",
+        "documents.preparation_delay"
       ],
+      "confidence": "high",
+      "score": 0.829128,
+      "margin": 0.615339,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -8927,6 +10208,9 @@
         "account.login_problem",
         "tariff.promotion"
       ],
+      "confidence": "high",
+      "score": 0.856992,
+      "margin": 0.359724,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -8948,6 +10232,9 @@
         "lot.payment.overdue",
         "buyer.personal_purchase"
       ],
+      "confidence": "high",
+      "score": 1.045,
+      "margin": 0.636498,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -8969,6 +10256,9 @@
         "lot.payment.overdue",
         "buyer.personal_purchase"
       ],
+      "confidence": "high",
+      "score": 1.009872,
+      "margin": 0.586733,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -8990,6 +10280,9 @@
         "support.manual_review_scope",
         "platform.about"
       ],
+      "confidence": "high",
+      "score": 0.633721,
+      "margin": 0.09819,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -9011,6 +10304,9 @@
         "privacy.data_categories",
         "partnership.official_proposal"
       ],
+      "confidence": "high",
+      "score": 0.738222,
+      "margin": 0.554688,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -9032,6 +10328,9 @@
         "privacy.data_categories",
         "partnership.official_proposal"
       ],
+      "confidence": "high",
+      "score": 0.82911,
+      "margin": 0.668053,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -9053,6 +10352,9 @@
         "technical.site_error",
         "support.manual_review_scope"
       ],
+      "confidence": "high",
+      "score": 0.853031,
+      "margin": 0.609546,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -9074,6 +10376,9 @@
         "seller.categories",
         "account.mobile_access"
       ],
+      "confidence": "high",
+      "score": 1.014,
+      "margin": 0.727874,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -9095,6 +10400,9 @@
         "seller.categories",
         "account.mobile_access"
       ],
+      "confidence": "high",
+      "score": 0.966585,
+      "margin": 0.673759,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -9116,6 +10424,9 @@
         "support.manual_review_scope",
         "seller.publish_lot"
       ],
+      "confidence": "high",
+      "score": 0.789666,
+      "margin": 0.207243,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -9137,6 +10448,9 @@
         "transfer.seller_no_response",
         "property.inspection_documents"
       ],
+      "confidence": "high",
+      "score": 0.851427,
+      "margin": 0.604465,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -9158,6 +10472,9 @@
         "transfer.seller_no_response",
         "documents.preparation_delay"
       ],
+      "confidence": "high",
+      "score": 0.979196,
+      "margin": 0.765412,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -9179,6 +10496,9 @@
         "property.evaluate",
         "property.bulk_goods"
       ],
+      "confidence": "high",
+      "score": 0.798043,
+      "margin": 0.36345,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -9200,6 +10520,9 @@
         "feedback.platform_complaint",
         "property.section_error"
       ],
+      "confidence": "high",
+      "score": 1.02,
+      "margin": 0.623589,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -9221,6 +10544,9 @@
         "account.mobile_access",
         "feedback.platform_complaint"
       ],
+      "confidence": "high",
+      "score": 1.028006,
+      "margin": 0.583142,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -9242,6 +10568,9 @@
         "property.bulk_goods",
         "auction.other_platform_offer"
       ],
+      "confidence": "high",
+      "score": 0.621905,
+      "margin": 0.35936,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -9263,6 +10592,9 @@
         "safety.reported_threat",
         "technical.site_error"
       ],
+      "confidence": "high",
+      "score": 0.885,
+      "margin": 0.42252,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -9284,6 +10616,9 @@
         "partnership.official_proposal",
         "safety.reported_threat"
       ],
+      "confidence": "high",
+      "score": 0.835644,
+      "margin": 0.324959,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -9294,8 +10629,8 @@
       "variant": "taxonomy_paraphrase",
       "expected_scenario_id": "compliance.private_arrangement",
       "candidate_scenario_ids": [
-        "bid.place",
         "compliance.private_arrangement",
+        "bid.place",
         "lot.definition",
         "partnership.official_proposal",
         "safety.reported_threat",
@@ -9305,7 +10640,10 @@
         "property.evaluate",
         "property.bulk_goods"
       ],
-      "hit_at_1": false,
+      "confidence": "high",
+      "score": 0.612296,
+      "margin": 0.196042,
+      "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
     },
@@ -9315,8 +10653,8 @@
       "variant": "transposed_letters",
       "expected_scenario_id": "compliance.private_arrangement",
       "candidate_scenario_ids": [
-        "feedback.improvement_suggestion",
         "compliance.private_arrangement",
+        "feedback.improvement_suggestion",
         "bid.place",
         "bid.validity",
         "account.mobile_access",
@@ -9326,7 +10664,10 @@
         "partnership.official_proposal",
         "seller.information_status"
       ],
-      "hit_at_1": false,
+      "confidence": "high",
+      "score": 0.732922,
+      "margin": 0.409052,
+      "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
     },
@@ -9347,6 +10688,9 @@
         "account.mobile_access",
         "buyer.first_bid_checklist"
       ],
+      "confidence": "high",
+      "score": 0.827723,
+      "margin": 0.512636,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -9368,6 +10712,9 @@
         "auction.formats",
         "buyer.personal_purchase"
       ],
+      "confidence": "high",
+      "score": 0.787839,
+      "margin": 0.568253,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -9378,8 +10725,8 @@
       "variant": "transposed_letters",
       "expected_scenario_id": "partnership.official_proposal",
       "candidate_scenario_ids": [
-        "feedback.improvement_suggestion",
         "partnership.official_proposal",
+        "feedback.improvement_suggestion",
         "lot.payment.details",
         "compliance.off_platform_payment",
         "support.telegram_channels",
@@ -9389,7 +10736,10 @@
         "account.mobile_access",
         "buyer.first_bid_checklist"
       ],
-      "hit_at_1": false,
+      "confidence": "high",
+      "score": 0.711468,
+      "margin": 0.429506,
+      "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
     },
@@ -9410,6 +10760,9 @@
         "account.mobile_access",
         "buyer.first_bid_checklist"
       ],
+      "confidence": "high",
+      "score": 0.827732,
+      "margin": 0.561553,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -9420,9 +10773,9 @@
       "variant": "taxonomy_paraphrase",
       "expected_scenario_id": "compliance.off_platform_payment",
       "candidate_scenario_ids": [
-        "bid.place",
-        "pickup.receive_lot",
         "compliance.off_platform_payment",
+        "pickup.receive_lot",
+        "bid.place",
         "partnership.official_proposal",
         "safety.reported_threat",
         "lot.status_guide",
@@ -9431,7 +10784,10 @@
         "win.next_steps",
         "vehicle.vin_request"
       ],
-      "hit_at_1": false,
+      "confidence": "high",
+      "score": 0.737796,
+      "margin": 0.194402,
+      "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
     },
@@ -9452,6 +10808,9 @@
         "bid.place",
         "seller.categories"
       ],
+      "confidence": "high",
+      "score": 0.885,
+      "margin": 0.444874,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -9473,6 +10832,9 @@
         "bid.place",
         "lot.payment.details"
       ],
+      "confidence": "high",
+      "score": 0.850959,
+      "margin": 0.406179,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -9494,6 +10856,9 @@
         "property.evaluate",
         "property.bulk_goods"
       ],
+      "confidence": "high",
+      "score": 0.761282,
+      "margin": 0.496478,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -9515,6 +10880,9 @@
         "feedback.improvement_suggestion",
         "seller.categories"
       ],
+      "confidence": "high",
+      "score": 0.739042,
+      "margin": 0.536208,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -9536,6 +10904,9 @@
         "feedback.improvement_suggestion",
         "seller.categories"
       ],
+      "confidence": "high",
+      "score": 0.834619,
+      "margin": 0.656484,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -9557,6 +10928,9 @@
         "account.activation_pending",
         "vehicle.credit_lease_pledge"
       ],
+      "confidence": "high",
+      "score": 0.653804,
+      "margin": 0.375563,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -9578,6 +10952,9 @@
         "support.office_visit",
         "vehicle.legal_check"
       ],
+      "confidence": "high",
+      "score": 0.713348,
+      "margin": 0.450163,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -9599,6 +10976,9 @@
         "vehicle.legal_check",
         "support.office_visit"
       ],
+      "confidence": "high",
+      "score": 0.828917,
+      "margin": 0.599161,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -9609,9 +10989,9 @@
       "variant": "taxonomy_paraphrase",
       "expected_scenario_id": "account.credential_responsibility",
       "candidate_scenario_ids": [
-        "account.login_problem",
-        "refund.eligibility",
         "account.credential_responsibility",
+        "refund.eligibility",
+        "account.login_problem",
         "feedback.bot_answer_complaint",
         "tariff.connect",
         "payment.document_policy",
@@ -9620,7 +11000,10 @@
         "account.blocked",
         "tariff.status"
       ],
-      "hit_at_1": false,
+      "confidence": "high",
+      "score": 0.661664,
+      "margin": 0.165466,
+      "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
     },
@@ -9630,8 +11013,8 @@
       "variant": "transposed_letters",
       "expected_scenario_id": "account.credential_responsibility",
       "candidate_scenario_ids": [
-        "account.login_problem",
         "account.credential_responsibility",
+        "account.login_problem",
         "account.blocked",
         "account.registration",
         "bid.validity",
@@ -9641,7 +11024,10 @@
         "registration.accreditation",
         "vehicle.encumbrance_detected"
       ],
-      "hit_at_1": false,
+      "confidence": "high",
+      "score": 0.785499,
+      "margin": 0.411574,
+      "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
     },
@@ -9662,6 +11048,9 @@
         "registration.accreditation",
         "vehicle.encumbrance_detected"
       ],
+      "confidence": "high",
+      "score": 0.86329,
+      "margin": 0.5057,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -9683,6 +11072,9 @@
         "support.manual_review_scope",
         "tariff.choose"
       ],
+      "confidence": "high",
+      "score": 0.678323,
+      "margin": 0.180765,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -9704,6 +11096,9 @@
         "property.bulk_goods",
         "buyer.resale_strategy"
       ],
+      "confidence": "high",
+      "score": 0.701455,
+      "margin": 0.410863,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -9725,6 +11120,9 @@
         "property.bulk_goods",
         "buyer.resale_strategy"
       ],
+      "confidence": "high",
+      "score": 0.814544,
+      "margin": 0.415062,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -9746,6 +11144,9 @@
         "lot.insufficient_information",
         "support.manual_review_scope"
       ],
+      "confidence": "high",
+      "score": 0.572986,
+      "margin": 0.121404,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -9767,6 +11168,9 @@
         "vehicle.autoteka_visibility",
         "account.registration"
       ],
+      "confidence": "high",
+      "score": 0.665131,
+      "margin": 0.231647,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -9788,6 +11192,9 @@
         "support.manual_review_scope",
         "vehicle.autoteka_visibility"
       ],
+      "confidence": "high",
+      "score": 0.817024,
+      "margin": 0.380987,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -9809,6 +11216,9 @@
         "vehicle.owner_listing_dispute",
         "lot.insufficient_information"
       ],
+      "confidence": "high",
+      "score": 0.571867,
+      "margin": 0.20332,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -9830,6 +11240,9 @@
         "support.manual_review_scope",
         "payment.document_policy"
       ],
+      "confidence": "high",
+      "score": 0.772578,
+      "margin": 0.465537,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -9851,6 +11264,9 @@
         "support.telegram_channels",
         "feedback.platform_complaint"
       ],
+      "confidence": "high",
+      "score": 0.838981,
+      "margin": 0.552475,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -9872,6 +11288,9 @@
         "support.manual_review_scope",
         "platform.about"
       ],
+      "confidence": "high",
+      "score": 0.702781,
+      "margin": 0.451549,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -9893,6 +11312,9 @@
         "safety.reported_threat",
         "privacy.data_categories"
       ],
+      "confidence": "high",
+      "score": 0.762037,
+      "margin": 0.58247,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -9914,6 +11336,9 @@
         "seller.categories",
         "safety.reported_threat"
       ],
+      "confidence": "high",
+      "score": 0.833833,
+      "margin": 0.663242,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -9924,17 +11349,20 @@
       "variant": "taxonomy_paraphrase",
       "expected_scenario_id": "auction.other_platform_offer",
       "candidate_scenario_ids": [
-        "bid.place",
         "bid.price_terms",
-        "feedback.improvement_suggestion",
+        "bid.place",
         "auction.other_platform_offer",
         "buyer.first_bid_checklist",
         "auction.formats",
         "compliance.off_platform_payment",
         "bid.not_visible",
         "auction.completed_analytics",
-        "bid.maximum_budget"
+        "bid.maximum_budget",
+        "insurance.osago_rules"
       ],
+      "confidence": "high",
+      "score": 0.662813,
+      "margin": 0.062422,
       "hit_at_1": false,
       "hit_at_5": true,
       "hit_at_10": true
@@ -9947,8 +11375,8 @@
       "candidate_scenario_ids": [
         "auction.other_platform_offer",
         "auction.status",
-        "auction.formats",
         "feedback.improvement_suggestion",
+        "auction.formats",
         "compliance.off_platform_payment",
         "bid.price_terms",
         "seller.information_status",
@@ -9956,6 +11384,9 @@
         "bid.place",
         "bid.not_visible"
       ],
+      "confidence": "high",
+      "score": 0.925,
+      "margin": 0.394071,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true
@@ -9968,8 +11399,8 @@
       "candidate_scenario_ids": [
         "auction.other_platform_offer",
         "auction.status",
-        "auction.formats",
         "feedback.improvement_suggestion",
+        "auction.formats",
         "compliance.off_platform_payment",
         "bid.price_terms",
         "refund.timing_status",
@@ -9977,6 +11408,9 @@
         "bid.not_visible",
         "lot.definition"
       ],
+      "confidence": "high",
+      "score": 0.905381,
+      "margin": 0.37128,
       "hit_at_1": true,
       "hit_at_5": true,
       "hit_at_10": true

@@ -34,6 +34,11 @@ def test_retrieval_development_and_validation_gate_passes() -> None:
     report = _payload(REPORT_PATH)
 
     assert report["passed"] is True
+    assert report["development"]["recall_at_1_pct"] >= 90.0
+    assert report["validation"]["recall_at_1_pct"] >= 85.0
+    assert report["development"]["high_confidence_accuracy_pct"] >= 93.0
+    assert report["validation"]["high_confidence_accuracy_pct"] >= 93.0
     assert report["development"]["recall_at_10_pct"] >= 97.0
     assert report["validation"]["recall_at_10_pct"] >= 97.0
+    assert all(item["recall_at_1_pct"] >= 85.0 for item in report["by_variant"].values())
     assert all(item["recall_at_10_pct"] >= 90.0 for item in report["by_variant"].values())
