@@ -84,6 +84,7 @@ def build_runtime_manifest(settings: Any) -> dict[str, Any]:
     git_sha, working_tree_dirty = _git_revision()
     scenarios = ROOT / "knowledge" / "v2" / "scenarios.json"
     matching_config = ROOT / "configs" / "no_llm_matching_config.json"
+    retrieval_taxonomy = ROOT / "configs" / "retrieval_taxonomy_terms.json"
     routing_files = [
         ROOT / "backend" / "app" / "bot" / "routing_v3.py",
         ROOT / "backend" / "app" / "bot" / "scenario_engine.py",
@@ -91,6 +92,7 @@ def build_runtime_manifest(settings: Any) -> dict[str, Any]:
         ROOT / "backend" / "app" / "bot" / "intent_classifier.py",
         ROOT / "backend" / "app" / "bot" / "text_processing.py",
         matching_config,
+        retrieval_taxonomy,
         ROOT / "configs" / "intent_patterns.json",
         ROOT / "configs" / "synonym_groups.json",
         ROOT / "configs" / "typo_corrections.json",
@@ -107,12 +109,17 @@ def build_runtime_manifest(settings: Any) -> dict[str, Any]:
         "knowledge_sha256": _sha256_files(_tree_files("knowledge", {".json", ".md"})),
         "scenarios_sha256": _sha256_file(scenarios),
         "matching_config_sha256": _sha256_file(matching_config),
+        "retrieval_taxonomy_sha256": _sha256_file(retrieval_taxonomy),
         "application_bundle_sha256": _sha256_files(_tree_files("backend/app", {".py"})),
         "routing_bundle_sha256": _sha256_files(routing_files),
         "prompt_bundle_sha256": _sha256_files(prompt_files),
         "widget_bundle_sha256": _sha256_files(_tree_files("frontend/chat-widget")),
         "knowledge_mode": (
-            "v2"
+            "v3_1"
+            if settings.knowledge_v2_enabled
+            and not settings.knowledge_v2_shadow_mode
+            and (ROOT / "knowledge" / "v3_1" / "scenarios.json").is_file()
+            else "v2"
             if settings.knowledge_v2_enabled and not settings.knowledge_v2_shadow_mode
             else "legacy_or_shadow"
         ),

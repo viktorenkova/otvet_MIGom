@@ -52,6 +52,7 @@ def test_runtime_loads_v31_with_traceable_answer_policy() -> None:
     assert len(scenarios) == 141
     assert all(item.domain and item.source_version for item in scenarios)
     assert all(item.fact_records and item.answer_policy for item in scenarios)
+    assert all(item.retrieval_taxonomy_terms for item in scenarios)
     assert all(item.answer_policy["fact_scope"] == "listed_fact_ids_only" for item in scenarios)
 
 

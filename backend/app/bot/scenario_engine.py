@@ -41,6 +41,7 @@ class Scenario:
     review_interval_days: int
     answer_policy: dict[str, Any]
     search_document: str
+    retrieval_taxonomy_terms: tuple[dict[str, Any], ...]
     atomic_unit_ids: tuple[str, ...]
     knowledge_gap_ids: tuple[str, ...]
     status: str = "active"
@@ -187,6 +188,9 @@ def _scenario_from_dict(raw: dict[str, Any]) -> Scenario:
         review_interval_days=int(raw.get("review_interval_days") or 30),
         answer_policy=dict(raw.get("answer_policy", {})),
         search_document=str(raw.get("search_document") or ""),
+        retrieval_taxonomy_terms=tuple(
+            dict(item) for item in raw.get("retrieval_taxonomy_terms", []) if isinstance(item, dict)
+        ),
         atomic_unit_ids=tuple(str(item) for item in raw.get("atomic_unit_ids", [])),
         knowledge_gap_ids=tuple(str(item) for item in raw.get("knowledge_gap_ids", [])),
         status=str(raw.get("status") or "active"),

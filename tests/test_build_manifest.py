@@ -14,6 +14,7 @@ def test_runtime_manifest_contains_release_comparability_fingerprints() -> None:
         "knowledge_sha256",
         "scenarios_sha256",
         "matching_config_sha256",
+        "retrieval_taxonomy_sha256",
         "application_bundle_sha256",
         "routing_bundle_sha256",
         "prompt_bundle_sha256",
@@ -24,6 +25,7 @@ def test_runtime_manifest_contains_release_comparability_fingerprints() -> None:
     assert required.issubset(manifest)
     for key in required - {"git_sha", "llm_provider", "llm_primary_model"}:
         assert len(manifest[key]) == 64
+    assert manifest["knowledge_mode"] == "v3_1"
 
 
 def test_health_manifest_is_exposed_both_directly_and_through_api_proxy_path() -> None:

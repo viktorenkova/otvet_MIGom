@@ -13,7 +13,8 @@ DEFAULT_QUALITY_REPORT = Path("reports/quality-stage0-adjudicated-local.json")
 DEFAULT_OUTPUT = Path("knowledge/v3_1/scenarios.json")
 DEFAULT_CONFLICTS = Path("knowledge/v3_1/scenario_conflicts.json")
 DEFAULT_MIGRATION_REPORT = Path("reports/knowledge-v31-migration.json")
-VERSION = "2026.08.23.1"
+DEFAULT_RETRIEVAL_TAXONOMY = Path("configs/retrieval_taxonomy_terms.json")
+VERSION = "2026.08.23.2"
 GENERATED_AT = "2026-08-23T00:00:00+03:00"
 
 
@@ -164,8 +165,26 @@ def _search_document(record: dict[str, Any]) -> str:
         "actions:" + " ".join(record["operations"]),
         "states:" + " ".join(record["states"] or ["unspecified"]),
         *record["positive_examples"],
+        *(term for group in record["retrieval_taxonomy_terms"] for term in group["terms"]),
     ]
     return "\n".join(dict.fromkeys(item.strip() for item in parts if item.strip()))
+
+
+def _retrieval_taxonomy_terms(record: dict[str, Any], vocabulary: dict[str, Any]) -> list[dict[str, Any]]:
+    values = {
+        "objects": record["objects"],
+        "actions": record["operations"],
+        "states": record["states"],
+        "stages": [record["stage"]],
+    }
+    groups: list[dict[str, Any]] = []
+    for field, taxonomy_values in values.items():
+        mapping = vocabulary.get(field, {})
+        for value in taxonomy_values:
+            terms = mapping.get(value, []) if isinstance(mapping, dict) else []
+            if terms:
+                groups.append({"field": field, "value": value, "terms": list(terms)})
+    return groups
 
 
 def _fact_records(record: dict[str, Any]) -> list[dict[str, Any]]:
@@ -211,7 +230,10 @@ def _atomic_units(record: dict[str, Any]) -> list[dict[str, Any]]:
     return units
 
 
-def migrate(source: dict[str, Any]) -> dict[str, Any]:
+def migrate(source: dict[str, Any], retrieval_vocabulary: dict[str, Any] | None = None) -> dict[str, Any]:
+    retrieval_vocabulary = retrieval_vocabulary or json.loads(
+        DEFAULT_RETRIEVAL_TAXONOMY.read_text(encoding="utf-8")
+    )
     records: list[dict[str, Any]] = []
     atomic_units: list[dict[str, Any]] = []
     gap_ids_by_scenario: dict[str, list[str]] = defaultdict(list)
@@ -256,6 +278,7 @@ def migrate(source: dict[str, Any]) -> dict[str, Any]:
             ],
         }
         record["knowledge_gap_ids"] = gap_ids_by_scenario.get(record["scenario_id"], [])
+        record["retrieval_taxonomy_terms"] = _retrieval_taxonomy_terms(record, retrieval_vocabulary)
         record["search_document"] = _search_document(record)
         units = _atomic_units(record)
         record["atomic_unit_ids"] = [item["unit_id"] for item in units]
@@ -269,6 +292,12 @@ def migrate(source: dict[str, Any]) -> dict[str, Any]:
         "migrated_from": {
             "schema_version": source.get("schema_version"),
             "version": source.get("version"),
+        },
+        "retrieval_taxonomy": {
+            "path": str(DEFAULT_RETRIEVAL_TAXONOMY),
+            "version": retrieval_vocabulary.get("version"),
+            "policy": retrieval_vocabulary.get("policy"),
+            "sha256": _sha256_bytes(_canonical_json(retrieval_vocabulary)),
         },
         "publication_policy": source.get("publication_policy", "manual_review_only"),
         "knowledge_gaps": KNOWLEDGE_GAPS,

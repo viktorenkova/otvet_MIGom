@@ -325,8 +325,14 @@ def _scenario_documents(scenario: Scenario) -> list[str]:
             scenario.stage,
         ]
     )
-    documents = [scenario.title, metadata]
+    documents = [scenario.title, metadata, scenario.search_document]
     documents.extend(scenario.positive_examples)
+    taxonomy_groups = [
+        " ".join(str(term) for term in group.get("terms", []) if str(term).strip())
+        for group in scenario.retrieval_taxonomy_terms
+    ]
+    if taxonomy_groups:
+        documents.append(" ".join(item for item in taxonomy_groups if item))
     return [item for item in documents if item.strip()]
 
 

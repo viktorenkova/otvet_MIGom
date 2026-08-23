@@ -54,6 +54,7 @@ def validate(
             "answer_policy",
             "search_document",
             "atomic_unit_ids",
+            "retrieval_taxonomy_terms",
         )
         for field in required:
             if not record.get(field):
@@ -97,6 +98,20 @@ def validate(
         if policy.get("llm_role") != "wording_only":
             errors.append(f"{prefix} LLM role is not wording_only")
         search_document = str(record.get("search_document") or "")
+        taxonomy_values = {
+            "objects": set(record.get("objects", [])),
+            "actions": set(record.get("operations", [])),
+            "states": set(record.get("states", [])),
+            "stages": {record.get("stage")},
+        }
+        for group in record.get("retrieval_taxonomy_terms", []):
+            field = str(group.get("field") or "")
+            value = str(group.get("value") or "")
+            terms = list(group.get("terms", []))
+            if field not in taxonomy_values or value not in taxonomy_values[field]:
+                errors.append(f"{prefix} retrieval taxonomy term is not backed by taxonomy: {field}.{value}")
+            if not terms or any(str(term) not in search_document for term in terms):
+                errors.append(f"{prefix} retrieval taxonomy terms are missing from search_document")
         for forbidden_text in [*facts, record.get("short_answer"), record.get("detailed_answer"), record.get("next_step")]:
             text = str(forbidden_text or "").strip()
             if len(text) >= 30 and text in search_document:

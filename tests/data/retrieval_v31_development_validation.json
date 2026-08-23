@@ -1,0 +1,4725 @@
+{
+  "schema_version": 1,
+  "version": "2026.08.23.1",
+  "purpose": "Development/validation candidate-retrieval benchmark generated from normalized atomic taxonomy, not user regression phrases.",
+  "knowledge_sha256": "e2ebc816f04d0b6ac6a4b00fde19cc658c160aa61716f8207cba60c1250acbb2",
+  "regression_manifest_sha256": "bcc92c943e8a35dbc3a98c0a32d1d20a13c18edef85c1d9ed0bc691ae7c85b1f",
+  "case_count": 471,
+  "development_count": 372,
+  "validation_count": 99,
+  "exact_frozen_overlap_count": 0,
+  "exact_frozen_overlap_case_ids": [],
+  "cases_sha256": "d1aa95560e17461c29e7526fa8f5c9d249e190f09faee9361f4afa3777448279",
+  "cases": [
+    {
+      "id": "buyer.get_started::primary::taxonomy_paraphrase",
+      "split": "development",
+      "variant": "taxonomy_paraphrase",
+      "text": "в аукционе как участвовать; торги, объект торгов",
+      "role": "guest",
+      "expected_scenario_id": "buyer.get_started",
+      "source_unit_id": "buyer.get_started::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "buyer.get_started::primary::transposed_letters",
+      "split": "development",
+      "variant": "transposed_letters",
+      "text": "Как начать покупать и учасвтовать в торгах",
+      "role": "guest",
+      "expected_scenario_id": "buyer.get_started",
+      "source_unit_id": "buyer.get_started::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "buyer.get_started::primary::word_order",
+      "split": "development",
+      "variant": "word_order",
+      "text": "и участвовать в торгах Как начать покупать",
+      "role": "guest",
+      "expected_scenario_id": "buyer.get_started",
+      "source_unit_id": "buyer.get_started::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "seller.get_started::primary::taxonomy_paraphrase",
+      "split": "validation",
+      "variant": "taxonomy_paraphrase",
+      "text": "нужно узнать: как подключиться продавцу; страховщик, учетная запись",
+      "role": "guest",
+      "expected_scenario_id": "seller.get_started",
+      "source_unit_id": "seller.get_started::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "seller.get_started::primary::transposed_letters",
+      "split": "development",
+      "variant": "transposed_letters",
+      "text": "Как подклчюиться и стать продавцом",
+      "role": "guest",
+      "expected_scenario_id": "seller.get_started",
+      "source_unit_id": "seller.get_started::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "seller.get_started::primary::word_order",
+      "split": "development",
+      "variant": "word_order",
+      "text": "и стать продавцом Как подключиться",
+      "role": "guest",
+      "expected_scenario_id": "seller.get_started",
+      "source_unit_id": "seller.get_started::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "seller.publish_lot::primary::taxonomy_paraphrase",
+      "split": "development",
+      "variant": "taxonomy_paraphrase",
+      "text": "лот на продажу как выставить; страховщик, объект торгов",
+      "role": "guest",
+      "expected_scenario_id": "seller.publish_lot",
+      "source_unit_id": "seller.publish_lot::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "seller.publish_lot::primary::transposed_letters",
+      "split": "development",
+      "variant": "transposed_letters",
+      "text": "Как высатвить лот на продажу",
+      "role": "guest",
+      "expected_scenario_id": "seller.publish_lot",
+      "source_unit_id": "seller.publish_lot::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "seller.publish_lot::primary::word_order",
+      "split": "validation",
+      "variant": "word_order",
+      "text": "лот на продажу Как выставить",
+      "role": "guest",
+      "expected_scenario_id": "seller.publish_lot",
+      "source_unit_id": "seller.publish_lot::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "bid.not_visible::primary::taxonomy_paraphrase",
+      "split": "development",
+      "variant": "taxonomy_paraphrase",
+      "text": "моя ставка не видна; ценовое предложение, торги",
+      "role": "guest",
+      "expected_scenario_id": "bid.not_visible",
+      "source_unit_id": "bid.not_visible::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "bid.not_visible::primary::transposed_letters",
+      "split": "validation",
+      "variant": "transposed_letters",
+      "text": "Ставка не видна или не отобржаается",
+      "role": "guest",
+      "expected_scenario_id": "bid.not_visible",
+      "source_unit_id": "bid.not_visible::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "bid.not_visible::primary::word_order",
+      "split": "validation",
+      "variant": "word_order",
+      "text": "или не отображается Ставка не видна",
+      "role": "guest",
+      "expected_scenario_id": "bid.not_visible",
+      "source_unit_id": "bid.not_visible::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "auction.status::primary::taxonomy_paraphrase",
+      "split": "development",
+      "variant": "taxonomy_paraphrase",
+      "text": "статус торгов как проверить; торги, объект торгов",
+      "role": "guest",
+      "expected_scenario_id": "auction.status",
+      "source_unit_id": "auction.status::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "auction.status::primary::transposed_letters",
+      "split": "development",
+      "variant": "transposed_letters",
+      "text": "Как проеврить статус торгов",
+      "role": "guest",
+      "expected_scenario_id": "auction.status",
+      "source_unit_id": "auction.status::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "auction.status::primary::word_order",
+      "split": "development",
+      "variant": "word_order",
+      "text": "статус торгов Как проверить",
+      "role": "guest",
+      "expected_scenario_id": "auction.status",
+      "source_unit_id": "auction.status::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "contract.receive::preparation::taxonomy_paraphrase",
+      "split": "development",
+      "variant": "taxonomy_paraphrase",
+      "text": "нужно узнать: кто готовит договор; дкп, бумаги",
+      "role": "guest",
+      "expected_scenario_id": "contract.receive",
+      "source_unit_id": "contract.receive::preparation",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "contract.receive::preparation::transposed_letters",
+      "split": "development",
+      "variant": "transposed_letters",
+      "text": "Подгтоовка договора продавцом",
+      "role": "guest",
+      "expected_scenario_id": "contract.receive",
+      "source_unit_id": "contract.receive::preparation",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "contract.receive::preparation::word_order",
+      "split": "development",
+      "variant": "word_order",
+      "text": "нужно узнать: Подготовка договора продавцом",
+      "role": "guest",
+      "expected_scenario_id": "contract.receive",
+      "source_unit_id": "contract.receive::preparation",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "contract.receive::delivery::taxonomy_paraphrase",
+      "split": "development",
+      "variant": "taxonomy_paraphrase",
+      "text": "нужно узнать: где договор; дкп, бумаги",
+      "role": "guest",
+      "expected_scenario_id": "contract.receive",
+      "source_unit_id": "contract.receive::delivery",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "contract.receive::delivery::transposed_letters",
+      "split": "validation",
+      "variant": "transposed_letters",
+      "text": "Полчуение договора в почтовой ветке",
+      "role": "guest",
+      "expected_scenario_id": "contract.receive",
+      "source_unit_id": "contract.receive::delivery",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "contract.receive::delivery::word_order",
+      "split": "development",
+      "variant": "word_order",
+      "text": "в почтовой ветке Получение договора",
+      "role": "guest",
+      "expected_scenario_id": "contract.receive",
+      "source_unit_id": "contract.receive::delivery",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "support.contact::primary::taxonomy_paraphrase",
+      "split": "validation",
+      "variant": "taxonomy_paraphrase",
+      "text": "нужно узнать: как вам позвонить; служба поддержки, ответить",
+      "role": "guest",
+      "expected_scenario_id": "support.contact",
+      "source_unit_id": "support.contact::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "support.contact::primary::transposed_letters",
+      "split": "validation",
+      "variant": "transposed_letters",
+      "text": "Как связаться с поддрежкой",
+      "role": "guest",
+      "expected_scenario_id": "support.contact",
+      "source_unit_id": "support.contact::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "support.contact::primary::word_order",
+      "split": "development",
+      "variant": "word_order",
+      "text": "с поддержкой Как связаться",
+      "role": "guest",
+      "expected_scenario_id": "support.contact",
+      "source_unit_id": "support.contact::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "support.callback::primary::taxonomy_paraphrase",
+      "split": "validation",
+      "variant": "taxonomy_paraphrase",
+      "text": "нужно узнать: перезвоните мне; служба поддержки, ответить",
+      "role": "guest",
+      "expected_scenario_id": "support.callback",
+      "source_unit_id": "support.callback::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "support.callback::primary::transposed_letters",
+      "split": "validation",
+      "variant": "transposed_letters",
+      "text": "Пользвоатель просит позвонить",
+      "role": "guest",
+      "expected_scenario_id": "support.callback",
+      "source_unit_id": "support.callback::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "support.callback::primary::word_order",
+      "split": "development",
+      "variant": "word_order",
+      "text": "нужно узнать: Пользователь просит позвонить",
+      "role": "guest",
+      "expected_scenario_id": "support.callback",
+      "source_unit_id": "support.callback::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "win.next_steps::primary::taxonomy_paraphrase",
+      "split": "development",
+      "variant": "taxonomy_paraphrase",
+      "text": "лот что дальше я выиграл; объект торгов, торги",
+      "role": "guest",
+      "expected_scenario_id": "win.next_steps",
+      "source_unit_id": "win.next_steps::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "win.next_steps::primary::transposed_letters",
+      "split": "development",
+      "variant": "transposed_letters",
+      "text": "Что деалть после победы в торгах",
+      "role": "guest",
+      "expected_scenario_id": "win.next_steps",
+      "source_unit_id": "win.next_steps::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "win.next_steps::primary::word_order",
+      "split": "development",
+      "variant": "word_order",
+      "text": "победы в торгах Что делать после",
+      "role": "guest",
+      "expected_scenario_id": "win.next_steps",
+      "source_unit_id": "win.next_steps::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "account.blocked::primary::taxonomy_paraphrase",
+      "split": "development",
+      "variant": "taxonomy_paraphrase",
+      "text": "нужно узнать: аккаунт заблокирован; учетная запись, где посмотреть",
+      "role": "guest",
+      "expected_scenario_id": "account.blocked",
+      "source_unit_id": "account.blocked::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "account.blocked::primary::transposed_letters",
+      "split": "development",
+      "variant": "transposed_letters",
+      "text": "Аккаунт заблоикрован",
+      "role": "guest",
+      "expected_scenario_id": "account.blocked",
+      "source_unit_id": "account.blocked::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "account.blocked::primary::word_order",
+      "split": "development",
+      "variant": "word_order",
+      "text": "нужно узнать: Аккаунт заблокирован",
+      "role": "guest",
+      "expected_scenario_id": "account.blocked",
+      "source_unit_id": "account.blocked::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "contract.termination_and_restriction::primary::taxonomy_paraphrase",
+      "split": "development",
+      "variant": "taxonomy_paraphrase",
+      "text": "могут расторгнуть договор за что; дкп, учетная запись",
+      "role": "authorized",
+      "expected_scenario_id": "contract.termination_and_restriction",
+      "source_unit_id": "contract.termination_and_restriction::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "contract.termination_and_restriction::primary::transposed_letters",
+      "split": "development",
+      "variant": "transposed_letters",
+      "text": "Растрожение договора и ограничение доступа",
+      "role": "authorized",
+      "expected_scenario_id": "contract.termination_and_restriction",
+      "source_unit_id": "contract.termination_and_restriction::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "contract.termination_and_restriction::primary::word_order",
+      "split": "development",
+      "variant": "word_order",
+      "text": "и ограничение доступа Расторжение договора",
+      "role": "authorized",
+      "expected_scenario_id": "contract.termination_and_restriction",
+      "source_unit_id": "contract.termination_and_restriction::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "support.email_no_response::primary::taxonomy_paraphrase",
+      "split": "development",
+      "variant": "taxonomy_paraphrase",
+      "text": "никто не отвечает на мои письма; служба поддержки, ответить",
+      "role": "guest",
+      "expected_scenario_id": "support.email_no_response",
+      "source_unit_id": "support.email_no_response::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "support.email_no_response::primary::transposed_letters",
+      "split": "validation",
+      "variant": "transposed_letters",
+      "text": "Подедржка не отвечает на письмо",
+      "role": "guest",
+      "expected_scenario_id": "support.email_no_response",
+      "source_unit_id": "support.email_no_response::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "support.email_no_response::primary::word_order",
+      "split": "development",
+      "variant": "word_order",
+      "text": "отвечает на письмо Поддержка не",
+      "role": "guest",
+      "expected_scenario_id": "support.email_no_response",
+      "source_unit_id": "support.email_no_response::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "pickup.receive_lot::readiness::taxonomy_paraphrase",
+      "split": "development",
+      "variant": "taxonomy_paraphrase",
+      "text": "нужно узнать: когда забрать; объект торгов, транспортное средство",
+      "role": "guest",
+      "expected_scenario_id": "pickup.receive_lot",
+      "source_unit_id": "pickup.receive_lot::readiness",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "pickup.receive_lot::readiness::transposed_letters",
+      "split": "development",
+      "variant": "transposed_letters",
+      "text": "Готонвость лота к выдаче",
+      "role": "guest",
+      "expected_scenario_id": "pickup.receive_lot",
+      "source_unit_id": "pickup.receive_lot::readiness",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "pickup.receive_lot::readiness::word_order",
+      "split": "development",
+      "variant": "word_order",
+      "text": "к выдаче Готовность лота",
+      "role": "guest",
+      "expected_scenario_id": "pickup.receive_lot",
+      "source_unit_id": "pickup.receive_lot::readiness",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "pickup.receive_lot::documents::taxonomy_paraphrase",
+      "split": "development",
+      "variant": "taxonomy_paraphrase",
+      "text": "нужно узнать: документы на получение; объект торгов, транспортное средство",
+      "role": "guest",
+      "expected_scenario_id": "pickup.receive_lot",
+      "source_unit_id": "pickup.receive_lot::documents",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "pickup.receive_lot::documents::transposed_letters",
+      "split": "development",
+      "variant": "transposed_letters",
+      "text": "Докмуенты для получения лота",
+      "role": "guest",
+      "expected_scenario_id": "pickup.receive_lot",
+      "source_unit_id": "pickup.receive_lot::documents",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "pickup.receive_lot::documents::word_order",
+      "split": "validation",
+      "variant": "word_order",
+      "text": "получения лота Документы для",
+      "role": "guest",
+      "expected_scenario_id": "pickup.receive_lot",
+      "source_unit_id": "pickup.receive_lot::documents",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "bid.place::primary::taxonomy_paraphrase",
+      "split": "development",
+      "variant": "taxonomy_paraphrase",
+      "text": "ставку на лот как поставить; ценовое предложение, объект торгов",
+      "role": "guest",
+      "expected_scenario_id": "bid.place",
+      "source_unit_id": "bid.place::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "bid.place::primary::transposed_letters",
+      "split": "development",
+      "variant": "transposed_letters",
+      "text": "Как сдлеать ставку",
+      "role": "guest",
+      "expected_scenario_id": "bid.place",
+      "source_unit_id": "bid.place::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "bid.place::primary::word_order",
+      "split": "validation",
+      "variant": "word_order",
+      "text": "нужно узнать: Как сделать ставку",
+      "role": "guest",
+      "expected_scenario_id": "bid.place",
+      "source_unit_id": "bid.place::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "inspection.arrange::primary::taxonomy_paraphrase",
+      "split": "validation",
+      "variant": "taxonomy_paraphrase",
+      "text": "осмотр автомобиля как организовать; объект торгов, транспортное средство",
+      "role": "guest",
+      "expected_scenario_id": "inspection.arrange",
+      "source_unit_id": "inspection.arrange::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "inspection.arrange::primary::transposed_letters",
+      "split": "validation",
+      "variant": "transposed_letters",
+      "text": "Как органзиовать осмотр автомобиля",
+      "role": "guest",
+      "expected_scenario_id": "inspection.arrange",
+      "source_unit_id": "inspection.arrange::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "inspection.arrange::primary::word_order",
+      "split": "development",
+      "variant": "word_order",
+      "text": "осмотр автомобиля Как организовать",
+      "role": "guest",
+      "expected_scenario_id": "inspection.arrange",
+      "source_unit_id": "inspection.arrange::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "account.login_problem::primary::taxonomy_paraphrase",
+      "split": "validation",
+      "variant": "taxonomy_paraphrase",
+      "text": "в личный кабинет не получается войти; учетная запись, вернуть доступ",
+      "role": "guest",
+      "expected_scenario_id": "account.login_problem",
+      "source_unit_id": "account.login_problem::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "account.login_problem::primary::transposed_letters",
+      "split": "development",
+      "variant": "transposed_letters",
+      "text": "Не полуачется войти в личный кабинет",
+      "role": "guest",
+      "expected_scenario_id": "account.login_problem",
+      "source_unit_id": "account.login_problem::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "account.login_problem::primary::word_order",
+      "split": "development",
+      "variant": "word_order",
+      "text": "в личный кабинет Не получается войти",
+      "role": "guest",
+      "expected_scenario_id": "account.login_problem",
+      "source_unit_id": "account.login_problem::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "technical.site_error::primary::taxonomy_paraphrase",
+      "split": "development",
+      "variant": "taxonomy_paraphrase",
+      "text": "появляется ошибка на сайте; учетная запись, объект торгов",
+      "role": "guest",
+      "expected_scenario_id": "technical.site_error",
+      "source_unit_id": "technical.site_error::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "technical.site_error::primary::transposed_letters",
+      "split": "validation",
+      "variant": "transposed_letters",
+      "text": "Ошибка сайта или личного кабниета",
+      "role": "guest",
+      "expected_scenario_id": "technical.site_error",
+      "source_unit_id": "technical.site_error::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "technical.site_error::primary::word_order",
+      "split": "development",
+      "variant": "word_order",
+      "text": "или личного кабинета Ошибка сайта",
+      "role": "guest",
+      "expected_scenario_id": "technical.site_error",
+      "source_unit_id": "technical.site_error::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "tariff.connect::primary::taxonomy_paraphrase",
+      "split": "development",
+      "variant": "taxonomy_paraphrase",
+      "text": "нужно узнать: как подключить тариф; подписка, учетная запись",
+      "role": "guest",
+      "expected_scenario_id": "tariff.connect",
+      "source_unit_id": "tariff.connect::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "tariff.connect::primary::transposed_letters",
+      "split": "validation",
+      "variant": "transposed_letters",
+      "text": "Как подкюлчить тариф",
+      "role": "guest",
+      "expected_scenario_id": "tariff.connect",
+      "source_unit_id": "tariff.connect::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "tariff.connect::primary::word_order",
+      "split": "development",
+      "variant": "word_order",
+      "text": "нужно узнать: Как подключить тариф",
+      "role": "guest",
+      "expected_scenario_id": "tariff.connect",
+      "source_unit_id": "tariff.connect::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "payment.methods::balance_topup::taxonomy_paraphrase",
+      "split": "development",
+      "variant": "taxonomy_paraphrase",
+      "text": "нужно узнать: пополнить баланс; перевод денег, кошелек",
+      "role": "authorized",
+      "expected_scenario_id": "payment.methods",
+      "source_unit_id": "payment.methods::balance_topup",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "payment.methods::balance_topup::transposed_letters",
+      "split": "development",
+      "variant": "transposed_letters",
+      "text": "Попонление баланса картой или СБП",
+      "role": "authorized",
+      "expected_scenario_id": "payment.methods",
+      "source_unit_id": "payment.methods::balance_topup",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "payment.methods::balance_topup::word_order",
+      "split": "development",
+      "variant": "word_order",
+      "text": "картой или СБП Пополнение баланса",
+      "role": "authorized",
+      "expected_scenario_id": "payment.methods",
+      "source_unit_id": "payment.methods::balance_topup",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "payment.methods::tariff::taxonomy_paraphrase",
+      "split": "validation",
+      "variant": "taxonomy_paraphrase",
+      "text": "нужно узнать: оплатить тариф; перевод денег, кошелек",
+      "role": "authorized",
+      "expected_scenario_id": "payment.methods",
+      "source_unit_id": "payment.methods::tariff",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "payment.methods::tariff::transposed_letters",
+      "split": "validation",
+      "variant": "transposed_letters",
+      "text": "Опалта тарифа",
+      "role": "authorized",
+      "expected_scenario_id": "payment.methods",
+      "source_unit_id": "payment.methods::tariff",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "payment.methods::tariff::word_order",
+      "split": "development",
+      "variant": "word_order",
+      "text": "нужно узнать: Оплата тарифа",
+      "role": "authorized",
+      "expected_scenario_id": "payment.methods",
+      "source_unit_id": "payment.methods::tariff",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "payment.methods::platform_commission::taxonomy_paraphrase",
+      "split": "development",
+      "variant": "taxonomy_paraphrase",
+      "text": "нужно узнать: оплатить комиссию; перевод денег, кошелек",
+      "role": "authorized",
+      "expected_scenario_id": "payment.methods",
+      "source_unit_id": "payment.methods::platform_commission",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "payment.methods::platform_commission::transposed_letters",
+      "split": "validation",
+      "variant": "transposed_letters",
+      "text": "Оплата комсисии площадки",
+      "role": "authorized",
+      "expected_scenario_id": "payment.methods",
+      "source_unit_id": "payment.methods::platform_commission",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "payment.methods::platform_commission::word_order",
+      "split": "development",
+      "variant": "word_order",
+      "text": "нужно узнать: Оплата комиссии площадки",
+      "role": "authorized",
+      "expected_scenario_id": "payment.methods",
+      "source_unit_id": "payment.methods::platform_commission",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "payment.methods::lot::taxonomy_paraphrase",
+      "split": "development",
+      "variant": "taxonomy_paraphrase",
+      "text": "нужно узнать: оплатить лот; перевод денег, кошелек",
+      "role": "authorized",
+      "expected_scenario_id": "payment.methods",
+      "source_unit_id": "payment.methods::lot",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "payment.methods::lot::transposed_letters",
+      "split": "development",
+      "variant": "transposed_letters",
+      "text": "Оплата стомиости лота продавцу",
+      "role": "authorized",
+      "expected_scenario_id": "payment.methods",
+      "source_unit_id": "payment.methods::lot",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "payment.methods::lot::word_order",
+      "split": "development",
+      "variant": "word_order",
+      "text": "лота продавцу Оплата стоимости",
+      "role": "authorized",
+      "expected_scenario_id": "payment.methods",
+      "source_unit_id": "payment.methods::lot",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "payment.methods::cash::taxonomy_paraphrase",
+      "split": "development",
+      "variant": "taxonomy_paraphrase",
+      "text": "нужно узнать: наличные; перевод денег, кошелек",
+      "role": "authorized",
+      "expected_scenario_id": "payment.methods",
+      "source_unit_id": "payment.methods::cash",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "payment.methods::cash::transposed_letters",
+      "split": "development",
+      "variant": "transposed_letters",
+      "text": "Оплата налчиными в офисе",
+      "role": "authorized",
+      "expected_scenario_id": "payment.methods",
+      "source_unit_id": "payment.methods::cash",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "payment.methods::cash::word_order",
+      "split": "development",
+      "variant": "word_order",
+      "text": "в офисе Оплата наличными",
+      "role": "authorized",
+      "expected_scenario_id": "payment.methods",
+      "source_unit_id": "payment.methods::cash",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "payment.not_visible::primary::taxonomy_paraphrase",
+      "split": "development",
+      "variant": "taxonomy_paraphrase",
+      "text": "но не отображается платеж списался; перевод денег, кошелек",
+      "role": "guest",
+      "expected_scenario_id": "payment.not_visible",
+      "source_unit_id": "payment.not_visible::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "payment.not_visible::primary::transposed_letters",
+      "split": "development",
+      "variant": "transposed_letters",
+      "text": "Платёж списался, но не отобржаается",
+      "role": "guest",
+      "expected_scenario_id": "payment.not_visible",
+      "source_unit_id": "payment.not_visible::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "payment.not_visible::primary::word_order",
+      "split": "validation",
+      "variant": "word_order",
+      "text": "но не отображается Платёж списался,",
+      "role": "guest",
+      "expected_scenario_id": "payment.not_visible",
+      "source_unit_id": "payment.not_visible::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "commission.explained::primary::taxonomy_paraphrase",
+      "split": "development",
+      "variant": "taxonomy_paraphrase",
+      "text": "нужно узнать: какие комиссии есть; сбор площадки, перевод денег",
+      "role": "authorized",
+      "expected_scenario_id": "commission.explained",
+      "source_unit_id": "commission.explained::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "commission.explained::primary::transposed_letters",
+      "split": "development",
+      "variant": "transposed_letters",
+      "text": "Как усторена комиссия MIGTORG",
+      "role": "authorized",
+      "expected_scenario_id": "commission.explained",
+      "source_unit_id": "commission.explained::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "commission.explained::primary::word_order",
+      "split": "development",
+      "variant": "word_order",
+      "text": "комиссия MIGTORG Как устроена",
+      "role": "authorized",
+      "expected_scenario_id": "commission.explained",
+      "source_unit_id": "commission.explained::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "commission.discount::primary::taxonomy_paraphrase",
+      "split": "development",
+      "variant": "taxonomy_paraphrase",
+      "text": "на комиссию есть скидка; сбор площадки, кошелек",
+      "role": "guest",
+      "expected_scenario_id": "commission.discount",
+      "source_unit_id": "commission.discount::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "commission.discount::primary::transposed_letters",
+      "split": "development",
+      "variant": "transposed_letters",
+      "text": "Скидки и программа лоялньости по комиссии",
+      "role": "guest",
+      "expected_scenario_id": "commission.discount",
+      "source_unit_id": "commission.discount::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "commission.discount::primary::word_order",
+      "split": "development",
+      "variant": "word_order",
+      "text": "лояльности по комиссии Скидки и программа",
+      "role": "guest",
+      "expected_scenario_id": "commission.discount",
+      "source_unit_id": "commission.discount::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "commission.unpaid::primary::taxonomy_paraphrase",
+      "split": "validation",
+      "variant": "taxonomy_paraphrase",
+      "text": "на оплату комиссии сколько дней; сбор площадки, учетная запись",
+      "role": "authorized",
+      "expected_scenario_id": "commission.unpaid",
+      "source_unit_id": "commission.unpaid::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "commission.unpaid::primary::transposed_letters",
+      "split": "development",
+      "variant": "transposed_letters",
+      "text": "Срок оплаты комиссии и блокриовка",
+      "role": "authorized",
+      "expected_scenario_id": "commission.unpaid",
+      "source_unit_id": "commission.unpaid::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "commission.unpaid::primary::word_order",
+      "split": "development",
+      "variant": "word_order",
+      "text": "комиссии и блокировка Срок оплаты",
+      "role": "authorized",
+      "expected_scenario_id": "commission.unpaid",
+      "source_unit_id": "commission.unpaid::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "lot.payment.start::primary::taxonomy_paraphrase",
+      "split": "development",
+      "variant": "taxonomy_paraphrase",
+      "text": "оплачивать выигранный лот когда можно; перевод денег, объект торгов",
+      "role": "authorized",
+      "expected_scenario_id": "lot.payment.start",
+      "source_unit_id": "lot.payment.start::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "lot.payment.start::primary::transposed_letters",
+      "split": "development",
+      "variant": "transposed_letters",
+      "text": "Когда можно оплаичвать выигранный лот",
+      "role": "authorized",
+      "expected_scenario_id": "lot.payment.start",
+      "source_unit_id": "lot.payment.start::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "lot.payment.start::primary::word_order",
+      "split": "development",
+      "variant": "word_order",
+      "text": "оплачивать выигранный лот Когда можно",
+      "role": "authorized",
+      "expected_scenario_id": "lot.payment.start",
+      "source_unit_id": "lot.payment.start::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "lot.payment.details::invoice_payer::taxonomy_paraphrase",
+      "split": "development",
+      "variant": "taxonomy_paraphrase",
+      "text": "нужно узнать: счёт за лот; перевод денег, объект торгов",
+      "role": "guest",
+      "expected_scenario_id": "lot.payment.details",
+      "source_unit_id": "lot.payment.details::invoice_payer",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "lot.payment.details::invoice_payer::transposed_letters",
+      "split": "development",
+      "variant": "transposed_letters",
+      "text": "Счёт и платлеьщик по лоту",
+      "role": "guest",
+      "expected_scenario_id": "lot.payment.details",
+      "source_unit_id": "lot.payment.details::invoice_payer",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "lot.payment.details::invoice_payer::word_order",
+      "split": "development",
+      "variant": "word_order",
+      "text": "плательщик по лоту Счёт и",
+      "role": "guest",
+      "expected_scenario_id": "lot.payment.details",
+      "source_unit_id": "lot.payment.details::invoice_payer",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "lot.payment.details::correspondence::taxonomy_paraphrase",
+      "split": "development",
+      "variant": "taxonomy_paraphrase",
+      "text": "нужно узнать: почтовая ветка; перевод денег, объект торгов",
+      "role": "guest",
+      "expected_scenario_id": "lot.payment.details",
+      "source_unit_id": "lot.payment.details::correspondence",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "lot.payment.details::correspondence::transposed_letters",
+      "split": "development",
+      "variant": "transposed_letters",
+      "text": "Офицаильная переписка по оплате лота",
+      "role": "guest",
+      "expected_scenario_id": "lot.payment.details",
+      "source_unit_id": "lot.payment.details::correspondence",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "lot.payment.details::correspondence::word_order",
+      "split": "development",
+      "variant": "word_order",
+      "text": "по оплате лота Официальная переписка",
+      "role": "guest",
+      "expected_scenario_id": "lot.payment.details",
+      "source_unit_id": "lot.payment.details::correspondence",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "lot.payment.details::payment_confirmation::taxonomy_paraphrase",
+      "split": "validation",
+      "variant": "taxonomy_paraphrase",
+      "text": "нужно узнать: оплатить продавцу; перевод денег, объект торгов",
+      "role": "guest",
+      "expected_scenario_id": "lot.payment.details",
+      "source_unit_id": "lot.payment.details::payment_confirmation",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "lot.payment.details::payment_confirmation::transposed_letters",
+      "split": "validation",
+      "variant": "transposed_letters",
+      "text": "Оплата и подтвреждение стоимости лота",
+      "role": "guest",
+      "expected_scenario_id": "lot.payment.details",
+      "source_unit_id": "lot.payment.details::payment_confirmation",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "lot.payment.details::payment_confirmation::word_order",
+      "split": "development",
+      "variant": "word_order",
+      "text": "подтверждение стоимости лота Оплата и",
+      "role": "guest",
+      "expected_scenario_id": "lot.payment.details",
+      "source_unit_id": "lot.payment.details::payment_confirmation",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "lot.payment.overdue::primary::taxonomy_paraphrase",
+      "split": "development",
+      "variant": "taxonomy_paraphrase",
+      "text": "оплаты лота какой срок; перевод денег, объект торгов",
+      "role": "guest",
+      "expected_scenario_id": "lot.payment.overdue",
+      "source_unit_id": "lot.payment.overdue::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "lot.payment.overdue::primary::transposed_letters",
+      "split": "validation",
+      "variant": "transposed_letters",
+      "text": "Срок и прорсочка оплаты лота",
+      "role": "guest",
+      "expected_scenario_id": "lot.payment.overdue",
+      "source_unit_id": "lot.payment.overdue::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "lot.payment.overdue::primary::word_order",
+      "split": "validation",
+      "variant": "word_order",
+      "text": "просрочка оплаты лота Срок и",
+      "role": "guest",
+      "expected_scenario_id": "lot.payment.overdue",
+      "source_unit_id": "lot.payment.overdue::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "balance.topup.commission::primary::taxonomy_paraphrase",
+      "split": "development",
+      "variant": "taxonomy_paraphrase",
+      "text": "за пополнение какая комиссия; кошелек, сбор площадки",
+      "role": "authorized",
+      "expected_scenario_id": "balance.topup.commission",
+      "source_unit_id": "balance.topup.commission::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "balance.topup.commission::primary::transposed_letters",
+      "split": "development",
+      "variant": "transposed_letters",
+      "text": "Комиссия при попонлении баланса",
+      "role": "authorized",
+      "expected_scenario_id": "balance.topup.commission",
+      "source_unit_id": "balance.topup.commission::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "balance.topup.commission::primary::word_order",
+      "split": "development",
+      "variant": "word_order",
+      "text": "пополнении баланса Комиссия при",
+      "role": "authorized",
+      "expected_scenario_id": "balance.topup.commission",
+      "source_unit_id": "balance.topup.commission::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "refund.eligibility::primary::taxonomy_paraphrase",
+      "split": "development",
+      "variant": "taxonomy_paraphrase",
+      "text": "можно вернуть какие деньги; вернуть деньги, кошелек",
+      "role": "guest",
+      "expected_scenario_id": "refund.eligibility",
+      "source_unit_id": "refund.eligibility::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "refund.eligibility::primary::transposed_letters",
+      "split": "validation",
+      "variant": "transposed_letters",
+      "text": "Какие сресдтва можно вернуть",
+      "role": "guest",
+      "expected_scenario_id": "refund.eligibility",
+      "source_unit_id": "refund.eligibility::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "refund.eligibility::primary::word_order",
+      "split": "development",
+      "variant": "word_order",
+      "text": "можно вернуть Какие средства",
+      "role": "guest",
+      "expected_scenario_id": "refund.eligibility",
+      "source_unit_id": "refund.eligibility::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "refund.application::one_time::taxonomy_paraphrase",
+      "split": "development",
+      "variant": "taxonomy_paraphrase",
+      "text": "нужно узнать: возврат разового тарифа; вернуть деньги, кошелек",
+      "role": "guest",
+      "expected_scenario_id": "refund.application",
+      "source_unit_id": "refund.application::one_time",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "refund.application::one_time::transposed_letters",
+      "split": "development",
+      "variant": "transposed_letters",
+      "text": "Возврат Развоого тарифа",
+      "role": "guest",
+      "expected_scenario_id": "refund.application",
+      "source_unit_id": "refund.application::one_time",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "refund.application::one_time::word_order",
+      "split": "development",
+      "variant": "word_order",
+      "text": "нужно узнать: Возврат Разового тарифа",
+      "role": "guest",
+      "expected_scenario_id": "refund.application",
+      "source_unit_id": "refund.application::one_time",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "refund.application::premium::taxonomy_paraphrase",
+      "split": "development",
+      "variant": "taxonomy_paraphrase",
+      "text": "нужно узнать: расторгнуть премиум; вернуть деньги, кошелек",
+      "role": "guest",
+      "expected_scenario_id": "refund.application",
+      "source_unit_id": "refund.application::premium",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "refund.application::premium::transposed_letters",
+      "split": "validation",
+      "variant": "transposed_letters",
+      "text": "Возврат обеспечтиельного платежа Премиум",
+      "role": "guest",
+      "expected_scenario_id": "refund.application",
+      "source_unit_id": "refund.application::premium",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "refund.application::premium::word_order",
+      "split": "development",
+      "variant": "word_order",
+      "text": "платежа Премиум Возврат обеспечительного",
+      "role": "guest",
+      "expected_scenario_id": "refund.application",
+      "source_unit_id": "refund.application::premium",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "refund.application::commission::taxonomy_paraphrase",
+      "split": "development",
+      "variant": "taxonomy_paraphrase",
+      "text": "нужно узнать: возврат комиссии; вернуть деньги, кошелек",
+      "role": "guest",
+      "expected_scenario_id": "refund.application",
+      "source_unit_id": "refund.application::commission",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "refund.application::commission::transposed_letters",
+      "split": "development",
+      "variant": "transposed_letters",
+      "text": "Возврат комиссии по несостяовшейся сделке",
+      "role": "guest",
+      "expected_scenario_id": "refund.application",
+      "source_unit_id": "refund.application::commission",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "refund.application::commission::word_order",
+      "split": "development",
+      "variant": "word_order",
+      "text": "по несостоявшейся сделке Возврат комиссии",
+      "role": "guest",
+      "expected_scenario_id": "refund.application",
+      "source_unit_id": "refund.application::commission",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "refund.destination::primary::taxonomy_paraphrase",
+      "split": "development",
+      "variant": "taxonomy_paraphrase",
+      "text": "нужно узнать: куда вернут деньги; вернуть деньги, перевод денег",
+      "role": "authorized",
+      "expected_scenario_id": "refund.destination",
+      "source_unit_id": "refund.destination::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "refund.destination::primary::transposed_letters",
+      "split": "development",
+      "variant": "transposed_letters",
+      "text": "Куда возврщааются деньги",
+      "role": "authorized",
+      "expected_scenario_id": "refund.destination",
+      "source_unit_id": "refund.destination::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "refund.destination::primary::word_order",
+      "split": "development",
+      "variant": "word_order",
+      "text": "нужно узнать: Куда возвращаются деньги",
+      "role": "authorized",
+      "expected_scenario_id": "refund.destination",
+      "source_unit_id": "refund.destination::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "refund.timing_status::primary::taxonomy_paraphrase",
+      "split": "development",
+      "variant": "taxonomy_paraphrase",
+      "text": "нужно узнать: когда придет возврат; вернуть деньги, перевод денег",
+      "role": "guest",
+      "expected_scenario_id": "refund.timing_status",
+      "source_unit_id": "refund.timing_status::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "refund.timing_status::primary::transposed_letters",
+      "split": "development",
+      "variant": "transposed_letters",
+      "text": "Срок и статус возрвата",
+      "role": "guest",
+      "expected_scenario_id": "refund.timing_status",
+      "source_unit_id": "refund.timing_status::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "refund.timing_status::primary::word_order",
+      "split": "development",
+      "variant": "word_order",
+      "text": "статус возврата Срок и",
+      "role": "guest",
+      "expected_scenario_id": "refund.timing_status",
+      "source_unit_id": "refund.timing_status::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "refund.denied_or_blocked::primary::taxonomy_paraphrase",
+      "split": "development",
+      "variant": "taxonomy_paraphrase",
+      "text": "в возврате почему отказали; вернуть деньги, учетная запись",
+      "role": "authorized",
+      "expected_scenario_id": "refund.denied_or_blocked",
+      "source_unit_id": "refund.denied_or_blocked::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "refund.denied_or_blocked::primary::transposed_letters",
+      "split": "development",
+      "variant": "transposed_letters",
+      "text": "Почему возврат недотсупен или отклонён",
+      "role": "authorized",
+      "expected_scenario_id": "refund.denied_or_blocked",
+      "source_unit_id": "refund.denied_or_blocked::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "refund.denied_or_blocked::primary::word_order",
+      "split": "development",
+      "variant": "word_order",
+      "text": "недоступен или отклонён Почему возврат",
+      "role": "authorized",
+      "expected_scenario_id": "refund.denied_or_blocked",
+      "source_unit_id": "refund.denied_or_blocked::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "penalty.explain_or_dispute::primary::taxonomy_paraphrase",
+      "split": "development",
+      "variant": "taxonomy_paraphrase",
+      "text": "мне начислили штраф за что; учетная запись, объект торгов",
+      "role": "authorized",
+      "expected_scenario_id": "penalty.explain_or_dispute",
+      "source_unit_id": "penalty.explain_or_dispute::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "penalty.explain_or_dispute::primary::transposed_letters",
+      "split": "development",
+      "variant": "transposed_letters",
+      "text": "Штраф: оснвоание, оплата и спор",
+      "role": "authorized",
+      "expected_scenario_id": "penalty.explain_or_dispute",
+      "source_unit_id": "penalty.explain_or_dispute::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "penalty.explain_or_dispute::primary::word_order",
+      "split": "development",
+      "variant": "word_order",
+      "text": "оплата и спор Штраф: основание,",
+      "role": "authorized",
+      "expected_scenario_id": "penalty.explain_or_dispute",
+      "source_unit_id": "penalty.explain_or_dispute::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "account.identification_for_contract::primary::taxonomy_paraphrase",
+      "split": "development",
+      "variant": "taxonomy_paraphrase",
+      "text": "нужны для тарифа какие документы; учетная запись, дкп",
+      "role": "authorized",
+      "expected_scenario_id": "account.identification_for_contract",
+      "source_unit_id": "account.identification_for_contract::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "account.identification_for_contract::primary::transposed_letters",
+      "split": "development",
+      "variant": "transposed_letters",
+      "text": "Какие данные нужны для демо и плантого договора",
+      "role": "authorized",
+      "expected_scenario_id": "account.identification_for_contract",
+      "source_unit_id": "account.identification_for_contract::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "account.identification_for_contract::primary::word_order",
+      "split": "development",
+      "variant": "word_order",
+      "text": "демо и платного договора Какие данные нужны для",
+      "role": "authorized",
+      "expected_scenario_id": "account.identification_for_contract",
+      "source_unit_id": "account.identification_for_contract::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "vehicle.registration_after_purchase::primary::taxonomy_paraphrase",
+      "split": "development",
+      "variant": "taxonomy_paraphrase",
+      "text": "постановку машины на учет сколько дней на; транспортное средство, создание аккаунта",
+      "role": "authorized",
+      "expected_scenario_id": "vehicle.registration_after_purchase",
+      "source_unit_id": "vehicle.registration_after_purchase::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "vehicle.registration_after_purchase::primary::transposed_letters",
+      "split": "development",
+      "variant": "transposed_letters",
+      "text": "Регитсрация автомобиля после покупки",
+      "role": "authorized",
+      "expected_scenario_id": "vehicle.registration_after_purchase",
+      "source_unit_id": "vehicle.registration_after_purchase::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "vehicle.registration_after_purchase::primary::word_order",
+      "split": "development",
+      "variant": "word_order",
+      "text": "после покупки Регистрация автомобиля",
+      "role": "authorized",
+      "expected_scenario_id": "vehicle.registration_after_purchase",
+      "source_unit_id": "vehicle.registration_after_purchase::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "loyalty.unconfirmed_details::primary::taxonomy_paraphrase",
+      "split": "development",
+      "variant": "taxonomy_paraphrase",
+      "text": "нужно узнать: когда начислят кэшбэк; сбор площадки, кошелек",
+      "role": "guest",
+      "expected_scenario_id": "loyalty.unconfirmed_details",
+      "source_unit_id": "loyalty.unconfirmed_details::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "loyalty.unconfirmed_details::primary::transposed_letters",
+      "split": "development",
+      "variant": "transposed_letters",
+      "text": "Дата начилсения и срок действия кэшбэка требуют проверки",
+      "role": "guest",
+      "expected_scenario_id": "loyalty.unconfirmed_details",
+      "source_unit_id": "loyalty.unconfirmed_details::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "loyalty.unconfirmed_details::primary::word_order",
+      "split": "development",
+      "variant": "word_order",
+      "text": "действия кэшбэка требуют проверки Дата начисления и срок",
+      "role": "guest",
+      "expected_scenario_id": "loyalty.unconfirmed_details",
+      "source_unit_id": "loyalty.unconfirmed_details::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "contract.unconfirmed_details::primary::taxonomy_paraphrase",
+      "split": "validation",
+      "variant": "taxonomy_paraphrase",
+      "text": "срок оплаты услуг какой документ устанавливает; дкп, учетная запись",
+      "role": "authorized",
+      "expected_scenario_id": "contract.unconfirmed_details",
+      "source_unit_id": "contract.unconfirmed_details::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "contract.unconfirmed_details::primary::transposed_letters",
+      "split": "validation",
+      "variant": "transposed_letters",
+      "text": "Неутвежрдённый срок или ссылка в договоре",
+      "role": "authorized",
+      "expected_scenario_id": "contract.unconfirmed_details",
+      "source_unit_id": "contract.unconfirmed_details::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "contract.unconfirmed_details::primary::word_order",
+      "split": "validation",
+      "variant": "word_order",
+      "text": "ссылка в договоре Неутверждённый срок или",
+      "role": "authorized",
+      "expected_scenario_id": "contract.unconfirmed_details",
+      "source_unit_id": "contract.unconfirmed_details::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "refusal.unconfirmed_details::primary::taxonomy_paraphrase",
+      "split": "development",
+      "variant": "taxonomy_paraphrase",
+      "text": "оснований отказа исчерпывающий перечень; объект торгов, страховщик",
+      "role": "authorized",
+      "expected_scenario_id": "refusal.unconfirmed_details",
+      "source_unit_id": "refusal.unconfirmed_details::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "refusal.unconfirmed_details::primary::transposed_letters",
+      "split": "validation",
+      "variant": "transposed_letters",
+      "text": "Неутвежрдённые основания или последствия отказа",
+      "role": "authorized",
+      "expected_scenario_id": "refusal.unconfirmed_details",
+      "source_unit_id": "refusal.unconfirmed_details::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "refusal.unconfirmed_details::primary::word_order",
+      "split": "validation",
+      "variant": "word_order",
+      "text": "или последствия отказа Неутверждённые основания",
+      "role": "authorized",
+      "expected_scenario_id": "refusal.unconfirmed_details",
+      "source_unit_id": "refusal.unconfirmed_details::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "penalty.unconfirmed_details::primary::taxonomy_paraphrase",
+      "split": "development",
+      "variant": "taxonomy_paraphrase",
+      "text": "оплаты штрафа какой срок; учетная запись, объект торгов",
+      "role": "authorized",
+      "expected_scenario_id": "penalty.unconfirmed_details",
+      "source_unit_id": "penalty.unconfirmed_details::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "penalty.unconfirmed_details::primary::transposed_letters",
+      "split": "development",
+      "variant": "transposed_letters",
+      "text": "Неопублкиованный срок, формула или владелец решения по штрафу",
+      "role": "authorized",
+      "expected_scenario_id": "penalty.unconfirmed_details",
+      "source_unit_id": "penalty.unconfirmed_details::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "penalty.unconfirmed_details::primary::word_order",
+      "split": "development",
+      "variant": "word_order",
+      "text": "владелец решения по штрафу Неопубликованный срок, формула или",
+      "role": "authorized",
+      "expected_scenario_id": "penalty.unconfirmed_details",
+      "source_unit_id": "penalty.unconfirmed_details::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "account.identification_edge_case::primary::taxonomy_paraphrase",
+      "split": "development",
+      "variant": "taxonomy_paraphrase",
+      "text": "нужны представителю организации какие документы; учетная запись, дкп",
+      "role": "authorized",
+      "expected_scenario_id": "account.identification_edge_case",
+      "source_unit_id": "account.identification_edge_case::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "account.identification_edge_case::primary::transposed_letters",
+      "split": "development",
+      "variant": "transposed_letters",
+      "text": "Документы предсатвителя или стороннего плательщика требуют проверки",
+      "role": "authorized",
+      "expected_scenario_id": "account.identification_edge_case",
+      "source_unit_id": "account.identification_edge_case::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "account.identification_edge_case::primary::word_order",
+      "split": "validation",
+      "variant": "word_order",
+      "text": "стороннего плательщика требуют проверки Документы представителя или",
+      "role": "authorized",
+      "expected_scenario_id": "account.identification_edge_case",
+      "source_unit_id": "account.identification_edge_case::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "vehicle.registration_penalty_details::primary::taxonomy_paraphrase",
+      "split": "development",
+      "variant": "taxonomy_paraphrase",
+      "text": "поставил машину на учет какой штраф если не; транспортное средство, создание аккаунта",
+      "role": "authorized",
+      "expected_scenario_id": "vehicle.registration_penalty_details",
+      "source_unit_id": "vehicle.registration_penalty_details::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "vehicle.registration_penalty_details::primary::transposed_letters",
+      "split": "development",
+      "variant": "transposed_letters",
+      "text": "Штраф за нарушение срока регитсрации автомобиля требует официальной проверки",
+      "role": "authorized",
+      "expected_scenario_id": "vehicle.registration_penalty_details",
+      "source_unit_id": "vehicle.registration_penalty_details::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "vehicle.registration_penalty_details::primary::word_order",
+      "split": "development",
+      "variant": "word_order",
+      "text": "регистрации автомобиля требует официальной проверки Штраф за нарушение срока",
+      "role": "authorized",
+      "expected_scenario_id": "vehicle.registration_penalty_details",
+      "source_unit_id": "vehicle.registration_penalty_details::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "support.staff_only_details::primary::taxonomy_paraphrase",
+      "split": "development",
+      "variant": "taxonomy_paraphrase",
+      "text": "доступны только сотруднику какие сведения; учетная запись, служба поддержки",
+      "role": "authorized",
+      "expected_scenario_id": "support.staff_only_details",
+      "source_unit_id": "support.staff_only_details::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "support.staff_only_details::primary::transposed_letters",
+      "split": "development",
+      "variant": "transposed_letters",
+      "text": "Сведения, доступные только после индивиудальной проверки",
+      "role": "authorized",
+      "expected_scenario_id": "support.staff_only_details",
+      "source_unit_id": "support.staff_only_details::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "support.staff_only_details::primary::word_order",
+      "split": "validation",
+      "variant": "word_order",
+      "text": "после индивидуальной проверки Сведения, доступные только",
+      "role": "authorized",
+      "expected_scenario_id": "support.staff_only_details",
+      "source_unit_id": "support.staff_only_details::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "refusal.invalid_reasons::primary::taxonomy_paraphrase",
+      "split": "validation",
+      "variant": "taxonomy_paraphrase",
+      "text": "отказа не принимаются какие причины; объект торгов, бумаги",
+      "role": "authorized",
+      "expected_scenario_id": "refusal.invalid_reasons",
+      "source_unit_id": "refusal.invalid_reasons::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "refusal.invalid_reasons::primary::transposed_letters",
+      "split": "development",
+      "variant": "transposed_letters",
+      "text": "Какие причины не подтверждают мотивиорванный отказ",
+      "role": "authorized",
+      "expected_scenario_id": "refusal.invalid_reasons",
+      "source_unit_id": "refusal.invalid_reasons::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "refusal.invalid_reasons::primary::word_order",
+      "split": "development",
+      "variant": "word_order",
+      "text": "подтверждают мотивированный отказ Какие причины не",
+      "role": "authorized",
+      "expected_scenario_id": "refusal.invalid_reasons",
+      "source_unit_id": "refusal.invalid_reasons::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "refusal.evidence::primary::taxonomy_paraphrase",
+      "split": "development",
+      "variant": "taxonomy_paraphrase",
+      "text": "нужны для отказа какие документы; объект торгов, бумаги",
+      "role": "authorized",
+      "expected_scenario_id": "refusal.evidence",
+      "source_unit_id": "refusal.evidence::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "refusal.evidence::primary::transposed_letters",
+      "split": "development",
+      "variant": "transposed_letters",
+      "text": "Какие документы и фоторгафии нужны для отказа",
+      "role": "authorized",
+      "expected_scenario_id": "refusal.evidence",
+      "source_unit_id": "refusal.evidence::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "refusal.evidence::primary::word_order",
+      "split": "development",
+      "variant": "word_order",
+      "text": "фотографии нужны для отказа Какие документы и",
+      "role": "authorized",
+      "expected_scenario_id": "refusal.evidence",
+      "source_unit_id": "refusal.evidence::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "refusal.deadline_and_submission::primary::taxonomy_paraphrase",
+      "split": "development",
+      "variant": "taxonomy_paraphrase",
+      "text": "подачу акта об отказе сколько дней на; объект торгов, бумаги",
+      "role": "authorized",
+      "expected_scenario_id": "refusal.deadline_and_submission",
+      "source_unit_id": "refusal.deadline_and_submission::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "refusal.deadline_and_submission::primary::transposed_letters",
+      "split": "development",
+      "variant": "transposed_letters",
+      "text": "Срок и спсооб подачи акта об отказе",
+      "role": "authorized",
+      "expected_scenario_id": "refusal.deadline_and_submission",
+      "source_unit_id": "refusal.deadline_and_submission::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "refusal.deadline_and_submission::primary::word_order",
+      "split": "development",
+      "variant": "word_order",
+      "text": "подачи акта об отказе Срок и способ",
+      "role": "authorized",
+      "expected_scenario_id": "refusal.deadline_and_submission",
+      "source_unit_id": "refusal.deadline_and_submission::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "refusal.seller_decision::primary::taxonomy_paraphrase",
+      "split": "development",
+      "variant": "taxonomy_paraphrase",
+      "text": "по мотивированному отказу кто решает; объект торгов, страховщик",
+      "role": "authorized",
+      "expected_scenario_id": "refusal.seller_decision",
+      "source_unit_id": "refusal.seller_decision::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "refusal.seller_decision::primary::transposed_letters",
+      "split": "validation",
+      "variant": "transposed_letters",
+      "text": "Кто принимает решение по мотивиорванному отказу",
+      "role": "authorized",
+      "expected_scenario_id": "refusal.seller_decision",
+      "source_unit_id": "refusal.seller_decision::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "refusal.seller_decision::primary::word_order",
+      "split": "validation",
+      "variant": "word_order",
+      "text": "по мотивированному отказу Кто принимает решение",
+      "role": "authorized",
+      "expected_scenario_id": "refusal.seller_decision",
+      "source_unit_id": "refusal.seller_decision::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "payment.accounting_documents::request::taxonomy_paraphrase",
+      "split": "development",
+      "variant": "taxonomy_paraphrase",
+      "text": "нужно узнать: закрывающие документы; перевод денег, платежный документ",
+      "role": "authorized",
+      "expected_scenario_id": "payment.accounting_documents",
+      "source_unit_id": "payment.accounting_documents::request",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "payment.accounting_documents::request::transposed_letters",
+      "split": "development",
+      "variant": "transposed_letters",
+      "text": "Запрос финансовых и закрвыающих документов",
+      "role": "authorized",
+      "expected_scenario_id": "payment.accounting_documents",
+      "source_unit_id": "payment.accounting_documents::request",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "payment.accounting_documents::request::word_order",
+      "split": "development",
+      "variant": "word_order",
+      "text": "и закрывающих документов Запрос финансовых",
+      "role": "authorized",
+      "expected_scenario_id": "payment.accounting_documents",
+      "source_unit_id": "payment.accounting_documents::request",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "payment.accounting_documents::safe_channel::taxonomy_paraphrase",
+      "split": "validation",
+      "variant": "taxonomy_paraphrase",
+      "text": "нужно узнать: бухгалтерские документы; перевод денег, платежный документ",
+      "role": "authorized",
+      "expected_scenario_id": "payment.accounting_documents",
+      "source_unit_id": "payment.accounting_documents::safe_channel",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "payment.accounting_documents::safe_channel::transposed_letters",
+      "split": "validation",
+      "variant": "transposed_letters",
+      "text": "Безопасный канал для бухгатлерских документов",
+      "role": "authorized",
+      "expected_scenario_id": "payment.accounting_documents",
+      "source_unit_id": "payment.accounting_documents::safe_channel",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "payment.accounting_documents::safe_channel::word_order",
+      "split": "development",
+      "variant": "word_order",
+      "text": "для бухгалтерских документов Безопасный канал",
+      "role": "authorized",
+      "expected_scenario_id": "payment.accounting_documents",
+      "source_unit_id": "payment.accounting_documents::safe_channel",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "deposit.explained::primary::taxonomy_paraphrase",
+      "split": "development",
+      "variant": "taxonomy_paraphrase",
+      "text": "возвратный депозит что такое; вернуть деньги, учетная запись",
+      "role": "authorized",
+      "expected_scenario_id": "deposit.explained",
+      "source_unit_id": "deposit.explained::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "deposit.explained::primary::transposed_letters",
+      "split": "validation",
+      "variant": "transposed_letters",
+      "text": "Что такое обеспеичтельный или возвратный депозит",
+      "role": "authorized",
+      "expected_scenario_id": "deposit.explained",
+      "source_unit_id": "deposit.explained::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "deposit.explained::primary::word_order",
+      "split": "development",
+      "variant": "word_order",
+      "text": "или возвратный депозит Что такое обеспечительный",
+      "role": "authorized",
+      "expected_scenario_id": "deposit.explained",
+      "source_unit_id": "deposit.explained::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "seller.buyer_nonpayment::primary::taxonomy_paraphrase",
+      "split": "development",
+      "variant": "taxonomy_paraphrase",
+      "text": "оплатил имущество покупатель не; страховщик, объект торгов",
+      "role": "authorized",
+      "expected_scenario_id": "seller.buyer_nonpayment",
+      "source_unit_id": "seller.buyer_nonpayment::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "seller.buyer_nonpayment::primary::transposed_letters",
+      "split": "development",
+      "variant": "transposed_letters",
+      "text": "Покуаптель не оплатил переданное имущество",
+      "role": "authorized",
+      "expected_scenario_id": "seller.buyer_nonpayment",
+      "source_unit_id": "seller.buyer_nonpayment::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "seller.buyer_nonpayment::primary::word_order",
+      "split": "development",
+      "variant": "word_order",
+      "text": "оплатил переданное имущество Покупатель не",
+      "role": "authorized",
+      "expected_scenario_id": "seller.buyer_nonpayment",
+      "source_unit_id": "seller.buyer_nonpayment::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "finance.status.clarify::primary::taxonomy_paraphrase",
+      "split": "validation",
+      "variant": "taxonomy_paraphrase",
+      "text": "нужно узнать: где деньги; перевод денег, вернуть деньги",
+      "role": "guest",
+      "expected_scenario_id": "finance.status.clarify",
+      "source_unit_id": "finance.status.clarify::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "finance.status.clarify::primary::transposed_letters",
+      "split": "development",
+      "variant": "transposed_letters",
+      "text": "Утончение: какой платёж или возврат нужно проверить",
+      "role": "guest",
+      "expected_scenario_id": "finance.status.clarify",
+      "source_unit_id": "finance.status.clarify::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "finance.status.clarify::primary::word_order",
+      "split": "development",
+      "variant": "word_order",
+      "text": "или возврат нужно проверить Уточнение: какой платёж",
+      "role": "guest",
+      "expected_scenario_id": "finance.status.clarify",
+      "source_unit_id": "finance.status.clarify::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "tariff.choose::vehicle_plans::taxonomy_paraphrase",
+      "split": "development",
+      "variant": "taxonomy_paraphrase",
+      "text": "нужно узнать: разовый тариф; подписка, транспортное средство",
+      "role": "guest",
+      "expected_scenario_id": "tariff.choose",
+      "source_unit_id": "tariff.choose::vehicle_plans",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "tariff.choose::vehicle_plans::transposed_letters",
+      "split": "development",
+      "variant": "transposed_letters",
+      "text": "Раозвый или Премиум-тариф",
+      "role": "guest",
+      "expected_scenario_id": "tariff.choose",
+      "source_unit_id": "tariff.choose::vehicle_plans",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "tariff.choose::vehicle_plans::word_order",
+      "split": "development",
+      "variant": "word_order",
+      "text": "нужно узнать: Разовый или Премиум-тариф",
+      "role": "guest",
+      "expected_scenario_id": "tariff.choose",
+      "source_unit_id": "tariff.choose::vehicle_plans",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "tariff.choose::property::taxonomy_paraphrase",
+      "split": "development",
+      "variant": "taxonomy_paraphrase",
+      "text": "нужно узнать: имущество; подписка, транспортное средство",
+      "role": "guest",
+      "expected_scenario_id": "tariff.choose",
+      "source_unit_id": "tariff.choose::property",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "tariff.choose::property::transposed_letters",
+      "split": "development",
+      "variant": "transposed_letters",
+      "text": "Доступ к разделу Имуещство",
+      "role": "guest",
+      "expected_scenario_id": "tariff.choose",
+      "source_unit_id": "tariff.choose::property",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "tariff.choose::property::word_order",
+      "split": "development",
+      "variant": "word_order",
+      "text": "разделу Имущество Доступ к",
+      "role": "guest",
+      "expected_scenario_id": "tariff.choose",
+      "source_unit_id": "tariff.choose::property",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "tariff.choose::auction_cost_policy::taxonomy_paraphrase",
+      "split": "development",
+      "variant": "taxonomy_paraphrase",
+      "text": "нужно узнать: обеспечительный платеж; подписка, транспортное средство",
+      "role": "guest",
+      "expected_scenario_id": "tariff.choose",
+      "source_unit_id": "tariff.choose::auction_cost_policy",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "tariff.choose::auction_cost_policy::transposed_letters",
+      "split": "validation",
+      "variant": "transposed_letters",
+      "text": "Платежи и ограничения автомоибльного тарифа",
+      "role": "guest",
+      "expected_scenario_id": "tariff.choose",
+      "source_unit_id": "tariff.choose::auction_cost_policy",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "tariff.choose::auction_cost_policy::word_order",
+      "split": "development",
+      "variant": "word_order",
+      "text": "ограничения автомобильного тарифа Платежи и",
+      "role": "guest",
+      "expected_scenario_id": "tariff.choose",
+      "source_unit_id": "tariff.choose::auction_cost_policy",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "tariff.one_time::primary::taxonomy_paraphrase",
+      "split": "development",
+      "variant": "taxonomy_paraphrase",
+      "text": "разовый тариф что дает; подписка, транспортное средство",
+      "role": "guest",
+      "expected_scenario_id": "tariff.one_time",
+      "source_unit_id": "tariff.one_time::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "tariff.one_time::primary::transposed_letters",
+      "split": "validation",
+      "variant": "transposed_letters",
+      "text": "Разовый тариф для одного автомоибльного лота",
+      "role": "guest",
+      "expected_scenario_id": "tariff.one_time",
+      "source_unit_id": "tariff.one_time::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "tariff.one_time::primary::word_order",
+      "split": "development",
+      "variant": "word_order",
+      "text": "одного автомобильного лота Разовый тариф для",
+      "role": "guest",
+      "expected_scenario_id": "tariff.one_time",
+      "source_unit_id": "tariff.one_time::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "tariff.premium::primary::taxonomy_paraphrase",
+      "split": "development",
+      "variant": "taxonomy_paraphrase",
+      "text": "нужно узнать: что дает премиум; подписка, транспортное средство",
+      "role": "guest",
+      "expected_scenario_id": "tariff.premium",
+      "source_unit_id": "tariff.premium::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "tariff.premium::primary::transposed_letters",
+      "split": "development",
+      "variant": "transposed_letters",
+      "text": "Премиум-тариф для регулярных автомбоильных торгов",
+      "role": "guest",
+      "expected_scenario_id": "tariff.premium",
+      "source_unit_id": "tariff.premium::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "tariff.premium::primary::word_order",
+      "split": "validation",
+      "variant": "word_order",
+      "text": "регулярных автомобильных торгов Премиум-тариф для",
+      "role": "guest",
+      "expected_scenario_id": "tariff.premium",
+      "source_unit_id": "tariff.premium::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "tariff.demo::primary::taxonomy_paraphrase",
+      "split": "development",
+      "variant": "taxonomy_paraphrase",
+      "text": "демо режим что дает; подписка, транспортное средство",
+      "role": "guest",
+      "expected_scenario_id": "tariff.demo",
+      "source_unit_id": "tariff.demo::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "tariff.demo::primary::transposed_letters",
+      "split": "validation",
+      "variant": "transposed_letters",
+      "text": "Что досутпно в демо-режиме",
+      "role": "guest",
+      "expected_scenario_id": "tariff.demo",
+      "source_unit_id": "tariff.demo::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "tariff.demo::primary::word_order",
+      "split": "validation",
+      "variant": "word_order",
+      "text": "в демо-режиме Что доступно",
+      "role": "guest",
+      "expected_scenario_id": "tariff.demo",
+      "source_unit_id": "tariff.demo::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "tariff.status::primary::taxonomy_paraphrase",
+      "split": "development",
+      "variant": "taxonomy_paraphrase",
+      "text": "активен ли тариф как проверить; подписка, перевод денег",
+      "role": "guest",
+      "expected_scenario_id": "tariff.status",
+      "source_unit_id": "tariff.status::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "tariff.status::primary::transposed_letters",
+      "split": "validation",
+      "variant": "transposed_letters",
+      "text": "Оплаченный тариф не активриовался",
+      "role": "guest",
+      "expected_scenario_id": "tariff.status",
+      "source_unit_id": "tariff.status::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "tariff.status::primary::word_order",
+      "split": "development",
+      "variant": "word_order",
+      "text": "не активировался Оплаченный тариф",
+      "role": "guest",
+      "expected_scenario_id": "tariff.status",
+      "source_unit_id": "tariff.status::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "tariff.promotion::primary::taxonomy_paraphrase",
+      "split": "development",
+      "variant": "taxonomy_paraphrase",
+      "text": "на тариф есть скидка; подписка, перевод денег",
+      "role": "guest",
+      "expected_scenario_id": "tariff.promotion",
+      "source_unit_id": "tariff.promotion::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "tariff.promotion::primary::transposed_letters",
+      "split": "development",
+      "variant": "transposed_letters",
+      "text": "Текущие акции и скидки на подкюлчение тарифа",
+      "role": "guest",
+      "expected_scenario_id": "tariff.promotion",
+      "source_unit_id": "tariff.promotion::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "tariff.promotion::primary::word_order",
+      "split": "development",
+      "variant": "word_order",
+      "text": "скидки на подключение тарифа Текущие акции и",
+      "role": "guest",
+      "expected_scenario_id": "tariff.promotion",
+      "source_unit_id": "tariff.promotion::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "refusal.change_mind::primary::taxonomy_paraphrase",
+      "split": "validation",
+      "variant": "taxonomy_paraphrase",
+      "text": "от выигранного лота можно отказаться; объект торгов, страховщик",
+      "role": "authorized",
+      "expected_scenario_id": "refusal.change_mind",
+      "source_unit_id": "refusal.change_mind::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "refusal.change_mind::primary::transposed_letters",
+      "split": "development",
+      "variant": "transposed_letters",
+      "text": "Покуаптель передумал выкупать выигранный лот",
+      "role": "authorized",
+      "expected_scenario_id": "refusal.change_mind",
+      "source_unit_id": "refusal.change_mind::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "refusal.change_mind::primary::word_order",
+      "split": "development",
+      "variant": "word_order",
+      "text": "выкупать выигранный лот Покупатель передумал",
+      "role": "authorized",
+      "expected_scenario_id": "refusal.change_mind",
+      "source_unit_id": "refusal.change_mind::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "refusal.no_response::primary::taxonomy_paraphrase",
+      "split": "development",
+      "variant": "taxonomy_paraphrase",
+      "text": "если просто пропасть что будет; объект торгов, страховщик",
+      "role": "authorized",
+      "expected_scenario_id": "refusal.no_response",
+      "source_unit_id": "refusal.no_response::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "refusal.no_response::primary::transposed_letters",
+      "split": "development",
+      "variant": "transposed_letters",
+      "text": "Покуаптель игнорирует продавца после победы",
+      "role": "authorized",
+      "expected_scenario_id": "refusal.no_response",
+      "source_unit_id": "refusal.no_response::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "refusal.no_response::primary::word_order",
+      "split": "validation",
+      "variant": "word_order",
+      "text": "продавца после победы Покупатель игнорирует",
+      "role": "authorized",
+      "expected_scenario_id": "refusal.no_response",
+      "source_unit_id": "refusal.no_response::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "seller.buyer_refusal::primary::taxonomy_paraphrase",
+      "split": "development",
+      "variant": "taxonomy_paraphrase",
+      "text": "от моего имущества покупатель отказался; страховщик, объект торгов",
+      "role": "authorized",
+      "expected_scenario_id": "seller.buyer_refusal",
+      "source_unit_id": "seller.buyer_refusal::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "seller.buyer_refusal::primary::transposed_letters",
+      "split": "development",
+      "variant": "transposed_letters",
+      "text": "Покуаптель отказался от имущества продавца",
+      "role": "authorized",
+      "expected_scenario_id": "seller.buyer_refusal",
+      "source_unit_id": "seller.buyer_refusal::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "seller.buyer_refusal::primary::word_order",
+      "split": "development",
+      "variant": "word_order",
+      "text": "от имущества продавца Покупатель отказался",
+      "role": "authorized",
+      "expected_scenario_id": "seller.buyer_refusal",
+      "source_unit_id": "seller.buyer_refusal::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "bid.validity::primary::taxonomy_paraphrase",
+      "split": "validation",
+      "variant": "taxonomy_paraphrase",
+      "text": "срок действия ставки что такое; ценовое предложение, объект торгов",
+      "role": "guest",
+      "expected_scenario_id": "bid.validity",
+      "source_unit_id": "bid.validity::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "bid.validity::primary::transposed_letters",
+      "split": "development",
+      "variant": "transposed_letters",
+      "text": "Срок дейтсвия победной ставки",
+      "role": "guest",
+      "expected_scenario_id": "bid.validity",
+      "source_unit_id": "bid.validity::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "bid.validity::primary::word_order",
+      "split": "development",
+      "variant": "word_order",
+      "text": "победной ставки Срок действия",
+      "role": "guest",
+      "expected_scenario_id": "bid.validity",
+      "source_unit_id": "bid.validity::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "bid.expired::primary::taxonomy_paraphrase",
+      "split": "development",
+      "variant": "taxonomy_paraphrase",
+      "text": "ставки истек срок действия; ценовое предложение, объект торгов",
+      "role": "authorized",
+      "expected_scenario_id": "bid.expired",
+      "source_unit_id": "bid.expired::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "bid.expired::primary::transposed_letters",
+      "split": "development",
+      "variant": "transposed_letters",
+      "text": "Срок побденой ставки истёк",
+      "role": "authorized",
+      "expected_scenario_id": "bid.expired",
+      "source_unit_id": "bid.expired::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "bid.expired::primary::word_order",
+      "split": "development",
+      "variant": "word_order",
+      "text": "ставки истёк Срок победной",
+      "role": "authorized",
+      "expected_scenario_id": "bid.expired",
+      "source_unit_id": "bid.expired::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "documents.preparation_delay::primary::taxonomy_paraphrase",
+      "split": "validation",
+      "variant": "taxonomy_paraphrase",
+      "text": "документы после передачи сколько готовят; бумаги, объект торгов",
+      "role": "guest",
+      "expected_scenario_id": "documents.preparation_delay",
+      "source_unit_id": "documents.preparation_delay::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "documents.preparation_delay::primary::transposed_letters",
+      "split": "development",
+      "variant": "transposed_letters",
+      "text": "Срок подгтоовки документов после передачи",
+      "role": "guest",
+      "expected_scenario_id": "documents.preparation_delay",
+      "source_unit_id": "documents.preparation_delay::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "documents.preparation_delay::primary::word_order",
+      "split": "development",
+      "variant": "word_order",
+      "text": "документов после передачи Срок подготовки",
+      "role": "guest",
+      "expected_scenario_id": "documents.preparation_delay",
+      "source_unit_id": "documents.preparation_delay::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "pickup.delay::primary::taxonomy_paraphrase",
+      "split": "development",
+      "variant": "taxonomy_paraphrase",
+      "text": "забрать автомобиль не успеваю; объект торгов, транспортное средство",
+      "role": "authorized",
+      "expected_scenario_id": "pickup.delay",
+      "source_unit_id": "pickup.delay::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "pickup.delay::primary::transposed_letters",
+      "split": "development",
+      "variant": "transposed_letters",
+      "text": "Задержка вывоза и возомжные расходы хранения",
+      "role": "authorized",
+      "expected_scenario_id": "pickup.delay",
+      "source_unit_id": "pickup.delay::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "pickup.delay::primary::word_order",
+      "split": "development",
+      "variant": "word_order",
+      "text": "возможные расходы хранения Задержка вывоза и",
+      "role": "authorized",
+      "expected_scenario_id": "pickup.delay",
+      "source_unit_id": "pickup.delay::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "seller.categories::primary::taxonomy_paraphrase",
+      "split": "development",
+      "variant": "taxonomy_paraphrase",
+      "text": "продавать на площадке какое имущество можно; страховщик, транспортное средство",
+      "role": "guest",
+      "expected_scenario_id": "seller.categories",
+      "source_unit_id": "seller.categories::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "seller.categories::primary::transposed_letters",
+      "split": "development",
+      "variant": "transposed_letters",
+      "text": "Какие катгеории имущества может размещать продавец",
+      "role": "guest",
+      "expected_scenario_id": "seller.categories",
+      "source_unit_id": "seller.categories::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "seller.categories::primary::word_order",
+      "split": "development",
+      "variant": "word_order",
+      "text": "может размещать продавец Какие категории имущества",
+      "role": "guest",
+      "expected_scenario_id": "seller.categories",
+      "source_unit_id": "seller.categories::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "seller.access_security::primary::taxonomy_paraphrase",
+      "split": "development",
+      "variant": "taxonomy_paraphrase",
+      "text": "логин и пароль когда продавцу дадут; страховщик, учетная запись",
+      "role": "authorized",
+      "expected_scenario_id": "seller.access_security",
+      "source_unit_id": "seller.access_security::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "seller.access_security::primary::transposed_letters",
+      "split": "validation",
+      "variant": "transposed_letters",
+      "text": "Доступ продавца и безопсаность логина",
+      "role": "authorized",
+      "expected_scenario_id": "seller.access_security",
+      "source_unit_id": "seller.access_security::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "seller.access_security::primary::word_order",
+      "split": "development",
+      "variant": "word_order",
+      "text": "и безопасность логина Доступ продавца",
+      "role": "authorized",
+      "expected_scenario_id": "seller.access_security",
+      "source_unit_id": "seller.access_security::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "seller.information_status::primary::taxonomy_paraphrase",
+      "split": "development",
+      "variant": "taxonomy_paraphrase",
+      "text": "это оферта информация продавца; страховщик, объект торгов",
+      "role": "guest",
+      "expected_scenario_id": "seller.information_status",
+      "source_unit_id": "seller.information_status::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "seller.information_status::primary::transposed_letters",
+      "split": "development",
+      "variant": "transposed_letters",
+      "text": "Информация продавца и предолжение покупателя",
+      "role": "guest",
+      "expected_scenario_id": "seller.information_status",
+      "source_unit_id": "seller.information_status::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "seller.information_status::primary::word_order",
+      "split": "development",
+      "variant": "word_order",
+      "text": "и предложение покупателя Информация продавца",
+      "role": "guest",
+      "expected_scenario_id": "seller.information_status",
+      "source_unit_id": "seller.information_status::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "seller.training::primary::taxonomy_paraphrase",
+      "split": "development",
+      "variant": "taxonomy_paraphrase",
+      "text": "для продавца есть обучение; страховщик, учетная запись",
+      "role": "authorized",
+      "expected_scenario_id": "seller.training",
+      "source_unit_id": "seller.training::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "seller.training::primary::transposed_letters",
+      "split": "validation",
+      "variant": "transposed_letters",
+      "text": "Обучение сотрдуников продавца",
+      "role": "authorized",
+      "expected_scenario_id": "seller.training",
+      "source_unit_id": "seller.training::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "seller.training::primary::word_order",
+      "split": "development",
+      "variant": "word_order",
+      "text": "нужно узнать: Обучение сотрудников продавца",
+      "role": "authorized",
+      "expected_scenario_id": "seller.training",
+      "source_unit_id": "seller.training::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "seller.contract_term::primary::taxonomy_paraphrase",
+      "split": "development",
+      "variant": "taxonomy_paraphrase",
+      "text": "заключается договор продавца на сколько; страховщик, дкп",
+      "role": "authorized",
+      "expected_scenario_id": "seller.contract_term",
+      "source_unit_id": "seller.contract_term::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "seller.contract_term::primary::transposed_letters",
+      "split": "development",
+      "variant": "transposed_letters",
+      "text": "Срок и прекарщение договора продавца",
+      "role": "authorized",
+      "expected_scenario_id": "seller.contract_term",
+      "source_unit_id": "seller.contract_term::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "seller.contract_term::primary::word_order",
+      "split": "development",
+      "variant": "word_order",
+      "text": "прекращение договора продавца Срок и",
+      "role": "authorized",
+      "expected_scenario_id": "seller.contract_term",
+      "source_unit_id": "seller.contract_term::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "payment.document_policy::primary::taxonomy_paraphrase",
+      "split": "development",
+      "variant": "taxonomy_paraphrase",
+      "text": "100 рублей минимальный депозит; перевод денег, кошелек",
+      "role": "guest",
+      "expected_scenario_id": "payment.document_policy",
+      "source_unit_id": "payment.document_policy::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "payment.document_policy::primary::transposed_letters",
+      "split": "development",
+      "variant": "transposed_letters",
+      "text": "Общие платёжные правила в докуемнтах и актуальные условия операции",
+      "role": "guest",
+      "expected_scenario_id": "payment.document_policy",
+      "source_unit_id": "payment.document_policy::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "payment.document_policy::primary::word_order",
+      "split": "validation",
+      "variant": "word_order",
+      "text": "документах и актуальные условия операции Общие платёжные правила в",
+      "role": "guest",
+      "expected_scenario_id": "payment.document_policy",
+      "source_unit_id": "payment.document_policy::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "platform.about::primary::taxonomy_paraphrase",
+      "split": "development",
+      "variant": "taxonomy_paraphrase",
+      "text": "нужно узнать: что такое migtorg; торги, страховщик",
+      "role": "guest",
+      "expected_scenario_id": "platform.about",
+      "source_unit_id": "platform.about::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "platform.about::primary::transposed_letters",
+      "split": "development",
+      "variant": "transposed_letters",
+      "text": "Что такое MIGTORG и как распрдеелены роли",
+      "role": "guest",
+      "expected_scenario_id": "platform.about",
+      "source_unit_id": "platform.about::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "platform.about::primary::word_order",
+      "split": "development",
+      "variant": "word_order",
+      "text": "и как распределены роли Что такое MIGTORG",
+      "role": "guest",
+      "expected_scenario_id": "platform.about",
+      "source_unit_id": "platform.about::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "account.registration::primary::taxonomy_paraphrase",
+      "split": "development",
+      "variant": "taxonomy_paraphrase",
+      "text": "на сайте как зарегистрироваться; учетная запись, создать аккаунт",
+      "role": "guest",
+      "expected_scenario_id": "account.registration",
+      "source_unit_id": "account.registration::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "account.registration::primary::transposed_letters",
+      "split": "development",
+      "variant": "transposed_letters",
+      "text": "Регитсрация покупателя и необходимые данные",
+      "role": "guest",
+      "expected_scenario_id": "account.registration",
+      "source_unit_id": "account.registration::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "account.registration::primary::word_order",
+      "split": "development",
+      "variant": "word_order",
+      "text": "и необходимые данные Регистрация покупателя",
+      "role": "guest",
+      "expected_scenario_id": "account.registration",
+      "source_unit_id": "account.registration::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "vehicle.legal_check::primary::taxonomy_paraphrase",
+      "split": "validation",
+      "variant": "taxonomy_paraphrase",
+      "text": "юридическую чистоту автомобиля как проверить; транспортное средство, объект торгов",
+      "role": "guest",
+      "expected_scenario_id": "vehicle.legal_check",
+      "source_unit_id": "vehicle.legal_check::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "vehicle.legal_check::primary::transposed_letters",
+      "split": "development",
+      "variant": "transposed_letters",
+      "text": "Проверка юридчиеских рисков автомобиля",
+      "role": "guest",
+      "expected_scenario_id": "vehicle.legal_check",
+      "source_unit_id": "vehicle.legal_check::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "vehicle.legal_check::primary::word_order",
+      "split": "development",
+      "variant": "word_order",
+      "text": "рисков автомобиля Проверка юридических",
+      "role": "guest",
+      "expected_scenario_id": "vehicle.legal_check",
+      "source_unit_id": "vehicle.legal_check::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "auction.result::primary::taxonomy_paraphrase",
+      "split": "development",
+      "variant": "taxonomy_paraphrase",
+      "text": "победил ли я как узнать; торги, ценовое предложение",
+      "role": "authorized",
+      "expected_scenario_id": "auction.result",
+      "source_unit_id": "auction.result::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "auction.result::primary::transposed_letters",
+      "split": "development",
+      "variant": "transposed_letters",
+      "text": "Как узнать резлуьтат торгов и победную ставку",
+      "role": "authorized",
+      "expected_scenario_id": "auction.result",
+      "source_unit_id": "auction.result::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "auction.result::primary::word_order",
+      "split": "development",
+      "variant": "word_order",
+      "text": "торгов и победную ставку Как узнать результат",
+      "role": "authorized",
+      "expected_scenario_id": "auction.result",
+      "source_unit_id": "auction.result::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "transfer.seller_no_response::primary::taxonomy_paraphrase",
+      "split": "validation",
+      "variant": "taxonomy_paraphrase",
+      "text": "выходит на связь страховая не; страховщик, объект торгов",
+      "role": "guest",
+      "expected_scenario_id": "transfer.seller_no_response",
+      "source_unit_id": "transfer.seller_no_response::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "transfer.seller_no_response::primary::transposed_letters",
+      "split": "development",
+      "variant": "transposed_letters",
+      "text": "Продавец не отвечает по выигарнному лоту",
+      "role": "guest",
+      "expected_scenario_id": "transfer.seller_no_response",
+      "source_unit_id": "transfer.seller_no_response::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "transfer.seller_no_response::primary::word_order",
+      "split": "development",
+      "variant": "word_order",
+      "text": "по выигранному лоту Продавец не отвечает",
+      "role": "guest",
+      "expected_scenario_id": "transfer.seller_no_response",
+      "source_unit_id": "transfer.seller_no_response::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "transfer.not_confirmed::primary::taxonomy_paraphrase",
+      "split": "development",
+      "variant": "taxonomy_paraphrase",
+      "text": "нужно узнать: лот не передают; объект торгов, страховщик",
+      "role": "guest",
+      "expected_scenario_id": "transfer.not_confirmed",
+      "source_unit_id": "transfer.not_confirmed::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "transfer.not_confirmed::primary::transposed_letters",
+      "split": "development",
+      "variant": "transposed_letters",
+      "text": "Победный лот не передан проадвцом",
+      "role": "guest",
+      "expected_scenario_id": "transfer.not_confirmed",
+      "source_unit_id": "transfer.not_confirmed::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "transfer.not_confirmed::primary::word_order",
+      "split": "development",
+      "variant": "word_order",
+      "text": "не передан продавцом Победный лот",
+      "role": "guest",
+      "expected_scenario_id": "transfer.not_confirmed",
+      "source_unit_id": "transfer.not_confirmed::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "transfer.confirmed::primary::taxonomy_paraphrase",
+      "split": "development",
+      "variant": "taxonomy_paraphrase",
+      "text": "лот передан что значит; объект торгов, страховщик",
+      "role": "authorized",
+      "expected_scenario_id": "transfer.confirmed",
+      "source_unit_id": "transfer.confirmed::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "transfer.confirmed::primary::transposed_letters",
+      "split": "development",
+      "variant": "transposed_letters",
+      "text": "Что ознчаает статус «Передан»",
+      "role": "authorized",
+      "expected_scenario_id": "transfer.confirmed",
+      "source_unit_id": "transfer.confirmed::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "transfer.confirmed::primary::word_order",
+      "split": "development",
+      "variant": "word_order",
+      "text": "статус «Передан» Что означает",
+      "role": "authorized",
+      "expected_scenario_id": "transfer.confirmed",
+      "source_unit_id": "transfer.confirmed::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "lot.catalog_search::primary::taxonomy_paraphrase",
+      "split": "development",
+      "variant": "taxonomy_paraphrase",
+      "text": "нужно узнать: где искать лоты; объект торгов, транспортное средство",
+      "role": "guest",
+      "expected_scenario_id": "lot.catalog_search",
+      "source_unit_id": "lot.catalog_search::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "lot.catalog_search::primary::transposed_letters",
+      "split": "development",
+      "variant": "transposed_letters",
+      "text": "Поиск лотов и фильтры катлаога",
+      "role": "guest",
+      "expected_scenario_id": "lot.catalog_search",
+      "source_unit_id": "lot.catalog_search::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "lot.catalog_search::primary::word_order",
+      "split": "development",
+      "variant": "word_order",
+      "text": "и фильтры каталога Поиск лотов",
+      "role": "guest",
+      "expected_scenario_id": "lot.catalog_search",
+      "source_unit_id": "lot.catalog_search::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "lot.card_information::primary::taxonomy_paraphrase",
+      "split": "development",
+      "variant": "taxonomy_paraphrase",
+      "text": "карточку лота как читать; объект торгов, транспортное средство",
+      "role": "guest",
+      "expected_scenario_id": "lot.card_information",
+      "source_unit_id": "lot.card_information::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "lot.card_information::primary::transposed_letters",
+      "split": "development",
+      "variant": "transposed_letters",
+      "text": "Данные карточки и отсуттсвующая информация по лоту",
+      "role": "guest",
+      "expected_scenario_id": "lot.card_information",
+      "source_unit_id": "lot.card_information::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "lot.card_information::primary::word_order",
+      "split": "development",
+      "variant": "word_order",
+      "text": "отсутствующая информация по лоту Данные карточки и",
+      "role": "guest",
+      "expected_scenario_id": "lot.card_information",
+      "source_unit_id": "lot.card_information::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "lot.insufficient_information::primary::taxonomy_paraphrase",
+      "split": "validation",
+      "variant": "taxonomy_paraphrase",
+      "text": "в карточке мало инфы; объект торгов, транспортное средство",
+      "role": "guest",
+      "expected_scenario_id": "lot.insufficient_information",
+      "source_unit_id": "lot.insufficient_information::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "lot.insufficient_information::primary::transposed_letters",
+      "split": "development",
+      "variant": "transposed_letters",
+      "text": "В карточке недосатточно сведений о лоте",
+      "role": "guest",
+      "expected_scenario_id": "lot.insufficient_information",
+      "source_unit_id": "lot.insufficient_information::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "lot.insufficient_information::primary::word_order",
+      "split": "development",
+      "variant": "word_order",
+      "text": "сведений о лоте В карточке недостаточно",
+      "role": "guest",
+      "expected_scenario_id": "lot.insufficient_information",
+      "source_unit_id": "lot.insufficient_information::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "vehicle.vin_request::primary::taxonomy_paraphrase",
+      "split": "development",
+      "variant": "taxonomy_paraphrase",
+      "text": "vin по лоту как запросить; транспортное средство, объект торгов",
+      "role": "guest",
+      "expected_scenario_id": "vehicle.vin_request",
+      "source_unit_id": "vehicle.vin_request::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "vehicle.vin_request::primary::transposed_letters",
+      "split": "validation",
+      "variant": "transposed_letters",
+      "text": "Запрос VIN и платная проверка автоомбиля",
+      "role": "guest",
+      "expected_scenario_id": "vehicle.vin_request",
+      "source_unit_id": "vehicle.vin_request::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "vehicle.vin_request::primary::word_order",
+      "split": "development",
+      "variant": "word_order",
+      "text": "платная проверка автомобиля Запрос VIN и",
+      "role": "guest",
+      "expected_scenario_id": "vehicle.vin_request",
+      "source_unit_id": "vehicle.vin_request::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "lot.location::primary::taxonomy_paraphrase",
+      "split": "development",
+      "variant": "taxonomy_paraphrase",
+      "text": "нужно узнать: где стоянка; объект торгов, транспортное средство",
+      "role": "guest",
+      "expected_scenario_id": "lot.location",
+      "source_unit_id": "lot.location::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "lot.location::primary::transposed_letters",
+      "split": "development",
+      "variant": "transposed_letters",
+      "text": "Где находится автоомбиль или стоянка",
+      "role": "guest",
+      "expected_scenario_id": "lot.location",
+      "source_unit_id": "lot.location::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "lot.location::primary::word_order",
+      "split": "validation",
+      "variant": "word_order",
+      "text": "автомобиль или стоянка Где находится",
+      "role": "guest",
+      "expected_scenario_id": "lot.location",
+      "source_unit_id": "lot.location::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "lot.missing::primary::taxonomy_paraphrase",
+      "split": "development",
+      "variant": "taxonomy_paraphrase",
+      "text": "нужно узнать: где мой лот; объект торгов, учетная запись",
+      "role": "authorized",
+      "expected_scenario_id": "lot.missing",
+      "source_unit_id": "lot.missing::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "lot.missing::primary::transposed_letters",
+      "split": "development",
+      "variant": "transposed_letters",
+      "text": "Пользвоатель не видит свой лот",
+      "role": "authorized",
+      "expected_scenario_id": "lot.missing",
+      "source_unit_id": "lot.missing::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "lot.missing::primary::word_order",
+      "split": "validation",
+      "variant": "word_order",
+      "text": "видит свой лот Пользователь не",
+      "role": "authorized",
+      "expected_scenario_id": "lot.missing",
+      "source_unit_id": "lot.missing::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "auction.formats::primary::taxonomy_paraphrase",
+      "split": "validation",
+      "variant": "taxonomy_paraphrase",
+      "text": "нужно узнать: торги и ставки; торги, ценовое предложение",
+      "role": "guest",
+      "expected_scenario_id": "auction.formats",
+      "source_unit_id": "auction.formats::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "auction.formats::primary::transposed_letters",
+      "split": "development",
+      "variant": "transposed_letters",
+      "text": "Откыртые и закрытые торги",
+      "role": "guest",
+      "expected_scenario_id": "auction.formats",
+      "source_unit_id": "auction.formats::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "auction.formats::primary::word_order",
+      "split": "development",
+      "variant": "word_order",
+      "text": "закрытые торги Открытые и",
+      "role": "guest",
+      "expected_scenario_id": "auction.formats",
+      "source_unit_id": "auction.formats::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "bid.price_terms::definitions::taxonomy_paraphrase",
+      "split": "development",
+      "variant": "taxonomy_paraphrase",
+      "text": "нужно узнать: минимальная ставка; ценовое предложение, торги",
+      "role": "guest",
+      "expected_scenario_id": "bid.price_terms",
+      "source_unit_id": "bid.price_terms::definitions",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "bid.price_terms::definitions::transposed_letters",
+      "split": "development",
+      "variant": "transposed_letters",
+      "text": "Ставка, статровая цена, текущая цена и шаг",
+      "role": "guest",
+      "expected_scenario_id": "bid.price_terms",
+      "source_unit_id": "bid.price_terms::definitions",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "bid.price_terms::definitions::word_order",
+      "split": "development",
+      "variant": "word_order",
+      "text": "текущая цена и шаг Ставка, стартовая цена,",
+      "role": "guest",
+      "expected_scenario_id": "bid.price_terms",
+      "source_unit_id": "bid.price_terms::definitions",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "bid.price_terms::rules::taxonomy_paraphrase",
+      "split": "development",
+      "variant": "taxonomy_paraphrase",
+      "text": "нужно узнать: открытые торги; ценовое предложение, торги",
+      "role": "guest",
+      "expected_scenario_id": "bid.price_terms",
+      "source_unit_id": "bid.price_terms::rules",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "bid.price_terms::rules::transposed_letters",
+      "split": "development",
+      "variant": "transposed_letters",
+      "text": "Правила цены в откыртых и закрытых торгах",
+      "role": "guest",
+      "expected_scenario_id": "bid.price_terms",
+      "source_unit_id": "bid.price_terms::rules",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "bid.price_terms::rules::word_order",
+      "split": "development",
+      "variant": "word_order",
+      "text": "открытых и закрытых торгах Правила цены в",
+      "role": "guest",
+      "expected_scenario_id": "bid.price_terms",
+      "source_unit_id": "bid.price_terms::rules",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "bid.autobid_extension::autobid::taxonomy_paraphrase",
+      "split": "validation",
+      "variant": "taxonomy_paraphrase",
+      "text": "нужно узнать: автоставка; ценовое предложение, торги",
+      "role": "authorized",
+      "expected_scenario_id": "bid.autobid_extension",
+      "source_unit_id": "bid.autobid_extension::autobid",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "bid.autobid_extension::autobid::transposed_letters",
+      "split": "development",
+      "variant": "transposed_letters",
+      "text": "Автомаитческое повышение ставки до лимита",
+      "role": "authorized",
+      "expected_scenario_id": "bid.autobid_extension",
+      "source_unit_id": "bid.autobid_extension::autobid",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "bid.autobid_extension::autobid::word_order",
+      "split": "validation",
+      "variant": "word_order",
+      "text": "ставки до лимита Автоматическое повышение",
+      "role": "authorized",
+      "expected_scenario_id": "bid.autobid_extension",
+      "source_unit_id": "bid.autobid_extension::autobid",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "bid.autobid_extension::last_minutes::taxonomy_paraphrase",
+      "split": "development",
+      "variant": "taxonomy_paraphrase",
+      "text": "нужно узнать: последние пять минут; ценовое предложение, торги",
+      "role": "authorized",
+      "expected_scenario_id": "bid.autobid_extension",
+      "source_unit_id": "bid.autobid_extension::last_minutes",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "bid.autobid_extension::last_minutes::transposed_letters",
+      "split": "development",
+      "variant": "transposed_letters",
+      "text": "Пролдение торгов после ставки в последние минуты",
+      "role": "authorized",
+      "expected_scenario_id": "bid.autobid_extension",
+      "source_unit_id": "bid.autobid_extension::last_minutes",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "bid.autobid_extension::last_minutes::word_order",
+      "split": "validation",
+      "variant": "word_order",
+      "text": "ставки в последние минуты Продление торгов после",
+      "role": "authorized",
+      "expected_scenario_id": "bid.autobid_extension",
+      "source_unit_id": "bid.autobid_extension::last_minutes",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "bid.autobid_extension::descending_price::taxonomy_paraphrase",
+      "split": "validation",
+      "variant": "taxonomy_paraphrase",
+      "text": "нужно узнать: снижение цены; ценовое предложение, торги",
+      "role": "authorized",
+      "expected_scenario_id": "bid.autobid_extension",
+      "source_unit_id": "bid.autobid_extension::descending_price",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "bid.autobid_extension::descending_price::transposed_letters",
+      "split": "development",
+      "variant": "transposed_letters",
+      "text": "Пошгаовое снижение начальной цены",
+      "role": "authorized",
+      "expected_scenario_id": "bid.autobid_extension",
+      "source_unit_id": "bid.autobid_extension::descending_price",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "bid.autobid_extension::descending_price::word_order",
+      "split": "development",
+      "variant": "word_order",
+      "text": "начальной цены Пошаговое снижение",
+      "role": "authorized",
+      "expected_scenario_id": "bid.autobid_extension",
+      "source_unit_id": "bid.autobid_extension::descending_price",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "bid.modify_cancel::primary::taxonomy_paraphrase",
+      "split": "validation",
+      "variant": "taxonomy_paraphrase",
+      "text": "нужно узнать: могу отменить ставку; ценовое предложение, торги",
+      "role": "guest",
+      "expected_scenario_id": "bid.modify_cancel",
+      "source_unit_id": "bid.modify_cancel::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "bid.modify_cancel::primary::transposed_letters",
+      "split": "development",
+      "variant": "transposed_letters",
+      "text": "Изменение, уменшьение и отмена ставки",
+      "role": "guest",
+      "expected_scenario_id": "bid.modify_cancel",
+      "source_unit_id": "bid.modify_cancel::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "bid.modify_cancel::primary::word_order",
+      "split": "development",
+      "variant": "word_order",
+      "text": "и отмена ставки Изменение, уменьшение",
+      "role": "guest",
+      "expected_scenario_id": "bid.modify_cancel",
+      "source_unit_id": "bid.modify_cancel::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "bid.position_service::primary::taxonomy_paraphrase",
+      "split": "development",
+      "variant": "taxonomy_paraphrase",
+      "text": "узнать позицию ставки что такое; ценовое предложение, торги",
+      "role": "authorized",
+      "expected_scenario_id": "bid.position_service",
+      "source_unit_id": "bid.position_service::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "bid.position_service::primary::transposed_letters",
+      "split": "development",
+      "variant": "transposed_letters",
+      "text": "Опция «Узнать позицию ставки» и дополнтиельные инструменты",
+      "role": "authorized",
+      "expected_scenario_id": "bid.position_service",
+      "source_unit_id": "bid.position_service::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "bid.position_service::primary::word_order",
+      "split": "development",
+      "variant": "word_order",
+      "text": "ставки» и дополнительные инструменты Опция «Узнать позицию",
+      "role": "authorized",
+      "expected_scenario_id": "bid.position_service",
+      "source_unit_id": "bid.position_service::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "transfer.notification_contact::primary::taxonomy_paraphrase",
+      "split": "validation",
+      "variant": "taxonomy_paraphrase",
+      "text": "что лот передается как я узнаю; объект торгов, страховщик",
+      "role": "authorized",
+      "expected_scenario_id": "transfer.notification_contact",
+      "source_unit_id": "transfer.notification_contact::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "transfer.notification_contact::primary::transposed_letters",
+      "split": "development",
+      "variant": "transposed_letters",
+      "text": "Уведмоление о передаче и контакт продавца",
+      "role": "authorized",
+      "expected_scenario_id": "transfer.notification_contact",
+      "source_unit_id": "transfer.notification_contact::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "transfer.notification_contact::primary::word_order",
+      "split": "development",
+      "variant": "word_order",
+      "text": "и контакт продавца Уведомление о передаче",
+      "role": "authorized",
+      "expected_scenario_id": "transfer.notification_contact",
+      "source_unit_id": "transfer.notification_contact::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "transfer.requisites::primary::taxonomy_paraphrase",
+      "split": "development",
+      "variant": "taxonomy_paraphrase",
+      "text": "отправить физлицу какие реквизиты; объект торгов, бумаги",
+      "role": "authorized",
+      "expected_scenario_id": "transfer.requisites",
+      "source_unit_id": "transfer.requisites::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "transfer.requisites::primary::transposed_letters",
+      "split": "validation",
+      "variant": "transposed_letters",
+      "text": "Какие реквизиты направить для докуемнтов по лоту",
+      "role": "authorized",
+      "expected_scenario_id": "transfer.requisites",
+      "source_unit_id": "transfer.requisites::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "transfer.requisites::primary::word_order",
+      "split": "development",
+      "variant": "word_order",
+      "text": "для документов по лоту Какие реквизиты направить",
+      "role": "authorized",
+      "expected_scenario_id": "transfer.requisites",
+      "source_unit_id": "transfer.requisites::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "contract.parties_signing::primary::taxonomy_paraphrase",
+      "split": "development",
+      "variant": "taxonomy_paraphrase",
+      "text": "нужно узнать: как подписать договор; дкп, страховщик",
+      "role": "guest",
+      "expected_scenario_id": "contract.parties_signing",
+      "source_unit_id": "contract.parties_signing::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "contract.parties_signing::primary::transposed_letters",
+      "split": "development",
+      "variant": "transposed_letters",
+      "text": "Стороны сделки и подпсиание договора",
+      "role": "guest",
+      "expected_scenario_id": "contract.parties_signing",
+      "source_unit_id": "contract.parties_signing::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "contract.parties_signing::primary::word_order",
+      "split": "development",
+      "variant": "word_order",
+      "text": "и подписание договора Стороны сделки",
+      "role": "guest",
+      "expected_scenario_id": "contract.parties_signing",
+      "source_unit_id": "contract.parties_signing::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "inspection.problem::primary::taxonomy_paraphrase",
+      "split": "validation",
+      "variant": "taxonomy_paraphrase",
+      "text": "обнаружил расхождения на осмотре; объект торгов, транспортное средство",
+      "role": "guest",
+      "expected_scenario_id": "inspection.problem",
+      "source_unit_id": "inspection.problem::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "inspection.problem::primary::transposed_letters",
+      "split": "development",
+      "variant": "transposed_letters",
+      "text": "Расхжодения при осмотре или отсутствие доступа",
+      "role": "guest",
+      "expected_scenario_id": "inspection.problem",
+      "source_unit_id": "inspection.problem::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "inspection.problem::primary::word_order",
+      "split": "development",
+      "variant": "word_order",
+      "text": "или отсутствие доступа Расхождения при осмотре",
+      "role": "guest",
+      "expected_scenario_id": "inspection.problem",
+      "source_unit_id": "inspection.problem::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "pickup.access_issuer::primary::taxonomy_paraphrase",
+      "split": "development",
+      "variant": "taxonomy_paraphrase",
+      "text": "на стоянку как попасть; объект торгов, страховщик",
+      "role": "guest",
+      "expected_scenario_id": "pickup.access_issuer",
+      "source_unit_id": "pickup.access_issuer::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "pickup.access_issuer::primary::transposed_letters",
+      "split": "development",
+      "variant": "transposed_letters",
+      "text": "Доступ на стяонку и кто выдаёт лот",
+      "role": "guest",
+      "expected_scenario_id": "pickup.access_issuer",
+      "source_unit_id": "pickup.access_issuer::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "pickup.access_issuer::primary::word_order",
+      "split": "development",
+      "variant": "word_order",
+      "text": "и кто выдаёт лот Доступ на стоянку",
+      "role": "guest",
+      "expected_scenario_id": "pickup.access_issuer",
+      "source_unit_id": "pickup.access_issuer::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "pickup.representative::primary::taxonomy_paraphrase",
+      "split": "development",
+      "variant": "taxonomy_paraphrase",
+      "text": "на получение машины нужна ли доверенность; объект торгов, забрать",
+      "role": "authorized",
+      "expected_scenario_id": "pickup.representative",
+      "source_unit_id": "pickup.representative::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "pickup.representative::primary::transposed_letters",
+      "split": "development",
+      "variant": "transposed_letters",
+      "text": "Получение лота предстваителем и доверенность",
+      "role": "authorized",
+      "expected_scenario_id": "pickup.representative",
+      "source_unit_id": "pickup.representative::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "pickup.representative::primary::word_order",
+      "split": "development",
+      "variant": "word_order",
+      "text": "представителем и доверенность Получение лота",
+      "role": "authorized",
+      "expected_scenario_id": "pickup.representative",
+      "source_unit_id": "pickup.representative::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "documents.payer_change::primary::taxonomy_paraphrase",
+      "split": "development",
+      "variant": "taxonomy_paraphrase",
+      "text": "человек оплатить лот может ли другой; объект торгов, платежный документ",
+      "role": "authorized",
+      "expected_scenario_id": "documents.payer_change",
+      "source_unit_id": "documents.payer_change::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "documents.payer_change::primary::transposed_letters",
+      "split": "development",
+      "variant": "transposed_letters",
+      "text": "Оплата другим лицом или смена платлеьщика",
+      "role": "authorized",
+      "expected_scenario_id": "documents.payer_change",
+      "source_unit_id": "documents.payer_change::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "documents.payer_change::primary::word_order",
+      "split": "development",
+      "variant": "word_order",
+      "text": "или смена плательщика Оплата другим лицом",
+      "role": "authorized",
+      "expected_scenario_id": "documents.payer_change",
+      "source_unit_id": "documents.payer_change::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "documents.actual_amount::primary::taxonomy_paraphrase",
+      "split": "development",
+      "variant": "taxonomy_paraphrase",
+      "text": "сумму в договоре можно указать другую; дкп, платежный документ",
+      "role": "guest",
+      "expected_scenario_id": "documents.actual_amount",
+      "source_unit_id": "documents.actual_amount::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "documents.actual_amount::primary::transposed_letters",
+      "split": "development",
+      "variant": "transposed_letters",
+      "text": "Фактчиеская сумма в договоре и платёжных документах",
+      "role": "guest",
+      "expected_scenario_id": "documents.actual_amount",
+      "source_unit_id": "documents.actual_amount::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "documents.actual_amount::primary::word_order",
+      "split": "development",
+      "variant": "word_order",
+      "text": "договоре и платёжных документах Фактическая сумма в",
+      "role": "guest",
+      "expected_scenario_id": "documents.actual_amount",
+      "source_unit_id": "documents.actual_amount::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "vehicle.encumbrance_detected::primary::taxonomy_paraphrase",
+      "split": "development",
+      "variant": "taxonomy_paraphrase",
+      "text": "есть ограничения на машине; транспортное средство, объект торгов",
+      "role": "guest",
+      "expected_scenario_id": "vehicle.encumbrance_detected",
+      "source_unit_id": "vehicle.encumbrance_detected::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "vehicle.encumbrance_detected::primary::transposed_letters",
+      "split": "validation",
+      "variant": "transposed_letters",
+      "text": "На автомобиле обнаружены ограинчения или залог",
+      "role": "guest",
+      "expected_scenario_id": "vehicle.encumbrance_detected",
+      "source_unit_id": "vehicle.encumbrance_detected::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "vehicle.encumbrance_detected::primary::word_order",
+      "split": "development",
+      "variant": "word_order",
+      "text": "ограничения или залог На автомобиле обнаружены",
+      "role": "guest",
+      "expected_scenario_id": "vehicle.encumbrance_detected",
+      "source_unit_id": "vehicle.encumbrance_detected::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "vehicle.credit_lease_pledge::primary::taxonomy_paraphrase",
+      "split": "development",
+      "variant": "taxonomy_paraphrase",
+      "text": "тс кредитное что значит; транспортное средство, страховщик",
+      "role": "guest",
+      "expected_scenario_id": "vehicle.credit_lease_pledge",
+      "source_unit_id": "vehicle.credit_lease_pledge::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "vehicle.credit_lease_pledge::primary::transposed_letters",
+      "split": "development",
+      "variant": "transposed_letters",
+      "text": "Что означает кредитный, лизигновый или залоговый автомобиль",
+      "role": "guest",
+      "expected_scenario_id": "vehicle.credit_lease_pledge",
+      "source_unit_id": "vehicle.credit_lease_pledge::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "vehicle.credit_lease_pledge::primary::word_order",
+      "split": "development",
+      "variant": "word_order",
+      "text": "лизинговый или залоговый автомобиль Что означает кредитный,",
+      "role": "guest",
+      "expected_scenario_id": "vehicle.credit_lease_pledge",
+      "source_unit_id": "vehicle.credit_lease_pledge::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "vehicle.autoteka_visibility::primary::taxonomy_paraphrase",
+      "split": "development",
+      "variant": "taxonomy_paraphrase",
+      "text": "Автотеку после торгов машина попадет в; транспортное средство, объект торгов",
+      "role": "guest",
+      "expected_scenario_id": "vehicle.autoteka_visibility",
+      "source_unit_id": "vehicle.autoteka_visibility::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "vehicle.autoteka_visibility::primary::transposed_letters",
+      "split": "development",
+      "variant": "transposed_letters",
+      "text": "Пояявтся ли сведения о торгах в Автотеке",
+      "role": "guest",
+      "expected_scenario_id": "vehicle.autoteka_visibility",
+      "source_unit_id": "vehicle.autoteka_visibility::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "vehicle.autoteka_visibility::primary::word_order",
+      "split": "development",
+      "variant": "word_order",
+      "text": "о торгах в Автотеке Появятся ли сведения",
+      "role": "guest",
+      "expected_scenario_id": "vehicle.autoteka_visibility",
+      "source_unit_id": "vehicle.autoteka_visibility::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "vehicle.owner_listing_dispute::primary::taxonomy_paraphrase",
+      "split": "development",
+      "variant": "taxonomy_paraphrase",
+      "text": "мой автомобиль страховая выставила; транспортное средство, страховщик",
+      "role": "guest",
+      "expected_scenario_id": "vehicle.owner_listing_dispute",
+      "source_unit_id": "vehicle.owner_listing_dispute::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "vehicle.owner_listing_dispute::primary::transposed_letters",
+      "split": "validation",
+      "variant": "transposed_letters",
+      "text": "Страховая компания разместила автомобиль собстевнника",
+      "role": "guest",
+      "expected_scenario_id": "vehicle.owner_listing_dispute",
+      "source_unit_id": "vehicle.owner_listing_dispute::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "vehicle.owner_listing_dispute::primary::word_order",
+      "split": "development",
+      "variant": "word_order",
+      "text": "разместила автомобиль собственника Страховая компания",
+      "role": "guest",
+      "expected_scenario_id": "vehicle.owner_listing_dispute",
+      "source_unit_id": "vehicle.owner_listing_dispute::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "insurance.osago_rules::primary::taxonomy_paraphrase",
+      "split": "development",
+      "variant": "taxonomy_paraphrase",
+      "text": "торгов по ОСАГО какие правила; транспортное средство, торги",
+      "role": "guest",
+      "expected_scenario_id": "insurance.osago_rules",
+      "source_unit_id": "insurance.osago_rules::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "insurance.osago_rules::primary::transposed_letters",
+      "split": "development",
+      "variant": "transposed_letters",
+      "text": "Спецаильные правила торгов по ОСАГО",
+      "role": "guest",
+      "expected_scenario_id": "insurance.osago_rules",
+      "source_unit_id": "insurance.osago_rules::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "insurance.osago_rules::primary::word_order",
+      "split": "development",
+      "variant": "word_order",
+      "text": "торгов по ОСАГО Специальные правила",
+      "role": "guest",
+      "expected_scenario_id": "insurance.osago_rules",
+      "source_unit_id": "insurance.osago_rules::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "property.overview::primary::taxonomy_paraphrase",
+      "split": "development",
+      "variant": "taxonomy_paraphrase",
+      "text": "раздел имущество что такое; объект торгов, поиск",
+      "role": "guest",
+      "expected_scenario_id": "property.overview",
+      "source_unit_id": "property.overview::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "property.overview::primary::transposed_letters",
+      "split": "validation",
+      "variant": "transposed_letters",
+      "text": "Что проадётся в разделе «Имущество»",
+      "role": "guest",
+      "expected_scenario_id": "property.overview",
+      "source_unit_id": "property.overview::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "property.overview::primary::word_order",
+      "split": "development",
+      "variant": "word_order",
+      "text": "в разделе «Имущество» Что продаётся",
+      "role": "guest",
+      "expected_scenario_id": "property.overview",
+      "source_unit_id": "property.overview::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "property.evaluate::primary::taxonomy_paraphrase",
+      "split": "development",
+      "variant": "taxonomy_paraphrase",
+      "text": "имущественный лот как оценивать; объект торгов, где посмотреть",
+      "role": "guest",
+      "expected_scenario_id": "property.evaluate",
+      "source_unit_id": "property.evaluate::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "property.evaluate::primary::transposed_letters",
+      "split": "development",
+      "variant": "transposed_letters",
+      "text": "Как оценить имущетсвенный лот до ставки",
+      "role": "guest",
+      "expected_scenario_id": "property.evaluate",
+      "source_unit_id": "property.evaluate::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "property.evaluate::primary::word_order",
+      "split": "development",
+      "variant": "word_order",
+      "text": "лот до ставки Как оценить имущественный",
+      "role": "guest",
+      "expected_scenario_id": "property.evaluate",
+      "source_unit_id": "property.evaluate::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "property.bulk_goods::primary::taxonomy_paraphrase",
+      "split": "development",
+      "variant": "taxonomy_paraphrase",
+      "text": "партию товаров как купить; объект торгов, где посмотреть",
+      "role": "guest",
+      "expected_scenario_id": "property.bulk_goods",
+      "source_unit_id": "property.bulk_goods::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "property.bulk_goods::primary::transposed_letters",
+      "split": "development",
+      "variant": "transposed_letters",
+      "text": "Поукпка партии товаров",
+      "role": "guest",
+      "expected_scenario_id": "property.bulk_goods",
+      "source_unit_id": "property.bulk_goods::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "property.bulk_goods::primary::word_order",
+      "split": "development",
+      "variant": "word_order",
+      "text": "нужно узнать: Покупка партии товаров",
+      "role": "guest",
+      "expected_scenario_id": "property.bulk_goods",
+      "source_unit_id": "property.bulk_goods::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "property.business::primary::taxonomy_paraphrase",
+      "split": "validation",
+      "variant": "taxonomy_paraphrase",
+      "text": "готовый бизнес что значит; объект торгов, бумаги",
+      "role": "guest",
+      "expected_scenario_id": "property.business",
+      "source_unit_id": "property.business::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "property.business::primary::transposed_letters",
+      "split": "development",
+      "variant": "transposed_letters",
+      "text": "Как оценить лот с готовым бизенсом",
+      "role": "guest",
+      "expected_scenario_id": "property.business",
+      "source_unit_id": "property.business::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "property.business::primary::word_order",
+      "split": "development",
+      "variant": "word_order",
+      "text": "с готовым бизнесом Как оценить лот",
+      "role": "guest",
+      "expected_scenario_id": "property.business",
+      "source_unit_id": "property.business::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "property.inspection_documents::primary::taxonomy_paraphrase",
+      "split": "development",
+      "variant": "taxonomy_paraphrase",
+      "text": "нужно узнать: как осмотреть имущество; объект торгов, бумаги",
+      "role": "guest",
+      "expected_scenario_id": "property.inspection_documents",
+      "source_unit_id": "property.inspection_documents::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "property.inspection_documents::primary::transposed_letters",
+      "split": "development",
+      "variant": "transposed_letters",
+      "text": "Осмотр и документы по имущесвтенному лоту",
+      "role": "guest",
+      "expected_scenario_id": "property.inspection_documents",
+      "source_unit_id": "property.inspection_documents::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "property.inspection_documents::primary::word_order",
+      "split": "development",
+      "variant": "word_order",
+      "text": "по имущественному лоту Осмотр и документы",
+      "role": "guest",
+      "expected_scenario_id": "property.inspection_documents",
+      "source_unit_id": "property.inspection_documents::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "property.section_error::primary::taxonomy_paraphrase",
+      "split": "development",
+      "variant": "taxonomy_paraphrase",
+      "text": "раздел имущество не открывается; вернуть доступ, не работает",
+      "role": "guest",
+      "expected_scenario_id": "property.section_error",
+      "source_unit_id": "property.section_error::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "property.section_error::primary::transposed_letters",
+      "split": "development",
+      "variant": "transposed_letters",
+      "text": "Не открвыается раздел «Имущество»",
+      "role": "guest",
+      "expected_scenario_id": "property.section_error",
+      "source_unit_id": "property.section_error::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "property.section_error::primary::word_order",
+      "split": "development",
+      "variant": "word_order",
+      "text": "раздел «Имущество» Не открывается",
+      "role": "guest",
+      "expected_scenario_id": "property.section_error",
+      "source_unit_id": "property.section_error::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "vehicle.insurance_catalog::primary::taxonomy_paraphrase",
+      "split": "development",
+      "variant": "taxonomy_paraphrase",
+      "text": "в разделе КАСКО что находится; транспортное средство, поиск",
+      "role": "guest",
+      "expected_scenario_id": "vehicle.insurance_catalog",
+      "source_unit_id": "vehicle.insurance_catalog::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "vehicle.insurance_catalog::primary::transposed_letters",
+      "split": "development",
+      "variant": "transposed_letters",
+      "text": "Разделы КАСКО, ОСАГО и повреджённые автомобили",
+      "role": "guest",
+      "expected_scenario_id": "vehicle.insurance_catalog",
+      "source_unit_id": "vehicle.insurance_catalog::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "vehicle.insurance_catalog::primary::word_order",
+      "split": "development",
+      "variant": "word_order",
+      "text": "и повреждённые автомобили Разделы КАСКО, ОСАГО",
+      "role": "guest",
+      "expected_scenario_id": "vehicle.insurance_catalog",
+      "source_unit_id": "vehicle.insurance_catalog::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "lot.definition::primary::taxonomy_paraphrase",
+      "split": "development",
+      "variant": "taxonomy_paraphrase",
+      "text": "нужно узнать: что такое лот; объект торгов, торги",
+      "role": "guest",
+      "expected_scenario_id": "lot.definition",
+      "source_unit_id": "lot.definition::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "lot.definition::primary::transposed_letters",
+      "split": "validation",
+      "variant": "transposed_letters",
+      "text": "подскажите Что такое лот",
+      "role": "guest",
+      "expected_scenario_id": "lot.definition",
+      "source_unit_id": "lot.definition::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "lot.definition::primary::word_order",
+      "split": "development",
+      "variant": "word_order",
+      "text": "нужно узнать: Что такое лот",
+      "role": "guest",
+      "expected_scenario_id": "lot.definition",
+      "source_unit_id": "lot.definition::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "account.activation_pending::primary::taxonomy_paraphrase",
+      "split": "development",
+      "variant": "taxonomy_paraphrase",
+      "text": "нужно узнать: аккаунт не активирован; учетная запись, создание аккаунта",
+      "role": "guest",
+      "expected_scenario_id": "account.activation_pending",
+      "source_unit_id": "account.activation_pending::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "account.activation_pending::primary::transposed_letters",
+      "split": "development",
+      "variant": "transposed_letters",
+      "text": "Аккаунт после регитсрации не активирован",
+      "role": "guest",
+      "expected_scenario_id": "account.activation_pending",
+      "source_unit_id": "account.activation_pending::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "account.activation_pending::primary::word_order",
+      "split": "development",
+      "variant": "word_order",
+      "text": "регистрации не активирован Аккаунт после",
+      "role": "guest",
+      "expected_scenario_id": "account.activation_pending",
+      "source_unit_id": "account.activation_pending::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "account.dashboard_sections::primary::taxonomy_paraphrase",
+      "split": "development",
+      "variant": "taxonomy_paraphrase",
+      "text": "в личном кабинете какие разделы есть; учетная запись, объект торгов",
+      "role": "authorized",
+      "expected_scenario_id": "account.dashboard_sections",
+      "source_unit_id": "account.dashboard_sections::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "account.dashboard_sections::primary::transposed_letters",
+      "split": "development",
+      "variant": "transposed_letters",
+      "text": "Разделы личного кабниета",
+      "role": "authorized",
+      "expected_scenario_id": "account.dashboard_sections",
+      "source_unit_id": "account.dashboard_sections::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "account.dashboard_sections::primary::word_order",
+      "split": "validation",
+      "variant": "word_order",
+      "text": "нужно узнать: Разделы личного кабинета",
+      "role": "authorized",
+      "expected_scenario_id": "account.dashboard_sections",
+      "source_unit_id": "account.dashboard_sections::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "lot.status_guide::primary::taxonomy_paraphrase",
+      "split": "development",
+      "variant": "taxonomy_paraphrase",
+      "text": "статусы лотов что значат; объект торгов, торги",
+      "role": "guest",
+      "expected_scenario_id": "lot.status_guide",
+      "source_unit_id": "lot.status_guide::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "lot.status_guide::primary::transposed_letters",
+      "split": "validation",
+      "variant": "transposed_letters",
+      "text": "Спраовчник статусов лота",
+      "role": "guest",
+      "expected_scenario_id": "lot.status_guide",
+      "source_unit_id": "lot.status_guide::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "lot.status_guide::primary::word_order",
+      "split": "validation",
+      "variant": "word_order",
+      "text": "нужно узнать: Справочник статусов лота",
+      "role": "guest",
+      "expected_scenario_id": "lot.status_guide",
+      "source_unit_id": "lot.status_guide::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "notification.delivery_problem::primary::taxonomy_paraphrase",
+      "split": "development",
+      "variant": "taxonomy_paraphrase",
+      "text": "уведомления по лотам не приходят; почтовая переписка, объект торгов",
+      "role": "authorized",
+      "expected_scenario_id": "notification.delivery_problem",
+      "source_unit_id": "notification.delivery_problem::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "notification.delivery_problem::primary::transposed_letters",
+      "split": "development",
+      "variant": "transposed_letters",
+      "text": "Не приходят уведмоления или письма",
+      "role": "authorized",
+      "expected_scenario_id": "notification.delivery_problem",
+      "source_unit_id": "notification.delivery_problem::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "notification.delivery_problem::primary::word_order",
+      "split": "development",
+      "variant": "word_order",
+      "text": "уведомления или письма Не приходят",
+      "role": "authorized",
+      "expected_scenario_id": "notification.delivery_problem",
+      "source_unit_id": "notification.delivery_problem::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "support.telegram_channels::primary::taxonomy_paraphrase",
+      "split": "validation",
+      "variant": "taxonomy_paraphrase",
+      "text": "нужно узнать: есть телеграм; служба поддержки, помощь пользователю",
+      "role": "guest",
+      "expected_scenario_id": "support.telegram_channels",
+      "source_unit_id": "support.telegram_channels::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "support.telegram_channels::primary::transposed_letters",
+      "split": "validation",
+      "variant": "transposed_letters",
+      "text": "Telegram-каналы и офицаильные каналы связи",
+      "role": "guest",
+      "expected_scenario_id": "support.telegram_channels",
+      "source_unit_id": "support.telegram_channels::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "support.telegram_channels::primary::word_order",
+      "split": "development",
+      "variant": "word_order",
+      "text": "официальные каналы связи Telegram-каналы и",
+      "role": "guest",
+      "expected_scenario_id": "support.telegram_channels",
+      "source_unit_id": "support.telegram_channels::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "account.mobile_access::primary::taxonomy_paraphrase",
+      "split": "validation",
+      "variant": "taxonomy_paraphrase",
+      "text": "с телефона можно работать; где посмотреть",
+      "role": "guest",
+      "expected_scenario_id": "account.mobile_access",
+      "source_unit_id": "account.mobile_access::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "account.mobile_access::primary::transposed_letters",
+      "split": "development",
+      "variant": "transposed_letters",
+      "text": "Работа с MIGTORG с телфеона",
+      "role": "guest",
+      "expected_scenario_id": "account.mobile_access",
+      "source_unit_id": "account.mobile_access::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "account.mobile_access::primary::word_order",
+      "split": "development",
+      "variant": "word_order",
+      "text": "MIGTORG с телефона Работа с",
+      "role": "guest",
+      "expected_scenario_id": "account.mobile_access",
+      "source_unit_id": "account.mobile_access::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "buyer.personal_purchase::primary::taxonomy_paraphrase",
+      "split": "development",
+      "variant": "taxonomy_paraphrase",
+      "text": "машину для себя хочу купить одну; транспортное средство, объект торгов",
+      "role": "guest",
+      "expected_scenario_id": "buyer.personal_purchase",
+      "source_unit_id": "buyer.personal_purchase::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "buyer.personal_purchase::primary::transposed_letters",
+      "split": "development",
+      "variant": "transposed_letters",
+      "text": "Покупка одного автоомбиля для себя",
+      "role": "guest",
+      "expected_scenario_id": "buyer.personal_purchase",
+      "source_unit_id": "buyer.personal_purchase::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "buyer.personal_purchase::primary::word_order",
+      "split": "development",
+      "variant": "word_order",
+      "text": "автомобиля для себя Покупка одного",
+      "role": "guest",
+      "expected_scenario_id": "buyer.personal_purchase",
+      "source_unit_id": "buyer.personal_purchase::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "buyer.resale_strategy::primary::taxonomy_paraphrase",
+      "split": "development",
+      "variant": "taxonomy_paraphrase",
+      "text": "нужно узнать: хочу перепродавать автомобили; транспортное средство",
+      "role": "guest",
+      "expected_scenario_id": "buyer.resale_strategy",
+      "source_unit_id": "buyer.resale_strategy::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "buyer.resale_strategy::primary::transposed_letters",
+      "split": "validation",
+      "variant": "transposed_letters",
+      "text": "Покупка автоомбилей для заработка",
+      "role": "guest",
+      "expected_scenario_id": "buyer.resale_strategy",
+      "source_unit_id": "buyer.resale_strategy::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "buyer.resale_strategy::primary::word_order",
+      "split": "development",
+      "variant": "word_order",
+      "text": "для заработка Покупка автомобилей",
+      "role": "guest",
+      "expected_scenario_id": "buyer.resale_strategy",
+      "source_unit_id": "buyer.resale_strategy::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "buyer.first_bid_checklist::primary::taxonomy_paraphrase",
+      "split": "development",
+      "variant": "taxonomy_paraphrase",
+      "text": "до первой ставки что подготовить; ценовое предложение, где посмотреть",
+      "role": "guest",
+      "expected_scenario_id": "buyer.first_bid_checklist",
+      "source_unit_id": "buyer.first_bid_checklist::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "buyer.first_bid_checklist::primary::transposed_letters",
+      "split": "development",
+      "variant": "transposed_letters",
+      "text": "Что подгтоовить до первой ставки",
+      "role": "guest",
+      "expected_scenario_id": "buyer.first_bid_checklist",
+      "source_unit_id": "buyer.first_bid_checklist::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "buyer.first_bid_checklist::primary::word_order",
+      "split": "development",
+      "variant": "word_order",
+      "text": "до первой ставки Что подготовить",
+      "role": "guest",
+      "expected_scenario_id": "buyer.first_bid_checklist",
+      "source_unit_id": "buyer.first_bid_checklist::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "buyer.beginner_lot_selection::primary::taxonomy_paraphrase",
+      "split": "validation",
+      "variant": "taxonomy_paraphrase",
+      "text": "лоты новичку как выбирать; транспортное средство, объект торгов",
+      "role": "guest",
+      "expected_scenario_id": "buyer.beginner_lot_selection",
+      "source_unit_id": "buyer.beginner_lot_selection::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "buyer.beginner_lot_selection::primary::transposed_letters",
+      "split": "development",
+      "variant": "transposed_letters",
+      "text": "Как новичку выбирать автомбоильные лоты",
+      "role": "guest",
+      "expected_scenario_id": "buyer.beginner_lot_selection",
+      "source_unit_id": "buyer.beginner_lot_selection::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "buyer.beginner_lot_selection::primary::word_order",
+      "split": "development",
+      "variant": "word_order",
+      "text": "выбирать автомобильные лоты Как новичку",
+      "role": "guest",
+      "expected_scenario_id": "buyer.beginner_lot_selection",
+      "source_unit_id": "buyer.beginner_lot_selection::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "vehicle.business_use_cases::primary::taxonomy_paraphrase",
+      "split": "development",
+      "variant": "taxonomy_paraphrase",
+      "text": "на битых авто как зарабатывают; транспортное средство",
+      "role": "guest",
+      "expected_scenario_id": "vehicle.business_use_cases",
+      "source_unit_id": "vehicle.business_use_cases::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "vehicle.business_use_cases::primary::transposed_letters",
+      "split": "development",
+      "variant": "transposed_letters",
+      "text": "Сценарии работы с повреджёнными автомобилями",
+      "role": "guest",
+      "expected_scenario_id": "vehicle.business_use_cases",
+      "source_unit_id": "vehicle.business_use_cases::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "vehicle.business_use_cases::primary::word_order",
+      "split": "development",
+      "variant": "word_order",
+      "text": "с повреждёнными автомобилями Сценарии работы",
+      "role": "guest",
+      "expected_scenario_id": "vehicle.business_use_cases",
+      "source_unit_id": "vehicle.business_use_cases::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "bid.maximum_budget::primary::taxonomy_paraphrase",
+      "split": "development",
+      "variant": "taxonomy_paraphrase",
+      "text": "нужно узнать: как рассчитать ставку; ценовое предложение, транспортное средство",
+      "role": "guest",
+      "expected_scenario_id": "bid.maximum_budget",
+      "source_unit_id": "bid.maximum_budget::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "bid.maximum_budget::primary::transposed_letters",
+      "split": "validation",
+      "variant": "transposed_letters",
+      "text": "Как рассичтать предельную ставку",
+      "role": "guest",
+      "expected_scenario_id": "bid.maximum_budget",
+      "source_unit_id": "bid.maximum_budget::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "bid.maximum_budget::primary::word_order",
+      "split": "development",
+      "variant": "word_order",
+      "text": "предельную ставку Как рассчитать",
+      "role": "guest",
+      "expected_scenario_id": "bid.maximum_budget",
+      "source_unit_id": "bid.maximum_budget::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "auction.completed_analytics::primary::taxonomy_paraphrase",
+      "split": "development",
+      "variant": "taxonomy_paraphrase",
+      "text": "завершенные торги зачем смотреть; торги, итог торгов",
+      "role": "guest",
+      "expected_scenario_id": "auction.completed_analytics",
+      "source_unit_id": "auction.completed_analytics::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "auction.completed_analytics::primary::transposed_letters",
+      "split": "development",
+      "variant": "transposed_letters",
+      "text": "Завешрённые торги как источник аналитики",
+      "role": "guest",
+      "expected_scenario_id": "auction.completed_analytics",
+      "source_unit_id": "auction.completed_analytics::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "auction.completed_analytics::primary::word_order",
+      "split": "development",
+      "variant": "word_order",
+      "text": "как источник аналитики Завершённые торги",
+      "role": "guest",
+      "expected_scenario_id": "auction.completed_analytics",
+      "source_unit_id": "auction.completed_analytics::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "support.office_visit::primary::taxonomy_paraphrase",
+      "split": "development",
+      "variant": "taxonomy_paraphrase",
+      "text": "нужно узнать: где находится офис; представительство, приехать лично",
+      "role": "guest",
+      "expected_scenario_id": "support.office_visit",
+      "source_unit_id": "support.office_visit::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "support.office_visit::primary::transposed_letters",
+      "split": "development",
+      "variant": "transposed_letters",
+      "text": "Визит в офис и офорлмение пропуска",
+      "role": "guest",
+      "expected_scenario_id": "support.office_visit",
+      "source_unit_id": "support.office_visit::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "support.office_visit::primary::word_order",
+      "split": "development",
+      "variant": "word_order",
+      "text": "и оформление пропуска Визит в офис",
+      "role": "guest",
+      "expected_scenario_id": "support.office_visit",
+      "source_unit_id": "support.office_visit::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "support.lot_case_review::primary::taxonomy_paraphrase",
+      "split": "validation",
+      "variant": "taxonomy_paraphrase",
+      "text": "с документами по лоту у меня проблема; объект торгов, бумаги",
+      "role": "authorized",
+      "expected_scenario_id": "support.lot_case_review",
+      "source_unit_id": "support.lot_case_review::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "support.lot_case_review::primary::transposed_letters",
+      "split": "validation",
+      "variant": "transposed_letters",
+      "text": "Проблема авториозванного клиента по конкретному лоту",
+      "role": "authorized",
+      "expected_scenario_id": "support.lot_case_review",
+      "source_unit_id": "support.lot_case_review::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "support.lot_case_review::primary::word_order",
+      "split": "validation",
+      "variant": "word_order",
+      "text": "по конкретному лоту Проблема авторизованного клиента",
+      "role": "authorized",
+      "expected_scenario_id": "support.lot_case_review",
+      "source_unit_id": "support.lot_case_review::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "support.manual_review_scope::primary::taxonomy_paraphrase",
+      "split": "development",
+      "variant": "taxonomy_paraphrase",
+      "text": "передают сотруднику когда вопрос; объект торгов, перевод денег",
+      "role": "guest",
+      "expected_scenario_id": "support.manual_review_scope",
+      "source_unit_id": "support.manual_review_scope::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "support.manual_review_scope::primary::transposed_letters",
+      "split": "development",
+      "variant": "transposed_letters",
+      "text": "Когда требуется ручная проверка сотрдуником",
+      "role": "guest",
+      "expected_scenario_id": "support.manual_review_scope",
+      "source_unit_id": "support.manual_review_scope::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "support.manual_review_scope::primary::word_order",
+      "split": "development",
+      "variant": "word_order",
+      "text": "ручная проверка сотрудником Когда требуется",
+      "role": "guest",
+      "expected_scenario_id": "support.manual_review_scope",
+      "source_unit_id": "support.manual_review_scope::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "payment.checkout_problem::primary::taxonomy_paraphrase",
+      "split": "validation",
+      "variant": "taxonomy_paraphrase",
+      "text": "сайте не проходит оплата на; перевод денег, не работает",
+      "role": "guest",
+      "expected_scenario_id": "payment.checkout_problem",
+      "source_unit_id": "payment.checkout_problem::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "payment.checkout_problem::primary::transposed_letters",
+      "split": "development",
+      "variant": "transposed_letters",
+      "text": "Оплата на сайте не проохдит",
+      "role": "guest",
+      "expected_scenario_id": "payment.checkout_problem",
+      "source_unit_id": "payment.checkout_problem::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "payment.checkout_problem::primary::word_order",
+      "split": "development",
+      "variant": "word_order",
+      "text": "сайте не проходит Оплата на",
+      "role": "guest",
+      "expected_scenario_id": "payment.checkout_problem",
+      "source_unit_id": "payment.checkout_problem::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "feedback.platform_complaint::primary::taxonomy_paraphrase",
+      "split": "validation",
+      "variant": "taxonomy_paraphrase",
+      "text": "неудобный сайт у вас; служба поддержки, помощь пользователю",
+      "role": "guest",
+      "expected_scenario_id": "feedback.platform_complaint",
+      "source_unit_id": "feedback.platform_complaint::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "feedback.platform_complaint::primary::transposed_letters",
+      "split": "development",
+      "variant": "transposed_letters",
+      "text": "Недовлоьство площадкой или резкое сообщение",
+      "role": "guest",
+      "expected_scenario_id": "feedback.platform_complaint",
+      "source_unit_id": "feedback.platform_complaint::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "feedback.platform_complaint::primary::word_order",
+      "split": "validation",
+      "variant": "word_order",
+      "text": "или резкое сообщение Недовольство площадкой",
+      "role": "guest",
+      "expected_scenario_id": "feedback.platform_complaint",
+      "source_unit_id": "feedback.platform_complaint::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "feedback.improvement_suggestion::primary::taxonomy_paraphrase",
+      "split": "development",
+      "variant": "taxonomy_paraphrase",
+      "text": "нужно узнать: предлагаю улучшить сайт; помощь пользователю",
+      "role": "guest",
+      "expected_scenario_id": "feedback.improvement_suggestion",
+      "source_unit_id": "feedback.improvement_suggestion::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "feedback.improvement_suggestion::primary::transposed_letters",
+      "split": "development",
+      "variant": "transposed_letters",
+      "text": "Предолжение по улучшению площадки",
+      "role": "guest",
+      "expected_scenario_id": "feedback.improvement_suggestion",
+      "source_unit_id": "feedback.improvement_suggestion::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "feedback.improvement_suggestion::primary::word_order",
+      "split": "validation",
+      "variant": "word_order",
+      "text": "улучшению площадки Предложение по",
+      "role": "guest",
+      "expected_scenario_id": "feedback.improvement_suggestion",
+      "source_unit_id": "feedback.improvement_suggestion::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "feedback.bot_answer_complaint::primary::taxonomy_paraphrase",
+      "split": "development",
+      "variant": "taxonomy_paraphrase",
+      "text": "нужно узнать: бот не помог; служба поддержки, помощь пользователю",
+      "role": "guest",
+      "expected_scenario_id": "feedback.bot_answer_complaint",
+      "source_unit_id": "feedback.bot_answer_complaint::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "feedback.bot_answer_complaint::primary::transposed_letters",
+      "split": "development",
+      "variant": "transposed_letters",
+      "text": "Бот не помог или ответил непноятно",
+      "role": "guest",
+      "expected_scenario_id": "feedback.bot_answer_complaint",
+      "source_unit_id": "feedback.bot_answer_complaint::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "feedback.bot_answer_complaint::primary::word_order",
+      "split": "development",
+      "variant": "word_order",
+      "text": "или ответил непонятно Бот не помог",
+      "role": "guest",
+      "expected_scenario_id": "feedback.bot_answer_complaint",
+      "source_unit_id": "feedback.bot_answer_complaint::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "technical.catalog_search_filter::primary::taxonomy_paraphrase",
+      "split": "development",
+      "variant": "taxonomy_paraphrase",
+      "text": "нужно узнать: фильтр работает некорректно; отбор в каталоге, объект торгов",
+      "role": "guest",
+      "expected_scenario_id": "technical.catalog_search_filter",
+      "source_unit_id": "technical.catalog_search_filter::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "technical.catalog_search_filter::primary::transposed_letters",
+      "split": "development",
+      "variant": "transposed_letters",
+      "text": "Некорерктная работа поиска или фильтров",
+      "role": "guest",
+      "expected_scenario_id": "technical.catalog_search_filter",
+      "source_unit_id": "technical.catalog_search_filter::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "technical.catalog_search_filter::primary::word_order",
+      "split": "development",
+      "variant": "word_order",
+      "text": "поиска или фильтров Некорректная работа",
+      "role": "guest",
+      "expected_scenario_id": "technical.catalog_search_filter",
+      "source_unit_id": "technical.catalog_search_filter::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "technical.lot_image_missing::primary::taxonomy_paraphrase",
+      "split": "development",
+      "variant": "taxonomy_paraphrase",
+      "text": "нужно узнать: слетела фотка; объект торгов, изображение",
+      "role": "guest",
+      "expected_scenario_id": "technical.lot_image_missing",
+      "source_unit_id": "technical.lot_image_missing::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "technical.lot_image_missing::primary::transposed_letters",
+      "split": "development",
+      "variant": "transposed_letters",
+      "text": "Не отобржаается фотография лота",
+      "role": "guest",
+      "expected_scenario_id": "technical.lot_image_missing",
+      "source_unit_id": "technical.lot_image_missing::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "technical.lot_image_missing::primary::word_order",
+      "split": "validation",
+      "variant": "word_order",
+      "text": "фотография лота Не отображается",
+      "role": "guest",
+      "expected_scenario_id": "technical.lot_image_missing",
+      "source_unit_id": "technical.lot_image_missing::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "compliance.private_arrangement::primary::taxonomy_paraphrase",
+      "split": "validation",
+      "variant": "taxonomy_paraphrase",
+      "text": "нужно узнать: можем договориться; объект торгов, торги",
+      "role": "guest",
+      "expected_scenario_id": "compliance.private_arrangement",
+      "source_unit_id": "compliance.private_arrangement::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "compliance.private_arrangement::primary::transposed_letters",
+      "split": "development",
+      "variant": "transposed_letters",
+      "text": "Предложение договроиться в обход правил",
+      "role": "guest",
+      "expected_scenario_id": "compliance.private_arrangement",
+      "source_unit_id": "compliance.private_arrangement::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "compliance.private_arrangement::primary::word_order",
+      "split": "development",
+      "variant": "word_order",
+      "text": "в обход правил Предложение договориться",
+      "role": "guest",
+      "expected_scenario_id": "compliance.private_arrangement",
+      "source_unit_id": "compliance.private_arrangement::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "partnership.official_proposal::primary::taxonomy_paraphrase",
+      "split": "development",
+      "variant": "taxonomy_paraphrase",
+      "text": "индивидуальное сотрудничество можем настроить; объект торгов",
+      "role": "guest",
+      "expected_scenario_id": "partnership.official_proposal",
+      "source_unit_id": "partnership.official_proposal::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "partnership.official_proposal::primary::transposed_letters",
+      "split": "development",
+      "variant": "transposed_letters",
+      "text": "Официальное партнёрское или коммечреское предложение",
+      "role": "guest",
+      "expected_scenario_id": "partnership.official_proposal",
+      "source_unit_id": "partnership.official_proposal::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "partnership.official_proposal::primary::word_order",
+      "split": "development",
+      "variant": "word_order",
+      "text": "или коммерческое предложение Официальное партнёрское",
+      "role": "guest",
+      "expected_scenario_id": "partnership.official_proposal",
+      "source_unit_id": "partnership.official_proposal::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "compliance.off_platform_payment::primary::taxonomy_paraphrase",
+      "split": "development",
+      "variant": "taxonomy_paraphrase",
+      "text": "чтобы забрать лот готов доплатить; объект торгов, торги",
+      "role": "guest",
+      "expected_scenario_id": "compliance.off_platform_payment",
+      "source_unit_id": "compliance.off_platform_payment::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "compliance.off_platform_payment::primary::transposed_letters",
+      "split": "development",
+      "variant": "transposed_letters",
+      "text": "Предолжение доплатить вне площадки за лот",
+      "role": "guest",
+      "expected_scenario_id": "compliance.off_platform_payment",
+      "source_unit_id": "compliance.off_platform_payment::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "compliance.off_platform_payment::primary::word_order",
+      "split": "development",
+      "variant": "word_order",
+      "text": "площадки за лот Предложение доплатить вне",
+      "role": "guest",
+      "expected_scenario_id": "compliance.off_platform_payment",
+      "source_unit_id": "compliance.off_platform_payment::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "safety.reported_threat::primary::taxonomy_paraphrase",
+      "split": "development",
+      "variant": "taxonomy_paraphrase",
+      "text": "участник площадки мне угрожает; объект торгов",
+      "role": "guest",
+      "expected_scenario_id": "safety.reported_threat",
+      "source_unit_id": "safety.reported_threat::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "safety.reported_threat::primary::transposed_letters",
+      "split": "development",
+      "variant": "transposed_letters",
+      "text": "Участник площадки угрожает или окаызвает давление",
+      "role": "guest",
+      "expected_scenario_id": "safety.reported_threat",
+      "source_unit_id": "safety.reported_threat::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "safety.reported_threat::primary::word_order",
+      "split": "development",
+      "variant": "word_order",
+      "text": "или оказывает давление Участник площадки угрожает",
+      "role": "guest",
+      "expected_scenario_id": "safety.reported_threat",
+      "source_unit_id": "safety.reported_threat::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "registration.accreditation::primary::taxonomy_paraphrase",
+      "split": "validation",
+      "variant": "taxonomy_paraphrase",
+      "text": "нужно узнать: что такое аккредитация; учетная запись, бумаги",
+      "role": "guest",
+      "expected_scenario_id": "registration.accreditation",
+      "source_unit_id": "registration.accreditation::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "registration.accreditation::primary::transposed_letters",
+      "split": "validation",
+      "variant": "transposed_letters",
+      "text": "Аккреидтация и документы для участия",
+      "role": "guest",
+      "expected_scenario_id": "registration.accreditation",
+      "source_unit_id": "registration.accreditation::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "registration.accreditation::primary::word_order",
+      "split": "development",
+      "variant": "word_order",
+      "text": "документы для участия Аккредитация и",
+      "role": "guest",
+      "expected_scenario_id": "registration.accreditation",
+      "source_unit_id": "registration.accreditation::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "account.credential_responsibility::primary::taxonomy_paraphrase",
+      "split": "development",
+      "variant": "taxonomy_paraphrase",
+      "text": "логин другому человеку можно передать; учетная запись, вернуть доступ",
+      "role": "guest",
+      "expected_scenario_id": "account.credential_responsibility",
+      "source_unit_id": "account.credential_responsibility::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "account.credential_responsibility::primary::transposed_letters",
+      "split": "development",
+      "variant": "transposed_letters",
+      "text": "Безопасность логина и ответсвтенность за действия в аккаунте",
+      "role": "guest",
+      "expected_scenario_id": "account.credential_responsibility",
+      "source_unit_id": "account.credential_responsibility::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "account.credential_responsibility::primary::word_order",
+      "split": "development",
+      "variant": "word_order",
+      "text": "за действия в аккаунте Безопасность логина и ответственность",
+      "role": "guest",
+      "expected_scenario_id": "account.credential_responsibility",
+      "source_unit_id": "account.credential_responsibility::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "privacy.processing_purposes::primary::taxonomy_paraphrase",
+      "split": "development",
+      "variant": "taxonomy_paraphrase",
+      "text": "обрабатываете персональные данные зачем вы; личная информация, обработка данных",
+      "role": "guest",
+      "expected_scenario_id": "privacy.processing_purposes",
+      "source_unit_id": "privacy.processing_purposes::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "privacy.processing_purposes::primary::transposed_letters",
+      "split": "development",
+      "variant": "transposed_letters",
+      "text": "Цели обработки персоанльных данных",
+      "role": "guest",
+      "expected_scenario_id": "privacy.processing_purposes",
+      "source_unit_id": "privacy.processing_purposes::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "privacy.processing_purposes::primary::word_order",
+      "split": "development",
+      "variant": "word_order",
+      "text": "персональных данных Цели обработки",
+      "role": "guest",
+      "expected_scenario_id": "privacy.processing_purposes",
+      "source_unit_id": "privacy.processing_purposes::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "privacy.data_categories::primary::taxonomy_paraphrase",
+      "split": "validation",
+      "variant": "taxonomy_paraphrase",
+      "text": "вы собираете какие данные; личная информация, обработка данных",
+      "role": "guest",
+      "expected_scenario_id": "privacy.data_categories",
+      "source_unit_id": "privacy.data_categories::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "privacy.data_categories::primary::transposed_letters",
+      "split": "validation",
+      "variant": "transposed_letters",
+      "text": "Категории обрабаытваемых персональных данных",
+      "role": "guest",
+      "expected_scenario_id": "privacy.data_categories",
+      "source_unit_id": "privacy.data_categories::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "privacy.data_categories::primary::word_order",
+      "split": "development",
+      "variant": "word_order",
+      "text": "персональных данных Категории обрабатываемых",
+      "role": "guest",
+      "expected_scenario_id": "privacy.data_categories",
+      "source_unit_id": "privacy.data_categories::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "privacy.rights_withdrawal::primary::taxonomy_paraphrase",
+      "split": "validation",
+      "variant": "taxonomy_paraphrase",
+      "text": "нужно узнать: как отозвать согласие; личная информация, обработка данных",
+      "role": "guest",
+      "expected_scenario_id": "privacy.rights_withdrawal",
+      "source_unit_id": "privacy.rights_withdrawal::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "privacy.rights_withdrawal::primary::transposed_letters",
+      "split": "development",
+      "variant": "transposed_letters",
+      "text": "Права пользвоателя и отзыв согласия на обработку данных",
+      "role": "guest",
+      "expected_scenario_id": "privacy.rights_withdrawal",
+      "source_unit_id": "privacy.rights_withdrawal::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "privacy.rights_withdrawal::primary::word_order",
+      "split": "development",
+      "variant": "word_order",
+      "text": "согласия на обработку данных Права пользователя и отзыв",
+      "role": "guest",
+      "expected_scenario_id": "privacy.rights_withdrawal",
+      "source_unit_id": "privacy.rights_withdrawal::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "complaint.formal_dispute::primary::taxonomy_paraphrase",
+      "split": "development",
+      "variant": "taxonomy_paraphrase",
+      "text": "действия организатора как обжаловать; учетная запись, объект торгов",
+      "role": "guest",
+      "expected_scenario_id": "complaint.formal_dispute",
+      "source_unit_id": "complaint.formal_dispute::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "complaint.formal_dispute::primary::transposed_letters",
+      "split": "development",
+      "variant": "transposed_letters",
+      "text": "Формлаьная жалоба или претензия к площадке",
+      "role": "guest",
+      "expected_scenario_id": "complaint.formal_dispute",
+      "source_unit_id": "complaint.formal_dispute::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "complaint.formal_dispute::primary::word_order",
+      "split": "development",
+      "variant": "word_order",
+      "text": "претензия к площадке Формальная жалоба или",
+      "role": "guest",
+      "expected_scenario_id": "complaint.formal_dispute",
+      "source_unit_id": "complaint.formal_dispute::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "auction.other_platform_offer::primary::taxonomy_paraphrase",
+      "split": "development",
+      "variant": "taxonomy_paraphrase",
+      "text": "иной аукцион что такое; торги, ценовое предложение",
+      "role": "guest",
+      "expected_scenario_id": "auction.other_platform_offer",
+      "source_unit_id": "auction.other_platform_offer::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "auction.other_platform_offer::primary::transposed_letters",
+      "split": "development",
+      "variant": "transposed_letters",
+      "text": "Статус «Иной аукцион» и предолжение с другой площадки",
+      "role": "guest",
+      "expected_scenario_id": "auction.other_platform_offer",
+      "source_unit_id": "auction.other_platform_offer::primary",
+      "exact_frozen_overlap": false
+    },
+    {
+      "id": "auction.other_platform_offer::primary::word_order",
+      "split": "validation",
+      "variant": "word_order",
+      "text": "предложение с другой площадки Статус «Иной аукцион» и",
+      "role": "guest",
+      "expected_scenario_id": "auction.other_platform_offer",
+      "source_unit_id": "auction.other_platform_offer::primary",
+      "exact_frozen_overlap": false
+    }
+  ]
+}

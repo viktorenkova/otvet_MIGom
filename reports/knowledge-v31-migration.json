@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "knowledge_version": "2026.08.23.1",
+  "knowledge_version": "2026.08.23.2",
   "source": "knowledge\\v2\\scenarios.json",
   "source_sha256": "aed48e0dec018383cf451a2284e9f85eee5bec279d655bda37804272bc68aea3",
   "source_scenario_count": 141,
