@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "knowledge_version": "2026.08.23.1",
+  "source": "knowledge\\v2\\scenarios.json",
+  "source_sha256": "aed48e0dec018383cf451a2284e9f85eee5bec279d655bda37804272bc68aea3",
+  "source_scenario_count": 141,
+  "migrated_scenario_count": 141,
+  "source_fact_count": 574,
+  "migrated_fact_count": 574,
+  "fact_loss_count": 0,
+  "atomic_unit_count": 157,
+  "split_scenario_count": 9,
+  "knowledge_gap_count": 3,
+  "conflict_count": 53
+}

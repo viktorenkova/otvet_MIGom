@@ -58,13 +58,14 @@ class TfidfSemanticIndex:
         return (self.matrix @ query_vector.T).toarray().ravel()
 
     def _article_document(self, article: Any) -> str:
+        search_document = str(getattr(article, "search_document", "") or "")
         parts = [
             *([str(article.title)] * 4),
             *([str(article.problem)] * 3),
             *([str(item) for item in article.user_phrases] * 2),
             *([str(item) for item in article.trigger_phrases] * 2),
             *[str(item) for item in article.keywords],
-            str(article.user_answer or ""),
+            search_document or str(article.user_answer or ""),
         ]
         return normalize_text(" ".join(part for part in parts if part))
 
@@ -157,13 +158,14 @@ class MultilingualHybridSemanticIndex:
 
     def _article_document(self, article: Any) -> str:
         # Repeating metadata makes short, user-like fields dominate long answers.
+        search_document = str(getattr(article, "search_document", "") or "")
         parts = [
             *([str(article.title)] * 3),
             str(article.problem)[:400],
             *[str(item) for item in article.user_phrases[:8]],
             *[str(item) for item in article.trigger_phrases[:5]],
             *[str(item) for item in article.keywords[:12]],
-            str(article.user_answer or "")[:500],
+            (search_document or str(article.user_answer or ""))[:800],
         ]
         normalized = normalize_text(" ".join(part for part in parts if part))
         return normalized[:max(500, int(self.config.get("dense_document_chars", 1400)))]

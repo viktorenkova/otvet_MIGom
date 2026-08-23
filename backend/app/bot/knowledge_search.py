@@ -193,6 +193,7 @@ class KnowledgeArticle:
     slug: str
     section: str
     content: str
+    search_document: str = ""
     intent: str = "unknown"
     user_answer: str | None = None
     problem: str = ""
@@ -690,17 +691,17 @@ def _load_v2_articles() -> list[KnowledgeArticle]:
         operational_issue = bool(
             set(scenario.states) & {"error", "unavailable", "not_visible", "missing", "blocked", "no_response"}
         )
-        content = (
-            f"# {scenario.title}\n\n"
-            f"## Утвержденные факты\n{' '.join(scenario.facts)}\n\n"
-            f"## Ответ\n{scenario.answer}\n"
+        search_document = scenario.search_document or "\n".join(
+            [scenario.title, *scenario.positive_examples, *scenario.objects, *scenario.operations, *scenario.states]
         )
+        content = f"# {scenario.title}\n\n## Поисковые признаки\n{search_document}\n"
         articles.append(
             KnowledgeArticle(
                 title=scenario.title,
                 slug=scenario.scenario_id,
                 section="guest",
                 content=content,
+                search_document=search_document,
                 intent=scenario.intent,
                 user_answer=scenario.answer,
                 problem="; ".join(scenario.positive_examples),
@@ -2519,7 +2520,7 @@ def search_knowledge_match(
         and scenario_decision.confidence == "medium"
         and scenario_decision.candidates
         and any(
-            feature in {"scenario_ambiguity:visit_purpose", "scenario_ambiguity:generic_refund"}
+            feature.startswith("scenario_ambiguity:")
             for feature in scenario_decision.matched_features
         )
         and _normalize(message) not in _canonical_phrase_rules()

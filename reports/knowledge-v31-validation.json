@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "knowledge_version": "2026.08.23.1",
+  "valid": true,
+  "errors": [],
+  "metrics": {
+    "source_scenario_count": 141,
+    "active_scenario_count": 141,
+    "source_fact_count": 574,
+    "migrated_fact_count": 574,
+    "fact_loss_count": 0,
+    "financial_or_contract_fact_count": 216,
+    "financial_or_contract_facts_with_provenance_pct": 100.0,
+    "atomic_unit_count": 157,
+    "conflict_count": 53,
+    "knowledge_gap_count": 3
+  }
+}

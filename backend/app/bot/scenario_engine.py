@@ -16,6 +16,7 @@ class Scenario:
     scenario_id: str
     title: str
     intent: str
+    domain: str
     roles: tuple[str, ...]
     stage: str
     objects: tuple[str, ...]
@@ -26,16 +27,22 @@ class Scenario:
     required_context: tuple[str, ...]
     allowed_context: tuple[str, ...]
     facts: tuple[str, ...]
+    fact_records: tuple[dict[str, Any], ...]
     short_answer: str
     detailed_answer: str
     next_step: str
     actions: tuple[dict[str, Any], ...]
     escalation: dict[str, Any]
     source: str
+    source_version: str
     reviewed_at: str
     review_owner: str
     expert: str
     review_interval_days: int
+    answer_policy: dict[str, Any]
+    search_document: str
+    atomic_unit_ids: tuple[str, ...]
+    knowledge_gap_ids: tuple[str, ...]
     status: str = "active"
     legacy_ids: tuple[str, ...] = ()
 
@@ -155,6 +162,7 @@ def _scenario_from_dict(raw: dict[str, Any]) -> Scenario:
         scenario_id=str(raw["scenario_id"]),
         title=str(raw["title"]),
         intent=str(raw.get("intent") or "unknown"),
+        domain=str(raw.get("domain") or raw.get("intent") or "unknown"),
         roles=tuple(str(item) for item in raw.get("roles", ["guest", "authorized"])),
         stage=str(raw.get("stage") or ""),
         objects=tuple(str(item) for item in raw.get("objects", [])),
@@ -165,16 +173,22 @@ def _scenario_from_dict(raw: dict[str, Any]) -> Scenario:
         required_context=tuple(str(item) for item in raw.get("required_context", [])),
         allowed_context=tuple(str(item) for item in raw.get("allowed_context", [])),
         facts=tuple(str(item) for item in raw.get("facts", [])),
+        fact_records=tuple(dict(item) for item in raw.get("fact_records", []) if isinstance(item, dict)),
         short_answer=str(raw.get("short_answer") or ""),
         detailed_answer=str(raw.get("detailed_answer") or ""),
         next_step=str(raw.get("next_step") or ""),
         actions=tuple(dict(item) for item in raw.get("actions", []) if isinstance(item, dict)),
         escalation=dict(raw.get("escalation", {})),
         source=str(raw.get("source") or ""),
+        source_version=str(raw.get("source_version") or "legacy-v2"),
         reviewed_at=str(raw.get("reviewed_at") or ""),
         review_owner=str(raw.get("review_owner") or ""),
         expert=str(raw.get("expert") or ""),
         review_interval_days=int(raw.get("review_interval_days") or 30),
+        answer_policy=dict(raw.get("answer_policy", {})),
+        search_document=str(raw.get("search_document") or ""),
+        atomic_unit_ids=tuple(str(item) for item in raw.get("atomic_unit_ids", [])),
+        knowledge_gap_ids=tuple(str(item) for item in raw.get("knowledge_gap_ids", [])),
         status=str(raw.get("status") or "active"),
         legacy_ids=tuple(str(item) for item in raw.get("legacy_ids", [])),
     )
@@ -182,11 +196,16 @@ def _scenario_from_dict(raw: dict[str, Any]) -> Scenario:
 
 @lru_cache(maxsize=1)
 def load_scenarios() -> tuple[Scenario, ...]:
-    path = get_settings().knowledge_root / "v2" / "scenarios.json"
+    root = get_settings().knowledge_root
+    v31_path = root / "v3_1" / "scenarios.json"
+    path = v31_path if v31_path.exists() else root / "v2" / "scenarios.json"
     if not path.exists():
         return ()
     raw = json.loads(path.read_text(encoding="utf-8"))
-    if int(raw.get("schema_version") or 0) != 2:
+    schema_version = str(raw.get("schema_version") or "")
+    if path == v31_path and schema_version != "3.1":
+        raise ValueError("knowledge/v3_1/scenarios.json must use schema_version=3.1")
+    if path != v31_path and schema_version != "2":
         raise ValueError("knowledge/v2/scenarios.json must use schema_version=2")
     return tuple(
         _scenario_from_dict(item)
@@ -278,7 +297,8 @@ def match_scenario(message: str, role: str) -> ScenarioDecision:
             candidates,
         )
     if re.fullmatch(
-        r"(?:как\s+)?(?:работать|пользоваться)(?:\s+(?:с\s+)?(?:migtorg|мигторг|площадкой|сайтом))?",
+        r"(?:как\s+)?(?:(?:вообще|мне)\s+)?(?:начать\s+)?(?:работать|пользоваться)"
+        r"(?:\s+(?:(?:с\s+)?(?:migtorg|мигторг|площадкой|сайтом)|на\s+(?:вашей\s+)?площадке))?",
         text,
     ):
         candidate_ids = ("platform.about", "buyer.get_started", "seller.get_started")
