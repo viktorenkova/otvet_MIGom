@@ -20,6 +20,17 @@ Frozen-корпус не изменён. Утверждённые решения
 | Осталось pending | 0 |
 | Отмечено пробелов БЗ | 3 |
 
+Повторный local-прогон на build `0c9a339` с утверждённым overlay дал:
+
+| Метрика | До сверки | После сверки |
+|---|---:|---:|
+| Route hit | 80,37% | 81,48% |
+| Quality pass | 79,63% | 80,37% |
+| Провалы | 55 | 53 |
+| Уверенно неверные ответы | 41 | 40 |
+
+Итоговый release-gate остаётся красным из-за route hit ниже 85% и 40 уверенно неверных ответов при максимуме 2. Сверка исправила измерение, но не маскирует необходимость переработки retrieval/rerank/clarification.
+
 Основные исправления:
 
 - общие «как начать работать» признаны объективно неоднозначными: правильное действие — предметно уточнить роль без преждевременного выбора сценария;
@@ -45,3 +56,5 @@ Frozen-корпус не изменён. Утверждённые решения
 - `reports/routing-label-adjudication-110.json` — полный журнал с reviewer, reviewed_at, решением и доказательством по каждой записи;
 - `tests/data/routing_label_adjudication_110.json` — машинный overlay для evaluator;
 - `backend/tools/adjudicate_routing_labels.py` — воспроизводимое применение утверждённых решений.
+- `reports/quality-stage0-adjudicated-local.json` — пересчитанный baseline;
+- `reports/quality-stage0-adjudicated-error-taxonomy.json` и `docs/quality-stage0-adjudicated-error-taxonomy.md` — актуальная таксономия 53 провалов.
