@@ -409,12 +409,7 @@ class HybridScenarioRouter:
             lexical = best_char * 0.48 + best_word * 0.52
             facet_score, features = self._facet_score(facets, scenario)
             profile_score, profile_features = profile_scores.get(scenario.scenario_id, (0.0, ()))
-            # A semantic profile is a bounded reranking signal, not an
-            # alternative retrieval channel. Requiring lexical evidence keeps
-            # broad profiles (for example generic bidding/payment concepts)
-            # from displacing a more specific short-document match.
-            profile_boost = min(0.18, profile_score * 0.20) if lexical >= 0.08 else 0.0
-            total = lexical * 0.86 + facet_score + profile_boost
+            total = max(lexical * 0.86 + facet_score, profile_score + lexical * 0.12)
             ranked.append(
                 RoutingCandidate(
                     scenario=scenario,
@@ -435,15 +430,10 @@ class HybridScenarioRouter:
             return RoutingDecision(None, "low", 0.0, 0.0, (), normalized)
         best = candidates[0]
         margin = best.score - (candidates[1].score if len(candidates) > 1 else 0.0)
-        strong_profile = bool(
-            best.score >= 0.34
-            and best.lexical_score >= 0.08
-            and sum(feature.startswith("concept:") for feature in best.matched_features) >= 2
-        )
-        if (best.score >= 0.34 and margin >= 0.045) or strong_profile:
+        if best.score >= 0.58 and margin >= 0.045:
             confidence = "high"
             scenario = best.scenario
-        elif best.score >= 0.22:
+        elif best.score >= 0.36:
             confidence = "medium"
             scenario = None
         else:
@@ -456,11 +446,7 @@ class HybridScenarioRouter:
             margin=margin,
             candidates=candidates,
             normalized_query=normalized,
-            matched_features=(
-                (*best.matched_features, "profile_confidence_override")
-                if strong_profile and margin < 0.045
-                else best.matched_features
-            ),
+            matched_features=best.matched_features,
         )
 
 
