@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-08-23T07:22:07.028192+00:00",
+  "local_report": "reports\\quality-stage0_5-local.json",
+  "remote_report": "reports\\quality-stage0_5-http.json",
+  "manifest_available": true,
+  "same_build": true,
+  "same_dataset": true,
+  "manifest_checks": {
+    "git_sha": true,
+    "knowledge_sha256": true,
+    "scenarios_sha256": true,
+    "matching_config_sha256": true,
+    "application_bundle_sha256": true,
+    "routing_bundle_sha256": true,
+    "prompt_bundle_sha256": true,
+    "knowledge_mode": true,
+    "llm_enabled": true,
+    "llm_provider": true,
+    "llm_primary_model": true
+  },
+  "case_count_local": 270,
+  "case_count_remote": 270,
+  "common_case_count": 270,
+  "matching_route_response_count": 270,
+  "mismatch_count": 0,
+  "deterministic_gate_passed": true,
+  "blocking_reasons": [],
+  "mismatches": []
+}
