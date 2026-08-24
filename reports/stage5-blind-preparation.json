@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "source": {
+    "sha256": "cc853d5ea049e0576cd658114a88c684e0b0454b693aa9a3488385d972ad624c",
+    "candidate_messages": 1023,
+    "eligible_unique_messages": 922
+  },
+  "selection": {
+    "single_turn_count": 500,
+    "dialogue_count": 45,
+    "dialogue_turn_count": 95,
+    "privacy_rejections": 0,
+    "exact_known_corpus_rejections": 0
+  },
+  "review_pack_sha256": "aec5523deeaf87373182b5d995c2a065d3ea1db0245b82bfae88955d1cfe50a4",
+  "readiness": {
+    "freeze_ready": false,
+    "checks": {
+      "single_turn_count_gte_500": true,
+      "dialogue_count_gte_50": false,
+      "independent_reviewer_attested": false,
+      "labels_complete": false
+    },
+    "missing_dialogues": 5,
+    "pending_review_records": 595
+  }
+}
