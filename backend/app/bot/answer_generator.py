@@ -2,6 +2,7 @@ from dataclasses import dataclass
 import re
 
 from backend.app.config import Settings
+from backend.app.bot.answer_contracts import fact_context, get_answer_contract, verify_answer
 from backend.app.bot.knowledge_search import KnowledgeArticle, load_fallbacks
 from backend.app.integrations.llm_provider import build_llm_provider
 from backend.app.models.llm import LLMRequest, LLMResult
@@ -75,6 +76,9 @@ DEFAULT_ANSWERS: dict[str, str] = {
 class GeneratedAnswer:
     answer: str
     llm_result: LLMResult | None = None
+    used_fact_ids: tuple[str, ...] = ()
+    verification_passed: bool = True
+    verification_reason: str = ""
 
 
 def _redact_for_llm(text: str) -> str:
@@ -233,7 +237,8 @@ def generate_answer(
     safety_flags: list[str] | None = None,
     llm_spend_usd: float = 0.0,
 ) -> GeneratedAnswer:
-    base = _article_answer(article) or _fallback_answer(intent)
+    contract = get_answer_contract(article.scenario) if article and article.scenario else None
+    base = contract.approved_template if contract else (_article_answer(article) or _fallback_answer(intent))
     message_lower = message.lower()
     if article and article.scenario == "tariff.connect" and "премиум" in message_lower:
         base = (
@@ -355,12 +360,31 @@ def generate_answer(
     base = _finalize_answer(base, message)
 
     if settings is None or not settings.llm_enabled:
-        return GeneratedAnswer(answer=base)
+        verification = verify_answer(base, base, contract)
+        return GeneratedAnswer(
+            answer=verification.answer,
+            used_fact_ids=verification.used_fact_ids,
+            verification_passed=verification.passed,
+            verification_reason=verification.reason,
+        )
     if needs_ticket:
-        return GeneratedAnswer(answer=base)
+        verification = verify_answer(base, base, contract)
+        return GeneratedAnswer(
+            answer=verification.answer,
+            used_fact_ids=verification.used_fact_ids,
+            verification_passed=verification.passed,
+            verification_reason=verification.reason,
+        )
     if llm_spend_usd >= settings.active_llm_budget_usd:
-        return GeneratedAnswer(answer=base)
+        verification = verify_answer(base, base, contract)
+        return GeneratedAnswer(
+            answer=verification.answer,
+            used_fact_ids=verification.used_fact_ids,
+            verification_passed=verification.passed,
+            verification_reason=verification.reason,
+        )
 
+    approved_facts = fact_context(contract) if contract else base
     prompt = (
         "Дайте прямой ответ пользователю на основе контекста ниже. Используйте 2–4 коротких предложения. "
         "Оставьте только сведения, которые отвечают на заданный вопрос. Не повторяйте мысли и не добавляйте новых фактов. "
@@ -369,7 +393,9 @@ def generate_answer(
         f"Тема: {intent}\n"
         f"Роль пользователя: {role}\n\n"
         f"Сценарий базы знаний: {article.scenario if article else 'fallback'}\n"
-        f"Контекст базы знаний:\n{base}"
+        f"Контекст базы знаний:\n{base}\n\n"
+        "Допустимые атомарные факты (ID нужны для проверки, не показывайте их пользователю):\n"
+        f"{approved_facts}"
     )
     provider = build_llm_provider(settings)
     result = provider.generate(
@@ -394,5 +420,12 @@ def generate_answer(
     max_reasonable_length = min(1200, max(600, int(len(base) * 1.5)))
     if not candidate or len(candidate) > max_reasonable_length:
         candidate = base
-    result.text = candidate
-    return GeneratedAnswer(answer=candidate, llm_result=result)
+    verification = verify_answer(candidate, base, contract)
+    result.text = verification.answer
+    return GeneratedAnswer(
+        answer=verification.answer,
+        llm_result=result,
+        used_fact_ids=verification.used_fact_ids,
+        verification_passed=verification.passed,
+        verification_reason=verification.reason,
+    )

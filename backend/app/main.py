@@ -835,6 +835,11 @@ def process_chat_message(request: ChatRequest) -> ChatResponse:
         safety_flags=safety_before.categories,
         llm_spend_usd=logger.get_llm_spend(settings.llm_environment),
     )
+    matched_features = list(dict.fromkeys([
+        *matched_features,
+        *(f"answer_fact:{fact_id}" for fact_id in generated.used_fact_ids),
+        f"answer_verifier:{generated.verification_reason or 'not_applicable'}",
+    ]))
     answer = generated.answer
     if safety_before.answer_prefix:
         answer = safety_before.answer_prefix + answer

@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "methodology": {
+    "population": "live cases with correct scenario and intent route",
+    "theme": "accepted scenario_id and intent",
+    "completeness": "all required answer marker groups are present",
+    "wording_relevance": "accepted resolution and direct answer when required",
+    "clarity": "no repeated sentence and answer <=900 characters",
+    "no_extra": "no globally or case-forbidden answer fragment"
+  },
+  "correct_route_total": 155,
+  "all_criteria": {
+    "passed": 151,
+    "rate_pct": 97.42
+  },
+  "by_criterion": {
+    "theme": {
+      "total": 155,
+      "passed": 155,
+      "rate_pct": 100.0
+    },
+    "completeness": {
+      "total": 155,
+      "passed": 152,
+      "rate_pct": 98.06
+    },
+    "wording_relevance": {
+      "total": 155,
+      "passed": 154,
+      "rate_pct": 99.35
+    },
+    "clarity": {
+      "total": 155,
+      "passed": 155,
+      "rate_pct": 100.0
+    },
+    "no_extra": {
+      "total": 155,
+      "passed": 155,
+      "rate_pct": 100.0
+    }
+  },
+  "critical_unsupported": {
+    "count": 0,
+    "cases": []
+  },
+  "irrelevant_blocks": {
+    "count": 1,
+    "rate_pct": 0.65,
+    "case_ids": [
+      "rep-001"
+    ]
+  },
+  "answer_contracts": {
+    "scenario_count": 141,
+    "template_kinds": [
+      "clarification",
+      "contact",
+      "direct",
+      "status"
+    ]
+  },
+  "checks": {
+    "all_criteria_gte_93": true,
+    "critical_unsupported_zero": true,
+    "irrelevant_blocks_lte_2": true,
+    "contract_coverage_complete": true
+  },
+  "passed": true
+}
