@@ -1,0 +1,1368 @@
+{
+  "schema_version": 1,
+  "model": {
+    "type": "HistGradientBoostingClassifier pointwise pair scorer",
+    "random_state": 20260824,
+    "feature_count": 165,
+    "training_pairs": 4000,
+    "query_text_usage": "training/evaluation only; never emitted into rules, aliases or KB"
+  },
+  "validation": {
+    "total": 99,
+    "correct": 97,
+    "top1_pct": 97.98
+  },
+  "hard_negative_holdout": {
+    "total": 4,
+    "correct": 2,
+    "top1_pct": 50.0
+  },
+  "calibration": {
+    "method": "per-family development threshold; probability and margin >=0.01",
+    "thresholds": {
+      "bidding": 0.334505,
+      "default": 0.930947,
+      "onboarding": 0.963479,
+      "payments": 0.137112,
+      "registration": 0.919837,
+      "search": 0.932551,
+      "transfer": 0.950111
+    },
+    "validation": {
+      "high_count": 97,
+      "high_coverage_pct": 97.98,
+      "confident_wrong_count": 1,
+      "confident_wrong_pct": 1.03
+    }
+  },
+  "validation_by_required_family": {
+    "bidding": {
+      "total": 12,
+      "correct": 11,
+      "top1_pct": 91.67
+    },
+    "onboarding": {
+      "total": 1,
+      "correct": 1,
+      "top1_pct": 100.0
+    },
+    "payments": {
+      "total": 20,
+      "correct": 19,
+      "top1_pct": 95.0
+    },
+    "registration": {
+      "total": 4,
+      "correct": 4,
+      "top1_pct": 100.0
+    },
+    "search": {
+      "total": 1,
+      "correct": 1,
+      "top1_pct": 100.0
+    },
+    "transfer": {
+      "total": 9,
+      "correct": 9,
+      "top1_pct": 100.0
+    }
+  },
+  "checks": {
+    "validation_top1_gte_90": true,
+    "each_required_family_gte_80": true,
+    "hard_negative_holdout_gte_50": true,
+    "confident_wrong_lte_2": true,
+    "high_confidence_coverage_gte_50": true
+  },
+  "passed": true,
+  "failures": [
+    {
+      "id": "lot.payment.details::payment_confirmation::taxonomy_paraphrase",
+      "source": "taxonomy",
+      "family": "payments",
+      "expected_scenario_ids": [
+        "lot.payment.details"
+      ],
+      "top_scenario_id": "compliance.off_platform_payment",
+      "correct": false,
+      "probability": 0.3863071373480221,
+      "margin": 0.3809141520904935
+    },
+    {
+      "id": "auction.formats::primary::taxonomy_paraphrase",
+      "source": "taxonomy",
+      "family": "bidding",
+      "expected_scenario_ids": [
+        "auction.formats"
+      ],
+      "top_scenario_id": "bid.place",
+      "correct": false,
+      "probability": 0.022023819000562345,
+      "margin": 0.009169245243276877
+    },
+    {
+      "id": "widget-008",
+      "source": "real_hard_negative",
+      "family": "onboarding",
+      "expected_scenario_ids": [
+        "buyer.get_started"
+      ],
+      "top_scenario_id": "auction.other_platform_offer",
+      "correct": false,
+      "probability": 0.33174880802839285,
+      "margin": 0.05444155749001489
+    },
+    {
+      "id": "widget-013",
+      "source": "real_hard_negative",
+      "family": "registration",
+      "expected_scenario_ids": [
+        "account.activation_pending",
+        "notification.delivery_problem"
+      ],
+      "top_scenario_id": "documents.preparation_delay",
+      "correct": false,
+      "probability": 0.5255847628189628,
+      "margin": 0.2336224781788226
+    }
+  ],
+  "results": [
+    {
+      "id": "seller.get_started::primary::taxonomy_paraphrase",
+      "source": "taxonomy",
+      "family": "onboarding",
+      "expected_scenario_ids": [
+        "seller.get_started"
+      ],
+      "top_scenario_id": "seller.get_started",
+      "correct": true,
+      "probability": 0.9988658986063543,
+      "margin": 0.9959553991503546
+    },
+    {
+      "id": "seller.publish_lot::primary::word_order",
+      "source": "taxonomy",
+      "family": "default",
+      "expected_scenario_ids": [
+        "seller.publish_lot"
+      ],
+      "top_scenario_id": "seller.publish_lot",
+      "correct": true,
+      "probability": 0.9998161861198864,
+      "margin": 0.9937697302771681
+    },
+    {
+      "id": "bid.not_visible::primary::transposed_letters",
+      "source": "taxonomy",
+      "family": "bidding",
+      "expected_scenario_ids": [
+        "bid.not_visible"
+      ],
+      "top_scenario_id": "bid.not_visible",
+      "correct": true,
+      "probability": 0.9998660852737684,
+      "margin": 0.9962664580018646
+    },
+    {
+      "id": "bid.not_visible::primary::word_order",
+      "source": "taxonomy",
+      "family": "bidding",
+      "expected_scenario_ids": [
+        "bid.not_visible"
+      ],
+      "top_scenario_id": "bid.not_visible",
+      "correct": true,
+      "probability": 0.9998660852737684,
+      "margin": 0.9907209052398346
+    },
+    {
+      "id": "contract.receive::delivery::transposed_letters",
+      "source": "taxonomy",
+      "family": "transfer",
+      "expected_scenario_ids": [
+        "contract.receive"
+      ],
+      "top_scenario_id": "contract.receive",
+      "correct": true,
+      "probability": 0.9930600239109775,
+      "margin": 0.9926640381411457
+    },
+    {
+      "id": "support.contact::primary::taxonomy_paraphrase",
+      "source": "taxonomy",
+      "family": "default",
+      "expected_scenario_ids": [
+        "support.contact"
+      ],
+      "top_scenario_id": "support.contact",
+      "correct": true,
+      "probability": 0.9983293526614053,
+      "margin": 0.9968292990641814
+    },
+    {
+      "id": "support.contact::primary::transposed_letters",
+      "source": "taxonomy",
+      "family": "default",
+      "expected_scenario_ids": [
+        "support.contact"
+      ],
+      "top_scenario_id": "support.contact",
+      "correct": true,
+      "probability": 0.9998162705465647,
+      "margin": 0.9965591575413275
+    },
+    {
+      "id": "support.callback::primary::taxonomy_paraphrase",
+      "source": "taxonomy",
+      "family": "default",
+      "expected_scenario_ids": [
+        "support.callback"
+      ],
+      "top_scenario_id": "support.callback",
+      "correct": true,
+      "probability": 0.8667812806389487,
+      "margin": 0.8593465247067802
+    },
+    {
+      "id": "support.callback::primary::transposed_letters",
+      "source": "taxonomy",
+      "family": "default",
+      "expected_scenario_ids": [
+        "support.callback"
+      ],
+      "top_scenario_id": "support.callback",
+      "correct": true,
+      "probability": 0.9855799387708397,
+      "margin": 0.9849429819795602
+    },
+    {
+      "id": "support.email_no_response::primary::transposed_letters",
+      "source": "taxonomy",
+      "family": "default",
+      "expected_scenario_ids": [
+        "support.email_no_response"
+      ],
+      "top_scenario_id": "support.email_no_response",
+      "correct": true,
+      "probability": 0.9997636378585956,
+      "margin": 0.9980355651844052
+    },
+    {
+      "id": "pickup.receive_lot::documents::word_order",
+      "source": "taxonomy",
+      "family": "transfer",
+      "expected_scenario_ids": [
+        "pickup.receive_lot"
+      ],
+      "top_scenario_id": "pickup.receive_lot",
+      "correct": true,
+      "probability": 0.9992706610123395,
+      "margin": 0.9623686799450798
+    },
+    {
+      "id": "bid.place::primary::word_order",
+      "source": "taxonomy",
+      "family": "bidding",
+      "expected_scenario_ids": [
+        "bid.place"
+      ],
+      "top_scenario_id": "bid.place",
+      "correct": true,
+      "probability": 0.9128383105777034,
+      "margin": 0.9117754970637435
+    },
+    {
+      "id": "inspection.arrange::primary::taxonomy_paraphrase",
+      "source": "taxonomy",
+      "family": "default",
+      "expected_scenario_ids": [
+        "inspection.arrange"
+      ],
+      "top_scenario_id": "inspection.arrange",
+      "correct": true,
+      "probability": 0.9993565910659978,
+      "margin": 0.9872064049707435
+    },
+    {
+      "id": "inspection.arrange::primary::transposed_letters",
+      "source": "taxonomy",
+      "family": "default",
+      "expected_scenario_ids": [
+        "inspection.arrange"
+      ],
+      "top_scenario_id": "inspection.arrange",
+      "correct": true,
+      "probability": 0.9994285338293193,
+      "margin": 0.9986600242593194
+    },
+    {
+      "id": "account.login_problem::primary::taxonomy_paraphrase",
+      "source": "taxonomy",
+      "family": "registration",
+      "expected_scenario_ids": [
+        "account.login_problem"
+      ],
+      "top_scenario_id": "account.login_problem",
+      "correct": true,
+      "probability": 0.9994364419397697,
+      "margin": 0.9955081862700381
+    },
+    {
+      "id": "technical.site_error::primary::transposed_letters",
+      "source": "taxonomy",
+      "family": "default",
+      "expected_scenario_ids": [
+        "technical.site_error"
+      ],
+      "top_scenario_id": "technical.site_error",
+      "correct": true,
+      "probability": 0.999762264640806,
+      "margin": 0.9990177227006448
+    },
+    {
+      "id": "tariff.connect::primary::transposed_letters",
+      "source": "taxonomy",
+      "family": "payments",
+      "expected_scenario_ids": [
+        "tariff.connect"
+      ],
+      "top_scenario_id": "tariff.connect",
+      "correct": true,
+      "probability": 0.9997302900552073,
+      "margin": 0.904228931039377
+    },
+    {
+      "id": "payment.methods::tariff::taxonomy_paraphrase",
+      "source": "taxonomy",
+      "family": "payments",
+      "expected_scenario_ids": [
+        "payment.methods"
+      ],
+      "top_scenario_id": "payment.methods",
+      "correct": true,
+      "probability": 0.9787943011256846,
+      "margin": 0.7665115720701545
+    },
+    {
+      "id": "payment.methods::tariff::transposed_letters",
+      "source": "taxonomy",
+      "family": "payments",
+      "expected_scenario_ids": [
+        "payment.methods"
+      ],
+      "top_scenario_id": "payment.methods",
+      "correct": true,
+      "probability": 0.9983855747151668,
+      "margin": 0.18270766636685143
+    },
+    {
+      "id": "payment.methods::platform_commission::transposed_letters",
+      "source": "taxonomy",
+      "family": "payments",
+      "expected_scenario_ids": [
+        "payment.methods"
+      ],
+      "top_scenario_id": "payment.methods",
+      "correct": true,
+      "probability": 0.997646351986825,
+      "margin": 0.24083604968013617
+    },
+    {
+      "id": "payment.not_visible::primary::word_order",
+      "source": "taxonomy",
+      "family": "payments",
+      "expected_scenario_ids": [
+        "payment.not_visible"
+      ],
+      "top_scenario_id": "payment.not_visible",
+      "correct": true,
+      "probability": 0.9997939867984329,
+      "margin": 0.9971689397597617
+    },
+    {
+      "id": "commission.unpaid::primary::taxonomy_paraphrase",
+      "source": "taxonomy",
+      "family": "payments",
+      "expected_scenario_ids": [
+        "commission.unpaid"
+      ],
+      "top_scenario_id": "commission.unpaid",
+      "correct": true,
+      "probability": 0.9992088043389109,
+      "margin": 0.23949442546046207
+    },
+    {
+      "id": "lot.payment.details::payment_confirmation::taxonomy_paraphrase",
+      "source": "taxonomy",
+      "family": "payments",
+      "expected_scenario_ids": [
+        "lot.payment.details"
+      ],
+      "top_scenario_id": "compliance.off_platform_payment",
+      "correct": false,
+      "probability": 0.3863071373480221,
+      "margin": 0.3809141520904935
+    },
+    {
+      "id": "lot.payment.details::payment_confirmation::transposed_letters",
+      "source": "taxonomy",
+      "family": "payments",
+      "expected_scenario_ids": [
+        "lot.payment.details"
+      ],
+      "top_scenario_id": "lot.payment.details",
+      "correct": true,
+      "probability": 0.978837038419863,
+      "margin": 0.621714951638564
+    },
+    {
+      "id": "lot.payment.overdue::primary::transposed_letters",
+      "source": "taxonomy",
+      "family": "payments",
+      "expected_scenario_ids": [
+        "lot.payment.overdue"
+      ],
+      "top_scenario_id": "lot.payment.overdue",
+      "correct": true,
+      "probability": 0.9998519806634055,
+      "margin": 0.9636965408727058
+    },
+    {
+      "id": "lot.payment.overdue::primary::word_order",
+      "source": "taxonomy",
+      "family": "payments",
+      "expected_scenario_ids": [
+        "lot.payment.overdue"
+      ],
+      "top_scenario_id": "lot.payment.overdue",
+      "correct": true,
+      "probability": 0.9998320813588816,
+      "margin": 0.9739406444684027
+    },
+    {
+      "id": "refund.eligibility::primary::transposed_letters",
+      "source": "taxonomy",
+      "family": "default",
+      "expected_scenario_ids": [
+        "refund.eligibility"
+      ],
+      "top_scenario_id": "refund.eligibility",
+      "correct": true,
+      "probability": 0.9998333546773376,
+      "margin": 0.9993256678842264
+    },
+    {
+      "id": "refund.application::premium::transposed_letters",
+      "source": "taxonomy",
+      "family": "default",
+      "expected_scenario_ids": [
+        "refund.application"
+      ],
+      "top_scenario_id": "refund.application",
+      "correct": true,
+      "probability": 0.9938826877493023,
+      "margin": 0.9555535448147818
+    },
+    {
+      "id": "contract.unconfirmed_details::primary::taxonomy_paraphrase",
+      "source": "taxonomy",
+      "family": "transfer",
+      "expected_scenario_ids": [
+        "contract.unconfirmed_details"
+      ],
+      "top_scenario_id": "contract.unconfirmed_details",
+      "correct": true,
+      "probability": 0.9983977199784073,
+      "margin": 0.9918323486159567
+    },
+    {
+      "id": "contract.unconfirmed_details::primary::transposed_letters",
+      "source": "taxonomy",
+      "family": "transfer",
+      "expected_scenario_ids": [
+        "contract.unconfirmed_details"
+      ],
+      "top_scenario_id": "contract.unconfirmed_details",
+      "correct": true,
+      "probability": 0.9997599611494635,
+      "margin": 0.9983462878755908
+    },
+    {
+      "id": "contract.unconfirmed_details::primary::word_order",
+      "source": "taxonomy",
+      "family": "transfer",
+      "expected_scenario_ids": [
+        "contract.unconfirmed_details"
+      ],
+      "top_scenario_id": "contract.unconfirmed_details",
+      "correct": true,
+      "probability": 0.999804909293986,
+      "margin": 0.9987187423833824
+    },
+    {
+      "id": "refusal.unconfirmed_details::primary::transposed_letters",
+      "source": "taxonomy",
+      "family": "default",
+      "expected_scenario_ids": [
+        "refusal.unconfirmed_details"
+      ],
+      "top_scenario_id": "refusal.unconfirmed_details",
+      "correct": true,
+      "probability": 0.9997916757345093,
+      "margin": 0.9992188793635497
+    },
+    {
+      "id": "refusal.unconfirmed_details::primary::word_order",
+      "source": "taxonomy",
+      "family": "default",
+      "expected_scenario_ids": [
+        "refusal.unconfirmed_details"
+      ],
+      "top_scenario_id": "refusal.unconfirmed_details",
+      "correct": true,
+      "probability": 0.9998386474119114,
+      "margin": 0.9993639173485604
+    },
+    {
+      "id": "account.identification_edge_case::primary::word_order",
+      "source": "taxonomy",
+      "family": "registration",
+      "expected_scenario_ids": [
+        "account.identification_edge_case"
+      ],
+      "top_scenario_id": "account.identification_edge_case",
+      "correct": true,
+      "probability": 0.9998694487259783,
+      "margin": 0.9990599257343679
+    },
+    {
+      "id": "support.staff_only_details::primary::word_order",
+      "source": "taxonomy",
+      "family": "default",
+      "expected_scenario_ids": [
+        "support.staff_only_details"
+      ],
+      "top_scenario_id": "support.staff_only_details",
+      "correct": true,
+      "probability": 0.9998157729246409,
+      "margin": 0.9993549048900028
+    },
+    {
+      "id": "refusal.invalid_reasons::primary::taxonomy_paraphrase",
+      "source": "taxonomy",
+      "family": "default",
+      "expected_scenario_ids": [
+        "refusal.invalid_reasons"
+      ],
+      "top_scenario_id": "refusal.invalid_reasons",
+      "correct": true,
+      "probability": 0.9994890110864821,
+      "margin": 0.9966056348784338
+    },
+    {
+      "id": "refusal.seller_decision::primary::transposed_letters",
+      "source": "taxonomy",
+      "family": "default",
+      "expected_scenario_ids": [
+        "refusal.seller_decision"
+      ],
+      "top_scenario_id": "refusal.seller_decision",
+      "correct": true,
+      "probability": 0.9998074879565844,
+      "margin": 0.9990778726312669
+    },
+    {
+      "id": "refusal.seller_decision::primary::word_order",
+      "source": "taxonomy",
+      "family": "default",
+      "expected_scenario_ids": [
+        "refusal.seller_decision"
+      ],
+      "top_scenario_id": "refusal.seller_decision",
+      "correct": true,
+      "probability": 0.9998074879565844,
+      "margin": 0.9990331275734137
+    },
+    {
+      "id": "payment.accounting_documents::safe_channel::taxonomy_paraphrase",
+      "source": "taxonomy",
+      "family": "payments",
+      "expected_scenario_ids": [
+        "payment.accounting_documents"
+      ],
+      "top_scenario_id": "payment.accounting_documents",
+      "correct": true,
+      "probability": 0.9362946014599416,
+      "margin": 0.7917876432117852
+    },
+    {
+      "id": "payment.accounting_documents::safe_channel::transposed_letters",
+      "source": "taxonomy",
+      "family": "payments",
+      "expected_scenario_ids": [
+        "payment.accounting_documents"
+      ],
+      "top_scenario_id": "payment.accounting_documents",
+      "correct": true,
+      "probability": 0.9994215082168615,
+      "margin": 0.9990711832170657
+    },
+    {
+      "id": "deposit.explained::primary::transposed_letters",
+      "source": "taxonomy",
+      "family": "default",
+      "expected_scenario_ids": [
+        "deposit.explained"
+      ],
+      "top_scenario_id": "deposit.explained",
+      "correct": true,
+      "probability": 0.9998612193195481,
+      "margin": 0.9875652018865168
+    },
+    {
+      "id": "finance.status.clarify::primary::taxonomy_paraphrase",
+      "source": "taxonomy",
+      "family": "default",
+      "expected_scenario_ids": [
+        "finance.status.clarify"
+      ],
+      "top_scenario_id": "finance.status.clarify",
+      "correct": true,
+      "probability": 0.9975547354736022,
+      "margin": 0.9426366131320159
+    },
+    {
+      "id": "tariff.choose::auction_cost_policy::transposed_letters",
+      "source": "taxonomy",
+      "family": "payments",
+      "expected_scenario_ids": [
+        "tariff.choose"
+      ],
+      "top_scenario_id": "tariff.choose",
+      "correct": true,
+      "probability": 0.9938600323759206,
+      "margin": 0.9188355192131747
+    },
+    {
+      "id": "tariff.one_time::primary::transposed_letters",
+      "source": "taxonomy",
+      "family": "payments",
+      "expected_scenario_ids": [
+        "tariff.one_time"
+      ],
+      "top_scenario_id": "tariff.one_time",
+      "correct": true,
+      "probability": 0.9997994390130436,
+      "margin": 0.977816839833766
+    },
+    {
+      "id": "tariff.premium::primary::word_order",
+      "source": "taxonomy",
+      "family": "payments",
+      "expected_scenario_ids": [
+        "tariff.premium"
+      ],
+      "top_scenario_id": "tariff.premium",
+      "correct": true,
+      "probability": 0.9998816687436929,
+      "margin": 0.9598423731314029
+    },
+    {
+      "id": "tariff.demo::primary::transposed_letters",
+      "source": "taxonomy",
+      "family": "payments",
+      "expected_scenario_ids": [
+        "tariff.demo"
+      ],
+      "top_scenario_id": "tariff.demo",
+      "correct": true,
+      "probability": 0.9991454795475596,
+      "margin": 0.9984129461471214
+    },
+    {
+      "id": "tariff.demo::primary::word_order",
+      "source": "taxonomy",
+      "family": "payments",
+      "expected_scenario_ids": [
+        "tariff.demo"
+      ],
+      "top_scenario_id": "tariff.demo",
+      "correct": true,
+      "probability": 0.9998292900379419,
+      "margin": 0.9993635093937779
+    },
+    {
+      "id": "tariff.status::primary::transposed_letters",
+      "source": "taxonomy",
+      "family": "payments",
+      "expected_scenario_ids": [
+        "tariff.status"
+      ],
+      "top_scenario_id": "tariff.status",
+      "correct": true,
+      "probability": 0.9997690792964403,
+      "margin": 0.9977817556429773
+    },
+    {
+      "id": "refusal.change_mind::primary::taxonomy_paraphrase",
+      "source": "taxonomy",
+      "family": "default",
+      "expected_scenario_ids": [
+        "refusal.change_mind"
+      ],
+      "top_scenario_id": "refusal.change_mind",
+      "correct": true,
+      "probability": 0.9991539522359189,
+      "margin": 0.9935237838027305
+    },
+    {
+      "id": "refusal.no_response::primary::word_order",
+      "source": "taxonomy",
+      "family": "default",
+      "expected_scenario_ids": [
+        "refusal.no_response"
+      ],
+      "top_scenario_id": "refusal.no_response",
+      "correct": true,
+      "probability": 0.9997621295920727,
+      "margin": 0.9988059558141745
+    },
+    {
+      "id": "bid.validity::primary::taxonomy_paraphrase",
+      "source": "taxonomy",
+      "family": "bidding",
+      "expected_scenario_ids": [
+        "bid.validity"
+      ],
+      "top_scenario_id": "bid.validity",
+      "correct": true,
+      "probability": 0.9991252740245654,
+      "margin": 0.9143025078249808
+    },
+    {
+      "id": "documents.preparation_delay::primary::taxonomy_paraphrase",
+      "source": "taxonomy",
+      "family": "transfer",
+      "expected_scenario_ids": [
+        "documents.preparation_delay"
+      ],
+      "top_scenario_id": "documents.preparation_delay",
+      "correct": true,
+      "probability": 0.9992384271604293,
+      "margin": 0.9969687913403835
+    },
+    {
+      "id": "seller.access_security::primary::transposed_letters",
+      "source": "taxonomy",
+      "family": "default",
+      "expected_scenario_ids": [
+        "seller.access_security"
+      ],
+      "top_scenario_id": "seller.access_security",
+      "correct": true,
+      "probability": 0.999738187940541,
+      "margin": 0.9986655474435471
+    },
+    {
+      "id": "seller.training::primary::transposed_letters",
+      "source": "taxonomy",
+      "family": "default",
+      "expected_scenario_ids": [
+        "seller.training"
+      ],
+      "top_scenario_id": "seller.training",
+      "correct": true,
+      "probability": 0.9970002567596087,
+      "margin": 0.9947139077106408
+    },
+    {
+      "id": "payment.document_policy::primary::word_order",
+      "source": "taxonomy",
+      "family": "payments",
+      "expected_scenario_ids": [
+        "payment.document_policy"
+      ],
+      "top_scenario_id": "payment.document_policy",
+      "correct": true,
+      "probability": 0.9998795154741241,
+      "margin": 0.999148406980956
+    },
+    {
+      "id": "vehicle.legal_check::primary::taxonomy_paraphrase",
+      "source": "taxonomy",
+      "family": "default",
+      "expected_scenario_ids": [
+        "vehicle.legal_check"
+      ],
+      "top_scenario_id": "vehicle.legal_check",
+      "correct": true,
+      "probability": 0.9989988300601544,
+      "margin": 0.9937239560499436
+    },
+    {
+      "id": "transfer.seller_no_response::primary::taxonomy_paraphrase",
+      "source": "taxonomy",
+      "family": "transfer",
+      "expected_scenario_ids": [
+        "transfer.seller_no_response"
+      ],
+      "top_scenario_id": "transfer.seller_no_response",
+      "correct": true,
+      "probability": 0.9981578309093698,
+      "margin": 0.9810024462784191
+    },
+    {
+      "id": "lot.insufficient_information::primary::taxonomy_paraphrase",
+      "source": "taxonomy",
+      "family": "default",
+      "expected_scenario_ids": [
+        "lot.insufficient_information"
+      ],
+      "top_scenario_id": "lot.insufficient_information",
+      "correct": true,
+      "probability": 0.9994442954362569,
+      "margin": 0.9958906199582592
+    },
+    {
+      "id": "vehicle.vin_request::primary::transposed_letters",
+      "source": "taxonomy",
+      "family": "default",
+      "expected_scenario_ids": [
+        "vehicle.vin_request"
+      ],
+      "top_scenario_id": "vehicle.vin_request",
+      "correct": true,
+      "probability": 0.9998778166176618,
+      "margin": 0.999384825609536
+    },
+    {
+      "id": "lot.location::primary::word_order",
+      "source": "taxonomy",
+      "family": "default",
+      "expected_scenario_ids": [
+        "lot.location"
+      ],
+      "top_scenario_id": "lot.location",
+      "correct": true,
+      "probability": 0.9998816687436929,
+      "margin": 0.9968033692567421
+    },
+    {
+      "id": "lot.missing::primary::word_order",
+      "source": "taxonomy",
+      "family": "default",
+      "expected_scenario_ids": [
+        "lot.missing"
+      ],
+      "top_scenario_id": "lot.missing",
+      "correct": true,
+      "probability": 0.9998485159786437,
+      "margin": 0.9986691611802304
+    },
+    {
+      "id": "auction.formats::primary::taxonomy_paraphrase",
+      "source": "taxonomy",
+      "family": "bidding",
+      "expected_scenario_ids": [
+        "auction.formats"
+      ],
+      "top_scenario_id": "bid.place",
+      "correct": false,
+      "probability": 0.022023819000562345,
+      "margin": 0.009169245243276877
+    },
+    {
+      "id": "bid.autobid_extension::autobid::taxonomy_paraphrase",
+      "source": "taxonomy",
+      "family": "bidding",
+      "expected_scenario_ids": [
+        "bid.autobid_extension"
+      ],
+      "top_scenario_id": "bid.autobid_extension",
+      "correct": true,
+      "probability": 0.5214520906222487,
+      "margin": 0.5118361964864016
+    },
+    {
+      "id": "bid.autobid_extension::autobid::word_order",
+      "source": "taxonomy",
+      "family": "bidding",
+      "expected_scenario_ids": [
+        "bid.autobid_extension"
+      ],
+      "top_scenario_id": "bid.autobid_extension",
+      "correct": true,
+      "probability": 0.9995259849750007,
+      "margin": 0.9984138204715254
+    },
+    {
+      "id": "bid.autobid_extension::last_minutes::word_order",
+      "source": "taxonomy",
+      "family": "bidding",
+      "expected_scenario_ids": [
+        "bid.autobid_extension"
+      ],
+      "top_scenario_id": "bid.autobid_extension",
+      "correct": true,
+      "probability": 0.9996245429226032,
+      "margin": 0.9981243689328704
+    },
+    {
+      "id": "bid.autobid_extension::descending_price::taxonomy_paraphrase",
+      "source": "taxonomy",
+      "family": "bidding",
+      "expected_scenario_ids": [
+        "bid.autobid_extension"
+      ],
+      "top_scenario_id": "bid.autobid_extension",
+      "correct": true,
+      "probability": 0.9721970112192581,
+      "margin": 0.9397508521943718
+    },
+    {
+      "id": "bid.modify_cancel::primary::taxonomy_paraphrase",
+      "source": "taxonomy",
+      "family": "bidding",
+      "expected_scenario_ids": [
+        "bid.modify_cancel"
+      ],
+      "top_scenario_id": "bid.modify_cancel",
+      "correct": true,
+      "probability": 0.9658214925924523,
+      "margin": 0.9589060651690977
+    },
+    {
+      "id": "transfer.notification_contact::primary::taxonomy_paraphrase",
+      "source": "taxonomy",
+      "family": "transfer",
+      "expected_scenario_ids": [
+        "transfer.notification_contact"
+      ],
+      "top_scenario_id": "transfer.notification_contact",
+      "correct": true,
+      "probability": 0.9990240163039142,
+      "margin": 0.997463938473444
+    },
+    {
+      "id": "transfer.requisites::primary::transposed_letters",
+      "source": "taxonomy",
+      "family": "transfer",
+      "expected_scenario_ids": [
+        "transfer.requisites"
+      ],
+      "top_scenario_id": "transfer.requisites",
+      "correct": true,
+      "probability": 0.9998557386628671,
+      "margin": 0.9994963539048458
+    },
+    {
+      "id": "inspection.problem::primary::taxonomy_paraphrase",
+      "source": "taxonomy",
+      "family": "default",
+      "expected_scenario_ids": [
+        "inspection.problem"
+      ],
+      "top_scenario_id": "inspection.problem",
+      "correct": true,
+      "probability": 0.9990783178888265,
+      "margin": 0.9961754759155163
+    },
+    {
+      "id": "vehicle.encumbrance_detected::primary::transposed_letters",
+      "source": "taxonomy",
+      "family": "default",
+      "expected_scenario_ids": [
+        "vehicle.encumbrance_detected"
+      ],
+      "top_scenario_id": "vehicle.encumbrance_detected",
+      "correct": true,
+      "probability": 0.9997896329638095,
+      "margin": 0.9972861469972492
+    },
+    {
+      "id": "vehicle.owner_listing_dispute::primary::transposed_letters",
+      "source": "taxonomy",
+      "family": "default",
+      "expected_scenario_ids": [
+        "vehicle.owner_listing_dispute"
+      ],
+      "top_scenario_id": "vehicle.owner_listing_dispute",
+      "correct": true,
+      "probability": 0.9997997628864265,
+      "margin": 0.9981993634575554
+    },
+    {
+      "id": "property.overview::primary::transposed_letters",
+      "source": "taxonomy",
+      "family": "default",
+      "expected_scenario_ids": [
+        "property.overview"
+      ],
+      "top_scenario_id": "property.overview",
+      "correct": true,
+      "probability": 0.9997307832871473,
+      "margin": 0.9969929679592859
+    },
+    {
+      "id": "property.business::primary::taxonomy_paraphrase",
+      "source": "taxonomy",
+      "family": "default",
+      "expected_scenario_ids": [
+        "property.business"
+      ],
+      "top_scenario_id": "property.business",
+      "correct": true,
+      "probability": 0.9989517065451825,
+      "margin": 0.9958768145701439
+    },
+    {
+      "id": "lot.definition::primary::transposed_letters",
+      "source": "taxonomy",
+      "family": "default",
+      "expected_scenario_ids": [
+        "lot.definition"
+      ],
+      "top_scenario_id": "lot.definition",
+      "correct": true,
+      "probability": 0.9986521851593917,
+      "margin": 0.9981230520344319
+    },
+    {
+      "id": "account.dashboard_sections::primary::word_order",
+      "source": "taxonomy",
+      "family": "registration",
+      "expected_scenario_ids": [
+        "account.dashboard_sections"
+      ],
+      "top_scenario_id": "account.dashboard_sections",
+      "correct": true,
+      "probability": 0.995086994147816,
+      "margin": 0.9925980982019537
+    },
+    {
+      "id": "lot.status_guide::primary::transposed_letters",
+      "source": "taxonomy",
+      "family": "default",
+      "expected_scenario_ids": [
+        "lot.status_guide"
+      ],
+      "top_scenario_id": "lot.status_guide",
+      "correct": true,
+      "probability": 0.9963089014634061,
+      "margin": 0.9927617550577708
+    },
+    {
+      "id": "lot.status_guide::primary::word_order",
+      "source": "taxonomy",
+      "family": "default",
+      "expected_scenario_ids": [
+        "lot.status_guide"
+      ],
+      "top_scenario_id": "lot.status_guide",
+      "correct": true,
+      "probability": 0.9738433389347286,
+      "margin": 0.9703888095246175
+    },
+    {
+      "id": "support.telegram_channels::primary::taxonomy_paraphrase",
+      "source": "taxonomy",
+      "family": "default",
+      "expected_scenario_ids": [
+        "support.telegram_channels"
+      ],
+      "top_scenario_id": "support.telegram_channels",
+      "correct": true,
+      "probability": 0.9608096766862224,
+      "margin": 0.9502459064301563
+    },
+    {
+      "id": "support.telegram_channels::primary::transposed_letters",
+      "source": "taxonomy",
+      "family": "default",
+      "expected_scenario_ids": [
+        "support.telegram_channels"
+      ],
+      "top_scenario_id": "support.telegram_channels",
+      "correct": true,
+      "probability": 0.9998770457653098,
+      "margin": 0.999204561640281
+    },
+    {
+      "id": "account.mobile_access::primary::taxonomy_paraphrase",
+      "source": "taxonomy",
+      "family": "registration",
+      "expected_scenario_ids": [
+        "account.mobile_access"
+      ],
+      "top_scenario_id": "account.mobile_access",
+      "correct": true,
+      "probability": 0.9987711309409422,
+      "margin": 0.9950583837287059
+    },
+    {
+      "id": "buyer.resale_strategy::primary::transposed_letters",
+      "source": "taxonomy",
+      "family": "default",
+      "expected_scenario_ids": [
+        "buyer.resale_strategy"
+      ],
+      "top_scenario_id": "buyer.resale_strategy",
+      "correct": true,
+      "probability": 0.9991841729793799,
+      "margin": 0.9988847322516373
+    },
+    {
+      "id": "buyer.beginner_lot_selection::primary::taxonomy_paraphrase",
+      "source": "taxonomy",
+      "family": "default",
+      "expected_scenario_ids": [
+        "buyer.beginner_lot_selection"
+      ],
+      "top_scenario_id": "buyer.beginner_lot_selection",
+      "correct": true,
+      "probability": 0.9996060497149118,
+      "margin": 0.9950252096571055
+    },
+    {
+      "id": "bid.maximum_budget::primary::transposed_letters",
+      "source": "taxonomy",
+      "family": "bidding",
+      "expected_scenario_ids": [
+        "bid.maximum_budget"
+      ],
+      "top_scenario_id": "bid.maximum_budget",
+      "correct": true,
+      "probability": 0.998179674493372,
+      "margin": 0.9955336452128315
+    },
+    {
+      "id": "support.lot_case_review::primary::taxonomy_paraphrase",
+      "source": "taxonomy",
+      "family": "default",
+      "expected_scenario_ids": [
+        "support.lot_case_review"
+      ],
+      "top_scenario_id": "support.lot_case_review",
+      "correct": true,
+      "probability": 0.9987787061630259,
+      "margin": 0.9868289943115398
+    },
+    {
+      "id": "support.lot_case_review::primary::transposed_letters",
+      "source": "taxonomy",
+      "family": "default",
+      "expected_scenario_ids": [
+        "support.lot_case_review"
+      ],
+      "top_scenario_id": "support.lot_case_review",
+      "correct": true,
+      "probability": 0.9997638851336602,
+      "margin": 0.9941971086965177
+    },
+    {
+      "id": "support.lot_case_review::primary::word_order",
+      "source": "taxonomy",
+      "family": "default",
+      "expected_scenario_ids": [
+        "support.lot_case_review"
+      ],
+      "top_scenario_id": "support.lot_case_review",
+      "correct": true,
+      "probability": 0.9998171217190943,
+      "margin": 0.9939174689331118
+    },
+    {
+      "id": "payment.checkout_problem::primary::taxonomy_paraphrase",
+      "source": "taxonomy",
+      "family": "payments",
+      "expected_scenario_ids": [
+        "payment.checkout_problem"
+      ],
+      "top_scenario_id": "payment.checkout_problem",
+      "correct": true,
+      "probability": 0.999731615709114,
+      "margin": 0.9986921594042177
+    },
+    {
+      "id": "feedback.platform_complaint::primary::taxonomy_paraphrase",
+      "source": "taxonomy",
+      "family": "default",
+      "expected_scenario_ids": [
+        "feedback.platform_complaint"
+      ],
+      "top_scenario_id": "feedback.platform_complaint",
+      "correct": true,
+      "probability": 0.9934401087380775,
+      "margin": 0.9894519048938997
+    },
+    {
+      "id": "feedback.platform_complaint::primary::word_order",
+      "source": "taxonomy",
+      "family": "default",
+      "expected_scenario_ids": [
+        "feedback.platform_complaint"
+      ],
+      "top_scenario_id": "feedback.platform_complaint",
+      "correct": true,
+      "probability": 0.9998482524227622,
+      "margin": 0.9992645357029448
+    },
+    {
+      "id": "feedback.improvement_suggestion::primary::word_order",
+      "source": "taxonomy",
+      "family": "default",
+      "expected_scenario_ids": [
+        "feedback.improvement_suggestion"
+      ],
+      "top_scenario_id": "feedback.improvement_suggestion",
+      "correct": true,
+      "probability": 0.9997832092210354,
+      "margin": 0.9995229104374199
+    },
+    {
+      "id": "technical.lot_image_missing::primary::word_order",
+      "source": "taxonomy",
+      "family": "search",
+      "expected_scenario_ids": [
+        "technical.lot_image_missing"
+      ],
+      "top_scenario_id": "technical.lot_image_missing",
+      "correct": true,
+      "probability": 0.9998062109026158,
+      "margin": 0.994729895287004
+    },
+    {
+      "id": "compliance.private_arrangement::primary::taxonomy_paraphrase",
+      "source": "taxonomy",
+      "family": "default",
+      "expected_scenario_ids": [
+        "compliance.private_arrangement"
+      ],
+      "top_scenario_id": "compliance.private_arrangement",
+      "correct": true,
+      "probability": 0.9520145742647858,
+      "margin": 0.9166967200185727
+    },
+    {
+      "id": "registration.accreditation::primary::taxonomy_paraphrase",
+      "source": "taxonomy",
+      "family": "default",
+      "expected_scenario_ids": [
+        "registration.accreditation"
+      ],
+      "top_scenario_id": "registration.accreditation",
+      "correct": true,
+      "probability": 0.9990529405174483,
+      "margin": 0.9876925695119732
+    },
+    {
+      "id": "registration.accreditation::primary::transposed_letters",
+      "source": "taxonomy",
+      "family": "default",
+      "expected_scenario_ids": [
+        "registration.accreditation"
+      ],
+      "top_scenario_id": "registration.accreditation",
+      "correct": true,
+      "probability": 0.9997271578945388,
+      "margin": 0.9990611571466599
+    },
+    {
+      "id": "privacy.data_categories::primary::taxonomy_paraphrase",
+      "source": "taxonomy",
+      "family": "default",
+      "expected_scenario_ids": [
+        "privacy.data_categories"
+      ],
+      "top_scenario_id": "privacy.data_categories",
+      "correct": true,
+      "probability": 0.9984645420277577,
+      "margin": 0.8869198744024291
+    },
+    {
+      "id": "privacy.data_categories::primary::transposed_letters",
+      "source": "taxonomy",
+      "family": "default",
+      "expected_scenario_ids": [
+        "privacy.data_categories"
+      ],
+      "top_scenario_id": "privacy.data_categories",
+      "correct": true,
+      "probability": 0.9995204163161925,
+      "margin": 0.9953363573791533
+    },
+    {
+      "id": "privacy.rights_withdrawal::primary::taxonomy_paraphrase",
+      "source": "taxonomy",
+      "family": "default",
+      "expected_scenario_ids": [
+        "privacy.rights_withdrawal"
+      ],
+      "top_scenario_id": "privacy.rights_withdrawal",
+      "correct": true,
+      "probability": 0.997118277082899,
+      "margin": 0.9882923284652443
+    },
+    {
+      "id": "auction.other_platform_offer::primary::word_order",
+      "source": "taxonomy",
+      "family": "bidding",
+      "expected_scenario_ids": [
+        "auction.other_platform_offer"
+      ],
+      "top_scenario_id": "auction.other_platform_offer",
+      "correct": true,
+      "probability": 0.9998660852737684,
+      "margin": 0.9994305991079506
+    },
+    {
+      "id": "widget-008",
+      "source": "real_hard_negative",
+      "family": "onboarding",
+      "expected_scenario_ids": [
+        "buyer.get_started"
+      ],
+      "top_scenario_id": "auction.other_platform_offer",
+      "correct": false,
+      "probability": 0.33174880802839285,
+      "margin": 0.05444155749001489
+    },
+    {
+      "id": "widget-013",
+      "source": "real_hard_negative",
+      "family": "registration",
+      "expected_scenario_ids": [
+        "account.activation_pending",
+        "notification.delivery_problem"
+      ],
+      "top_scenario_id": "documents.preparation_delay",
+      "correct": false,
+      "probability": 0.5255847628189628,
+      "margin": 0.2336224781788226
+    },
+    {
+      "id": "widget-015",
+      "source": "real_hard_negative",
+      "family": "registration",
+      "expected_scenario_ids": [
+        "account.login_problem"
+      ],
+      "top_scenario_id": "account.login_problem",
+      "correct": true,
+      "probability": 0.7700100128789222,
+      "margin": 0.5422081028605867
+    },
+    {
+      "id": "widget-053",
+      "source": "real_hard_negative",
+      "family": "payments",
+      "expected_scenario_ids": [
+        "tariff.status"
+      ],
+      "top_scenario_id": "tariff.status",
+      "correct": true,
+      "probability": 0.5823716547756499,
+      "margin": 0.19410017648218897
+    }
+  ]
+}

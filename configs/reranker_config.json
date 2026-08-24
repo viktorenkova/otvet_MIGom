@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "enabled": true,
+  "provider": "pairwise",
+  "model": "artifacts/stage3-pairwise-reranker.joblib",
+  "model_version": "stage3-pairwise-2026.08.24.1",
+  "device": "cpu",
+  "batch_size": 32,
+  "top_k": 10,
+  "high_confidence_thresholds": {
+    "bidding": 0.334505,
+    "default": 0.930947,
+    "onboarding": 0.963479,
+    "payments": 0.137112,
+    "registration": 0.919837,
+    "search": 0.932551,
+    "transfer": 0.950111
+  },
+  "minimum_margin": 0.01,
+  "fallback_if_unavailable": "clarify"
+}

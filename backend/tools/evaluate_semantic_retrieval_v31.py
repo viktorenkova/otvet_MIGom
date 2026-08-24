@@ -7,6 +7,7 @@ from typing import Any
 
 from backend.app.bot.knowledge_search import _load_v2_articles, _semantic_config, clear_knowledge_cache
 from backend.app.bot.semantic_search import MultilingualHybridSemanticIndex
+from backend.app.bot.scenario_engine import load_scenarios
 
 
 DEFAULT_DATASET = Path("tests/data/retrieval_v31_development_validation.json")
@@ -29,12 +30,14 @@ def evaluate(dataset: dict[str, Any]) -> dict[str, Any]:
     config = _semantic_config()
     index = MultilingualHybridSemanticIndex(articles, config)
     article_intents = {article.slug: article.intent for article in articles}
+    active_ids = {scenario.scenario_id for scenario in load_scenarios()}
     dense_rows = index.dense_similarities_many([case["text"] for case in dataset["cases"]])
     rows: list[dict[str, Any]] = []
     for case_index, case in enumerate(dataset["cases"]):
         allowed_sections = {"public", "guest"} if case["role"] == "guest" else {"public", "guest", "authorized"}
         allowed_ids = {
-            article.slug for article in articles if article.section in allowed_sections
+            article.slug for article in articles
+            if article.slug in active_ids and article.section in allowed_sections
         }
         ranked = index.rank(
             case["text"],

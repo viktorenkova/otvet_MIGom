@@ -1,0 +1,538 @@
+{
+  "schema_version": 1,
+  "same_top10_contract": true,
+  "datasets": {
+    "development_validation": {
+      "version": "2026.08.23.1",
+      "cases_sha256": "d1aa95560e17461c29e7526fa8f5c9d249e190f09faee9361f4afa3777448279"
+    },
+    "hard_negatives": {
+      "version": "2026.08.24.1",
+      "cases_sha256": "f12730f47c3372786b39d00a02372f14185fd10943525f7f9e1e5c87293048cd"
+    }
+  },
+  "comparison": {
+    "candidate_order_baseline": {
+      "development": {
+        "total": 372,
+        "correct": 338,
+        "top1_pct": 90.86
+      },
+      "validation": {
+        "total": 99,
+        "correct": 91,
+        "top1_pct": 91.92
+      }
+    },
+    "constrained_feature_classifier": {
+      "implementation": "deterministic constrained candidate-ID classifier",
+      "development": {
+        "total": 372,
+        "correct": 302,
+        "top1_pct": 81.18
+      },
+      "validation": {
+        "total": 99,
+        "correct": 74,
+        "top1_pct": 74.75
+      },
+      "latency_total_ms": 818.79
+    },
+    "constrained_llm_classifier": {
+      "available": false,
+      "reason": "LLM is disabled in the approved local evaluation contour; no result is fabricated."
+    },
+    "cross_encoder": {
+      "available": true,
+      "error": "",
+      "model": "cross-encoder/mmarco-mMiniLMv2-L12-H384-v1",
+      "revision": "main",
+      "device": "cpu",
+      "development": {
+        "total": 372,
+        "correct": 317,
+        "top1_pct": 85.22
+      },
+      "validation": {
+        "total": 99,
+        "correct": 85,
+        "top1_pct": 85.86
+      },
+      "hard_negatives": {
+        "total": 32,
+        "correct": 13,
+        "top1_pct": 40.62
+      },
+      "latency_total_ms": 345694.81,
+      "estimated_usd_per_1000_queries": 0.0
+    }
+  },
+  "calibration": {
+    "method": "lowest per-family softmax threshold with <=2% high-confidence error and >=50% development coverage; margin >=0.01",
+    "thresholds": {
+      "bidding": 0.887172,
+      "default": 0.622812,
+      "onboarding": 0.971467,
+      "payments": 0.953995,
+      "registration": 0.538965,
+      "search": 0.454358,
+      "transfer": 0.821349
+    },
+    "validation": {
+      "high_count": 74,
+      "high_coverage_pct": 74.75,
+      "confident_wrong_count": 2,
+      "confident_wrong_pct": 2.7
+    }
+  },
+  "validation_by_required_family": {
+    "bidding": {
+      "total": 12,
+      "correct": 8,
+      "top1_pct": 66.67
+    },
+    "onboarding": {
+      "total": 1,
+      "correct": 1,
+      "top1_pct": 100.0
+    },
+    "payments": {
+      "total": 20,
+      "correct": 15,
+      "top1_pct": 75.0
+    },
+    "registration": {
+      "total": 4,
+      "correct": 4,
+      "top1_pct": 100.0
+    },
+    "search": {
+      "total": 1,
+      "correct": 1,
+      "top1_pct": 100.0
+    },
+    "transfer": {
+      "total": 9,
+      "correct": 7,
+      "top1_pct": 77.78
+    }
+  },
+  "selected": {
+    "provider": null,
+    "model": null,
+    "reason": "Only an available provider passing every validation and confidence gate is selected."
+  },
+  "checks": {
+    "cross_encoder_available": true,
+    "validation_top1_gte_90": false,
+    "each_required_family_gte_80": false,
+    "confident_wrong_lte_2": false,
+    "high_confidence_coverage_gte_50": true
+  },
+  "passed": false,
+  "failures": [
+    {
+      "id": "contract.receive::delivery::transposed_letters",
+      "split": "validation",
+      "family": "transfer",
+      "expected_scenario_ids": [
+        "contract.receive"
+      ],
+      "top_scenario_id": "contract.termination_and_restriction",
+      "correct": false,
+      "probability": 0.2686247580787547,
+      "margin": 0.07761519782198295
+    },
+    {
+      "id": "support.contact::primary::taxonomy_paraphrase",
+      "split": "validation",
+      "family": "default",
+      "expected_scenario_ids": [
+        "support.contact"
+      ],
+      "top_scenario_id": "support.callback",
+      "correct": false,
+      "probability": 0.7162513610261024,
+      "margin": 0.5091760001532833
+    },
+    {
+      "id": "payment.methods::tariff::transposed_letters",
+      "split": "validation",
+      "family": "payments",
+      "expected_scenario_ids": [
+        "payment.methods"
+      ],
+      "top_scenario_id": "tariff.status",
+      "correct": false,
+      "probability": 0.8937080882702153,
+      "margin": 0.8618649656954581
+    },
+    {
+      "id": "payment.methods::platform_commission::transposed_letters",
+      "split": "validation",
+      "family": "payments",
+      "expected_scenario_ids": [
+        "payment.methods"
+      ],
+      "top_scenario_id": "balance.topup.commission",
+      "correct": false,
+      "probability": 0.5635416867056766,
+      "margin": 0.29148728413101055
+    },
+    {
+      "id": "lot.payment.details::payment_confirmation::taxonomy_paraphrase",
+      "split": "validation",
+      "family": "payments",
+      "expected_scenario_ids": [
+        "lot.payment.details"
+      ],
+      "top_scenario_id": "seller.buyer_nonpayment",
+      "correct": false,
+      "probability": 0.5423085371487195,
+      "margin": 0.33246895234302876
+    },
+    {
+      "id": "refund.application::premium::transposed_letters",
+      "split": "validation",
+      "family": "default",
+      "expected_scenario_ids": [
+        "refund.application"
+      ],
+      "top_scenario_id": "deposit.explained",
+      "correct": false,
+      "probability": 0.5194274064766808,
+      "margin": 0.3612320967028848
+    },
+    {
+      "id": "payment.accounting_documents::safe_channel::transposed_letters",
+      "split": "validation",
+      "family": "payments",
+      "expected_scenario_ids": [
+        "payment.accounting_documents"
+      ],
+      "top_scenario_id": "seller.access_security",
+      "correct": false,
+      "probability": 0.7026973648671304,
+      "margin": 0.5306620549982134
+    },
+    {
+      "id": "finance.status.clarify::primary::taxonomy_paraphrase",
+      "split": "validation",
+      "family": "default",
+      "expected_scenario_ids": [
+        "finance.status.clarify"
+      ],
+      "top_scenario_id": "refund.destination",
+      "correct": false,
+      "probability": 0.7527624579262676,
+      "margin": 0.6024263130159506
+    },
+    {
+      "id": "tariff.choose::auction_cost_policy::transposed_letters",
+      "split": "validation",
+      "family": "payments",
+      "expected_scenario_ids": [
+        "tariff.choose"
+      ],
+      "top_scenario_id": "vehicle.encumbrance_detected",
+      "correct": false,
+      "probability": 0.8161854962131404,
+      "margin": 0.7642256622295458
+    },
+    {
+      "id": "auction.formats::primary::taxonomy_paraphrase",
+      "split": "validation",
+      "family": "bidding",
+      "expected_scenario_ids": [
+        "auction.formats"
+      ],
+      "top_scenario_id": "auction.result",
+      "correct": false,
+      "probability": 0.8857514077144846,
+      "margin": 0.8564948945033316
+    },
+    {
+      "id": "bid.autobid_extension::autobid::word_order",
+      "split": "validation",
+      "family": "bidding",
+      "expected_scenario_ids": [
+        "bid.autobid_extension"
+      ],
+      "top_scenario_id": "account.dashboard_sections",
+      "correct": false,
+      "probability": 0.19154002668998626,
+      "margin": 0.02428199475105472
+    },
+    {
+      "id": "bid.autobid_extension::last_minutes::word_order",
+      "split": "validation",
+      "family": "bidding",
+      "expected_scenario_ids": [
+        "bid.autobid_extension"
+      ],
+      "top_scenario_id": "transfer.not_confirmed",
+      "correct": false,
+      "probability": 0.43120424634914134,
+      "margin": 0.17802552015693912
+    },
+    {
+      "id": "bid.autobid_extension::descending_price::taxonomy_paraphrase",
+      "split": "validation",
+      "family": "bidding",
+      "expected_scenario_ids": [
+        "bid.autobid_extension"
+      ],
+      "top_scenario_id": "bid.modify_cancel",
+      "correct": false,
+      "probability": 0.8191644523269231,
+      "margin": 0.7767608467375642
+    },
+    {
+      "id": "transfer.notification_contact::primary::taxonomy_paraphrase",
+      "split": "validation",
+      "family": "transfer",
+      "expected_scenario_ids": [
+        "transfer.notification_contact"
+      ],
+      "top_scenario_id": "transfer.confirmed",
+      "correct": false,
+      "probability": 0.4507220999981478,
+      "margin": 0.3031623872421873
+    }
+  ],
+  "hard_negative_failures": [
+    {
+      "id": "widget-005",
+      "split": "development",
+      "family": "onboarding",
+      "expected_scenario_ids": [
+        "buyer.get_started"
+      ],
+      "top_scenario_id": "buyer.beginner_lot_selection",
+      "correct": false,
+      "probability": 0.30195518596603943,
+      "margin": 0.009830664051541538
+    },
+    {
+      "id": "widget-006",
+      "split": "development",
+      "family": "search",
+      "expected_scenario_ids": [
+        "lot.catalog_search",
+        "tariff.demo"
+      ],
+      "top_scenario_id": "account.activation_pending",
+      "correct": false,
+      "probability": 0.26101199122175966,
+      "margin": 0.04496094139877496
+    },
+    {
+      "id": "widget-008",
+      "split": "validation",
+      "family": "onboarding",
+      "expected_scenario_ids": [
+        "buyer.get_started"
+      ],
+      "top_scenario_id": "auction.other_platform_offer",
+      "correct": false,
+      "probability": 0.19279815889007804,
+      "margin": 0.003964752855950604
+    },
+    {
+      "id": "widget-015",
+      "split": "validation",
+      "family": "registration",
+      "expected_scenario_ids": [
+        "account.login_problem"
+      ],
+      "top_scenario_id": "account.credential_responsibility",
+      "correct": false,
+      "probability": 0.5115745343795164,
+      "margin": 0.1337451332420337
+    },
+    {
+      "id": "widget-020",
+      "split": "development",
+      "family": "registration",
+      "expected_scenario_ids": [
+        "account.credential_responsibility"
+      ],
+      "top_scenario_id": "support.manual_review_scope",
+      "correct": false,
+      "probability": 0.3644322821752023,
+      "margin": 0.030496435711273473
+    },
+    {
+      "id": "widget-028",
+      "split": "development",
+      "family": "default",
+      "expected_scenario_ids": [
+        "lot.status_guide"
+      ],
+      "top_scenario_id": "auction.completed_analytics",
+      "correct": false,
+      "probability": 0.6215247789342663,
+      "margin": 0.39826797051352647
+    },
+    {
+      "id": "widget-042",
+      "split": "development",
+      "family": "search",
+      "expected_scenario_ids": [
+        "technical.lot_image_missing"
+      ],
+      "top_scenario_id": "vehicle.encumbrance_detected",
+      "correct": false,
+      "probability": 0.15241587691368905,
+      "margin": 0.003928595590704742
+    },
+    {
+      "id": "widget-047",
+      "split": "development",
+      "family": "search",
+      "expected_scenario_ids": [
+        "lot.catalog_search"
+      ],
+      "top_scenario_id": "technical.site_error",
+      "correct": false,
+      "probability": 0.28088700679352047,
+      "margin": 0.10394214950291641
+    },
+    {
+      "id": "widget-050",
+      "split": "development",
+      "family": "search",
+      "expected_scenario_ids": [
+        "technical.catalog_search_filter",
+        "lot.card_information"
+      ],
+      "top_scenario_id": "lot.insufficient_information",
+      "correct": false,
+      "probability": 0.33430299838128225,
+      "margin": 0.011829548186889915
+    },
+    {
+      "id": "widget-060",
+      "split": "development",
+      "family": "payments",
+      "expected_scenario_ids": [
+        "payment.not_visible"
+      ],
+      "top_scenario_id": "tariff.status",
+      "correct": false,
+      "probability": 0.5892050162476119,
+      "margin": 0.3592884982621297
+    },
+    {
+      "id": "widget-064",
+      "split": "development",
+      "family": "payments",
+      "expected_scenario_ids": [
+        "lot.payment.details",
+        "payment.methods"
+      ],
+      "top_scenario_id": "transfer.not_confirmed",
+      "correct": false,
+      "probability": 0.5565046919091589,
+      "margin": 0.41782017560122
+    },
+    {
+      "id": "widget-078",
+      "split": "development",
+      "family": "transfer",
+      "expected_scenario_ids": [
+        "win.next_steps",
+        "transfer.seller_no_response"
+      ],
+      "top_scenario_id": "lot.payment.overdue",
+      "correct": false,
+      "probability": 0.3727335155450464,
+      "margin": 0.22654740381785643
+    },
+    {
+      "id": "widget-092",
+      "split": "development",
+      "family": "default",
+      "expected_scenario_ids": [
+        "support.office_visit"
+      ],
+      "top_scenario_id": "contract.parties_signing",
+      "correct": false,
+      "probability": 0.3738337454989442,
+      "margin": 0.11208840343947318
+    },
+    {
+      "id": "widget-095",
+      "split": "development",
+      "family": "transfer",
+      "expected_scenario_ids": [
+        "pickup.access_issuer"
+      ],
+      "top_scenario_id": "lot.location",
+      "correct": false,
+      "probability": 0.4223583351010782,
+      "margin": 0.15709063755186498
+    },
+    {
+      "id": "widget-102",
+      "split": "development",
+      "family": "default",
+      "expected_scenario_ids": [
+        "feedback.platform_complaint",
+        "technical.site_error"
+      ],
+      "top_scenario_id": "transfer.not_confirmed",
+      "correct": false,
+      "probability": 0.8491898611416425,
+      "margin": 0.802467757298557
+    },
+    {
+      "id": "independent-bid-002",
+      "split": "development",
+      "family": "bidding",
+      "expected_scenario_ids": [
+        "bid.place"
+      ],
+      "top_scenario_id": "account.mobile_access",
+      "correct": false,
+      "probability": 0.5144354780043037,
+      "margin": 0.23068286574256952
+    },
+    {
+      "id": "independent-lot-003",
+      "split": "development",
+      "family": "search",
+      "expected_scenario_ids": [
+        "lot.catalog_search"
+      ],
+      "top_scenario_id": "account.mobile_access",
+      "correct": false,
+      "probability": 0.31238815773920436,
+      "margin": 0.16355396043457826
+    },
+    {
+      "id": "independent-lot-010",
+      "split": "development",
+      "family": "default",
+      "expected_scenario_ids": [
+        "lot.location"
+      ],
+      "top_scenario_id": "vehicle.encumbrance_detected",
+      "correct": false,
+      "probability": 0.37440440726258356,
+      "margin": 0.10072699759803128
+    },
+    {
+      "id": "independent-pic-003",
+      "split": "development",
+      "family": "transfer",
+      "expected_scenario_ids": [
+        "pickup.receive_lot"
+      ],
+      "top_scenario_id": "payment.not_visible",
+      "correct": false,
+      "probability": 0.340897626899466,
+      "margin": 0.15932174360025164
+    }
+  ]
+}

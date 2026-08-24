@@ -7,6 +7,7 @@ from typing import Any
 
 from backend.app.bot.knowledge_search import _load_v2_articles, _semantic_config, clear_knowledge_cache
 from backend.app.bot.semantic_search import MultilingualHybridSemanticIndex
+from backend.app.bot.scenario_engine import load_scenarios
 
 
 DEFAULT_DATASET = Path("tests/data/routing_v3_independent_acceptance.json")
@@ -29,10 +30,13 @@ def evaluate(dataset: dict[str, Any]) -> dict[str, Any]:
     config = _semantic_config()
     index = MultilingualHybridSemanticIndex(articles, config)
     dense_rows = index.dense_similarities_many([case["text"] for case in dataset["cases"]])
+    active_ids = {scenario.scenario_id for scenario in load_scenarios()}
     public_ids = {
         article.slug
         for article in articles
-        if article.section in {"public", "guest"} and article.intent != "prohibited"
+        if article.slug in active_ids
+        and article.section in {"public", "guest"}
+        and article.intent != "prohibited"
     }
     rows: list[dict[str, Any]] = []
     for case_index, case in enumerate(dataset["cases"]):

@@ -7,6 +7,8 @@ from typing import Any, Protocol
 
 from backend.app.config import get_settings
 from backend.app.bot.semantic_search import MultilingualHybridSemanticIndex
+from backend.app.bot.pairwise_reranker import get_pairwise_reranker
+from backend.app.bot.scenario_reranker import decide_reranked, load_reranker_config
 from backend.app.bot.scenario_engine import clear_scenario_cache, load_scenarios, match_scenario
 from backend.app.bot.routing_v3 import clear_routing_v3_cache, get_routing_v3
 from backend.app.bot.topic_router import route_topic
@@ -899,10 +901,13 @@ def retrieve_knowledge_candidates(
 ) -> list[dict[str, Any]]:
     """Return an auditable Top-K without selecting the final answer route."""
     allowed_sections = {"public", "guest"} if role == "guest" else {"public", "guest", "authorized"}
+    active_scenario_ids = {scenario.scenario_id for scenario in load_scenarios()}
     allowed_ids = {
         article.slug
         for article in load_articles()
-        if article.section in allowed_sections and article.intent != "prohibited"
+        if article.slug in active_scenario_ids
+        and article.section in allowed_sections
+        and article.intent != "prohibited"
     }
     config = _semantic_config()
     ranked = _semantic_index().rank(
@@ -2579,6 +2584,124 @@ def search_knowledge_match(
             clarifying_article_ids=[item.scenario_id for item in candidates] + [""],
             clarifying_intents=[item.intent for item in candidates] + ["unknown"],
         )
+    # Approved exact examples are policy locks. They are not statistical
+    # candidates and must not be downgraded by a learned reranker.
+    if (
+        scenario_decision
+        and scenario_decision.scenario
+        and scenario_decision.confidence == "high"
+        and "scenario_example" in scenario_decision.matched_features
+    ):
+        article = get_article_by_id(scenario_decision.scenario.scenario_id, role)
+        if article:
+            return KnowledgeSearchResult(
+                article=article,
+                score=scenario_decision.score,
+                confidence="high",
+                matched_features=["knowledge_v2", "policy_locked_example", *scenario_decision.matched_features],
+            )
+    # Staged rollout contract: already proven high-confidence deterministic
+    # routes remain authoritative. The learned model may select or clarify
+    # only the unresolved tail until real shadow evidence supports expansion.
+    if routing_v3 and routing_v3.scenario and routing_v3.confidence == "high":
+        article = get_article_by_id(routing_v3.scenario.scenario_id, role)
+        if article:
+            candidate_trace = [
+                f"routing_v3_candidate:{item.scenario.scenario_id}:{item.score:.4f}"
+                for item in routing_v3.candidates
+            ]
+            return KnowledgeSearchResult(
+                article=article,
+                score=max(165, int(round(routing_v3.score * 300))),
+                confidence="high",
+                matched_features=[
+                    "routing_v3",
+                    "pairwise_staged_policy_lock",
+                    f"routing_v3_margin:{routing_v3.margin:.4f}",
+                    *routing_v3.matched_features,
+                    *candidate_trace,
+                ],
+            )
+    if scenario_decision and scenario_decision.scenario and scenario_decision.confidence == "high":
+        article = get_article_by_id(scenario_decision.scenario.scenario_id, role)
+        if article:
+            return KnowledgeSearchResult(
+                article=article,
+                score=scenario_decision.score,
+                confidence="high",
+                matched_features=["knowledge_v2", "pairwise_staged_policy_lock", *scenario_decision.matched_features],
+            )
+    reranker_config = load_reranker_config()
+    if bool(reranker_config.get("enabled", False)):
+        if not _has_domain_signal(message):
+            return HybridSearchProvider().search(
+                message, intent, role, context, analysis, pattern_match, skip_topic_ambiguity
+            )
+        pairwise = get_pairwise_reranker()
+        if pairwise.available:
+            candidate_rows = retrieve_knowledge_candidates(message, role, intent=intent, top_k=int(reranker_config.get("top_k", 10)))
+            reranked = pairwise.rerank(message, candidate_rows)
+            rerank_decision = decide_reranked(message, reranked, reranker_config)
+            trace = [
+                f"pairwise_candidate:{item.scenario_id}:{item.probability:.6f}"
+                for item in rerank_decision.ranked
+            ]
+            if rerank_decision.scenario_id and rerank_decision.confidence == "high":
+                article = get_article_by_id(rerank_decision.scenario_id, role)
+                if article:
+                    return KnowledgeSearchResult(
+                        article=article,
+                        score=max(165, int(round(rerank_decision.probability * 300))),
+                        confidence="high",
+                        matched_features=[
+                            "pairwise_reranker",
+                            f"pairwise_model:{reranker_config.get('model_version', '')}",
+                            f"pairwise_family:{rerank_decision.family}",
+                            f"pairwise_margin:{rerank_decision.margin:.6f}",
+                            *trace,
+                        ],
+                    )
+            candidate_articles = [
+                get_article_by_id(item.scenario_id, role)
+                for item in rerank_decision.ranked[:3]
+            ]
+            candidate_articles = [item for item in candidate_articles if item]
+            independent_rule = HybridSearchProvider().search(
+                message, intent, role, context, analysis, pattern_match, skip_topic_ambiguity
+            )
+            if independent_rule.article and independent_rule.confidence == "high":
+                independent_rule.matched_features.extend([
+                    "pairwise_deferred_to_independent_high_rule",
+                    f"pairwise_probability:{rerank_decision.probability:.6f}",
+                    f"pairwise_margin:{rerank_decision.margin:.6f}",
+                ])
+                return independent_rule
+            return KnowledgeSearchResult(
+                article=None,
+                score=int(round(rerank_decision.probability * 300)),
+                confidence="medium",
+                matched_features=[
+                    "pairwise_reranker",
+                    "pairwise_below_calibrated_threshold",
+                    f"pairwise_missing_slot:{rerank_decision.missing_slot or 'scenario'}",
+                    *trace,
+                ],
+                fallback_reason="reranker_below_calibrated_threshold",
+                clarifying_question=rerank_decision.clarifying_question or "Уточните, какой вариант ближе к вашему вопросу:",
+                clarifying_options=list(rerank_decision.clarifying_options) + ["Другая тема"],
+                clarifying_article_ids=[item.slug for item in candidate_articles] + [""],
+                clarifying_intents=[item.intent for item in candidate_articles] + ["unknown"],
+            )
+        if reranker_config.get("fallback_if_unavailable") == "clarify":
+            return KnowledgeSearchResult(
+                article=None,
+                score=0,
+                confidence="low",
+                matched_features=["pairwise_reranker_unavailable", pairwise.error],
+                fallback_reason="reranker_unavailable",
+                clarifying_question="Уточните, пожалуйста, тему и текущее состояние вопроса:",
+                clarifying_options=[],
+            )
     if routing_v3 and routing_v3.scenario and routing_v3.confidence == "high":
         article = get_article_by_id(routing_v3.scenario.scenario_id, role)
         if article:

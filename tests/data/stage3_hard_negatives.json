@@ -1,0 +1,756 @@
+{
+  "schema_version": 1,
+  "version": "2026.08.24.1",
+  "purpose": "Real adjudicated rerank conflicts. Query text is benchmark/training data only and must never be copied into rules or KB aliases.",
+  "source_artifact": "quality-stage0-adjudicated-error-taxonomy.json",
+  "source_sha256": "f078efe5dd48aabe0d64dc445a03b23a72c3c5242064f0e3bd7eaae2bdcbab05",
+  "case_count": 32,
+  "development_count": 28,
+  "validation_count": 4,
+  "cases_sha256": "f12730f47c3372786b39d00a02372f14185fd10943525f7f9e1e5c87293048cd",
+  "cases": [
+    {
+      "id": "widget-005",
+      "split": "development",
+      "group": "onboarding",
+      "class": "natural",
+      "text": "я новый как тут машина покупать",
+      "expected_scenario_ids": [
+        "buyer.get_started"
+      ],
+      "historical_top10_candidate_ids": [
+        "account.registration",
+        "buyer.get_started",
+        "buyer.resale_strategy",
+        "seller.publish_lot",
+        "platform.about",
+        "buyer.personal_purchase",
+        "lot.location",
+        "inspection.arrange",
+        "buyer.beginner_lot_selection",
+        "vehicle.owner_listing_dispute"
+      ],
+      "historical_wrong_scenario_id": "account.registration"
+    },
+    {
+      "id": "widget-006",
+      "split": "development",
+      "group": "onboarding",
+      "class": "natural",
+      "text": "Можно сначала посмотреть лоты, а зарегистрироваться позже?",
+      "expected_scenario_ids": [
+        "lot.catalog_search",
+        "tariff.demo"
+      ],
+      "historical_top10_candidate_ids": [
+        "account.registration",
+        "account.activation_pending",
+        "property.inspection_documents",
+        "inspection.arrange",
+        "tariff.status",
+        "tariff.demo",
+        "bid.validity",
+        "refund.timing_status",
+        "payment.not_visible",
+        "lot.catalog_search"
+      ],
+      "historical_wrong_scenario_id": "account.registration"
+    },
+    {
+      "id": "widget-008",
+      "split": "validation",
+      "group": "onboarding",
+      "class": "natural",
+      "text": "Дайте короткую схему работы аукциона без рекламной воды.",
+      "expected_scenario_ids": [
+        "buyer.get_started"
+      ],
+      "historical_top10_candidate_ids": [
+        "auction.status",
+        "auction.other_platform_offer",
+        "buyer.get_started",
+        "buyer.resale_strategy",
+        "win.next_steps",
+        "tariff.one_time",
+        "tariff.premium",
+        "tariff.choose",
+        "tariff.demo",
+        "account.mobile_access"
+      ],
+      "historical_wrong_scenario_id": "support.contact"
+    },
+    {
+      "id": "widget-013",
+      "split": "validation",
+      "group": "registration",
+      "class": "natural",
+      "text": "Не приходит письмо для подтверждения регистрации.",
+      "expected_scenario_ids": [
+        "account.activation_pending",
+        "notification.delivery_problem"
+      ],
+      "historical_top10_candidate_ids": [
+        "technical.site_error",
+        "account.login_problem",
+        "account.registration",
+        "documents.preparation_delay",
+        "payment.checkout_problem",
+        "win.next_steps",
+        "buyer.personal_purchase",
+        "lot.payment.details",
+        "support.email_no_response",
+        "account.activation_pending"
+      ],
+      "historical_wrong_scenario_id": "technical.site_error"
+    },
+    {
+      "id": "widget-014",
+      "split": "development",
+      "group": "registration",
+      "class": "natural",
+      "text": "не могу войти пароль не принимат",
+      "expected_scenario_ids": [
+        "account.login_problem"
+      ],
+      "historical_top10_candidate_ids": [
+        "account.blocked",
+        "account.login_problem",
+        "platform.about",
+        "payment.checkout_problem",
+        "account.credential_responsibility",
+        "property.section_error",
+        "support.callback",
+        "account.activation_pending",
+        "bid.modify_cancel",
+        "technical.site_error"
+      ],
+      "historical_wrong_scenario_id": "account.blocked"
+    },
+    {
+      "id": "widget-015",
+      "split": "validation",
+      "group": "registration",
+      "class": "natural",
+      "text": "Забыла пароль. Как восстановить доступ?",
+      "expected_scenario_ids": [
+        "account.login_problem"
+      ],
+      "historical_top10_candidate_ids": [
+        "tariff.choose",
+        "account.login_problem",
+        "tariff.connect",
+        "tariff.status",
+        "account.credential_responsibility",
+        "refund.application",
+        "tariff.one_time",
+        "seller.get_started",
+        "tariff.demo",
+        "tariff.promotion"
+      ],
+      "historical_wrong_scenario_id": "tariff.choose"
+    },
+    {
+      "id": "widget-017",
+      "split": "development",
+      "group": "registration",
+      "class": "natural",
+      "text": "Хочу стать продавцом на площадке. Куда подать заявку?",
+      "expected_scenario_ids": [
+        "seller.get_started"
+      ],
+      "historical_top10_candidate_ids": [
+        "seller.get_started",
+        "seller.categories",
+        "platform.about",
+        "transfer.not_confirmed",
+        "refund.application",
+        "seller.publish_lot",
+        "support.office_visit",
+        "buyer.get_started",
+        "bid.not_visible",
+        "partnership.official_proposal"
+      ],
+      "historical_wrong_scenario_id": null
+    },
+    {
+      "id": "widget-020",
+      "split": "development",
+      "group": "registration",
+      "class": "natural",
+      "text": "Можно использовать один аккаунт нескольким сотрудникам компании?",
+      "expected_scenario_ids": [
+        "account.credential_responsibility"
+      ],
+      "historical_top10_candidate_ids": [
+        "support.callback",
+        "support.manual_review_scope",
+        "auction.completed_analytics",
+        "account.blocked",
+        "account.activation_pending",
+        "account.login_problem",
+        "account.credential_responsibility",
+        "compliance.off_platform_payment",
+        "vehicle.owner_listing_dispute",
+        "tariff.one_time"
+      ],
+      "historical_wrong_scenario_id": "support.callback"
+    },
+    {
+      "id": "widget-028",
+      "split": "development",
+      "group": "bidding",
+      "class": "natural",
+      "text": "Что означает статус «торги завершены»?",
+      "expected_scenario_ids": [
+        "lot.status_guide"
+      ],
+      "historical_top10_candidate_ids": [
+        "auction.status",
+        "bid.price_terms",
+        "lot.status_guide",
+        "bid.modify_cancel",
+        "auction.other_platform_offer",
+        "vehicle.credit_lease_pledge",
+        "auction.formats",
+        "auction.completed_analytics",
+        "refund.timing_status",
+        "lot.payment.details"
+      ],
+      "historical_wrong_scenario_id": "transfer.not_confirmed"
+    },
+    {
+      "id": "widget-042",
+      "split": "development",
+      "group": "search_images",
+      "class": "natural",
+      "text": "Фотки битые, половина не грузится. Что делать?",
+      "expected_scenario_ids": [
+        "technical.lot_image_missing"
+      ],
+      "historical_top10_candidate_ids": [
+        "technical.site_error",
+        "technical.lot_image_missing",
+        "buyer.resale_strategy",
+        "payment.checkout_problem",
+        "win.next_steps",
+        "vehicle.encumbrance_detected",
+        "bid.modify_cancel",
+        "account.credential_responsibility",
+        "auction.other_platform_offer",
+        "bid.place"
+      ],
+      "historical_wrong_scenario_id": "technical.site_error"
+    },
+    {
+      "id": "widget-047",
+      "split": "development",
+      "group": "search_images",
+      "class": "natural",
+      "text": "Как убрать сразу все выбранные фильтры?",
+      "expected_scenario_ids": [
+        "lot.catalog_search"
+      ],
+      "historical_top10_candidate_ids": [
+        "tariff.choose",
+        "technical.catalog_search_filter",
+        "feedback.improvement_suggestion",
+        "lot.catalog_search",
+        "technical.site_error",
+        "feedback.platform_complaint",
+        "property.evaluate",
+        "property.bulk_goods",
+        "compliance.off_platform_payment",
+        "buyer.beginner_lot_selection"
+      ],
+      "historical_wrong_scenario_id": null
+    },
+    {
+      "id": "widget-050",
+      "split": "development",
+      "group": "search_images",
+      "class": "natural",
+      "text": "В карточке один пробег, в фильтре другой диапазон. Где верные данные?",
+      "expected_scenario_ids": [
+        "technical.catalog_search_filter",
+        "lot.card_information"
+      ],
+      "historical_top10_candidate_ids": [
+        "auction.formats",
+        "lot.card_information",
+        "technical.catalog_search_filter",
+        "inspection.problem",
+        "lot.definition",
+        "lot.insufficient_information",
+        "bid.place",
+        "technical.lot_image_missing",
+        "property.inspection_documents",
+        "vehicle.encumbrance_detected"
+      ],
+      "historical_wrong_scenario_id": "auction.formats"
+    },
+    {
+      "id": "widget-052",
+      "split": "development",
+      "group": "payments",
+      "class": "natural",
+      "text": "Оплатила тариф, но доступ не появился.",
+      "expected_scenario_ids": [
+        "tariff.status"
+      ],
+      "historical_top10_candidate_ids": [
+        "tariff.choose",
+        "tariff.status",
+        "tariff.connect",
+        "refund.timing_status",
+        "payment.checkout_problem",
+        "tariff.promotion",
+        "payment.not_visible",
+        "finance.status.clarify",
+        "tariff.one_time",
+        "payment.document_policy"
+      ],
+      "historical_wrong_scenario_id": "tariff.choose"
+    },
+    {
+      "id": "widget-053",
+      "split": "validation",
+      "group": "payments",
+      "class": "natural",
+      "text": "Тариф сгорел, хотя я им не воспользовался. Разберитесь.",
+      "expected_scenario_ids": [
+        "tariff.status"
+      ],
+      "historical_top10_candidate_ids": [
+        "tariff.choose",
+        "tariff.one_time",
+        "buyer.personal_purchase",
+        "tariff.status",
+        "refund.timing_status",
+        "tariff.connect",
+        "refund.application",
+        "feedback.platform_complaint",
+        "refund.eligibility",
+        "support.callback"
+      ],
+      "historical_wrong_scenario_id": "tariff.choose"
+    },
+    {
+      "id": "widget-060",
+      "split": "development",
+      "group": "payments",
+      "class": "natural",
+      "text": "тинкоф молчит платеж завис",
+      "expected_scenario_ids": [
+        "payment.not_visible"
+      ],
+      "historical_top10_candidate_ids": [
+        "transfer.seller_no_response",
+        "payment.checkout_problem",
+        "support.email_no_response",
+        "finance.status.clarify",
+        "payment.not_visible",
+        "lot.payment.details",
+        "tariff.status",
+        "technical.site_error",
+        "lot.payment.overdue",
+        "refund.eligibility"
+      ],
+      "historical_wrong_scenario_id": "transfer.seller_no_response"
+    },
+    {
+      "id": "widget-064",
+      "split": "development",
+      "group": "payments",
+      "class": "natural",
+      "text": "Баланс можно использовать для оплаты выигранного лота?",
+      "expected_scenario_ids": [
+        "lot.payment.details",
+        "payment.methods"
+      ],
+      "historical_top10_candidate_ids": [
+        "win.next_steps",
+        "pickup.receive_lot",
+        "transfer.not_confirmed",
+        "lot.payment.overdue",
+        "auction.completed_analytics",
+        "transfer.seller_no_response",
+        "refund.eligibility",
+        "lot.payment.details",
+        "compliance.off_platform_payment",
+        "payment.not_visible"
+      ],
+      "historical_wrong_scenario_id": null
+    },
+    {
+      "id": "widget-075",
+      "split": "development",
+      "group": "transfer_docs",
+      "class": "natural",
+      "text": "Продавец назначил выдачу, но машину на стоянке не отдают.",
+      "expected_scenario_ids": [
+        "pickup.access_issuer"
+      ],
+      "historical_top10_candidate_ids": [
+        "pickup.receive_lot",
+        "lot.location",
+        "pickup.access_issuer",
+        "inspection.problem",
+        "seller.publish_lot",
+        "vehicle.owner_listing_dispute",
+        "contract.parties_signing",
+        "vehicle.insurance_catalog",
+        "transfer.not_confirmed",
+        "vehicle.business_use_cases"
+      ],
+      "historical_wrong_scenario_id": "pickup.delay"
+    },
+    {
+      "id": "widget-078",
+      "split": "development",
+      "group": "transfer_docs",
+      "class": "natural",
+      "text": "После оплаты лота никаких дальнейших инструкций нет.",
+      "expected_scenario_ids": [
+        "win.next_steps",
+        "transfer.seller_no_response"
+      ],
+      "historical_top10_candidate_ids": [
+        "lot.payment.overdue",
+        "win.next_steps",
+        "pickup.receive_lot",
+        "lot.payment.details",
+        "compliance.off_platform_payment",
+        "tariff.status",
+        "payment.document_policy",
+        "tariff.connect",
+        "lot.insufficient_information",
+        "transfer.seller_no_response"
+      ],
+      "historical_wrong_scenario_id": "lot.status_guide"
+    },
+    {
+      "id": "widget-080",
+      "split": "development",
+      "group": "transfer_docs",
+      "class": "natural",
+      "text": "Какие документы взять с собой на получение автомобиля?",
+      "expected_scenario_ids": [
+        "pickup.receive_lot"
+      ],
+      "historical_top10_candidate_ids": [
+        "pickup.access_issuer",
+        "technical.site_error",
+        "inspection.arrange",
+        "pickup.receive_lot",
+        "seller.publish_lot",
+        "property.inspection_documents",
+        "contract.receive",
+        "refund.application",
+        "win.next_steps",
+        "documents.preparation_delay"
+      ],
+      "historical_wrong_scenario_id": "pickup.access_issuer"
+    },
+    {
+      "id": "widget-083",
+      "split": "development",
+      "group": "refunds_penalties",
+      "class": "natural",
+      "text": "Депозит не возвращают уже долго. Какие сроки?",
+      "expected_scenario_ids": [
+        "refund.timing_status"
+      ],
+      "historical_top10_candidate_ids": [
+        "refund.timing_status",
+        "lot.payment.overdue",
+        "refund.eligibility",
+        "documents.preparation_delay",
+        "feedback.platform_complaint",
+        "refund.application",
+        "payment.document_policy",
+        "bid.validity",
+        "finance.status.clarify",
+        "auction.other_platform_offer"
+      ],
+      "historical_wrong_scenario_id": "refund.eligibility"
+    },
+    {
+      "id": "widget-091",
+      "split": "development",
+      "group": "office_contact",
+      "class": "natural",
+      "text": "Как к вам попасть в офис?",
+      "expected_scenario_ids": [
+        "support.office_visit"
+      ],
+      "historical_top10_candidate_ids": [
+        "support.office_visit",
+        "pickup.access_issuer",
+        "support.contact",
+        "platform.about",
+        "feedback.platform_complaint",
+        "support.manual_review_scope",
+        "support.callback",
+        "tariff.choose",
+        "buyer.get_started",
+        "compliance.off_platform_payment"
+      ],
+      "historical_wrong_scenario_id": null
+    },
+    {
+      "id": "widget-092",
+      "split": "development",
+      "group": "office_contact",
+      "class": "natural",
+      "text": "Хочу приехать лично познакомиться с компанией и подписать договор.",
+      "expected_scenario_ids": [
+        "support.office_visit"
+      ],
+      "historical_top10_candidate_ids": [
+        "tariff.choose",
+        "support.office_visit",
+        "contract.parties_signing",
+        "support.contact",
+        "vehicle.owner_listing_dispute",
+        "buyer.get_started",
+        "finance.status.clarify",
+        "feedback.bot_answer_complaint",
+        "contract.receive",
+        "documents.preparation_delay"
+      ],
+      "historical_wrong_scenario_id": "tariff.choose"
+    },
+    {
+      "id": "widget-095",
+      "split": "development",
+      "group": "office_contact",
+      "class": "natural",
+      "text": "Где ваша стоянка? Приеду за выигранной машиной.",
+      "expected_scenario_ids": [
+        "pickup.access_issuer"
+      ],
+      "historical_top10_candidate_ids": [
+        "lot.location",
+        "support.office_visit",
+        "pickup.access_issuer",
+        "win.next_steps",
+        "pickup.receive_lot",
+        "inspection.problem",
+        "transfer.not_confirmed",
+        "transfer.seller_no_response",
+        "contract.receive",
+        "lot.status_guide"
+      ],
+      "historical_wrong_scenario_id": "lot.location"
+    },
+    {
+      "id": "widget-102",
+      "split": "development",
+      "group": "complaint_improvement",
+      "class": "natural",
+      "text": "Вы издеваетесь? Ставка опять не проходит за минуту до конца!",
+      "expected_scenario_ids": [
+        "feedback.platform_complaint",
+        "technical.site_error"
+      ],
+      "historical_top10_candidate_ids": [
+        "bid.place",
+        "technical.site_error",
+        "documents.preparation_delay",
+        "payment.checkout_problem",
+        "account.login_problem",
+        "transfer.not_confirmed",
+        "platform.about",
+        "account.registration",
+        "auction.formats",
+        "loyalty.unconfirmed_details"
+      ],
+      "historical_wrong_scenario_id": "bid.place"
+    },
+    {
+      "id": "widget-103",
+      "split": "development",
+      "group": "complaint_improvement",
+      "class": "natural",
+      "text": "плохой сайт фильтр сам убирает сделайте нормально",
+      "expected_scenario_ids": [
+        "feedback.platform_complaint",
+        "technical.catalog_search_filter"
+      ],
+      "historical_top10_candidate_ids": [
+        "feedback.improvement_suggestion",
+        "technical.site_error",
+        "feedback.platform_complaint",
+        "technical.catalog_search_filter",
+        "transfer.not_confirmed",
+        "lot.catalog_search",
+        "payment.checkout_problem",
+        "support.contact",
+        "platform.about",
+        "account.registration"
+      ],
+      "historical_wrong_scenario_id": "feedback.improvement_suggestion"
+    },
+    {
+      "id": "widget-104",
+      "split": "development",
+      "group": "complaint_improvement",
+      "class": "natural",
+      "text": "Хочу предложить улучшение: показывайте причину блокировки кнопки ставки.",
+      "expected_scenario_ids": [
+        "feedback.improvement_suggestion"
+      ],
+      "historical_top10_candidate_ids": [
+        "feedback.improvement_suggestion",
+        "auction.formats",
+        "partnership.official_proposal",
+        "account.blocked",
+        "auction.other_platform_offer",
+        "payment.checkout_problem",
+        "technical.site_error",
+        "bid.place",
+        "bid.validity",
+        "refund.application"
+      ],
+      "historical_wrong_scenario_id": "auction.other_platform_offer"
+    },
+    {
+      "id": "independent-bid-002",
+      "split": "development",
+      "group": "bid_place",
+      "class": "typo",
+      "text": "как зделать стовку на машыну",
+      "expected_scenario_ids": [
+        "bid.place"
+      ],
+      "historical_top10_candidate_ids": [
+        "bid.place",
+        "tariff.demo",
+        "documents.actual_amount",
+        "account.mobile_access",
+        "buyer.resale_strategy",
+        "bid.modify_cancel",
+        "win.next_steps",
+        "bid.not_visible",
+        "vehicle.encumbrance_detected",
+        "payment.checkout_problem"
+      ],
+      "historical_wrong_scenario_id": null
+    },
+    {
+      "id": "independent-bid-006",
+      "split": "development",
+      "group": "bid_not_visible",
+      "class": "natural",
+      "text": "отправил предложение цены и оно исчезло",
+      "expected_scenario_ids": [
+        "bid.not_visible"
+      ],
+      "historical_top10_candidate_ids": [
+        "bid.not_visible",
+        "feedback.improvement_suggestion",
+        "account.registration",
+        "support.email_no_response",
+        "bid.place",
+        "documents.preparation_delay",
+        "bid.price_terms",
+        "compliance.private_arrangement",
+        "account.mobile_access",
+        "seller.information_status"
+      ],
+      "historical_wrong_scenario_id": null
+    },
+    {
+      "id": "independent-off-008",
+      "split": "development",
+      "group": "office_explicit",
+      "class": "transposed_letters",
+      "text": "как зараене записаться на визти",
+      "expected_scenario_ids": [
+        "support.office_visit"
+      ],
+      "historical_top10_candidate_ids": [
+        "inspection.arrange",
+        "technical.site_error",
+        "support.office_visit",
+        "account.registration",
+        "vehicle.business_use_cases",
+        "auction.other_platform_offer",
+        "refund.application",
+        "lot.payment.details",
+        "payment.document_policy",
+        "buyer.resale_strategy"
+      ],
+      "historical_wrong_scenario_id": null
+    },
+    {
+      "id": "independent-lot-003",
+      "split": "development",
+      "group": "catalog_search",
+      "class": "transposed_letters",
+      "text": "как найит машниу по году",
+      "expected_scenario_ids": [
+        "lot.catalog_search"
+      ],
+      "historical_top10_candidate_ids": [
+        "lot.catalog_search",
+        "lot.card_information",
+        "tariff.premium",
+        "vehicle.vin_request",
+        "property.overview",
+        "buyer.personal_purchase",
+        "insurance.osago_rules",
+        "feedback.improvement_suggestion",
+        "property.evaluate",
+        "account.mobile_access"
+      ],
+      "historical_wrong_scenario_id": null
+    },
+    {
+      "id": "independent-lot-010",
+      "split": "development",
+      "group": "lot_location",
+      "class": "morphology",
+      "text": "местонахождение транспортного средства из объявления",
+      "expected_scenario_ids": [
+        "lot.location"
+      ],
+      "historical_top10_candidate_ids": [
+        "lot.location",
+        "lot.catalog_search",
+        "refund.eligibility",
+        "seller.information_status",
+        "platform.about",
+        "seller.categories",
+        "vehicle.encumbrance_detected",
+        "auction.other_platform_offer",
+        "property.inspection_documents",
+        "privacy.data_categories"
+      ],
+      "historical_wrong_scenario_id": null
+    },
+    {
+      "id": "independent-pic-003",
+      "split": "development",
+      "group": "pickup_receive",
+      "class": "transposed_letters",
+      "text": "что нуожно для выдаич машниы",
+      "expected_scenario_ids": [
+        "pickup.receive_lot"
+      ],
+      "historical_top10_candidate_ids": [
+        "pickup.receive_lot",
+        "pickup.access_issuer",
+        "account.registration",
+        "buyer.resale_strategy",
+        "platform.about",
+        "refund.application",
+        "tariff.choose",
+        "payment.not_visible",
+        "registration.accreditation",
+        "privacy.processing_purposes"
+      ],
+      "historical_wrong_scenario_id": null
+    }
+  ]
+}
