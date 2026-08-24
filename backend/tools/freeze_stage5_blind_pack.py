@@ -20,6 +20,7 @@ def main() -> int:
         print(json.dumps({"frozen": False, "readiness": readiness}, ensure_ascii=False, indent=2))
         return 2
     raw = args.pack.read_bytes()
+    dialogue_turn_count = sum(len(item.get("turns", [])) for item in pack["dialogues"])
     manifest = {
         "schema_version": 1,
         "dataset_version": pack["dataset_version"],
@@ -28,6 +29,8 @@ def main() -> int:
         "pack_sha256": hashlib.sha256(raw).hexdigest(),
         "single_turn_count": len(pack["cases"]),
         "dialogue_count": len(pack["dialogues"]),
+        "dialogue_turn_count": dialogue_turn_count,
+        "review_record_count": len(pack["cases"]) + dialogue_turn_count,
         "reviewer_attestation": pack["reviewer_attestation"],
         "policy": "Labels and phrases are immutable after this manifest is committed and before the first run.",
     }

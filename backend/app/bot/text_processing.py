@@ -138,7 +138,7 @@ def apply_synonyms(text: str) -> str:
     normalized = normalize_text(text)
     groups = load_synonym_groups()
     for canonical, variants in groups.items():
-        phrases = sorted({canonical, *variants}, key=len, reverse=True)
+        phrases = sorted({canonical, *variants}, key=lambda item: (-len(item), item))
         for phrase in phrases:
             if " " in phrase:
                 normalized = re.sub(rf"(?<!\w){re.escape(phrase)}(?!\w)", canonical, normalized)
@@ -233,7 +233,7 @@ def _repair_matching_token(token: str) -> str:
     vocabulary = _matching_vocabulary()
     if token in vocabulary or len(token) < 5 or not re.fullmatch(r"[а-я]+", token):
         return token
-    candidates = (
+    candidates = sorted(
         candidate for candidate in vocabulary
         if candidate[0] == token[0] and abs(len(candidate) - len(token)) <= 1
     )

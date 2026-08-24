@@ -7,21 +7,29 @@
   },
   "selection": {
     "single_turn_count": 500,
-    "dialogue_count": 45,
-    "dialogue_turn_count": 95,
+    "dialogue_count": 50,
+    "dialogue_turn_count": 112,
     "privacy_rejections": 0,
-    "exact_known_corpus_rejections": 0
+    "exact_known_corpus_rejections": 0,
+    "eligible_user_dialogues": 61,
+    "dialogue_privacy_rejections": 0,
+    "dialogue_exact_known_corpus_rejections": 0
   },
-  "review_pack_sha256": "aec5523deeaf87373182b5d995c2a065d3ea1db0245b82bfae88955d1cfe50a4",
+  "review_pack_sha256": "af349eb15c965f1553cbd2d66e85d25f69d2c6751cc92e997f7510f00542d49a",
   "readiness": {
     "freeze_ready": false,
     "checks": {
       "single_turn_count_gte_500": true,
-      "dialogue_count_gte_50": false,
+      "dialogue_count_gte_50": true,
       "independent_reviewer_attested": false,
       "labels_complete": false
     },
-    "missing_dialogues": 5,
-    "pending_review_records": 595
+    "missing_dialogues": 0,
+    "pending_review_records": 612,
+    "invalid_label_records": 612
+  },
+  "review_form": {
+    "path": ".work/stage5-independent-labeling-form.html",
+    "sha256": "dbc01838fe189b997d1c2d12a4486ecd0645c0b8db6849a056e9eee1187189ad"
   }
 }

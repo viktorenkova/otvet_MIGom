@@ -3,6 +3,7 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
+from backend.app.bot import text_processing
 from backend.app.bot.text_processing import normalize_matching_text
 from backend.tools.build_stage2_language_validation import build
 
@@ -18,6 +19,16 @@ def test_matching_normalizer_handles_layout_transliteration_and_slang() -> None:
     assert normalize_matching_text("доки") == normalize_matching_text("документы")
     assert normalize_matching_text("тачка") == normalize_matching_text("машина")
     assert normalize_matching_text("ordinary english text") == "ordinary english text"
+
+
+def test_matching_token_repair_resolves_equal_scores_deterministically(monkeypatch) -> None:
+    monkeypatch.setattr(
+        text_processing,
+        "_matching_vocabulary",
+        lambda: frozenset({"абвгдежзийка", "абвгдежзийкб"}),
+    )
+
+    assert text_processing._repair_matching_token("абвгдежзийкв") == "абвгдежзийка"
 
 
 def test_language_dataset_is_deterministic_and_not_copied_from_frozen_queries() -> None:
