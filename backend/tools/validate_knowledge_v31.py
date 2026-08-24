@@ -7,7 +7,7 @@ from pathlib import Path
 from typing import Any
 
 
-DEFAULT_SOURCE = Path("knowledge/v2/scenarios.json")
+DEFAULT_SOURCE = Path("knowledge/MASTER_KNOWLEDGE.md")
 DEFAULT_KNOWLEDGE = Path("knowledge/v3_1/scenarios.json")
 DEFAULT_CONFLICTS = Path("knowledge/v3_1/scenario_conflicts.json")
 SENTINELS = {"__clarification__", "__no_scenario__"}
@@ -204,8 +204,14 @@ def parse_args() -> argparse.Namespace:
 
 def main() -> int:
     args = parse_args()
+    if args.source.suffix.casefold() == ".md":
+        from backend.tools.master_knowledge import load_master
+
+        source, _ = load_master(args.source)
+    else:
+        source = json.loads(args.source.read_text(encoding="utf-8"))
     result = validate(
-        json.loads(args.source.read_text(encoding="utf-8")),
+        source,
         json.loads(args.knowledge.read_text(encoding="utf-8")),
         json.loads(args.conflicts.read_text(encoding="utf-8")),
     )

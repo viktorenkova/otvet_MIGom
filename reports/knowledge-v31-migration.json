@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
   "knowledge_version": "2026.08.23.2",
-  "source": "knowledge\\v2\\scenarios.json",
-  "source_sha256": "aed48e0dec018383cf451a2284e9f85eee5bec279d655bda37804272bc68aea3",
+  "source": "knowledge/MASTER_KNOWLEDGE.md",
+  "source_sha256": "c359f9f32febc34dd27936d2bc276bacacf2df8d46d52ddd23a5a217bcf8070a",
   "source_scenario_count": 141,
   "migrated_scenario_count": 141,
   "source_fact_count": 574,

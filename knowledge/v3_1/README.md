@@ -1,6 +1,6 @@
 # MIGTORG knowledge schema v3.1
 
-`scenarios.json` — нормализованная runtime-БЗ, воспроизводимо построенная из утверждённой `knowledge/v2/scenarios.json`.
+`scenarios.json` — нормализованная runtime-БЗ, воспроизводимо построенная из канонического `knowledge/MASTER_KNOWLEDGE.md`. Файл `knowledge/v2/scenarios.json` публикуется из того же источника как слой совместимости.
 
 Основные правила:
 
@@ -15,8 +15,9 @@
 Пересборка и проверка:
 
 ```powershell
-python -m backend.tools.migrate_knowledge_v31
+python -m backend.tools.master_knowledge publish
+python -m backend.tools.master_knowledge validate
 python -m backend.tools.validate_knowledge_v31 --output reports/knowledge-v31-validation.json
 ```
 
-Файлы v3.1 изменяются через migration tool; ручное расхождение с v2 блокируется тестами.
+Файлы v2 и v3.1 изменяются через публикационный инструмент; ручное расхождение с мастер-документом блокируется тестами.

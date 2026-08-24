@@ -8,7 +8,8 @@ from pathlib import Path
 from typing import Any
 
 
-DEFAULT_SOURCE = Path("knowledge/v2/scenarios.json")
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
+DEFAULT_SOURCE = Path("knowledge/MASTER_KNOWLEDGE.md")
 DEFAULT_QUALITY_REPORT = Path("reports/quality-stage0-adjudicated-local.json")
 DEFAULT_OUTPUT = Path("knowledge/v3_1/scenarios.json")
 DEFAULT_CONFLICTS = Path("knowledge/v3_1/scenario_conflicts.json")
@@ -106,37 +107,6 @@ ATOMIC_SPLITS: dict[str, list[dict[str, Any]]] = {
 }
 
 
-KNOWLEDGE_GAPS = [
-    {
-        "gap_id": "gap.lot_photo_archive_download",
-        "scenario_id": "lot.card_information",
-        "question": "Можно ли скачать все фотографии автомобиля одним архивом?",
-        "missing_fact": "Наличие и порядок пакетного скачивания фотографий архивом.",
-        "status": "owner_confirmation_required",
-        "safe_answer": "В подтверждённой БЗ нет сведений о скачивании всех фотографий архивом. Проверьте доступные действия в карточке лота или уточните функцию у поддержки.",
-        "answer_policy": "disclose_gap_then_offer_manual_check",
-    },
-    {
-        "gap_id": "gap.tariff_expired_unused",
-        "scenario_id": "tariff.status",
-        "question": "Что означает, что неиспользованный тариф «сгорел»?",
-        "missing_fact": "Условия истечения или прекращения каждого типа тарифа и основания восстановления.",
-        "status": "owner_confirmation_required",
-        "safe_answer": "Единого подтверждённого правила для всех тарифов нет. Нужно проверить тип тарифа, дату оплаты, статус в кабинете и конкретную операцию.",
-        "answer_policy": "disclose_gap_then_collect_operation_context",
-    },
-    {
-        "gap_id": "gap.tariff_access_term_unspecified",
-        "scenario_id": "tariff.choose",
-        "question": "На какой срок действует доступ без указания типа тарифа?",
-        "missing_fact": "Единый срок доступа для вопроса без выбранного типа тарифа.",
-        "status": "owner_confirmation_required",
-        "safe_answer": "Срок зависит от типа доступа. Уточните, речь о Разовом или Премиум-тарифе; актуальные условия нужно проверить перед оплатой.",
-        "answer_policy": "clarify_tariff_type_before_term",
-    },
-]
-
-
 def _sha256_bytes(value: bytes) -> str:
     return hashlib.sha256(value).hexdigest()
 
@@ -230,14 +200,22 @@ def _atomic_units(record: dict[str, Any]) -> list[dict[str, Any]]:
     return units
 
 
-def migrate(source: dict[str, Any], retrieval_vocabulary: dict[str, Any] | None = None) -> dict[str, Any]:
+def migrate(
+    source: dict[str, Any],
+    retrieval_vocabulary: dict[str, Any] | None = None,
+    knowledge_gaps: list[dict[str, Any]] | None = None,
+) -> dict[str, Any]:
+    if knowledge_gaps is None:
+        from backend.tools.master_knowledge import load_master
+
+        _, knowledge_gaps = load_master(DEFAULT_SOURCE)
     retrieval_vocabulary = retrieval_vocabulary or json.loads(
         DEFAULT_RETRIEVAL_TAXONOMY.read_text(encoding="utf-8")
     )
     records: list[dict[str, Any]] = []
     atomic_units: list[dict[str, Any]] = []
     gap_ids_by_scenario: dict[str, list[str]] = defaultdict(list)
-    for gap in KNOWLEDGE_GAPS:
+    for gap in knowledge_gaps:
         gap_ids_by_scenario[gap["scenario_id"]].append(gap["gap_id"])
 
     for raw in source["records"]:
@@ -300,7 +278,7 @@ def migrate(source: dict[str, Any], retrieval_vocabulary: dict[str, Any] | None 
             "sha256": _sha256_bytes(_canonical_json(retrieval_vocabulary)),
         },
         "publication_policy": source.get("publication_policy", "manual_review_only"),
-        "knowledge_gaps": KNOWLEDGE_GAPS,
+        "knowledge_gaps": knowledge_gaps,
         "records": records,
         "atomic_units": atomic_units,
     }
@@ -379,11 +357,15 @@ def build_migration_report(
 ) -> dict[str, Any]:
     source_facts = sum(len(item["facts"]) for item in source["records"])
     migrated_facts = sum(len(item["fact_records"]) for item in knowledge["records"])
+    try:
+        display_source = str(source_path.resolve().relative_to(PROJECT_ROOT))
+    except ValueError:
+        display_source = str(source_path)
     return {
         "schema_version": 1,
         "knowledge_version": knowledge["version"],
-        "source": str(source_path),
-        "source_sha256": _sha256_bytes(source_path.read_bytes()),
+        "source": display_source.replace("\\", "/"),
+        "source_sha256": _sha256_bytes(_canonical_json(source)),
         "source_scenario_count": len(source["records"]),
         "migrated_scenario_count": len(knowledge["records"]),
         "source_fact_count": source_facts,
@@ -408,9 +390,17 @@ def parse_args() -> argparse.Namespace:
 
 def main() -> int:
     args = parse_args()
-    source = json.loads(args.source.read_text(encoding="utf-8"))
+    if args.source.suffix.casefold() == ".md":
+        from backend.tools.master_knowledge import load_master
+
+        source, knowledge_gaps = load_master(args.source)
+    else:
+        from backend.tools.master_knowledge import load_master
+
+        source = json.loads(args.source.read_text(encoding="utf-8"))
+        _, knowledge_gaps = load_master(DEFAULT_SOURCE)
     quality_report = json.loads(args.quality_report.read_text(encoding="utf-8"))
-    knowledge = migrate(source)
+    knowledge = migrate(source, knowledge_gaps=knowledge_gaps)
     conflicts = build_conflicts(quality_report, knowledge)
     report = build_migration_report(args.source, source, knowledge, conflicts)
     for path, payload in (

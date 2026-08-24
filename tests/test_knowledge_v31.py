@@ -5,13 +5,14 @@ from pathlib import Path
 
 from backend.app.bot.knowledge_search import _load_v2_articles, clear_knowledge_cache
 from backend.app.bot.scenario_engine import load_scenarios
+from backend.tools.master_knowledge import load_master
 from backend.tools.migrate_knowledge_v31 import migrate
 from backend.tools.compare_knowledge_v31_regressions import compare
 from backend.tools.validate_knowledge_v31 import validate
 
 
 ROOT = Path(__file__).resolve().parents[1]
-SOURCE_PATH = ROOT / "knowledge/v2/scenarios.json"
+SOURCE_PATH = ROOT / "knowledge/MASTER_KNOWLEDGE.md"
 KNOWLEDGE_PATH = ROOT / "knowledge/v3_1/scenarios.json"
 CONFLICTS_PATH = ROOT / "knowledge/v3_1/scenario_conflicts.json"
 
@@ -21,9 +22,9 @@ def _payload(path: Path) -> dict:
 
 
 def test_v31_migration_is_deterministic_and_preserves_every_scenario_and_fact() -> None:
-    source = _payload(SOURCE_PATH)
+    source, knowledge_gaps = load_master(SOURCE_PATH)
     committed = _payload(KNOWLEDGE_PATH)
-    rebuilt = migrate(source)
+    rebuilt = migrate(source, knowledge_gaps=knowledge_gaps)
 
     assert rebuilt == committed
     assert {item["scenario_id"] for item in committed["records"]} == {
@@ -34,7 +35,8 @@ def test_v31_migration_is_deterministic_and_preserves_every_scenario_and_fact() 
 
 
 def test_v31_strict_validator_passes_every_gate() -> None:
-    result = validate(_payload(SOURCE_PATH), _payload(KNOWLEDGE_PATH), _payload(CONFLICTS_PATH))
+    source, _ = load_master(SOURCE_PATH)
+    result = validate(source, _payload(KNOWLEDGE_PATH), _payload(CONFLICTS_PATH))
 
     assert result["valid"] is True
     assert result["errors"] == []
