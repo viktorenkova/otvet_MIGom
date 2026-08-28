@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "dataset_version": "stage5-blind-pilot-2026.08.28.1",
+  "source_sha256": "cc853d5ea049e0576cd658114a88c684e0b0454b693aa9a3488385d972ad624c",
+  "selection": {
+    "single_count": 183,
+    "approved_clean_singles_carried_forward": 81,
+    "clean_single_expert_cases": 2,
+    "new_clean_pending_singles": 100,
+    "dialogue_count": 50,
+    "dialogue_turn_count": 112,
+    "promoted_dialogue_turns": 107,
+    "dialogue_expert_cases": 5,
+    "review_record_count": 295
+  },
+  "excluded_non_buyer_singles_by_original_status": {
+    "approved": 20,
+    "needs_review": 4,
+    "pending": 64
+  },
+  "remaining_statuses": {
+    "approved": 188,
+    "needs_review": 7,
+    "pending": 100
+  },
+  "expert_first_count": 7,
+  "review_order_complete": true,
+  "pilot_pack_sha256": "939ab479664842d47005daca9c39eb7a7ed4c4233f35b510ecbebbdaa34fac38",
+  "pilot_form_sha256": "e81074562d2bd236dcae71b261c131dcbc15d881e05876a60ebab8618a9af9e7"
+}

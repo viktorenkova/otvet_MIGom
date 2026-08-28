@@ -143,6 +143,12 @@ function boolValue(id) { const value=byId(id).value; return value==='' ? null : 
 function flatten() {
   records = pack.cases.map(row=>({kind:'single', id:row.id, row, dialogue:null, turn:null}));
   for (const dialogue of pack.dialogues) for (const row of dialogue.turns) records.push({kind:'dialogue', id:row.id||dialogue.id+'-turn-'+String(row.turn).padStart(2,'0'), row, dialogue, turn:row.turn});
+  if (Array.isArray(pack.review_order) && pack.review_order.length) {
+    const byRecordId=new Map(records.map(item=>[item.id,item]));
+    const ordered=pack.review_order.map(id=>byRecordId.get(id)).filter(Boolean);
+    const included=new Set(ordered.map(item=>item.id));
+    records=[...ordered,...records.filter(item=>!included.has(item.id))];
+  }
 }
 function statusOf(item) { return (item.row.review || {}).status || 'pending'; }
 function applyFilter(keepId=true) {
@@ -222,7 +228,7 @@ function download(finalMode) {
     if (errors.length) { setGlobal('Финальный экспорт заблокирован. '+errors.length+' замечаний. Первое: '+errors[0],'bad'); const firstId=errors[0].split(':')[0]; const idx=visible.findIndex(x=>x.id===firstId); if(idx>=0){position=idx;render();} return; }
     pack.reviewer_attestation.review_completed_at=new Date().toISOString();
   }
-  const blob=new Blob([JSON.stringify(pack,null,2)+'\n'],{type:'application/json'}), url=URL.createObjectURL(blob), link=document.createElement('a'); link.href=url; link.download=finalMode?'stage5-blind-reviewed-pack.json':'stage5-blind-review-draft.json'; link.click(); setTimeout(()=>URL.revokeObjectURL(url),1000); setGlobal(finalMode?'Финальный JSON прошёл проверку и скачан.':'Черновик JSON скачан.','good');
+  const blob=new Blob([JSON.stringify(pack,null,2)+'\n'],{type:'application/json'}), url=URL.createObjectURL(blob), link=document.createElement('a'); link.href=url; link.download=finalMode?(pack.final_export_filename||'stage5-blind-reviewed-pack.json'):(pack.draft_export_filename||'stage5-blind-review-draft.json'); link.click(); setTimeout(()=>URL.revokeObjectURL(url),1000); setGlobal(finalMode?'Финальный JSON прошёл проверку и скачан.':'Черновик JSON скачан.','good');
 }
 function move(delta) { saveCurrent(statusOf(visible[position])); position=Math.max(0,Math.min(visible.length-1,position+delta)); render(); }
 
