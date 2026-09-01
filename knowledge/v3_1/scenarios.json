@@ -4,7 +4,7 @@
   "generated_at": "2026-08-23T00:00:00+03:00",
   "migrated_from": {
     "schema_version": 2,
-    "version": "2026.09.01.1"
+    "version": "2026.09.01.2"
   },
   "retrieval_taxonomy": {
     "path": "configs\\retrieval_taxonomy_terms.json",
@@ -497,10 +497,11 @@
       ],
       "facts": [
         "Размещать лоты может подключённый продавец.",
-        "Для публикации нужны описание, фотографии и подтверждающие документы."
+        "Для публикации нужны описание, фотографии и подтверждающие документы.",
+        "При публикации продавец указывает исчерпывающие доступные сведения об автомобиле и размещает качественные фотографии, отражающие его фактический вид и состояние на момент продажи."
       ],
       "short_answer": "Размещать лот может пользователь, подключённый к MIGTORG как продавец.",
-      "detailed_answer": "Подготовьте категорию, описание, фотографии, условия осмотра, оплаты и передачи, а также документы, подтверждающие право распоряжения имуществом. Возможность самостоятельной публикации зависит от предоставленного продавцу доступа.",
+      "detailed_answer": "Подготовьте категорию, исчерпывающие доступные характеристики и описание, качественные фотографии фактического вида и состояния автомобиля, условия осмотра, оплаты и передачи, а также документы, подтверждающие право распоряжения имуществом. Возможность самостоятельной публикации зависит от предоставленного продавцу доступа.",
       "next_step": "Если продавцовского доступа ещё нет, создайте обращение на подключение; если доступ есть — используйте раздел размещения лотов в кабинете продавца.",
       "actions": [
         {
@@ -526,10 +527,10 @@
           "asset_category"
         ]
       },
-      "source": "seller offer and approved MIGTORG knowledge base",
-      "reviewed_at": "2026-08-07",
+      "source": "Seller offer and approved MIGTORG knowledge base; Project-owner clarifications from shared stage 5 labeling chat, https://chatgpt.com/share/6a96adfa-62fc-83eb-a6c5-74ee55a6716e, reviewed 2026-09-01",
+      "reviewed_at": "2026-09-01",
       "review_owner": "MIGTORG knowledge base owner",
-      "expert": "MIGTORG seller support",
+      "expert": "MIGTORG project owner and responsible domain team",
       "review_interval_days": 30,
       "legacy_ids": [
         "seller-offer-001-kak-nachat-prodavat-na-migtorg"
@@ -576,22 +577,30 @@
         ],
         "signature": "10b3246ea6341809da9255c79831b2c4cb4c8aae43ff337610ba810ee26fca78"
       },
-      "source_version": "2d5cd590a0dc354b",
+      "source_version": "8881e875b6cf6be2",
       "fact_records": [
         {
           "fact_id": "seller.publish_lot.fact.001",
           "text": "Размещать лоты может подключённый продавец.",
-          "source": "seller offer and approved MIGTORG knowledge base",
-          "reviewed_at": "2026-08-07",
-          "source_version": "2d5cd590a0dc354b",
+          "source": "Seller offer and approved MIGTORG knowledge base; Project-owner clarifications from shared stage 5 labeling chat, https://chatgpt.com/share/6a96adfa-62fc-83eb-a6c5-74ee55a6716e, reviewed 2026-09-01",
+          "reviewed_at": "2026-09-01",
+          "source_version": "8881e875b6cf6be2",
           "status": "approved"
         },
         {
           "fact_id": "seller.publish_lot.fact.002",
           "text": "Для публикации нужны описание, фотографии и подтверждающие документы.",
-          "source": "seller offer and approved MIGTORG knowledge base",
-          "reviewed_at": "2026-08-07",
-          "source_version": "2d5cd590a0dc354b",
+          "source": "Seller offer and approved MIGTORG knowledge base; Project-owner clarifications from shared stage 5 labeling chat, https://chatgpt.com/share/6a96adfa-62fc-83eb-a6c5-74ee55a6716e, reviewed 2026-09-01",
+          "reviewed_at": "2026-09-01",
+          "source_version": "8881e875b6cf6be2",
+          "status": "approved"
+        },
+        {
+          "fact_id": "seller.publish_lot.fact.003",
+          "text": "При публикации продавец указывает исчерпывающие доступные сведения об автомобиле и размещает качественные фотографии, отражающие его фактический вид и состояние на момент продажи.",
+          "source": "Seller offer and approved MIGTORG knowledge base; Project-owner clarifications from shared stage 5 labeling chat, https://chatgpt.com/share/6a96adfa-62fc-83eb-a6c5-74ee55a6716e, reviewed 2026-09-01",
+          "reviewed_at": "2026-09-01",
+          "source_version": "8881e875b6cf6be2",
           "status": "approved"
         }
       ],
@@ -1084,7 +1093,9 @@
         "как получить договор",
         "где взять ДКП",
         "договор не пришел",
-        "когда пришлют документы"
+        "когда пришлют документы",
+        "кто готовит соглашение о переходе права",
+        "не пришло соглашение о переходе права"
       ],
       "negative_examples": [
         "как забрать автомобиль",
@@ -1100,11 +1111,12 @@
       ],
       "facts": [
         "Договор по сделке готовит продавец после получения необходимых реквизитов.",
-        "Документы обычно направляются в почтовой ветке сопровождения сделки."
+        "Документы обычно направляются в почтовой ветке сопровождения сделки.",
+        "Соглашение о переходе права, если оно требуется по сделке, готовит и предоставляет продавец."
       ],
       "short_answer": "Договор или ДКП не нужно забирать как автомобиль: его готовит продавец и направляет по каналам сопровождения сделки.",
-      "detailed_answer": "Проверьте письмо о передаче и почтовую ветку, куда отправлялись реквизиты. Для проверки конкретного документа нужны авторизация и номер лота.",
-      "next_step": "Если документа нет, запросите его статус или создайте обращение, указав номер лота и название документа.",
+      "detailed_answer": "После получения реквизитов продавец готовит документы сделки, включая договор или соглашение о переходе права, если оно требуется, и направляет их в почтовой ветке по лоту. MIGTORG не влияет на готовность документа продавца; продолжайте ту же ветку и оставляйте info@migtorg.com в копии.",
+      "next_step": "Напишите продавцу в действующей ветке по лоту. Если после передачи полных реквизитов ответа нет более 7 дней, создайте отдельное обращение с номером лота и датой запроса.",
       "actions": [
         {
           "id": "contract.status.fetch",
@@ -1133,10 +1145,10 @@
           "document_type"
         ]
       },
-      "source": "approved MIGTORG knowledge base",
-      "reviewed_at": "2026-08-07",
+      "source": "Approved MIGTORG deal document procedure; Project-owner clarifications from shared stage 5 labeling chat, https://chatgpt.com/share/6a96adfa-62fc-83eb-a6c5-74ee55a6716e, reviewed 2026-09-01",
+      "reviewed_at": "2026-09-01",
       "review_owner": "MIGTORG knowledge base owner",
-      "expert": "MIGTORG deal support",
+      "expert": "MIGTORG project owner and responsible domain team",
       "review_interval_days": 14,
       "legacy_ids": [
         "manual-review-2026-07-11-remaining54-q-081-как-получить-дкп"
@@ -1174,7 +1186,9 @@
           "как получить договор",
           "где взять ДКП",
           "договор не пришел",
-          "когда пришлют документы"
+          "когда пришлют документы",
+          "кто готовит соглашение о переходе права",
+          "не пришло соглашение о переходе права"
         ],
         "excluded": [
           "как забрать автомобиль",
@@ -1183,22 +1197,30 @@
         ],
         "signature": "d2a8b54070ee0ac5f8dc5cf3abd5f4d54dc993cdae5e08193090a24aad8859e2"
       },
-      "source_version": "f4084dc1040f665a",
+      "source_version": "6747913cd6b579c0",
       "fact_records": [
         {
           "fact_id": "contract.receive.fact.001",
           "text": "Договор по сделке готовит продавец после получения необходимых реквизитов.",
-          "source": "approved MIGTORG knowledge base",
-          "reviewed_at": "2026-08-07",
-          "source_version": "f4084dc1040f665a",
+          "source": "Approved MIGTORG deal document procedure; Project-owner clarifications from shared stage 5 labeling chat, https://chatgpt.com/share/6a96adfa-62fc-83eb-a6c5-74ee55a6716e, reviewed 2026-09-01",
+          "reviewed_at": "2026-09-01",
+          "source_version": "6747913cd6b579c0",
           "status": "approved"
         },
         {
           "fact_id": "contract.receive.fact.002",
           "text": "Документы обычно направляются в почтовой ветке сопровождения сделки.",
-          "source": "approved MIGTORG knowledge base",
-          "reviewed_at": "2026-08-07",
-          "source_version": "f4084dc1040f665a",
+          "source": "Approved MIGTORG deal document procedure; Project-owner clarifications from shared stage 5 labeling chat, https://chatgpt.com/share/6a96adfa-62fc-83eb-a6c5-74ee55a6716e, reviewed 2026-09-01",
+          "reviewed_at": "2026-09-01",
+          "source_version": "6747913cd6b579c0",
+          "status": "approved"
+        },
+        {
+          "fact_id": "contract.receive.fact.003",
+          "text": "Соглашение о переходе права, если оно требуется по сделке, готовит и предоставляет продавец.",
+          "source": "Approved MIGTORG deal document procedure; Project-owner clarifications from shared stage 5 labeling chat, https://chatgpt.com/share/6a96adfa-62fc-83eb-a6c5-74ee55a6716e, reviewed 2026-09-01",
+          "reviewed_at": "2026-09-01",
+          "source_version": "6747913cd6b579c0",
           "status": "approved"
         }
       ],
@@ -1277,7 +1299,7 @@
           ]
         }
       ],
-      "search_document": "Как получить договор или ДКП\ndomain:fulfillment\nstage:after_win\nobjects:contract document\nactions:receive check\nstates:missing waiting\nгде можно забрать мой договор\nкак получить договор\nгде взять ДКП\nдоговор не пришел\nкогда пришлют документы\nдоговор\nдкп\nдокумент\nбумаги\nполучить\nзабрать\nпроверить\nузнать\nгде посмотреть\nотсутствует\nнет\nне получен\nожидание\nеще не готов\nпосле победы\nвыигранный лот",
+      "search_document": "Как получить договор или ДКП\ndomain:fulfillment\nstage:after_win\nobjects:contract document\nactions:receive check\nstates:missing waiting\nгде можно забрать мой договор\nкак получить договор\nгде взять ДКП\nдоговор не пришел\nкогда пришлют документы\nкто готовит соглашение о переходе права\nне пришло соглашение о переходе права\nдоговор\nдкп\nдокумент\nбумаги\nполучить\nзабрать\nпроверить\nузнать\nгде посмотреть\nотсутствует\nнет\nне получен\nожидание\nеще не готов\nпосле победы\nвыигранный лот",
       "atomic_unit_ids": [
         "contract.receive::preparation",
         "contract.receive::delivery"
@@ -2360,16 +2382,19 @@
       "required_context": [],
       "allowed_context": [
         "page_type",
-        "lot_id"
+        "lot_id",
+        "user_email"
       ],
       "facts": [
-        "Перед повторным обращением следует проверить папку «Спам».",
-        "Историю вопроса лучше сохранять в одной почтовой ветке.",
-        "Бот не обещает точный срок ответа без подтверждённого SLA."
+        "Почту info@migtorg.com активно просматривает отдел сопровождения MIGTORG; из-за объёма обращений ответ может занять 1–2 рабочих дня.",
+        "Сначала нужно уточнить, ожидает ли пользователь ответ именно от поддержки MIGTORG или от продавца: площадка не отвечает за продавца и не может дать ответ вместо него.",
+        "Обращение в поддержку следует отправлять на info@migtorg.com с email, зарегистрированного в аккаунте, и продолжать исходную ветку переписки, если она уже существует.",
+        "Перед повторным обращением следует проверить папку «Спам» и правильность адреса получателя.",
+        "Если срок ожидания прошёл, можно создать обращение в чат-боте с контактом, темой, кратким описанием и номером лота, если вопрос относится к лоту."
       ],
-      "short_answer": "Проверьте папку «Спам» и продолжите переписку в той же почтовой ветке, чтобы не потерялась история обращения.",
-      "detailed_answer": "В повторном сообщении кратко укажите тему и номер лота или платежа, если вопрос связан с ними. Не отправляйте пароль, полные платёжные реквизиты или лишние персональные данные.",
-      "next_step": "Если ответа по-прежнему нет, создайте обращение в чате — оно будет зарегистрировано отдельно и связано с этой темой.",
+      "short_answer": "Проверьте, что письмо отправлено на info@migtorg.com с email вашего аккаунта, и ожидайте ответ в течение 1–2 рабочих дней.",
+      "detailed_answer": "Уточните, чей ответ вы ожидаете: поддержки MIGTORG или продавца по лоту. Поддержка активно просматривает info@migtorg.com, но из-за объёма обращений ответ может занять 1–2 рабочих дня. Пишите с email, зарегистрированного в аккаунте, сохраняйте исходную ветку и проверьте папку «Спам». MIGTORG остаётся третьей стороной в переписке с продавцом и не может отвечать вместо него.",
+      "next_step": "Если прошло более 2 рабочих дней и условия отправки соблюдены, создайте обращение в чат-боте: укажите контакт, тему, краткое описание и номер лота, если вопрос связан с ним.",
       "actions": [
         {
           "id": "support.email.ticket",
@@ -2380,7 +2405,7 @@
       ],
       "escalation": {
         "when": [
-          "email_no_response"
+          "support_email_no_response_after_two_business_days"
         ],
         "required_fields": [
           "contact",
@@ -2388,10 +2413,10 @@
           "description"
         ]
       },
-      "source": "approved MIGTORG knowledge base and reviewed support corpus",
-      "reviewed_at": "2026-08-08",
+      "source": "Approved MIGTORG support policy; Project-owner clarifications from shared stage 5 labeling chat, https://chatgpt.com/share/6a96adfa-62fc-83eb-a6c5-74ee55a6716e, reviewed 2026-09-01",
+      "reviewed_at": "2026-09-01",
       "review_owner": "MIGTORG knowledge base owner",
-      "expert": "MIGTORG support",
+      "expert": "MIGTORG project owner and responsible domain team",
       "review_interval_days": 30,
       "legacy_ids": [
         "manual-review-2026-07-11-remaining54-q-125-на-мои-письма-никто-не-отвечает"
@@ -2440,30 +2465,46 @@
         ],
         "signature": "6027be106fc71facd46283745d491e9bdc8e7f59d5b00a28f342f4ca77885645"
       },
-      "source_version": "cf81acb7bd2b216b",
+      "source_version": "139ad462381a117a",
       "fact_records": [
         {
           "fact_id": "support.email_no_response.fact.001",
-          "text": "Перед повторным обращением следует проверить папку «Спам».",
-          "source": "approved MIGTORG knowledge base and reviewed support corpus",
-          "reviewed_at": "2026-08-08",
-          "source_version": "cf81acb7bd2b216b",
+          "text": "Почту info@migtorg.com активно просматривает отдел сопровождения MIGTORG; из-за объёма обращений ответ может занять 1–2 рабочих дня.",
+          "source": "Approved MIGTORG support policy; Project-owner clarifications from shared stage 5 labeling chat, https://chatgpt.com/share/6a96adfa-62fc-83eb-a6c5-74ee55a6716e, reviewed 2026-09-01",
+          "reviewed_at": "2026-09-01",
+          "source_version": "139ad462381a117a",
           "status": "approved"
         },
         {
           "fact_id": "support.email_no_response.fact.002",
-          "text": "Историю вопроса лучше сохранять в одной почтовой ветке.",
-          "source": "approved MIGTORG knowledge base and reviewed support corpus",
-          "reviewed_at": "2026-08-08",
-          "source_version": "cf81acb7bd2b216b",
+          "text": "Сначала нужно уточнить, ожидает ли пользователь ответ именно от поддержки MIGTORG или от продавца: площадка не отвечает за продавца и не может дать ответ вместо него.",
+          "source": "Approved MIGTORG support policy; Project-owner clarifications from shared stage 5 labeling chat, https://chatgpt.com/share/6a96adfa-62fc-83eb-a6c5-74ee55a6716e, reviewed 2026-09-01",
+          "reviewed_at": "2026-09-01",
+          "source_version": "139ad462381a117a",
           "status": "approved"
         },
         {
           "fact_id": "support.email_no_response.fact.003",
-          "text": "Бот не обещает точный срок ответа без подтверждённого SLA.",
-          "source": "approved MIGTORG knowledge base and reviewed support corpus",
-          "reviewed_at": "2026-08-08",
-          "source_version": "cf81acb7bd2b216b",
+          "text": "Обращение в поддержку следует отправлять на info@migtorg.com с email, зарегистрированного в аккаунте, и продолжать исходную ветку переписки, если она уже существует.",
+          "source": "Approved MIGTORG support policy; Project-owner clarifications from shared stage 5 labeling chat, https://chatgpt.com/share/6a96adfa-62fc-83eb-a6c5-74ee55a6716e, reviewed 2026-09-01",
+          "reviewed_at": "2026-09-01",
+          "source_version": "139ad462381a117a",
+          "status": "approved"
+        },
+        {
+          "fact_id": "support.email_no_response.fact.004",
+          "text": "Перед повторным обращением следует проверить папку «Спам» и правильность адреса получателя.",
+          "source": "Approved MIGTORG support policy; Project-owner clarifications from shared stage 5 labeling chat, https://chatgpt.com/share/6a96adfa-62fc-83eb-a6c5-74ee55a6716e, reviewed 2026-09-01",
+          "reviewed_at": "2026-09-01",
+          "source_version": "139ad462381a117a",
+          "status": "approved"
+        },
+        {
+          "fact_id": "support.email_no_response.fact.005",
+          "text": "Если срок ожидания прошёл, можно создать обращение в чат-боте с контактом, темой, кратким описанием и номером лота, если вопрос относится к лоту.",
+          "source": "Approved MIGTORG support policy; Project-owner clarifications from shared stage 5 labeling chat, https://chatgpt.com/share/6a96adfa-62fc-83eb-a6c5-74ee55a6716e, reviewed 2026-09-01",
+          "reviewed_at": "2026-09-01",
+          "source_version": "139ad462381a117a",
           "status": "approved"
         }
       ],
@@ -6406,10 +6447,12 @@
         "По Разовому тарифу запрос создаётся кнопкой возврата в личном кабинете и подтверждается сотрудником после проверки.",
         "Для расторжения Премиум-договора и возврата обеспечительного платежа требуется подписанное заявление с номером договора, данными владельца и банковскими реквизитами плательщика.",
         "Заявление подаёт владелец Премиум-аккаунта, который оплачивал подключение.",
-        "По возврату комиссии за несостоявшуюся сделку нужно обратиться в действующей почтовой ветке на info@migtorg.com, указать номер лота, сумму и способ оплаты."
+        "По возврату комиссии за несостоявшуюся сделку нужно обратиться в действующей почтовой ветке на info@migtorg.com, указать номер лота, сумму и способ оплаты.",
+        "Для возврата средств Разового тарифа в личном кабинете нужно открыть «Финансы» → «История пополнений» → «История списаний» и нажать «Вернуть» рядом с нужным платежом.",
+        "Сумма возврата по Разовому тарифу должна быть кратна 5 000 рублей; операцию проверяет и подтверждает сотрудник."
       ],
       "short_answer": "Возврат оформляется заявлением или через предусмотренную кнопку в личном кабинете; одного сообщения в чате недостаточно.",
-      "detailed_answer": "Для Премиум-аккаунта подготовьте подписанное заявление: номер договора, данные владельца аккаунта и банковские реквизиты плательщика. По комиссии за несостоявшийся лот напишите в той же почтовой ветке на info@migtorg.com, укажите номер лота, сумму и способ оплаты. По Разовому тарифу используйте кнопку возврата в личном кабинете — операцию всё равно проверяет сотрудник.",
+      "detailed_answer": "Для Разового тарифа откройте «Финансы» → «История пополнений» → «История списаний» и нажмите «Вернуть» рядом с нужным платежом. Сумма должна быть кратна 5 000 рублей; сотрудник проверит и подтвердит операцию. Для Премиум-аккаунта требуется подписанное заявление, а по комиссии за несостоявшийся лот нужно писать в действующей почтовой ветке на info@migtorg.com.",
       "next_step": "Подготовьте данные платежа без полного номера карты, CVC/CVV, пароля и кода из SMS.",
       "actions": [
         {
@@ -6433,10 +6476,10 @@
           "proof_of_payment"
         ]
       },
-      "source": "MIGTORG project expert interview, part 2, 2026-08-11",
-      "reviewed_at": "2026-08-11",
+      "source": "Approved MIGTORG refund procedure; Project-owner clarifications from shared stage 5 labeling chat, https://chatgpt.com/share/6a96adfa-62fc-83eb-a6c5-74ee55a6716e, reviewed 2026-09-01",
+      "reviewed_at": "2026-09-01",
       "review_owner": "MIGTORG knowledge base owner",
-      "expert": "MIGTORG project expert",
+      "expert": "MIGTORG project owner and responsible domain team",
       "review_interval_days": 14,
       "legacy_ids": [
         "kb-083-возврат-депозита-при-расторжении-договора",
@@ -6496,46 +6539,62 @@
         ],
         "signature": "cea59170dbdd5542ed5d06e80b8d8cd61fc746bc498e1e8baa71b41cac686bc3"
       },
-      "source_version": "6e3c39ab17703fa3",
+      "source_version": "61f1984e949c5461",
       "fact_records": [
         {
           "fact_id": "refund.application.fact.001",
           "text": "Обращение в чат само по себе не заменяет заявление на возврат.",
-          "source": "MIGTORG project expert interview, part 2, 2026-08-11",
-          "reviewed_at": "2026-08-11",
-          "source_version": "6e3c39ab17703fa3",
+          "source": "Approved MIGTORG refund procedure; Project-owner clarifications from shared stage 5 labeling chat, https://chatgpt.com/share/6a96adfa-62fc-83eb-a6c5-74ee55a6716e, reviewed 2026-09-01",
+          "reviewed_at": "2026-09-01",
+          "source_version": "61f1984e949c5461",
           "status": "approved"
         },
         {
           "fact_id": "refund.application.fact.002",
           "text": "По Разовому тарифу запрос создаётся кнопкой возврата в личном кабинете и подтверждается сотрудником после проверки.",
-          "source": "MIGTORG project expert interview, part 2, 2026-08-11",
-          "reviewed_at": "2026-08-11",
-          "source_version": "6e3c39ab17703fa3",
+          "source": "Approved MIGTORG refund procedure; Project-owner clarifications from shared stage 5 labeling chat, https://chatgpt.com/share/6a96adfa-62fc-83eb-a6c5-74ee55a6716e, reviewed 2026-09-01",
+          "reviewed_at": "2026-09-01",
+          "source_version": "61f1984e949c5461",
           "status": "approved"
         },
         {
           "fact_id": "refund.application.fact.003",
           "text": "Для расторжения Премиум-договора и возврата обеспечительного платежа требуется подписанное заявление с номером договора, данными владельца и банковскими реквизитами плательщика.",
-          "source": "MIGTORG project expert interview, part 2, 2026-08-11",
-          "reviewed_at": "2026-08-11",
-          "source_version": "6e3c39ab17703fa3",
+          "source": "Approved MIGTORG refund procedure; Project-owner clarifications from shared stage 5 labeling chat, https://chatgpt.com/share/6a96adfa-62fc-83eb-a6c5-74ee55a6716e, reviewed 2026-09-01",
+          "reviewed_at": "2026-09-01",
+          "source_version": "61f1984e949c5461",
           "status": "approved"
         },
         {
           "fact_id": "refund.application.fact.004",
           "text": "Заявление подаёт владелец Премиум-аккаунта, который оплачивал подключение.",
-          "source": "MIGTORG project expert interview, part 2, 2026-08-11",
-          "reviewed_at": "2026-08-11",
-          "source_version": "6e3c39ab17703fa3",
+          "source": "Approved MIGTORG refund procedure; Project-owner clarifications from shared stage 5 labeling chat, https://chatgpt.com/share/6a96adfa-62fc-83eb-a6c5-74ee55a6716e, reviewed 2026-09-01",
+          "reviewed_at": "2026-09-01",
+          "source_version": "61f1984e949c5461",
           "status": "approved"
         },
         {
           "fact_id": "refund.application.fact.005",
           "text": "По возврату комиссии за несостоявшуюся сделку нужно обратиться в действующей почтовой ветке на info@migtorg.com, указать номер лота, сумму и способ оплаты.",
-          "source": "MIGTORG project expert interview, part 2, 2026-08-11",
-          "reviewed_at": "2026-08-11",
-          "source_version": "6e3c39ab17703fa3",
+          "source": "Approved MIGTORG refund procedure; Project-owner clarifications from shared stage 5 labeling chat, https://chatgpt.com/share/6a96adfa-62fc-83eb-a6c5-74ee55a6716e, reviewed 2026-09-01",
+          "reviewed_at": "2026-09-01",
+          "source_version": "61f1984e949c5461",
+          "status": "approved"
+        },
+        {
+          "fact_id": "refund.application.fact.006",
+          "text": "Для возврата средств Разового тарифа в личном кабинете нужно открыть «Финансы» → «История пополнений» → «История списаний» и нажать «Вернуть» рядом с нужным платежом.",
+          "source": "Approved MIGTORG refund procedure; Project-owner clarifications from shared stage 5 labeling chat, https://chatgpt.com/share/6a96adfa-62fc-83eb-a6c5-74ee55a6716e, reviewed 2026-09-01",
+          "reviewed_at": "2026-09-01",
+          "source_version": "61f1984e949c5461",
+          "status": "approved"
+        },
+        {
+          "fact_id": "refund.application.fact.007",
+          "text": "Сумма возврата по Разовому тарифу должна быть кратна 5 000 рублей; операцию проверяет и подтверждает сотрудник.",
+          "source": "Approved MIGTORG refund procedure; Project-owner clarifications from shared stage 5 labeling chat, https://chatgpt.com/share/6a96adfa-62fc-83eb-a6c5-74ee55a6716e, reviewed 2026-09-01",
+          "reviewed_at": "2026-09-01",
+          "source_version": "61f1984e949c5461",
           "status": "approved"
         }
       ],
@@ -17119,10 +17178,11 @@
       "facts": [
         "Если лот имеет статус «Ожидает подтверждения», продавец ещё принимает решение в пределах срока действия ставки.",
         "Если передача подтверждена, но документы или ответ не приходят, нужно продолжить переписку в той же почтовой ветке.",
-        "Для проверки конкретной ситуации нужен номер лота."
+        "Для проверки конкретной ситуации нужен номер лота.",
+        "Если переданный лот оплачен, но продавец не отвечает 5 рабочих дней, следует повторно написать в той же ветке и поставить info@migtorg.com в копию."
       ],
       "short_answer": "Если лот находится в статусе «Ожидает подтверждения», отсутствие ответа продавца само по себе не означает проблему: решение принимается в пределах срока действия ставки.",
-      "detailed_answer": "Если статус уже изменился на «Передан», но документы или инструкции не приходят, продолжите переписку в той же почтовой ветке и запросите статус.",
+      "detailed_answer": "Если статус уже изменился на «Передан», продолжайте переписку с продавцом в той же почтовой ветке и оставляйте info@migtorg.com в копии. Если переданный лот оплачен и продавец не отвечает 5 рабочих дней, повторите запрос в этой же ветке — так отдел сопровождения увидит историю и сможет подключиться.",
       "next_step": "Для проверки создайте обращение. Укажите номер лота, текущий статус и дату последнего сообщения.",
       "actions": [
         {
@@ -17144,10 +17204,10 @@
           "description"
         ]
       },
-      "source": "Reviewed MIGTORG support corpus Q-078",
-      "reviewed_at": "2026-08-13",
+      "source": "Approved MIGTORG seller follow-up procedure; Project-owner clarifications from shared stage 5 labeling chat, https://chatgpt.com/share/6a96adfa-62fc-83eb-a6c5-74ee55a6716e, reviewed 2026-09-01",
+      "reviewed_at": "2026-09-01",
       "review_owner": "MIGTORG knowledge base owner",
-      "expert": "MIGTORG deal support",
+      "expert": "MIGTORG project owner and responsible domain team",
       "review_interval_days": 30,
       "legacy_ids": [
         "manual-review-2026-07-11-remaining54-q-078-страховая-не-выходит-на-связь"
@@ -17196,30 +17256,38 @@
         ],
         "signature": "cb2e760a0d5e22c13a01c0ab4f14ded03abd9d1af533ce3c93b1e41b051aae49"
       },
-      "source_version": "3ed964fc7590c1ee",
+      "source_version": "20f570fc7686a2d9",
       "fact_records": [
         {
           "fact_id": "transfer.seller_no_response.fact.001",
           "text": "Если лот имеет статус «Ожидает подтверждения», продавец ещё принимает решение в пределах срока действия ставки.",
-          "source": "Reviewed MIGTORG support corpus Q-078",
-          "reviewed_at": "2026-08-13",
-          "source_version": "3ed964fc7590c1ee",
+          "source": "Approved MIGTORG seller follow-up procedure; Project-owner clarifications from shared stage 5 labeling chat, https://chatgpt.com/share/6a96adfa-62fc-83eb-a6c5-74ee55a6716e, reviewed 2026-09-01",
+          "reviewed_at": "2026-09-01",
+          "source_version": "20f570fc7686a2d9",
           "status": "approved"
         },
         {
           "fact_id": "transfer.seller_no_response.fact.002",
           "text": "Если передача подтверждена, но документы или ответ не приходят, нужно продолжить переписку в той же почтовой ветке.",
-          "source": "Reviewed MIGTORG support corpus Q-078",
-          "reviewed_at": "2026-08-13",
-          "source_version": "3ed964fc7590c1ee",
+          "source": "Approved MIGTORG seller follow-up procedure; Project-owner clarifications from shared stage 5 labeling chat, https://chatgpt.com/share/6a96adfa-62fc-83eb-a6c5-74ee55a6716e, reviewed 2026-09-01",
+          "reviewed_at": "2026-09-01",
+          "source_version": "20f570fc7686a2d9",
           "status": "approved"
         },
         {
           "fact_id": "transfer.seller_no_response.fact.003",
           "text": "Для проверки конкретной ситуации нужен номер лота.",
-          "source": "Reviewed MIGTORG support corpus Q-078",
-          "reviewed_at": "2026-08-13",
-          "source_version": "3ed964fc7590c1ee",
+          "source": "Approved MIGTORG seller follow-up procedure; Project-owner clarifications from shared stage 5 labeling chat, https://chatgpt.com/share/6a96adfa-62fc-83eb-a6c5-74ee55a6716e, reviewed 2026-09-01",
+          "reviewed_at": "2026-09-01",
+          "source_version": "20f570fc7686a2d9",
+          "status": "approved"
+        },
+        {
+          "fact_id": "transfer.seller_no_response.fact.004",
+          "text": "Если переданный лот оплачен, но продавец не отвечает 5 рабочих дней, следует повторно написать в той же ветке и поставить info@migtorg.com в копию.",
+          "source": "Approved MIGTORG seller follow-up procedure; Project-owner clarifications from shared stage 5 labeling chat, https://chatgpt.com/share/6a96adfa-62fc-83eb-a6c5-74ee55a6716e, reviewed 2026-09-01",
+          "reviewed_at": "2026-09-01",
+          "source_version": "20f570fc7686a2d9",
           "status": "approved"
         }
       ],
@@ -27296,7 +27364,9 @@
         "я приеду за документами",
         "как заехать на территорию",
         "хочу приехать подписать договор на доступ к площадке",
-        "можно подписать договор в офисе MIGTORG"
+        "можно подписать договор в офисе MIGTORG",
+        "я уже у офиса как заказать пропуск",
+        "телефон для пропуска"
       ],
       "negative_examples": [
         "где находится стоянка",
@@ -27317,15 +27387,16 @@
       ],
       "facts": [
         "Офис MIGTORG находится по адресу: г. Москва, ул. Смирновская, д. 25, стр. 16, 4 этаж, каб. 30.",
-        "Приём возможен строго с 10:00 до 18:00 и только по предварительной записи.",
+        "Приём возможен с понедельника по пятницу с 10:00 до 18:00 и только по предварительной записи.",
         "Для пешего пропуска требуется ФИО посетителя; для въезда на автомобиле требуются ФИО, государственный регистрационный номер и марка транспортного средства.",
         "В офисе MIGTORG можно решить административный вопрос по площадке, в том числе согласовать личное подписание договора доступа.",
         "MIGTORG является площадкой, а не продавцом автомобиля: осмотр и получение лота проходят по адресу продавца, который сообщает сам продавец после согласования.",
-        "До приезда нужно получить подтверждение записи и пропуска; бот не оформляет их самостоятельно."
+        "До приезда нужно получить подтверждение записи и пропуска; бот не оформляет их самостоятельно.",
+        "Если посетитель уже находится у офиса и пропуск нужно решить оперативно, следует позвонить по номеру +7 (495) 649-91-99 и сообщить ФИО для пешего прохода либо ФИО, марку и государственный номер автомобиля для въезда."
       ],
       "short_answer": "Если вам нужен именно офис MIGTORG, он находится по адресу: г. Москва, ул. Смирновская, д. 25, стр. 16, 4 этаж, каб. 30.",
-      "detailed_answer": "Приём возможен строго с 10:00 до 18:00 и только по предварительной записи. Для пешего пропуска сообщите ФИО; для въезда на автомобиле — ФИО, государственный регистрационный номер и марку транспортного средства. Дождитесь подтверждения записи и пропуска. В офисе можно решить административный вопрос по площадке, включая согласованное личное подписание договора доступа. MIGTORG не является продавцом автомобиля: для осмотра или получения лота нужен адрес продавца, который продавец сообщает отдельно.",
-      "next_step": "Создайте обращение или напишите на info@migtorg.com, указав контакт, цель визита, желаемые дату и время и данные для нужного типа пропуска. Не приезжайте без подтверждения записи.",
+      "detailed_answer": "Приём возможен с понедельника по пятницу с 10:00 до 18:00 и только по предварительной записи. Для пешего пропуска сообщите ФИО; для въезда на автомобиле — ФИО, государственный номер и марку автомобиля. Дождитесь подтверждения записи и пропуска. Если вы уже на месте и пропуск нужно решить оперативно, позвоните по номеру +7 (495) 649-91-99 и сообщите эти данные. MIGTORG не является продавцом автомобиля: осмотр и получение лота проходят у продавца.",
+      "next_step": "Заранее создайте обращение или напишите на info@migtorg.com с целью, датой, временем и данными для пропуска. Номер +7 (495) 649-91-99 используйте для оперативного решения, только если вы уже на месте.",
       "actions": [
         {
           "id": "support.office_visit.ticket",
@@ -27348,10 +27419,10 @@
           "visitor_name"
         ]
       },
-      "source": "Approved MIGTORG office visit and pass procedure",
-      "reviewed_at": "2026-08-12",
+      "source": "Approved MIGTORG office visit and pass procedure; Project-owner clarifications from shared stage 5 labeling chat, https://chatgpt.com/share/6a96adfa-62fc-83eb-a6c5-74ee55a6716e, reviewed 2026-09-01",
+      "reviewed_at": "2026-09-01",
       "review_owner": "MIGTORG knowledge base owner",
-      "expert": "MIGTORG support",
+      "expert": "MIGTORG project owner and responsible domain team",
       "review_interval_days": 30,
       "legacy_ids": [
         "kb-111-пропуск-в-офис",
@@ -27396,7 +27467,9 @@
           "я приеду за документами",
           "как заехать на территорию",
           "хочу приехать подписать договор на доступ к площадке",
-          "можно подписать договор в офисе MIGTORG"
+          "можно подписать договор в офисе MIGTORG",
+          "я уже у офиса как заказать пропуск",
+          "телефон для пропуска"
         ],
         "excluded": [
           "где находится стоянка",
@@ -27406,54 +27479,62 @@
         ],
         "signature": "81f073fbe48346a4962fa068a0d48b89bc6a993cd6eecffe48b8ad887ec868ec"
       },
-      "source_version": "502e38b3eddc81e4",
+      "source_version": "bd706c5e51afbb44",
       "fact_records": [
         {
           "fact_id": "support.office_visit.fact.001",
           "text": "Офис MIGTORG находится по адресу: г. Москва, ул. Смирновская, д. 25, стр. 16, 4 этаж, каб. 30.",
-          "source": "Approved MIGTORG office visit and pass procedure",
-          "reviewed_at": "2026-08-12",
-          "source_version": "502e38b3eddc81e4",
+          "source": "Approved MIGTORG office visit and pass procedure; Project-owner clarifications from shared stage 5 labeling chat, https://chatgpt.com/share/6a96adfa-62fc-83eb-a6c5-74ee55a6716e, reviewed 2026-09-01",
+          "reviewed_at": "2026-09-01",
+          "source_version": "bd706c5e51afbb44",
           "status": "approved"
         },
         {
           "fact_id": "support.office_visit.fact.002",
-          "text": "Приём возможен строго с 10:00 до 18:00 и только по предварительной записи.",
-          "source": "Approved MIGTORG office visit and pass procedure",
-          "reviewed_at": "2026-08-12",
-          "source_version": "502e38b3eddc81e4",
+          "text": "Приём возможен с понедельника по пятницу с 10:00 до 18:00 и только по предварительной записи.",
+          "source": "Approved MIGTORG office visit and pass procedure; Project-owner clarifications from shared stage 5 labeling chat, https://chatgpt.com/share/6a96adfa-62fc-83eb-a6c5-74ee55a6716e, reviewed 2026-09-01",
+          "reviewed_at": "2026-09-01",
+          "source_version": "bd706c5e51afbb44",
           "status": "approved"
         },
         {
           "fact_id": "support.office_visit.fact.003",
           "text": "Для пешего пропуска требуется ФИО посетителя; для въезда на автомобиле требуются ФИО, государственный регистрационный номер и марка транспортного средства.",
-          "source": "Approved MIGTORG office visit and pass procedure",
-          "reviewed_at": "2026-08-12",
-          "source_version": "502e38b3eddc81e4",
+          "source": "Approved MIGTORG office visit and pass procedure; Project-owner clarifications from shared stage 5 labeling chat, https://chatgpt.com/share/6a96adfa-62fc-83eb-a6c5-74ee55a6716e, reviewed 2026-09-01",
+          "reviewed_at": "2026-09-01",
+          "source_version": "bd706c5e51afbb44",
           "status": "approved"
         },
         {
           "fact_id": "support.office_visit.fact.004",
           "text": "В офисе MIGTORG можно решить административный вопрос по площадке, в том числе согласовать личное подписание договора доступа.",
-          "source": "Approved MIGTORG office visit and pass procedure",
-          "reviewed_at": "2026-08-12",
-          "source_version": "502e38b3eddc81e4",
+          "source": "Approved MIGTORG office visit and pass procedure; Project-owner clarifications from shared stage 5 labeling chat, https://chatgpt.com/share/6a96adfa-62fc-83eb-a6c5-74ee55a6716e, reviewed 2026-09-01",
+          "reviewed_at": "2026-09-01",
+          "source_version": "bd706c5e51afbb44",
           "status": "approved"
         },
         {
           "fact_id": "support.office_visit.fact.005",
           "text": "MIGTORG является площадкой, а не продавцом автомобиля: осмотр и получение лота проходят по адресу продавца, который сообщает сам продавец после согласования.",
-          "source": "Approved MIGTORG office visit and pass procedure",
-          "reviewed_at": "2026-08-12",
-          "source_version": "502e38b3eddc81e4",
+          "source": "Approved MIGTORG office visit and pass procedure; Project-owner clarifications from shared stage 5 labeling chat, https://chatgpt.com/share/6a96adfa-62fc-83eb-a6c5-74ee55a6716e, reviewed 2026-09-01",
+          "reviewed_at": "2026-09-01",
+          "source_version": "bd706c5e51afbb44",
           "status": "approved"
         },
         {
           "fact_id": "support.office_visit.fact.006",
           "text": "До приезда нужно получить подтверждение записи и пропуска; бот не оформляет их самостоятельно.",
-          "source": "Approved MIGTORG office visit and pass procedure",
-          "reviewed_at": "2026-08-12",
-          "source_version": "502e38b3eddc81e4",
+          "source": "Approved MIGTORG office visit and pass procedure; Project-owner clarifications from shared stage 5 labeling chat, https://chatgpt.com/share/6a96adfa-62fc-83eb-a6c5-74ee55a6716e, reviewed 2026-09-01",
+          "reviewed_at": "2026-09-01",
+          "source_version": "bd706c5e51afbb44",
+          "status": "approved"
+        },
+        {
+          "fact_id": "support.office_visit.fact.007",
+          "text": "Если посетитель уже находится у офиса и пропуск нужно решить оперативно, следует позвонить по номеру +7 (495) 649-91-99 и сообщить ФИО для пешего прохода либо ФИО, марку и государственный номер автомобиля для въезда.",
+          "source": "Approved MIGTORG office visit and pass procedure; Project-owner clarifications from shared stage 5 labeling chat, https://chatgpt.com/share/6a96adfa-62fc-83eb-a6c5-74ee55a6716e, reviewed 2026-09-01",
+          "reviewed_at": "2026-09-01",
+          "source_version": "bd706c5e51afbb44",
           "status": "approved"
         }
       ],
@@ -27534,7 +27615,7 @@
           ]
         }
       ],
-      "search_document": "Визит в офис и оформление пропуска\ndomain:support_feedback\nstage:support\nobjects:office visit pass documents\nactions:arrange escalate\nstates:missing\nгде находится офис\nкакой адрес офиса\nкак приехать в офис\nкак приехать к вам в офис\nмне нужен пропуск в офис\nя приеду за документами\nкак заехать на территорию\nхочу приехать подписать договор на доступ к площадке\nможно подписать договор в офисе MIGTORG\nофис\nпредставительство\nвизит\nпосещение\nприехать лично\nпропуск\nдопуск\nвъезд\nдокументы\nбумаги\nоформить\nорганизовать\nсогласовать\nотсутствует\nнет\nне получен\nобращение в поддержку\nпомощь пользователю",
+      "search_document": "Визит в офис и оформление пропуска\ndomain:support_feedback\nstage:support\nobjects:office visit pass documents\nactions:arrange escalate\nstates:missing\nгде находится офис\nкакой адрес офиса\nкак приехать в офис\nкак приехать к вам в офис\nмне нужен пропуск в офис\nя приеду за документами\nкак заехать на территорию\nхочу приехать подписать договор на доступ к площадке\nможно подписать договор в офисе MIGTORG\nя уже у офиса как заказать пропуск\nтелефон для пропуска\nофис\nпредставительство\nвизит\nпосещение\nприехать лично\nпропуск\nдопуск\nвъезд\nдокументы\nбумаги\nоформить\nорганизовать\nсогласовать\nотсутствует\nнет\nне получен\nобращение в поддержку\nпомощь пользователю",
       "atomic_unit_ids": [
         "support.office_visit::primary"
       ]
@@ -31600,6 +31681,187 @@
       "atomic_unit_ids": [
         "auction.other_platform_offer::primary"
       ]
+    },
+    {
+      "scenario_id": "account.delete_request",
+      "title": "Удаление аккаунта MIGTORG",
+      "intent": "registration",
+      "roles": [
+        "authorized"
+      ],
+      "stage": "access",
+      "objects": [
+        "account",
+        "personal_data",
+        "contract"
+      ],
+      "operations": [
+        "request",
+        "delete"
+      ],
+      "states": [],
+      "positive_examples": [
+        "как удалить аккаунт",
+        "удалите мой профиль",
+        "хочу закрыть аккаунт",
+        "куда написать для удаления личного кабинета"
+      ],
+      "negative_examples": [
+        "как расторгнуть договор и вернуть депозит",
+        "как отозвать согласие на обработку данных",
+        "аккаунт заблокирован"
+      ],
+      "required_context": [],
+      "allowed_context": [
+        "contact",
+        "reason"
+      ],
+      "facts": [
+        "Для удаления аккаунта пользователь направляет соответствующий запрос на info@migtorg.com с email, зарегистрированного в аккаунте.",
+        "Запрос не означает мгновенное удаление: сотрудник должен идентифицировать владельца и проверить открытые договоры, сделки, задолженности и обязательные сроки хранения данных.",
+        "Если запрос относится не к аккаунту, а к доступу, исправлению или уничтожению персональных данных, применяется отдельная процедура по правам субъекта персональных данных."
+      ],
+      "short_answer": "Чтобы запросить удаление аккаунта, напишите на info@migtorg.com с email, зарегистрированного в вашем аккаунте.",
+      "detailed_answer": "Укажите, что просите удалить аккаунт, и контакт для идентификации. Не отправляйте пароль, SMS-коды или данные банковской карты. Сотрудник проверит владельца аккаунта, незавершённые сделки и обязательства, а также сведения, которые MIGTORG обязан хранить по закону; после проверки вам сообщат результат.",
+      "next_step": "Направьте запрос на info@migtorg.com с зарегистрированного email. Если вы хотите отозвать согласие или удалить отдельные персональные данные, укажите это отдельно.",
+      "actions": [],
+      "escalation": {
+        "when": [
+          "account_deletion_requested"
+        ],
+        "required_fields": [
+          "contact",
+          "description"
+        ]
+      },
+      "source": "MIGAS personal data policy and Project-owner clarifications from shared stage 5 labeling chat, https://chatgpt.com/share/6a96adfa-62fc-83eb-a6c5-74ee55a6716e, reviewed 2026-09-01",
+      "reviewed_at": "2026-09-01",
+      "review_owner": "MIGTORG knowledge base owner",
+      "expert": "MIGTORG project owner and personal data compliance",
+      "review_interval_days": 30,
+      "legacy_ids": [],
+      "domain": "identity_access",
+      "taxonomy": {
+        "domain": "identity_access",
+        "objects": [
+          "account",
+          "personal_data",
+          "contract"
+        ],
+        "actions": [
+          "request",
+          "delete"
+        ],
+        "states": [
+          "unspecified"
+        ],
+        "stage": "access"
+      },
+      "discriminators": {
+        "required": [
+          "account",
+          "personal_data",
+          "contract",
+          "request",
+          "delete"
+        ],
+        "state": [
+          "unspecified"
+        ],
+        "positive": [
+          "как удалить аккаунт",
+          "удалите мой профиль",
+          "хочу закрыть аккаунт",
+          "куда написать для удаления личного кабинета"
+        ],
+        "excluded": [
+          "как расторгнуть договор и вернуть депозит",
+          "как отозвать согласие на обработку данных",
+          "аккаунт заблокирован"
+        ],
+        "signature": "aa1f64db5cf4d2265a67a6c14ae5ac2e76a4d5c71d9acbe2fd2d613ef88ba835"
+      },
+      "source_version": "232bd12015fd7b66",
+      "fact_records": [
+        {
+          "fact_id": "account.delete_request.fact.001",
+          "text": "Для удаления аккаунта пользователь направляет соответствующий запрос на info@migtorg.com с email, зарегистрированного в аккаунте.",
+          "source": "MIGAS personal data policy and Project-owner clarifications from shared stage 5 labeling chat, https://chatgpt.com/share/6a96adfa-62fc-83eb-a6c5-74ee55a6716e, reviewed 2026-09-01",
+          "reviewed_at": "2026-09-01",
+          "source_version": "232bd12015fd7b66",
+          "status": "approved"
+        },
+        {
+          "fact_id": "account.delete_request.fact.002",
+          "text": "Запрос не означает мгновенное удаление: сотрудник должен идентифицировать владельца и проверить открытые договоры, сделки, задолженности и обязательные сроки хранения данных.",
+          "source": "MIGAS personal data policy and Project-owner clarifications from shared stage 5 labeling chat, https://chatgpt.com/share/6a96adfa-62fc-83eb-a6c5-74ee55a6716e, reviewed 2026-09-01",
+          "reviewed_at": "2026-09-01",
+          "source_version": "232bd12015fd7b66",
+          "status": "approved"
+        },
+        {
+          "fact_id": "account.delete_request.fact.003",
+          "text": "Если запрос относится не к аккаунту, а к доступу, исправлению или уничтожению персональных данных, применяется отдельная процедура по правам субъекта персональных данных.",
+          "source": "MIGAS personal data policy and Project-owner clarifications from shared stage 5 labeling chat, https://chatgpt.com/share/6a96adfa-62fc-83eb-a6c5-74ee55a6716e, reviewed 2026-09-01",
+          "reviewed_at": "2026-09-01",
+          "source_version": "232bd12015fd7b66",
+          "status": "approved"
+        }
+      ],
+      "answer_policy": {
+        "mode": "approved_template",
+        "fact_scope": "listed_fact_ids_only",
+        "llm_role": "wording_only",
+        "unknown_fact": "disclose_gap_and_offer_clarification_or_manual_check",
+        "first_sentence": "direct_answer_or_subject_clarification",
+        "forbidden": [
+          "invent_amount",
+          "invent_deadline",
+          "invent_contact",
+          "invent_feature",
+          "promise_unverified_result"
+        ]
+      },
+      "knowledge_gap_ids": [],
+      "retrieval_taxonomy_terms": [
+        {
+          "field": "objects",
+          "value": "account",
+          "terms": [
+            "аккаунт",
+            "личный кабинет",
+            "учетная запись"
+          ]
+        },
+        {
+          "field": "objects",
+          "value": "personal_data",
+          "terms": [
+            "персональные данные",
+            "личная информация"
+          ]
+        },
+        {
+          "field": "objects",
+          "value": "contract",
+          "terms": [
+            "договор",
+            "дкп"
+          ]
+        },
+        {
+          "field": "actions",
+          "value": "request",
+          "terms": [
+            "запросить",
+            "получить по запросу"
+          ]
+        }
+      ],
+      "search_document": "Удаление аккаунта MIGTORG\ndomain:identity_access\nstage:access\nobjects:account personal_data contract\nactions:request delete\nstates:unspecified\nкак удалить аккаунт\nудалите мой профиль\nхочу закрыть аккаунт\nкуда написать для удаления личного кабинета\nаккаунт\nличный кабинет\nучетная запись\nперсональные данные\nличная информация\nдоговор\nдкп\nзапросить\nполучить по запросу",
+      "atomic_unit_ids": [
+        "account.delete_request::primary"
+      ]
     }
   ],
   "atomic_units": [
@@ -31687,7 +31949,8 @@
       ],
       "fact_ids": [
         "seller.publish_lot.fact.001",
-        "seller.publish_lot.fact.002"
+        "seller.publish_lot.fact.002",
+        "seller.publish_lot.fact.003"
       ],
       "discriminator_terms": [
         "как выставить лот на продажу",
@@ -31779,13 +32042,15 @@
         "waiting"
       ],
       "fact_ids": [
-        "contract.receive.fact.001"
+        "contract.receive.fact.001",
+        "contract.receive.fact.003"
       ],
       "discriminator_terms": [
         "кто готовит договор",
+        "соглашение о переходе права",
         "реквизиты"
       ],
-      "search_document": "Подготовка договора продавцом\nкто готовит договор\nреквизиты"
+      "search_document": "Подготовка договора продавцом\nкто готовит договор\nсоглашение о переходе права\nреквизиты"
     },
     {
       "unit_id": "contract.receive::delivery",
@@ -32001,7 +32266,9 @@
       "fact_ids": [
         "support.email_no_response.fact.001",
         "support.email_no_response.fact.002",
-        "support.email_no_response.fact.003"
+        "support.email_no_response.fact.003",
+        "support.email_no_response.fact.004",
+        "support.email_no_response.fact.005"
       ],
       "discriminator_terms": [
         "на мои письма никто не отвечает",
@@ -32813,13 +33080,17 @@
       ],
       "fact_ids": [
         "refund.application.fact.001",
-        "refund.application.fact.002"
+        "refund.application.fact.002",
+        "refund.application.fact.006",
+        "refund.application.fact.007"
       ],
       "discriminator_terms": [
         "возврат разового тарифа",
-        "кнопка возврата"
+        "кнопка возврата",
+        "история списаний",
+        "кратно 5000"
       ],
-      "search_document": "Возврат Разового тарифа\nвозврат разового тарифа\nкнопка возврата"
+      "search_document": "Возврат Разового тарифа\nвозврат разового тарифа\nкнопка возврата\nистория списаний\nкратно 5000"
     },
     {
       "unit_id": "refund.application::premium",
@@ -34567,7 +34838,8 @@
       "fact_ids": [
         "transfer.seller_no_response.fact.001",
         "transfer.seller_no_response.fact.002",
-        "transfer.seller_no_response.fact.003"
+        "transfer.seller_no_response.fact.003",
+        "transfer.seller_no_response.fact.004"
       ],
       "discriminator_terms": [
         "страховая не выходит на связь",
@@ -36308,7 +36580,8 @@
         "support.office_visit.fact.003",
         "support.office_visit.fact.004",
         "support.office_visit.fact.005",
-        "support.office_visit.fact.006"
+        "support.office_visit.fact.006",
+        "support.office_visit.fact.007"
       ],
       "discriminator_terms": [
         "где находится офис",
@@ -36319,9 +36592,11 @@
         "я приеду за документами",
         "как заехать на территорию",
         "хочу приехать подписать договор на доступ к площадке",
-        "можно подписать договор в офисе MIGTORG"
+        "можно подписать договор в офисе MIGTORG",
+        "я уже у офиса как заказать пропуск",
+        "телефон для пропуска"
       ],
-      "search_document": "Визит в офис и оформление пропуска\nгде находится офис\nкакой адрес офиса\nкак приехать в офис\nкак приехать к вам в офис\nмне нужен пропуск в офис\nя приеду за документами\nкак заехать на территорию\nхочу приехать подписать договор на доступ к площадке\nможно подписать договор в офисе MIGTORG"
+      "search_document": "Визит в офис и оформление пропуска\nгде находится офис\nкакой адрес офиса\nкак приехать в офис\nкак приехать к вам в офис\nмне нужен пропуск в офис\nя приеду за документами\nкак заехать на территорию\nхочу приехать подписать договор на доступ к площадке\nможно подписать договор в офисе MIGTORG\nя уже у офиса как заказать пропуск\nтелефон для пропуска"
     },
     {
       "unit_id": "support.lot_case_review::primary",
@@ -37001,6 +37276,37 @@
         "лот уже продан если появился статус иной аукцион"
       ],
       "search_document": "Статус «Иной аукцион» и предложение с другой площадки\nчто такое иной аукцион\nчто значит надпись иной аукцион\nпочему в лоте появилась ставка с другого аукциона\nиной аукцион это участник\nоткуда взялась сумма из другого аукциона\nчто делать если написано иной аукцион\nмашину одновременно торгуют на другой площадке\nпочему предлагают поставить больше другого аукциона\nчто означает кнопка предложить больше после закрытия\nесли победил другой аукцион могу перебить\nлот уже продан если появился статус иной аукцион"
+    },
+    {
+      "unit_id": "account.delete_request::primary",
+      "canonical_scenario_id": "account.delete_request",
+      "title": "Удаление аккаунта MIGTORG",
+      "domain": "identity_access",
+      "stage": "access",
+      "objects": [
+        "account",
+        "personal_data",
+        "contract"
+      ],
+      "actions": [
+        "request",
+        "delete"
+      ],
+      "states": [
+        "unspecified"
+      ],
+      "fact_ids": [
+        "account.delete_request.fact.001",
+        "account.delete_request.fact.002",
+        "account.delete_request.fact.003"
+      ],
+      "discriminator_terms": [
+        "как удалить аккаунт",
+        "удалите мой профиль",
+        "хочу закрыть аккаунт",
+        "куда написать для удаления личного кабинета"
+      ],
+      "search_document": "Удаление аккаунта MIGTORG\nкак удалить аккаунт\nудалите мой профиль\nхочу закрыть аккаунт\nкуда написать для удаления личного кабинета"
     }
   ]
 }

@@ -417,16 +417,16 @@ def validate_master(path: Path = DEFAULT_MASTER, published_v2: Path = DEFAULT_V2
     facts = [str(fact) for record in records for fact in record.get("facts", [])]
     if source.get("schema_version") != 2:
         errors.append("canonical source schema_version must be 2")
-    if len(records) != 141:
-        errors.append(f"expected 141 scenarios, got {len(records)}")
-    if len(facts) != 574:
-        errors.append(f"expected 574 facts, got {len(facts)}")
+    if len(records) != 142:
+        errors.append(f"expected 142 scenarios, got {len(records)}")
+    if len(facts) != 585:
+        errors.append(f"expected 585 facts, got {len(facts)}")
     if len(scenario_ids) != len(set(scenario_ids)) or any(not item for item in scenario_ids):
         errors.append("scenario IDs are missing or duplicated")
     if len(gaps) != 3:
         errors.append(f"expected 3 knowledge gaps, got {len(gaps)}")
-    if len(review_records) != 9:
-        errors.append(f"expected 9 expert-review candidates, got {len(review_records)}")
+    if len(review_records) != 8:
+        errors.append(f"expected 8 expert-review candidates, got {len(review_records)}")
     gap_ids = [str(item.get("gap_id") or "") for item in gaps]
     if len(gap_ids) != len(set(gap_ids)) or any(not item for item in gap_ids):
         errors.append("knowledge gap IDs are missing or duplicated")

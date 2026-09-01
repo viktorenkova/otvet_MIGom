@@ -173,7 +173,7 @@ def test_expert_review_queue_is_not_loaded_as_active_knowledge():
     review_queue = json.loads(Path("knowledge/v2/review_queue.json").read_text(encoding="utf-8"))
     active_ids = {scenario.scenario_id for scenario in load_scenarios()}
     assert review_queue["publication_policy"] == "expert_approval_required"
-    assert len(review_queue["records"]) == 9
+    assert len(review_queue["records"]) == 8
     for item in review_queue["records"]:
         assert item["status"] == "expert_review_required"
         assert item["publication_blockers"]

@@ -2,7 +2,7 @@
   "schema_version": 1,
   "generated_at": "2026-09-01",
   "publication_policy": "expert_approval_required",
-  "source": "MIGTORG knowledge audit, expert interviews, project-owner clarifications, buyer contract review and approved stage 5 development annotations",
+  "source": "MIGTORG knowledge audit, expert interviews, project-owner clarifications, buyer contract review, approved stage 5 development annotations and shared stage 5 labeling chat",
   "records": [
     {
       "candidate_id": "review.loyalty.rules",
@@ -34,18 +34,20 @@
       "title": "Коллизии сроков блокировки и расторжения",
       "status": "expert_review_required",
       "risk": "financial_contractual",
-      "support_conversations": 1,
+      "support_conversations": 5,
       "approved_legacy_ids": [
         "site-doc-011-obespechitelnyy-platezh-ogranicheniya"
       ],
       "questions_for_expert": [
         "Какой документ фактически устанавливает срок оплаты услуг, если пункт 5.5 ссылается на Приложение № 2 с формой акта об отказе, и нужно ли исправить ссылку в шаблоне договора?",
-        "Применяется ли автоматическое восстановление после оплаты только к комиссии в личном кабинете или также к другим обязательствам?"
+        "Подтвердите точную границу: комиссия из личного кабинета восстанавливает доступ автоматически, а штраф, отдельный счёт и иные обязательства — только после ручной проверки платёжного поручения?",
+        "Может ли отдел сопровождения переносить срок оплаты комиссии по просьбе покупателя и при каких условиях?"
       ],
       "safe_fallback_scenario_id": "contract.unconfirmed_details",
       "publication_blockers": [
         "contract_appendix_reference",
         "restoration_scope",
+        "commission_deadline_extension_policy",
         "legal_owner"
       ],
       "owner": "MIGTORG knowledge base owner",
@@ -138,49 +140,22 @@
       "title": "Взаимозачёт возврата и другого обязательства",
       "status": "expert_review_required",
       "risk": "financial_contractual",
-      "support_conversations": 1,
+      "support_conversations": 2,
       "approved_legacy_ids": [],
-      "pilot_evidence": "Approved stage 5 development annotation; not an authoritative business source",
+      "pilot_evidence": "Approved stage 5 annotation plus explicit project-owner clarification in the shared labeling chat; finance/legal publication boundary remains unresolved",
       "questions_for_expert": [
-        "Поддерживает ли MIGTORG взаимозачёт возврата в счёт другого платежа или лота?",
-        "Какие виды платежей можно зачесть и кто утверждает операцию?",
-        "Обязателен ли согласованный мотивированный отказ без штрафа, либо возможен взаимозачёт после уплаты штрафа?",
-        "Какие документы, статусы лота и реквизиты нужны для обращения?"
+        "Какие именно виды возврата и будущих платежей допускают взаимозачёт?",
+        "Кто утверждает взаимозачёт и какие документы, реквизиты и статусы лотов обязательны?",
+        "Можно ли публиковать правило пользователю до его закрепления в финансовом регламенте?"
       ],
       "safe_fallback_scenario_id": "refund.application",
       "publication_blockers": [
-        "offset_availability",
         "eligible_payment_types",
-        "refusal_and_penalty_conditions",
-        "approval_owner_and_documents"
+        "approval_owner_and_documents",
+        "finance_policy_source"
       ],
       "owner": "MIGTORG knowledge base owner",
       "expert_role": "MIGTORG finance and legal"
-    },
-    {
-      "candidate_id": "review.support.email_followup",
-      "proposed_scenario_id": "support.email_followup_policy",
-      "title": "Правила повторного обращения по email",
-      "status": "expert_review_required",
-      "risk": "operational",
-      "support_conversations": 2,
-      "approved_legacy_ids": [],
-      "pilot_evidence": "Approved stage 5 development annotations; some wording conflicts with active support policy",
-      "questions_for_expert": [
-        "Обязательно ли отправлять обращение с email, зарегистрированного в аккаунте?",
-        "В каких случаях нужно продолжать исходную ветку, а когда допустимо новое обращение?",
-        "Нужно ли дублировать письмо на info@migtorg.com и для каких тем?",
-        "Допустимы ли и email, и веб-чат, или отдельные вопросы принимаются только по email?"
-      ],
-      "safe_fallback_scenario_id": "support.email_no_response",
-      "publication_blockers": [
-        "registered_email_requirement",
-        "same_thread_boundary",
-        "copy_recipient_rule",
-        "channel_scope"
-      ],
-      "owner": "MIGTORG knowledge base owner",
-      "expert_role": "MIGTORG support operations"
     },
     {
       "candidate_id": "review.lot.additional_information",
@@ -188,18 +163,18 @@
       "title": "Дополнительные сведения и фотографии по лоту",
       "status": "expert_review_required",
       "risk": "operational_contractual",
-      "support_conversations": 3,
+      "support_conversations": 5,
       "approved_legacy_ids": [],
-      "pilot_evidence": "Approved stage 5 development annotations; active KB only confirms seller ownership of published data",
+      "pilot_evidence": "Approved stage 5 annotations plus project-owner clarification that extra photos are the seller's right rather than an obligation; contractual publication boundary remains unresolved",
       "questions_for_expert": [
-        "Является ли предоставление дополнительных фотографий правом продавца или его обязанностью?",
+        "Можно ли закрепить в публичной БЗ уточнение владельца проекта, что дополнительные фотографии являются правом, а не обязанностью продавца?",
         "На каком этапе и по какому каналу покупатель может запросить дополнительные фото или характеристики?",
         "Обязан ли продавец указывать коммерческий утиль, объём двигателя и известные повреждения?",
         "Как действовать, если опубликованные фотографии не отражают фактическое состояние лота?"
       ],
       "safe_fallback_scenario_id": "lot.card_information",
       "publication_blockers": [
-        "seller_photo_obligation",
+        "seller_photo_rule_publication_source",
         "request_channel_and_stage",
         "mandatory_vehicle_fields",
         "condition_discrepancy_procedure"
@@ -208,26 +183,25 @@
       "expert_role": "MIGTORG seller and legal support"
     },
     {
-      "candidate_id": "review.support.phone_channels",
-      "proposed_scenario_id": "support.phone_channels",
-      "title": "Телефонные каналы для специальных обращений",
+      "candidate_id": "review.support.missed_outbound_callback",
+      "proposed_scenario_id": "support.missed_outbound_callback",
+      "title": "Повторный звонок после пропущенного исходящего вызова",
       "status": "expert_review_required",
       "risk": "operational",
-      "support_conversations": 2,
+      "support_conversations": 4,
       "approved_legacy_ids": [],
-      "pilot_evidence": "Approved stage 5 development annotations mention a phone number not present in the canonical KB",
+      "pilot_evidence": "Shared labeling chat repeatedly proposes a guaranteed repeat call, while active policy forbids promising callbacks on request",
       "questions_for_expert": [
-        "Является ли номер +7 (495) 649-91-99 актуальным публичным номером MIGTORG?",
-        "Для каких обращений его можно публиковать: визит в офис, государственные органы или общая поддержка?",
-        "Каковы часы работы и какие данные нужно подготовить перед звонком?",
-        "Можно ли обещать обратный звонок сотрудника после телефонного обращения?"
+        "Можно ли обещать повторный звонок, только если первый исходящий вызов MIGTORG подтверждён в системе?",
+        "Как отличить пропущенный исходящий вызов от обычной просьбы пользователя перезвонить?",
+        "Есть ли срок повторной попытки и кто отвечает за неё?",
+        "Нужно ли параллельно уточнять тему и предлагать письменное решение в чат-боте?"
       ],
       "safe_fallback_scenario_id": "support.callback",
       "publication_blockers": [
-        "phone_ownership_and_currency",
-        "public_scope",
-        "working_hours",
-        "callback_policy"
+        "confirmed_outbound_call_signal",
+        "callback_promise_boundary",
+        "callback_sla_and_owner"
       ],
       "owner": "MIGTORG knowledge base owner",
       "expert_role": "MIGTORG support operations"

@@ -23,10 +23,10 @@ def test_master_is_complete_and_human_readable_sections_are_in_sync() -> None:
 
     assert result["valid"] is True
     assert result["errors"] == []
-    assert result["metrics"]["scenario_count"] == 141
-    assert result["metrics"]["fact_count"] == 574
+    assert result["metrics"]["scenario_count"] == 142
+    assert result["metrics"]["fact_count"] == 585
     assert result["metrics"]["knowledge_gap_count"] == 3
-    assert result["metrics"]["expert_review_candidate_count"] == 9
+    assert result["metrics"]["expert_review_candidate_count"] == 8
     assert MASTER_PATH.read_text(encoding="utf-8") == render_master(source, gaps, review_queue)
 
 
@@ -49,5 +49,5 @@ def test_master_exposes_known_content_and_provenance_gaps() -> None:
     assert "обязательный provenance gap" in text
     assert "evidence_path" in text
     assert "evidence_sha256" in text
-    assert len(review_queue["records"]) == 9
-    assert "Просроченных повторных проверок на 2026-09-01: 62" in text
+    assert len(review_queue["records"]) == 8
+    assert "Просроченных повторных проверок на 2026-09-01: 60" in text
