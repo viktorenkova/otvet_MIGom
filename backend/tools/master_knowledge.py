@@ -15,7 +15,7 @@ DEFAULT_MASTER = ROOT / "knowledge/MASTER_KNOWLEDGE.md"
 DEFAULT_V2 = ROOT / "knowledge/v2/scenarios.json"
 DEFAULT_V3 = ROOT / "knowledge/v3_1/scenarios.json"
 DEFAULT_REVIEW_QUEUE = ROOT / "knowledge/v2/review_queue.json"
-MASTER_AUDIT_DATE = date(2026, 8, 24)
+MASTER_AUDIT_DATE = date(2026, 9, 1)
 V2_BEGIN = "<!-- MASTER_CANONICAL_V2_BEGIN -->"
 V2_END = "<!-- MASTER_CANONICAL_V2_END -->"
 GAPS_BEGIN = "<!-- MASTER_KNOWLEDGE_GAPS_BEGIN -->"
@@ -425,8 +425,8 @@ def validate_master(path: Path = DEFAULT_MASTER, published_v2: Path = DEFAULT_V2
         errors.append("scenario IDs are missing or duplicated")
     if len(gaps) != 3:
         errors.append(f"expected 3 knowledge gaps, got {len(gaps)}")
-    if len(review_records) != 5:
-        errors.append(f"expected 5 expert-review candidates, got {len(review_records)}")
+    if len(review_records) != 9:
+        errors.append(f"expected 9 expert-review candidates, got {len(review_records)}")
     gap_ids = [str(item.get("gap_id") or "") for item in gaps]
     if len(gap_ids) != len(set(gap_ids)) or any(not item for item in gap_ids):
         errors.append("knowledge gap IDs are missing or duplicated")

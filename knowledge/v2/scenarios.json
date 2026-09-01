@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "version": "2026.08.12.26",
+  "version": "2026.09.01.1",
   "publication_policy": "manual_review_only",
   "records": [
     {
@@ -21,8 +21,8 @@
       "detailed_answer": "Затем найдите активный лот, изучите описание, документы и условия, укажите сумму ставки и подтвердите её. После завершения торгов проверьте результат в личном кабинете; передачу выигранного лота отдельно подтверждает продавец.",
       "next_step": "Если аккаунта ещё нет, начните с регистрации; если аккаунт уже есть — перейдите к выбору тарифа или лота.",
       "actions": [
-        {"id": "buyer.register", "type": "navigate", "label": "Регистрация", "payload": {"url": "https://migtorg.com/auth/sign-up"}},
-        {"id": "buyer.tariff", "type": "clarify", "label": "Выбрать тариф", "scenario_id": "tariff.choose"}
+        {"id": "buyer.register","type": "navigate","label": "Регистрация","payload": {"url": "https://migtorg.com/auth/sign-up"}},
+        {"id": "buyer.tariff","type": "clarify","label": "Выбрать тариф","scenario_id": "tariff.choose"}
       ],
       "escalation": {"when": [], "required_fields": []},
       "source": "approved MIGTORG knowledge base",
@@ -50,8 +50,8 @@
       "detailed_answer": "Для первого размещения понадобятся категория, описание, фотографии, подтверждающие документы и контакт ответственного лица. Условия публикации сотрудник проверяет по конкретному типу имущества.",
       "next_step": "Оставьте обращение с категорией имущества и контактом — поддержка подскажет порядок подключения.",
       "actions": [
-        {"id": "seller.registration", "type": "navigate", "label": "Регистрация продавца", "payload": {"url": "https://migtorg.com/auth/sign-up"}},
-        {"id": "seller.connect.ticket", "type": "open_ticket", "label": "Подключиться как продавец", "requires_confirmation": true}
+        {"id": "seller.registration","type": "navigate","label": "Регистрация продавца","payload": {"url": "https://migtorg.com/auth/sign-up"}},
+        {"id": "seller.connect.ticket","type": "open_ticket","label": "Подключиться как продавец","requires_confirmation": true}
       ],
       "escalation": {"when": ["first_seller_connection"], "required_fields": ["contact", "asset_category"]},
       "source": "seller offer and approved MIGTORG knowledge base",
@@ -79,8 +79,8 @@
       "detailed_answer": "Подготовьте категорию, описание, фотографии, условия осмотра, оплаты и передачи, а также документы, подтверждающие право распоряжения имуществом. Возможность самостоятельной публикации зависит от предоставленного продавцу доступа.",
       "next_step": "Если продавцовского доступа ещё нет, создайте обращение на подключение; если доступ есть — используйте раздел размещения лотов в кабинете продавца.",
       "actions": [
-        {"id": "seller.publish.connect", "type": "clarify", "label": "Нет доступа продавца", "scenario_id": "seller.get_started"},
-        {"id": "seller.publish.ticket", "type": "open_ticket", "label": "Помощь с первым лотом", "requires_confirmation": true}
+        {"id": "seller.publish.connect","type": "clarify","label": "Нет доступа продавца","scenario_id": "seller.get_started"},
+        {"id": "seller.publish.ticket","type": "open_ticket","label": "Помощь с первым лотом","requires_confirmation": true}
       ],
       "escalation": {"when": ["no_seller_access", "unsupported_category"], "required_fields": ["contact", "asset_category"]},
       "source": "seller offer and approved MIGTORG knowledge base",
@@ -108,8 +108,8 @@
       "detailed_answer": "Проверьте карточку лота и раздел активных ставок, затем обновите страницу. Для точной проверки нужны авторизация и номер лота.",
       "next_step": "Авторизуйтесь и выберите «Проверить ставку» либо создайте обращение с номером лота и временем отправки ставки.",
       "actions": [
-        {"id": "bid.status.fetch", "type": "fetch_status", "label": "Проверить ставку", "payload": {"kind": "bid"}, "requires_auth": true},
-        {"id": "bid.status.ticket", "type": "open_ticket", "label": "Создать обращение", "requires_confirmation": true}
+        {"id": "bid.status.fetch","type": "fetch_status","label": "Проверить ставку","payload": {"kind": "bid"},"requires_auth": true},
+        {"id": "bid.status.ticket","type": "open_ticket","label": "Создать обращение","requires_confirmation": true}
       ],
       "escalation": {"when": ["status_unavailable", "bid_missing"], "required_fields": ["contact", "lot_id", "event_time"]},
       "source": "approved MIGTORG knowledge base",
@@ -137,8 +137,8 @@
       "detailed_answer": "Если торги завершились, но статус не изменился, точное состояние нужно проверить по номеру лота. Платная опция позиции ставки не заменяет проверку статуса торгов.",
       "next_step": "Авторизуйтесь и запросите статус по номеру лота либо создайте обращение.",
       "actions": [
-        {"id": "auction.status.fetch", "type": "fetch_status", "label": "Проверить статус торгов", "payload": {"kind": "auction"}, "requires_auth": true},
-        {"id": "auction.status.ticket", "type": "open_ticket", "label": "Статус не меняется", "requires_confirmation": true}
+        {"id": "auction.status.fetch","type": "fetch_status","label": "Проверить статус торгов","payload": {"kind": "auction"},"requires_auth": true},
+        {"id": "auction.status.ticket","type": "open_ticket","label": "Статус не меняется","requires_confirmation": true}
       ],
       "escalation": {"when": ["status_stale", "status_unavailable"], "required_fields": ["contact", "lot_id"]},
       "source": "approved MIGTORG knowledge base",
@@ -166,8 +166,8 @@
       "detailed_answer": "Проверьте письмо о передаче и почтовую ветку, куда отправлялись реквизиты. Для проверки конкретного документа нужны авторизация и номер лота.",
       "next_step": "Если документа нет, запросите его статус или создайте обращение, указав номер лота и название документа.",
       "actions": [
-        {"id": "contract.status.fetch", "type": "fetch_status", "label": "Проверить документы", "payload": {"kind": "documents"}, "requires_auth": true},
-        {"id": "contract.status.ticket", "type": "open_ticket", "label": "Документы не пришли", "requires_confirmation": true}
+        {"id": "contract.status.fetch","type": "fetch_status","label": "Проверить документы","payload": {"kind": "documents"},"requires_auth": true},
+        {"id": "contract.status.ticket","type": "open_ticket","label": "Документы не пришли","requires_confirmation": true}
       ],
       "escalation": {"when": ["document_missing", "status_unavailable"], "required_fields": ["contact", "lot_id", "document_type"]},
       "source": "approved MIGTORG knowledge base",
@@ -195,7 +195,7 @@
       "detailed_answer": "Поддержка решает вопросы преимущественно по переписке: так сохраняется история и можно проверить документы. Укажите контакт для письменного ответа, кратко опишите ситуацию и добавьте номер лота или платежа, если он относится к вопросу. Связь с конкретным сотрудником по имени не гарантируется.",
       "next_step": "Создайте письменное обращение и укажите данные, необходимые для проверки.",
       "actions": [
-        {"id": "support.open_ticket", "type": "open_ticket", "label": "Создать письменное обращение", "requires_confirmation": true}
+        {"id": "support.open_ticket","type": "open_ticket","label": "Создать письменное обращение","requires_confirmation": true}
       ],
       "escalation": {"when": ["user_requests_employee"], "required_fields": ["contact", "topic"]},
       "source": "approved MIGTORG support policy",
@@ -214,7 +214,7 @@
       "objects": ["support"],
       "operations": ["contact"],
       "states": [],
-      "positive_examples": ["перезвоните мне", "перезвони мне", "пусть со мной свяжется Михаил", "пусть со мной свяжется Алексей", "закажите обратный звонок", "не могу до вас дозвониться", "не дозвониться", "возьмите трубку"],
+      "positive_examples": ["перезвоните мне", "перезвони мне", "пусть со мной свяжется Михаил", "пусть со мной свяжется Алексей", "закажите обратный звонок", "не могу до вас дозвониться", "не дозвониться", "возьмите трубку", "сотрудник обязательно перезвонит", "со мной свяжутся по телефону", "когда мне перезвонит менеджер"],
       "negative_examples": ["продавец не перезвонил", "как получить контакт продавца"],
       "required_context": [],
       "allowed_context": ["page_type", "user_email", "user_phone"],
@@ -223,7 +223,7 @@
       "detailed_answer": "Создайте письменное обращение: укажите email или другой контакт для ответа, кратко опишите вопрос и добавьте номер лота или платежа, если он относится к ситуации. Так сохранится история и сотрудники смогут проверить данные. Связь с конкретным сотрудником по имени не гарантируется.",
       "next_step": "Нажмите «Создать письменное обращение» и заполните форму.",
       "actions": [
-        {"id": "support.callback.ticket", "type": "open_ticket", "label": "Создать письменное обращение", "requires_confirmation": true}
+        {"id": "support.callback.ticket","type": "open_ticket","label": "Создать письменное обращение","requires_confirmation": true}
       ],
       "escalation": {"when": ["written_support_requested"], "required_fields": ["contact", "topic", "description"]},
       "source": "approved MIGTORG support policy",
@@ -251,8 +251,8 @@
       "detailed_answer": "До официального подтверждения не оплачивайте автомобиль самостоятельно. После передачи отдел сопровождения направит дальнейшие инструкции по реквизитам и документам, затем можно будет согласовать оплату и получение.",
       "next_step": "Проверьте статус лота в личном кабинете. Для проверки конкретного лота нужна защищённая авторизация; если статус не меняется или инструкции не пришли, создайте обращение с номером лота.",
       "actions": [
-        {"id": "win.transfer.fetch", "type": "fetch_status", "label": "Проверить передачу", "payload": {"kind": "transfer"}, "requires_auth": true},
-        {"id": "win.next.ticket", "type": "open_ticket", "label": "Нет дальнейших инструкций", "requires_confirmation": true}
+        {"id": "win.transfer.fetch","type": "fetch_status","label": "Проверить передачу","payload": {"kind": "transfer"},"requires_auth": true},
+        {"id": "win.next.ticket","type": "open_ticket","label": "Нет дальнейших инструкций","requires_confirmation": true}
       ],
       "escalation": {"when": ["status_unavailable", "instructions_missing"], "required_fields": ["contact", "lot_id", "description"]},
       "source": "approved MIGTORG knowledge base and reviewed support corpus",
@@ -271,7 +271,7 @@
       "objects": ["account"],
       "operations": ["check"],
       "states": ["blocked"],
-      "positive_examples": ["аккаунт заблокирован", "за что заблокировали аккаунт", "как разблокировать профиль", "не могу войти аккаунт заблокирован", "почему у меня блокировка кабинета", "снимите блокировку аккаунта"],
+      "positive_examples": ["аккаунт заблокирован", "за что заблокировали аккаунт", "как разблокировать профиль", "не могу войти аккаунт заблокирован", "почему у меня блокировка кабинета", "снимите блокировку аккаунта", "разблокируют автоматически после оплаты", "сразу ли снимут блокировку после оплаты"],
       "negative_examples": ["заблокировали ставку", "не могу сделать ставку", "забыл пароль"],
       "required_context": [],
       "allowed_context": ["page_type"],
@@ -280,7 +280,7 @@
       "detailed_answer": "Я не буду предполагать причину или обещать разблокировку. Поддержке нужны контакт для ответа и краткое описание того, что отображается при входе.",
       "next_step": "Создайте обращение на проверку блокировки. Если у вас есть уведомление или текст ошибки, добавьте его без пароля и платёжных реквизитов.",
       "actions": [
-        {"id": "account.blocked.ticket", "type": "open_ticket", "label": "Проверить блокировку", "requires_confirmation": true}
+        {"id": "account.blocked.ticket","type": "open_ticket","label": "Проверить блокировку","requires_confirmation": true}
       ],
       "escalation": {"when": ["account_blocked"], "required_fields": ["contact", "description"]},
       "source": "approved MIGTORG knowledge base and reviewed support corpus",
@@ -307,7 +307,9 @@
       "short_answer": "По шаблону договора ограничение из-за предполагаемого невыкупа относится ко всей платформе и может действовать не более 7 календарных дней.",
       "detailed_answer": "Для обычного расторжения любая сторона направляет уведомление за 30 рабочих дней. При расторжении из-за нарушений по пункту 2.8 обеспечительный платёж признаётся штрафом и не возвращается; без нарушений он возвращается, если не использован для покрытия убытков или штрафа. При неисполнении договорных обязательств не менее 5 рабочих дней администрация вправе заблокировать аккаунт до их исполнения; если неисполнение превысило 10 календарных дней, договор может быть расторгнут в одностороннем порядке, при этом начисленные платежи и неисполненные обязательства сохраняются. После ограничения всей платформы до 7 дней при продолжающемся нарушении может быть принято отдельное решение о расторжении. Ограничение видимости только лотов конкретного продавца применяется отдельно: срок и условия снятия определяет продавец, поэтому детали нужно уточнять у него в ветке переписки по лоту.",
       "next_step": "Для проверки конкретной санкции укажите номер договора, лота и полученное уведомление; не отправляйте пароль или данные банковской карты.",
-      "actions": [{"id": "contract.restriction.ticket", "type": "open_ticket", "label": "Проверить основание ограничения", "requires_confirmation": true}],
+      "actions": [
+        {"id": "contract.restriction.ticket","type": "open_ticket","label": "Проверить основание ограничения","requires_confirmation": true}
+      ],
       "escalation": {"when": ["termination_notice", "seller_specific_visibility", "deadline_conflict", "access_restriction"], "required_fields": ["contact", "description", "lot_id"]},
       "source": "MIGTORG buyer contract template and approved expert questionnaire part 2 ver. 2, reviewed 2026-08-11",
       "reviewed_at": "2026-08-11",
@@ -325,7 +327,7 @@
       "objects": ["support"],
       "operations": ["contact", "check"],
       "states": ["no_response", "waiting"],
-      "positive_examples": ["на мои письма никто не отвечает", "поддержка не отвечает на почту", "на почте тишина", "отправил письмо ответа нет", "менеджер не ответил на письмо", "куда обратиться если поддержка молчит"],
+      "positive_examples": ["на мои письма никто не отвечает", "поддержка не отвечает на почту", "на почте тишина", "отправил письмо ответа нет", "менеджер не ответил на письмо", "куда обратиться если поддержка молчит", "нужно писать с почты аккаунта", "ответить в той же переписке или создать новую", "можно продублировать письмо на info@migtorg.com"],
       "negative_examples": ["не пришел договор", "продавец не отвечает", "как связаться с поддержкой"],
       "required_context": [],
       "allowed_context": ["page_type", "lot_id"],
@@ -334,7 +336,7 @@
       "detailed_answer": "В повторном сообщении кратко укажите тему и номер лота или платежа, если вопрос связан с ними. Не отправляйте пароль, полные платёжные реквизиты или лишние персональные данные.",
       "next_step": "Если ответа по-прежнему нет, создайте обращение в чате — оно будет зарегистрировано отдельно и связано с этой темой.",
       "actions": [
-        {"id": "support.email.ticket", "type": "open_ticket", "label": "Создать письменное обращение", "requires_confirmation": true}
+        {"id": "support.email.ticket","type": "open_ticket","label": "Создать письменное обращение","requires_confirmation": true}
       ],
       "escalation": {"when": ["email_no_response"], "required_fields": ["contact", "topic", "description"]},
       "source": "approved MIGTORG knowledge base and reviewed support corpus",
@@ -362,8 +364,8 @@
       "detailed_answer": "Заранее согласуйте с продавцом или менеджером дату, время и место получения. Не приезжайте без подтверждения доступа на территорию и готовности автомобиля. Точный список документов уточняется по конкретной сделке.",
       "next_step": "Проверьте статус выдачи по номеру лота. Если лот оплачен, но данных для получения нет, создайте обращение.",
       "actions": [
-        {"id": "pickup.status.fetch", "type": "fetch_status", "label": "Проверить выдачу", "payload": {"kind": "transfer"}, "requires_auth": true},
-        {"id": "pickup.receive.ticket", "type": "open_ticket", "label": "Нет данных для выдачи", "requires_confirmation": true}
+        {"id": "pickup.status.fetch","type": "fetch_status","label": "Проверить выдачу","payload": {"kind": "transfer"},"requires_auth": true},
+        {"id": "pickup.receive.ticket","type": "open_ticket","label": "Нет данных для выдачи","requires_confirmation": true}
       ],
       "escalation": {"when": ["pickup_not_scheduled", "status_unavailable"], "required_fields": ["contact", "lot_id", "description"]},
       "source": "approved MIGTORG knowledge base and reviewed support corpus",
@@ -391,8 +393,8 @@
       "detailed_answer": "Система учитывает правила и шаг конкретных торгов. После ввода суммы нажмите кнопку создания ставки и подтвердите действие. Перед подтверждением ещё раз проверьте сумму и условия лота: ставка означает готовность выполнить обязательства при победе и подтверждении передачи продавцом.",
       "next_step": "Если кнопка недоступна, проверьте авторизацию и активность тарифа. Если ставка отправлена, но не появилась, перейдите к сценарию проверки ставки.",
       "actions": [
-        {"id": "bid.place.missing", "type": "clarify", "label": "Ставка не появилась", "scenario_id": "bid.not_visible"},
-        {"id": "bid.place.ticket", "type": "open_ticket", "label": "Не получается сделать ставку", "requires_confirmation": true}
+        {"id": "bid.place.missing","type": "clarify","label": "Ставка не появилась","scenario_id": "bid.not_visible"},
+        {"id": "bid.place.ticket","type": "open_ticket","label": "Не получается сделать ставку","requires_confirmation": true}
       ],
       "escalation": {"when": ["bid_button_unavailable", "bid_error"], "required_fields": ["contact", "lot_id", "description", "screenshot_or_error_details"]},
       "source": "approved MIGTORG knowledge base and reviewed support corpus",
@@ -420,7 +422,7 @@
       "detailed_answer": "Получив контакты сопровождения, согласуйте дату, время и место с продавцом и приезжайте только после подтверждения. На осмотр может приехать покупатель или его представитель. Возьмите документ, удостоверяющий личность, и номер лота. Сравните состояние, комплектность, документы и VIN с карточкой лота; спорные расхождения зафиксируйте на фото или видео. Если в разделе «Переданные лоты» есть кнопка «Заказать осмотр авто», запрос уйдёт стороннему специалисту, а стоимость будет рассчитана индивидуально.",
       "next_step": "Если передача подтверждена, но осмотр согласовать не удаётся, создайте обращение с номером лота и описанием проблемы.",
       "actions": [
-        {"id": "inspection.arrange.ticket", "type": "open_ticket", "label": "Не удаётся согласовать осмотр", "requires_confirmation": true}
+        {"id": "inspection.arrange.ticket","type": "open_ticket","label": "Не удаётся согласовать осмотр","requires_confirmation": true}
       ],
       "escalation": {"when": ["inspection_access_problem", "seller_unavailable"], "required_fields": ["contact", "lot_id", "description"]},
       "source": "approved MIGTORG knowledge base and reviewed support corpus",
@@ -448,7 +450,7 @@
       "detailed_answer": "Убедитесь, что телефон или email введены без ошибки, затем запросите код или письмо повторно. Если доступ связан со старым контактом, потребуется обращение и проверка владельца аккаунта. Не передавайте боту пароль или код подтверждения.",
       "next_step": "Если восстановление не помогло, создайте обращение и приложите текст или скриншот ошибки без секретных данных.",
       "actions": [
-        {"id": "account.login.ticket", "type": "open_ticket", "label": "Восстановление не помогло", "requires_confirmation": true}
+        {"id": "account.login.ticket","type": "open_ticket","label": "Восстановление не помогло","requires_confirmation": true}
       ],
       "escalation": {"when": ["recovery_failed", "old_contact"], "required_fields": ["contact", "description", "screenshot_or_error_details"]},
       "source": "approved MIGTORG knowledge base and reviewed support corpus",
@@ -476,7 +478,7 @@
       "detailed_answer": "Если проблема сохраняется, сделайте скриншот без персональных и платёжных данных. Запишите, какое действие вызвало ошибку, примерное время, браузер, устройство и номер лота, если проблема относится к его карточке.",
       "next_step": "Создайте техническое обращение с собранными данными — так специалист сможет воспроизвести проблему.",
       "actions": [
-        {"id": "technical.site.ticket", "type": "open_ticket", "label": "Сообщить об ошибке", "requires_confirmation": true}
+        {"id": "technical.site.ticket","type": "open_ticket","label": "Сообщить об ошибке","requires_confirmation": true}
       ],
       "escalation": {"when": ["error_repeats", "page_unavailable"], "required_fields": ["contact", "description", "event_time", "browser_device", "screenshot_or_error_details"]},
       "source": "approved MIGTORG knowledge base and reviewed support corpus",
@@ -504,8 +506,8 @@
       "detailed_answer": "Пополнение баланса само по себе не подключает тариф: после пополнения нужно выбрать подходящий вариант в разделе «Тарифы» и завершить его оплату и активацию. При оформлении платного договора физическое лицо предоставляет паспортные данные и подписывает договор покупателя; ИП или организация направляет реквизиты и получает договор на оформление. Документы передавайте только по официальному каналу MIGTORG, не в открытом чате.",
       "next_step": "После оплаты проверьте статус тарифа в кабинете; если доступ не появился, создайте обращение по платежу.",
       "actions": [
-        {"id": "tariff.status.fetch", "type": "fetch_status", "label": "Проверить тариф", "payload": {"kind": "tariff"}, "requires_auth": true},
-        {"id": "tariff.problem.ticket", "type": "open_ticket", "label": "Оплатил, доступа нет", "requires_confirmation": true}
+        {"id": "tariff.status.fetch","type": "fetch_status","label": "Проверить тариф","payload": {"kind": "tariff"},"requires_auth": true},
+        {"id": "tariff.problem.ticket","type": "open_ticket","label": "Оплатил, доступа нет","requires_confirmation": true}
       ],
       "escalation": {"when": ["paid_not_active"], "required_fields": ["contact", "payment_details"]},
       "source": "MIGTORG expert interviews and approved knowledge base, reviewed 2026-08-12",
@@ -532,7 +534,9 @@
       "short_answer": "Тариф, баланс, комиссия площадки и стоимость лота оплачиваются по-разному.",
       "detailed_answer": "Баланс пополняется в личном кабинете с карты через платёжную систему с комиссией 2,5% либо через СБП с комиссией 1%; варианта пополнения кошелька без комиссии сейчас нет. Разовый тариф оплачивается онлайн; для Премиума можно также запросить счёт через info@migtorg.com. Бот не выдаёт и не обещает QR-код: используйте способы, доступные в кабинете, либо официальный счёт. Комиссию площадки после передачи оплачивают с баланса кнопкой «Оплатить» или по скачанному счёту. Сам лот оплачивается продавцу отдельно, безналично, по счёту или договору из почтовой ветки сделки. Наличные в офисе не принимаются.",
       "next_step": "Перед оплатой выберите нужную операцию в кабинете и проверьте назначение платежа; по лоту используйте только актуальный документ продавца.",
-      "actions": [{"id": "payment.methods.ticket", "type": "open_ticket", "label": "Уточнить способ оплаты", "requires_confirmation": true}],
+      "actions": [
+        {"id": "payment.methods.ticket","type": "open_ticket","label": "Уточнить способ оплаты","requires_confirmation": true}
+      ],
       "escalation": {"when": ["payment_method_unclear", "invoice_needed"], "required_fields": ["contact", "payment_kind", "description"]},
       "source": "MIGTORG project expert interview, question groups 1-3, 2026-08-11",
       "reviewed_at": "2026-08-11",
@@ -558,7 +562,9 @@
       "short_answer": "Не платите повторно: сначала проверьте раздел «Финансы» и подтверждение перевода в своём банке.",
       "detailed_answer": "Если операции в истории нет, направьте на info@migtorg.com контакт аккаунта, дату, сумму и способ оплаты, а также чек или платёжное поручение. Универсальный гарантированный срок зачисления не установлен, поэтому задержку проверяют по документам. Не отправляйте пароль, полный номер карты, CVC/CVV или код из SMS.",
       "next_step": "Нажмите «Создать обращение» для проверки платежа или направьте документы на info@migtorg.com; администрация передаст их на финансовую проверку.",
-      "actions": [{"id": "payment.not_visible.ticket", "type": "open_ticket", "label": "Проверить платёж", "requires_confirmation": true}],
+      "actions": [
+        {"id": "payment.not_visible.ticket","type": "open_ticket","label": "Проверить платёж","requires_confirmation": true}
+      ],
       "escalation": {"when": ["payment_missing", "credit_not_confirmed"], "required_fields": ["contact", "payment_details", "proof_of_payment"]},
       "source": "MIGTORG project expert interview, question groups 1-3, 2026-08-11",
       "reviewed_at": "2026-08-11",
@@ -584,7 +590,9 @@
       "short_answer": "Комиссия MIGTORG за сопровождение сделки включена в вашу победную ставку и не добавляется сверху.",
       "detailed_answer": "Сейчас действуют два вида комиссий: комиссия платёжной системы при пополнении баланса и комиссия MIGTORG за переданный лот; иных комиссий нет. Часть победной ставки перечисляется продавцу как стоимость лота, а комиссия площадки оплачивается MIGTORG отдельно. Единого процента для всех продавцов и лотов нет. Точную сумму смотрите после передачи в разделе «Переданные лоты» и в выставленном счёте.",
       "next_step": "Если сумма не совпадает с документами по вашему лоту, создайте финансовое обращение и приложите счёт.",
-      "actions": [{"id": "commission.explained.ticket", "type": "open_ticket", "label": "Проверить комиссию", "requires_confirmation": true}],
+      "actions": [
+        {"id": "commission.explained.ticket","type": "open_ticket","label": "Проверить комиссию","requires_confirmation": true}
+      ],
       "escalation": {"when": ["commission_amount_disputed", "invoice_mismatch"], "required_fields": ["contact", "lot_id", "invoice"]},
       "source": "MIGTORG project expert interview and approved expert questionnaire part 2 ver. 2, 2026-08-11",
       "reviewed_at": "2026-08-11",
@@ -636,7 +644,9 @@
       "short_answer": "Комиссию нужно оплатить после передачи лота; при неисполнении обязательства не менее 5 рабочих дней администрация вправе заблокировать аккаунт до оплаты.",
       "detailed_answer": "При просрочке не менее 5 рабочих дней аккаунт может быть заблокирован до исполнения обязательства. После оплаты комиссии в личном кабинете доступ восстанавливается автоматически. Если платили по отдельному счёту, направьте платёжное поручение на info@migtorg.com — доступ откроют после подтверждения. Если неисполнение превысило 10 календарных дней, договор может быть расторгнут в одностороннем порядке; начисленные платежи и остальные обязательства сохраняются.",
       "next_step": "Проверьте таймер в «Переданных лотах». Если комиссия оплачена, но блокировка осталась, создайте обращение с платёжным поручением.",
-      "actions": [{"id": "commission.unpaid.ticket", "type": "open_ticket", "label": "Проверить оплату и блокировку", "requires_confirmation": true}],
+      "actions": [
+        {"id": "commission.unpaid.ticket","type": "open_ticket","label": "Проверить оплату и блокировку","requires_confirmation": true}
+      ],
       "escalation": {"when": ["commission_paid_but_blocked", "timer_dispute"], "required_fields": ["contact", "lot_id", "proof_of_payment"]},
       "source": "MIGTORG project expert interviews, reviewed 2026-08-12",
       "reviewed_at": "2026-08-12",
@@ -662,7 +672,9 @@
       "short_answer": "Оплачивать автомобиль можно только после статуса «Передан» и получения официальных документов по сделке.",
       "detailed_answer": "При статусах «Выигран» или «Ожидает подтверждения» платить не нужно. После решения продавца лот появляется в разделе «Переданные лоты», а покупателю приходят SMS и письмо. Затем площадка запрашивает данные плательщика, а продавец готовит счёт и договор.",
       "next_step": "Дождитесь письма о передаче и продолжайте действия в указанной почтовой ветке.",
-      "actions": [{"id": "lot.payment.start.ticket", "type": "open_ticket", "label": "Нет письма после передачи", "requires_confirmation": true}],
+      "actions": [
+        {"id": "lot.payment.start.ticket","type": "open_ticket","label": "Нет письма после передачи","requires_confirmation": true}
+      ],
       "escalation": {"when": ["transferred_but_instructions_missing"], "required_fields": ["contact", "lot_id", "description"]},
       "source": "MIGTORG project expert interview, question groups 1-3, 2026-08-11",
       "reviewed_at": "2026-08-11",
@@ -688,7 +700,9 @@
       "short_answer": "Счёт и реквизиты для оплаты самого лота направляет продавец в почтовой ветке сделки с info@migtorg.com в копии.",
       "detailed_answer": "До подготовки документов площадка уточняет плательщика: это можете быть вы, другое физическое лицо, ИП или организация. Стоимость лота оплачивается продавцу безналично по актуальному счёту или договору, не наличными и не с баланса MIGTORG. После перевода направьте платёжное поручение продавцу, оставив info@migtorg.com в копии. Оплату подтверждает продавец. Зелёный статус «Оплачен» в кабинете относится только к комиссии площадки и не подтверждает оплату автомобиля.",
       "next_step": "Не оплачивайте реквизиты из другой почтовой ветки или с похожего адреса; запросите проверку через info@migtorg.com.",
-      "actions": [{"id": "lot.payment.details.ticket", "type": "open_ticket", "label": "Проверить счёт или оплату", "requires_confirmation": true}],
+      "actions": [
+        {"id": "lot.payment.details.ticket","type": "open_ticket","label": "Проверить счёт или оплату","requires_confirmation": true}
+      ],
       "escalation": {"when": ["invoice_suspicious", "seller_not_confirmed", "payer_change"], "required_fields": ["contact", "lot_id", "description"]},
       "source": "MIGTORG project expert interview, question groups 1-3, 2026-08-11",
       "reviewed_at": "2026-08-11",
@@ -714,7 +728,9 @@
       "short_answer": "Срок оплаты самого лота смотрите в карточке, счёте и договоре конкретной сделки — универсальный срок не применяется как обещание.",
       "detailed_answer": "Если срок нарушен и покупатель не выходит на связь, продавец может отменить сделку, повторно выставить лот и обратиться к площадке по вопросу ограничения доступа. Сам продавец не ограничивает доступ автоматически. В шаблоне договора нет отдельного режима скрытия только лотов конкретного продавца; предусмотрено ограничение использования всей платформы не более чем на 7 календарных дней при разумном предположении о невыкупе. Если возник форс-мажор, заранее сообщите площадке и продавцу и письменно подтвердите намерение выполнить обязательства; решение принимается индивидуально.",
       "next_step": "Ответьте в той же почтовой ветке сделки и укажите номер лота, причину задержки и реальный срок исполнения.",
-      "actions": [{"id": "lot.payment.overdue.ticket", "type": "open_ticket", "label": "Сообщить о задержке", "requires_confirmation": true}],
+      "actions": [
+        {"id": "lot.payment.overdue.ticket","type": "open_ticket","label": "Сообщить о задержке","requires_confirmation": true}
+      ],
       "escalation": {"when": ["payment_deadline_risk", "force_majeure", "seller_cancellation"], "required_fields": ["contact", "lot_id", "description", "expected_payment_date"]},
       "source": "MIGTORG project expert interview, question groups 1-3, and buyer contract template clause 2.9, reviewed 2026-08-11",
       "reviewed_at": "2026-08-11",
@@ -758,7 +774,7 @@
       "objects": ["refund", "balance", "deposit", "tariff", "commission"],
       "operations": ["refund", "check"],
       "states": [],
-      "positive_examples": ["какие деньги можно вернуть", "что можно вернуть с баланса", "можно вывести остаток баланса", "можно вернуть ошибочное пополнение", "возвращается ли депозит премиум", "что возвращается из премиум тарифа", "вернут комиссию если сделка не состоялась", "возвращается ли оплата узнать позицию ставки", "можно вернуть 1200 за позицию ставки", "можно вернуть разовый тариф"],
+      "positive_examples": ["какие деньги можно вернуть", "что можно вернуть с баланса", "можно вывести остаток баланса", "можно вернуть ошибочное пополнение", "возвращается ли депозит премиум", "что возвращается из премиум тарифа", "вернут комиссию если сделка не состоялась", "возвращается ли оплата узнать позицию ставки", "можно вернуть 1200 за позицию ставки", "можно вернуть разовый тариф", "можно сделать взаимозачёт", "зачесть возврат в счёт другого платежа"],
       "negative_examples": ["когда придет возврат", "куда отправить заявление на возврат", "почему отказали в возврате"],
       "required_context": [],
       "allowed_context": ["page_type", "lot_id"],
@@ -792,7 +808,9 @@
       "short_answer": "Возврат оформляется заявлением или через предусмотренную кнопку в личном кабинете; одного сообщения в чате недостаточно.",
       "detailed_answer": "Для Премиум-аккаунта подготовьте подписанное заявление: номер договора, данные владельца аккаунта и банковские реквизиты плательщика. По комиссии за несостоявшийся лот напишите в той же почтовой ветке на info@migtorg.com, укажите номер лота, сумму и способ оплаты. По Разовому тарифу используйте кнопку возврата в личном кабинете — операцию всё равно проверяет сотрудник.",
       "next_step": "Подготовьте данные платежа без полного номера карты, CVC/CVV, пароля и кода из SMS.",
-      "actions": [{"id": "refund.application.ticket", "type": "open_ticket", "label": "Подготовить запрос на возврат", "requires_confirmation": true}],
+      "actions": [
+        {"id": "refund.application.ticket","type": "open_ticket","label": "Подготовить запрос на возврат","requires_confirmation": true}
+      ],
       "escalation": {"when": ["refund_application", "premium_termination", "commission_refund"], "required_fields": ["contact", "payment_type", "amount", "payment_date", "proof_of_payment"]},
       "source": "MIGTORG project expert interview, part 2, 2026-08-11",
       "reviewed_at": "2026-08-11",
@@ -844,7 +862,9 @@
       "short_answer": "Возврат обеспечительного платежа по Премиум-договору занимает до 15 дней после получения подписанного заявления.",
       "detailed_answer": "Для Разового тарифа единого гарантированного срока нет: после проверки сотрудником возврат обычно проходит быстро, но итоговое зачисление зависит от банка и платёжной системы. Отдельное универсальное уведомление площадка не отправляет — проверьте поступление в мобильном банке или статус операции в личном кабинете.",
       "next_step": "Если установленный или обещанный срок прошёл, повторно направьте дату, сумму, способ оплаты и подтверждение первоначального платежа.",
-      "actions": [{"id": "refund.timing.ticket", "type": "open_ticket", "label": "Проверить возврат", "requires_confirmation": true}],
+      "actions": [
+        {"id": "refund.timing.ticket","type": "open_ticket","label": "Проверить возврат","requires_confirmation": true}
+      ],
       "escalation": {"when": ["refund_overdue", "refund_status_unknown"], "required_fields": ["contact", "payment_type", "amount", "payment_date", "proof_of_payment"]},
       "source": "MIGTORG project expert interview, part 2, 2026-08-11",
       "reviewed_at": "2026-08-11",
@@ -870,7 +890,9 @@
       "short_answer": "Возврат может быть недоступен из-за открытых обязательств, задолженности, штрафа, уже оказанной невозвратной услуги или ранее выполненного возврата.",
       "detailed_answer": "Все операции проверяет администрация аукциона. Если аккаунт заблокирован за невыполненные обязательства, средства остаются недоступны к выводу до урегулирования ситуации. Также не возвращаются невозвратная часть тарифа, уже оказанные услуги и суммы, которые были возвращены ранее, в том числе повторно из-за технической ошибки.",
       "next_step": "Запросите проверку конкретной операции и перечень обязательств, которые нужно закрыть; укажите дату, сумму и способ платежа.",
-      "actions": [{"id": "refund.denied.ticket", "type": "open_ticket", "label": "Проверить отказ в возврате", "requires_confirmation": true}],
+      "actions": [
+        {"id": "refund.denied.ticket","type": "open_ticket","label": "Проверить отказ в возврате","requires_confirmation": true}
+      ],
       "escalation": {"when": ["refund_denied", "blocked_balance", "duplicate_refund"], "required_fields": ["contact", "payment_type", "amount", "payment_date", "description"]},
       "source": "MIGTORG project expert interview, part 2, 2026-08-11",
       "reviewed_at": "2026-08-11",
@@ -896,7 +918,9 @@
       "short_answer": "Основание, сумма, номер лота и документ указаны в счёте; стандартной процедуры отмены штрафа нет, а спорные обстоятельства проверяются индивидуально.",
       "detailed_answer": "Бот не рассчитывает и не публикует размер штрафа: проверьте счёт и условия вашего договора. Штраф можно оплатить безналично с баланса в личном кабинете или по официальному счёту. Если вы не согласны с начислением, направьте на info@migtorg.com номер лота, счёт, описание обстоятельств и подтверждающие материалы. До урегулирования может быть ограничен весь функционал платформы. После оплаты по счёту отправьте платёжное поручение на тот же адрес для ручного подтверждения и восстановления доступа.",
       "next_step": "Проверьте реквизиты начисления в счёте и направьте обращение или подтверждение оплаты на info@migtorg.com.",
-      "actions": [{"id": "penalty.review.ticket", "type": "open_ticket", "label": "Передать вопрос по штрафу", "requires_confirmation": true}],
+      "actions": [
+        {"id": "penalty.review.ticket","type": "open_ticket","label": "Передать вопрос по штрафу","requires_confirmation": true}
+      ],
       "escalation": {"when": ["penalty_disputed", "penalty_paid_but_blocked", "invoice_details_missing"], "required_fields": ["contact", "lot_id", "description", "invoice_or_proof"]},
       "source": "MIGTORG project expert interview, final questions, 2026-08-12",
       "reviewed_at": "2026-08-12",
@@ -922,7 +946,9 @@
       "short_answer": "Для демо достаточно телефона и email; для платного договора физлицу нужны паспортные данные и подпись, а ИП или организации — реквизиты и оформленный договор.",
       "detailed_answer": "Передавайте документы только по официальному каналу MIGTORG, указанному при оформлении, а не в открытом чате. Не отправляйте сканы паспорта, пароль, коды подтверждения или полные платёжные реквизиты в чат с ботом.",
       "next_step": "Выберите тариф в личном кабинете и следуйте полученной инструкции по оформлению договора.",
-      "actions": [{"id": "account.identification.ticket", "type": "open_ticket", "label": "Уточнить документы", "requires_confirmation": true}],
+      "actions": [
+        {"id": "account.identification.ticket","type": "open_ticket","label": "Уточнить документы","requires_confirmation": true}
+      ],
       "escalation": {"when": ["payer_differs_from_account", "organization_representative", "document_channel_unclear"], "required_fields": ["contact", "account_type", "description"]},
       "source": "MIGTORG project expert interview, final questions, 2026-08-12",
       "reviewed_at": "2026-08-12",
@@ -948,7 +974,9 @@
       "short_answer": "После подписания ДКП автомобиль нужно зарегистрировать на нового владельца в течение 10 дней.",
       "detailed_answer": "Не откладывайте регистрацию: прежний собственник может прекратить её, что создаст дополнительный спор. Если ГИБДД отказывает из-за неснятого ограничения, обременения или другого препятствия, сохраните документы об отказе, сразу напишите продавцу в ветке по лоту и добавьте info@migtorg.com в копию.",
       "next_step": "При проблеме с регистрацией приложите документ ГИБДД, номер лота и описание препятствия.",
-      "actions": [{"id": "vehicle.registration.ticket", "type": "open_ticket", "label": "Проблема с регистрацией", "requires_confirmation": true}],
+      "actions": [
+        {"id": "vehicle.registration.ticket","type": "open_ticket","label": "Проблема с регистрацией","requires_confirmation": true}
+      ],
       "escalation": {"when": ["registration_impossible", "encumbrance_not_removed", "seller_terminated_registration"], "required_fields": ["contact", "lot_id", "description", "documents"]},
       "source": "MIGTORG project expert interview, final questions, 2026-08-12",
       "reviewed_at": "2026-08-12",
@@ -974,7 +1002,9 @@
       "short_answer": "Единая дата начисления и срок действия кэшбэка не установлены в опубликованных правилах; их нужно проверить по вашему аккаунту и отчётному месяцу.",
       "detailed_answer": "Подтверждённая механика рейтинга и размер возврата сохраняются, но конкретную дату зачисления, статус начисления и возможный срок использования сообщает администрация после проверки. Продавец эти параметры не определяет.",
       "next_step": "Создайте обращение в MIGTORG и укажите email аккаунта, отчётный месяц и ожидаемую сумму кэшбэка.",
-      "actions": [{"id": "loyalty.details.ticket", "type": "open_ticket", "label": "Проверить кэшбэк", "requires_confirmation": true}],
+      "actions": [
+        {"id": "loyalty.details.ticket","type": "open_ticket","label": "Проверить кэшбэк","requires_confirmation": true}
+      ],
       "escalation": {"when": ["cashback_date_question", "cashback_expiry_question", "cashback_not_credited"], "required_fields": ["contact", "reporting_period", "expected_amount", "description"]},
       "source": "MIGTORG project owner instruction for safe fallback answers, 2026-08-12",
       "reviewed_at": "2026-08-12",
@@ -1000,7 +1030,9 @@
       "short_answer": "По этому вопросу нет универсального правила: нужно проверить версию вашего договора, документ и конкретное обязательство.",
       "detailed_answer": "Если спор относится к документам или срокам конкретного лота, продолжите переписку с продавцом в действующей ветке и добавьте info@migtorg.com в копию. Если речь об ограничении аккаунта, оплате услуг или правиле платформы, решение уточняет администрация MIGTORG.",
       "next_step": "Создайте обращение и приложите номер договора или лота, спорный пункт, счёт либо уведомление и кратко опишите расхождение.",
-      "actions": [{"id": "contract.details.ticket", "type": "open_ticket", "label": "Проверить условие договора", "requires_confirmation": true}],
+      "actions": [
+        {"id": "contract.details.ticket","type": "open_ticket","label": "Проверить условие договора","requires_confirmation": true}
+      ],
       "escalation": {"when": ["contract_reference_conflict", "unconfirmed_deadline", "restoration_scope_unclear"], "required_fields": ["contact", "description", "contract_or_lot_id", "document"]},
       "source": "MIGTORG project owner instruction for safe fallback answers, 2026-08-12",
       "reviewed_at": "2026-08-12",
@@ -1026,7 +1058,9 @@
       "short_answer": "Для всех этапов сделки нет опубликованного исчерпывающего перечня оснований и последствий, поэтому конкретный случай требует проверки.",
       "detailed_answer": "Если вопрос в том, примет ли продавец отказ по конкретному лоту, направьте ему акт и доказательства в действующей почтовой ветке, добавив info@migtorg.com в копию. Если вопрос касается штрафа, возврата, блокировки или другого последствия на стороне площадки, его проверяет администрация MIGTORG.",
       "next_step": "Можно создать обращение: укажите номер лота, этап сделки, причину отказа, текущий статус и приложите акт, фотографии и переписку, если они есть.",
-      "actions": [{"id": "refusal.details.ticket", "type": "open_ticket", "label": "Проверить ситуацию с отказом", "requires_confirmation": true}],
+      "actions": [
+        {"id": "refusal.details.ticket","type": "open_ticket","label": "Проверить ситуацию с отказом","requires_confirmation": true}
+      ],
       "escalation": {"when": ["unlisted_refusal_reason", "stage_consequence_question", "automatic_consequence_question"], "required_fields": ["contact", "lot_id", "stage", "description", "documents"]},
       "source": "MIGTORG project owner instruction for safe fallback answers, 2026-08-12",
       "reviewed_at": "2026-08-12",
@@ -1052,7 +1086,9 @@
       "short_answer": "Точный срок, формулу и порядок окончательного решения по штрафу нужно проверять по вашему счёту, договору и обстоятельствам лота.",
       "detailed_answer": "Посмотрите основание, сумму, номер лота и документ в счёте. Если спор связан с состоянием или передачей лота, сохраните позицию продавца в текущей ветке переписки. Решение по начислению, оплате и доступу уточняет администрация MIGTORG; бот не подставляет неподтверждённый процент или срок.",
       "next_step": "Создайте обращение и приложите счёт, номер лота, спорный пункт договора, описание обстоятельств и подтверждающие материалы.",
-      "actions": [{"id": "penalty.details.ticket", "type": "open_ticket", "label": "Уточнить условия штрафа", "requires_confirmation": true}],
+      "actions": [
+        {"id": "penalty.details.ticket","type": "open_ticket","label": "Уточнить условия штрафа","requires_confirmation": true}
+      ],
       "escalation": {"when": ["penalty_deadline_question", "penalty_formula_question", "penalty_decision_owner_question"], "required_fields": ["contact", "lot_id", "description", "invoice_or_proof"]},
       "source": "MIGTORG project owner instruction for safe fallback answers, 2026-08-12",
       "reviewed_at": "2026-08-12",
@@ -1078,7 +1114,9 @@
       "short_answer": "Для представителя организации или стороннего плательщика перечень документов определяется индивидуально по роли и операции.",
       "detailed_answer": "Продавец может запросить данные плательщика для документов по конкретному лоту, но требования к аккаунту, договору и полномочиям подтверждает администрация MIGTORG. Не отправляйте паспорт, доверенность или корпоративные документы в открытом чате.",
       "next_step": "Создайте обращение и укажите тип аккаунта, кто является владельцем, плательщиком и стороной договора, а также номер лота, если вопрос относится к сделке.",
-      "actions": [{"id": "account.identification.edge.ticket", "type": "open_ticket", "label": "Уточнить документы", "requires_confirmation": true}],
+      "actions": [
+        {"id": "account.identification.edge.ticket","type": "open_ticket","label": "Уточнить документы","requires_confirmation": true}
+      ],
       "escalation": {"when": ["different_payer", "organization_representative", "authority_documents_question"], "required_fields": ["contact", "account_type", "payer_role", "description"]},
       "source": "MIGTORG project owner instruction for safe fallback answers, 2026-08-12",
       "reviewed_at": "2026-08-12",
@@ -1104,7 +1142,9 @@
       "short_answer": "MIGTORG не устанавливает государственный штраф за просрочку регистрации, поэтому бот не может подтвердить его сумму.",
       "detailed_answer": "Проверьте основание и сумму в официальном постановлении или уведомлении. Если просрочка возникла из-за документов, ограничения или действий по конкретному лоту, напишите продавцу в действующей ветке и добавьте info@migtorg.com в копию; администрация поможет проверить документы сделки, но не заменяет официальный орган.",
       "next_step": "Можно создать обращение в MIGTORG, приложив номер лота, документ о регистрации или отказе и описание проблемы — без паролей и лишних персональных данных.",
-      "actions": [{"id": "vehicle.registration.penalty.ticket", "type": "open_ticket", "label": "Проверить документы по регистрации", "requires_confirmation": true}],
+      "actions": [
+        {"id": "vehicle.registration.penalty.ticket","type": "open_ticket","label": "Проверить документы по регистрации","requires_confirmation": true}
+      ],
       "escalation": {"when": ["registration_penalty_question", "seller_caused_registration_delay"], "required_fields": ["contact", "lot_id", "description", "registration_document"]},
       "source": "MIGTORG project owner instruction for safe fallback answers, 2026-08-12",
       "reviewed_at": "2026-08-12",
@@ -1130,7 +1170,9 @@
       "short_answer": "Персональные решения и внутренние сведения можно сообщить только после проверки сотрудником MIGTORG.",
       "detailed_answer": "Я могу объяснить опубликованное общее правило и собрать контекст, но не вижу внутреннее решение по аккаунту, платежу, спору или владельцу регламента. Для вопроса по конкретному лоту может понадобиться позиция продавца; персональный статус и правила площадки уточняет администрация.",
       "next_step": "Создайте обращение и укажите контакт, тему, номер лота или операции и какой именно ответ требуется подтвердить.",
-      "actions": [{"id": "support.staff.details.ticket", "type": "open_ticket", "label": "Передать сотруднику", "requires_confirmation": true}],
+      "actions": [
+        {"id": "support.staff.details.ticket","type": "open_ticket","label": "Передать сотруднику","requires_confirmation": true}
+      ],
       "escalation": {"when": ["staff_only_information", "internal_owner_question", "personal_decision_question"], "required_fields": ["contact", "description", "reference_id"]},
       "source": "MIGTORG project owner instruction for safe fallback answers, 2026-08-12",
       "reviewed_at": "2026-08-12",
@@ -1156,7 +1198,9 @@
       "short_answer": "Малозначительный недостаток стоимостью устранения менее 10% цены лота сам по себе не подтверждает мотивированный отказ; дубликат ПТС также не является основанием, если регистрация возможна.",
       "detailed_answer": "Отсутствие сведений в карточке нельзя автоматически считать причиной немотивированного отказа. Если фактически обнаружено существенное, непредвиденное и нераскрытое несоответствие, оно может обосновывать отказ. Конкретную ситуацию оценивают по акту, фотографиям и возможности поставить транспортное средство на учёт.",
       "next_step": "Если лот уже передан, подготовьте акт и доказательства и направьте их по утверждённому каналу.",
-      "actions": [{"id": "refusal.invalid.ticket", "type": "open_ticket", "label": "Передать вопрос по отказу", "requires_confirmation": true}],
+      "actions": [
+        {"id": "refusal.invalid.ticket","type": "open_ticket","label": "Передать вопрос по отказу","requires_confirmation": true}
+      ],
       "escalation": {"when": ["refusal_reason_disputed"], "required_fields": ["contact", "lot_id", "description"]},
       "source": "MIGTORG expert interviews, reviewed 2026-08-12",
       "reviewed_at": "2026-08-12",
@@ -1182,7 +1226,9 @@
       "short_answer": "Для мотивированного отказа заполните акт по форме Приложения № 2, подпишите его с обеих сторон и приложите чёткие фотографии каждого несоответствия.",
       "detailed_answer": "В акте перечислите все расхождения с данными продавца. Отдельно зафиксируйте существенное нераскрытое повреждение, отсутствие или замену важного агрегата, неполную комплектность либо обстоятельство, из-за которого автомобиль нельзя поставить на учёт. Если сторона — юридическое лицо и использует печать, акт также заверяется печатью. Фотографии должны ясно показывать каждое несоответствие.",
       "next_step": "Проверьте полноту акта, подписи и фотографии до отправки на info@migtorg.com.",
-      "actions": [{"id": "refusal.evidence.ticket", "type": "open_ticket", "label": "Передать материалы по отказу", "requires_confirmation": true}],
+      "actions": [
+        {"id": "refusal.evidence.ticket","type": "open_ticket","label": "Передать материалы по отказу","requires_confirmation": true}
+      ],
       "escalation": {"when": ["refusal_evidence_ready", "refusal_evidence_disputed"], "required_fields": ["contact", "lot_id", "description", "documents"]},
       "source": "MIGTORG expert interviews, reviewed 2026-08-12",
       "reviewed_at": "2026-08-12",
@@ -1208,7 +1254,9 @@
       "short_answer": "Акт об отказе нужно направить на info@migtorg.com в течение 3 рабочих дней с решения продавца о передаче лота победителю.",
       "detailed_answer": "Если осмотр или документы задерживает продавец, течение трёхдневного срока приостанавливается, а дальнейшие даты согласуются с продавцом по конкретному лоту. Физическому лицу достаточно личной подписи как в паспорте, без печати. Подача через чат или личный кабинет вместо электронной почты не подтверждена: используйте info@migtorg.com.",
       "next_step": "Укажите номер лота, приложите полностью заполненный и подписанный акт и сохраните подтверждение отправки.",
-      "actions": [{"id": "refusal.submission.ticket", "type": "open_ticket", "label": "Проверить подачу отказа", "requires_confirmation": true}],
+      "actions": [
+        {"id": "refusal.submission.ticket","type": "open_ticket","label": "Проверить подачу отказа","requires_confirmation": true}
+      ],
       "escalation": {"when": ["refusal_deadline_dispute", "seller_delay"], "required_fields": ["contact", "lot_id", "description", "documents"]},
       "source": "MIGTORG expert interviews, reviewed 2026-08-12",
       "reviewed_at": "2026-08-12",
@@ -1234,7 +1282,9 @@
       "short_answer": "Решение по мотивированному отказу принимает продавец; срок и условия рассмотрения также определяет продавец.",
       "detailed_answer": "Продавец должен ответить, принят отказ или нет, и объяснить причину — например, что несоответствие уже было показано в материалах торгов. Если вы не согласны, продолжите переписку в существующей ветке и добавьте info@migtorg.com в копию: MIGTORG проверит материалы индивидуально. Бот не обещает срок или положительное решение.",
       "next_step": "Продолжите переписку в действующей ветке по лоту, чтобы сохранить историю и участников сделки.",
-      "actions": [{"id": "refusal.seller.ticket", "type": "open_ticket", "label": "Подготовить обращение продавцу", "requires_confirmation": true}],
+      "actions": [
+        {"id": "refusal.seller.ticket","type": "open_ticket","label": "Подготовить обращение продавцу","requires_confirmation": true}
+      ],
       "escalation": {"when": ["seller_no_response", "refusal_decision_disputed"], "required_fields": ["contact", "lot_id", "description"]},
       "source": "MIGTORG expert interviews, reviewed 2026-08-12",
       "reviewed_at": "2026-08-12",
@@ -1260,7 +1310,9 @@
       "short_answer": "Закрывающие и другие финансовые документы запрашиваются письменно через info@migtorg.com.",
       "detailed_answer": "Укажите, какой документ нужен, к какому платежу или договору он относится либо номер лота, и приложите платёжное поручение или подтверждение оплаты. Администрация проверит данные и передаст запрос на финансовую обработку. По телефону такие документы не выдаются и платежи не подтверждаются.",
       "next_step": "Нажмите «Создать обращение» или направьте запрос на info@migtorg.com, не передавая пароль, коды из SMS, полный номер карты и CVC/CVV.",
-      "actions": [{"id": "payment.documents.ticket", "type": "open_ticket", "label": "Запросить финансовые документы", "requires_confirmation": true}],
+      "actions": [
+        {"id": "payment.documents.ticket","type": "open_ticket","label": "Запросить финансовые документы","requires_confirmation": true}
+      ],
       "escalation": {"when": ["accounting_document_needed", "document_missing"], "required_fields": ["contact", "document_type", "payment_details", "proof_of_payment"]},
       "source": "Approved MIGTORG knowledge base and expert-reviewed payment process",
       "reviewed_at": "2026-08-12",
@@ -1286,7 +1338,10 @@
       "short_answer": "Возвратный депозит — обеспечительный платеж по договору, предназначенный для покрытия возможных обязательств пользователя перед площадкой.",
       "detailed_answer": "Депозит не является стоимостью лота. При расторжении проверяют задолженности, штрафы, незавершенные сделки и другие открытые обязательства. Поэтому бот не может заранее подтвердить окончательную сумму возврата или удержания без проверки договора и аккаунта. Плата за отдельные уже оказанные услуги оценивается отдельно от обеспечительной части.",
       "next_step": "Если нужен возврат, перейдите к заявлению на возврат; если спор касается удержания или штрафа, создайте обращение для проверки договора и операций аккаунта.",
-      "actions": [{"id": "deposit.refund.application", "type": "clarify", "label": "Оформить возврат", "scenario_id": "refund.application"}, {"id": "deposit.review.ticket", "type": "open_ticket", "label": "Проверить депозит", "requires_confirmation": true}],
+      "actions": [
+        {"id": "deposit.refund.application","type": "clarify","label": "Оформить возврат","scenario_id": "refund.application"},
+        {"id": "deposit.review.ticket","type": "open_ticket","label": "Проверить депозит","requires_confirmation": true}
+      ],
       "escalation": {"when": ["deposit_amount_disputed", "deposit_withheld", "open_obligations_unclear"], "required_fields": ["contact", "contract_number", "amount", "description"]},
       "source": "Approved MIGTORG knowledge base and buyer contract conditions",
       "reviewed_at": "2026-08-12",
@@ -1312,7 +1367,9 @@
       "short_answer": "Если покупатель не направил акт отказа и не оплатил имущество в течение 10 рабочих дней с уведомления, продавец может запросить ограничение его доступа.",
       "detailed_answer": "Для решения по конкретной сделке нужны номер лота, дата уведомления о возможности покупки, переписка, подтверждение отсутствия оплаты и сведения об акте отказа. Бот не ограничивает аккаунт автоматически и не подтверждает нарушение без проверки этих данных.",
       "next_step": "Создайте обращение от продавца и приложите документы по передаче и уведомлению покупателя.",
-      "actions": [{"id": "seller.buyer_nonpayment.ticket", "type": "open_ticket", "label": "Сообщить о неоплате", "requires_confirmation": true}],
+      "actions": [
+        {"id": "seller.buyer_nonpayment.ticket","type": "open_ticket","label": "Сообщить о неоплате","requires_confirmation": true}
+      ],
       "escalation": {"when": ["buyer_nonpayment", "buyer_no_response"], "required_fields": ["contact", "lot_id", "notification_date", "documents", "description"]},
       "source": "MIGTORG seller offer reviewed in the legacy knowledge base",
       "reviewed_at": "2026-08-12",
@@ -1338,7 +1395,11 @@
       "short_answer": "Уточните, что именно вы ждёте: зачисление платежа, возврат депозита, возврат комиссии или подтверждение оплаты лота.",
       "detailed_answer": "Для проверки конкретной операции затем понадобятся дата, сумма, способ оплаты, контакт аккаунта и подтверждение платежа. Не отправляйте пароль, коды из SMS, полный номер карты и CVC/CVV.",
       "next_step": "Выберите вид операции — после этого я дам точный порядок действий и предложу обращение только при необходимости.",
-      "actions": [{"id": "finance.status.payment", "type": "clarify", "label": "Оплата и платежи", "scenario_id": "payment.not_visible"}, {"id": "finance.status.refund", "type": "clarify", "label": "Возврат денежных средств", "scenario_id": "refund.eligibility"}, {"id": "finance.status.other", "type": "clarify", "label": "Другая тема", "scenario_id": "support.contact"}],
+      "actions": [
+        {"id": "finance.status.payment","type": "clarify","label": "Оплата и платежи","scenario_id": "payment.not_visible"},
+        {"id": "finance.status.refund","type": "clarify","label": "Возврат денежных средств","scenario_id": "refund.eligibility"},
+        {"id": "finance.status.other","type": "clarify","label": "Другая тема","scenario_id": "support.contact"}
+      ],
       "escalation": {"when": [], "required_fields": []},
       "source": "Approved MIGTORG financial triage rule",
       "reviewed_at": "2026-08-12",
@@ -1364,7 +1425,11 @@
       "short_answer": "Для одной выбранной автомобильной покупки обычно подходит Разовый тариф, для регулярной работы с несколькими лотами — Премиум; раздел «Имущество» доступен без платного автомобильного тарифа.",
       "detailed_answer": "Разовый даёт право участвовать в торгах за один выбранный автомобильный лот. Премиум рассчитан на регулярные ставки и работу с объёмом. Отдельный обеспечительный платёж за каждый автомобильный лот не требуется, а комиссия MIGTORG включена в ставку. Тариф предоставляет доступ к торгам, но не гарантирует передачу лота продавцом.",
       "next_step": "Выберите цель: одна автомобильная покупка, регулярные автомобильные торги или бесплатное участие в разделе «Имущество».",
-      "actions": [{"id": "tariff.choose.one_time", "type": "clarify", "label": "Одна покупка", "scenario_id": "tariff.one_time"}, {"id": "tariff.choose.premium", "type": "clarify", "label": "Регулярные торги", "scenario_id": "tariff.premium"}, {"id": "tariff.choose.demo", "type": "clarify", "label": "Демо и Имущество", "scenario_id": "tariff.demo"}],
+      "actions": [
+        {"id": "tariff.choose.one_time","type": "clarify","label": "Одна покупка","scenario_id": "tariff.one_time"},
+        {"id": "tariff.choose.premium","type": "clarify","label": "Регулярные торги","scenario_id": "tariff.premium"},
+        {"id": "tariff.choose.demo","type": "clarify","label": "Демо и Имущество","scenario_id": "tariff.demo"}
+      ],
       "escalation": {"when": [], "required_fields": []},
       "source": "Approved MIGTORG tariff knowledge and expert interviews",
       "reviewed_at": "2026-08-12",
@@ -1390,7 +1455,9 @@
       "short_answer": "Разовый тариф подходит для участия в торгах за один выбранный автомобильный лот.",
       "detailed_answer": "Этот вариант можно рассматривать для одной покупки или знакомства с автомобильными торгами. Победа в торгах не означает автоматическую передачу: продавец отдельно подтверждает сделку. Стоимость и доступные условия проверяйте в кабинете непосредственно перед оплатой.",
       "next_step": "Выберите конкретный лот и затем подключите Разовый тариф в разделе «Тарифы».",
-      "actions": [{"id": "tariff.one_time.connect", "type": "clarify", "label": "Подключить тариф", "scenario_id": "tariff.connect"}],
+      "actions": [
+        {"id": "tariff.one_time.connect","type": "clarify","label": "Подключить тариф","scenario_id": "tariff.connect"}
+      ],
       "escalation": {"when": [], "required_fields": []},
       "source": "Approved MIGTORG tariff knowledge",
       "reviewed_at": "2026-08-12",
@@ -1416,7 +1483,9 @@
       "short_answer": "Премиум — тариф для регулярного участия в автомобильных торгах: неограниченное количество ставок, бессрочный договор и отсутствие абонентской или ежегодной платы.",
       "detailed_answer": "Подключение оплачивается один раз и действует до расторжения договора в установленном порядке. Премиум подходит для системной работы с несколькими автомобильными лотами, но не гарантирует передачу каждого выигранного лота. Текущую стоимость проверяйте перед оплатой.",
       "next_step": "Если планируете регулярные торги, выберите Премиум в личном кабинете или запросите официальный счёт.",
-      "actions": [{"id": "tariff.premium.connect", "type": "clarify", "label": "Подключить Премиум", "scenario_id": "tariff.connect"}],
+      "actions": [
+        {"id": "tariff.premium.connect","type": "clarify","label": "Подключить Премиум","scenario_id": "tariff.connect"}
+      ],
       "escalation": {"when": ["premium_invoice_needed"], "required_fields": ["contact", "payer_type"]},
       "source": "Approved MIGTORG tariff knowledge and buyer contract",
       "reviewed_at": "2026-08-12",
@@ -1442,7 +1511,9 @@
       "short_answer": "Демо позволяет знакомиться с автомобильными лотами, но не делать по ним ставки и не видеть полные результаты; в разделе «Имущество» участие доступно бесплатно.",
       "detailed_answer": "В карточке открытого автомобильного торга может быть видна опубликованная стартовая или текущая цена и шаг, но полный доступ к ставкам и результатам появляется после подключения Разового или Премиум-тарифа. Для раздела «Имущество» платный автомобильный тариф не нужен. Чтобы перейти к автомобильным торгам, выберите тариф; отдельно отключать демо не требуется.",
       "next_step": "Чтобы перейти к автомобильным торгам, откройте раздел «Тарифы» и выберите Разовый или Премиум; демо отключится автоматически после активации доступа.",
-      "actions": [{"id": "tariff.demo.connect", "type": "clarify", "label": "Выбрать тариф", "scenario_id": "tariff.choose"}],
+      "actions": [
+        {"id": "tariff.demo.connect","type": "clarify","label": "Выбрать тариф","scenario_id": "tariff.choose"}
+      ],
       "escalation": {"when": [], "required_fields": []},
       "source": "Approved MIGTORG tariff knowledge and site demo rules",
       "reviewed_at": "2026-08-12",
@@ -1468,7 +1539,10 @@
       "short_answer": "Проверьте раздел «Тарифы» и вкладку «Ваш тариф»: пополнение кошелька само по себе не означает, что тариф уже активирован.",
       "detailed_answer": "Если деньги списались, а тариф не отображается или ставки недоступны, подготовьте контакт аккаунта, дату, сумму, способ оплаты и подтверждение списания. Не оплачивайте повторно до проверки операции.",
       "next_step": "Нажмите «Проверить тариф» или создайте обращение; администрация проверит платёж и статус активации.",
-      "actions": [{"id": "tariff.status.fetch", "type": "fetch_status", "label": "Проверить тариф", "payload": {"kind": "tariff"}, "requires_auth": true}, {"id": "tariff.status.ticket", "type": "open_ticket", "label": "Оплатил, доступа нет", "requires_confirmation": true}],
+      "actions": [
+        {"id": "tariff.status.fetch","type": "fetch_status","label": "Проверить тариф","payload": {"kind": "tariff"},"requires_auth": true},
+        {"id": "tariff.status.ticket","type": "open_ticket","label": "Оплатил, доступа нет","requires_confirmation": true}
+      ],
       "escalation": {"when": ["paid_not_active", "tariff_missing"], "required_fields": ["contact", "payment_details", "proof_of_payment"]},
       "source": "Approved MIGTORG payment and tariff activation process",
       "reviewed_at": "2026-08-12",
@@ -1494,7 +1568,9 @@
       "short_answer": "Актуальную акцию и итоговую стоимость тарифа нужно проверить перед подключением: постоянная универсальная скидка не опубликована.",
       "detailed_answer": "Если вам ранее называли специальную стоимость или скидку, укажите источник и дату предложения. Администрация проверит, действует ли условие для вашего аккаунта. До подтверждения бот не обещает скидку и не фиксирует цену.",
       "next_step": "Создайте обращение с контактом и выбранным тарифом, чтобы получить подтверждённые текущие условия.",
-      "actions": [{"id": "tariff.promotion.ticket", "type": "open_ticket", "label": "Проверить акцию", "requires_confirmation": true}],
+      "actions": [
+        {"id": "tariff.promotion.ticket","type": "open_ticket","label": "Проверить акцию","requires_confirmation": true}
+      ],
       "escalation": {"when": ["promotion_check", "promised_discount_missing"], "required_fields": ["contact", "tariff_name", "offer_source", "offer_date"]},
       "source": "Approved MIGTORG safe-current-terms rule",
       "reviewed_at": "2026-08-12",
@@ -1520,7 +1596,9 @@
       "short_answer": "Если лот просто перестал быть нужен или вы не можете его выкупить, не исчезайте: это само по себе не является мотивированным отказом.",
       "detailed_answer": "Сразу ответьте продавцу в действующей почтовой ветке по лоту, объясните ситуацию и добавьте info@migtorg.com в копию. Возможные последствия определяются договором и обстоятельствами после проверки; бот не подтверждает штраф, его размер или блокировку заранее. Если причина — существенное несоответствие лота опубликованным данным, оформите мотивированный отказ и приложите акт и фотографии.",
       "next_step": "Можно создать обращение: укажите номер лота, текущий статус, причину отказа и приложите переписку или доказательства несоответствия.",
-      "actions": [{"id": "refusal.change_mind.ticket", "type": "open_ticket", "label": "Сообщить об отказе", "requires_confirmation": true}],
+      "actions": [
+        {"id": "refusal.change_mind.ticket","type": "open_ticket","label": "Сообщить об отказе","requires_confirmation": true}
+      ],
       "escalation": {"when": ["buyer_cannot_complete", "buyer_changed_mind"], "required_fields": ["contact", "lot_id", "stage", "description"]},
       "source": "MIGTORG expert interviews and approved buyer contract rules",
       "reviewed_at": "2026-08-12",
@@ -1546,7 +1624,9 @@
       "short_answer": "Пропадать после победы или передачи лота не стоит: молчание не отменяет обязательства и может привести к ограничению доступа и другим договорным последствиям после проверки.",
       "detailed_answer": "Ответьте в существующей ветке переписки по лоту, сообщите, готовы ли продолжать сделку, и объясните причину. Добавьте info@migtorg.com в копию, чтобы площадка видела историю. Бот не обещает конкретный штраф, срок блокировки или расторжение: они зависят от договора, этапа и решения уполномоченной стороны.",
       "next_step": "Если ветку найти не удаётся, создайте обращение с номером лота, контактами аккаунта, текущим статусом и кратким описанием ситуации.",
-      "actions": [{"id": "refusal.no_response.ticket", "type": "open_ticket", "label": "Сообщить о ситуации", "requires_confirmation": true}],
+      "actions": [
+        {"id": "refusal.no_response.ticket","type": "open_ticket","label": "Сообщить о ситуации","requires_confirmation": true}
+      ],
       "escalation": {"when": ["buyer_plans_no_response", "buyer_already_no_response"], "required_fields": ["contact", "lot_id", "stage", "description"]},
       "source": "MIGTORG expert interviews and approved buyer contract rules",
       "reviewed_at": "2026-08-12",
@@ -1572,7 +1652,9 @@
       "short_answer": "Если покупатель отказался от имущества, по оферте продавца площадка направляет продавцу акт с причинами отказа в течение 3 рабочих дней с даты отказа.",
       "detailed_answer": "Обоснованность причины проверяется по материалам конкретного лота. Существенное расхождение имущества с опубликованными данными может быть основанием, но бот не подтверждает обоснованность автоматически.",
       "next_step": "Создайте обращение от продавца и укажите номер лота, дату отказа, контакт и приложите полученные документы или переписку.",
-      "actions": [{"id": "seller.buyer_refusal.ticket", "type": "open_ticket", "label": "Проверить отказ покупателя", "requires_confirmation": true}],
+      "actions": [
+        {"id": "seller.buyer_refusal.ticket","type": "open_ticket","label": "Проверить отказ покупателя","requires_confirmation": true}
+      ],
       "escalation": {"when": ["buyer_refusal", "refusal_act_missing"], "required_fields": ["contact", "lot_id", "refusal_date", "documents", "description"]},
       "source": "MIGTORG seller offer reviewed with project materials",
       "reviewed_at": "2026-08-12",
@@ -1598,7 +1680,9 @@
       "short_answer": "Срок действия победной ставки — это период, когда продавец может подтвердить передачу лота; по текущим правилам он составляет от 20 до 60 рабочих дней.",
       "detailed_answer": "Точный срок смотрите в карточке конкретного лота: именно показанное до ставки условие применяется к предложению. Пока лот имеет статус «Выигран» или «Ожидает подтверждения», платить за него не нужно — дождитесь решения продавца и статуса «Передан».",
       "next_step": "Если срок в карточке не виден или данные по конкретному лоту расходятся, создайте обращение с номером лота и снимком статуса.",
-      "actions": [{"id": "bid.validity.ticket", "type": "open_ticket", "label": "Проверить срок по лоту", "requires_confirmation": true}],
+      "actions": [
+        {"id": "bid.validity.ticket","type": "open_ticket","label": "Проверить срок по лоту","requires_confirmation": true}
+      ],
       "escalation": {"when": ["validity_not_visible", "validity_disputed"], "required_fields": ["contact", "lot_id", "description"]},
       "source": "MIGTORG expert answers and current auction rules",
       "reviewed_at": "2026-08-12",
@@ -1624,7 +1708,9 @@
       "short_answer": "Если срок победной ставки истёк, прежнее предложение больше не продлевается автоматически, даже если лот ещё отображается в «Выигранных».",
       "detailed_answer": "При позднем решении продавца вам должны отдельно предложить подтвердить актуальность покупки. Если готовы продолжить, подтвердите это; если прежние условия уже неактуальны, письменно сообщите об этом в той же ветке. Бот не считает молчание согласием и не обещает изменение статуса без проверки.",
       "next_step": "Ответьте на письмо через «Ответить всем». Если письма нет, создайте обращение с номером лота и снимком статуса.",
-      "actions": [{"id": "bid.expired.ticket", "type": "open_ticket", "label": "Проверить истёкшую ставку", "requires_confirmation": true}],
+      "actions": [
+        {"id": "bid.expired.ticket","type": "open_ticket","label": "Проверить истёкшую ставку","requires_confirmation": true}
+      ],
       "escalation": {"when": ["expired_still_won", "seller_contacted_after_expiry"], "required_fields": ["contact", "lot_id", "status", "description"]},
       "source": "MIGTORG expert answers and current auction workflow",
       "reviewed_at": "2026-08-12",
@@ -1650,7 +1736,9 @@
       "short_answer": "После получения полных реквизитов документы готовит продавец. Это может занять несколько дней, обычно 3–7 дней, но единого подтверждённого срока нет и точную дату подтверждает продавец по конкретной сделке.",
       "detailed_answer": "Проверьте, что реквизиты отправлены в той же почтовой ветке и указан номер лота. Если лот ещё ожидает подтверждения, отсутствие связи с продавцом само по себе не означает проблему. После передачи ответьте всем участникам ветки и запросите статус. Бот не называет точную дату без подтверждения продавца и не советует оплачивать лот до получения официальных документов и реквизитов.",
       "next_step": "Если после отправки полных реквизитов прошло более 7 дней или письмо осталось без ответа, создайте обращение с номером лота, датой отправки и перечнем недостающих документов.",
-      "actions": [{"id": "documents.preparation.ticket", "type": "open_ticket", "label": "Уточнить готовность документов", "requires_confirmation": true}],
+      "actions": [
+        {"id": "documents.preparation.ticket","type": "open_ticket","label": "Уточнить готовность документов","requires_confirmation": true}
+      ],
       "escalation": {"when": ["documents_delayed", "documents_missing"], "required_fields": ["contact", "lot_id", "transfer_date", "description"]},
       "source": "MIGTORG expert answers and approved transfer workflow",
       "reviewed_at": "2026-08-12",
@@ -1676,7 +1764,9 @@
       "short_answer": "Если вы не успеваете забрать оплаченный лот, сразу согласуйте новую дату: при задержке возможны расходы по правилам конкретного продавца или стоянки.",
       "detailed_answer": "Единого опубликованного срока бесплатного хранения и тарифа нет, поэтому бот не может рассчитать сумму заранее. Получите письменное подтверждение новой даты, условий хранения, адреса и допуска на территорию; не приезжайте без согласования.",
       "next_step": "Создайте обращение с номером лота, датой оплаты, согласованной датой выдачи и предполагаемой датой вывоза.",
-      "actions": [{"id": "pickup.delay.ticket", "type": "open_ticket", "label": "Согласовать задержку вывоза", "requires_confirmation": true}],
+      "actions": [
+        {"id": "pickup.delay.ticket","type": "open_ticket","label": "Согласовать задержку вывоза","requires_confirmation": true}
+      ],
       "escalation": {"when": ["pickup_delay", "storage_fee_question"], "required_fields": ["contact", "lot_id", "payment_date", "expected_pickup_date", "description"]},
       "source": "MIGTORG expert answers and approved pickup safety rule",
       "reviewed_at": "2026-08-12",
@@ -1702,7 +1792,9 @@
       "short_answer": "Продавец может размещать транспортные средства, ГОТС, партии товаров и другое имущество из доступных категорий; недвижимость по оферте продавца не размещается.",
       "detailed_answer": "Конкретный объект не принимается автоматически только по названию категории. Для проверки подготовьте тип имущества, количество, состояние и комплектность, регион или место хранения, фотографии, условия осмотра и вывоза, а также документы, подтверждающие право распоряжения. Для нестандартной партии или объекта решение принимает администрация после проверки.",
       "next_step": "Создайте обращение продавца и приложите описание объекта, фотографии, документы и контакт для согласования категории и порядка размещения.",
-      "actions": [{"id": "seller.categories.ticket", "type": "open_ticket", "label": "Проверить объект для размещения", "requires_confirmation": true}],
+      "actions": [
+        {"id": "seller.categories.ticket","type": "open_ticket","label": "Проверить объект для размещения","requires_confirmation": true}
+      ],
       "escalation": {"when": ["category_check", "nonstandard_property", "vehicle_or_gots_listing"], "required_fields": ["contact", "property_type", "quantity", "location", "documents", "description"]},
       "source": "MIGTORG seller offer and reviewed project rules",
       "reviewed_at": "2026-08-12",
@@ -1728,7 +1820,9 @@
       "short_answer": "После оформления договора доступ продавца предоставляется в течение 5 рабочих дней; логин и пароль нельзя передавать третьим лицам.",
       "detailed_answer": "Все действия под выданным логином считаются действиями продавца. Если доступ потерян, пароль мог стать известен другому лицу или вход выглядит подозрительно, уведомите площадку в течение 1 рабочего дня. Не отправляйте пароль, коды подтверждения или другие секреты в обращении.",
       "next_step": "Создайте обращение с организацией или ФИО, контактным email и телефоном, датой обнаружения проблемы и её описанием — без пароля.",
-      "actions": [{"id": "seller.access.ticket", "type": "open_ticket", "label": "Сообщить о проблеме доступа", "requires_confirmation": true}],
+      "actions": [
+        {"id": "seller.access.ticket","type": "open_ticket","label": "Сообщить о проблеме доступа","requires_confirmation": true}
+      ],
       "escalation": {"when": ["seller_access_missing", "seller_access_lost", "credential_compromise"], "required_fields": ["contact", "seller_name", "incident_date", "description"]},
       "source": "MIGTORG seller offer reviewed in project materials",
       "reviewed_at": "2026-08-12",
@@ -1754,7 +1848,9 @@
       "short_answer": "Информация продавца на migtorg.com сама по себе не является офертой: покупатели направляют предложения через площадку.",
       "detailed_answer": "Если применяется оферта продавца, предложение покупателя действует 25 рабочих дней с окончания периода размещения информации. Для конкретного лота всё равно нужно сверить карточку и документы: это правило не подменяет срок победной ставки в других видах торгов и не позволяет боту автоматически подтверждать обязанность купить или продать.",
       "next_step": "Если спор относится к конкретному лоту, создайте обращение с номером лота, видом торгов, датой окончания размещения и документом, на который вы ссылаетесь.",
-      "actions": [{"id": "seller.information.ticket", "type": "open_ticket", "label": "Проверить условия лота", "requires_confirmation": true}],
+      "actions": [
+        {"id": "seller.information.ticket","type": "open_ticket","label": "Проверить условия лота","requires_confirmation": true}
+      ],
       "escalation": {"when": ["offer_status_dispute", "buyer_offer_validity_dispute"], "required_fields": ["contact", "lot_id", "auction_type", "description", "documents"]},
       "source": "MIGTORG seller offer and reviewed site documents",
       "reviewed_at": "2026-08-12",
@@ -1780,7 +1876,9 @@
       "short_answer": "Для продавца предусмотрен однократный курс обучения сотрудников работе с migtorg.com в согласованные сроки.",
       "detailed_answer": "Чтобы организовать обучение, сообщите название организации, контактное лицо, телефон или email, число участников и несколько удобных интервалов. Бот не назначает дату самостоятельно — её подтверждают сотрудники площадки.",
       "next_step": "Создайте обращение с данными организации и предпочтительными сроками обучения.",
-      "actions": [{"id": "seller.training.ticket", "type": "open_ticket", "label": "Запросить обучение", "requires_confirmation": true}],
+      "actions": [
+        {"id": "seller.training.ticket","type": "open_ticket","label": "Запросить обучение","requires_confirmation": true}
+      ],
       "escalation": {"when": ["seller_training_request"], "required_fields": ["contact", "seller_name", "participant_count", "preferred_times"]},
       "source": "MIGTORG seller offer reviewed in project materials",
       "reviewed_at": "2026-08-12",
@@ -1806,7 +1904,9 @@
       "short_answer": "Договор продавца действует 1 год и продлевается автоматически; для отказа от продления нужно письменное уведомление за 30 дней до окончания срока.",
       "detailed_answer": "Продавец также может направить письменное уведомление о расторжении. Если фактических объявлений на сайте нет, по оферте договор прекращается с момента получения уведомления площадкой. При наличии публикаций или споре по дате нужна проверка конкретной ситуации; сообщение в чате само по себе договор не расторгает.",
       "next_step": "Создайте обращение с данными продавца, реквизитами договора, желаемой датой прекращения и сведениями об активных объявлениях; сотрудники подскажут официальный канал уведомления.",
-      "actions": [{"id": "seller.contract.ticket", "type": "open_ticket", "label": "Уточнить расторжение договора", "requires_confirmation": true}],
+      "actions": [
+        {"id": "seller.contract.ticket","type": "open_ticket","label": "Уточнить расторжение договора","requires_confirmation": true}
+      ],
       "escalation": {"when": ["seller_contract_termination", "seller_nonrenewal"], "required_fields": ["contact", "seller_name", "contract_details", "requested_date", "description"]},
       "source": "MIGTORG seller offer reviewed in project materials",
       "reviewed_at": "2026-08-12",
@@ -1832,7 +1932,9 @@
       "short_answer": "В общих правилах действительно указаны минимальный депозит 1 USD/100 RUB, карты VISA, MasterCard, МИР, интернет-кошельки и возврат на карту исходной оплаты, но эти формулировки нельзя автоматически применять к любому тарифу, депозиту или лоту.",
       "detailed_answer": "Для фактического пополнения ориентируйтесь на текущую форму кабинета: сейчас подтверждены карта через платёжную систему с комиссией 2,5% и СБП с комиссией 1%; минимальную доступную сумму показывает сама форма. Ошибочный платёж можно передать на проверку, но бот не обещает его возврат. Возможность и направление возврата определяются по виду платежа, договору, исходному плательщику и открытым обязательствам: это может быть исходный инструмент, банковский счёт по заявлению или баланс MIGTORG.",
       "next_step": "Создайте обращение и укажите контакт аккаунта, дату, сумму, назначение, способ оплаты и подтверждение операции — без полного номера карты, CVC/CVV, пароля и SMS-кода.",
-      "actions": [{"id": "payment.document_policy.ticket", "type": "open_ticket", "label": "Проверить платёж или возврат", "requires_confirmation": true}],
+      "actions": [
+        {"id": "payment.document_policy.ticket","type": "open_ticket","label": "Проверить платёж или возврат","requires_confirmation": true}
+      ],
       "escalation": {"when": ["document_payment_conflict", "accidental_payment", "refund_destination_dispute", "minimum_amount_dispute"], "required_fields": ["contact", "payment_date", "amount", "payment_method", "payment_purpose", "proof_of_payment", "description"]},
       "source": "MIGTORG quotation rules reconciled with expert-confirmed current payment and refund processes",
       "reviewed_at": "2026-08-12",
@@ -1858,7 +1960,10 @@
       "short_answer": "MIGTORG — онлайн-аукционная площадка: продавцы размещают лоты, покупатели делают ставки, а решение о передаче и продаже принимает продавец конкретного лота.",
       "detailed_answer": "Автомобили и другие лоты — это имущество продавцов площадки. MIGTORG не выкупает лоты заранее и не является владельцем лотов. Их размещают страховые, лизинговые, каршеринговые и другие компании, организации и частные собственники. На площадке представлены автомобили, ГОТС, спецтехника и другое имущество доступных категорий. Участвовать могут физические лица, ИП и организации. В отличие от обычной доски объявлений, цена формируется предложениями участников, а победа означает лучшую ставку, но не автоматическое заключение сделки.",
       "next_step": "Если вопрос относится к конкретному автомобилю или основанию его размещения, создайте обращение с номером лота и контактом — без публикации лишних персональных данных.",
-      "actions": [{"id": "platform.about.register", "type": "navigate", "label": "Зарегистрироваться", "payload": {"url": "https://migtorg.com/auth/sign-up"}}, {"id": "platform.about.ticket", "type": "open_ticket", "label": "Уточнить по конкретному лоту", "requires_confirmation": true}],
+      "actions": [
+        {"id": "platform.about.register","type": "navigate","label": "Зарегистрироваться","payload": {"url": "https://migtorg.com/auth/sign-up"}},
+        {"id": "platform.about.ticket","type": "open_ticket","label": "Уточнить по конкретному лоту","requires_confirmation": true}
+      ],
       "escalation": {"when": ["owner_disputes_listing", "specific_lot_owner_question"], "required_fields": ["contact", "lot_id", "description"]},
       "source": "Approved MIGTORG knowledge base and expert-reviewed platform model",
       "reviewed_at": "2026-08-12",
@@ -1884,7 +1989,9 @@
       "short_answer": "Для регистрации покупателя откройте форму MIGTORG и выберите физическое лицо, ИП или юридическое лицо — создавать ООО или ИП необязательно.",
       "detailed_answer": "Укажите имя, действующий email, пароль и подтвердите телефон кодом. Документы для первичной регистрации не нужны; дополнительные данные запросят позже, если они понадобятся для договора, подключения или переданного лота. После регистрации можно знакомиться с площадкой, а доступ к ставкам определяется разделом и тарифом.",
       "next_step": "Откройте https://migtorg.com/auth/sign-up и заполните форму. Если кнопка или код не работают, создайте обращение, не сообщая пароль и код подтверждения.",
-      "actions": [{"id": "account.registration.open", "type": "navigate", "label": "Открыть регистрацию", "payload": {"url": "https://migtorg.com/auth/sign-up"}}],
+      "actions": [
+        {"id": "account.registration.open","type": "navigate","label": "Открыть регистрацию","payload": {"url": "https://migtorg.com/auth/sign-up"}}
+      ],
       "escalation": {"when": ["registration_form_error", "registration_code_missing"], "required_fields": ["contact", "description"]},
       "source": "Approved MIGTORG registration knowledge",
       "reviewed_at": "2026-08-12",
@@ -1910,7 +2017,9 @@
       "short_answer": "MIGTORG-бот не гарантирует юридическую чистоту автомобиля без проверки конкретного лота.",
       "detailed_answer": "До ставки и оплаты проверьте карточку и документы автомобиля, сведения ГИБДД, реестр уведомлений о залоге движимого имущества ФНП и при необходимости данные ФССП. Отсутствие отметки в одном источнике не является универсальной гарантией отсутствия риска.",
       "next_step": "Если вопрос относится к лоту, создайте обращение с его номером и укажите, какое ограничение или расхождение нужно проверить.",
-      "actions": [{"id": "vehicle.legal_check.ticket", "type": "open_ticket", "label": "Проверить данные лота", "requires_confirmation": true}],
+      "actions": [
+        {"id": "vehicle.legal_check.ticket","type": "open_ticket","label": "Проверить данные лота","requires_confirmation": true}
+      ],
       "escalation": {"when": ["legal_risk_question", "document_discrepancy"], "required_fields": ["contact", "lot_id", "description", "documents"]},
       "source": "Approved MIGTORG legal-risk safety guidance",
       "reviewed_at": "2026-08-12",
@@ -1936,7 +2045,9 @@
       "short_answer": "Проверьте раздел «Выигранные лоты»: если ваша ставка стала максимальной, лот появится там после завершения и обработки результата торгов.",
       "detailed_answer": "В открытых торгах результат отображается после завершения; по закрытым торгам публикация может происходить позднее по правилам раздела. Не делайте даже минимальную ставку только ради просмотра: она может стать победной и повлечь обязательства. Победа ещё не означает автоматическую передачу — решение принимает продавец.",
       "next_step": "Если результат не отображается после ожидаемого срока, создайте обращение с номером лота и снимком текущего статуса.",
-      "actions": [{"id": "auction.result.ticket", "type": "open_ticket", "label": "Проверить результат", "requires_confirmation": true}],
+      "actions": [
+        {"id": "auction.result.ticket","type": "open_ticket","label": "Проверить результат","requires_confirmation": true}
+      ],
       "escalation": {"when": ["result_missing", "result_disputed"], "required_fields": ["contact", "lot_id", "status", "description"]},
       "source": "Approved MIGTORG auction result rules",
       "reviewed_at": "2026-08-12",
@@ -1962,7 +2073,9 @@
       "short_answer": "Если лот находится в статусе «Ожидает подтверждения», отсутствие ответа продавца само по себе не означает проблему: решение принимается в пределах срока действия ставки.",
       "detailed_answer": "Если статус уже изменился на «Передан», но документы или инструкции не приходят, продолжите переписку в той же почтовой ветке и запросите статус.",
       "next_step": "Для проверки создайте обращение. Укажите номер лота, текущий статус и дату последнего сообщения.",
-      "actions": [{"id": "transfer.seller_no_response.ticket", "type": "open_ticket", "label": "Проверить связь по лоту", "requires_confirmation": true}],
+      "actions": [
+        {"id": "transfer.seller_no_response.ticket","type": "open_ticket","label": "Проверить связь по лоту","requires_confirmation": true}
+      ],
       "escalation": {"when": ["seller_no_contact", "documents_missing_after_transfer"], "required_fields": ["contact", "lot_id", "status", "description"]},
       "source": "Reviewed MIGTORG support corpus Q-078",
       "reviewed_at": "2026-08-13",
@@ -1988,7 +2101,9 @@
       "short_answer": "Выигранный лот может не быть передан: победа фиксирует лучшую ставку, но окончательное решение о продаже принимает продавец или собственник.",
       "detailed_answer": "Продавца может не устроить цена, собственник может сохранить имущество, выбрать другой способ реализации или принять иное решение в рамках урегулирования. Пока нет статуса «Передан», не оплачивайте автомобиль. Если срок ставки истёк, позднее продолжение сделки требует нового подтверждения актуальности предложения.",
       "next_step": "Проверьте срок и статус в карточке и кабинете. По конкретному лоту создайте обращение с его номером; вопрос возврата средств рассматривается отдельно по виду платежа и договору.",
-      "actions": [{"id": "transfer.not_confirmed.ticket", "type": "open_ticket", "label": "Проверить непередачу лота", "requires_confirmation": true}],
+      "actions": [
+        {"id": "transfer.not_confirmed.ticket","type": "open_ticket","label": "Проверить непередачу лота","requires_confirmation": true}
+      ],
       "escalation": {"when": ["transfer_not_confirmed", "seller_no_contact"], "required_fields": ["contact", "lot_id", "status", "description"]},
       "source": "MIGTORG expert answers and approved auction model",
       "reviewed_at": "2026-08-12",
@@ -2014,7 +2129,9 @@
       "short_answer": "Статус «Передан» означает, что продавец подтвердил готовность продолжить сделку с победителем.",
       "detailed_answer": "После этого уточняются данные плательщика, продавец готовит счёт и договор, согласуются осмотр, оплата и получение. Проверьте личный кабинет, SMS, email и папку «Спам». Используйте только официальные документы и реквизиты из ветки сделки с info@migtorg.com в копии.",
       "next_step": "Если статус уже «Передан», а уведомления или инструкций нет, создайте обращение с номером лота и датой изменения статуса.",
-      "actions": [{"id": "transfer.confirmed.ticket", "type": "open_ticket", "label": "Запросить инструкции по передаче", "requires_confirmation": true}],
+      "actions": [
+        {"id": "transfer.confirmed.ticket","type": "open_ticket","label": "Запросить инструкции по передаче","requires_confirmation": true}
+      ],
       "escalation": {"when": ["transfer_notice_missing", "transfer_instructions_missing"], "required_fields": ["contact", "lot_id", "transfer_date", "description"]},
       "source": "Approved MIGTORG transfer workflow",
       "reviewed_at": "2026-08-12",
@@ -2040,7 +2157,9 @@
       "short_answer": "Откройте нужный раздел каталога и используйте доступные фильтры — для автомобилей обычно это марка, год выпуска и тип аукциона.",
       "detailed_answer": "Дополнительно можно сортировать лоты по датам начала или окончания торгов и году выпуска. Набор фильтров отличается между разделами. Если нужной машины сейчас нет, заказать её у площадки нельзя: сохраните критерии и проверяйте новые публикации.",
       "next_step": "Если фильтр не срабатывает, создайте обращение со ссылкой на раздел, выбранными параметрами, ожидаемым результатом и скриншотом.",
-      "actions": [{"id": "lot.catalog.ticket", "type": "open_ticket", "label": "Сообщить о проблеме поиска", "requires_confirmation": true}],
+      "actions": [
+        {"id": "lot.catalog.ticket","type": "open_ticket","label": "Сообщить о проблеме поиска","requires_confirmation": true}
+      ],
       "escalation": {"when": ["filter_error", "search_error"], "required_fields": ["contact", "page_url", "filters", "description", "screenshot"]},
       "source": "Approved MIGTORG catalog guidance",
       "reviewed_at": "2026-08-12",
@@ -2066,7 +2185,9 @@
       "short_answer": "Оценивайте лот только по опубликованной карточке и документам: отсутствующие характеристики бот не придумывает и не подтверждает.",
       "detailed_answer": "Проверьте фото, описание, марку, модель, год, регион, VIN или кузов, условия торгов, повреждения, комплектность и документы. Если критичных данных нет, безопаснее не делать ставку. «Готов к реализации» не гарантирует передачу. Если карточка исчезла или изменилась, причина проверяется по конкретному лоту и истории публикации.",
       "next_step": "Укажите номер лота. Если его нет, приложите марку, модель, VIN или часть, регион, дату торгов, скриншот, сумму ставки и email аккаунта.",
-      "actions": [{"id": "lot.card.ticket", "type": "open_ticket", "label": "Уточнить данные лота", "requires_confirmation": true}],
+      "actions": [
+        {"id": "lot.card.ticket","type": "open_ticket","label": "Уточнить данные лота","requires_confirmation": true}
+      ],
       "escalation": {"when": ["critical_information_missing", "lot_changed", "lot_disappeared", "lot_id_missing"], "required_fields": ["contact", "lot_id_or_identifiers", "description", "screenshot"]},
       "source": "Approved MIGTORG lot-card guidance",
       "reviewed_at": "2026-08-12",
@@ -2084,7 +2205,7 @@
       "objects": ["lot", "vehicle", "seller"],
       "operations": ["check"],
       "states": ["missing"],
-      "positive_examples": ["мало инфы в карточке", "нет инфы в карточке лота", "в карточке мало информации", "продавец не указал подробности", "где получить отсутствующие сведения по лоту"],
+      "positive_examples": ["мало инфы в карточке", "нет инфы в карточке лота", "в карточке мало информации", "продавец не указал подробности", "где получить отсутствующие сведения по лоту", "в карточке не указан коммерческий утиль", "не указан объём двигателя", "можно запросить дополнительные фотографии", "продавец не добавил нужные характеристики"],
       "negative_examples": ["лот исчез или изменился", "не могу открыть карточку", "как запросить vin", "почему нет птс в карточке", "в карточке лота не загружаются фотографии"],
       "required_context": [],
       "allowed_context": ["page_type", "lot_id"],
@@ -2118,7 +2239,9 @@
       "short_answer": "Кнопка «Запросить» позволяет получить VIN конкретного лота, если продавец передал этот номер площадке.",
       "detailed_answer": "Если VIN отсутствует у продавца, система сообщит, что данные не предоставлены. В БЗ указана стоимость проверки 500 рублей, но перед оплатой проверьте актуальную цену на странице услуги. VIN и отчёт не являются гарантией юридической чистоты — дополнительно используйте официальные реестры.",
       "next_step": "Откройте карточку конкретного лота и проверьте кнопку «Запросить». При списании без результата создайте обращение с номером лота и данными операции.",
-      "actions": [{"id": "vehicle.vin.ticket", "type": "open_ticket", "label": "Проверить запрос VIN", "requires_confirmation": true}],
+      "actions": [
+        {"id": "vehicle.vin.ticket","type": "open_ticket","label": "Проверить запрос VIN","requires_confirmation": true}
+      ],
       "escalation": {"when": ["vin_missing_after_payment", "vin_request_error"], "required_fields": ["contact", "lot_id", "payment_details", "description"]},
       "source": "Approved MIGTORG VIN service guidance",
       "reviewed_at": "2026-08-12",
@@ -2170,7 +2293,9 @@
       "short_answer": "Если ваш лот исчез из личного кабинета или нужного раздела, создайте обращение для проверки его статуса.",
       "detailed_answer": "Укажите номер лота, раздел кабинета, прежний статус, когда заметили исчезновение, и приложите скриншот. Если номера нет, добавьте марку, модель, дату торгов и email аккаунта. Бот не может подтвердить причину без системной проверки.",
       "next_step": "Создайте обращение с доступными идентификаторами и скриншотом; не сообщайте пароль или код подтверждения.",
-      "actions": [{"id": "lot.missing.ticket", "type": "open_ticket", "label": "Найти мой лот", "requires_confirmation": true}],
+      "actions": [
+        {"id": "lot.missing.ticket","type": "open_ticket","label": "Найти мой лот","requires_confirmation": true}
+      ],
       "escalation": {"when": ["personal_lot_missing"], "required_fields": ["contact", "lot_id_or_identifiers", "previous_status", "description", "screenshot"]},
       "source": "Approved MIGTORG missing-lot support guidance",
       "reviewed_at": "2026-08-12",
@@ -2274,7 +2399,9 @@
       "short_answer": "Порядок зависит от типа и статуса торгов: активную ставку можно изменить, но после завершения торгов отмена или изменение невозможны.",
       "detailed_answer": "Пока торги активны, ставку можно изменить или уменьшить. В активных закрытых торгах для отмены уменьшите ставку до 1 рубля. В активных открытых торгах создайте обращение с номером лота. После окончания любых торгов ставка фиксируется. Если хотите предложить больше после завершения, используйте только появившуюся в карточке официальную опцию или объявленные переторги; перевыставление решает собственник.",
       "next_step": "Проверьте тип и статус торгов. Для отмены активной открытой ставки создайте обращение до окончания торгов.",
-      "actions": [{"id": "bid.modify_cancel.ticket", "type": "open_ticket", "label": "Отменить активную открытую ставку", "requires_confirmation": true}],
+      "actions": [
+        {"id": "bid.modify_cancel.ticket","type": "open_ticket","label": "Отменить активную открытую ставку","requires_confirmation": true}
+      ],
       "escalation": {"when": ["open_bid_cancel_active", "bid_status_dispute"], "required_fields": ["contact", "lot_id", "auction_type", "status", "description"]},
       "source": "Approved MIGTORG bid modification rules",
       "reviewed_at": "2026-08-12",
@@ -2404,7 +2531,9 @@
       "short_answer": "Зафиксируйте расхождения или недопуск сразу и не подтверждайте дальнейшие действия, пока ситуация не передана на проверку.",
       "detailed_answer": "При расхождениях сделайте фотографии или видео, составьте акт и перечислите отличия от карточки. При недопуске сохраните переписку о согласовании, дату, время и контакт ответственного лица и передайте ситуацию на ручную проверку. Собранные материалы позволяют провести проверку, но сами по себе не гарантируют мотивированный отказ без последствий.",
       "next_step": "Создайте обращение с номером лота, датой осмотра, описанием, перепиской и доказательствами. Для отказа используйте утверждённую форму акта.",
-      "actions": [{"id": "inspection.problem.ticket", "type": "open_ticket", "label": "Сообщить о проблеме осмотра", "requires_confirmation": true}],
+      "actions": [
+        {"id": "inspection.problem.ticket","type": "open_ticket","label": "Сообщить о проблеме осмотра","requires_confirmation": true}
+      ],
       "escalation": {"when": ["inspection_discrepancy", "inspection_access_denied", "inspection_no_show"], "required_fields": ["contact", "lot_id", "inspection_date", "description", "evidence_photos_or_documents"]},
       "source": "Approved MIGTORG inspection and motivated-refusal guidance",
       "reviewed_at": "2026-08-12",
@@ -2482,7 +2611,9 @@
       "short_answer": "Другой плательщик возможен, но его нужно согласовать до оплаты и получить от продавца новый счёт и при необходимости договор.",
       "detailed_answer": "Ответьте в официальной почтовой ветке по лоту, сообщите о новом плательщике и передайте его реквизиты безопасным каналом. Дождитесь переоформленных документов. Старый счёт после изменения данных не оплачивайте, иначе платёж может не сопоставиться с договором.",
       "next_step": "Создайте обращение с номером лота и типом нового плательщика; персональные и банковские данные приложите только в указанном сотрудником защищённом канале.",
-      "actions": [{"id": "documents.payer_change.ticket", "type": "open_ticket", "label": "Согласовать нового плательщика", "requires_confirmation": true}],
+      "actions": [
+        {"id": "documents.payer_change.ticket","type": "open_ticket","label": "Согласовать нового плательщика","requires_confirmation": true}
+      ],
       "escalation": {"when": ["different_payer", "payer_change", "invoice_reissue_required"], "required_fields": ["contact", "lot_id", "payer_type", "description"]},
       "source": "Approved MIGTORG payer-change guidance",
       "reviewed_at": "2026-08-12",
@@ -2534,7 +2665,9 @@
       "short_answer": "Не оплачивайте и не забирайте автомобиль с обнаруженным ограничением или действующим залогом до их снятия и получения подтверждающих документов.",
       "detailed_answer": "Покупатель не должен погашать чужую задолженность или принимать обременение на себя. Запросите у продавца документ о снятии ограничения или залога и повторно проверьте официальные реестры. Если обременение не было раскрыто в карточке, сохраните отчёт и передайте материалы на ручную проверку; это не гарантирует автоматическое признание отказа обоснованным.",
       "next_step": "Создайте обращение с номером лота, отчётом проверки, датой обнаружения и документами. До ответа продавца и администрации не подписывайте документы и не оплачивайте лот.",
-      "actions": [{"id": "vehicle.encumbrance.ticket", "type": "open_ticket", "label": "Проверить ограничение или залог", "requires_confirmation": true}],
+      "actions": [
+        {"id": "vehicle.encumbrance.ticket","type": "open_ticket","label": "Проверить ограничение или залог","requires_confirmation": true}
+      ],
       "escalation": {"when": ["restriction_detected", "pledge_detected", "encumbrance_not_disclosed", "lot_withdrawal_dispute"], "required_fields": ["contact", "lot_id", "description", "photos_or_documents"]},
       "source": "Approved MIGTORG legal-risk and quotation rules",
       "reviewed_at": "2026-08-12",
@@ -2664,7 +2797,9 @@
       "short_answer": "«Имущество» — отдельный раздел MIGTORG с товарами и активами для личного использования, бизнеса или перепродажи.",
       "detailed_answer": "В каталоге могут быть техника, одежда, обувь, косметика, зоотовары, товарные остатки, готовый бизнес и другие категории. Наличие меняется, поэтому ориентируйтесь на опубликованные карточки, а не на общий перечень.",
       "next_step": "Откройте https://migtorg.com/property/categories и выберите нужную категорию.",
-      "actions": [{"id": "property.catalog.open", "type": "navigate", "label": "Открыть раздел «Имущество»", "payload": {"url": "https://migtorg.com/property/categories"}}],
+      "actions": [
+        {"id": "property.catalog.open","type": "navigate","label": "Открыть раздел «Имущество»","payload": {"url": "https://migtorg.com/property/categories"}}
+      ],
       "escalation": {"when": [], "required_fields": []},
       "source": "Approved MIGTORG property catalog guidance",
       "reviewed_at": "2026-08-12",
@@ -2768,7 +2903,9 @@
       "short_answer": "Осмотр и комплект документов по имуществу зависят от условий конкретного лота и продавца.",
       "detailed_answer": "Если осмотр предусмотрен, заранее согласуйте дату, место и доступ. Проверьте количество, состояние и комплектность и зафиксируйте расхождения. По документам ориентируйтесь на карточку; если критичного документа нет, не предполагайте его наличие и запросите проверку по номеру лота.",
       "next_step": "Создайте обращение с номером лота, перечнем недостающих документов или расхождений и приложите фотографии или скриншоты.",
-      "actions": [{"id": "property.inspection_documents.ticket", "type": "open_ticket", "label": "Уточнить осмотр или документы", "requires_confirmation": true}],
+      "actions": [
+        {"id": "property.inspection_documents.ticket","type": "open_ticket","label": "Уточнить осмотр или документы","requires_confirmation": true}
+      ],
       "escalation": {"when": ["property_documents_missing", "property_inspection_discrepancy", "property_inspection_access_problem"], "required_fields": ["contact", "lot_id", "description", "evidence_photos_or_documents"]},
       "source": "Approved MIGTORG property inspection and documents guidance",
       "reviewed_at": "2026-08-12",
@@ -2794,7 +2931,9 @@
       "short_answer": "Откройте раздел по прямой ссылке и попробуйте обновление, другой браузер или приватное окно.",
       "detailed_answer": "Используйте https://migtorg.com/property/categories. Если страница по-прежнему не загружается, не отправляйте пароль или платёжные данные: сохраните время ошибки, браузер, устройство и безопасный скриншот.",
       "next_step": "Создайте обращение и приложите адрес страницы, время, описание действий, устройство, браузер и скриншот.",
-      "actions": [{"id": "property.section_error.ticket", "type": "open_ticket", "label": "Сообщить об ошибке раздела", "requires_confirmation": true}],
+      "actions": [
+        {"id": "property.section_error.ticket","type": "open_ticket","label": "Сообщить об ошибке раздела","requires_confirmation": true}
+      ],
       "escalation": {"when": ["property_section_unavailable"], "required_fields": ["contact", "page_url", "error_time", "device", "browser", "description", "screenshot"]},
       "source": "Approved MIGTORG property section troubleshooting",
       "reviewed_at": "2026-08-12",
@@ -2820,7 +2959,9 @@
       "short_answer": "В каталогах КАСКО и ОСАГО размещаются автомобильные лоты после страховых случаев, включая повреждённые автомобили и годные остатки.",
       "detailed_answer": "КАСКО и ОСАГО — разные разделы, причём для ОСАГО действуют отдельные правила торгов. Актуальное наличие смотрите в каталоге MIGTORG. Перед ставкой обязательно сверяйте состояние, комплектность, документы и возможность осмотра по карточке выбранного автомобиля.",
       "next_step": "Откройте https://www.migtorg.com/ и выберите нужный раздел; для сроков ОСАГО задайте отдельный вопрос о правилах торгов.",
-      "actions": [{"id": "vehicle.insurance_catalog.open", "type": "navigate", "label": "Открыть каталог", "payload": {"url": "https://www.migtorg.com/"}}],
+      "actions": [
+        {"id": "vehicle.insurance_catalog.open","type": "navigate","label": "Открыть каталог","payload": {"url": "https://www.migtorg.com/"}}
+      ],
       "escalation": {"when": [], "required_fields": []},
       "source": "Approved MIGTORG catalog and quotation rules",
       "reviewed_at": "2026-08-12",
@@ -2872,7 +3013,9 @@
       "short_answer": "После регистрации анкета может проходить проверку — это отдельный этап перед допуском к торгам.",
       "detailed_answer": "Проверьте, что обязательные поля заполнены корректно. Если ожидание затянулось, статус должен проверить сотрудник по email или телефону регистрации и дате подачи анкеты. Бот не обещает точный срок без этой проверки. Не отправляйте пароль, коды подтверждения или платёжные данные.",
       "next_step": "Создайте обращение или напишите на info@migtorg.com, указав контакт регистрации и дату подачи анкеты.",
-      "actions": [{"id": "account.activation.ticket", "type": "open_ticket", "label": "Проверить активацию", "requires_confirmation": true}],
+      "actions": [
+        {"id": "account.activation.ticket","type": "open_ticket","label": "Проверить активацию","requires_confirmation": true}
+      ],
       "escalation": {"when": ["проверка затянулась", "нет объяснения статуса"], "required_fields": ["contact", "registration_date"]},
       "source": "Approved MIGTORG registration support answer",
       "reviewed_at": "2026-08-12",
@@ -2950,7 +3093,9 @@
       "short_answer": "Проверьте email, настройки уведомлений и папку «Спам»; если сообщения нет, нужна техническая проверка.",
       "detailed_answer": "Укажите ожидаемое событие и когда оно произошло, email или телефон аккаунта, а также приложите безопасный скриншот настроек. Если уведомление связано со сделкой, добавьте номер лота. Не отправляйте пароль, коды подтверждения или данные карты.",
       "next_step": "Создайте обращение с контактом аккаунта, ожидаемым событием, датой, скриншотом и номером лота при наличии.",
-      "actions": [{"id": "notification.delivery.ticket", "type": "open_ticket", "label": "Проверить уведомления", "requires_confirmation": true}],
+      "actions": [
+        {"id": "notification.delivery.ticket","type": "open_ticket","label": "Проверить уведомления","requires_confirmation": true}
+      ],
       "escalation": {"when": ["уведомление отсутствует после базовой проверки", "ошибка повторяется"], "required_fields": ["contact", "description", "event_date"]},
       "source": "Approved MIGTORG notification troubleshooting answers",
       "reviewed_at": "2026-08-12",
@@ -2969,7 +3114,7 @@
       "operations": ["explain"],
       "states": [],
       "positive_examples": ["есть телеграм", "можно следить за лотами в Telegram", "есть имущество в телеграме", "дайте ссылку на телеграм канал", "есть официальный бот в телеграме"],
-      "negative_examples": ["не приходят уведомления по лотам", "как записаться на осмотр", "как связаться с продавцом", "не могу дозвониться"] ,
+      "negative_examples": ["не приходят уведомления по лотам", "как записаться на осмотр", "как связаться с продавцом", "не могу дозвониться"],
       "required_context": [],
       "allowed_context": ["channel_name", "page_type"],
       "facts": ["Для вопросов по сайту, лотам и платежам подтверждёнными каналами являются веб-чат и info@migtorg.com.", "Мессенджеры могут использоваться для оперативного согласования визита, пропуска или осмотра только когда соответствующий контакт уже предоставлен в официальной ветке.", "Бот не публикует неподтверждённую или потенциально устаревшую ссылку на Telegram-канал или бота."],
@@ -3210,7 +3355,9 @@
       "short_answer": "Если вам нужен именно офис MIGTORG, он находится по адресу: г. Москва, ул. Смирновская, д. 25, стр. 16, 4 этаж, каб. 30.",
       "detailed_answer": "Приём возможен строго с 10:00 до 18:00 и только по предварительной записи. Для пешего пропуска сообщите ФИО; для въезда на автомобиле — ФИО, государственный регистрационный номер и марку транспортного средства. Дождитесь подтверждения записи и пропуска. В офисе можно решить административный вопрос по площадке, включая согласованное личное подписание договора доступа. MIGTORG не является продавцом автомобиля: для осмотра или получения лота нужен адрес продавца, который продавец сообщает отдельно.",
       "next_step": "Создайте обращение или напишите на info@migtorg.com, указав контакт, цель визита, желаемые дату и время и данные для нужного типа пропуска. Не приезжайте без подтверждения записи.",
-      "actions": [{"id": "support.office_visit.ticket", "type": "open_ticket", "label": "Согласовать визит и пропуск", "requires_confirmation": true}],
+      "actions": [
+        {"id": "support.office_visit.ticket","type": "open_ticket","label": "Согласовать визит и пропуск","requires_confirmation": true}
+      ],
       "escalation": {"when": ["пользователь планирует визит", "нужен пропуск", "нужно подтвердить готовность документов"], "required_fields": ["contact", "visit_purpose", "visit_date", "visit_time", "visitor_name"]},
       "source": "Approved MIGTORG office visit and pass procedure",
       "reviewed_at": "2026-08-12",
@@ -3236,7 +3383,9 @@
       "short_answer": "Проблему по конкретному лоту нужно передать ответственному специалисту с номером лота и кратким описанием.",
       "detailed_answer": "Укажите продавца или страховую, текущий статус, что именно не получается, контакт для связи и приложите переписку либо безопасный скриншот. Не отправляйте пароль, коды, CVC/CVV и полный номер карты. Бот не подтверждает результат до проверки сотрудником.",
       "next_step": "Создайте обращение с номером лота, статусом, описанием, контактом и приложениями; сотрудник проверит материалы и сообщит результат по официальному каналу.",
-      "actions": [{"id": "support.lot_case_review.ticket", "type": "open_ticket", "label": "Передать вопрос по лоту", "requires_confirmation": true}],
+      "actions": [
+        {"id": "support.lot_case_review.ticket","type": "open_ticket","label": "Передать вопрос по лоту","requires_confirmation": true}
+      ],
       "escalation": {"when": ["нужна проверка конкретного лота", "сделка заблокирована", "нет документов, оплаты или выдачи"], "required_fields": ["lot_id", "contact", "description"]},
       "source": "Approved MIGTORG lot case escalation procedure",
       "reviewed_at": "2026-08-12",
@@ -3262,7 +3411,9 @@
       "short_answer": "Ручная проверка нужна, когда вопрос касается фактического состояния конкретного лота, платежа, штрафа, возврата, документа, аккаунта или спора.",
       "detailed_answer": "Бот может объяснить правило и подсказать состав обращения, но не подтверждает платёж, не снимает штраф, не одобряет возврат, не меняет данные и не подтверждает передачу. До проверки сотрудником нельзя обещать решение. Для обращения собираются только относящиеся к вопросу сведения и безопасные приложения; пароль, коды и CVC/CVV не нужны.",
       "next_step": "Выберите точную тему и создайте обращение с минимальным набором подтверждений; результат сообщит сотрудник после проверки.",
-      "actions": [{"id": "support.manual_review_scope.ticket", "type": "open_ticket", "label": "Создать обращение на проверку", "requires_confirmation": true}],
+      "actions": [
+        {"id": "support.manual_review_scope.ticket","type": "open_ticket","label": "Создать обращение на проверку","requires_confirmation": true}
+      ],
       "escalation": {"when": ["требуется действие в системе", "нужно проверить фактические данные", "есть спор или финансовое последствие"], "required_fields": ["contact", "description"]},
       "source": "Approved MIGTORG manual review routing policy",
       "reviewed_at": "2026-08-12",
@@ -3288,7 +3439,9 @@
       "short_answer": "Проверьте лимиты и ограничения банка и убедитесь, что списания не было; затем попробуйте позже или выберите другой доступный способ.",
       "detailed_answer": "Если ошибка повторяется, сохраните её текст и безопасный скриншот, укажите сумму, дату и время попытки, способ оплаты и email аккаунта. Не сообщайте полный номер карты, срок действия, CVC/CVV, пароль или код из SMS. Если деньги уже списаны, не повторяйте платёж — используйте сценарий проверки неотображённого платежа. Бот не обещает успешное проведение платежа до проверки.",
       "next_step": "Создайте обращение с параметрами попытки и скриншотом; администрация проверит технический статус без обещания результата заранее.",
-      "actions": [{"id": "payment.checkout_problem.ticket", "type": "open_ticket", "label": "Сообщить о проблеме оплаты", "requires_confirmation": true}],
+      "actions": [
+        {"id": "payment.checkout_problem.ticket","type": "open_ticket","label": "Сообщить о проблеме оплаты","requires_confirmation": true}
+      ],
       "escalation": {"when": ["ошибка повторяется", "банк отклоняет платёж без понятной причины", "кнопка оплаты не работает"], "required_fields": ["contact", "payment_date", "payment_amount", "payment_method", "error_text"]},
       "source": "Approved MIGTORG payment checkout troubleshooting procedure",
       "reviewed_at": "2026-08-12",
@@ -3314,7 +3467,9 @@
       "short_answer": "Понимаю, что работа площадки вас разочаровала. Давайте коротко зафиксируем, что именно пошло не так.",
       "detailed_answer": "Укажите раздел или действие, фактический результат и что вы ожидали получить. Если проблема связана с лотом или платежом, добавьте его номер; при технической ошибке полезны время и безопасный скриншот. Пароли, коды и полные платёжные реквизиты не отправляйте.",
       "next_step": "Создайте обращение с описанием — команда проверит ситуацию. До проверки нельзя обещать исправление или срок.",
-      "actions": [{"id": "feedback.platform_complaint.ticket", "type": "open_ticket", "label": "Передать жалобу", "requires_confirmation": true}],
+      "actions": [
+        {"id": "feedback.platform_complaint.ticket","type": "open_ticket","label": "Передать жалобу","requires_confirmation": true}
+      ],
       "escalation": {"when": ["пользователь хочет передать жалобу", "описана воспроизводимая ошибка", "нужна проверка конкретной ситуации"], "required_fields": ["contact", "description"]},
       "source": "Approved MIGTORG feedback handling guidance and reviewed support corpus",
       "reviewed_at": "2026-08-12",
@@ -3340,7 +3495,9 @@
       "short_answer": "Спасибо за предложение — его можно передать команде продукта.",
       "detailed_answer": "Опишите, в каком разделе нужна функция, какую задачу она решит, как должна работать и приведите короткий пример. Это поможет команде понять сценарий использования.",
       "next_step": "Отправьте описание идеи; срок и сам факт реализации можно будет подтвердить только после решения команды.",
-      "actions": [{"id": "feedback.improvement_suggestion.ticket", "type": "open_ticket", "label": "Предложить улучшение", "requires_confirmation": true}],
+      "actions": [
+        {"id": "feedback.improvement_suggestion.ticket","type": "open_ticket","label": "Предложить улучшение","requires_confirmation": true}
+      ],
       "escalation": {"when": ["пользователь хочет передать идею команде"], "required_fields": ["description"]},
       "source": "Approved MIGTORG product feedback guidance",
       "reviewed_at": "2026-08-12",
@@ -3366,7 +3523,9 @@
       "short_answer": "Понимаю — если ответ не помог, можно создать обращение для проверки сотрудником.",
       "detailed_answer": "Коротко опишите исходную ситуацию и что осталось непонятно. Если вопрос относится к лоту или платежу, добавьте его номер и контакт для обратной связи. Не отправляйте пароль, коды, CVC/CVV или полный номер карты.",
       "next_step": "Создайте обращение с описанием; специалист проверит вопрос и ответит по официальному каналу без обещания результата заранее.",
-      "actions": [{"id": "feedback.bot_answer_complaint.ticket", "type": "open_ticket", "label": "Передать специалисту", "requires_confirmation": true}],
+      "actions": [
+        {"id": "feedback.bot_answer_complaint.ticket","type": "open_ticket","label": "Передать специалисту","requires_confirmation": true}
+      ],
       "escalation": {"when": ["ответ бота не решил вопрос", "пользователь просит специалиста", "нужна проверка конкретной ситуации"], "required_fields": ["contact", "description"]},
       "source": "Approved MIGTORG bot feedback and escalation guidance",
       "reviewed_at": "2026-08-12",
@@ -3392,7 +3551,9 @@
       "short_answer": "Сбросьте фильтры, обновите страницу и повторите поиск без лишних условий; для автомобиля попробуйте марку и модель отдельно.",
       "detailed_answer": "Если результат остаётся неверным, проверьте другой браузер и сохраните раздел каталога, точный запрос или выбранные параметры и безопасный скриншот. Если не находится известный лот, добавьте его номер или ссылку.",
       "next_step": "Создайте техническое обращение с параметрами поиска или фильтра — команда попробует воспроизвести ошибку без обещания срока исправления.",
-      "actions": [{"id": "technical.catalog_search_filter.ticket", "type": "open_ticket", "label": "Сообщить об ошибке поиска", "requires_confirmation": true}],
+      "actions": [
+        {"id": "technical.catalog_search_filter.ticket","type": "open_ticket","label": "Сообщить об ошибке поиска","requires_confirmation": true}
+      ],
       "escalation": {"when": ["ошибка воспроизводится", "результаты не соответствуют параметрам", "известный лот не находится"], "required_fields": ["contact", "catalog_section", "search_or_filter_parameters", "screenshot"]},
       "source": "Reviewed MIGTORG support corpus Q-121 and Q-122",
       "reviewed_at": "2026-08-12",
@@ -3418,7 +3579,9 @@
       "short_answer": "Обновите страницу и откройте карточку лота в другом браузере.",
       "detailed_answer": "Если фотография по-прежнему не отображается, сохраните номер или ссылку на лот, безопасный скриншот карточки и укажите, какая фотография пропала. Если фото важно для оценки состояния, не делайте ставку до восстановления изображения или получения подтверждённой информации.",
       "next_step": "Создайте обращение с номером лота и скриншотом или отправьте данные на info@migtorg.com; срок исправления можно подтвердить только после проверки.",
-      "actions": [{"id": "technical.lot_image_missing.ticket", "type": "open_ticket", "label": "Сообщить о пропавшем фото", "requires_confirmation": true}],
+      "actions": [
+        {"id": "technical.lot_image_missing.ticket","type": "open_ticket","label": "Сообщить о пропавшем фото","requires_confirmation": true}
+      ],
       "escalation": {"when": ["изображение не появилось после повторной проверки", "фото важно для оценки лота"], "required_fields": ["contact", "lot_id", "screenshot", "image_description"]},
       "source": "Reviewed MIGTORG support corpus Q-123",
       "reviewed_at": "2026-08-12",
@@ -3470,7 +3633,9 @@
       "short_answer": "Официальное коммерческое или партнёрское предложение можно передать профильному сотруднику.",
       "detailed_answer": "Укажите организацию или имя, контакт, предмет предложения и предполагаемую модель сотрудничества. Если запрос относится к текущему лоту или торгам, действуют только общие правила площадки: индивидуальные преимущества, обход торгов и частные договорённости недопустимы.",
       "next_step": "Создайте обращение с описанием предложения; его принятие, условия и срок ответа можно подтвердить только после рассмотрения.",
-      "actions": [{"id": "partnership.official_proposal.ticket", "type": "open_ticket", "label": "Передать коммерческое предложение", "requires_confirmation": true}],
+      "actions": [
+        {"id": "partnership.official_proposal.ticket","type": "open_ticket","label": "Передать коммерческое предложение","requires_confirmation": true}
+      ],
       "escalation": {"when": ["предложено официальное сотрудничество", "есть коммерческое предложение"], "required_fields": ["contact", "description"]},
       "source": "Reviewed MIGTORG support corpus Q-127 and Q-129",
       "reviewed_at": "2026-08-12",
@@ -3522,7 +3687,9 @@
       "short_answer": "Мне жаль, что вы столкнулись с угрозами. Не вступайте в конфликт и сохраните подтверждения.",
       "detailed_answer": "Сохраните переписку, безопасные скриншоты, записи звонков, номер лота и известные данные участника. Если есть непосредственная угроза жизни или здоровью, обратитесь в экстренные службы. Не публикуйте персональные данные в открытом чате.",
       "next_step": "Создайте приоритетное обращение с контактом, описанием и подтверждениями; MIGTORG проведёт проверку без обещания результата заранее.",
-      "actions": [{"id": "safety.reported_threat.ticket", "type": "open_ticket", "label": "Сообщить об угрозе", "requires_confirmation": true, "priority": "urgent"}],
+      "actions": [
+        {"id": "safety.reported_threat.ticket","type": "open_ticket","label": "Сообщить об угрозе","requires_confirmation": true,"priority": "urgent"}
+      ],
       "escalation": {"when": ["сообщается об угрозе, давлении или шантаже"], "required_fields": ["contact", "description", "evidence"]},
       "source": "MIGTORG safety audit 2026-07-12",
       "reviewed_at": "2026-08-12",
@@ -3548,7 +3715,9 @@
       "short_answer": "Аккредитация — это проверка условий допуска к участию в котировках.",
       "detailed_answer": "Участвовать могут физлица, ИП и организации после заключения договора и выполнения условий доступа. Организатор вправе запросить полные и достоверные документы и сведения. Точный комплект зависит от типа участника; отсутствие документов, несоответствие требованиям или сомнения в данных могут привести к запросу подтверждений, приостановлению доступа или отказу.",
       "next_step": "Для уточнения комплекта или причины решения создайте обращение с типом участника, контактом и описанием; результат можно подтвердить только после проверки.",
-      "actions": [{"id": "registration.accreditation.ticket", "type": "open_ticket", "label": "Уточнить аккредитацию", "requires_confirmation": true}],
+      "actions": [
+        {"id": "registration.accreditation.ticket","type": "open_ticket","label": "Уточнить аккредитацию","requires_confirmation": true}
+      ],
       "escalation": {"when": ["нужен точный комплект документов", "получен отказ", "доступ приостановлен"], "required_fields": ["contact", "participant_type", "description"]},
       "source": "MIGTORG quotation rules, terms.pdf pp. 2-5, clauses 2.1, 3.1, 4.1-4.12",
       "reviewed_at": "2026-08-12",
@@ -3574,7 +3743,9 @@
       "short_answer": "Логин и пароль нельзя передавать другим людям; действия под этими данными считаются действиями владельца аккаунта.",
       "detailed_answer": "Если данные утрачены, стали известны постороннему или замечен подозрительный вход, уведомите MIGTORG в течение 1 рабочего дня. Для защиты или восстановления доступа сотрудник проверит владельца аккаунта. Не отправляйте пароль, SMS-коды или коды подтверждения.",
       "next_step": "Создайте обращение с контактом аккаунта, временем обнаружения и описанием — без секретных данных.",
-      "actions": [{"id": "account.credential_responsibility.ticket", "type": "open_ticket", "label": "Сообщить о риске доступа", "requires_confirmation": true}],
+      "actions": [
+        {"id": "account.credential_responsibility.ticket","type": "open_ticket","label": "Сообщить о риске доступа","requires_confirmation": true}
+      ],
       "escalation": {"when": ["учётные данные утрачены", "есть риск доступа третьего лица", "обнаружен подозрительный вход"], "required_fields": ["contact", "incident_time", "description"]},
       "source": "MIGTORG quotation rules clause 4.10; buyer offer clauses 2.7 and 3.1; seller offer clauses 2.2 and 3.1",
       "reviewed_at": "2026-08-12",
@@ -3600,7 +3771,9 @@
       "short_answer": "Персональные данные используются для идентификации, договоров, обратной связи и обработки запросов.",
       "detailed_answer": "Политика также указывает рассылки и уведомления, проверку полноты и достоверности предоставленных сведений, а также статистику и аналитику при обезличивании данных. Речь идёт об общих целях политики, а не о раскрытии данных конкретного пользователя.",
       "next_step": "Если нужен запрос именно по вашим данным, создайте отдельное официальное обращение о доступе к персональным данным.",
-      "actions": [{"id": "privacy.processing_purposes.rights", "type": "clarify", "label": "Запрос по моим данным", "scenario_id": "privacy.rights_withdrawal"}],
+      "actions": [
+        {"id": "privacy.processing_purposes.rights","type": "clarify","label": "Запрос по моим данным","scenario_id": "privacy.rights_withdrawal"}
+      ],
       "escalation": {"when": [], "required_fields": []},
       "source": "MIGAS personal data policy, clauses 1.3 and 3.2",
       "reviewed_at": "2026-08-12",
@@ -3626,7 +3799,9 @@
       "short_answer": "Политика перечисляет контактные, договорные и технические данные, включая ФИО, адрес, телефон, email и cookie.",
       "detailed_answer": "Также указаны история запросов и просмотров, местоположение, действия на сайте, оборудование, дата и время сессии. По политике оператор не обрабатывает биометрические и специальные категории персональных данных и не осуществляет трансграничную передачу.",
       "next_step": "Для информации именно о ваших данных используйте официальный запрос о доступе, уточнении, блокировании или удалении.",
-      "actions": [{"id": "privacy.data_categories.rights", "type": "clarify", "label": "Запрос по моим данным", "scenario_id": "privacy.rights_withdrawal"}],
+      "actions": [
+        {"id": "privacy.data_categories.rights","type": "clarify","label": "Запрос по моим данным","scenario_id": "privacy.rights_withdrawal"}
+      ],
       "escalation": {"when": [], "required_fields": []},
       "source": "MIGAS personal data policy, clauses 4.2 and 5.4-5.6",
       "reviewed_at": "2026-08-12",
@@ -3652,7 +3827,9 @@
       "short_answer": "Вы можете запросить доступ, уточнение, блокирование или уничтожение своих данных, а также отозвать согласие официальным письмом.",
       "detailed_answer": "Для отзыва направьте оператору сообщение с пометкой «Отзыв согласия на обработку персональных данных». По политике обработка прекращается в течение 5 рабочих дней после получения уведомления, если нет законных оснований продолжить её. Это не означает автоматическое подтверждение удаления всех сведений: результат проверяется по обращению.",
       "next_step": "Создайте обращение или направьте запрос на официальный email MIGTORG, указав контакт, вид требования и сведения, позволяющие идентифицировать ваш запрос, но не пароль и не платёжные секреты.",
-      "actions": [{"id": "privacy.rights_withdrawal.ticket", "type": "open_ticket", "label": "Запрос по персональным данным", "requires_confirmation": true}],
+      "actions": [
+        {"id": "privacy.rights_withdrawal.ticket","type": "open_ticket","label": "Запрос по персональным данным","requires_confirmation": true}
+      ],
       "escalation": {"when": ["запрошены данные пользователя", "требуется исправление, блокирование или уничтожение", "отзывается согласие"], "required_fields": ["contact", "request_type", "description"]},
       "source": "MIGAS personal data policy, clauses 5.7-5.9, 6.3, 7.2 and 9",
       "reviewed_at": "2026-08-12",
@@ -3678,7 +3855,9 @@
       "short_answer": "Формальную жалобу на действия или бездействие организатора нужно направить организатору площадки.",
       "detailed_answer": "Результат по правилам котировок направляется на email участника, указанный при аккредитации. Для спора по персональным данным сначала используется претензионный порядок; установленный политикой срок рассмотрения претензии — 30 календарных дней. Исход спора можно подтвердить только после рассмотрения.",
       "next_step": "Создайте обращение с контактом, предметом жалобы, датами, номером лота или аккаунта при наличии и подтверждающими документами.",
-      "actions": [{"id": "complaint.formal_dispute.ticket", "type": "open_ticket", "label": "Подать формальную жалобу", "requires_confirmation": true}],
+      "actions": [
+        {"id": "complaint.formal_dispute.ticket","type": "open_ticket","label": "Подать формальную жалобу","requires_confirmation": true}
+      ],
       "escalation": {"when": ["обжалуются действия или бездействие организатора", "направляется претензия по персональным данным"], "required_fields": ["contact", "complaint_type", "description"]},
       "source": "MIGTORG quotation rules section 9; MIGAS personal data policy section 7",
       "reviewed_at": "2026-08-12",

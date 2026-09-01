@@ -18,16 +18,16 @@
 
 ## 2. Состояние знаний
 
-- Версия канонического слоя: `2026.08.12.26`.
+- Версия канонического слоя: `2026.09.01.1`.
 - Сценариев: 141, активных: 141.
 - Подтверждённых фактов: 574.
 - Уникальных текстовых описаний источников: 107.
 - Зафиксированных содержательных пробелов: 3.
-- Кандидатов, ожидающих экспертного решения: 5.
-- Просроченных повторных проверок на 2026-08-24: 5.
-- SHA-256 канонических сценариев: `c359f9f32febc34dd27936d2bc276bacacf2df8d46d52ddd23a5a217bcf8070a`.
+- Кандидатов, ожидающих экспертного решения: 9.
+- Просроченных повторных проверок на 2026-09-01: 62.
+- SHA-256 канонических сценариев: `234f6970329e1182cd388ed3a91172e900ede76d0f70976c215487afc0bff99b`.
 - SHA-256 реестра пробелов: `c9f0f8929e75f00245eadc9db5617cd3aec5a13f03276a0b751ef0d8a2a7b401`.
-- SHA-256 очереди экспертной проверки: `d5756e44eed7c104dcd5993788e66b8ba5d98c55e904db98af66b734a02c5c5f`.
+- SHA-256 очереди экспертной проверки: `642cb139af6b3a124706ba0f20e2946915c04343bb52fe0b677516cf9ea0d019`.
 
 ## 3. Обязательные пробелы, требующие актуальной информации
 
@@ -65,13 +65,70 @@
 
 ### 3.5. Проверка актуальности
 
-По состоянию на `2026-08-24` установленный срок повторной проверки истёк у 5 сценариев. Их текущий текст сохранён без самовольного изменения, но владелец БЗ и указанный эксперт должны подтвердить актуальность или внести новую утверждённую редакцию:
+По состоянию на `2026-09-01` установленный срок повторной проверки истёк у 62 сценариев. Их текущий текст сохранён без самовольного изменения, но владелец БЗ и указанный эксперт должны подтвердить актуальность или внести новую утверждённую редакцию:
 
 - `bid.not_visible` — проверено `2026-08-07`, срок повторной проверки `2026-08-21`, эксперт: MIGTORG auction support.
 - `auction.status` — проверено `2026-08-07`, срок повторной проверки `2026-08-21`, эксперт: MIGTORG auction support.
 - `contract.receive` — проверено `2026-08-07`, срок повторной проверки `2026-08-21`, эксперт: MIGTORG deal support.
 - `win.next_steps` — проверено `2026-08-08`, срок повторной проверки `2026-08-22`, эксперт: MIGTORG deal support.
 - `pickup.receive_lot` — проверено `2026-08-08`, срок повторной проверки `2026-08-22`, эксперт: MIGTORG deal support.
+- `tariff.connect` — проверено `2026-08-12`, срок повторной проверки `2026-08-26`, эксперт: MIGTORG payments support.
+- `payment.methods` — проверено `2026-08-11`, срок повторной проверки `2026-08-25`, эксперт: MIGTORG project expert.
+- `payment.not_visible` — проверено `2026-08-11`, срок повторной проверки `2026-08-25`, эксперт: MIGTORG project expert.
+- `commission.explained` — проверено `2026-08-11`, срок повторной проверки `2026-08-25`, эксперт: MIGTORG project expert.
+- `commission.discount` — проверено `2026-08-12`, срок повторной проверки `2026-08-26`, эксперт: MIGTORG project expert.
+- `commission.unpaid` — проверено `2026-08-12`, срок повторной проверки `2026-08-26`, эксперт: MIGTORG project expert.
+- `lot.payment.start` — проверено `2026-08-11`, срок повторной проверки `2026-08-25`, эксперт: MIGTORG project expert.
+- `lot.payment.details` — проверено `2026-08-11`, срок повторной проверки `2026-08-25`, эксперт: MIGTORG project expert.
+- `lot.payment.overdue` — проверено `2026-08-11`, срок повторной проверки `2026-08-25`, эксперт: MIGTORG project expert.
+- `balance.topup.commission` — проверено `2026-08-11`, срок повторной проверки `2026-08-25`, эксперт: MIGTORG project owner.
+- `refund.eligibility` — проверено `2026-08-11`, срок повторной проверки `2026-08-25`, эксперт: MIGTORG project expert.
+- `refund.application` — проверено `2026-08-11`, срок повторной проверки `2026-08-25`, эксперт: MIGTORG project expert.
+- `refund.destination` — проверено `2026-08-11`, срок повторной проверки `2026-08-25`, эксперт: MIGTORG project expert.
+- `refund.timing_status` — проверено `2026-08-11`, срок повторной проверки `2026-08-25`, эксперт: MIGTORG project expert.
+- `refund.denied_or_blocked` — проверено `2026-08-11`, срок повторной проверки `2026-08-25`, эксперт: MIGTORG project expert.
+- `penalty.explain_or_dispute` — проверено `2026-08-12`, срок повторной проверки `2026-08-26`, эксперт: MIGTORG project expert.
+- `vehicle.registration_after_purchase` — проверено `2026-08-12`, срок повторной проверки `2026-08-26`, эксперт: MIGTORG project expert.
+- `loyalty.unconfirmed_details` — проверено `2026-08-12`, срок повторной проверки `2026-08-26`, эксперт: MIGTORG administration.
+- `contract.unconfirmed_details` — проверено `2026-08-12`, срок повторной проверки `2026-08-26`, эксперт: MIGTORG administration.
+- `refusal.unconfirmed_details` — проверено `2026-08-12`, срок повторной проверки `2026-08-26`, эксперт: MIGTORG administration and seller for the specific lot.
+- `penalty.unconfirmed_details` — проверено `2026-08-12`, срок повторной проверки `2026-08-26`, эксперт: MIGTORG administration.
+- `vehicle.registration_penalty_details` — проверено `2026-08-12`, срок повторной проверки `2026-08-26`, эксперт: MIGTORG administration for transaction documents.
+- `refusal.invalid_reasons` — проверено `2026-08-12`, срок повторной проверки `2026-08-26`, эксперт: MIGTORG project expert.
+- `refusal.evidence` — проверено `2026-08-12`, срок повторной проверки `2026-08-26`, эксперт: MIGTORG project expert.
+- `refusal.deadline_and_submission` — проверено `2026-08-12`, срок повторной проверки `2026-08-26`, эксперт: MIGTORG project expert.
+- `refusal.seller_decision` — проверено `2026-08-12`, срок повторной проверки `2026-08-26`, эксперт: MIGTORG project expert.
+- `tariff.status` — проверено `2026-08-12`, срок повторной проверки `2026-08-26`, эксперт: MIGTORG payments support.
+- `tariff.promotion` — проверено `2026-08-12`, срок повторной проверки `2026-08-26`, эксперт: MIGTORG connection support.
+- `refusal.change_mind` — проверено `2026-08-12`, срок повторной проверки `2026-08-26`, эксперт: MIGTORG project expert.
+- `refusal.no_response` — проверено `2026-08-12`, срок повторной проверки `2026-08-26`, эксперт: MIGTORG project expert.
+- `seller.buyer_refusal` — проверено `2026-08-12`, срок повторной проверки `2026-08-26`, эксперт: MIGTORG seller support.
+- `bid.validity` — проверено `2026-08-12`, срок повторной проверки `2026-08-26`, эксперт: MIGTORG project expert.
+- `bid.expired` — проверено `2026-08-12`, срок повторной проверки `2026-08-26`, эксперт: MIGTORG project expert.
+- `documents.preparation_delay` — проверено `2026-08-12`, срок повторной проверки `2026-08-26`, эксперт: MIGTORG project expert.
+- `pickup.delay` — проверено `2026-08-12`, срок повторной проверки `2026-08-26`, эксперт: MIGTORG project expert.
+- `payment.document_policy` — проверено `2026-08-12`, срок повторной проверки `2026-08-26`, эксперт: MIGTORG payments support.
+- `auction.result` — проверено `2026-08-12`, срок повторной проверки `2026-08-26`, эксперт: MIGTORG auction support.
+- `transfer.not_confirmed` — проверено `2026-08-12`, срок повторной проверки `2026-08-26`, эксперт: MIGTORG project expert.
+- `transfer.confirmed` — проверено `2026-08-12`, срок повторной проверки `2026-08-26`, эксперт: MIGTORG transaction support.
+- `lot.card_information` — проверено `2026-08-12`, срок повторной проверки `2026-08-26`, эксперт: MIGTORG lot support.
+- `vehicle.vin_request` — проверено `2026-08-12`, срок повторной проверки `2026-08-26`, эксперт: MIGTORG lot support.
+- `lot.missing` — проверено `2026-08-12`, срок повторной проверки `2026-08-26`, эксперт: MIGTORG lot support.
+- `bid.modify_cancel` — проверено `2026-08-12`, срок повторной проверки `2026-08-26`, эксперт: MIGTORG auction support.
+- `bid.position_service` — проверено `2026-08-12`, срок повторной проверки `2026-08-26`, эксперт: MIGTORG auction support.
+- `inspection.problem` — проверено `2026-08-12`, срок повторной проверки `2026-08-26`, эксперт: MIGTORG deal support.
+- `documents.payer_change` — проверено `2026-08-12`, срок повторной проверки `2026-08-26`, эксперт: MIGTORG deal support.
+- `vehicle.encumbrance_detected` — проверено `2026-08-12`, срок повторной проверки `2026-08-26`, эксперт: MIGTORG legal and deal support.
+- `vehicle.owner_listing_dispute` — проверено `2026-08-12`, срок повторной проверки `2026-08-26`, эксперт: MIGTORG insurance lot support.
+- `property.inspection_documents` — проверено `2026-08-12`, срок повторной проверки `2026-08-26`, эксперт: MIGTORG property support.
+- `property.section_error` — проверено `2026-08-12`, срок повторной проверки `2026-08-26`, эксперт: MIGTORG technical support.
+- `safety.reported_threat` — проверено `2026-08-12`, срок повторной проверки `2026-08-26`, эксперт: MIGTORG safety support.
+- `registration.accreditation` — проверено `2026-08-12`, срок повторной проверки `2026-08-26`, эксперт: MIGTORG legal and accreditation support.
+- `account.credential_responsibility` — проверено `2026-08-12`, срок повторной проверки `2026-08-26`, эксперт: MIGTORG legal and account security support.
+- `privacy.processing_purposes` — проверено `2026-08-12`, срок повторной проверки `2026-08-26`, эксперт: MIGTORG personal data compliance.
+- `privacy.data_categories` — проверено `2026-08-12`, срок повторной проверки `2026-08-26`, эксперт: MIGTORG personal data compliance.
+- `privacy.rights_withdrawal` — проверено `2026-08-12`, срок повторной проверки `2026-08-26`, эксперт: MIGTORG personal data compliance.
+- `complaint.formal_dispute` — проверено `2026-08-12`, срок повторной проверки `2026-08-26`, эксперт: MIGTORG legal and personal data compliance.
 
 ### 3.6. Очередь обязательных экспертных решений
 
@@ -130,6 +187,54 @@
   - Какие документы подтверждают полномочия представителя организации и плательщика, отличного от владельца аккаунта?
   - Кто утверждает каждый финансовый и договорный раздел?
   - Какова периодичность и события внепланового пересмотра БЗ?
+
+#### Взаимозачёт возврата и другого обязательства (`review.refund.offset`)
+
+- Статус: `expert_review_required`; риск: `financial_contractual`.
+- Безопасный действующий сценарий: `refund.application`.
+- Требуемая роль эксперта: MIGTORG finance and legal.
+- Блокеры публикации: offset_availability, eligible_payment_types, refusal_and_penalty_conditions, approval_owner_and_documents.
+- Вопросы, требующие ответа:
+  - Поддерживает ли MIGTORG взаимозачёт возврата в счёт другого платежа или лота?
+  - Какие виды платежей можно зачесть и кто утверждает операцию?
+  - Обязателен ли согласованный мотивированный отказ без штрафа, либо возможен взаимозачёт после уплаты штрафа?
+  - Какие документы, статусы лота и реквизиты нужны для обращения?
+
+#### Правила повторного обращения по email (`review.support.email_followup`)
+
+- Статус: `expert_review_required`; риск: `operational`.
+- Безопасный действующий сценарий: `support.email_no_response`.
+- Требуемая роль эксперта: MIGTORG support operations.
+- Блокеры публикации: registered_email_requirement, same_thread_boundary, copy_recipient_rule, channel_scope.
+- Вопросы, требующие ответа:
+  - Обязательно ли отправлять обращение с email, зарегистрированного в аккаунте?
+  - В каких случаях нужно продолжать исходную ветку, а когда допустимо новое обращение?
+  - Нужно ли дублировать письмо на info@migtorg.com и для каких тем?
+  - Допустимы ли и email, и веб-чат, или отдельные вопросы принимаются только по email?
+
+#### Дополнительные сведения и фотографии по лоту (`review.lot.additional_information`)
+
+- Статус: `expert_review_required`; риск: `operational_contractual`.
+- Безопасный действующий сценарий: `lot.card_information`.
+- Требуемая роль эксперта: MIGTORG seller and legal support.
+- Блокеры публикации: seller_photo_obligation, request_channel_and_stage, mandatory_vehicle_fields, condition_discrepancy_procedure.
+- Вопросы, требующие ответа:
+  - Является ли предоставление дополнительных фотографий правом продавца или его обязанностью?
+  - На каком этапе и по какому каналу покупатель может запросить дополнительные фото или характеристики?
+  - Обязан ли продавец указывать коммерческий утиль, объём двигателя и известные повреждения?
+  - Как действовать, если опубликованные фотографии не отражают фактическое состояние лота?
+
+#### Телефонные каналы для специальных обращений (`review.support.phone_channels`)
+
+- Статус: `expert_review_required`; риск: `operational`.
+- Безопасный действующий сценарий: `support.callback`.
+- Требуемая роль эксперта: MIGTORG support operations.
+- Блокеры публикации: phone_ownership_and_currency, public_scope, working_hours, callback_policy.
+- Вопросы, требующие ответа:
+  - Является ли номер +7 (495) 649-91-99 актуальным публичным номером MIGTORG?
+  - Для каких обращений его можно публиковать: визит в офис, государственные органы или общая поддержка?
+  - Каковы часы работы и какие данные нужно подготовить перед звонком?
+  - Можно ли обещать обратный звонок сотрудника после телефонного обращения?
 
 ## 4. Карта процессов
 
@@ -6112,7 +6217,7 @@
 ```json
 {
   "schema_version": 2,
-  "version": "2026.08.12.26",
+  "version": "2026.09.01.1",
   "publication_policy": "manual_review_only",
   "records": [
     {
@@ -6326,7 +6431,7 @@
       "objects": ["support"],
       "operations": ["contact"],
       "states": [],
-      "positive_examples": ["перезвоните мне", "перезвони мне", "пусть со мной свяжется Михаил", "пусть со мной свяжется Алексей", "закажите обратный звонок", "не могу до вас дозвониться", "не дозвониться", "возьмите трубку"],
+      "positive_examples": ["перезвоните мне", "перезвони мне", "пусть со мной свяжется Михаил", "пусть со мной свяжется Алексей", "закажите обратный звонок", "не могу до вас дозвониться", "не дозвониться", "возьмите трубку", "сотрудник обязательно перезвонит", "со мной свяжутся по телефону", "когда мне перезвонит менеджер"],
       "negative_examples": ["продавец не перезвонил", "как получить контакт продавца"],
       "required_context": [],
       "allowed_context": ["page_type", "user_email", "user_phone"],
@@ -6383,7 +6488,7 @@
       "objects": ["account"],
       "operations": ["check"],
       "states": ["blocked"],
-      "positive_examples": ["аккаунт заблокирован", "за что заблокировали аккаунт", "как разблокировать профиль", "не могу войти аккаунт заблокирован", "почему у меня блокировка кабинета", "снимите блокировку аккаунта"],
+      "positive_examples": ["аккаунт заблокирован", "за что заблокировали аккаунт", "как разблокировать профиль", "не могу войти аккаунт заблокирован", "почему у меня блокировка кабинета", "снимите блокировку аккаунта", "разблокируют автоматически после оплаты", "сразу ли снимут блокировку после оплаты"],
       "negative_examples": ["заблокировали ставку", "не могу сделать ставку", "забыл пароль"],
       "required_context": [],
       "allowed_context": ["page_type"],
@@ -6439,7 +6544,7 @@
       "objects": ["support"],
       "operations": ["contact", "check"],
       "states": ["no_response", "waiting"],
-      "positive_examples": ["на мои письма никто не отвечает", "поддержка не отвечает на почту", "на почте тишина", "отправил письмо ответа нет", "менеджер не ответил на письмо", "куда обратиться если поддержка молчит"],
+      "positive_examples": ["на мои письма никто не отвечает", "поддержка не отвечает на почту", "на почте тишина", "отправил письмо ответа нет", "менеджер не ответил на письмо", "куда обратиться если поддержка молчит", "нужно писать с почты аккаунта", "ответить в той же переписке или создать новую", "можно продублировать письмо на info@migtorg.com"],
       "negative_examples": ["не пришел договор", "продавец не отвечает", "как связаться с поддержкой"],
       "required_context": [],
       "allowed_context": ["page_type", "lot_id"],
@@ -6886,7 +6991,7 @@
       "objects": ["refund", "balance", "deposit", "tariff", "commission"],
       "operations": ["refund", "check"],
       "states": [],
-      "positive_examples": ["какие деньги можно вернуть", "что можно вернуть с баланса", "можно вывести остаток баланса", "можно вернуть ошибочное пополнение", "возвращается ли депозит премиум", "что возвращается из премиум тарифа", "вернут комиссию если сделка не состоялась", "возвращается ли оплата узнать позицию ставки", "можно вернуть 1200 за позицию ставки", "можно вернуть разовый тариф"],
+      "positive_examples": ["какие деньги можно вернуть", "что можно вернуть с баланса", "можно вывести остаток баланса", "можно вернуть ошибочное пополнение", "возвращается ли депозит премиум", "что возвращается из премиум тарифа", "вернут комиссию если сделка не состоялась", "возвращается ли оплата узнать позицию ставки", "можно вернуть 1200 за позицию ставки", "можно вернуть разовый тариф", "можно сделать взаимозачёт", "зачесть возврат в счёт другого платежа"],
       "negative_examples": ["когда придет возврат", "куда отправить заявление на возврат", "почему отказали в возврате"],
       "required_context": [],
       "allowed_context": ["page_type", "lot_id"],
@@ -8317,7 +8422,7 @@
       "objects": ["lot", "vehicle", "seller"],
       "operations": ["check"],
       "states": ["missing"],
-      "positive_examples": ["мало инфы в карточке", "нет инфы в карточке лота", "в карточке мало информации", "продавец не указал подробности", "где получить отсутствующие сведения по лоту"],
+      "positive_examples": ["мало инфы в карточке", "нет инфы в карточке лота", "в карточке мало информации", "продавец не указал подробности", "где получить отсутствующие сведения по лоту", "в карточке не указан коммерческий утиль", "не указан объём двигателя", "можно запросить дополнительные фотографии", "продавец не добавил нужные характеристики"],
       "negative_examples": ["лот исчез или изменился", "не могу открыть карточку", "как запросить vin", "почему нет птс в карточке", "в карточке лота не загружаются фотографии"],
       "required_context": [],
       "allowed_context": ["page_type", "lot_id"],
@@ -10049,9 +10154,9 @@
 ```json
 {
   "schema_version": 1,
-  "generated_at": "2026-08-12",
+  "generated_at": "2026-09-01",
   "publication_policy": "expert_approval_required",
-  "source": "MIGTORG knowledge audit after expert interviews, parts 1-2, approved questionnaire part 2 ver. 2, project-owner clarifications and buyer contract review",
+  "source": "MIGTORG knowledge audit, expert interviews, project-owner clarifications, buyer contract review and approved stage 5 development annotations",
   "records": [
     {
       "candidate_id": "review.loyalty.rules",
@@ -10180,6 +10285,106 @@
       ],
       "owner": "MIGTORG knowledge base owner",
       "expert_role": "MIGTORG product owner, finance and legal"
+    },
+    {
+      "candidate_id": "review.refund.offset",
+      "proposed_scenario_id": "refund.offset",
+      "title": "Взаимозачёт возврата и другого обязательства",
+      "status": "expert_review_required",
+      "risk": "financial_contractual",
+      "support_conversations": 1,
+      "approved_legacy_ids": [],
+      "pilot_evidence": "Approved stage 5 development annotation; not an authoritative business source",
+      "questions_for_expert": [
+        "Поддерживает ли MIGTORG взаимозачёт возврата в счёт другого платежа или лота?",
+        "Какие виды платежей можно зачесть и кто утверждает операцию?",
+        "Обязателен ли согласованный мотивированный отказ без штрафа, либо возможен взаимозачёт после уплаты штрафа?",
+        "Какие документы, статусы лота и реквизиты нужны для обращения?"
+      ],
+      "safe_fallback_scenario_id": "refund.application",
+      "publication_blockers": [
+        "offset_availability",
+        "eligible_payment_types",
+        "refusal_and_penalty_conditions",
+        "approval_owner_and_documents"
+      ],
+      "owner": "MIGTORG knowledge base owner",
+      "expert_role": "MIGTORG finance and legal"
+    },
+    {
+      "candidate_id": "review.support.email_followup",
+      "proposed_scenario_id": "support.email_followup_policy",
+      "title": "Правила повторного обращения по email",
+      "status": "expert_review_required",
+      "risk": "operational",
+      "support_conversations": 2,
+      "approved_legacy_ids": [],
+      "pilot_evidence": "Approved stage 5 development annotations; some wording conflicts with active support policy",
+      "questions_for_expert": [
+        "Обязательно ли отправлять обращение с email, зарегистрированного в аккаунте?",
+        "В каких случаях нужно продолжать исходную ветку, а когда допустимо новое обращение?",
+        "Нужно ли дублировать письмо на info@migtorg.com и для каких тем?",
+        "Допустимы ли и email, и веб-чат, или отдельные вопросы принимаются только по email?"
+      ],
+      "safe_fallback_scenario_id": "support.email_no_response",
+      "publication_blockers": [
+        "registered_email_requirement",
+        "same_thread_boundary",
+        "copy_recipient_rule",
+        "channel_scope"
+      ],
+      "owner": "MIGTORG knowledge base owner",
+      "expert_role": "MIGTORG support operations"
+    },
+    {
+      "candidate_id": "review.lot.additional_information",
+      "proposed_scenario_id": "lot.additional_information",
+      "title": "Дополнительные сведения и фотографии по лоту",
+      "status": "expert_review_required",
+      "risk": "operational_contractual",
+      "support_conversations": 3,
+      "approved_legacy_ids": [],
+      "pilot_evidence": "Approved stage 5 development annotations; active KB only confirms seller ownership of published data",
+      "questions_for_expert": [
+        "Является ли предоставление дополнительных фотографий правом продавца или его обязанностью?",
+        "На каком этапе и по какому каналу покупатель может запросить дополнительные фото или характеристики?",
+        "Обязан ли продавец указывать коммерческий утиль, объём двигателя и известные повреждения?",
+        "Как действовать, если опубликованные фотографии не отражают фактическое состояние лота?"
+      ],
+      "safe_fallback_scenario_id": "lot.card_information",
+      "publication_blockers": [
+        "seller_photo_obligation",
+        "request_channel_and_stage",
+        "mandatory_vehicle_fields",
+        "condition_discrepancy_procedure"
+      ],
+      "owner": "MIGTORG knowledge base owner",
+      "expert_role": "MIGTORG seller and legal support"
+    },
+    {
+      "candidate_id": "review.support.phone_channels",
+      "proposed_scenario_id": "support.phone_channels",
+      "title": "Телефонные каналы для специальных обращений",
+      "status": "expert_review_required",
+      "risk": "operational",
+      "support_conversations": 2,
+      "approved_legacy_ids": [],
+      "pilot_evidence": "Approved stage 5 development annotations mention a phone number not present in the canonical KB",
+      "questions_for_expert": [
+        "Является ли номер +7 (495) 649-91-99 актуальным публичным номером MIGTORG?",
+        "Для каких обращений его можно публиковать: визит в офис, государственные органы или общая поддержка?",
+        "Каковы часы работы и какие данные нужно подготовить перед звонком?",
+        "Можно ли обещать обратный звонок сотрудника после телефонного обращения?"
+      ],
+      "safe_fallback_scenario_id": "support.callback",
+      "publication_blockers": [
+        "phone_ownership_and_currency",
+        "public_scope",
+        "working_hours",
+        "callback_policy"
+      ],
+      "owner": "MIGTORG knowledge base owner",
+      "expert_role": "MIGTORG support operations"
     }
   ]
 }

@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-08-12",
+  "generated_at": "2026-09-01",
   "publication_policy": "expert_approval_required",
-  "source": "MIGTORG knowledge audit after expert interviews, parts 1-2, approved questionnaire part 2 ver. 2, project-owner clarifications and buyer contract review",
+  "source": "MIGTORG knowledge audit, expert interviews, project-owner clarifications, buyer contract review and approved stage 5 development annotations",
   "records": [
     {
       "candidate_id": "review.loyalty.rules",
@@ -11,10 +11,20 @@
       "status": "expert_review_required",
       "risk": "financial",
       "support_conversations": 1,
-      "approved_legacy_ids": ["kb-107-программа-топ-10-покупателей", "kb-108-почему-бонус-не-начислен"],
-      "questions_for_expert": ["В какую дату начисляется кэшбэк и имеет ли он срок действия?", "Кто утверждает изменения программы и когда правила пересматриваются?"],
+      "approved_legacy_ids": [
+        "kb-107-программа-топ-10-покупателей",
+        "kb-108-почему-бонус-не-начислен"
+      ],
+      "questions_for_expert": [
+        "В какую дату начисляется кэшбэк и имеет ли он срок действия?",
+        "Кто утверждает изменения программы и когда правила пересматриваются?"
+      ],
       "safe_fallback_scenario_id": "loyalty.unconfirmed_details",
-      "publication_blockers": ["cashback_credit_date_and_expiry", "revision_owner", "review_date"],
+      "publication_blockers": [
+        "cashback_credit_date_and_expiry",
+        "revision_owner",
+        "review_date"
+      ],
       "owner": "MIGTORG knowledge base owner",
       "expert_role": "MIGTORG finance and product owner"
     },
@@ -25,10 +35,19 @@
       "status": "expert_review_required",
       "risk": "financial_contractual",
       "support_conversations": 1,
-      "approved_legacy_ids": ["site-doc-011-obespechitelnyy-platezh-ogranicheniya"],
-      "questions_for_expert": ["Какой документ фактически устанавливает срок оплаты услуг, если пункт 5.5 ссылается на Приложение № 2 с формой акта об отказе, и нужно ли исправить ссылку в шаблоне договора?", "Применяется ли автоматическое восстановление после оплаты только к комиссии в личном кабинете или также к другим обязательствам?"],
+      "approved_legacy_ids": [
+        "site-doc-011-obespechitelnyy-platezh-ogranicheniya"
+      ],
+      "questions_for_expert": [
+        "Какой документ фактически устанавливает срок оплаты услуг, если пункт 5.5 ссылается на Приложение № 2 с формой акта об отказе, и нужно ли исправить ссылку в шаблоне договора?",
+        "Применяется ли автоматическое восстановление после оплаты только к комиссии в личном кабинете или также к другим обязательствам?"
+      ],
       "safe_fallback_scenario_id": "contract.unconfirmed_details",
-      "publication_blockers": ["contract_appendix_reference", "restoration_scope", "legal_owner"],
+      "publication_blockers": [
+        "contract_appendix_reference",
+        "restoration_scope",
+        "legal_owner"
+      ],
       "owner": "MIGTORG knowledge base owner",
       "expert_role": "MIGTORG legal and auction administration"
     },
@@ -39,10 +58,23 @@
       "status": "expert_review_required",
       "risk": "contractual",
       "support_conversations": 29,
-      "approved_legacy_ids": ["kb-069-можно-ли-отказаться-от-выигранного-лота", "kb-071-мотивированный-отказ", "kb-073-как-описывать-расхождения"],
-      "questions_for_expert": ["Чем различаются финансовые последствия отказа по этапам сделки: активная ставка, победа до передачи, переданный лот, осмотр и полная оплата?", "Какой перечень оснований пункта 3.6 считать исчерпывающим и как документировать невозможность регистрации?", "Какие последствия отказа автоматические, а какие требуют решения продавца или MIGTORG?"],
+      "approved_legacy_ids": [
+        "kb-069-можно-ли-отказаться-от-выигранного-лота",
+        "kb-071-мотивированный-отказ",
+        "kb-073-как-описывать-расхождения"
+      ],
+      "questions_for_expert": [
+        "Чем различаются финансовые последствия отказа по этапам сделки: активная ставка, победа до передачи, переданный лот, осмотр и полная оплата?",
+        "Какой перечень оснований пункта 3.6 считать исчерпывающим и как документировать невозможность регистрации?",
+        "Какие последствия отказа автоматические, а какие требуют решения продавца или MIGTORG?"
+      ],
       "safe_fallback_scenario_id": "refusal.unconfirmed_details",
-      "publication_blockers": ["refusal_stage_consequences", "exhaustive_grounds", "automatic_vs_manual_decisions", "named_legal_expert"],
+      "publication_blockers": [
+        "refusal_stage_consequences",
+        "exhaustive_grounds",
+        "automatic_vs_manual_decisions",
+        "named_legal_expert"
+      ],
       "owner": "MIGTORG knowledge base owner",
       "expert_role": "MIGTORG legal"
     },
@@ -53,10 +85,23 @@
       "status": "expert_review_required",
       "risk": "financial_contractual",
       "support_conversations": 10,
-      "approved_legacy_ids": ["kb-074-оспаривание-штрафа", "manual-review-2026-07-11-remaining54-q-110-почему-меня-обязуют-платить-штраф"],
-      "questions_for_expert": ["Какой срок оплаты штрафа и от какого события он начинается?", "Кто принимает окончательное решение по индивидуальному обращению о штрафе?", "Можно ли публиковать конкретные формулы штрафов или бот всегда должен направлять к договору?"],
+      "approved_legacy_ids": [
+        "kb-074-оспаривание-штрафа",
+        "manual-review-2026-07-11-remaining54-q-110-почему-меня-обязуют-платить-штраф"
+      ],
+      "questions_for_expert": [
+        "Какой срок оплаты штрафа и от какого события он начинается?",
+        "Кто принимает окончательное решение по индивидуальному обращению о штрафе?",
+        "Можно ли публиковать конкретные формулы штрафов или бот всегда должен направлять к договору?"
+      ],
       "safe_fallback_scenario_id": "penalty.unconfirmed_details",
-      "publication_blockers": ["penalty_payment_deadline", "decision_owner", "publication_boundary", "named_finance_expert", "named_legal_expert"],
+      "publication_blockers": [
+        "penalty_payment_deadline",
+        "decision_owner",
+        "publication_boundary",
+        "named_finance_expert",
+        "named_legal_expert"
+      ],
       "owner": "MIGTORG knowledge base owner",
       "expert_role": "MIGTORG finance and legal"
     },
@@ -67,12 +112,125 @@
       "status": "expert_review_required",
       "risk": "operational",
       "support_conversations": 1,
-      "approved_legacy_ids": ["kb-114-когда-вопрос-нужно-передать-сотруднику", "kb-126-что-первая-линия-не-должна-обещать"],
-      "questions_for_expert": ["Какие сведения после авторизации всё равно доступны только сотруднику после индивидуальной проверки?", "Какие документы подтверждают полномочия представителя организации и плательщика, отличного от владельца аккаунта?", "Кто утверждает каждый финансовый и договорный раздел?", "Какова периодичность и события внепланового пересмотра БЗ?"],
+      "approved_legacy_ids": [
+        "kb-114-когда-вопрос-нужно-передать-сотруднику",
+        "kb-126-что-первая-линия-не-должна-обещать"
+      ],
+      "questions_for_expert": [
+        "Какие сведения после авторизации всё равно доступны только сотруднику после индивидуальной проверки?",
+        "Какие документы подтверждают полномочия представителя организации и плательщика, отличного от владельца аккаунта?",
+        "Кто утверждает каждый финансовый и договорный раздел?",
+        "Какова периодичность и события внепланового пересмотра БЗ?"
+      ],
       "safe_fallback_scenario_id": "support.staff_only_details",
-      "publication_blockers": ["staff_only_boundary", "representative_and_payer_documents", "named_domain_owners", "review_schedule"],
+      "publication_blockers": [
+        "staff_only_boundary",
+        "representative_and_payer_documents",
+        "named_domain_owners",
+        "review_schedule"
+      ],
       "owner": "MIGTORG knowledge base owner",
       "expert_role": "MIGTORG product owner, finance and legal"
+    },
+    {
+      "candidate_id": "review.refund.offset",
+      "proposed_scenario_id": "refund.offset",
+      "title": "Взаимозачёт возврата и другого обязательства",
+      "status": "expert_review_required",
+      "risk": "financial_contractual",
+      "support_conversations": 1,
+      "approved_legacy_ids": [],
+      "pilot_evidence": "Approved stage 5 development annotation; not an authoritative business source",
+      "questions_for_expert": [
+        "Поддерживает ли MIGTORG взаимозачёт возврата в счёт другого платежа или лота?",
+        "Какие виды платежей можно зачесть и кто утверждает операцию?",
+        "Обязателен ли согласованный мотивированный отказ без штрафа, либо возможен взаимозачёт после уплаты штрафа?",
+        "Какие документы, статусы лота и реквизиты нужны для обращения?"
+      ],
+      "safe_fallback_scenario_id": "refund.application",
+      "publication_blockers": [
+        "offset_availability",
+        "eligible_payment_types",
+        "refusal_and_penalty_conditions",
+        "approval_owner_and_documents"
+      ],
+      "owner": "MIGTORG knowledge base owner",
+      "expert_role": "MIGTORG finance and legal"
+    },
+    {
+      "candidate_id": "review.support.email_followup",
+      "proposed_scenario_id": "support.email_followup_policy",
+      "title": "Правила повторного обращения по email",
+      "status": "expert_review_required",
+      "risk": "operational",
+      "support_conversations": 2,
+      "approved_legacy_ids": [],
+      "pilot_evidence": "Approved stage 5 development annotations; some wording conflicts with active support policy",
+      "questions_for_expert": [
+        "Обязательно ли отправлять обращение с email, зарегистрированного в аккаунте?",
+        "В каких случаях нужно продолжать исходную ветку, а когда допустимо новое обращение?",
+        "Нужно ли дублировать письмо на info@migtorg.com и для каких тем?",
+        "Допустимы ли и email, и веб-чат, или отдельные вопросы принимаются только по email?"
+      ],
+      "safe_fallback_scenario_id": "support.email_no_response",
+      "publication_blockers": [
+        "registered_email_requirement",
+        "same_thread_boundary",
+        "copy_recipient_rule",
+        "channel_scope"
+      ],
+      "owner": "MIGTORG knowledge base owner",
+      "expert_role": "MIGTORG support operations"
+    },
+    {
+      "candidate_id": "review.lot.additional_information",
+      "proposed_scenario_id": "lot.additional_information",
+      "title": "Дополнительные сведения и фотографии по лоту",
+      "status": "expert_review_required",
+      "risk": "operational_contractual",
+      "support_conversations": 3,
+      "approved_legacy_ids": [],
+      "pilot_evidence": "Approved stage 5 development annotations; active KB only confirms seller ownership of published data",
+      "questions_for_expert": [
+        "Является ли предоставление дополнительных фотографий правом продавца или его обязанностью?",
+        "На каком этапе и по какому каналу покупатель может запросить дополнительные фото или характеристики?",
+        "Обязан ли продавец указывать коммерческий утиль, объём двигателя и известные повреждения?",
+        "Как действовать, если опубликованные фотографии не отражают фактическое состояние лота?"
+      ],
+      "safe_fallback_scenario_id": "lot.card_information",
+      "publication_blockers": [
+        "seller_photo_obligation",
+        "request_channel_and_stage",
+        "mandatory_vehicle_fields",
+        "condition_discrepancy_procedure"
+      ],
+      "owner": "MIGTORG knowledge base owner",
+      "expert_role": "MIGTORG seller and legal support"
+    },
+    {
+      "candidate_id": "review.support.phone_channels",
+      "proposed_scenario_id": "support.phone_channels",
+      "title": "Телефонные каналы для специальных обращений",
+      "status": "expert_review_required",
+      "risk": "operational",
+      "support_conversations": 2,
+      "approved_legacy_ids": [],
+      "pilot_evidence": "Approved stage 5 development annotations mention a phone number not present in the canonical KB",
+      "questions_for_expert": [
+        "Является ли номер +7 (495) 649-91-99 актуальным публичным номером MIGTORG?",
+        "Для каких обращений его можно публиковать: визит в офис, государственные органы или общая поддержка?",
+        "Каковы часы работы и какие данные нужно подготовить перед звонком?",
+        "Можно ли обещать обратный звонок сотрудника после телефонного обращения?"
+      ],
+      "safe_fallback_scenario_id": "support.callback",
+      "publication_blockers": [
+        "phone_ownership_and_currency",
+        "public_scope",
+        "working_hours",
+        "callback_policy"
+      ],
+      "owner": "MIGTORG knowledge base owner",
+      "expert_role": "MIGTORG support operations"
     }
   ]
 }

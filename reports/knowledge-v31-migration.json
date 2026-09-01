@@ -2,7 +2,7 @@
   "schema_version": 1,
   "knowledge_version": "2026.08.23.2",
   "source": "knowledge/MASTER_KNOWLEDGE.md",
-  "source_sha256": "c359f9f32febc34dd27936d2bc276bacacf2df8d46d52ddd23a5a217bcf8070a",
+  "source_sha256": "234f6970329e1182cd388ed3a91172e900ede76d0f70976c215487afc0bff99b",
   "source_scenario_count": 141,
   "migrated_scenario_count": 141,
   "source_fact_count": 574,
