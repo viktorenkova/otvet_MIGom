@@ -1,0 +1,364 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-09-01T16:45:25.440528+00:00",
+  "status": "development_diagnostic_not_blind_release_gate",
+  "source": {
+    "path": ".work\\stage5-blind-pilot-review-draft-2026-09-01.json",
+    "sha256": "4ffbfcdd1d08523281d1d0e2cc956763ce1f90f2aa95bd05db6c81d9b149c7d1",
+    "dataset_version": "stage5-blind-pilot-2026.08.28.1",
+    "single_count": 109,
+    "dialogue_count": 50,
+    "dialogue_turn_count": 112
+  },
+  "population": {
+    "approved_records": 221,
+    "single_records": 109,
+    "dialogues": 50,
+    "dialogue_turns": 112
+  },
+  "methodology": {
+    "measured": [
+      "bot action against independent label",
+      "dialogue support handoff against independent label",
+      "literal forbidden-information leakage"
+    ],
+    "diagnostic_only": "required-information lexical overlap is not a correctness gate",
+    "not_measured": [
+      "Top-1 scenario accuracy because labels contain no scenario_id",
+      "independent 8/10 release quality because this set was used to improve the knowledge base"
+    ]
+  },
+  "metrics": {
+    "transport": {
+      "passed": 221,
+      "total": 221,
+      "rate_pct": 100.0,
+      "wilson_95_lower_pct": 98.29
+    },
+    "action_accuracy": {
+      "passed": 85,
+      "total": 218,
+      "rate_pct": 38.99,
+      "wilson_95_lower_pct": 32.76
+    },
+    "forbidden_content": {
+      "passed": 221,
+      "total": 221,
+      "rate_pct": 100.0,
+      "wilson_95_lower_pct": 98.29
+    },
+    "dialogue_support_handoff": {
+      "passed": 75,
+      "total": 112,
+      "rate_pct": 66.96,
+      "wilson_95_lower_pct": 57.82
+    },
+    "confident_wrong_action": {
+      "count": 82
+    },
+    "required_information_overlap_diagnostic": {
+      "total": 221,
+      "mean_pct": 9.99
+    }
+  },
+  "action_by_expected": {
+    "answer": {
+      "passed": 32,
+      "total": 84,
+      "rate_pct": 38.1,
+      "wilson_95_lower_pct": 28.45
+    },
+    "clarify": {
+      "passed": 12,
+      "total": 58,
+      "rate_pct": 20.69,
+      "wilson_95_lower_pct": 12.25
+    },
+    "support": {
+      "passed": 41,
+      "total": 76,
+      "rate_pct": 53.95,
+      "wilson_95_lower_pct": 42.82
+    }
+  },
+  "action_by_primary_topic": {
+    "Автомобиль и его сведения": {
+      "passed": 6,
+      "total": 12,
+      "rate_pct": 50.0,
+      "wilson_95_lower_pct": 25.38
+    },
+    "Аккаунт и доступ к личному кабинету": {
+      "passed": 0,
+      "total": 1,
+      "rate_pct": 0.0,
+      "wilson_95_lower_pct": 0.0
+    },
+    "Аккаунт и личный кабинет": {
+      "passed": 7,
+      "total": 13,
+      "rate_pct": 53.85,
+      "wilson_95_lower_pct": 29.14
+    },
+    "Блокировка аккаунта": {
+      "passed": 0,
+      "total": 1,
+      "rate_pct": 0.0,
+      "wilson_95_lower_pct": 0.0
+    },
+    "Возвраты": {
+      "passed": 3,
+      "total": 7,
+      "rate_pct": 42.86,
+      "wilson_95_lower_pct": 15.82
+    },
+    "Договоры и документы": {
+      "passed": 3,
+      "total": 13,
+      "rate_pct": 23.08,
+      "wilson_95_lower_pct": 8.18
+    },
+    "Документы": {
+      "passed": 2,
+      "total": 4,
+      "rate_pct": 50.0,
+      "wilson_95_lower_pct": 15.0
+    },
+    "Документы и передача лота": {
+      "passed": 0,
+      "total": 1,
+      "rate_pct": 0.0,
+      "wilson_95_lower_pct": 0.0
+    },
+    "Документы и получение документов": {
+      "passed": 0,
+      "total": 1,
+      "rate_pct": 0.0,
+      "wilson_95_lower_pct": 0.0
+    },
+    "Имущество": {
+      "passed": 0,
+      "total": 1,
+      "rate_pct": 0.0,
+      "wilson_95_lower_pct": 0.0
+    },
+    "Комиссии": {
+      "passed": 4,
+      "total": 8,
+      "rate_pct": 50.0,
+      "wilson_95_lower_pct": 21.52
+    },
+    "Лот и карточка автомобиля": {
+      "passed": 3,
+      "total": 7,
+      "rate_pct": 42.86,
+      "wilson_95_lower_pct": 15.82
+    },
+    "Начало работы с платформой": {
+      "passed": 0,
+      "total": 1,
+      "rate_pct": 0.0,
+      "wilson_95_lower_pct": 0.0
+    },
+    "Обращение по заявке": {
+      "passed": 0,
+      "total": 1,
+      "rate_pct": 0.0,
+      "wilson_95_lower_pct": 0.0
+    },
+    "Осмотр автомобиля": {
+      "passed": 2,
+      "total": 3,
+      "rate_pct": 66.67,
+      "wilson_95_lower_pct": 20.77
+    },
+    "Отказ от лота": {
+      "passed": 0,
+      "total": 2,
+      "rate_pct": 0.0,
+      "wilson_95_lower_pct": 0.0
+    },
+    "Передача лота": {
+      "passed": 4,
+      "total": 7,
+      "rate_pct": 57.14,
+      "wilson_95_lower_pct": 25.05
+    },
+    "Платежи и счета": {
+      "passed": 8,
+      "total": 11,
+      "rate_pct": 72.73,
+      "wilson_95_lower_pct": 43.44
+    },
+    "Поддержка и обращения": {
+      "passed": 16,
+      "total": 61,
+      "rate_pct": 26.23,
+      "wilson_95_lower_pct": 16.84
+    },
+    "Покупка и участие в торгах": {
+      "passed": 3,
+      "total": 5,
+      "rate_pct": 60.0,
+      "wilson_95_lower_pct": 23.07
+    },
+    "Получение и вывоз автомобиля": {
+      "passed": 3,
+      "total": 7,
+      "rate_pct": 42.86,
+      "wilson_95_lower_pct": 15.82
+    },
+    "Продажа автомобилей и работа продавца": {
+      "passed": 2,
+      "total": 6,
+      "rate_pct": 33.33,
+      "wilson_95_lower_pct": 9.68
+    },
+    "Сопровождение MIGTORG": {
+      "passed": 7,
+      "total": 17,
+      "rate_pct": 41.18,
+      "wilson_95_lower_pct": 21.61
+    },
+    "Сопровождение сделки": {
+      "passed": 0,
+      "total": 1,
+      "rate_pct": 0.0,
+      "wilson_95_lower_pct": 0.0
+    },
+    "Ставки и торги": {
+      "passed": 2,
+      "total": 9,
+      "rate_pct": 22.22,
+      "wilson_95_lower_pct": 6.32
+    },
+    "Тарифы": {
+      "passed": 1,
+      "total": 2,
+      "rate_pct": 50.0,
+      "wilson_95_lower_pct": 9.45
+    },
+    "Технические проблемы": {
+      "passed": 3,
+      "total": 3,
+      "rate_pct": 100.0,
+      "wilson_95_lower_pct": 43.85
+    },
+    "Торги и результаты": {
+      "passed": 2,
+      "total": 3,
+      "rate_pct": 66.67,
+      "wilson_95_lower_pct": 20.77
+    },
+    "Требуется тематическая заглушка": {
+      "passed": 2,
+      "total": 7,
+      "rate_pct": 28.57,
+      "wilson_95_lower_pct": 8.22
+    },
+    "Требуется уточнение": {
+      "passed": 0,
+      "total": 1,
+      "rate_pct": 0.0,
+      "wilson_95_lower_pct": 0.0
+    },
+    "Уведомления и рассылки": {
+      "passed": 1,
+      "total": 1,
+      "rate_pct": 100.0,
+      "wilson_95_lower_pct": 20.65
+    },
+    "Штрафы и блокировка аккаунта": {
+      "passed": 1,
+      "total": 1,
+      "rate_pct": 100.0,
+      "wilson_95_lower_pct": 20.65
+    }
+  },
+  "action_confusion": [
+    {
+      "expected": "answer",
+      "actual": "answer",
+      "count": 32
+    },
+    {
+      "expected": "answer",
+      "actual": "clarify",
+      "count": 6
+    },
+    {
+      "expected": "answer",
+      "actual": "out_of_scope",
+      "count": 13
+    },
+    {
+      "expected": "answer",
+      "actual": "safe_refusal",
+      "count": 2
+    },
+    {
+      "expected": "answer",
+      "actual": "support",
+      "count": 34
+    },
+    {
+      "expected": "clarify",
+      "actual": "answer",
+      "count": 18
+    },
+    {
+      "expected": "clarify",
+      "actual": "clarify",
+      "count": 12
+    },
+    {
+      "expected": "clarify",
+      "actual": "out_of_scope",
+      "count": 10
+    },
+    {
+      "expected": "clarify",
+      "actual": "safe_refusal",
+      "count": 1
+    },
+    {
+      "expected": "clarify",
+      "actual": "support",
+      "count": 17
+    },
+    {
+      "expected": "support",
+      "actual": "answer",
+      "count": 9
+    },
+    {
+      "expected": "support",
+      "actual": "clarify",
+      "count": 7
+    },
+    {
+      "expected": "support",
+      "actual": "out_of_scope",
+      "count": 19
+    },
+    {
+      "expected": "support",
+      "actual": "support",
+      "count": 41
+    }
+  ],
+  "failure_counts": {
+    "action": 133,
+    "forbidden_content": 0,
+    "dialogue_support_handoff": 37
+  },
+  "source_quality": {
+    "flags": {
+      "acknowledgement_not_question": 2,
+      "crm_case_note_style": 103,
+      "explicit_employee_response": 2
+    },
+    "excluded_from_action_metric": 3,
+    "crm_case_note_style_is_reported_not_excluded": true
+  }
+}

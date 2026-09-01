@@ -30,8 +30,8 @@ def test_v31_migration_is_deterministic_and_preserves_every_scenario_and_fact() 
     assert {item["scenario_id"] for item in committed["records"]} == {
         item["scenario_id"] for item in source["records"]
     }
-    assert sum(len(item["facts"]) for item in source["records"]) == 574
-    assert sum(len(item["fact_records"]) for item in committed["records"]) == 574
+    assert sum(len(item["facts"]) for item in source["records"]) == 585
+    assert sum(len(item["fact_records"]) for item in committed["records"]) == 585
 
 
 def test_v31_strict_validator_passes_every_gate() -> None:
@@ -40,10 +40,10 @@ def test_v31_strict_validator_passes_every_gate() -> None:
 
     assert result["valid"] is True
     assert result["errors"] == []
-    assert result["metrics"]["active_scenario_count"] == 141
+    assert result["metrics"]["active_scenario_count"] == 142
     assert result["metrics"]["fact_loss_count"] == 0
     assert result["metrics"]["financial_or_contract_facts_with_provenance_pct"] == 100.0
-    assert result["metrics"]["atomic_unit_count"] == 157
+    assert result["metrics"]["atomic_unit_count"] == 158
     assert result["metrics"]["knowledge_gap_count"] == 3
 
 
@@ -51,7 +51,7 @@ def test_runtime_loads_v31_with_traceable_answer_policy() -> None:
     clear_knowledge_cache()
     scenarios = load_scenarios()
 
-    assert len(scenarios) == 141
+    assert len(scenarios) == 142
     assert all(item.domain and item.source_version for item in scenarios)
     assert all(item.fact_records and item.answer_policy for item in scenarios)
     assert all(item.retrieval_taxonomy_terms for item in scenarios)

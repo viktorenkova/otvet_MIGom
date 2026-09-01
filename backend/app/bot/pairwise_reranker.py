@@ -15,7 +15,8 @@ from backend.app.bot.scenario_reranker import RerankedScenario
 
 
 MODEL_PATH = Path("artifacts/stage3-pairwise-reranker.joblib")
-FEATURE_SCHEMA_VERSION = 1
+FEATURE_SCHEMA_VERSION = 2
+BASE_FEATURE_COUNT = 24
 
 
 def _jaccard(left: set[str], right: set[str]) -> float:
@@ -31,7 +32,12 @@ def _atomic_titles() -> dict[str, tuple[set[str], ...]]:
     return {key: tuple(value) for key, value in result.items()}
 
 
-def pairwise_features(message: str, candidate: dict[str, Any], rank: int) -> list[float]:
+def pairwise_features(
+    message: str,
+    candidate: dict[str, Any],
+    rank: int,
+    feature_scenario_ids: tuple[str, ...] | None = None,
+) -> list[float]:
     scenarios = {item.scenario_id: item for item in load_scenarios()}
     scenario = scenarios[str(candidate["scenario_id"])]
     query_tokens = set(routing_normalize(message).split())
@@ -71,7 +77,8 @@ def pairwise_features(message: str, candidate: dict[str, Any], rank: int) -> lis
         float(inferred_intent in {"unknown", "lot"}),
         float(len(scenario.objects)), float(len(scenario.operations)), float(len(scenario.states)),
     ]
-    numeric.extend(float(item == scenario.scenario_id) for item in sorted(scenarios))
+    scenario_columns = feature_scenario_ids or tuple(sorted(scenarios))
+    numeric.extend(float(item == scenario.scenario_id) for item in scenario_columns)
     return numeric
 
 
@@ -86,6 +93,13 @@ class PairwiseScenarioReranker:
             bundle = joblib.load(model_path)
             if bundle.get("feature_schema_version") != FEATURE_SCHEMA_VERSION:
                 raise ValueError("pairwise feature schema mismatch")
+            feature_scenario_ids = bundle.get("feature_scenario_ids")
+            if not isinstance(feature_scenario_ids, (list, tuple)) or not all(
+                isinstance(item, str) for item in feature_scenario_ids
+            ):
+                raise ValueError("pairwise scenario feature columns are missing")
+            if bundle.get("feature_count") != BASE_FEATURE_COUNT + len(feature_scenario_ids):
+                raise ValueError("pairwise feature count does not match scenario columns")
             self.bundle = bundle
         except Exception as exc:
             self.error = f"{type(exc).__name__}: {exc}"
@@ -101,7 +115,14 @@ class PairwiseScenarioReranker:
         candidates = [row for row in candidates if str(row.get("scenario_id")) in scenario_ids]
         if not candidates:
             return ()
-        features = np.asarray([pairwise_features(message, row, rank) for rank, row in enumerate(candidates)], dtype=np.float32)
+        feature_scenario_ids = tuple(self.bundle["feature_scenario_ids"])
+        features = np.asarray(
+            [
+                pairwise_features(message, row, rank, feature_scenario_ids)
+                for rank, row in enumerate(candidates)
+            ],
+            dtype=np.float32,
+        )
         probabilities = self.bundle["model"].predict_proba(features)[:, 1]
         ranked = [
             RerankedScenario(

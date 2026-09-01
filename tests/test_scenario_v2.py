@@ -83,6 +83,14 @@ def test_call_request_is_redirected_to_written_support():
     )
 
     assert response.scenario_id == "support.callback"
+
+
+def test_callback_case_note_wording_is_not_out_of_scope():
+    for message in ("ожидает обратной связи", "просит набрать повторно"):
+        response = process_chat_message(
+            ChatRequest(message=message, session_id=f"v2-callback-note-{uuid4()}")
+        )
+        assert response.scenario_id == "support.callback"
     assert "по переписке" in response.answer.casefold()
     assert {action.type for action in response.actions} == {"open_ticket"}
 

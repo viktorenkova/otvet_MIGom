@@ -10,6 +10,7 @@ import numpy as np
 from sklearn.ensemble import HistGradientBoostingClassifier
 
 from backend.app.bot.pairwise_reranker import FEATURE_SCHEMA_VERSION, MODEL_PATH, pairwise_features
+from backend.app.bot.scenario_engine import load_scenarios
 from backend.tools.evaluate_stage3_pairwise import _cases
 
 
@@ -27,12 +28,13 @@ def main() -> int:
     dataset = json.loads(args.dataset.read_text(encoding="utf-8"))
     candidates = json.loads(args.candidates.read_text(encoding="utf-8"))
     hard = json.loads(args.hard_negatives.read_text(encoding="utf-8"))
+    feature_scenario_ids = tuple(sorted(item.scenario_id for item in load_scenarios()))
     cases = [case for case in _cases(dataset, candidates, hard) if case["split"] == "development"]
     x_train, y_train, weights = [], [], []
     for case in cases:
         for rank, candidate in enumerate(case["candidates"]):
             positive = candidate["scenario_id"] in case["expected"]
-            x_train.append(pairwise_features(case["text"], candidate, rank))
+            x_train.append(pairwise_features(case["text"], candidate, rank, feature_scenario_ids))
             y_train.append(int(positive))
             weights.append(9.0 if positive else 1.0)
     model = HistGradientBoostingClassifier(
@@ -44,6 +46,7 @@ def main() -> int:
         "schema_version": 1, "feature_schema_version": FEATURE_SCHEMA_VERSION,
         "model_version": "stage3-pairwise-2026.08.24.1", "model": model,
         "training_pairs": len(x_train), "feature_count": len(x_train[0]),
+        "feature_scenario_ids": list(feature_scenario_ids),
         "inputs": {path.name: _sha(path) for path in (args.dataset, args.candidates, args.hard_negatives)},
     }
     args.output.parent.mkdir(parents=True, exist_ok=True)
