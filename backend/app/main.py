@@ -834,6 +834,8 @@ def process_chat_message(request: ChatRequest) -> ChatResponse:
         session_id=request.session_id,
         safety_flags=safety_before.categories,
         llm_spend_usd=logger.get_llm_spend(settings.llm_environment),
+        route_confidence=confidence,
+        llm_allowed=not bool(scenario_clarifying_options),
     )
     matched_features = list(dict.fromkeys([
         *matched_features,

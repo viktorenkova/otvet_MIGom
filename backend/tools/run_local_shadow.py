@@ -12,7 +12,7 @@ from typing import Any, Callable
 
 from backend.app.bot.intent_classifier import classify_intent
 from backend.app.bot.knowledge_search import HybridSearchProvider, KnowledgeSearchResult, search_knowledge_match
-from backend.tools.knowledge_pipeline import PII_PATTERNS, redact, redact_freeform_entities
+from backend.app.bot.pii_redaction import detected_pii_kinds, redact_for_external_llm
 
 
 DEFAULT_REPORT = Path("reports/stage6-local-shadow.json")
@@ -84,11 +84,11 @@ def expand_records(records: list[dict[str, str]], target_count: int) -> list[dic
 
 
 def redact_for_shadow(text: str) -> str:
-    return redact_freeform_entities(redact(text))
+    return redact_for_external_llm(text)
 
 
 def pii_leaks(text: str) -> list[str]:
-    return [replacement for pattern, replacement in PII_PATTERNS if pattern.search(text)]
+    return list(detected_pii_kinds(text))
 
 
 def _decision(result: KnowledgeSearchResult) -> dict[str, Any]:

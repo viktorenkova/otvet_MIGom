@@ -4,6 +4,7 @@ import re
 from backend.app.config import Settings
 from backend.app.bot.answer_contracts import fact_context, get_answer_contract, verify_answer
 from backend.app.bot.knowledge_search import KnowledgeArticle, load_fallbacks
+from backend.app.bot.pii_redaction import redact_for_external_llm
 from backend.app.integrations.llm_provider import build_llm_provider
 from backend.app.models.llm import LLMRequest, LLMResult
 from backend.app.models.user_context import UserRole
@@ -82,22 +83,7 @@ class GeneratedAnswer:
 
 
 def _redact_for_llm(text: str) -> str:
-    redacted = re.sub(
-        r"[A-Za-z0-9._%+\-]+@[A-Za-z0-9.\-]+\.[A-Za-z]{2,}",
-        "[email]",
-        text,
-    )
-    redacted = re.sub(
-        r"(?:\+7|8)[\s\-()]*\d{3}[\s\-()]*\d{3}[\s\-]*\d{2}[\s\-]*\d{2}",
-        "[телефон]",
-        redacted,
-    )
-    redacted = re.sub(
-        r"(?i)(?<![A-Z0-9])[A-HJ-NPR-Z0-9]{17}(?![A-Z0-9])",
-        "[VIN]",
-        redacted,
-    )
-    redacted = re.sub(r"\b\d{7,}\b", "[идентификатор]", redacted)
+    redacted = redact_for_external_llm(text)
     if _is_employee_connection_request(text):
         redacted = _redact_requested_employee_name(redacted, "[имя сотрудника]")
     return redacted
@@ -236,6 +222,8 @@ def generate_answer(
     session_id: str = "",
     safety_flags: list[str] | None = None,
     llm_spend_usd: float = 0.0,
+    route_confidence: str = "high",
+    llm_allowed: bool = True,
 ) -> GeneratedAnswer:
     contract = get_answer_contract(article.scenario) if article and article.scenario else None
     base = contract.approved_template if contract else (_article_answer(article) or _fallback_answer(intent))
@@ -367,6 +355,23 @@ def generate_answer(
             verification_passed=verification.passed,
             verification_reason=verification.reason,
         )
+    if not llm_allowed or route_confidence != "high" or article is None or contract is None:
+        verification = verify_answer(base, base, contract)
+        reason = (
+            "llm_ineligible:explicit"
+            if not llm_allowed
+            else f"llm_ineligible:confidence_{route_confidence}"
+            if route_confidence != "high"
+            else "llm_ineligible:no_article"
+            if article is None
+            else "llm_ineligible:no_contract"
+        )
+        return GeneratedAnswer(
+            answer=base,
+            used_fact_ids=verification.used_fact_ids,
+            verification_passed=True,
+            verification_reason=reason,
+        )
     if needs_ticket:
         verification = verify_answer(base, base, contract)
         return GeneratedAnswer(
@@ -384,7 +389,7 @@ def generate_answer(
             verification_reason=verification.reason,
         )
 
-    approved_facts = fact_context(contract) if contract else base
+    approved_facts = fact_context(contract)
     prompt = (
         "Дайте прямой ответ пользователю на основе контекста ниже. Используйте 2–4 коротких предложения. "
         "Оставьте только сведения, которые отвечают на заданный вопрос. Не повторяйте мысли и не добавляйте новых фактов. "
@@ -393,7 +398,7 @@ def generate_answer(
         f"Тема: {intent}\n"
         f"Роль пользователя: {role}\n\n"
         f"Сценарий базы знаний: {article.scenario if article else 'fallback'}\n"
-        f"Контекст базы знаний:\n{base}\n\n"
+        f"Утверждённый шаблон ответа:\n{contract.approved_template}\n\n"
         "Допустимые атомарные факты (ID нужны для проверки, не показывайте их пользователю):\n"
         f"{approved_facts}"
     )

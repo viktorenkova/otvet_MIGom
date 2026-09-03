@@ -41,6 +41,22 @@ PROTECTED_VALUE_PATTERN = re.compile(
     r"\b\d+(?:[.,]\d+)?\s*(?:₽|руб(?:лей|ля|ль)?|дн(?:ей|я|ь)|час(?:ов|а)?|%)?\b",
     flags=re.IGNORECASE,
 )
+PROMPT_INJECTION_OUTPUT_PATTERN = re.compile(
+    r"\b(?:игнорир\w*\s+(?:предыдущ\w*|системн\w*)|системн\w*\s+инструкц\w*|"
+    r"system\s+prompt|developer\s+message|как\s+языков\w+\s+модел\w+)\b|"
+    r"\[[a-z0-9_.-]+\.fact\.\d+\]",
+    re.IGNORECASE,
+)
+PROMISE_PATTERN = re.compile(
+    r"\b(?:гарантир\w*|обеща\w*|точно\s+(?:вернут|передад|получит|выигра)|"
+    r"безусловно\s+(?:вернут|передад|получит|выигра))\b",
+    re.IGNORECASE,
+)
+SEMANTIC_MARKERS: dict[str, re.Pattern[str]] = {
+    "negation": re.compile(r"\b(?:не|нет|нельзя|невозможно|запрещен\w*|без)\b", re.IGNORECASE),
+    "obligation": re.compile(r"\b(?:должен\w*|обязан\w*|необходим\w*|требуется|нужно)\b", re.IGNORECASE),
+    "possibility": re.compile(r"\b(?:можно|может|вправе|разрешен\w*)\b", re.IGNORECASE),
+}
 
 
 def _tokens(text: str) -> set[str]:
@@ -52,6 +68,31 @@ def _tokens(text: str) -> set[str]:
 
 def _protected_values(text: str) -> set[str]:
     return {match.group(0).casefold().rstrip(".,;:!?") for match in PROTECTED_VALUE_PATTERN.finditer(text)}
+
+
+def _sentences(text: str) -> list[str]:
+    return [item.strip() for item in re.split(r"(?<=[.!?])\s+|[\r\n]+", text) if item.strip()]
+
+
+def _marker_names(text: str) -> set[str]:
+    return {name for name, pattern in SEMANTIC_MARKERS.items() if pattern.search(text)}
+
+
+def _scoped_semantics_supported(candidate: str, reference: str) -> bool:
+    reference_sentences = _sentences(reference)
+    for sentence in _sentences(candidate):
+        markers = _marker_names(sentence)
+        if not markers:
+            continue
+        sentence_tokens = _tokens(sentence)
+        closest = max(
+            reference_sentences,
+            key=lambda item: len(sentence_tokens & _tokens(item)),
+            default="",
+        )
+        if not markers.issubset(_marker_names(closest)):
+            return False
+    return True
 
 
 @lru_cache(maxsize=1)
@@ -88,18 +129,25 @@ def fact_context(contract: AnswerContract) -> str:
 
 def verify_answer(candidate: str, fallback: str, contract: AnswerContract | None) -> AnswerVerification:
     if contract is None:
-        return AnswerVerification(True, candidate, (), "no_scenario_contract")
+        return AnswerVerification(False, fallback, (), "missing_scenario_contract")
     if normalize_matching_text(candidate) == normalize_matching_text(fallback):
         return AnswerVerification(True, candidate, contract.required_fact_ids, "deterministic_approved_template")
 
     allowed_corpus = " ".join(contract.facts[fact_id] for fact_id in contract.allowed_fact_ids)
-    allowed_values = _protected_values(f"{allowed_corpus} {fallback}")
+    reference = f"{contract.approved_template} {allowed_corpus}"
+    if PROMPT_INJECTION_OUTPUT_PATTERN.search(candidate):
+        return AnswerVerification(False, fallback, contract.required_fact_ids, "prompt_injection_output")
+    allowed_values = _protected_values(reference)
     unsupported_values = _protected_values(candidate) - allowed_values
     if unsupported_values:
         return AnswerVerification(False, fallback, contract.required_fact_ids, "unsupported_protected_value")
+    if PROMISE_PATTERN.search(candidate):
+        return AnswerVerification(False, fallback, contract.required_fact_ids, "unsupported_promise")
+    if not _scoped_semantics_supported(candidate, reference):
+        return AnswerVerification(False, fallback, contract.required_fact_ids, "semantic_marker_changed")
 
     candidate_tokens = _tokens(candidate)
-    allowed_tokens = _tokens(f"{allowed_corpus} {fallback}")
+    allowed_tokens = _tokens(reference)
     lexical_support = len(candidate_tokens & allowed_tokens) / max(1, len(candidate_tokens))
     if lexical_support < 0.72:
         return AnswerVerification(False, fallback, contract.required_fact_ids, "insufficient_fact_support")
