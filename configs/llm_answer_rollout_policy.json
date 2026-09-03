@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "status": "engineering_ready_shadow_pending",
+  "scope": "wording_only_llm_after_deterministic_high_confidence_routing",
+  "shadow": {
+    "minimum_requests": 200,
+    "maximum_requests": 500,
+    "show_llm_answer_to_user": false,
+    "critical_unsupported_facts_max": 0,
+    "detected_pii_max": 0,
+    "accepted_semantic_inversions_max": 0,
+    "provider_failure_fallback_rate_min_pct": 100.0,
+    "expert_correctness_vs_baseline": "not_lower",
+    "expert_clarity_vs_baseline": "higher"
+  },
+  "rollout_percentages": [5, 25, 50, 100],
+  "rollback": {
+    "target_percentage": 0,
+    "triggers": [
+      "critical_unsupported_fact_detected",
+      "pii_detected",
+      "semantic_inversion_accepted",
+      "provider_failure_without_fallback",
+      "p95_above_limit",
+      "negative_feedback_above_baseline",
+      "cost_limit_reached"
+    ]
+  },
+  "production_llm_enabled": false,
+  "activation_requires_manual_gate_record": true
+}

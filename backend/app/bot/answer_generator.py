@@ -80,6 +80,7 @@ class GeneratedAnswer:
     used_fact_ids: tuple[str, ...] = ()
     verification_passed: bool = True
     verification_reason: str = ""
+    llm_candidate: str = ""
 
 
 def _redact_for_llm(text: str) -> str:
@@ -447,4 +448,5 @@ def generate_answer(
         used_fact_ids=verification.used_fact_ids,
         verification_passed=verification.passed,
         verification_reason=verification.reason,
+        llm_candidate=candidate,
     )

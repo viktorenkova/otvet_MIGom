@@ -110,6 +110,7 @@ def build_runtime_manifest(settings: Any) -> dict[str, Any]:
         "max_concurrency": settings.llm_max_concurrency,
         "circuit_failure_threshold": settings.llm_circuit_failure_threshold,
         "circuit_cooldown_seconds": settings.llm_circuit_cooldown_seconds,
+        "rollout_percentage": settings.llm_rollout_percentage,
     }
     llm_policy_raw = json.dumps(llm_policy, sort_keys=True, separators=(",", ":")).encode("utf-8")
     payload: dict[str, Any] = {

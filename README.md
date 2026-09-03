@@ -99,6 +99,10 @@ uvicorn --env-file .env backend.app.main:app --reload
 | `DATABASE_PATH` | Путь к SQLite-файлу | `migtorg_chatbot.sqlite3` |
 | `LLM_ENABLED` | Использование внешней LLM | `false` |
 | `LLM_PROVIDER` | Провайдер LLM | `mock` |
+| `LLM_ROLLOUT_PERCENTAGE` | Доля стабильной пользовательской когорты с LLM-формулировкой | `0` |
+| `LLM_DAILY_BUDGET_USD` | Дневной hard stop расходов | `5.0` |
+| `LLM_INPUT_COST_PER_MILLION_USD` | Актуальная цена входных токенов; обязательна при включении LLM | `0` |
+| `LLM_OUTPUT_COST_PER_MILLION_USD` | Актуальная цена выходных токенов; обязательна при включении LLM | `0` |
 | `QUALITY_REPORT_TOKEN` | Токен внутренних отчетов | не задан |
 | `TICKET_EMAIL_ENABLED` | Доставка обращений по email | `false` |
 | `TICKET_EMAIL_TO` | Получатель обращений | тестовое значение |
@@ -333,13 +337,28 @@ LLM_ENABLED=true
 LLM_PROVIDER=qwen
 LLM_PRIMARY_MODEL=qwen-plus
 LLM_FALLBACK_MODEL=qwen-flash
+LLM_ROLLOUT_PERCENTAGE=0
+LLM_INPUT_COST_PER_MILLION_USD=<current-provider-price>
+LLM_OUTPUT_COST_PER_MILLION_USD=<current-provider-price>
 QWEN_BASE_URL=https://YOUR_WORKSPACE_ID.ap-southeast-1.maas.aliyuncs.com/compatible-mode/v1
 QWEN_API_KEY=...
 ```
 
 Qwen используется только для переформулирования уже найденного ответа БЗ. При ошибке API,
 пустом ответе или создании обращения бот возвращает безопасный ответ из БЗ без участия внешней
-модели. Ключ хранится только в окружении backend.
+модели. Ключ хранится только в окружении backend. Значение rollout `0` обязательно для shadow:
+кандидат LLM сохраняется для проверки, но пользователю не показывается. После успешной экспертной
+проверки допустимы только ступени `5`, `25`, `50`, `100`.
+
+Redacted shadow на 200–500 запросах запускается отдельно от пользовательского rollout:
+
+```bash
+python -m backend.tools.run_llm_shadow <source.json> --target-count 200
+```
+
+Агрегированный отчёт создаётся в `reports/stage6_1-llm-shadow.json`, а рабочий пакет для
+независимой оценки — в игнорируемом Git каталоге `.work/`. Сырые prompt и немаскированные
+персональные данные в эти файлы не записываются.
 
 Проверка регрессий и живых перефразировок:
 

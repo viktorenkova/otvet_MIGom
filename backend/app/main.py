@@ -1,4 +1,5 @@
 from contextlib import asynccontextmanager
+import hashlib
 import json
 import re
 import secrets
@@ -43,6 +44,17 @@ settings = get_settings()
 logger = DialogLogger(settings.database_path)
 local_ticket_provider = LocalDatabaseTicketProvider(logger)
 email_ticket_provider = EmailTicketProvider(settings)
+
+
+def _in_llm_rollout(session_id: str, percentage: int) -> bool:
+    if percentage <= 0:
+        return False
+    if percentage >= 100:
+        return True
+    bucket = int(hashlib.sha256(session_id.encode("utf-8")).hexdigest()[:8], 16) % 100
+    return bucket < percentage
+
+
 langfuse_client = LangfuseClient(settings)
 status_provider = build_status_provider(settings)
 MAX_CONTEXT_FOLLOWUPS = 2
@@ -822,6 +834,26 @@ def process_chat_message(request: ChatRequest) -> ChatResponse:
         )
         ticket = _save_and_deliver_ticket(ticket)
 
+    action_matrix = load_matching_config().get("intent_action_matrix", {})
+    matrix_action = action_matrix.get(intent, "answer") if isinstance(action_matrix, dict) else "answer"
+    action = "create_ticket" if should_create_ticket else str(matrix_action)
+    if should_create_ticket and article and article.action == "show_document_and_offer_ticket":
+        action = article.action
+    elif is_template_only_answer:
+        action = "show_document"
+    elif intent == "unknown" and not article:
+        action = "clarify"
+    elif not should_create_ticket and article and article.action == "answer" and (article.scenario or article.answer_type == "general"):
+        action = "answer"
+    elif not should_create_ticket and article and article.action and article.action != "answer":
+        action = article.action
+    response_actions = _response_scenario_actions(effective_message, article.scenario if article else None)
+    scenario_clarifying_options = (
+        [item.label for item in response_actions if item.type == "clarify"]
+        if action == "clarify"
+        else []
+    )
+
     generated = generate_answer(
         effective_message,
         intent,
@@ -836,7 +868,10 @@ def process_chat_message(request: ChatRequest) -> ChatResponse:
         llm_daily_spend_usd=logger.get_llm_spend(settings.llm_environment, days=1),
         llm_monthly_spend_usd=logger.get_llm_spend(settings.llm_environment, days=31),
         route_confidence=confidence,
-        llm_allowed=not bool(scenario_clarifying_options),
+        llm_allowed=(
+            not bool(scenario_clarifying_options)
+            and _in_llm_rollout(request.session_id, settings.llm_rollout_percentage)
+        ),
     )
     matched_features = list(dict.fromkeys([
         *matched_features,
@@ -891,25 +926,6 @@ def process_chat_message(request: ChatRequest) -> ChatResponse:
             all_safety_flags,
         )
 
-    action_matrix = load_matching_config().get("intent_action_matrix", {})
-    matrix_action = action_matrix.get(intent, "answer") if isinstance(action_matrix, dict) else "answer"
-    action = "create_ticket" if should_create_ticket else str(matrix_action)
-    if should_create_ticket and article and article.action == "show_document_and_offer_ticket":
-        action = article.action
-    elif is_template_only_answer:
-        action = "show_document"
-    elif intent == "unknown" and not article:
-        action = "clarify"
-    elif not should_create_ticket and article and article.action == "answer" and (article.scenario or article.answer_type == "general"):
-        action = "answer"
-    elif not should_create_ticket and article and article.action and article.action != "answer":
-        action = article.action
-    response_actions = _response_scenario_actions(effective_message, article.scenario if article else None)
-    scenario_clarifying_options = (
-        [item.label for item in response_actions if item.type == "clarify"]
-        if action == "clarify"
-        else []
-    )
     message_id = _persist_turn(
         started_at=started_at,
         request=request,

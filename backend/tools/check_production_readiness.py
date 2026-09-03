@@ -173,6 +173,7 @@ def run_checks(settings: Settings, knowledge_report: dict | None = None) -> dict
             and 0 < settings.llm_total_timeout_seconds <= settings.llm_request_timeout_seconds * 2
             and settings.llm_max_concurrency > 0
             and settings.llm_circuit_failure_threshold > 0
+            and settings.llm_rollout_percentage in {0, 5, 25, 50, 100}
         )
         checks.append(
             _check(

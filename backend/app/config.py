@@ -29,6 +29,7 @@ class Settings(BaseModel):
     llm_production_budget_usd: float = 25.0
     llm_daily_budget_usd: float = 5.0
     llm_budget_warning_pct: float = 80.0
+    llm_rollout_percentage: int = 0
     llm_input_cost_per_million_usd: float = 0.0
     llm_output_cost_per_million_usd: float = 0.0
     litellm_proxy_url: str = ""
@@ -107,6 +108,8 @@ def validate_llm_runtime(settings: Settings) -> None:
         raise ValueError("LLM total timeout must be positive and bounded")
     if settings.llm_max_concurrency <= 0 or settings.llm_circuit_failure_threshold <= 0:
         raise ValueError("LLM concurrency and circuit threshold must be positive")
+    if settings.llm_rollout_percentage not in {0, 5, 25, 50, 100}:
+        raise ValueError("LLM rollout percentage must be one of 0, 5, 25, 50, 100")
 
 
 def _bool_from_env(value: str | None, default: bool = False) -> bool:
@@ -144,6 +147,7 @@ def get_settings() -> Settings:
         llm_production_budget_usd=float(os.getenv("LLM_PRODUCTION_BUDGET_USD", "25.0")),
         llm_daily_budget_usd=float(os.getenv("LLM_DAILY_BUDGET_USD", "5.0")),
         llm_budget_warning_pct=float(os.getenv("LLM_BUDGET_WARNING_PCT", "80.0")),
+        llm_rollout_percentage=int(os.getenv("LLM_ROLLOUT_PERCENTAGE", "0")),
         llm_input_cost_per_million_usd=float(os.getenv("LLM_INPUT_COST_PER_MILLION_USD", "0")),
         llm_output_cost_per_million_usd=float(os.getenv("LLM_OUTPUT_COST_PER_MILLION_USD", "0")),
         litellm_proxy_url=os.getenv("LITELLM_PROXY_URL", ""),
