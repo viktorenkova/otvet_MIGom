@@ -163,12 +163,22 @@ def run_checks(settings: Settings, knowledge_report: dict | None = None) -> dict
             provider_ready = (
                 provider_ready and _is_https_url(settings.qwen_base_url) and bool(settings.qwen_api_key)
             )
-        provider_ready = provider_ready and settings.llm_environment == "production"
+        provider_ready = (
+            provider_ready
+            and settings.llm_environment == "production"
+            and settings.llm_input_cost_per_million_usd > 0
+            and settings.llm_output_cost_per_million_usd > 0
+            and settings.llm_daily_budget_usd > 0
+            and settings.active_llm_monthly_budget_usd > 0
+            and 0 < settings.llm_total_timeout_seconds <= settings.llm_request_timeout_seconds * 2
+            and settings.llm_max_concurrency > 0
+            and settings.llm_circuit_failure_threshold > 0
+        )
         checks.append(
             _check(
                 "llm_configuration",
                 "pass" if provider_ready else "fail",
-                "Enabled LLM requires production environment and a configured qwen or LiteLLM HTTPS endpoint.",
+                "Enabled LLM requires production environment, HTTPS provider credentials, token pricing, budgets, timeout and circuit limits.",
             )
         )
     else:

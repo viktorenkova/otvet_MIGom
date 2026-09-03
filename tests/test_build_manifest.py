@@ -21,6 +21,7 @@ def test_runtime_manifest_contains_release_comparability_fingerprints() -> None:
         "widget_bundle_sha256",
         "llm_provider",
         "llm_primary_model",
+        "llm_policy_sha256",
     }
     assert required.issubset(manifest)
     for key in required - {"git_sha", "llm_provider", "llm_primary_model"}:

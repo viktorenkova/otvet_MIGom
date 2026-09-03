@@ -117,6 +117,11 @@ class DialogLogger:
                     safety_flags TEXT NOT NULL,
                     success INTEGER NOT NULL,
                     error TEXT,
+                    environment TEXT NOT NULL DEFAULT 'dev',
+                    verification_accepted INTEGER,
+                    verification_reason TEXT NOT NULL DEFAULT '',
+                    fallback_used INTEGER NOT NULL DEFAULT 0,
+                    correlation_id TEXT NOT NULL DEFAULT '',
                     created_at TEXT NOT NULL
                 );
                 CREATE TABLE IF NOT EXISTS matching_events (
@@ -203,6 +208,20 @@ class DialogLogger:
                 conn.execute("ALTER TABLE quality_events ADD COLUMN scenario_id TEXT")
             if "resolution" not in quality_columns:
                 conn.execute("ALTER TABLE quality_events ADD COLUMN resolution TEXT NOT NULL DEFAULT 'answered'")
+            llm_columns = {
+                str(row["name"])
+                for row in conn.execute("PRAGMA table_info(llm_requests)").fetchall()
+            }
+            llm_migrations = {
+                "environment": "TEXT NOT NULL DEFAULT 'dev'",
+                "verification_accepted": "INTEGER",
+                "verification_reason": "TEXT NOT NULL DEFAULT ''",
+                "fallback_used": "INTEGER NOT NULL DEFAULT 0",
+                "correlation_id": "TEXT NOT NULL DEFAULT ''",
+            }
+            for column, definition in llm_migrations.items():
+                if column not in llm_columns:
+                    conn.execute(f"ALTER TABLE llm_requests ADD COLUMN {column} {definition}")
             clarification_columns = {
                 str(row["name"])
                 for row in conn.execute("PRAGMA table_info(clarification_states)").fetchall()
@@ -674,8 +693,9 @@ class DialogLogger:
                 INSERT INTO llm_requests
                 (provider, model, task_type, input_tokens, output_tokens, total_tokens,
                  estimated_cost_usd, latency_ms, session_id, user_role, escalation_required,
-                 safety_flags, success, error, created_at)
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                 safety_flags, success, error, environment, verification_accepted,
+                 verification_reason, fallback_used, correlation_id, created_at)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
                 """,
                 (
                     result.provider,
@@ -692,14 +712,59 @@ class DialogLogger:
                     json.dumps(safety_flags, ensure_ascii=False),
                     int(result.success),
                     result.error,
+                    result.environment,
+                    None if result.verification_accepted is None else int(result.verification_accepted),
+                    result.verification_reason,
+                    int(result.fallback_used),
+                    result.correlation_id,
                     datetime.now(timezone.utc).isoformat(),
                 ),
             )
 
-    def get_llm_spend(self, environment: str | None = None) -> float:
+    def get_llm_spend(self, environment: str | None = None, days: int | None = None) -> float:
+        clauses: list[str] = []
+        values: list[str] = []
+        if environment:
+            clauses.append("environment = ?")
+            values.append(environment)
+        if days is not None:
+            since = (datetime.now(timezone.utc) - timedelta(days=max(0, days))).isoformat()
+            clauses.append("created_at >= ?")
+            values.append(since)
+        where = " WHERE " + " AND ".join(clauses) if clauses else ""
         with self._connect() as conn:
-            row = conn.execute("SELECT COALESCE(SUM(estimated_cost_usd), 0) AS spend FROM llm_requests").fetchone()
+            row = conn.execute(
+                "SELECT COALESCE(SUM(estimated_cost_usd), 0) AS spend FROM llm_requests" + where,
+                values,
+            ).fetchone()
         return float(row["spend"] or 0)
+
+    def get_llm_metrics(self, days: int = 7) -> dict:
+        since = (datetime.now(timezone.utc) - timedelta(days=max(1, days))).isoformat()
+        with self._connect() as conn:
+            rows = conn.execute(
+                """
+                SELECT provider, model, estimated_cost_usd, latency_ms, success,
+                       verification_accepted, verification_reason, fallback_used
+                FROM llm_requests
+                WHERE created_at >= ?
+                """,
+                (since,),
+            ).fetchall()
+        events = [dict(row) for row in rows]
+        latencies = [int(row["latency_ms"] or 0) for row in events]
+        reasons = Counter(str(row["verification_reason"] or "not_recorded") for row in events)
+        return {
+            "requests": len(events),
+            "success": sum(int(row["success"] or 0) for row in events),
+            "accepted": sum(int(row["verification_accepted"] or 0) for row in events),
+            "rejected": sum(row["verification_accepted"] == 0 for row in events),
+            "fallback_used": sum(int(row["fallback_used"] or 0) for row in events),
+            "estimated_cost_usd": round(sum(float(row["estimated_cost_usd"] or 0) for row in events), 6),
+            "p95_latency_ms": self._percentile(latencies, 0.95),
+            "verification_reasons": dict(reasons.most_common(10)),
+            "models": dict(Counter(f"{row['provider']}:{row['model']}" for row in events).most_common()),
+        }
 
     def get_last_llm_request(self) -> dict | None:
         with self._connect() as conn:
@@ -1042,6 +1107,7 @@ class DialogLogger:
                 {"reason": reason, "count": count}
                 for reason, count in fallbacks.most_common(10)
             ],
+            "llm": self.get_llm_metrics(days),
         }
 
         if include_examples:

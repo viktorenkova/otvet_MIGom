@@ -101,6 +101,17 @@ def build_runtime_manifest(settings: Any) -> dict[str, Any]:
         ROOT / "backend" / "app" / "bot" / "answer_generator.py",
         ROOT / "backend" / "app" / "integrations" / "llm_provider.py",
     ]
+    llm_policy = {
+        "environment": settings.llm_environment,
+        "reasoning_effort": settings.llm_reasoning_effort,
+        "request_timeout_seconds": settings.llm_request_timeout_seconds,
+        "total_timeout_seconds": settings.llm_total_timeout_seconds,
+        "max_output_tokens": settings.llm_max_output_tokens,
+        "max_concurrency": settings.llm_max_concurrency,
+        "circuit_failure_threshold": settings.llm_circuit_failure_threshold,
+        "circuit_cooldown_seconds": settings.llm_circuit_cooldown_seconds,
+    }
+    llm_policy_raw = json.dumps(llm_policy, sort_keys=True, separators=(",", ":")).encode("utf-8")
     payload: dict[str, Any] = {
         "manifest_schema": 1,
         "deploy_version": str(settings.deploy_version),
@@ -127,6 +138,7 @@ def build_runtime_manifest(settings: Any) -> dict[str, Any]:
         "llm_provider": str(settings.llm_provider),
         "llm_primary_model": str(settings.llm_primary_model),
         "llm_fallback_model": str(settings.llm_fallback_model),
+        "llm_policy_sha256": _sha256_bytes(llm_policy_raw),
     }
     canonical = json.dumps(payload, ensure_ascii=False, sort_keys=True, separators=(",", ":"))
     payload["manifest_sha256"] = _sha256_bytes(canonical.encode("utf-8"))

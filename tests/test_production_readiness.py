@@ -77,6 +77,23 @@ def test_enabled_integrations_require_secure_configuration(tmp_path):
     assert statuses["llm_configuration"] == "fail"
 
 
+def test_enabled_llm_readiness_requires_pricing_and_runtime_limits(tmp_path):
+    base = _production_settings(tmp_path).model_copy(
+        update={
+            "llm_enabled": True,
+            "llm_environment": "production",
+            "llm_provider": "qwen",
+            "qwen_base_url": "https://qwen.example/v1",
+            "qwen_api_key": "test-only",
+            "llm_input_cost_per_million_usd": 1.0,
+            "llm_output_cost_per_million_usd": 2.0,
+        }
+    )
+    assert _statuses(run_checks(base, {"production_release_ready": True}))["llm_configuration"] == "pass"
+    invalid = base.model_copy(update={"llm_input_cost_per_million_usd": 0.0})
+    assert _statuses(run_checks(invalid, {"production_release_ready": True}))["llm_configuration"] == "fail"
+
+
 def test_public_health_is_release_focused_and_does_not_expose_local_paths():
     result = health()
 

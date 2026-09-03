@@ -1,6 +1,7 @@
 from functools import lru_cache
 import os
 from pathlib import Path
+from urllib.parse import urlparse
 
 from pydantic import BaseModel
 
@@ -19,8 +20,17 @@ class Settings(BaseModel):
     llm_fallback_model: str = "mock/safe-rules"
     llm_reasoning_effort: str = "none"
     llm_request_timeout_seconds: int = 30
+    llm_total_timeout_seconds: int = 8
+    llm_max_output_tokens: int = 300
+    llm_max_concurrency: int = 8
+    llm_circuit_failure_threshold: int = 3
+    llm_circuit_cooldown_seconds: int = 60
     llm_dev_budget_usd: float = 1.0
     llm_production_budget_usd: float = 25.0
+    llm_daily_budget_usd: float = 5.0
+    llm_budget_warning_pct: float = 80.0
+    llm_input_cost_per_million_usd: float = 0.0
+    llm_output_cost_per_million_usd: float = 0.0
     litellm_proxy_url: str = ""
     litellm_api_key: str = ""
     qwen_base_url: str = ""
@@ -70,6 +80,34 @@ class Settings(BaseModel):
             return self.llm_production_budget_usd
         return self.llm_dev_budget_usd
 
+    @property
+    def active_llm_monthly_budget_usd(self) -> float:
+        return self.active_llm_budget_usd
+
+
+def _is_https_url(value: str) -> bool:
+    parsed = urlparse(value)
+    return parsed.scheme == "https" and bool(parsed.netloc)
+
+
+def validate_llm_runtime(settings: Settings) -> None:
+    if not settings.llm_enabled:
+        return
+    if settings.llm_provider not in {"qwen", "litellm"}:
+        raise ValueError("LLM_ENABLED requires provider qwen or litellm")
+    endpoint = settings.qwen_base_url if settings.llm_provider == "qwen" else settings.litellm_proxy_url
+    api_key = settings.qwen_api_key if settings.llm_provider == "qwen" else settings.litellm_api_key
+    if not _is_https_url(endpoint) or not api_key:
+        raise ValueError("Enabled LLM requires an HTTPS endpoint and backend-only API key")
+    if settings.llm_input_cost_per_million_usd <= 0 or settings.llm_output_cost_per_million_usd <= 0:
+        raise ValueError("Enabled LLM requires positive token pricing for enforceable budgets")
+    if settings.llm_daily_budget_usd <= 0 or settings.active_llm_monthly_budget_usd <= 0:
+        raise ValueError("Enabled LLM requires positive daily and monthly budgets")
+    if not 0 < settings.llm_total_timeout_seconds <= settings.llm_request_timeout_seconds * 2:
+        raise ValueError("LLM total timeout must be positive and bounded")
+    if settings.llm_max_concurrency <= 0 or settings.llm_circuit_failure_threshold <= 0:
+        raise ValueError("LLM concurrency and circuit threshold must be positive")
+
 
 def _bool_from_env(value: str | None, default: bool = False) -> bool:
     if value is None:
@@ -84,7 +122,7 @@ def get_settings() -> Settings:
         for origin in os.getenv("CORS_ALLOWED_ORIGINS", "*").split(",")
         if origin.strip()
     ]
-    return Settings(
+    settings = Settings(
         app_name=os.getenv("APP_NAME", "migtorg-chatbot"),
         app_environment=os.getenv("APP_ENVIRONMENT", "development"),
         deploy_version=os.getenv("DEPLOY_VERSION", "local"),
@@ -97,8 +135,17 @@ def get_settings() -> Settings:
         llm_fallback_model=os.getenv("LLM_FALLBACK_MODEL", "mock/safe-rules"),
         llm_reasoning_effort=os.getenv("LLM_REASONING_EFFORT", "none"),
         llm_request_timeout_seconds=int(os.getenv("LLM_REQUEST_TIMEOUT_SECONDS", "30")),
+        llm_total_timeout_seconds=int(os.getenv("LLM_TOTAL_TIMEOUT_SECONDS", "8")),
+        llm_max_output_tokens=int(os.getenv("LLM_MAX_OUTPUT_TOKENS", "300")),
+        llm_max_concurrency=int(os.getenv("LLM_MAX_CONCURRENCY", "8")),
+        llm_circuit_failure_threshold=int(os.getenv("LLM_CIRCUIT_FAILURE_THRESHOLD", "3")),
+        llm_circuit_cooldown_seconds=int(os.getenv("LLM_CIRCUIT_COOLDOWN_SECONDS", "60")),
         llm_dev_budget_usd=float(os.getenv("LLM_DEV_BUDGET_USD", "1.0")),
         llm_production_budget_usd=float(os.getenv("LLM_PRODUCTION_BUDGET_USD", "25.0")),
+        llm_daily_budget_usd=float(os.getenv("LLM_DAILY_BUDGET_USD", "5.0")),
+        llm_budget_warning_pct=float(os.getenv("LLM_BUDGET_WARNING_PCT", "80.0")),
+        llm_input_cost_per_million_usd=float(os.getenv("LLM_INPUT_COST_PER_MILLION_USD", "0")),
+        llm_output_cost_per_million_usd=float(os.getenv("LLM_OUTPUT_COST_PER_MILLION_USD", "0")),
         litellm_proxy_url=os.getenv("LITELLM_PROXY_URL", ""),
         litellm_api_key=os.getenv("LITELLM_API_KEY", ""),
         qwen_base_url=os.getenv("QWEN_BASE_URL", ""),
@@ -124,3 +171,5 @@ def get_settings() -> Settings:
         internal_status_api_url=os.getenv("INTERNAL_STATUS_API_URL", ""),
         internal_status_timeout_seconds=int(os.getenv("INTERNAL_STATUS_TIMEOUT_SECONDS", "5")),
     )
+    validate_llm_runtime(settings)
+    return settings

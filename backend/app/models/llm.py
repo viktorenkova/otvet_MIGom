@@ -28,3 +28,8 @@ class LLMResult(BaseModel):
     latency_ms: int = 0
     success: bool = True
     error: str | None = None
+    environment: str = "dev"
+    verification_accepted: bool | None = None
+    verification_reason: str = ""
+    fallback_used: bool = False
+    correlation_id: str = ""

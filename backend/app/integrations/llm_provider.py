@@ -1,6 +1,9 @@
 from __future__ import annotations
 
 import json
+import hashlib
+from dataclasses import dataclass, field
+from threading import BoundedSemaphore, Lock
 import time
 from typing import Protocol
 import urllib.error
@@ -19,6 +22,65 @@ def estimate_tokens(text: str) -> int:
     return max(1, len(text) // 4)
 
 
+def estimate_cost(settings: Settings, input_tokens: int, output_tokens: int) -> float:
+    return round(
+        (
+            input_tokens * settings.llm_input_cost_per_million_usd
+            + output_tokens * settings.llm_output_cost_per_million_usd
+        )
+        / 1_000_000,
+        8,
+    )
+
+
+def _correlation_id(session_id: str) -> str:
+    return hashlib.sha256(session_id.encode("utf-8")).hexdigest()[:24] if session_id else ""
+
+
+@dataclass
+class _ProviderGuard:
+    max_concurrency: int
+    semaphore: BoundedSemaphore = field(init=False)
+    failures: int = 0
+    opened_until: float = 0.0
+    lock: Lock = field(default_factory=Lock)
+
+    def __post_init__(self) -> None:
+        self.semaphore = BoundedSemaphore(self.max_concurrency)
+
+    def enter(self) -> str:
+        with self.lock:
+            if self.opened_until > time.monotonic():
+                return "circuit_open"
+        if not self.semaphore.acquire(blocking=False):
+            return "concurrency_limit"
+        return ""
+
+    def leave(self) -> None:
+        self.semaphore.release()
+
+    def record_success(self) -> None:
+        with self.lock:
+            self.failures = 0
+            self.opened_until = 0.0
+
+    def record_failure(self, settings: Settings) -> None:
+        with self.lock:
+            self.failures += 1
+            if self.failures >= settings.llm_circuit_failure_threshold:
+                self.opened_until = time.monotonic() + settings.llm_circuit_cooldown_seconds
+
+
+_GUARDS: dict[tuple[str, str, int], _ProviderGuard] = {}
+_GUARDS_LOCK = Lock()
+
+
+def _provider_guard(provider: str, endpoint: str, max_concurrency: int) -> _ProviderGuard:
+    key = (provider, endpoint, max_concurrency)
+    with _GUARDS_LOCK:
+        return _GUARDS.setdefault(key, _ProviderGuard(max_concurrency))
+
+
 class MockLLMProvider:
     def generate(self, request: LLMRequest) -> LLMResult:
         started = time.perf_counter()
@@ -34,50 +96,69 @@ class MockLLMProvider:
             total_tokens=input_tokens + output_tokens,
             estimated_cost_usd=0.0,
             latency_ms=int((time.perf_counter() - started) * 1000),
+            environment="dev",
+            correlation_id=_correlation_id(request.session_id),
         )
 
 
 class LiteLLMProxyProvider:
     def __init__(self, settings: Settings):
         self.settings = settings
+        self.guard = _provider_guard("litellm", settings.litellm_proxy_url, settings.llm_max_concurrency)
 
     def generate(self, request: LLMRequest) -> LLMResult:
+        guard_error = self.guard.enter()
+        if guard_error:
+            return self._failure(request, request.model, guard_error)
+        deadline = time.monotonic() + self.settings.llm_total_timeout_seconds
         models = [request.model]
         if request.fallback_model and request.fallback_model != request.model:
             models.append(request.fallback_model)
 
-        last_error: str | None = None
-        for model in models:
-            result = self._try_model(request, model)
-            if result.success:
-                return result
-            last_error = result.error
+        last_result: LLMResult | None = None
+        try:
+            for model in models:
+                remaining = deadline - time.monotonic()
+                if remaining <= 0:
+                    last_result = self._failure(request, model, "total_timeout")
+                    break
+                last_result = self._try_model(
+                    request,
+                    model,
+                    min(float(self.settings.llm_request_timeout_seconds), remaining),
+                )
+                if last_result.success:
+                    self.guard.record_success()
+                    return last_result
+            self.guard.record_failure(self.settings)
+            return last_result or self._failure(request, models[-1], "LiteLLM request failed")
+        finally:
+            self.guard.leave()
 
+    def _failure(self, request: LLMRequest, model: str, error: str, latency_ms: int = 0) -> LLMResult:
+        input_tokens = estimate_tokens(request.prompt)
+        output_tokens = estimate_tokens(request.fallback_text)
         return LLMResult(
             text=request.fallback_text,
             provider="litellm",
-            model=models[-1],
+            model=model,
             task_type=request.task_type,
-            input_tokens=estimate_tokens(request.prompt),
-            output_tokens=estimate_tokens(request.fallback_text),
-            total_tokens=estimate_tokens(request.prompt) + estimate_tokens(request.fallback_text),
+            input_tokens=input_tokens,
+            output_tokens=output_tokens,
+            total_tokens=input_tokens + output_tokens,
             estimated_cost_usd=0.0,
-            latency_ms=0,
+            latency_ms=latency_ms,
             success=False,
-            error=last_error or "LiteLLM request failed",
+            error=error,
+            environment=self.settings.llm_environment,
+            fallback_used=True,
+            correlation_id=_correlation_id(request.session_id),
         )
 
-    def _try_model(self, request: LLMRequest, model: str) -> LLMResult:
+    def _try_model(self, request: LLMRequest, model: str, timeout_seconds: float) -> LLMResult:
         started = time.perf_counter()
         if not self.settings.litellm_proxy_url:
-            return LLMResult(
-                text=request.fallback_text,
-                provider="litellm",
-                model=model,
-                task_type=request.task_type,
-                success=False,
-                error="LITELLM_PROXY_URL is not configured",
-            )
+            return self._failure(request, model, "LITELLM_PROXY_URL is not configured")
 
         url = self.settings.litellm_proxy_url.rstrip("/") + "/chat/completions"
         payload = {
@@ -95,6 +176,7 @@ class LiteLLMProxyProvider:
                 {"role": "user", "content": request.prompt},
             ],
             "temperature": 0.2,
+            "max_tokens": self.settings.llm_max_output_tokens,
         }
         if "gpt-5.6" in model:
             # Chat Completions is retained for LiteLLM compatibility. Make the
@@ -112,18 +194,10 @@ class LiteLLMProxyProvider:
                 headers=headers,
                 method="POST",
             )
-            with urllib.request.urlopen(http_request, timeout=self.settings.llm_request_timeout_seconds) as response:
+            with urllib.request.urlopen(http_request, timeout=timeout_seconds) as response:
                 data = json.loads(response.read().decode("utf-8"))
         except (urllib.error.URLError, TimeoutError, json.JSONDecodeError) as exc:
-            return LLMResult(
-                text=request.fallback_text,
-                provider="litellm",
-                model=model,
-                task_type=request.task_type,
-                success=False,
-                error=str(exc),
-                latency_ms=int((time.perf_counter() - started) * 1000),
-            )
+            return self._failure(request, model, str(exc), int((time.perf_counter() - started) * 1000))
 
         usage = data.get("usage") or {}
         input_tokens = int(usage.get("prompt_tokens") or 0)
@@ -135,6 +209,8 @@ class LiteLLMProxyProvider:
             .get("content", request.fallback_text)
         )
         cost = float(data.get("response_cost") or data.get("_hidden_params", {}).get("response_cost") or 0.0)
+        if cost <= 0:
+            cost = estimate_cost(self.settings, input_tokens, output_tokens)
         return LLMResult(
             text=text,
             provider="litellm",
@@ -145,6 +221,8 @@ class LiteLLMProxyProvider:
             total_tokens=total_tokens,
             estimated_cost_usd=cost,
             latency_ms=int((time.perf_counter() - started) * 1000),
+            environment=self.settings.llm_environment,
+            correlation_id=_correlation_id(request.session_id),
         )
 
 
@@ -153,18 +231,36 @@ class QwenProvider:
 
     def __init__(self, settings: Settings):
         self.settings = settings
+        self.guard = _provider_guard("qwen", settings.qwen_base_url, settings.llm_max_concurrency)
 
     def generate(self, request: LLMRequest) -> LLMResult:
+        guard_error = self.guard.enter()
+        if guard_error:
+            return self._failure(request, request.model, guard_error)
+        deadline = time.monotonic() + self.settings.llm_total_timeout_seconds
         models = [request.model]
         if request.fallback_model and request.fallback_model != request.model:
             models.append(request.fallback_model)
 
         last_result: LLMResult | None = None
-        for model in models:
-            last_result = self._try_model(request, model)
-            if last_result.success:
-                return last_result
-        return last_result or self._failure(request, request.model, "Qwen request failed")
+        try:
+            for model in models:
+                remaining = deadline - time.monotonic()
+                if remaining <= 0:
+                    last_result = self._failure(request, model, "total_timeout")
+                    break
+                last_result = self._try_model(
+                    request,
+                    model,
+                    min(float(self.settings.llm_request_timeout_seconds), remaining),
+                )
+                if last_result.success:
+                    self.guard.record_success()
+                    return last_result
+            self.guard.record_failure(self.settings)
+            return last_result or self._failure(request, request.model, "Qwen request failed")
+        finally:
+            self.guard.leave()
 
     def _failure(
         self,
@@ -187,9 +283,12 @@ class QwenProvider:
             latency_ms=latency_ms,
             success=False,
             error=error,
+            environment=self.settings.llm_environment,
+            fallback_used=True,
+            correlation_id=_correlation_id(request.session_id),
         )
 
-    def _try_model(self, request: LLMRequest, model: str) -> LLMResult:
+    def _try_model(self, request: LLMRequest, model: str, timeout_seconds: float) -> LLMResult:
         started = time.perf_counter()
         if not self.settings.qwen_base_url:
             return self._failure(request, model, "QWEN_BASE_URL is not configured")
@@ -213,7 +312,7 @@ class QwenProvider:
                 {"role": "user", "content": request.prompt},
             ],
             "temperature": 0.1,
-            "max_tokens": 700,
+            "max_tokens": self.settings.llm_max_output_tokens,
             # Answer rewriting is a low-complexity task; thinking only adds
             # latency and spends the trial quota without improving grounding.
             "enable_thinking": False,
@@ -232,7 +331,7 @@ class QwenProvider:
             )
             with urllib.request.urlopen(
                 http_request,
-                timeout=self.settings.llm_request_timeout_seconds,
+                timeout=timeout_seconds,
             ) as response:
                 data = json.loads(response.read().decode("utf-8"))
         except urllib.error.HTTPError as exc:
@@ -272,8 +371,10 @@ class QwenProvider:
             input_tokens=input_tokens,
             output_tokens=output_tokens,
             total_tokens=total_tokens,
-            estimated_cost_usd=0.0,
+            estimated_cost_usd=estimate_cost(self.settings, input_tokens, output_tokens),
             latency_ms=int((time.perf_counter() - started) * 1000),
+            environment=self.settings.llm_environment,
+            correlation_id=request.session_id,
         )
 
 
@@ -282,4 +383,6 @@ def build_llm_provider(settings: Settings) -> LLMProvider:
         return LiteLLMProxyProvider(settings)
     if settings.llm_provider == "qwen":
         return QwenProvider(settings)
-    return MockLLMProvider()
+    if settings.llm_provider == "mock" and not settings.llm_enabled:
+        return MockLLMProvider()
+    raise ValueError(f"Unsupported enabled LLM provider: {settings.llm_provider}")

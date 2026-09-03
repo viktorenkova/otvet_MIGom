@@ -833,7 +833,8 @@ def process_chat_message(request: ChatRequest) -> ChatResponse:
         settings=settings,
         session_id=request.session_id,
         safety_flags=safety_before.categories,
-        llm_spend_usd=logger.get_llm_spend(settings.llm_environment),
+        llm_daily_spend_usd=logger.get_llm_spend(settings.llm_environment, days=1),
+        llm_monthly_spend_usd=logger.get_llm_spend(settings.llm_environment, days=31),
         route_confidence=confidence,
         llm_allowed=not bool(scenario_clarifying_options),
     )
@@ -989,7 +990,20 @@ def quality_report(
         raise HTTPException(status_code=404, detail="Not Found")
     if not x_quality_report_token or not secrets.compare_digest(x_quality_report_token, expected_token):
         raise HTTPException(status_code=403, detail="Invalid quality report token")
-    return logger.get_quality_report(days=days, include_examples=False)
+    report = logger.get_quality_report(days=days, include_examples=False)
+    daily_spend = logger.get_llm_spend(settings.llm_environment, days=1)
+    monthly_spend = logger.get_llm_spend(settings.llm_environment, days=31)
+    warning_ratio = settings.llm_budget_warning_pct / 100
+    report["llm"]["budget"] = {
+        "environment": settings.llm_environment,
+        "daily_spend_usd": round(daily_spend, 6),
+        "daily_limit_usd": settings.llm_daily_budget_usd,
+        "daily_warning": daily_spend >= settings.llm_daily_budget_usd * warning_ratio,
+        "monthly_spend_usd": round(monthly_spend, 6),
+        "monthly_limit_usd": settings.active_llm_monthly_budget_usd,
+        "monthly_warning": monthly_spend >= settings.active_llm_monthly_budget_usd * warning_ratio,
+    }
+    return report
 
 
 @app.post("/api/internal/tickets/retry-due")

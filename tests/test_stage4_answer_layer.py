@@ -140,6 +140,37 @@ def test_llm_prompt_contains_contract_content_not_runtime_answer_overrides(monke
     assert "Одного пополнения баланса недостаточно" not in prompts[0]
 
 
+def test_daily_and_monthly_budgets_skip_llm(monkeypatch) -> None:
+    calls: list[str] = []
+
+    class FakeProvider:
+        def generate(self, request):
+            calls.append(request.prompt)
+            return LLMResult(text=request.fallback_text, provider="fake", model="fake", task_type=request.task_type)
+
+    monkeypatch.setattr("backend.app.bot.answer_generator.build_llm_provider", lambda _settings: FakeProvider())
+    article = get_article_by_id("buyer.get_started", "guest")
+    assert article is not None
+    settings = Settings(
+        llm_enabled=True,
+        llm_provider="fake",
+        llm_primary_model="fake",
+        llm_daily_budget_usd=1.0,
+        llm_dev_budget_usd=10.0,
+    )
+    daily = generate_answer(
+        "как начать", "bidding", "guest", article, False,
+        settings=settings, llm_daily_spend_usd=1.0,
+    )
+    monthly = generate_answer(
+        "как начать", "bidding", "guest", article, False,
+        settings=settings, llm_daily_spend_usd=0.0, llm_monthly_spend_usd=10.0,
+    )
+    assert calls == []
+    assert daily.verification_reason == "llm_budget_daily_exhausted"
+    assert monthly.verification_reason == "llm_budget_monthly_exhausted"
+
+
 def test_deterministic_scenario_answer_returns_fact_trace() -> None:
     article = get_article_by_id("buyer.get_started", "guest")
     assert article is not None

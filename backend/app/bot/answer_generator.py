@@ -222,6 +222,8 @@ def generate_answer(
     session_id: str = "",
     safety_flags: list[str] | None = None,
     llm_spend_usd: float = 0.0,
+    llm_daily_spend_usd: float = 0.0,
+    llm_monthly_spend_usd: float | None = None,
     route_confidence: str = "high",
     llm_allowed: bool = True,
 ) -> GeneratedAnswer:
@@ -380,13 +382,22 @@ def generate_answer(
             verification_passed=verification.passed,
             verification_reason=verification.reason,
         )
-    if llm_spend_usd >= settings.active_llm_budget_usd:
+    monthly_spend = llm_spend_usd if llm_monthly_spend_usd is None else llm_monthly_spend_usd
+    if llm_daily_spend_usd >= settings.llm_daily_budget_usd:
         verification = verify_answer(base, base, contract)
         return GeneratedAnswer(
             answer=verification.answer,
             used_fact_ids=verification.used_fact_ids,
             verification_passed=verification.passed,
-            verification_reason=verification.reason,
+            verification_reason="llm_budget_daily_exhausted",
+        )
+    if monthly_spend >= settings.active_llm_monthly_budget_usd:
+        verification = verify_answer(base, base, contract)
+        return GeneratedAnswer(
+            answer=verification.answer,
+            used_fact_ids=verification.used_fact_ids,
+            verification_passed=verification.passed,
+            verification_reason="llm_budget_monthly_exhausted",
         )
 
     approved_facts = fact_context(contract)
@@ -427,6 +438,9 @@ def generate_answer(
         candidate = base
     verification = verify_answer(candidate, base, contract)
     result.text = verification.answer
+    result.verification_accepted = bool(result.success and verification.passed)
+    result.verification_reason = verification.reason
+    result.fallback_used = bool(not result.success or not verification.passed)
     return GeneratedAnswer(
         answer=verification.answer,
         llm_result=result,
