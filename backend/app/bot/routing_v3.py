@@ -233,7 +233,15 @@ def _damerau_distance(left: str, right: str) -> int:
     return distance[-1][-1]
 
 
+@lru_cache(maxsize=16_384)
 def _repair_domain_token(token: str) -> str:
+    """Repair one token once, then reuse it across every indexed scenario.
+
+    ``routing_normalize`` is cached per whole text, while index construction
+    normalizes hundreds of distinct scenario texts.  Caching this pure token
+    operation avoids repeating the quadratic Damerau comparison for common
+    words such as "документы" in every scenario document.
+    """
     if len(token) < 3 or not re.fullmatch(r"[а-я]+", token):
         return token
     vocabulary = _domain_vocabulary()
@@ -263,15 +271,25 @@ def _repair_domain_token(token: str) -> str:
 
 
 @lru_cache(maxsize=65_536)
-def routing_normalize(text: str) -> str:
+def routing_normalize(text: str, repair_tokens: bool = True) -> str:
+    """Normalize user text; skip typo repair for reviewed index documents."""
     canonical = normalize_matching_text(text)
-    repaired = " ".join(_repair_domain_token(token) for token in tokenize(canonical))
+    repaired = (
+        " ".join(_repair_domain_token(token) for token in tokenize(canonical))
+        if repair_tokens
+        else canonical
+    )
     synonymized = apply_synonyms(repaired)
     return " ".join(_stem(token) for token in tokenize(synonymized))
 
 
+def _index_normalize(text: str) -> str:
+    """Reviewed KB texts need stemming and synonyms, not fuzzy typo repair."""
+    return routing_normalize(text, repair_tokens=False)
+
+
 def _word_analyzer(text: str) -> list[str]:
-    tokens = routing_normalize(text).split()
+    tokens = _index_normalize(text).split()
     if not tokens:
         return []
     features = list(tokens)
@@ -412,7 +430,7 @@ class HybridScenarioRouter:
                 self.document_scenarios.append(scenario_index)
 
         self.char_vectorizer = TfidfVectorizer(
-            preprocessor=routing_normalize,
+            preprocessor=_index_normalize,
             analyzer="char_wb",
             ngram_range=(2, 5),
             min_df=1,
@@ -448,8 +466,8 @@ class HybridScenarioRouter:
         normalized = routing_normalize(message)
         if not normalized:
             return ()
-        char_values = (self.char_matrix @ self.char_vectorizer.transform([message]).T).toarray().ravel()
-        word_values = (self.word_matrix @ self.word_vectorizer.transform([message]).T).toarray().ravel()
+        char_values = (self.char_matrix @ self.char_vectorizer.transform([normalized]).T).toarray().ravel()
+        word_values = (self.word_matrix @ self.word_vectorizer.transform([normalized]).T).toarray().ravel()
         facets = extract_query_facets(message)
         profile_scores = _profile_scores(message)
 
