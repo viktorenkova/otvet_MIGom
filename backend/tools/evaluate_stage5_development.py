@@ -1,14 +1,18 @@
 from __future__ import annotations
 
 import argparse
+import base64
 from collections import Counter, defaultdict
 from datetime import datetime, timezone
 import hashlib
+import hmac
 import json
 import math
+import os
 from pathlib import Path
 import re
 import tempfile
+import time
 from typing import Any, Callable
 
 from backend.tools.evaluate_live_queries import build_local_sender
@@ -25,10 +29,24 @@ CRM_NOTE_RE = re.compile(
     r"набирает|жд[её]т\s+(?:звонка|обратн\w*\s+связ))\b",
     re.IGNORECASE,
 )
+LOCAL_TRUSTED_CONTEXT_SECRET = "stage5-local-development-context-secret-v1"
 
 
 def _sha256(raw: bytes) -> str:
     return hashlib.sha256(raw).hexdigest()
+
+
+def _trusted_context_token(secret: str, issuer: str = "migtorg-site") -> str:
+    payload = {
+        "iss": issuer,
+        "sub": "stage5-development-evaluator",
+        "scopes": [],
+        "exp": int(time.time()) + 3600,
+    }
+    raw = json.dumps(payload, ensure_ascii=False, separators=(",", ":")).encode("utf-8")
+    part = base64.urlsafe_b64encode(raw).decode("ascii").rstrip("=")
+    signature = hmac.new(secret.encode("utf-8"), part.encode("ascii"), hashlib.sha256).digest()
+    return part + "." + base64.urlsafe_b64encode(signature).decode("ascii").rstrip("=")
 
 
 def _rate(passed: int, total: int) -> float:
@@ -178,23 +196,30 @@ def run(
     singles: list[dict[str, Any]],
     dialogues: list[dict[str, Any]],
     sender: Callable[[dict[str, Any]], dict[str, Any]],
+    role: str = "guest",
 ) -> list[dict[str, Any]]:
     results: list[dict[str, Any]] = []
-    for item in singles:
-        response, error = _send(sender, {
-            "message": item["text"],
-            "session_id": f"stage5-development-{item['id']}",
+    trusted_token = _trusted_context_token(LOCAL_TRUSTED_CONTEXT_SECRET) if role == "authorized" else ""
+
+    def payload(message: str, session_id: str) -> dict[str, Any]:
+        result: dict[str, Any] = {
+            "message": message,
+            "session_id": session_id,
             "context": {"page_type": "public_site"},
-        })
+        }
+        if trusted_token:
+            result["trusted_context_token"] = trusted_token
+        return result
+
+    for item in singles:
+        response, error = _send(sender, payload(
+            item["text"], f"stage5-development-{item['id']}",
+        ))
         results.append(_evaluate_item(item, response, error))
     for dialogue in dialogues:
         session_id = f"stage5-development-{dialogue['id']}"
         for turn in dialogue["turns"]:
-            response, error = _send(sender, {
-                "message": turn["text"],
-                "session_id": session_id,
-                "context": {"page_type": "public_site"},
-            })
+            response, error = _send(sender, payload(turn["text"], session_id))
             results.append(_evaluate_item(turn, response, error, str(dialogue["id"])))
     return results
 
@@ -278,8 +303,8 @@ def summarize(source: dict[str, Any], results: list[dict[str, Any]]) -> dict[str
         },
         "methodology": {
             "measured": [
-                "bot action against independent label",
-                "dialogue support handoff against independent label",
+                "bot action against the supplied review label",
+                "dialogue support handoff against the supplied review label",
                 "literal forbidden-information leakage",
             ],
             "diagnostic_only": "required-information lexical overlap is not a correctness gate",
@@ -336,10 +361,23 @@ def main() -> int:
         type=Path,
         help="Recalculate metrics from an earlier complete response file without rerunning the bot.",
     )
+    parser.add_argument("--role", choices=("guest", "authorized"), default="guest")
     args = parser.parse_args()
     source, singles, dialogues = load_approved(args.source)
-    if source["single_count"] != 109 or source["dialogue_count"] != 50 or source["dialogue_turn_count"] != 112:
-        raise ValueError(f"Unexpected approved population: {source}")
+    source["evaluation_role"] = args.role
+    approved_items = [*singles, *(turn for dialogue in dialogues for turn in dialogue["turns"])]
+    if not approved_items:
+        raise ValueError(f"No approved records in source: {source}")
+    item_ids = [str(item.get("id") or "") for item in approved_items]
+    if any(not item_id for item_id in item_ids) or len(item_ids) != len(set(item_ids)):
+        raise ValueError("Approved records must have non-empty unique ids")
+    supported_actions = {"answer", "clarify", "support", "safe_refusal", "out_of_scope"}
+    unknown_actions = sorted({
+        str((item.get("expected") or {}).get("bot_action") or "")
+        for item in approved_items
+    } - supported_actions)
+    if unknown_actions:
+        raise ValueError(f"Unsupported expected bot actions: {unknown_actions}")
     args.report.parent.mkdir(parents=True, exist_ok=True)
     args.details.parent.mkdir(parents=True, exist_ok=True)
     if args.responses_from:
@@ -350,9 +388,11 @@ def main() -> int:
         }
         results = rescore(previous, source, inputs)
     else:
+        if args.role == "authorized":
+            os.environ["TRUSTED_CONTEXT_SECRET"] = LOCAL_TRUSTED_CONTEXT_SECRET
         with tempfile.TemporaryDirectory(prefix="stage5-development-", dir=args.details.parent) as temp_dir:
             sender = build_local_sender(Path(temp_dir) / "runtime.sqlite3")
-            results = run(singles, dialogues, sender)
+            results = run(singles, dialogues, sender, role=args.role)
     report = summarize(source, results)
     args.report.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     args.details.write_text(json.dumps({"report": report, "results": results}, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")

@@ -4,7 +4,7 @@ import hashlib
 import json
 from pathlib import Path
 
-from backend.app.bot.routing_v3 import get_routing_v3
+from backend.app.bot.routing_v3 import _matched_concepts, get_routing_v3
 from backend.tools.build_routing_v3_control_set import WIDGET_SCENARIOS
 from backend.tools.generate_routing_variants import TRANSFORMS, build as build_variants
 
@@ -54,3 +54,29 @@ def test_v3_high_confidence_routes_have_no_false_positive_on_smoke_set() -> None
         assert decision.confidence == "high", (text, decision)
         assert decision.scenario is not None
         assert decision.scenario.scenario_id == expected
+
+
+def test_v3_compositional_profiles_cover_final_stage5_families() -> None:
+    router = get_routing_v3()
+    samples = {
+        "другой человек заберёт автомобиль вместо меня": ("pickup.representative", "authorized"),
+        "какая доверенность нужна представителю для выдачи": ("pickup.representative", "authorized"),
+        "решил не выкупать выигранный лот и хочу отказаться": ("refusal.change_mind", "authorized"),
+        "где вернуть оплату за разовый доступ": ("refund.application", "authorized"),
+        "нажимаю кнопку, но страница не работает": ("technical.site_error", "guest"),
+        "несколько автомобилей хочу выставить на продажу": ("seller.publish_lot", "guest"),
+        "аукцион рассматриваю как канал продаж": ("seller.get_started", "guest"),
+        "выиграл автомобиль, но продавец не подтвердил передачу": ("transfer.not_confirmed", "authorized"),
+        "почему заблокирован личный кабинет": ("account.blocked", "authorized"),
+    }
+    for text, (expected, role) in samples.items():
+        decision = router.decide(text, role=role)
+        assert decision.confidence == "high", (text, decision)
+        assert decision.scenario is not None
+        assert decision.scenario.scenario_id == expected
+
+
+def test_repeated_phrase_terms_require_distinct_query_tokens() -> None:
+    concepts = _matched_concepts("другой человек получит автомобиль")
+    assert "representative" in concepts
+    assert "bid_visibility" not in concepts

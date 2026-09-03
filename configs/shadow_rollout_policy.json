@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "status": "local_preparation_only",
+  "local_shadow": {
+    "minimum_requests": 1000,
+    "transport_error_rate_max_pct": 0.0,
+    "stored_pii_records_max": 0
+  },
+  "real_shadow_release_gate": {
+    "minimum_requests": 1000,
+    "expert_sample_quality_min_pct": 80.0,
+    "confident_wrong_max_pct": 2.0,
+    "critical_unsupported_facts_max": 0,
+    "candidate_p95_degradation_max_pct": 10.0,
+    "candidate_api_error_degradation_max_percentage_points": 0.5
+  },
+  "rollout_percentages": [5, 25, 50, 100],
+  "automatic_rollback": {
+    "window_requests_min": 200,
+    "triggers": [
+      "confident_wrong_rate_above_gate",
+      "critical_unsupported_fact_detected",
+      "candidate_p95_degradation_above_gate",
+      "candidate_api_error_degradation_above_gate",
+      "negative_feedback_rate_above_baseline",
+      "repeat_question_rate_above_baseline",
+      "fallback_rate_above_baseline"
+    ],
+    "target": "previous_successful_percentage"
+  },
+  "production_changes_allowed": false,
+  "production_note": "Real traffic connection and rollout require manual transfer and separate authorization."
+}

@@ -18,6 +18,7 @@ _CONCEPTS: dict[str, tuple[str, ...]] = {
     "account": ("аккаунт", "кабинет", "учетная запись", "авторизация"),
     "auction": ("торги", "торг", "аукцион", "котировка"),
     "balance": ("баланс", "кошелек", "счет"),
+    "blocked": ("заблокирован", "блокировка", "разблокировка", "закрыли доступ", "доступ не вернулся", "ограничили доступ"),
     "bid": ("ставка", "ставки", "предложение цены", "ценовое предложение", "предложение", "максималка"),
     "bid_change": ("отменить", "убрать", "изменить", "понизить", "передумал", "ранее поданная"),
     "bid_place": ("сделать", "поставить", "подать", "совершить", "отправить", "инструкция"),
@@ -33,13 +34,14 @@ _CONCEPTS: dict[str, tuple[str, ...]] = {
     "document_access": ("где скачать", "скачать", "получить договор", "где договор", "открыть документ"),
     "employee": ("менеджер", "сотрудник", "михаил", "алексей", "реник"),
     "eligibility": ("можно ли", "можно вернуть", "можно возвратить", "не участвовал", "не торговался", "какие средства", "подлежат", "условия", "возвращают ли", "остаток", "ошибочно пополнил"),
-    "error": ("ошибка", "сбой", "не работает", "не проходит", "не принимает", "не получается", "не могу оплатить", "не делает", "не дает", "отклоняется", "завис", "сломался", "не загружается", "не грузится", "не открывается", "белый экран", "тупит"),
+    "error": ("ошибка", "сбой", "не работает", "перестала работать", "ничего не происходит", "неактивная", "ведет себя странно", "не проходит", "не принимает", "не получается", "не могу оплатить", "не делает", "не дает", "отклоняется", "завис", "сломался", "не загружается", "не грузится", "не открывается", "белый экран", "тупит"),
     "feedback": ("предлагаю", "предложение", "добавьте", "сделайте", "улучшение", "хочу предложить"),
     "filter": ("фильтр", "фильтрация", "сортировка", "каталог", "поиск", "выбор года", "регион", "марка", "модель", "объявление"),
     "filter_problem": ("не отбирает", "не меняет", "не обновляется", "неверные лоты", "неподходящие лоты", "лишние лоты", "все подряд", "работает наоборот", "сбрасывает фильтр", "некорректная фильтрация"),
     "format": ("открытые", "закрытые", "формат", "видят цены", "друг друга", "котировка"),
     "image": ("фото", "фотография", "картинка", "изображение"),
     "page_blank": ("белый экран", "страница пустая", "пустой экран"),
+    "power_of_attorney": ("доверенность", "полномочия", "нотариальное удостоверение"),
     "legal_form": ("физлицо", "юридическое лицо", "юрлицо", "ооо", "самозанятый", "самозанятая"),
     "login": ("авторизоваться", "авторизация", "войти", "вход", "зайти"),
     "location": ("адрес", "где находится", "местонахождение", "локация", "куда ехать", "стоянка", "стоянки", "в каком месте", "где стоит"),
@@ -55,18 +57,25 @@ _CONCEPTS: dict[str, tuple[str, ...]] = {
     "premium": ("премиум", "премиальный"),
     "refund": ("возврат", "вернуть", "возвратить", "возвращать", "вернули", "возвращают", "обратно деньги", "депозит обратно", "возвращение средств", "вывести", "возвратный"),
     "refund_application": ("заявление", "запрос", "подать", "направить", "отправить", "куда писать", "шаблон"),
+    "representative": ("представитель", "другой человек", "мой человек", "водитель", "вместо меня"),
+    "refusal": ("отказ", "отказаться", "не хочу выкупать", "не буду выкупать", "передумал выкупать", "закрыть сделку"),
     "registration": ("регистрация", "регистрирование", "зарегистрироваться", "создать аккаунт", "новый покупатель"),
     "recover": ("восстановить", "забыл пароль", "не принимает пароль", "не могу войти", "не получается войти"),
     "seller": ("продавец", "страховая", "страховщик", "страхование", "страхования", "ресо", "альфа", "ингосстрах", "росгосстрах", "вск", "согласие", "ренессанс", "сбер страхование", "совкомбанк", "зетта", "югория", "тинькофф", "т страхование"),
+    "seller_access": ("доступ продавца", "кабинет продавца", "стать продавцом"),
+    "seller_publish": ("выставить", "выставлять", "разместить", "размещать", "продавать", "под продажу", "канал продаж"),
     "status": ("статус", "состояние", "когда", "сколько ждать", "сколько идет", "завершенность", "завершились", "закончились", "окончены", "итог", "результат"),
     "outcome": ("победил", "выиграл", "победитель", "результат торгов", "итог торгов"),
     "support": ("поддержка", "почтовая ветка", "письмо", "электронная переписка"),
     "bot": ("бот", "не помогло", "ваш ответ"),
     "tariff": ("тариф", "доступ", "подписка"),
     "tariff_explicit": ("тариф", "подписка"),
+    "one_time_tariff": ("разовый тариф", "разовый доступ"),
+    "ui_action": ("кнопка", "форма", "страница", "нажимаю", "выгрузка", "поле"),
     "search_action": ("искать", "найти", "подобрать", "отыскать"),
     "visit": ("приехать", "визит", "прием", "записаться", "пропуск", "лично", "попасть"),
-    "win_stage": ("выиграл", "победа", "после торгов", "передан", "передача", "оплачен", "после оплаты"),
+    "win_stage": ("выиграл", "победа", "лучшая ставка", "ставка лучшая", "после торгов", "передан", "передача", "оплачен", "после оплаты"),
+    "not_confirmed": ("не подтвердил", "не подтвердили", "ничего не подтвердил", "нет подтверждения"),
 }
 
 
@@ -83,6 +92,7 @@ _PROFILES: tuple[tuple[str, tuple[str, ...], tuple[str, ...], tuple[str, ...]], 
     ("commission.explained", ("commission",), ("lot", "payment"), ("balance",)),
     ("balance.topup.commission", ("commission", "balance"), (), ()),
     ("refund.application", ("refund", "refund_application"), (), ("status",)),
+    ("refund.application", ("refund", "one_time_tariff"), ("refund_application",), ("status",)),
     ("refund.timing_status", ("refund", "status"), (), ()),
     ("refund.timing_status", ("refund_application", "status"), (), ()),
     ("refund.eligibility", ("refund", "eligibility"), ("deposit", "balance"), ("refund_application", "status")),
@@ -96,6 +106,8 @@ _PROFILES: tuple[tuple[str, tuple[str, ...], tuple[str, ...], tuple[str, ...]], 
     ("auction.formats", ("bid", "bid_visibility"), (), ("error", "bid_change")),
     ("auction.status", ("auction", "status"), (), ()),
     ("technical.site_error", ("error",), ("account", "lot", "page_blank"), ("payment", "filter", "image", "credentials", "recover", "login")),
+    ("technical.site_error", ("error", "ui_action"), (), ("payment", "filter", "image", "credentials", "recover", "login")),
+    ("technical.site_error", ("error", "account"), ("ui_action",), ("payment", "credentials", "recover", "login", "blocked")),
     ("technical.site_error", ("page_blank",), ("lot",), ()),
     ("technical.site_error", ("complaint",), (), ("filter", "payment", "bid")),
     ("technical.catalog_search_filter", ("filter", "error"), (), ()),
@@ -113,9 +125,21 @@ _PROFILES: tuple[tuple[str, tuple[str, ...], tuple[str, ...], tuple[str, ...]], 
     ("account.login_problem", ("account", "credentials"), ("error",), ()),
     ("account.login_problem", ("account", "recover"), (), ()),
     ("account.login_problem", ("account", "login"), ("error",), ()),
+    ("account.blocked", ("account", "blocked"), ("payment", "not_visible"), ("credentials", "login")),
+    ("account.blocked", ("blocked", "payment"), ("account", "not_visible"), ("tariff",)),
     ("account.registration", ("registration",), ("account", "legal_form"), ()),
     ("pickup.receive_lot", ("pickup", "lot"), ("win_stage",), ("error", "no_response", "not_visible")),
     ("pickup.access_issuer", ("pickup", "lot", "error"), ("location",), ("seller",)),
+    ("pickup.representative", ("representative", "lot"), ("pickup", "power_of_attorney"), ()),
+    ("pickup.representative", ("representative", "pickup"), ("lot", "power_of_attorney"), ()),
+    ("pickup.representative", ("representative", "power_of_attorney"), ("lot", "pickup"), ()),
+    ("pickup.representative", ("power_of_attorney", "pickup"), ("representative", "lot"), ()),
+    ("refusal.change_mind", ("refusal", "lot"), ("win_stage",), ("error",)),
+    ("win.next_steps", ("win_stage", "lot"), ("outcome",), ("refusal", "pickup", "documents")),
+    ("transfer.not_confirmed", ("win_stage", "not_confirmed"), ("seller", "lot"), ("no_response",)),
+    ("seller.publish_lot", ("seller_publish", "lot"), ("seller_access",), ("bid",)),
+    ("seller.get_started", ("seller_publish", "auction"), ("seller_access", "lot"), ("bid",)),
+    ("seller.get_started", ("seller_access", "seller_publish"), ("lot",), ("bid",)),
     ("contract.receive", ("contract", "document_access"), ("win_stage",), ()),
     ("feedback.improvement_suggestion", ("feedback",), ("filter", "bid", "image"), ("bid_change",)),
     ("feedback.platform_complaint", ("complaint",), ("filter", "image", "payment", "bid"), ("feedback", "error")),
@@ -285,11 +309,27 @@ def _phrase_present(query_tokens: tuple[str, ...], phrase: str) -> bool:
             return True
         # Word order is deliberately ignored here: the lexical stage already
         # captures exact phrases, while this layer must survive natural reordering.
-        if len(phrase_tokens) > 1 and all(
-            any(_token_similar(term, token) for token in query_tokens)
-            for term in phrase_tokens
-        ):
-            return True
+        # Each phrase term still needs its own query token. Without this guard,
+        # one occurrence of "другой" could satisfy both words in "друг друга"
+        # and create a false auction-format signal.
+        if len(phrase_tokens) > 1:
+            candidates = [
+                [index for index, token in enumerate(query_tokens) if _token_similar(term, token)]
+                for term in phrase_tokens
+            ]
+            if all(candidates):
+                ordered = sorted(candidates, key=len)
+
+                def assign(position: int, used: frozenset[int]) -> bool:
+                    if position == len(ordered):
+                        return True
+                    return any(
+                        index not in used and assign(position + 1, used | {index})
+                        for index in ordered[position]
+                    )
+
+                if assign(0, frozenset()):
+                    return True
     return False
 
 

@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "status": "owner_provided_development_addition_not_blind",
+  "source": {
+    "filename": "MIGTORG_170_потенциальных_обращений.xlsx",
+    "sha256": "c1296b32f7d43c4d813acd238dec020c30aa562df5a7f3b7beeb690b306f9ec2",
+    "sheet": "200 обращений",
+    "range": "A1:E171",
+    "publication_allowed": false
+  },
+  "population": {
+    "records": 170,
+    "blank_questions": 0,
+    "blank_topics": 0,
+    "blank_answer_formats": 0,
+    "blank_reference_answers": 0,
+    "exact_question_duplicates": 0
+  },
+  "answer_formats": {
+    "answer": 111,
+    "support": 30,
+    "clarify": 29
+  },
+  "topics": {
+    "Блокировка личного кабинета": 10,
+    "Возврат": 2,
+    "Возврат задерживается": 10,
+    "Возврат разового тарифа": 8,
+    "Документы от продавца": 10,
+    "Имущество": 10,
+    "Информация от продавца": 10,
+    "Лот и карточка автомобиля": 10,
+    "Оплата комиссии": 10,
+    "Оплата лота": 10,
+    "Осмотр автомобиля": 10,
+    "Отказ от выигранного лота": 10,
+    "Передача лота": 10,
+    "Победа в торгах": 10,
+    "Подтверждение оплаты": 10,
+    "Представитель и доверенность": 10,
+    "Продажа автомобилей": 10,
+    "Техническая проблема": 10
+  },
+  "knowledge_comparison": {
+    "safe_new_facts_published": 0,
+    "retrieval_families_selected_for_improvement": [
+      "generic lot question",
+      "representative and power of attorney",
+      "refusal after winning",
+      "one-time tariff refund",
+      "generic interface failure"
+    ],
+    "quarantined_claims": [
+      {
+        "claim": "real estate is an available Property category",
+        "reason": "conflicts with the approved seller offer in the canonical knowledge base",
+        "review_candidate_id": "review.property.real_estate_category"
+      },
+      {
+        "claim": "a vehicle may be listed despite absence of ownership if there are grounds for sale",
+        "reason": "insufficiently precise and weaker than the current requirement to prove the right to dispose of the property"
+      }
+    ]
+  },
+  "limitations": [
+    "No expected scenario_id is supplied.",
+    "No role or authenticated-context label is supplied.",
+    "Reference answers are not an authoritative source when they conflict with approved contractual evidence.",
+    "The records are used for development and therefore cannot serve as a blind release gate."
+  ]
+}

@@ -23,11 +23,11 @@
 - Подтверждённых фактов: 585.
 - Уникальных текстовых описаний источников: 112.
 - Зафиксированных содержательных пробелов: 3.
-- Кандидатов, ожидающих экспертного решения: 8.
+- Кандидатов, ожидающих экспертного решения: 9.
 - Просроченных повторных проверок на 2026-09-01: 60.
 - SHA-256 канонических сценариев: `89bd8cbc3b4c8de64ec6c3acbaae80f71b613a217b500bdccb7047c650d6fed1`.
 - SHA-256 реестра пробелов: `c9f0f8929e75f00245eadc9db5617cd3aec5a13f03276a0b751ef0d8a2a7b401`.
-- SHA-256 очереди экспертной проверки: `c08cd978cc3a8e3f72a0dde14952a8abaf736b5aaf8eb5e9a462fe3609c822b2`.
+- SHA-256 очереди экспертной проверки: `89542247add810f88fb26463a96771f4f7187a5306dccce876cdc8db4020d80f`.
 
 ## 3. Обязательные пробелы, требующие актуальной информации
 
@@ -221,6 +221,17 @@
   - Как отличить пропущенный исходящий вызов от обычной просьбы пользователя перезвонить?
   - Есть ли срок повторной попытки и кто отвечает за неё?
   - Нужно ли параллельно уточнять тему и предлагать письменное решение в чат-боте?
+
+#### Недвижимость в разделе «Имущество» (`review.property.real_estate_category`)
+
+- Статус: `expert_review_required`; риск: `contractual_catalog`.
+- Безопасный действующий сценарий: `property.overview`.
+- Требуемая роль эксперта: MIGTORG property product owner and legal.
+- Блокеры публикации: catalog_vs_seller_offer_conflict, real_estate_listing_authority, current_catalog_confirmation.
+- Вопросы, требующие ответа:
+  - Есть ли недвижимость в актуальном разделе «Имущество» и доступна ли она для покупки пользователям?
+  - Если категория отображается в каталоге, кто вправе размещать такие лоты и какой документ разрешает публикацию вопреки действующей оферте продавца?
+  - Нужно ли различать видимую категорию каталога и фактическое право продавцов публиковать недвижимость?
 
 ## 4. Карта процессов
 
@@ -10219,7 +10230,7 @@
 ```json
 {
   "schema_version": 1,
-  "generated_at": "2026-09-01",
+  "generated_at": "2026-09-03",
   "publication_policy": "expert_approval_required",
   "source": "MIGTORG knowledge audit, expert interviews, project-owner clarifications, buyer contract review, approved stage 5 development annotations and shared stage 5 labeling chat",
   "records": [
@@ -10424,6 +10435,29 @@
       ],
       "owner": "MIGTORG knowledge base owner",
       "expert_role": "MIGTORG support operations"
+    },
+    {
+      "candidate_id": "review.property.real_estate_category",
+      "proposed_scenario_id": "property.overview",
+      "title": "Недвижимость в разделе «Имущество»",
+      "status": "expert_review_required",
+      "risk": "contractual_catalog",
+      "support_conversations": 10,
+      "approved_legacy_ids": [],
+      "pilot_evidence": "The final owner-provided stage 5 XLSX lists real estate among current Property categories, while the approved seller offer in the canonical knowledge base says real estate is not published.",
+      "questions_for_expert": [
+        "Есть ли недвижимость в актуальном разделе «Имущество» и доступна ли она для покупки пользователям?",
+        "Если категория отображается в каталоге, кто вправе размещать такие лоты и какой документ разрешает публикацию вопреки действующей оферте продавца?",
+        "Нужно ли различать видимую категорию каталога и фактическое право продавцов публиковать недвижимость?"
+      ],
+      "safe_fallback_scenario_id": "property.overview",
+      "publication_blockers": [
+        "catalog_vs_seller_offer_conflict",
+        "real_estate_listing_authority",
+        "current_catalog_confirmation"
+      ],
+      "owner": "MIGTORG knowledge base owner",
+      "expert_role": "MIGTORG property product owner and legal"
     }
   ]
 }

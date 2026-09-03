@@ -1,0 +1,84 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-09-03T01:02:59.518961+00:00",
+  "status": "local_shadow_plumbing_only_not_production_gate",
+  "sources": [
+    {
+      "path": ".work\\stage5-170-analysis\\stage5-final-addition-development.json",
+      "sha256": "283d726d7febb1c09d2a4cb58a39db4e5a5aff01495f5ae78115111b49a737a7",
+      "records": 170
+    },
+    {
+      "path": "tests\\data\\live_query_audit_2026_08_13.json",
+      "sha256": "0e7ce70358d96b1000392ff3e15ba4011d71dba30ea413c0f220bbab3bc6a69f",
+      "records": 166
+    }
+  ],
+  "population": {
+    "requests": 1000,
+    "requested_target": 1000
+  },
+  "roles": {
+    "guest": 500,
+    "authorized": 500
+  },
+  "transport": {
+    "complete": 1000,
+    "errors": 0,
+    "success_rate_pct": 100.0
+  },
+  "privacy": {
+    "records_with_detected_pii_after_redaction": 0
+  },
+  "routing": {
+    "scenario_disagreements": 415,
+    "scenario_disagreement_rate_pct": 41.5,
+    "candidate_high_confidence_disagreements": 382,
+    "candidate_high_confidence_disagreement_rate_pct": 38.2,
+    "baseline_fallback_rate_pct": 21.9,
+    "candidate_fallback_rate_pct": 13.5,
+    "baseline_clarification_rate_pct": 9.0,
+    "candidate_clarification_rate_pct": 10.2,
+    "candidate_scenarios": {
+      "<none>": 135,
+      "transfer.seller_no_response": 63,
+      "technical.site_error": 53,
+      "pickup.receive_lot": 39,
+      "refund.application": 36,
+      "support.office_visit": 26,
+      "bid.place": 25,
+      "documents.preparation_delay": 24,
+      "win.next_steps": 21,
+      "commission.explained": 21,
+      "refund.timing_status": 21,
+      "seller.publish_lot": 21,
+      "support.email_no_response": 18,
+      "pickup.representative": 18,
+      "lot.catalog_search": 18,
+      "payment.not_visible": 18,
+      "account.login_problem": 18,
+      "payment.checkout_problem": 18,
+      "bid.not_visible": 18,
+      "technical.catalog_search_filter": 18
+    }
+  },
+  "latency_ms": {
+    "baseline_p95": 257.753,
+    "candidate_p95": 173.471,
+    "candidate_vs_baseline_p95_delta_pct": -32.7
+  },
+  "local_plumbing_gate": {
+    "passed": true,
+    "checks": {
+      "at_least_1000_requests": true,
+      "no_transport_errors": true,
+      "no_pii_in_output": true
+    }
+  },
+  "not_measured": [
+    "expert answer quality on real shadow traffic",
+    "confident-wrong rate without independent scenario labels",
+    "critical unsupported facts without expert answer review",
+    "production API error and latency SLO"
+  ]
+}

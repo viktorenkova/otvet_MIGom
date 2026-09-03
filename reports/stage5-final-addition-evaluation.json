@@ -1,0 +1,257 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-09-03T00:21:40.296691+00:00",
+  "status": "development_diagnostic_not_blind_release_gate",
+  "source": {
+    "path": ".work\\stage5-170-analysis\\stage5-final-addition-development.json",
+    "sha256": "283d726d7febb1c09d2a4cb58a39db4e5a5aff01495f5ae78115111b49a737a7",
+    "dataset_version": "stage5-final-owner-addition-2026.09.02.1",
+    "single_count": 170,
+    "dialogue_count": 0,
+    "dialogue_turn_count": 0,
+    "evaluation_role": "authorized"
+  },
+  "population": {
+    "approved_records": 170,
+    "single_records": 170,
+    "dialogues": 0,
+    "dialogue_turns": 0
+  },
+  "methodology": {
+    "measured": [
+      "bot action against the supplied review label",
+      "dialogue support handoff against the supplied review label",
+      "literal forbidden-information leakage"
+    ],
+    "diagnostic_only": "required-information lexical overlap is not a correctness gate",
+    "not_measured": [
+      "Top-1 scenario accuracy because labels contain no scenario_id",
+      "independent 8/10 release quality because this set was used to improve the knowledge base"
+    ]
+  },
+  "metrics": {
+    "transport": {
+      "passed": 170,
+      "total": 170,
+      "rate_pct": 100.0,
+      "wilson_95_lower_pct": 97.79
+    },
+    "action_accuracy": {
+      "passed": 90,
+      "total": 170,
+      "rate_pct": 52.94,
+      "wilson_95_lower_pct": 45.46
+    },
+    "forbidden_content": {
+      "passed": 170,
+      "total": 170,
+      "rate_pct": 100.0,
+      "wilson_95_lower_pct": 97.79
+    },
+    "dialogue_support_handoff": {
+      "passed": 0,
+      "total": 0,
+      "rate_pct": 0.0,
+      "wilson_95_lower_pct": 0.0
+    },
+    "confident_wrong_action": {
+      "count": 69
+    },
+    "required_information_overlap_diagnostic": {
+      "total": 0,
+      "mean_pct": 0.0
+    }
+  },
+  "action_by_expected": {
+    "answer": {
+      "passed": 61,
+      "total": 111,
+      "rate_pct": 54.95,
+      "wilson_95_lower_pct": 45.69
+    },
+    "clarify": {
+      "passed": 8,
+      "total": 29,
+      "rate_pct": 27.59,
+      "wilson_95_lower_pct": 14.7
+    },
+    "support": {
+      "passed": 21,
+      "total": 30,
+      "rate_pct": 70.0,
+      "wilson_95_lower_pct": 52.12
+    }
+  },
+  "action_by_primary_topic": {
+    "Блокировка личного кабинета": {
+      "passed": 7,
+      "total": 10,
+      "rate_pct": 70.0,
+      "wilson_95_lower_pct": 39.68
+    },
+    "Возврат": {
+      "passed": 0,
+      "total": 2,
+      "rate_pct": 0.0,
+      "wilson_95_lower_pct": 0.0
+    },
+    "Возврат задерживается": {
+      "passed": 5,
+      "total": 10,
+      "rate_pct": 50.0,
+      "wilson_95_lower_pct": 23.66
+    },
+    "Возврат разового тарифа": {
+      "passed": 1,
+      "total": 8,
+      "rate_pct": 12.5,
+      "wilson_95_lower_pct": 2.24
+    },
+    "Документы от продавца": {
+      "passed": 2,
+      "total": 10,
+      "rate_pct": 20.0,
+      "wilson_95_lower_pct": 5.67
+    },
+    "Имущество": {
+      "passed": 8,
+      "total": 10,
+      "rate_pct": 80.0,
+      "wilson_95_lower_pct": 49.02
+    },
+    "Информация от продавца": {
+      "passed": 5,
+      "total": 10,
+      "rate_pct": 50.0,
+      "wilson_95_lower_pct": 23.66
+    },
+    "Лот и карточка автомобиля": {
+      "passed": 4,
+      "total": 10,
+      "rate_pct": 40.0,
+      "wilson_95_lower_pct": 16.82
+    },
+    "Оплата комиссии": {
+      "passed": 9,
+      "total": 10,
+      "rate_pct": 90.0,
+      "wilson_95_lower_pct": 59.58
+    },
+    "Оплата лота": {
+      "passed": 6,
+      "total": 10,
+      "rate_pct": 60.0,
+      "wilson_95_lower_pct": 31.27
+    },
+    "Осмотр автомобиля": {
+      "passed": 4,
+      "total": 10,
+      "rate_pct": 40.0,
+      "wilson_95_lower_pct": 16.82
+    },
+    "Отказ от выигранного лота": {
+      "passed": 1,
+      "total": 10,
+      "rate_pct": 10.0,
+      "wilson_95_lower_pct": 1.79
+    },
+    "Передача лота": {
+      "passed": 7,
+      "total": 10,
+      "rate_pct": 70.0,
+      "wilson_95_lower_pct": 39.68
+    },
+    "Победа в торгах": {
+      "passed": 8,
+      "total": 10,
+      "rate_pct": 80.0,
+      "wilson_95_lower_pct": 49.02
+    },
+    "Подтверждение оплаты": {
+      "passed": 5,
+      "total": 10,
+      "rate_pct": 50.0,
+      "wilson_95_lower_pct": 23.66
+    },
+    "Представитель и доверенность": {
+      "passed": 0,
+      "total": 10,
+      "rate_pct": 0.0,
+      "wilson_95_lower_pct": 0.0
+    },
+    "Продажа автомобилей": {
+      "passed": 9,
+      "total": 10,
+      "rate_pct": 90.0,
+      "wilson_95_lower_pct": 59.58
+    },
+    "Техническая проблема": {
+      "passed": 9,
+      "total": 10,
+      "rate_pct": 90.0,
+      "wilson_95_lower_pct": 59.58
+    }
+  },
+  "action_confusion": [
+    {
+      "expected": "answer",
+      "actual": "answer",
+      "count": 61
+    },
+    {
+      "expected": "answer",
+      "actual": "clarify",
+      "count": 9
+    },
+    {
+      "expected": "answer",
+      "actual": "support",
+      "count": 41
+    },
+    {
+      "expected": "clarify",
+      "actual": "answer",
+      "count": 13
+    },
+    {
+      "expected": "clarify",
+      "actual": "clarify",
+      "count": 8
+    },
+    {
+      "expected": "clarify",
+      "actual": "support",
+      "count": 8
+    },
+    {
+      "expected": "support",
+      "actual": "answer",
+      "count": 6
+    },
+    {
+      "expected": "support",
+      "actual": "clarify",
+      "count": 1
+    },
+    {
+      "expected": "support",
+      "actual": "out_of_scope",
+      "count": 2
+    },
+    {
+      "expected": "support",
+      "actual": "support",
+      "count": 21
+    }
+  ],
+  "failure_counts": {
+    "action": 80,
+    "forbidden_content": 0,
+    "dialogue_support_handoff": 0
+  },
+  "source_quality": {
+    "flags": {},
+    "excluded_from_action_metric": 0,
+    "crm_case_note_style_is_reported_not_excluded": true
+  }
+}

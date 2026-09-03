@@ -65,6 +65,21 @@ def test_generic_lot_question_asks_for_the_stage_instead_of_guessing():
     assert "Как получить или забрать лот" in response.clarifying_options
 
 
+@pytest.mark.parametrize(
+    "message",
+    [
+        "хочу спросить об автомобиле, но пока не знаю как сформулировать",
+        "по конкретному лоту вопрос пока общий",
+        "какие данные нужно сообщить, чтобы уточнить информацию по лоту",
+    ],
+)
+def test_semantically_generic_lot_question_also_clarifies(message: str):
+    decision = match_scenario(message, "guest")
+    assert decision.scenario is None
+    assert decision.clarifying_question == "Что именно нужно узнать по лоту?"
+    assert "scenario_ambiguity:generic_lot" in decision.matched_features
+
+
 def test_call_request_does_not_add_callback_action_to_specific_support_topic():
     response = process_chat_message(
         ChatRequest(

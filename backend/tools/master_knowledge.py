@@ -425,8 +425,8 @@ def validate_master(path: Path = DEFAULT_MASTER, published_v2: Path = DEFAULT_V2
         errors.append("scenario IDs are missing or duplicated")
     if len(gaps) != 3:
         errors.append(f"expected 3 knowledge gaps, got {len(gaps)}")
-    if len(review_records) != 8:
-        errors.append(f"expected 8 expert-review candidates, got {len(review_records)}")
+    if len(review_records) < 8:
+        errors.append(f"expected at least 8 expert-review candidates, got {len(review_records)}")
     gap_ids = [str(item.get("gap_id") or "") for item in gaps]
     if len(gap_ids) != len(set(gap_ids)) or any(not item for item in gap_ids):
         errors.append("knowledge gap IDs are missing or duplicated")

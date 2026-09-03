@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-09-01",
+  "generated_at": "2026-09-03",
   "publication_policy": "expert_approval_required",
   "source": "MIGTORG knowledge audit, expert interviews, project-owner clarifications, buyer contract review, approved stage 5 development annotations and shared stage 5 labeling chat",
   "records": [
@@ -205,6 +205,29 @@
       ],
       "owner": "MIGTORG knowledge base owner",
       "expert_role": "MIGTORG support operations"
+    },
+    {
+      "candidate_id": "review.property.real_estate_category",
+      "proposed_scenario_id": "property.overview",
+      "title": "Недвижимость в разделе «Имущество»",
+      "status": "expert_review_required",
+      "risk": "contractual_catalog",
+      "support_conversations": 10,
+      "approved_legacy_ids": [],
+      "pilot_evidence": "The final owner-provided stage 5 XLSX lists real estate among current Property categories, while the approved seller offer in the canonical knowledge base says real estate is not published.",
+      "questions_for_expert": [
+        "Есть ли недвижимость в актуальном разделе «Имущество» и доступна ли она для покупки пользователям?",
+        "Если категория отображается в каталоге, кто вправе размещать такие лоты и какой документ разрешает публикацию вопреки действующей оферте продавца?",
+        "Нужно ли различать видимую категорию каталога и фактическое право продавцов публиковать недвижимость?"
+      ],
+      "safe_fallback_scenario_id": "property.overview",
+      "publication_blockers": [
+        "catalog_vs_seller_offer_conflict",
+        "real_estate_listing_authority",
+        "current_catalog_confirmation"
+      ],
+      "owner": "MIGTORG knowledge base owner",
+      "expert_role": "MIGTORG property product owner and legal"
     }
   ]
 }

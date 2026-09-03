@@ -1,4 +1,11 @@
-from backend.tools.evaluate_stage5_development import _actual_action, _metric, summarize
+from backend.app.bot.trusted_context import verify_trusted_context_token
+from backend.tools.evaluate_stage5_development import (
+    LOCAL_TRUSTED_CONTEXT_SECRET,
+    _actual_action,
+    _metric,
+    _trusted_context_token,
+    summarize,
+)
 
 
 def _result(expected: str, actual: str, handoff: bool | None = None) -> dict:
@@ -41,3 +48,11 @@ def test_summary_marks_development_limitations() -> None:
     assert report["status"] == "development_diagnostic_not_blind_release_gate"
     assert report["metrics"]["action_accuracy"]["rate_pct"] == 50.0
     assert report["failure_counts"]["action"] == 1
+
+
+def test_authorized_development_token_is_valid_and_short_lived() -> None:
+    context = verify_trusted_context_token(
+        _trusted_context_token(LOCAL_TRUSTED_CONTEXT_SECRET),
+        LOCAL_TRUSTED_CONTEXT_SECRET,
+    )
+    assert context.user_id == "stage5-development-evaluator"
