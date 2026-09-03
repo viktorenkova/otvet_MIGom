@@ -9,7 +9,7 @@ from typing import Any
 import numpy as np
 
 from backend.app.bot.intent_classifier import classify_intent
-from backend.app.bot.routing_v3 import routing_normalize
+from backend.app.bot.routing_v3 import _index_normalize, routing_normalize
 from backend.app.bot.scenario_engine import extract_query_facets, load_scenarios
 from backend.app.bot.scenario_reranker import RerankedScenario
 
@@ -28,7 +28,7 @@ def _atomic_titles() -> dict[str, tuple[set[str], ...]]:
     payload = json.loads(Path("knowledge/v3_1/scenarios.json").read_text(encoding="utf-8"))
     result: dict[str, list[set[str]]] = {}
     for unit in payload["atomic_units"]:
-        result.setdefault(unit["canonical_scenario_id"], []).append(set(routing_normalize(unit["title"]).split()))
+        result.setdefault(unit["canonical_scenario_id"], []).append(set(_index_normalize(unit["title"]).split()))
     return {key: tuple(value) for key, value in result.items()}
 
 
@@ -41,15 +41,15 @@ def pairwise_features(
     scenarios = {item.scenario_id: item for item in load_scenarios()}
     scenario = scenarios[str(candidate["scenario_id"])]
     query_tokens = set(routing_normalize(message).split())
-    title_tokens = set(routing_normalize(scenario.title).split())
+    title_tokens = set(_index_normalize(scenario.title).split())
     taxonomy_tokens = {
         token for group in scenario.retrieval_taxonomy_terms
-        for term in group.get("terms", []) for token in routing_normalize(str(term)).split()
+        for term in group.get("terms", []) for token in _index_normalize(str(term)).split()
     }
-    document_tokens = set(routing_normalize(scenario.search_document).split())
+    document_tokens = set(_index_normalize(scenario.search_document).split())
     positive_tokens = {
         token for example in scenario.positive_examples
-        for token in routing_normalize(example).split()
+        for token in _index_normalize(example).split()
     }
     atomic_titles = _atomic_titles().get(scenario.scenario_id, ())
     facets = extract_query_facets(message)
@@ -107,6 +107,18 @@ class PairwiseScenarioReranker:
     @property
     def available(self) -> bool:
         return self.bundle is not None
+
+    def warm(self) -> bool:
+        """Initialize the model's first prediction before user traffic arrives."""
+        if not self.bundle:
+            return False
+        try:
+            feature_count = int(self.bundle["feature_count"])
+            self.bundle["model"].predict_proba(np.zeros((1, feature_count), dtype=np.float32))
+            return True
+        except Exception as exc:
+            self.error = f"{type(exc).__name__}: {exc}"
+            return False
 
     def rerank(self, message: str, candidates: list[dict[str, Any]]) -> tuple[RerankedScenario, ...]:
         if not self.bundle or not candidates:

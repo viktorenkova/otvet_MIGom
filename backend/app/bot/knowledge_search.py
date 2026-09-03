@@ -15,6 +15,7 @@ from backend.app.bot.topic_router import route_topic
 from backend.app.bot.text_processing import (
     IntentPatternMatch,
     TextAnalysis,
+    apply_synonyms,
     analyze_text,
     best_intent_pattern,
     confidence_level,
@@ -393,6 +394,12 @@ class TfidfSemanticSearchProvider:
 
 def _normalize(text: str) -> str:
     return normalize_matching_text(text)
+
+
+@lru_cache(maxsize=32_768)
+def _normalize_kb_text(text: str) -> str:
+    """Normalize curated KB text without user-input layout/fuzzy recovery."""
+    return apply_synonyms(correct_typos(normalize_text(text)))
 
 
 def _tokens(text: str) -> list[str]:
@@ -846,18 +853,18 @@ def _load_normalized_articles(root: Path, path: Path) -> list[KnowledgeArticle]:
 def _prepared_articles() -> dict[str, PreparedArticle]:
     prepared: dict[str, PreparedArticle] = {}
     for article in load_articles():
-        normalized_haystack = _normalize(
+        normalized_haystack = _normalize_kb_text(
             f"{article.slug} {article.title} {article.problem} {article.content} "
             f"{' '.join(article.user_phrases)} {' '.join(article.trigger_phrases)} {' '.join(article.keywords)}"
         )
         normalized_negative_phrases = tuple(
             normalized
             for phrase in [*article.negative_phrases, *article.negative_keywords]
-            if (normalized := _normalize(phrase))
+            if (normalized := _normalize_kb_text(phrase))
         )
         prepared[article.slug] = PreparedArticle(
-            normalized_title=_normalize(article.title),
-            normalized_problem=_normalize(article.problem),
+            normalized_title=_normalize_kb_text(article.title),
+            normalized_problem=_normalize_kb_text(article.problem),
             normalized_haystack=normalized_haystack,
             haystack_words=frozenset(_tokens(normalized_haystack)),
             normalized_negative_phrases=normalized_negative_phrases,
@@ -890,6 +897,8 @@ def warm_knowledge_indexes() -> None:
     get_routing_v3()
     if bool(_semantic_config().get("enabled", False)):
         _semantic_index()
+    if bool(load_reranker_config().get("enabled", False)):
+        get_pairwise_reranker().warm()
 
 
 def retrieve_knowledge_candidates(

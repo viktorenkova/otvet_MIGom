@@ -284,8 +284,16 @@ def routing_normalize(text: str, repair_tokens: bool = True) -> str:
 
 
 def _index_normalize(text: str) -> str:
-    """Reviewed KB texts need stemming and synonyms, not fuzzy typo repair."""
-    return routing_normalize(text, repair_tokens=False)
+    """Normalize reviewed KB texts without user-input recovery heuristics.
+
+    Layout/transliteration detection uses ``SequenceMatcher`` against the
+    domain vocabulary. It is valuable for a user's mistyped message, but it
+    cannot add value to curated scenario text and makes cold index creation
+    prohibitively slow.
+    """
+    corrected = correct_typos(normalize_text(text))
+    synonymized = apply_synonyms(corrected)
+    return " ".join(_stem(token) for token in tokenize(synonymized))
 
 
 def _word_analyzer(text: str) -> list[str]:

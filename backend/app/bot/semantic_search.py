@@ -8,7 +8,7 @@ from pathlib import Path
 import tempfile
 from typing import Any, Iterable
 
-from backend.app.bot.routing_v3 import routing_normalize
+from backend.app.bot.routing_v3 import _index_normalize, routing_normalize
 from backend.app.bot.text_processing import normalize_text
 
 
@@ -69,7 +69,7 @@ class TfidfSemanticIndex:
             dtype=np.float32,
         )
         self.word_vectorizer = TfidfVectorizer(
-            preprocessor=routing_normalize,
+            preprocessor=_index_normalize,
             analyzer="word",
             ngram_range=(1, 2),
             min_df=1,
@@ -105,7 +105,7 @@ class TfidfSemanticIndex:
             *[str(item) for item in article.keywords],
             search_document or str(article.user_answer or ""),
         ]
-        return routing_normalize(" ".join(part for part in parts if part))
+        return _index_normalize(" ".join(part for part in parts if part))
 
     def search(
         self,
