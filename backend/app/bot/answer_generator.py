@@ -1,6 +1,7 @@
-from dataclasses import dataclass
+from dataclasses import asdict, dataclass
 import re
 
+from backend.app.bot.runtime_templates import runtime_templates, legacy_template
 from backend.app.config import Settings
 from backend.app.bot.answer_contracts import fact_context, get_answer_contract, verify_answer
 from backend.app.bot.knowledge_search import KnowledgeArticle, load_fallbacks
@@ -10,67 +11,7 @@ from backend.app.models.llm import LLMRequest, LLMResult
 from backend.app.models.user_context import UserRole
 
 
-DEFAULT_ANSWERS: dict[str, str] = {
-    "platform": (
-        "MIGTORG — онлайн-аукционная площадка: продавцы размещают лоты, а покупатели делают ставки. "
-        "Площадка организует торги, фиксирует ставки и сопровождает процесс, но не является владельцем лота "
-        "и не принимает решение о продаже вместо продавца."
-    ),
-    "registration": (
-        "Для регистрации откройте форму на сайте MIGTORG, укажите контактные данные "
-        "и следуйте подсказкам. Если код или письмо не приходят, проверьте правильность "
-        "телефона или email и папку спама."
-    ),
-    "tariffs": (
-        "Для участия в торгах нужен активный тариф. Тариф дает доступ к торгам, "
-        "а баланс используется для денежных операций в личном кабинете. Если тариф "
-        "оплачен, но доступ не появился, нужно создать обращение для проверки."
-    ),
-    "bidding": (
-        "Для участия в торгах обычно нужно зарегистрироваться, подключить активный тариф "
-        "и выбрать лот для ставки. Победа в торгах не гарантирует автоматическую передачу: "
-        "продавец должен согласовать результат."
-    ),
-    "lot": (
-        "По общим вопросам о лоте можно ориентироваться на карточку лота: там обычно "
-        "указаны описание, фото, документы и условия. Конкретный адрес, VIN или статус "
-        "я не подтверждаю без интеграции с системой."
-    ),
-    "payment": (
-        "Платеж нужно проверять по данным операции. Без доступа к платежной системе я не "
-        "могу подтвердить зачисление, но помогу создать обращение для сотрудника."
-    ),
-    "inspection": (
-        "Осмотр помогает проверить состояние автомобиля до дальнейших действий. Если осмотр "
-        "выявил несоответствие, сохраните фото, акт осмотра и описание проблемы."
-    ),
-    "transfer": (
-        "После победы в торгах продавец должен согласовать результат. Победа не означает автоматическую передачу лота. "
-        "Если лот передан, дальше идут практические шаги: реквизиты, документы, счет, оплата и согласование получения. "
-        "Документы готовятся по конкретной сделке после передачи. До уведомления о передаче не нужно самостоятельно оплачивать автомобиль."
-    ),
-    "pickup": (
-        "Порядок получения автомобиля зависит от данных конкретного лота и правил стоянки. "
-        "Если есть проблема на выдаче, нужно создать обращение с номером лота и описанием ситуации."
-    ),
-    "refusal": (
-        "Если лот уже передан, отказ без подтвержденной причины может повлечь штрафные последствия. "
-        "Если есть основания для отказа, подготовьте фото, акт осмотра или документы для проверки."
-    ),
-    "penalty": (
-        "Штрафы и спорные ситуации проверяются сотрудниками. Я могу объяснить общий порядок, "
-        "но не могу отменить штраф или признать отказ обоснованным без проверки."
-    ),
-    "refund": (
-        "Возврат всегда требует проверки условий и конкретной ситуации. Я не могу обещать возврат, "
-        "но помогу создать обращение для сотрудника."
-    ),
-    "support": "Я помогу создать обращение для сотрудников MIGTORG и передать описание ситуации.",
-    "unknown": (
-        "Не нашел точный ответ. Напишите проще — например: “лот”, “оплата”, “штраф”, “тариф”. "
-        "Или выберите частую ситуацию ниже."
-    ),
-}
+DEFAULT_ANSWERS: dict[str, str] = runtime_templates()["defaults"]
 
 
 @dataclass(frozen=True)
@@ -81,6 +22,7 @@ class GeneratedAnswer:
     verification_passed: bool = True
     verification_reason: str = ""
     llm_candidate: str = ""
+    document_policy: str = "keep"
 
 
 def _redact_for_llm(text: str) -> str:
@@ -240,35 +182,50 @@ def generate_answer(
                                verification_passed=True,
                                verification_reason="knowledge_gap:" + gap["gap_id"])
     contract = get_answer_contract(article.scenario) if article and article.scenario else None
+    if settings and settings.answer_assembly_enabled and contract:
+        from backend.app.bot.answer_assembly import build_answer_plan, verify_plan_text
+        from backend.app.bot.architecture_decision import decision_context
+        try:
+            plan = build_answer_plan(message, article.scenario, role)
+            expected = build_answer_plan(message, article.scenario, role)
+        except (OSError, ValueError, KeyError, TypeError):
+            plan = expected = None
+        if plan is not None and expected is not None and verify_plan_text(plan.text, plan, expected):
+            trace = decision_context.get()
+            if trace is not None:
+                trace["answer_plan"] = asdict(plan)
+                trace["answer_plan"]["verification"] = "exact_published_fragments"
+            return GeneratedAnswer(answer=plan.text, used_fact_ids=plan.required_fact_ids,
+                verification_passed=True, verification_reason="assembly:" + plan.profile,
+                document_policy=plan.documents)
+        trace = decision_context.get()
+        if trace is not None:
+            trace["answer_assembly_error"] = "source_unavailable"
+            trace["service_text"] = "assembly.source_unavailable"
+        return GeneratedAnswer(answer="Не удалось проверить источники ответа. Уточните вопрос или создайте письменное обращение.",
+                               verification_passed=False, verification_reason="assembly:source_unavailable", document_policy="omit")
     base = contract.approved_template if contract else (_article_answer(article) or _fallback_answer(intent))
     message_lower = message.lower()
     if article and article.scenario == "tariff.connect" and "премиум" in message_lower:
         base = (
-            "Войдите в личный кабинет, откройте раздел «Тарифы», выберите «Премиум» и завершите оплату и активацию. "
-            "Одного пополнения баланса недостаточно — тариф нужно выбрать отдельно. "
-            "После оплаты проверьте статус тарифа; если доступ не появился, создайте обращение по платежу."
+            legacy_template("legacy_exception_01")
         )
     elif article and article.scenario == "refund.application" and any(
         word in message_lower for word in ("шаблон", "форма", "образец")
     ):
         base = (
-            "Шаблон заявления на возврат депозита приложен ниже. "
-            "Укажите номер и дату договора, сумму, данные и банковские реквизиты получателя, подпишите заявление и направьте его на info@migtorg.com. "
-            "Не указывайте полный номер карты, CVC/CVV, пароль или код из SMS."
+            legacy_template("legacy_exception_02")
         )
     elif article and article.scenario == "bid.price_terms" and re.fullmatch(
-        r"\s*(?:(?:что\s+(?:такое|значит)\s+)?ставка|ставка\s+(?:это|что))\s*[?!.]*\s*",
+        '\\s*(?:(?:что\\s+(?:такое|значит)\\s+)?ставка|ставка\\s+(?:это|что))\\s*[?!.]*\\s*',
         message_lower,
     ):
         base = (
-            "Ставка — это ценовое предложение участника купить конкретный лот за указанную сумму. "
-            "Подтверждайте её только после проверки карточки и условий: победная ставка означает готовность к покупке, если продавец подтвердит передачу лота."
+            legacy_template("legacy_exception_04")
         )
     elif article and article.scenario in {"support.contact", "support.callback"} and _is_employee_connection_request(message):
         base = (
-            "Поддержка работает по переписке; я не соединяю пользователей напрямую с конкретными сотрудниками по имени. "
-            "Создайте письменное обращение: кратко опишите вопрос и добавьте номер лота или платежа, если он относится к ситуации. "
-            "Ответ придёт по указанному вами официальному контакту."
+            legacy_template("legacy_exception_05")
         )
     base_lower = base.lower()
     if (
@@ -277,7 +234,7 @@ def generate_answer(
         and "не могу" not in base_lower
     ):
         base = (
-            "Я не могу обещать или подтверждать передачу лота без проверки по системе: финальное решение принимает продавец. "
+            legacy_template("legacy_exception_06")
             + base
         )
         base_lower = base.lower()
@@ -290,10 +247,7 @@ def generate_answer(
         )
     ):
         base = (
-            "Понимаю ваше беспокойство. MIGTORG является площадкой, где продавцы размещают лоты для торгов, "
-            "но не становится владельцем автомобиля и не принимает решение о размещении вместо продавца. "
-            "Если вопрос касается именно вашего автомобиля, основания размещения или персональных данных, "
-            "лучше направить обращение с номером лота и контактами для проверки."
+            legacy_template("legacy_exception_07")
         )
         base_lower = base.lower()
     if (
@@ -302,8 +256,7 @@ def generate_answer(
         and not (article and article.scenario == "tariff_selection_general")
     ):
         base = (
-            "Если нужна одна покупка или вы хотите сначала попробовать площадку, обычно рассматривают Разовый тариф. "
-            "Если планируете регулярно участвовать в торгах, анализировать много лотов и работать на перепродажу, чаще подходит Премиум. "
+            legacy_template("legacy_exception_08")
             + base
         )
         base_lower = base.lower()
@@ -314,7 +267,7 @@ def generate_answer(
         and "не могу подтверд" not in base_lower
         and "не подтвержда" not in base_lower
     ):
-        base += " Без проверки в системе я не могу подтвердить зачисление или статус платежа."
+        base += legacy_template("legacy_exception_09")
         base_lower = base.lower()
     if (
         intent in {"bidding", "lot", "transfer"}
@@ -322,8 +275,7 @@ def generate_answer(
         and "не гарант" not in base_lower
     ):
         base = (
-            "Победа в торгах не гарантирует передачу лота: после торгов продавец должен "
-            "согласовать дальнейшие действия по конкретной сделке. "
+            legacy_template("legacy_exception_10")
             + base
         )
         base_lower = base.lower()
@@ -333,7 +285,7 @@ def generate_answer(
         and any(word in message_lower for word in ("адрес", "vin", "статус", "документ"))
         and "не подтвержда" not in base_lower
     ):
-        base += " По конкретному лоту я не подтверждаю адрес, VIN, документы или статус без проверки в системе."
+        base += legacy_template("legacy_exception_11")
         base_lower = base.lower()
     if (
         role == "authorized"
@@ -345,16 +297,15 @@ def generate_answer(
                 "kb-014-демо-режим-после-регистрации",
                 "manual-review-2026-07-11-q-015-что-дает-демо-режим",
                 "manual-review-2026-07-11-q-016-можно-ли-делать-ставки-в-демо-режиме",
-                "manual-review-2026-07-11-q-017-можно-ли-видеть-результаты-торгов-в-демо-режиме",
-                "manual-review-2026-07-11-q-021-как-посмотреть-цену-за-лот-если-у-меня-демо-режим",
-                "manual-review-2026-07-11-q-027-пополнил-кошелек-но-тариф-не-включился-что-делать",
+                'manual-review-2026-07-11-q-017-можно-ли-видеть-результаты-торгов-в-демо-режиме',
+                'manual-review-2026-07-11-q-021-как-посмотреть-цену-за-лот-если-у-меня-демо-режим',
+                'manual-review-2026-07-11-q-027-пополнил-кошелек-но-тариф-не-включился-что-делать',
                 "site-doc-028-demo-mode-upgrade",
             }
         )
     ):
         base += (
-            " Вы можете также проверить соответствующий раздел личного кабинета, но без интеграции "
-            "я не вижу ваши реальные данные."
+            legacy_template("legacy_exception_15")
         )
     base = _finalize_answer(base, message)
 

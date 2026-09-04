@@ -1,0 +1,97 @@
+{
+  "schema_version": 1,
+  "status": "experimental_not_expert_accepted",
+  "default": "published_template",
+  "scenarios": {
+    "refund.application": {
+      "source_version": "61f1984e949c5461",
+      "profiles": [
+        {
+          "id": "one_time",
+          "pattern": "разов\\w*",
+          "exclude": "преми\\w*|комисси\\w*|обеспечительн\\w*",
+          "facts": [
+            1,
+            6,
+            7
+          ],
+          "include_next_step": true,
+          "documents": "omit",
+          "reason": "Keep the one-time refund procedure together with its amount and employee-confirmation conditions."
+        },
+        {
+          "id": "premium",
+          "pattern": "преми\\w*|обеспечительн\\w*",
+          "exclude": "разов\\w*|комисси\\w*",
+          "facts": [
+            1,
+            3,
+            4
+          ],
+          "include_next_step": true,
+          "documents": "keep",
+          "reason": "Keep application requirements and the identity of the applicant together."
+        },
+        {
+          "id": "commission",
+          "pattern": "комисси\\w*",
+          "exclude": "разов\\w*|преми\\w*|обеспечительн\\w*",
+          "facts": [
+            1,
+            5
+          ],
+          "include_next_step": true,
+          "documents": "omit",
+          "reason": "Commission claims use the existing email thread and transaction details."
+        }
+      ]
+    },
+    "tariff.premium": {
+      "source_version": "1983c111bfb988ae",
+      "profiles": [
+        {
+          "id": "payment",
+          "pattern": "стоим\\w*|цен[ауы]\\b|сколько\\s+стоит|абонент\\w*|ежегод\\w*|ежемесяч\\w*",
+          "exclude": "срок\\w*|бессроч\\w*|на сколько|что да[её]т|возможност\\w*",
+          "facts": [
+            1,
+            2,
+            4
+          ],
+          "include_next_step": false,
+          "documents": "keep",
+          "reason": "Separate payment frequency from a current price that is not stored as a fixed amount. Preserve the published subject and scope so the answer is self-contained."
+        },
+        {
+          "id": "duration",
+          "pattern": "срок\\w*|бессроч\\w*|на сколько|сколько\\s+действует",
+          "exclude": "стоим\\w*|сколько\\s+стоит|абонент\\w*|ежегод\\w*|сгор\\w*|неиспольз\\w*",
+          "facts": [
+            1,
+            3
+          ],
+          "include_next_step": false,
+          "documents": "keep",
+          "reason": "Return the whole duration fact, including the termination condition. Preserve the published subject and scope so the answer is self-contained."
+        }
+      ]
+    },
+    "tariff.one_time": {
+      "source_version": "e440b9edd202ca7d",
+      "profiles": [
+        {
+          "id": "price",
+          "pattern": "стоим\\w*|цен[ауы]\\b|сколько\\s+стоит",
+          "exclude": "что да[её]т|возможност\\w*|сколько\\s+лот",
+          "facts": [
+            1,
+            3
+          ],
+          "include_next_step": false,
+          "documents": "keep",
+          "reason": "Do not infer a live price from other financial amounts. Preserve the published subject and scope so the answer is self-contained."
+        }
+      ]
+    }
+  }
+}

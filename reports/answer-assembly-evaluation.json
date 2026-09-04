@@ -1,0 +1,374 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-09-04T14:32:57.702701+00:00",
+  "fresh_runtime": true,
+  "assessment": "automatic scenario/resolution/marker checks, not expert semantic acceptance",
+  "release_allowed": false,
+  "dataset_sha256": "697dfcb448d23afb493524681f96925a1bfe41c939789ac94bb818d619e8f9ab",
+  "adjudication": {
+    "path": "tests\\data\\routing_label_adjudication_110.json",
+    "sha256": "25d2c3a3716399c3d54fb714e65ccd9b5fb0090ec08971d97454d55b60fb6909",
+    "record_count": 110,
+    "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
+    "reviewed_at": "2026-08-23T07:38:35.956766+00:00"
+  },
+  "variants": {
+    "assembly_off": {
+      "manifest": {
+        "manifest_schema": 2,
+        "deploy_version": "local",
+        "git_sha": "4b9bbd055b2cd887910cd4e8ece2c3af604cee1f",
+        "working_tree_dirty": true,
+        "knowledge_sha256": "acf427fce5c005a4ef153bb6d3eb1542b4d9dbc4a6ed8b51fd0163d4a9377308",
+        "scenarios_sha256": "05d410d7a4e2275facc0f4f3b7ab7b69db3759d0b63ce794770062ebe22d4931",
+        "matching_config_sha256": "d271d5acd48d29c1de7c1981f729e2495643a71b27b770aea7ef8f7bcc99c173",
+        "retrieval_taxonomy_sha256": "6fa00b86b9fded6d8dadbab696df865cc819ee34f458e56902940d84a44d17fd",
+        "application_bundle_sha256": "816edaad26eb94801e1286df8900eb065c13439dcdb6949fee8bde8746929e4f",
+        "routing_bundle_sha256": "1227373b2d7c439bb3264ea355b497e9d97ea03153ad8e36cab52bc32e18a7ca",
+        "prompt_bundle_sha256": "d3d4fbfe740efd228a6a3a02e298b29024fe72e133c60df86ff826711118b20d",
+        "widget_bundle_sha256": "1b6b268214680f4d80293929c6f2a7cde3c95efeef2c680e4827ab0919337ac8",
+        "scorer_artifact_sha256": "bbc63deb131792c0a8145b9869d841028e0c0965aa2401e84a1d477d1ed00de2",
+        "scorer_config_sha256": "761e56019e5ff8c4010a04b442b8748f427e116b2efa216dbf7dbd3ac3294ff4",
+        "candidate_scorer_config_sha256": "ffb0461f4010f2a8e9925e30fdc7e2606a608787608008bb35fc095940f64cae",
+        "feature_schema_sha256": "f40d502961a8dd76a75af3f95411bedd4437130578330500dc4dc1d88d7781d4",
+        "evaluator_sha256": "8adb56a49cba538eeb532b8f3f4d48bb3499e9344afcb6a88d5606f2f917fd72",
+        "policy_bundle_sha256": "c8f7420118f5173a6f1d03c16056034516a85b46ab3f4b6860226b16b8d72df3",
+        "routing_architecture": "control",
+        "dialogue_state_enabled": true,
+        "answer_assembly_enabled": false,
+        "llm_understanding_enabled": false,
+        "architecture_experiment": true,
+        "knowledge_mode": "v3_1",
+        "llm_enabled": false,
+        "llm_provider": "mock",
+        "llm_primary_model": "mock/safe-rules",
+        "llm_fallback_model": "mock/safe-rules",
+        "llm_policy_sha256": "783fdd246d0247b69d4caab6ae001f1fee08c1dbd5933b37d2c326c846204d69",
+        "retrieval_settings": {
+          "enabled": true,
+          "provider": "hybrid_multilingual_e5",
+          "dense_enabled": true,
+          "dense_model": "intfloat/multilingual-e5-small",
+          "dense_device": "cpu",
+          "dense_batch_size": 32,
+          "dense_document_chars": 1400,
+          "dense_query_prefix": "query: ",
+          "dense_passage_prefix": "passage: ",
+          "dense_weight": 0.7,
+          "lexical_weight": 0.3,
+          "candidate_dense_weight": 0.25,
+          "candidate_lexical_weight": 0.75,
+          "dense_similarity_floor": 0.78,
+          "dense_answer_similarity": 0.29,
+          "dense_answer_margin": 0.035,
+          "dense_clarify_similarity": 0.18,
+          "dense_clarify_margin": 0.015,
+          "domainless_dense_answer_similarity": 0.84,
+          "char_ngram_min": 2,
+          "char_ngram_max": 5,
+          "lexical_char_weight": 0.65,
+          "lexical_word_weight": 0.35,
+          "intent_boost": 0.025,
+          "rule_score_lock": 220,
+          "challenge_rule_max_score": 150,
+          "challenge_margin": 0.055,
+          "answer_similarity": 0.27,
+          "answer_margin": 0.045,
+          "clarify_similarity": 0.2,
+          "clarify_margin": 0.03,
+          "topic_labels": {
+            "platform": "О площадке MIGTORG",
+            "registration": "Регистрация и вход",
+            "tariffs": "Тариф и доступ",
+            "bidding": "Торги и ставки",
+            "lot": "Информация о лоте",
+            "inspection": "Осмотр автомобиля",
+            "payment": "Оплата и платежи",
+            "transfer": "Передача выигранного лота",
+            "pickup": "Получение автомобиля",
+            "refusal": "Отказ от лота",
+            "penalty": "Штраф",
+            "refund": "Возврат денежных средств",
+            "support": "Помощь сотрудника",
+            "feedback": "Жалоба или обратная связь"
+          }
+        },
+        "dense_runtime": {
+          "initialized": true,
+          "available": true,
+          "error": "",
+          "configured_model": "intfloat/multilingual-e5-small",
+          "weights_sha256": "f39beac7bb14ab96ce9b3f892bba5a1a5524159927a54387132915400b6d99bc",
+          "revision": "614241f622f53c4eeff9890bdc4f31cfecc418b3"
+        },
+        "dependencies": {
+          "numpy": "2.2.4",
+          "scikit-learn": "1.7.0",
+          "sentence-transformers": "4.1.0",
+          "torch": "2.7.1",
+          "fastapi": "0.136.0",
+          "pydantic": "2.11.5"
+        },
+        "manifest_sha256": "194edf55897ab74161eb4807e32e439a862f9bb8f70f0f126a13018fa2a64896"
+      },
+      "runtime": {
+        "total": 270,
+        "checks": {
+          "transport_ok": 270,
+          "scenario_ok": 218,
+          "intent_ok": 235,
+          "resolution_ok": 263,
+          "required_facts_ok": 264,
+          "forbidden_content_ok": 270,
+          "direct_ok": 268,
+          "no_duplicate_sentences": 270,
+          "concise_ok": 270,
+          "route_hit": 218,
+          "answer_hit": 213,
+          "quality_pass": 213
+        },
+        "e2e_automatic_proxy_pct": 78.89,
+        "high_count": 236,
+        "confident_wrong_answer_count": 39,
+        "confident_wrong_among_high_pct": 16.53,
+        "confident_wrong_among_all_pct": 14.44,
+        "resolutions": {
+          "clarified": 30,
+          "answered": 111,
+          "out_of_scope": 14,
+          "escalated": 115
+        },
+        "ticket_offered": 115,
+        "ticket_created": 0,
+        "ticket_delivered": null,
+        "p95_ms": 661.85
+      },
+      "correct_route_answer_checks": {
+        "passed": 213,
+        "total": 218
+      },
+      "oracle_text_checks": {
+        "passed": 234,
+        "total": 239
+      },
+      "profiles": {},
+      "http_parity_failures": []
+    },
+    "assembly_on": {
+      "manifest": {
+        "manifest_schema": 2,
+        "deploy_version": "local",
+        "git_sha": "4b9bbd055b2cd887910cd4e8ece2c3af604cee1f",
+        "working_tree_dirty": true,
+        "knowledge_sha256": "acf427fce5c005a4ef153bb6d3eb1542b4d9dbc4a6ed8b51fd0163d4a9377308",
+        "scenarios_sha256": "05d410d7a4e2275facc0f4f3b7ab7b69db3759d0b63ce794770062ebe22d4931",
+        "matching_config_sha256": "d271d5acd48d29c1de7c1981f729e2495643a71b27b770aea7ef8f7bcc99c173",
+        "retrieval_taxonomy_sha256": "6fa00b86b9fded6d8dadbab696df865cc819ee34f458e56902940d84a44d17fd",
+        "application_bundle_sha256": "816edaad26eb94801e1286df8900eb065c13439dcdb6949fee8bde8746929e4f",
+        "routing_bundle_sha256": "1227373b2d7c439bb3264ea355b497e9d97ea03153ad8e36cab52bc32e18a7ca",
+        "prompt_bundle_sha256": "d3d4fbfe740efd228a6a3a02e298b29024fe72e133c60df86ff826711118b20d",
+        "widget_bundle_sha256": "1b6b268214680f4d80293929c6f2a7cde3c95efeef2c680e4827ab0919337ac8",
+        "scorer_artifact_sha256": "bbc63deb131792c0a8145b9869d841028e0c0965aa2401e84a1d477d1ed00de2",
+        "scorer_config_sha256": "761e56019e5ff8c4010a04b442b8748f427e116b2efa216dbf7dbd3ac3294ff4",
+        "candidate_scorer_config_sha256": "ffb0461f4010f2a8e9925e30fdc7e2606a608787608008bb35fc095940f64cae",
+        "feature_schema_sha256": "f40d502961a8dd76a75af3f95411bedd4437130578330500dc4dc1d88d7781d4",
+        "evaluator_sha256": "8adb56a49cba538eeb532b8f3f4d48bb3499e9344afcb6a88d5606f2f917fd72",
+        "policy_bundle_sha256": "c8f7420118f5173a6f1d03c16056034516a85b46ab3f4b6860226b16b8d72df3",
+        "routing_architecture": "control",
+        "dialogue_state_enabled": true,
+        "answer_assembly_enabled": true,
+        "llm_understanding_enabled": false,
+        "architecture_experiment": true,
+        "knowledge_mode": "v3_1",
+        "llm_enabled": false,
+        "llm_provider": "mock",
+        "llm_primary_model": "mock/safe-rules",
+        "llm_fallback_model": "mock/safe-rules",
+        "llm_policy_sha256": "783fdd246d0247b69d4caab6ae001f1fee08c1dbd5933b37d2c326c846204d69",
+        "retrieval_settings": {
+          "enabled": true,
+          "provider": "hybrid_multilingual_e5",
+          "dense_enabled": true,
+          "dense_model": "intfloat/multilingual-e5-small",
+          "dense_device": "cpu",
+          "dense_batch_size": 32,
+          "dense_document_chars": 1400,
+          "dense_query_prefix": "query: ",
+          "dense_passage_prefix": "passage: ",
+          "dense_weight": 0.7,
+          "lexical_weight": 0.3,
+          "candidate_dense_weight": 0.25,
+          "candidate_lexical_weight": 0.75,
+          "dense_similarity_floor": 0.78,
+          "dense_answer_similarity": 0.29,
+          "dense_answer_margin": 0.035,
+          "dense_clarify_similarity": 0.18,
+          "dense_clarify_margin": 0.015,
+          "domainless_dense_answer_similarity": 0.84,
+          "char_ngram_min": 2,
+          "char_ngram_max": 5,
+          "lexical_char_weight": 0.65,
+          "lexical_word_weight": 0.35,
+          "intent_boost": 0.025,
+          "rule_score_lock": 220,
+          "challenge_rule_max_score": 150,
+          "challenge_margin": 0.055,
+          "answer_similarity": 0.27,
+          "answer_margin": 0.045,
+          "clarify_similarity": 0.2,
+          "clarify_margin": 0.03,
+          "topic_labels": {
+            "platform": "О площадке MIGTORG",
+            "registration": "Регистрация и вход",
+            "tariffs": "Тариф и доступ",
+            "bidding": "Торги и ставки",
+            "lot": "Информация о лоте",
+            "inspection": "Осмотр автомобиля",
+            "payment": "Оплата и платежи",
+            "transfer": "Передача выигранного лота",
+            "pickup": "Получение автомобиля",
+            "refusal": "Отказ от лота",
+            "penalty": "Штраф",
+            "refund": "Возврат денежных средств",
+            "support": "Помощь сотрудника",
+            "feedback": "Жалоба или обратная связь"
+          }
+        },
+        "dense_runtime": {
+          "initialized": true,
+          "available": true,
+          "error": "",
+          "configured_model": "intfloat/multilingual-e5-small",
+          "weights_sha256": "f39beac7bb14ab96ce9b3f892bba5a1a5524159927a54387132915400b6d99bc",
+          "revision": "614241f622f53c4eeff9890bdc4f31cfecc418b3"
+        },
+        "dependencies": {
+          "numpy": "2.2.4",
+          "scikit-learn": "1.7.0",
+          "sentence-transformers": "4.1.0",
+          "torch": "2.7.1",
+          "fastapi": "0.136.0",
+          "pydantic": "2.11.5"
+        },
+        "manifest_sha256": "995c39a4f0bdb22aef25d1a2913114b32bac88f3ed7ed95d44f92da3d4a98f1b"
+      },
+      "runtime": {
+        "total": 270,
+        "checks": {
+          "transport_ok": 270,
+          "scenario_ok": 218,
+          "intent_ok": 235,
+          "resolution_ok": 263,
+          "required_facts_ok": 264,
+          "forbidden_content_ok": 270,
+          "direct_ok": 268,
+          "no_duplicate_sentences": 270,
+          "concise_ok": 270,
+          "route_hit": 218,
+          "answer_hit": 213,
+          "quality_pass": 213
+        },
+        "e2e_automatic_proxy_pct": 78.89,
+        "high_count": 236,
+        "confident_wrong_answer_count": 39,
+        "confident_wrong_among_high_pct": 16.53,
+        "confident_wrong_among_all_pct": 14.44,
+        "resolutions": {
+          "clarified": 30,
+          "answered": 111,
+          "out_of_scope": 14,
+          "escalated": 115
+        },
+        "ticket_offered": 115,
+        "ticket_created": 0,
+        "ticket_delivered": null,
+        "p95_ms": 433.44
+      },
+      "correct_route_answer_checks": {
+        "passed": 213,
+        "total": 218
+      },
+      "oracle_text_checks": {
+        "passed": 234,
+        "total": 239
+      },
+      "profiles": {
+        "published_template": 230,
+        "premium": 1,
+        "payment": 1
+      },
+      "http_parity_failures": []
+    }
+  },
+  "runtime_changes": [
+    {
+      "id": "widget-081",
+      "before": true,
+      "after": true,
+      "before_answer": "Возврат оформляется заявлением или через предусмотренную кнопку в личном кабинете; одного сообщения в чате недостаточно. Для Разового тарифа откройте «Финансы» → «История пополнений» → «История списаний» и нажмите «Вернуть» рядом с нужным платежом. Сумма должна быть кратна 5 000 рублей; сотрудник проверит и подтвердит операцию. Для Премиум-аккаунта требуется подписанное заявление, а по комиссии за несостоявшийся лот нужно писать в действующей почтовой ветке на info@migtorg.com. Подготовьте данные платежа без полного номера карты, CVC/CVV, пароля и кода из SMS.",
+      "after_answer": "Обращение в чат само по себе не заменяет заявление на возврат. Для расторжения Премиум-договора и возврата обеспечительного платежа требуется подписанное заявление с номером договора, данными владельца и банковскими реквизитами плательщика. Заявление подаёт владелец Премиум-аккаунта, который оплачивал подключение. Подготовьте данные платежа без полного номера карты, CVC/CVV, пароля и кода из SMS.",
+      "after_diagnostics": {
+        "missing_required_groups": [],
+        "forbidden_hits": [],
+        "duplicate_sentences": [],
+        "answer_length": 399
+      }
+    },
+    {
+      "id": "independent-tar-009",
+      "before": true,
+      "after": true,
+      "before_answer": "Премиум — тариф для регулярного участия в автомобильных торгах: неограниченное количество ставок, бессрочный договор и отсутствие абонентской или ежегодной платы. Подключение оплачивается один раз и действует до расторжения договора в установленном порядке. Премиум подходит для системной работы с несколькими автомобильными лотами, но не гарантирует передачу каждого выигранного лота. Текущую стоимость проверяйте перед оплатой. Если планируете регулярные торги, выберите Премиум в личном кабинете или запросите официальный счёт.",
+      "after_answer": "Премиум предоставляет полный доступ к автомобильным торгам и неограниченное количество ставок. Подключение оплачивается один раз; регулярной абонентской и ежегодной оплаты нет. Актуальная стоимость проверяется перед подключением.",
+      "after_diagnostics": {
+        "missing_required_groups": [],
+        "forbidden_hits": [],
+        "duplicate_sentences": [],
+        "answer_length": 229
+      }
+    }
+  ],
+  "oracle_text_only_changes": [
+    {
+      "id": "widget-081",
+      "before": true,
+      "after": true,
+      "before_answer": "Возврат оформляется заявлением или через предусмотренную кнопку в личном кабинете; одного сообщения в чате недостаточно. Для Разового тарифа откройте «Финансы» → «История пополнений» → «История списаний» и нажмите «Вернуть» рядом с нужным платежом. Сумма должна быть кратна 5 000 рублей; сотрудник проверит и подтвердит операцию. Для Премиум-аккаунта требуется подписанное заявление, а по комиссии за несостоявшийся лот нужно писать в действующей почтовой ветке на info@migtorg.com. Подготовьте данные платежа без полного номера карты, CVC/CVV, пароля и кода из SMS.",
+      "after_answer": "Обращение в чат само по себе не заменяет заявление на возврат. Для расторжения Премиум-договора и возврата обеспечительного платежа требуется подписанное заявление с номером договора, данными владельца и банковскими реквизитами плательщика. Заявление подаёт владелец Премиум-аккаунта, который оплачивал подключение. Подготовьте данные платежа без полного номера карты, CVC/CVV, пароля и кода из SMS.",
+      "after_diagnostics": {
+        "missing_required_groups": [],
+        "forbidden_hits": [],
+        "duplicate_sentences": [],
+        "answer_length": 399
+      }
+    },
+    {
+      "id": "independent-tar-009",
+      "before": true,
+      "after": true,
+      "before_answer": "Премиум — тариф для регулярного участия в автомобильных торгах: неограниченное количество ставок, бессрочный договор и отсутствие абонентской или ежегодной платы. Подключение оплачивается один раз и действует до расторжения договора в установленном порядке. Премиум подходит для системной работы с несколькими автомобильными лотами, но не гарантирует передачу каждого выигранного лота. Текущую стоимость проверяйте перед оплатой. Если планируете регулярные торги, выберите Премиум в личном кабинете или запросите официальный счёт.",
+      "after_answer": "Премиум предоставляет полный доступ к автомобильным торгам и неограниченное количество ставок. Подключение оплачивается один раз; регулярной абонентской и ежегодной оплаты нет. Актуальная стоимость проверяется перед подключением.",
+      "after_diagnostics": {
+        "missing_required_groups": [],
+        "forbidden_hits": [],
+        "duplicate_sentences": [],
+        "answer_length": 229
+      }
+    }
+  ],
+  "bundle_unchanged": true,
+  "profiled_verification": {
+    "counts": {
+      "tests": 85,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "junit": ".work/answer-assembly-tests.xml",
+    "junit_sha256": "7f8170070d92561b5c41680e6aea4d180b5b26e880da69bd13afd41952d1ac1e",
+    "historical_report_test_deselected": 1,
+    "full_suite_rerun": false,
+    "real_browser_checked": false
+  },
+  "decision": "experimental_off_by_default; no E2E improvement demonstrated; source and completeness expert review pending"
+}

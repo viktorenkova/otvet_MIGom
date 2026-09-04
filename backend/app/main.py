@@ -902,6 +902,8 @@ def _process_chat_message(request: ChatRequest) -> ChatResponse:
     template_links = [article.template] if article and article.template and safety_after.allowed else []
     if is_deposit_refund_template_request and safety_after.allowed and not template_links:
         template_links = [REFUND_APPLICATION_TEMPLATE]
+    if generated.document_policy == "omit":
+        template_links = []
     attachments = [link["url"] for link in template_links]
     if not safety_after.allowed:
         answer = safety_after.answer_override or answer
@@ -1212,6 +1214,10 @@ def _process_bound_chat_message(request: ChatRequest, dialogue_turn=None, lease_
         else:
             response = _process_chat_message(request)
         response.actions = [a for a in response.actions if action_allowed(a, role)]
+        if settings.answer_assembly_enabled and trace.get("answer_assembly_error"):
+            response.resolution = "clarified"
+            response.action = "clarify"
+            response.confidence_level = "low"
         gap = matching_gap(request.message, response.scenario_id or "")
         if gap and response.resolution == "answered":
             response.resolution = "clarified"
@@ -1223,6 +1229,8 @@ def _process_bound_chat_message(request: ChatRequest, dialogue_turn=None, lease_
                                       "delivery": "unconfirmed"}
             response.answer += f" Обращение создано. Номер: {response.ticket_id}."
             trace["service_text"] = "runtime.ticket_created:confirmed_sqlite_record"
+        elif settings.answer_assembly_enabled and response.needs_ticket:
+            response.action_result = {"offered": True, "created": False, "delivery": "not_requested"}
         trace["used_context"] = response.used_context
         if dialogue_turn:
             response.used_context = list(dict.fromkeys([*response.used_context, *dialogue_turn.used_context]))
