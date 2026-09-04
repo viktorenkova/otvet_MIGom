@@ -1,10 +1,11 @@
-from dataclasses import dataclass, field
+from dataclasses import dataclass, field, replace
 from functools import lru_cache
 import json
 from pathlib import Path
 import re
 from typing import Any, Protocol
 
+from backend.app.bot.scenario_policy import article_allowed
 from backend.app.config import get_settings
 from backend.app.bot.semantic_search import MultilingualHybridSemanticIndex
 from backend.app.bot.pairwise_reranker import get_pairwise_reranker
@@ -197,6 +198,7 @@ class KnowledgeArticle:
     slug: str
     section: str
     content: str
+    roles: tuple[str, ...] = ()
     search_document: str = ""
     intent: str = "unknown"
     user_answer: str | None = None
@@ -294,7 +296,7 @@ class TfidfSemanticSearchProvider:
         candidates = [
             article
             for article in load_articles()
-            if article.section in allowed
+            if article_allowed(article, role)
             and article.intent != "prohibited"
             and article.fallback_allowed
             and not _has_negative_phrase(article, message)
@@ -709,7 +711,8 @@ def _load_v2_articles() -> list[KnowledgeArticle]:
             KnowledgeArticle(
                 title=scenario.title,
                 slug=scenario.scenario_id,
-                section="guest",
+                section="guest" if "guest" in scenario.roles else "authorized",
+                roles=tuple(scenario.roles),
                 content=content,
                 search_document=search_document,
                 intent=scenario.intent,
@@ -915,7 +918,7 @@ def retrieve_knowledge_candidates(
         article.slug
         for article in load_articles()
         if article.slug in active_scenario_ids
-        and article.section in allowed_sections
+        and article_allowed(article, role)
         and article.intent != "prohibited"
     }
     config = _semantic_config()
@@ -951,7 +954,7 @@ def get_article_by_id(article_id: str, role: UserRole) -> KnowledgeArticle | Non
         (
             article
             for article in load_articles()
-            if article.slug == article_id and article.section in allowed
+            if article.slug == article_id and article_allowed(article, role)
         ),
         None,
     )
@@ -2317,7 +2320,7 @@ class RuleBasedSearchProvider:
         candidates = [
             article
             for article in load_articles()
-            if article.section in allowed and article.intent != "prohibited"
+            if article_allowed(article, role) and article.intent != "prohibited"
         ]
         if not candidates:
             return KnowledgeSearchResult(None, 0, "low", fallback_reason="no_candidates")
@@ -2538,7 +2541,7 @@ class HybridSearchProvider:
         return rule_result
 
 
-def search_knowledge_match(
+def _legacy_search_knowledge_match(
     message: str,
     intent: str,
     role: UserRole,
@@ -2751,3 +2754,35 @@ def search_knowledge_match(
 
 def search_knowledge(message: str, intent: str, role: UserRole, context: Any | None = None) -> KnowledgeArticle | None:
     return search_knowledge_match(message, intent, role, context).article
+
+
+def search_knowledge_match(message, intent, role, context=None, analysis=None,
+                           pattern_match=None, skip_topic_ambiguity=False):
+    from backend.app.bot.architecture_decision import (
+        decision_context, local_decision, llm_decision, clarification)
+    settings = get_settings()
+    trace = decision_context.get()
+    try:
+        candidates = retrieve_knowledge_candidates(message, role, intent=intent, top_k=10)
+        if trace is not None:
+            trace["candidates"] = candidates
+            trace["architecture"] = settings.routing_architecture
+        if settings.routing_architecture == "local":
+            result = local_decision(message, candidates, role)
+            if settings.llm_understanding_enabled:
+                result = llm_decision(message, candidates, role, settings, result)
+        else:
+            result = _legacy_search_knowledge_match(message, intent, role, context, analysis,
+                                                   pattern_match, skip_topic_ambiguity)
+        if result.article and not article_allowed(result.article, role):
+            result = clarification("scenario_access_denied", candidates, role)
+        if trace is not None:
+            trace["decision"] = {"scenario_id": result.article.slug if result.article else None,
+                                 "confidence": result.confidence, "reason": result.fallback_reason,
+                                 "features": result.matched_features}
+        return result
+    except Exception as exc:
+        # Model exceptions must not fall through to an independent high rule.
+        if trace is not None:
+            trace["model_error"] = type(exc).__name__
+        return clarification("retrieval_or_scorer_failure")

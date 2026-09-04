@@ -1,0 +1,9 @@
+{
+  "schema_version": 1,
+  "source": "knowledge/v3_1/scenarios.json#knowledge_gaps",
+  "rules": [
+    {"gap_id": "gap.lot_photo_archive_download", "all": ["фот|снимк|изображен", "архив|скач.*все|все.*скач|пакет"]},
+    {"gap_id": "gap.tariff_expired_unused", "all": ["тариф|доступ", "сгор|ист[её]к|истеч|неиспольз|не использ"]},
+    {"gap_id": "gap.tariff_access_term_unspecified", "all": ["доступ|тариф", "срок|действ|период|на сколько"], "unless": "разов|премиум"}
+  ]
+}

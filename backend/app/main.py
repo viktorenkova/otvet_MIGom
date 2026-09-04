@@ -299,14 +299,21 @@ def _restore_clarification_context(request: ChatRequest, state: dict | None) -> 
             setattr(request.context, field_name, saved_context[field_name])
 
 
-def process_chat_message(request: ChatRequest) -> ChatResponse:
+def _process_chat_message(request: ChatRequest) -> ChatResponse:
+    from backend.app.bot.architecture_decision import decision_context
+    dialogue = (decision_context.get() or {}).get("dialogue")
     started_at = perf_counter()
     request.context.session_id = request.session_id
     clarification_state = logger.get_pending_clarification_state(request.session_id)
+    if dialogue:
+        # Structured state owns continuations; do not concatenate old turns again.
+        clarification_state = None
     ticket_category_flow = bool(
         clarification_state
         and is_ticket_creation_request(str(clarification_state.get("original_message") or ""))
     )
+    if dialogue and dialogue.get("category_choice"):
+        ticket_category_flow = True
     _restore_clarification_context(request, clarification_state)
     trusted_context_error = _apply_trusted_context(request)
     role = "authorized" if request.context.trusted else "guest"
@@ -370,7 +377,7 @@ def process_chat_message(request: ChatRequest) -> ChatResponse:
             kind = str(action_config.get("payload", {}).get("kind") or "lot")
             required_scope = f"status:{kind}:read"
             has_scope = "status:read" in request.context.trusted_scopes or required_scope in request.context.trusted_scopes
-            reference_id = str(request.context.lot_id or "")
+            reference_id = str(request.context.user_id or "") if kind == "tariff" else str(request.context.lot_id or "")
             if not request.context.trusted or trusted_context_error or not has_scope:
                 answer = (
                     "Для проверки персонального статуса войдите в MIGTORG заново. "
@@ -502,6 +509,8 @@ def process_chat_message(request: ChatRequest) -> ChatResponse:
         if clarification_state
         else None
     )
+    if dialogue and dialogue.get("category_choice"):
+        clarification_choice = dialogue["category_choice"]
     if (
         clarification_choice
         and not clarification_choice.get("article_id")
@@ -567,6 +576,9 @@ def process_chat_message(request: ChatRequest) -> ChatResponse:
             context_followup = True
             logger.clear_pending_clarification(request.session_id)
 
+    if dialogue:
+        effective_message = dialogue["search_message"]
+        context_followup = dialogue["transition"] in {"continue", "correct", "repeat"}
     if effective_message != request.message:
         analysis = analyze_text(effective_message, request.context)
 
@@ -613,6 +625,8 @@ def process_chat_message(request: ChatRequest) -> ChatResponse:
         )
 
     selected_article = selected_scenario_article
+    if dialogue and dialogue.get("selected_scenario_id"):
+        selected_article = get_article_by_id(dialogue["selected_scenario_id"], role)
     if clarification_choice:
         selected_article = get_article_by_id(str(clarification_choice.get("article_id", "")), role)
 
@@ -647,6 +661,8 @@ def process_chat_message(request: ChatRequest) -> ChatResponse:
     matched_features.extend(f"safety:{category}" for category in safety_before.categories)
     if (
         pattern_match
+        and article is not None
+        and settings.routing_architecture == "control"
         and pattern_match.intent == intent
         and not search_result.clarifying_options
     ):
@@ -989,9 +1005,7 @@ def health() -> dict:
         "widget_ready": (settings.widget_root / "index.html").is_file()
         and (settings.widget_root / "widget.js").is_file()
         and (settings.widget_root / "style.css").is_file(),
-        "knowledge_mode": "v2"
-        if settings.knowledge_v2_enabled and not settings.knowledge_v2_shadow_mode
-        else "legacy_or_shadow",
+        "knowledge_mode": build_manifest["knowledge_mode"],
         "build_manifest": build_manifest,
     }
 
@@ -1143,3 +1157,147 @@ def legacy_chat(request: LegacyChatRequest) -> LegacyChatResponse:
     if response.needs_ticket and "оператор" not in answer.lower():
         answer += " При необходимости обращение передадут оператору."
     return LegacyChatResponse(answer=answer, needs_escalation=response.needs_ticket)
+
+
+def _process_bound_chat_message(request: ChatRequest, dialogue_turn=None, lease_token=None) -> ChatResponse:
+    """Bind issued actions to this session before any action or search runs."""
+    import time
+    from backend.app.bot.architecture_decision import decision_context
+    from backend.app.bot.scenario_policy import action_allowed, scenario_allowed
+    from backend.app.bot.knowledge_gaps import matching_gap
+    started = perf_counter()
+    _apply_trusted_context(request)
+    role = "authorized" if request.context.trusted else "guest"
+    previous = logger.get_response_state(request.session_id)
+    trace = {"session_id": request.session_id, "logger": logger,
+             "deadline": time.monotonic() + 5.0,
+             "minimal_state": {"previous_scenario_id": previous["response"].get("scenario_id")} if previous else {},
+             "previous_message_id": previous["message_id"] if previous else None}
+    if dialogue_turn:
+        from backend.app.bot.pii_redaction import redact_for_external_llm
+        trace["dialogue"] = dialogue_turn.model_dump(exclude={"state"})
+        trace["minimal_state"] = {
+            "previous_scenario_id": dialogue_turn.state.active_scenario_id,
+            "goal": redact_for_external_llm(dialogue_turn.understanding.goal),
+            "objects": dialogue_turn.understanding.objects,
+            "operations": dialogue_turn.understanding.operations,
+            "entity_fields": sorted(dialogue_turn.understanding.entities),
+        }
+    token = decision_context.set(trace)
+    try:
+        valid_action = True
+        if request.selected_action_id:
+            issued = next((a for a in (previous["actions"] if previous else [])
+                           if a["id"] == request.selected_action_id), None)
+            definition = find_scenario_action(request.selected_action_id)
+            valid_action = bool(issued and definition
+                and scenario_allowed(definition[0], role)
+                and action_allowed(ChatAction.model_validate(issued), role)
+                and (not request.conversation_turn_id or request.conversation_turn_id == previous["message_id"]))
+        if not valid_action:
+            answer = "Это действие больше не относится к текущему ответу. Опишите, пожалуйста, что нужно проверить."
+            message_id = _persist_turn(started_at=started, request=request,
+                analysis=analyze_text(request.message, request.context), role=role, intent="unknown",
+                answer=answer, article_id=None, score=0, confidence="low",
+                matched_features=["action_not_issued_for_current_turn"], action="clarify",
+                needs_ticket=False, ticket_id=None, ticket_created=False,
+                fallback_reason="action_not_issued_for_current_turn", safety_categories=[])
+            response = ChatResponse(session_id=request.session_id, message_id=message_id,
+                answer=answer, intent="unknown", role=role, needs_ticket=False,
+                resolution="clarified", action="clarify", confidence_level="low")
+            trace["decision"] = {"reason": "action_not_issued_for_current_turn"}
+        elif dialogue_turn and dialogue_turn.service_reply and pre_check(request.message).allowed:
+            response = _dialogue_service_response(request, dialogue_turn, role, started)
+            trace["service_text"] = "dialogue." + dialogue_turn.service_reply
+        else:
+            response = _process_chat_message(request)
+        response.actions = [a for a in response.actions if action_allowed(a, role)]
+        gap = matching_gap(request.message, response.scenario_id or "")
+        if gap and response.resolution == "answered":
+            response.resolution = "clarified"
+            response.action = "clarify"
+            response.confidence_level = "medium"
+            trace["knowledge_gap"] = gap["gap_id"]
+        if response.ticket_id:
+            response.action_result = {"ticket_id": response.ticket_id, "created": True,
+                                      "delivery": "unconfirmed"}
+            response.answer += f" Обращение создано. Номер: {response.ticket_id}."
+            trace["service_text"] = "runtime.ticket_created:confirmed_sqlite_record"
+        trace["used_context"] = response.used_context
+        if dialogue_turn:
+            response.used_context = list(dict.fromkeys([*response.used_context, *dialogue_turn.used_context]))
+            response.pending_requests = list(dialogue_turn.state.pending_requests)
+            if response.pending_requests and response.resolution in {"answered", "escalated"}:
+                response.answer += " Сохранил остальные вопросы; напишите «следующий вопрос», чтобы продолжить."
+                trace["queue_service_text"] = "dialogue.pending_questions"
+            trace["used_context"] = response.used_context
+        trace["result"] = {"scenario_id": response.scenario_id, "resolution": response.resolution,
+                           "ticket_offered": response.needs_ticket,
+                           "ticket_created": bool(response.ticket_id), "ticket_delivered": None}
+        trace["elapsed_ms"] = round((perf_counter() - started) * 1000, 2)
+        logger.save_response_state(response, {k: v for k, v in trace.items() if k not in {"logger", "deadline", "session_id"}},
+                                   dialogue_turn=dialogue_turn, lease_token=lease_token)
+        return response
+    finally:
+        decision_context.reset(token)
+
+
+def _dialogue_service_response(request, turn, role, started):
+    manual = turn.service_reply == "manual_help"
+    answer = ("Не удалось уточнить ситуацию. Можно создать письменное обращение для ручной проверки. "
+              "Описание вопроса и уже сообщённые данные сохранены в истории; обращение ещё не отправлено."
+              if manual else "Укажите правильный номер лота. Предыдущий номер больше не использую.")
+    message_id = _persist_turn(started_at=started, request=request,
+        analysis=analyze_text(request.message, request.context), role=role, intent=turn.understanding.intent,
+        answer=answer, article_id=None, score=0, confidence="low", matched_features=["dialogue:" + turn.service_reply],
+        action="create_ticket" if manual else "clarify", needs_ticket=manual, ticket_id=None,
+        ticket_created=False, fallback_reason="dialogue:" + turn.service_reply, safety_categories=[])
+    return ChatResponse(session_id=request.session_id, message_id=message_id, answer=answer,
+        intent=turn.understanding.intent, role=role, needs_ticket=manual,
+        resolution="escalated" if manual else "clarified", confidence_level="low",
+        action="create_ticket" if manual else "clarify",
+        suggested_fields=["contact", "description"] if manual else ["lot_id"],
+        actions=[a for a in _scenario_actions("support.contact") if a.type == "open_ticket"] if manual else [])
+
+
+def process_chat_message(request: ChatRequest) -> ChatResponse:
+    if not settings.dialogue_state_enabled:
+        return _process_bound_chat_message(request)
+    from backend.app.bot.dialogue_understanding import prepare_turn
+    from backend.app.models.dialogue import DialogueState
+    _apply_trusted_context(request)
+    role = "authorized" if request.context.trusted else "guest"
+    lease = logger.acquire_dialogue_turn(request.session_id)
+    if not lease:
+        raise HTTPException(status_code=409, detail="dialogue_turn_in_progress")
+    try:
+        previous = logger.get_response_state(request.session_id)
+        if ((request.conversation_turn_id and (not previous or request.conversation_turn_id != previous["message_id"]))
+            or (request.state_version is not None and request.state_version != (previous["version"] if previous else 0))):
+            raise HTTPException(status_code=409, detail="stale_conversation_turn")
+        state = logger.load_dialogue_state(request.session_id)
+        subject = "authorized:" + str(request.context.user_id) if request.context.trusted else "guest"
+        if state.subject != subject:
+            state = DialogueState(subject=subject)
+        if previous and state.version != previous["version"]:
+            # A flag-off turn invalidates older experimental context on re-enable.
+            state = DialogueState(subject=subject)
+        turn = prepare_turn(request.message, state, role, request.context.lot_id)
+        if request.selected_action_id and previous and any(a["id"] == request.selected_action_id for a in previous["actions"]):
+            # The bound handler still checks access and the exact previous turn.
+            lot_id = request.context.lot_id or state.active.entities.get("lot_id")
+            if lot_id:
+                turn.understanding.entities.setdefault("lot_id", lot_id)
+        # Only untrusted user-supplied business identifiers are restored here.
+        # Identity, scopes, contact details and tokens always come from this request.
+        request.context.lot_id = turn.understanding.entities.get("lot_id")
+        if turn.resume_action_id and not request.selected_action_id:
+            request.selected_action_id = turn.resume_action_id
+        logger.clear_pending_clarification(request.session_id)
+        return _process_bound_chat_message(request, dialogue_turn=turn, lease_token=lease)
+    except RuntimeError as exc:
+        if str(exc) == "dialogue_lease_lost":
+            raise HTTPException(status_code=409, detail="dialogue_turn_expired") from exc
+        raise
+    finally:
+        logger.release_dialogue_turn(request.session_id, lease)

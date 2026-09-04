@@ -100,6 +100,10 @@ class PairwiseScenarioReranker:
                 raise ValueError("pairwise scenario feature columns are missing")
             if bundle.get("feature_count") != BASE_FEATURE_COUNT + len(feature_scenario_ids):
                 raise ValueError("pairwise feature count does not match scenario columns")
+            if set(feature_scenario_ids) != {s.scenario_id for s in load_scenarios()}:
+                raise ValueError("pairwise scenario feature coverage mismatch")
+            if bundle["model"].n_features_in_ != bundle["feature_count"]:
+                raise ValueError("pairwise model feature count mismatch")
             self.bundle = bundle
         except Exception as exc:
             self.error = f"{type(exc).__name__}: {exc}"
@@ -118,6 +122,7 @@ class PairwiseScenarioReranker:
             return True
         except Exception as exc:
             self.error = f"{type(exc).__name__}: {exc}"
+            self.bundle = None
             return False
 
     def rerank(self, message: str, candidates: list[dict[str, Any]]) -> tuple[RerankedScenario, ...]:

@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "enabled": true,
+  "provider": "pairwise",
+  "model": "artifacts/stage3-pairwise-reranker.joblib",
+  "model_version": "stage3-pairwise-2026.08.24.1",
+  "device": "cpu",
+  "batch_size": 32,
+  "top_k": 10,
+  "high_confidence_thresholds": {
+    "bidding": 0.917035,
+    "default": 0.117164,
+    "onboarding": 0.967755,
+    "payments": 0.001874,
+    "registration": 0.931999,
+    "search": 0.529621,
+    "transfer": 0.643571
+  },
+  "minimum_margin": 0.01,
+  "fallback_if_unavailable": "clarify",
+  "artifact_sha256": "bbc63deb131792c0a8145b9869d841028e0c0965aa2401e84a1d477d1ed00de2",
+  "calibration": {
+    "method": "saved runtime artifact; predicted scenario family; development only",
+    "candidate_source": "existing snapshot, not fresh retrieval",
+    "inputs": {
+      "tests\\data\\retrieval_v31_development_validation.json": "eb157ee735d3e65682ac0e1f9cb4170a6e18637805340d9e73e264fdddd8ac32",
+      "reports\\semantic-retrieval-v31-development-validation.json": "125ec3742acc6634917fc808302eea52887bd82cd2d98014c121ca24e73fbc58",
+      "tests\\data\\stage3_hard_negatives.json": "9a2227c960ff9cf2fd29715474e4b90c42d82a7c1217b414e3e0bc192e57525d"
+    },
+    "development_count": 400,
+    "development_metrics": {
+      "high_count": 389,
+      "high_coverage_pct": 97.25,
+      "confident_wrong_count": 3,
+      "confident_wrong_pct": 0.77
+    },
+    "independent_validation": false
+  }
+}

@@ -16,6 +16,9 @@ def _rate(passed: int, total: int) -> float:
 
 
 def evaluate(quality: dict[str, Any], contracts: dict[str, Any]) -> dict[str, Any]:
+    from backend.app.bot.scenario_engine import load_scenarios
+    expected_ids = {s.scenario_id for s in load_scenarios()}
+    contract_ids = [row["scenario_id"] for row in contracts["records"]]
     routed = [row for row in quality["single_turn_results"] if row["checks"]["route_hit"]]
     criteria = {
         "theme": lambda checks: checks["scenario_ok"] and checks["intent_ok"],
@@ -43,11 +46,13 @@ def evaluate(quality: dict[str, Any], contracts: dict[str, Any]) -> dict[str, An
         "all_criteria_gte_93": all_criteria_pct >= 93.0,
         "critical_unsupported_zero": len(unsupported) == 0,
         "irrelevant_blocks_lte_2": irrelevant_pct <= 2.0,
-        "contract_coverage_complete": contracts["record_count"] == 141,
+        "contract_coverage_complete": set(contract_ids) == expected_ids and len(contract_ids) == len(set(contract_ids)),
     }
     return {
         "schema_version": 1,
         "methodology": {
+            "assessment": "automated marker proxy; not independent expert semantic review",
+            "runtime_freshness": "not established by a saved report",
             "population": "live cases with correct scenario and intent route",
             "theme": "accepted scenario_id and intent",
             "completeness": "all required answer marker groups are present",

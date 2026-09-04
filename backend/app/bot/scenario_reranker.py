@@ -37,7 +37,16 @@ class RerankDecision:
 
 
 def load_reranker_config() -> dict[str, Any]:
-    return json.loads(CONFIG_PATH.read_text(encoding="utf-8"))
+    from backend.app.config import get_settings
+    root = Path(__file__).resolve().parents[3]
+    path = (root / "configs/architecture_reranker_config.json"
+            if get_settings().routing_architecture == "local" else root / CONFIG_PATH)
+    config = json.loads(path.read_text(encoding="utf-8"))
+    if config.get("artifact_sha256"):
+        import hashlib
+        if hashlib.sha256((root / config["model"]).read_bytes()).hexdigest() != config["artifact_sha256"]:
+            raise ValueError("calibration_artifact_mismatch")
+    return config
 
 
 def scenario_family(scenario_id: str) -> str:

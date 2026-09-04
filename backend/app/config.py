@@ -4,6 +4,7 @@ from pathlib import Path
 from urllib.parse import urlparse
 
 from pydantic import BaseModel
+from typing import Literal
 
 
 class Settings(BaseModel):
@@ -13,6 +14,10 @@ class Settings(BaseModel):
     debug: bool = False
     cors_allowed_origins: list[str] = ["*"]
     database_path: str = "migtorg_chatbot.sqlite3"
+    dialogue_state_enabled: bool = False
+    routing_architecture: Literal["control", "local"] = "control"
+    llm_understanding_enabled: bool = False
+    architecture_experiment: bool = False
     llm_enabled: bool = False
     llm_provider: str = "mock"
     llm_environment: str = "dev"
@@ -92,7 +97,7 @@ def _is_https_url(value: str) -> bool:
 
 
 def validate_llm_runtime(settings: Settings) -> None:
-    if not settings.llm_enabled:
+    if not (settings.llm_enabled or settings.llm_understanding_enabled):
         return
     if settings.llm_provider not in {"qwen", "litellm"}:
         raise ValueError("LLM_ENABLED requires provider qwen or litellm")
@@ -131,6 +136,10 @@ def get_settings() -> Settings:
         deploy_version=os.getenv("DEPLOY_VERSION", "local"),
         debug=_bool_from_env(os.getenv("DEBUG"), False),
         cors_allowed_origins=cors_allowed_origins or ["*"],
+        dialogue_state_enabled=_bool_from_env(os.getenv("DIALOGUE_STATE_ENABLED")),
+        routing_architecture=os.getenv("ROUTING_ARCHITECTURE", "control"),
+        llm_understanding_enabled=os.getenv("LLM_UNDERSTANDING_ENABLED", "false").lower() == "true",
+        architecture_experiment=os.getenv("ARCHITECTURE_EXPERIMENT", "true").lower() == "true",
         llm_enabled=_bool_from_env(os.getenv("LLM_ENABLED"), False),
         llm_provider=os.getenv("LLM_PROVIDER", "mock"),
         llm_environment=os.getenv("LLM_ENVIRONMENT", "dev"),

@@ -228,6 +228,17 @@ def generate_answer(
     route_confidence: str = "high",
     llm_allowed: bool = True,
 ) -> GeneratedAnswer:
+    from backend.app.bot.scenario_policy import article_allowed
+    if article and not article_allowed(article, role):
+        return GeneratedAnswer(answer="Для этого раздела необходимо подтвердить вход в MIGTORG.",
+                               used_fact_ids=(), verification_passed=False,
+                               verification_reason="policy:scenario_access_denied")
+    from backend.app.bot.knowledge_gaps import matching_gap
+    gap = matching_gap(message, article.scenario) if article and article.scenario else None
+    if gap:
+        return GeneratedAnswer(answer=gap["safe_answer"], used_fact_ids=(),
+                               verification_passed=True,
+                               verification_reason="knowledge_gap:" + gap["gap_id"])
     contract = get_answer_contract(article.scenario) if article and article.scenario else None
     base = contract.approved_template if contract else (_article_answer(article) or _fallback_answer(intent))
     message_lower = message.lower()
@@ -345,12 +356,13 @@ def generate_answer(
             " Вы можете также проверить соответствующий раздел личного кабинета, но без интеграции "
             "я не вижу ваши реальные данные."
         )
-    if needs_ticket and ticket_id:
-        base += f" Обращение создано. Номер: {ticket_id}."
-
     base = _finalize_answer(base, message)
 
-    if settings is None or not settings.llm_enabled:
+    # Validate Python exceptions too; unapproved text cannot approve itself.
+    if contract:
+        base = verify_answer(base, contract.approved_template, contract).answer
+
+    if settings is None or not settings.llm_enabled or settings.architecture_experiment:
         verification = verify_answer(base, base, contract)
         return GeneratedAnswer(
             answer=verification.answer,
@@ -372,7 +384,7 @@ def generate_answer(
         return GeneratedAnswer(
             answer=base,
             used_fact_ids=verification.used_fact_ids,
-            verification_passed=True,
+            verification_passed=verification.passed,
             verification_reason=reason,
         )
     if needs_ticket:

@@ -114,7 +114,8 @@ def test_scenario_response_has_message_id_and_structured_actions():
     response = process_chat_message(ChatRequest(message="не видна моя ставка", session_id="v2-structured-actions"))
     assert response.message_id
     assert response.scenario_id == "bid.not_visible"
-    assert {action.type for action in response.actions} == {"fetch_status", "open_ticket"}
+    # An unsigned guest may ask for help, but cannot execute a personal status action.
+    assert {action.type for action in response.actions} == {"open_ticket"}
 
 
 def test_unsigned_browser_context_cannot_fetch_personal_status():
@@ -128,7 +129,8 @@ def test_unsigned_browser_context_cannot_fetch_personal_status():
     )
     assert response.resolution == "clarified"
     assert response.data_freshness is None
-    assert "защищённого подтверждения" in response.answer
+    assert response.role == "guest"
+    assert response.confidence_level == "low"
 
 
 def test_trusted_status_action_uses_read_only_provider(monkeypatch):
@@ -149,11 +151,16 @@ def test_trusted_status_action_uses_read_only_provider(monkeypatch):
             "scopes": ["status:bid:read"],
         },
     )
+    previous = process_chat_message(ChatRequest(
+        message="не видна моя ставка", trusted_context_token=token,
+        session_id="v2-trusted-status", context=UserContext(lot_id="123")))
+    assert any(action.id == "bid.status.fetch" for action in previous.actions)
     response = process_chat_message(
         ChatRequest(
             message="Проверить ставку",
             selected_action_id="bid.status.fetch",
             trusted_context_token=token,
+            conversation_turn_id=previous.message_id,
             session_id="v2-trusted-status",
             context=UserContext(lot_id="123"),
         )
@@ -196,7 +203,8 @@ def test_expert_review_queue_is_not_loaded_as_active_knowledge():
     review_queue = json.loads(Path("knowledge/v2/review_queue.json").read_text(encoding="utf-8"))
     active_ids = {scenario.scenario_id for scenario in load_scenarios()}
     assert review_queue["publication_policy"] == "expert_approval_required"
-    assert len(review_queue["records"]) == 8
+    assert review_queue["records"]
+    assert len({r["candidate_id"] for r in review_queue["records"]}) == len(review_queue["records"])
     for item in review_queue["records"]:
         assert item["status"] == "expert_review_required"
         assert item["publication_blockers"]

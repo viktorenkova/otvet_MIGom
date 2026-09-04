@@ -130,7 +130,10 @@ def fact_context(contract: AnswerContract) -> str:
 def verify_answer(candidate: str, fallback: str, contract: AnswerContract | None) -> AnswerVerification:
     if contract is None:
         return AnswerVerification(False, fallback, (), "missing_scenario_contract")
-    if normalize_matching_text(candidate) == normalize_matching_text(fallback):
+    # A caller-provided fallback is not evidence of approval. Only the published
+    # contract can authorize the deterministic fast path and rejection target.
+    fallback = contract.approved_template
+    if normalize_matching_text(candidate) == normalize_matching_text(contract.approved_template):
         return AnswerVerification(True, candidate, contract.required_fact_ids, "deterministic_approved_template")
 
     allowed_corpus = " ".join(contract.facts[fact_id] for fact_id in contract.allowed_fact_ids)

@@ -11,6 +11,24 @@ from typing import Any, Iterable
 ROOT = Path(__file__).resolve().parents[2]
 
 
+def _embedding_fingerprint(index) -> dict[str, Any]:
+    if index.model is None:
+        return {"weights_sha256": None, "revision": None}
+    cached = getattr(index, "_manifest_embedding_fingerprint", None)
+    if cached is not None:
+        return cached
+    digest = hashlib.sha256()
+    for name, tensor in sorted(index.model.state_dict().items()):
+        digest.update(name.encode("utf-8"))
+        digest.update(str(tuple(tensor.shape)).encode("ascii"))
+        digest.update(str(tensor.dtype).encode("ascii"))
+        digest.update(tensor.detach().cpu().contiguous().numpy().tobytes())
+    config = index.model[0].auto_model.config
+    result = {"weights_sha256": digest.hexdigest(), "revision": getattr(config, "_commit_hash", None)}
+    index._manifest_embedding_fingerprint = result
+    return result
+
+
 def _sha256_bytes(value: bytes) -> str:
     return hashlib.sha256(value).hexdigest()
 
@@ -114,7 +132,7 @@ def build_runtime_manifest(settings: Any) -> dict[str, Any]:
     }
     llm_policy_raw = json.dumps(llm_policy, sort_keys=True, separators=(",", ":")).encode("utf-8")
     payload: dict[str, Any] = {
-        "manifest_schema": 1,
+        "manifest_schema": 2,
         "deploy_version": str(settings.deploy_version),
         "git_sha": git_sha,
         "working_tree_dirty": working_tree_dirty,
@@ -125,7 +143,17 @@ def build_runtime_manifest(settings: Any) -> dict[str, Any]:
         "application_bundle_sha256": _sha256_files(_tree_files("backend/app", {".py"})),
         "routing_bundle_sha256": _sha256_files(routing_files),
         "prompt_bundle_sha256": _sha256_files(prompt_files),
-        "widget_bundle_sha256": _sha256_files(_tree_files("frontend/chat-widget")),
+        "widget_bundle_sha256": _sha256_files(_tree_files("frontend", {".js", ".css", ".html"})),
+        "scorer_artifact_sha256": _sha256_file(ROOT / "artifacts/stage3-pairwise-reranker.joblib"),
+        "scorer_config_sha256": _sha256_file(ROOT / "configs/reranker_config.json"),
+        "candidate_scorer_config_sha256": _sha256_file(ROOT / "configs/architecture_reranker_config.json"),
+        "feature_schema_sha256": _sha256_file(ROOT / "backend/app/bot/pairwise_reranker.py"),
+        "evaluator_sha256": _sha256_files(_tree_files("backend/tools", {".py"})),
+        "policy_bundle_sha256": _sha256_files(_tree_files("configs", {".json"})),
+        "routing_architecture": settings.routing_architecture,
+        "dialogue_state_enabled": settings.dialogue_state_enabled,
+        "llm_understanding_enabled": settings.llm_understanding_enabled,
+        "architecture_experiment": settings.architecture_experiment,
         "knowledge_mode": (
             "v3_1"
             if settings.knowledge_v2_enabled
@@ -141,6 +169,23 @@ def build_runtime_manifest(settings: Any) -> dict[str, Any]:
         "llm_fallback_model": str(settings.llm_fallback_model),
         "llm_policy_sha256": _sha256_bytes(llm_policy_raw),
     }
+    from backend.app.bot.knowledge_search import _semantic_index
+    semantic = json.loads(matching_config.read_text(encoding="utf-8")).get("semantic_matching", {})
+    payload["retrieval_settings"] = semantic
+    payload["dense_runtime"] = (
+        {"initialized": True, "available": _semantic_index().model is not None,
+         "error": _semantic_index().dense_error,
+         "configured_model": _semantic_index().config.get("dense_model"),
+         **_embedding_fingerprint(_semantic_index())}
+        if _semantic_index.cache_info().currsize else {"initialized": False, "available": None}
+    )
+    from importlib.metadata import version, PackageNotFoundError
+    payload["dependencies"] = {}
+    for name in ("numpy", "scikit-learn", "sentence-transformers", "torch", "fastapi", "pydantic"):
+        try:
+            payload["dependencies"][name] = version(name)
+        except PackageNotFoundError:
+            payload["dependencies"][name] = "unavailable"
     canonical = json.dumps(payload, ensure_ascii=False, sort_keys=True, separators=(",", ":"))
     payload["manifest_sha256"] = _sha256_bytes(canonical.encode("utf-8"))
     return payload

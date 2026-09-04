@@ -1,0 +1,465 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-09-04T13:50:11.600358+00:00",
+  "fresh_runtime": true,
+  "dataset_sha256": "697dfcb448d23afb493524681f96925a1bfe41c939789ac94bb818d619e8f9ab",
+  "adjudication": {
+    "path": "tests\\data\\routing_label_adjudication_110.json",
+    "sha256": "25d2c3a3716399c3d54fb714e65ccd9b5fb0090ec08971d97454d55b60fb6909",
+    "record_count": 110,
+    "reviewer": "OpenAI Codex — evidence-based review against approved MIGTORG KB",
+    "reviewed_at": "2026-08-23T07:38:35.956766+00:00"
+  },
+  "assessment": "automatic route/resolution/marker checks; no expert semantic assessment",
+  "release_allowed": false,
+  "variants": {
+    "dialogue_off": {
+      "manifest": {
+        "manifest_schema": 2,
+        "deploy_version": "local",
+        "git_sha": "bd3a92a23cfa835ac92163b29a09b6bc2d54eb84",
+        "working_tree_dirty": true,
+        "knowledge_sha256": "acf427fce5c005a4ef153bb6d3eb1542b4d9dbc4a6ed8b51fd0163d4a9377308",
+        "scenarios_sha256": "05d410d7a4e2275facc0f4f3b7ab7b69db3759d0b63ce794770062ebe22d4931",
+        "matching_config_sha256": "d271d5acd48d29c1de7c1981f729e2495643a71b27b770aea7ef8f7bcc99c173",
+        "retrieval_taxonomy_sha256": "6fa00b86b9fded6d8dadbab696df865cc819ee34f458e56902940d84a44d17fd",
+        "application_bundle_sha256": "af2763d094930319ad4cb379903a7d7d3799f6d010aa5e155a69c7c544f18eb5",
+        "routing_bundle_sha256": "1227373b2d7c439bb3264ea355b497e9d97ea03153ad8e36cab52bc32e18a7ca",
+        "prompt_bundle_sha256": "d56f13370948e1cb00e54ddf4f168212aade657a7bb3033969ae0362a77d346f",
+        "widget_bundle_sha256": "1b6b268214680f4d80293929c6f2a7cde3c95efeef2c680e4827ab0919337ac8",
+        "scorer_artifact_sha256": "bbc63deb131792c0a8145b9869d841028e0c0965aa2401e84a1d477d1ed00de2",
+        "scorer_config_sha256": "761e56019e5ff8c4010a04b442b8748f427e116b2efa216dbf7dbd3ac3294ff4",
+        "candidate_scorer_config_sha256": "ffb0461f4010f2a8e9925e30fdc7e2606a608787608008bb35fc095940f64cae",
+        "feature_schema_sha256": "f40d502961a8dd76a75af3f95411bedd4437130578330500dc4dc1d88d7781d4",
+        "evaluator_sha256": "590775914cd9595e4145c71e6f49bd345874dc2867e85b1c9b75f54ae7434cfa",
+        "policy_bundle_sha256": "3e197d1d2f57ea2b8cb5bbfd13f9a3f38f31958eb9ec73e7daa691005a17ac4f",
+        "routing_architecture": "control",
+        "dialogue_state_enabled": false,
+        "llm_understanding_enabled": false,
+        "architecture_experiment": true,
+        "knowledge_mode": "v3_1",
+        "llm_enabled": false,
+        "llm_provider": "mock",
+        "llm_primary_model": "mock/safe-rules",
+        "llm_fallback_model": "mock/safe-rules",
+        "llm_policy_sha256": "783fdd246d0247b69d4caab6ae001f1fee08c1dbd5933b37d2c326c846204d69",
+        "retrieval_settings": {
+          "enabled": true,
+          "provider": "hybrid_multilingual_e5",
+          "dense_enabled": true,
+          "dense_model": "intfloat/multilingual-e5-small",
+          "dense_device": "cpu",
+          "dense_batch_size": 32,
+          "dense_document_chars": 1400,
+          "dense_query_prefix": "query: ",
+          "dense_passage_prefix": "passage: ",
+          "dense_weight": 0.7,
+          "lexical_weight": 0.3,
+          "candidate_dense_weight": 0.25,
+          "candidate_lexical_weight": 0.75,
+          "dense_similarity_floor": 0.78,
+          "dense_answer_similarity": 0.29,
+          "dense_answer_margin": 0.035,
+          "dense_clarify_similarity": 0.18,
+          "dense_clarify_margin": 0.015,
+          "domainless_dense_answer_similarity": 0.84,
+          "char_ngram_min": 2,
+          "char_ngram_max": 5,
+          "lexical_char_weight": 0.65,
+          "lexical_word_weight": 0.35,
+          "intent_boost": 0.025,
+          "rule_score_lock": 220,
+          "challenge_rule_max_score": 150,
+          "challenge_margin": 0.055,
+          "answer_similarity": 0.27,
+          "answer_margin": 0.045,
+          "clarify_similarity": 0.2,
+          "clarify_margin": 0.03,
+          "topic_labels": {
+            "platform": "О площадке MIGTORG",
+            "registration": "Регистрация и вход",
+            "tariffs": "Тариф и доступ",
+            "bidding": "Торги и ставки",
+            "lot": "Информация о лоте",
+            "inspection": "Осмотр автомобиля",
+            "payment": "Оплата и платежи",
+            "transfer": "Передача выигранного лота",
+            "pickup": "Получение автомобиля",
+            "refusal": "Отказ от лота",
+            "penalty": "Штраф",
+            "refund": "Возврат денежных средств",
+            "support": "Помощь сотрудника",
+            "feedback": "Жалоба или обратная связь"
+          }
+        },
+        "dense_runtime": {
+          "initialized": true,
+          "available": true,
+          "error": "",
+          "configured_model": "intfloat/multilingual-e5-small",
+          "weights_sha256": "f39beac7bb14ab96ce9b3f892bba5a1a5524159927a54387132915400b6d99bc",
+          "revision": "614241f622f53c4eeff9890bdc4f31cfecc418b3"
+        },
+        "dependencies": {
+          "numpy": "2.2.4",
+          "scikit-learn": "1.7.0",
+          "sentence-transformers": "4.1.0",
+          "torch": "2.7.1",
+          "fastapi": "0.136.0",
+          "pydantic": "2.11.5"
+        },
+        "manifest_sha256": "13dc9a8b0a49392cd348d69a64bcdadd3eafd7edfb621dc60b8412144168d7a6"
+      },
+      "original_dialogues": {
+        "total": 5,
+        "passed": 5,
+        "rate_pct": 100.0,
+        "by_dialogue": {
+          "dlg-office": true,
+          "dlg-refund": true,
+          "dlg-premium-action": true,
+          "dlg-bid-problem": true,
+          "dlg-new-topic-after-clarify": true
+        }
+      },
+      "derived_dialogues": {
+        "total": 3,
+        "passed": 2,
+        "rate_pct": 66.67,
+        "by_dialogue": {
+          "dlg-office-free-derived": true,
+          "dlg-refund-free-derived": true,
+          "dlg-premium-action-free-derived": false
+        }
+      },
+      "single_turn": {
+        "total": 270,
+        "checks": {
+          "transport_ok": 270,
+          "scenario_ok": 217,
+          "intent_ok": 234,
+          "resolution_ok": 263,
+          "required_facts_ok": 264,
+          "forbidden_content_ok": 270,
+          "direct_ok": 268,
+          "no_duplicate_sentences": 270,
+          "concise_ok": 270,
+          "route_hit": 217,
+          "answer_hit": 212,
+          "quality_pass": 212
+        },
+        "e2e_automatic_proxy_pct": 78.52,
+        "high_count": 236,
+        "confident_wrong_answer_count": 40,
+        "confident_wrong_among_high_pct": 16.95,
+        "confident_wrong_among_all_pct": 14.81,
+        "resolutions": {
+          "clarified": 30,
+          "answered": 111,
+          "out_of_scope": 14,
+          "escalated": 115
+        },
+        "ticket_offered": 115,
+        "ticket_created": 0,
+        "ticket_delivered": null,
+        "p95_ms": 865.24
+      },
+      "http_direct_parity_failures": [],
+      "dialogue_failures": [
+        {
+          "id": "dlg-premium-action-free-derived-t2",
+          "checks": {
+            "transport_ok": true,
+            "scenario_ok": false,
+            "intent_ok": false,
+            "resolution_ok": false,
+            "required_facts_ok": true,
+            "forbidden_content_ok": true,
+            "direct_ok": true,
+            "no_duplicate_sentences": true,
+            "concise_ok": true,
+            "route_hit": false,
+            "answer_hit": false,
+            "quality_pass": false
+          },
+          "error": "",
+          "expected": {
+            "expected_scenario_ids": [
+              "tariff.connect"
+            ],
+            "expected_intents": [
+              "tariffs"
+            ],
+            "allowed_resolutions": [
+              "answered"
+            ]
+          },
+          "scenario_id": null,
+          "resolution": "out_of_scope"
+        }
+      ]
+    },
+    "dialogue_on": {
+      "manifest": {
+        "manifest_schema": 2,
+        "deploy_version": "local",
+        "git_sha": "bd3a92a23cfa835ac92163b29a09b6bc2d54eb84",
+        "working_tree_dirty": true,
+        "knowledge_sha256": "acf427fce5c005a4ef153bb6d3eb1542b4d9dbc4a6ed8b51fd0163d4a9377308",
+        "scenarios_sha256": "05d410d7a4e2275facc0f4f3b7ab7b69db3759d0b63ce794770062ebe22d4931",
+        "matching_config_sha256": "d271d5acd48d29c1de7c1981f729e2495643a71b27b770aea7ef8f7bcc99c173",
+        "retrieval_taxonomy_sha256": "6fa00b86b9fded6d8dadbab696df865cc819ee34f458e56902940d84a44d17fd",
+        "application_bundle_sha256": "af2763d094930319ad4cb379903a7d7d3799f6d010aa5e155a69c7c544f18eb5",
+        "routing_bundle_sha256": "1227373b2d7c439bb3264ea355b497e9d97ea03153ad8e36cab52bc32e18a7ca",
+        "prompt_bundle_sha256": "d56f13370948e1cb00e54ddf4f168212aade657a7bb3033969ae0362a77d346f",
+        "widget_bundle_sha256": "1b6b268214680f4d80293929c6f2a7cde3c95efeef2c680e4827ab0919337ac8",
+        "scorer_artifact_sha256": "bbc63deb131792c0a8145b9869d841028e0c0965aa2401e84a1d477d1ed00de2",
+        "scorer_config_sha256": "761e56019e5ff8c4010a04b442b8748f427e116b2efa216dbf7dbd3ac3294ff4",
+        "candidate_scorer_config_sha256": "ffb0461f4010f2a8e9925e30fdc7e2606a608787608008bb35fc095940f64cae",
+        "feature_schema_sha256": "f40d502961a8dd76a75af3f95411bedd4437130578330500dc4dc1d88d7781d4",
+        "evaluator_sha256": "590775914cd9595e4145c71e6f49bd345874dc2867e85b1c9b75f54ae7434cfa",
+        "policy_bundle_sha256": "3e197d1d2f57ea2b8cb5bbfd13f9a3f38f31958eb9ec73e7daa691005a17ac4f",
+        "routing_architecture": "control",
+        "dialogue_state_enabled": true,
+        "llm_understanding_enabled": false,
+        "architecture_experiment": true,
+        "knowledge_mode": "v3_1",
+        "llm_enabled": false,
+        "llm_provider": "mock",
+        "llm_primary_model": "mock/safe-rules",
+        "llm_fallback_model": "mock/safe-rules",
+        "llm_policy_sha256": "783fdd246d0247b69d4caab6ae001f1fee08c1dbd5933b37d2c326c846204d69",
+        "retrieval_settings": {
+          "enabled": true,
+          "provider": "hybrid_multilingual_e5",
+          "dense_enabled": true,
+          "dense_model": "intfloat/multilingual-e5-small",
+          "dense_device": "cpu",
+          "dense_batch_size": 32,
+          "dense_document_chars": 1400,
+          "dense_query_prefix": "query: ",
+          "dense_passage_prefix": "passage: ",
+          "dense_weight": 0.7,
+          "lexical_weight": 0.3,
+          "candidate_dense_weight": 0.25,
+          "candidate_lexical_weight": 0.75,
+          "dense_similarity_floor": 0.78,
+          "dense_answer_similarity": 0.29,
+          "dense_answer_margin": 0.035,
+          "dense_clarify_similarity": 0.18,
+          "dense_clarify_margin": 0.015,
+          "domainless_dense_answer_similarity": 0.84,
+          "char_ngram_min": 2,
+          "char_ngram_max": 5,
+          "lexical_char_weight": 0.65,
+          "lexical_word_weight": 0.35,
+          "intent_boost": 0.025,
+          "rule_score_lock": 220,
+          "challenge_rule_max_score": 150,
+          "challenge_margin": 0.055,
+          "answer_similarity": 0.27,
+          "answer_margin": 0.045,
+          "clarify_similarity": 0.2,
+          "clarify_margin": 0.03,
+          "topic_labels": {
+            "platform": "О площадке MIGTORG",
+            "registration": "Регистрация и вход",
+            "tariffs": "Тариф и доступ",
+            "bidding": "Торги и ставки",
+            "lot": "Информация о лоте",
+            "inspection": "Осмотр автомобиля",
+            "payment": "Оплата и платежи",
+            "transfer": "Передача выигранного лота",
+            "pickup": "Получение автомобиля",
+            "refusal": "Отказ от лота",
+            "penalty": "Штраф",
+            "refund": "Возврат денежных средств",
+            "support": "Помощь сотрудника",
+            "feedback": "Жалоба или обратная связь"
+          }
+        },
+        "dense_runtime": {
+          "initialized": true,
+          "available": true,
+          "error": "",
+          "configured_model": "intfloat/multilingual-e5-small",
+          "weights_sha256": "f39beac7bb14ab96ce9b3f892bba5a1a5524159927a54387132915400b6d99bc",
+          "revision": "614241f622f53c4eeff9890bdc4f31cfecc418b3"
+        },
+        "dependencies": {
+          "numpy": "2.2.4",
+          "scikit-learn": "1.7.0",
+          "sentence-transformers": "4.1.0",
+          "torch": "2.7.1",
+          "fastapi": "0.136.0",
+          "pydantic": "2.11.5"
+        },
+        "manifest_sha256": "f95e7ecd0bb28c33a0d25a497d76f1d6c0aba6bd86cd6c3b615c2e10c81a3069"
+      },
+      "original_dialogues": {
+        "total": 5,
+        "passed": 5,
+        "rate_pct": 100.0,
+        "by_dialogue": {
+          "dlg-office": true,
+          "dlg-refund": true,
+          "dlg-premium-action": true,
+          "dlg-bid-problem": true,
+          "dlg-new-topic-after-clarify": true
+        }
+      },
+      "derived_dialogues": {
+        "total": 3,
+        "passed": 3,
+        "rate_pct": 100.0,
+        "by_dialogue": {
+          "dlg-office-free-derived": true,
+          "dlg-refund-free-derived": true,
+          "dlg-premium-action-free-derived": true
+        }
+      },
+      "single_turn": {
+        "total": 270,
+        "checks": {
+          "transport_ok": 270,
+          "scenario_ok": 218,
+          "intent_ok": 235,
+          "resolution_ok": 263,
+          "required_facts_ok": 264,
+          "forbidden_content_ok": 270,
+          "direct_ok": 268,
+          "no_duplicate_sentences": 270,
+          "concise_ok": 270,
+          "route_hit": 218,
+          "answer_hit": 213,
+          "quality_pass": 213
+        },
+        "e2e_automatic_proxy_pct": 78.89,
+        "high_count": 236,
+        "confident_wrong_answer_count": 39,
+        "confident_wrong_among_high_pct": 16.53,
+        "confident_wrong_among_all_pct": 14.44,
+        "resolutions": {
+          "clarified": 30,
+          "answered": 111,
+          "out_of_scope": 14,
+          "escalated": 115
+        },
+        "ticket_offered": 115,
+        "ticket_created": 0,
+        "ticket_delivered": null,
+        "p95_ms": 596.96
+      },
+      "http_direct_parity_failures": [],
+      "dialogue_failures": []
+    }
+  },
+  "derived_probe_definition": [
+    {
+      "id": "dlg-office-free-derived",
+      "turns": [
+        {
+          "text": "подскажите ваш адрес",
+          "allowed_resolutions": [
+            "clarified"
+          ],
+          "forbidden_answer_fragments": [
+            "Смирновская",
+            "стр. 16",
+            "код 30"
+          ]
+        },
+        {
+          "expected_scenario_ids": [
+            "support.office_visit"
+          ],
+          "expected_intents": [
+            "support"
+          ],
+          "allowed_resolutions": [
+            "answered",
+            "escalated"
+          ],
+          "text": "офис MIGTORG"
+        }
+      ]
+    },
+    {
+      "id": "dlg-refund-free-derived",
+      "turns": [
+        {
+          "text": "нужен возврат",
+          "allowed_resolutions": [
+            "clarified"
+          ]
+        },
+        {
+          "expected_scenario_ids": [
+            "refund.application"
+          ],
+          "expected_intents": [
+            "refund"
+          ],
+          "allowed_resolutions": [
+            "answered",
+            "escalated"
+          ],
+          "text": "подать заявление"
+        }
+      ]
+    },
+    {
+      "id": "dlg-premium-action-free-derived",
+      "turns": [
+        {
+          "text": "что дает премиальный тариф",
+          "expected_scenario_ids": [
+            "tariff.premium"
+          ],
+          "allowed_resolutions": [
+            "answered"
+          ]
+        },
+        {
+          "expected_scenario_ids": [
+            "tariff.connect"
+          ],
+          "expected_intents": [
+            "tariffs"
+          ],
+          "allowed_resolutions": [
+            "answered"
+          ],
+          "text": "а как его подключить?"
+        }
+      ]
+    }
+  ],
+  "derived_probe_status": "development probes from existing dialogues; not independent acceptance",
+  "warmup_seconds": 65.72,
+  "single_turn_changes": [
+    {
+      "id": "widget-075",
+      "before_pass": false,
+      "after_pass": true,
+      "before_scenario": "pickup.receive_lot",
+      "after_scenario": "pickup.access_issuer"
+    }
+  ],
+  "bundle_unchanged_during_run": true,
+  "evaluator_file_sha256": "45c6e2919578e9969bd4cbd83a1f3db7b12d77996ed5413cb274ba11e63145f5",
+  "profiled_verification": {
+    "counts": {
+      "tests": 66,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "passed": 66
+    },
+    "junit": ".work/dialogue-final-tests.xml",
+    "junit_sha256": "4e4b38896f9c625b6aa1264153a8e53d7117d2f049df4dd8103b74ee619ec714",
+    "historical_report_test_deselected": 1,
+    "full_suite_rerun": false,
+    "real_browser_checked": false
+  }
+}

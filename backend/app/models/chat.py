@@ -24,6 +24,7 @@ class ChatRequest(BaseModel):
     consent_to_ticket: bool = False
     selected_action_id: str | None = None
     conversation_turn_id: str | None = None
+    state_version: int | None = Field(default=None, ge=0)
     trusted_context_token: str | None = None
 
     model_config = {"populate_by_name": True}
@@ -66,6 +67,9 @@ Resolution = Literal[
 
 
 class ChatResponse(BaseModel):
+    state_version: int | None = None
+    action_result: dict[str, Any] | None = None
+    pending_requests: list[str] = Field(default_factory=list)
     session_id: str | None = None
     message_id: str | None = None
     answer: str

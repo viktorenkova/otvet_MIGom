@@ -5,6 +5,7 @@ import json
 from pathlib import Path
 
 import joblib
+import pytest
 
 from backend.app.bot.scenario_engine import load_scenarios
 
@@ -20,7 +21,8 @@ def _sha256(relative_path: str) -> str:
     return hashlib.sha256((ROOT / relative_path).read_bytes()).hexdigest()
 
 
-def test_pairwise_reranker_passes_stage3_gate() -> None:
+@pytest.mark.report_snapshot
+def test_historical_pairwise_report_records_stage3_gate() -> None:
     report = _json("reports/stage3-pairwise-reranker-evaluation.json")
     assert report["passed"] is True
     assert report["validation"]["top1_pct"] >= 90.0
@@ -64,7 +66,8 @@ def test_candidate_reports_contain_only_active_scenarios() -> None:
         assert candidate_ids <= active
 
 
-def test_stage3_runtime_preserves_live_quality_and_safety() -> None:
+@pytest.mark.report_snapshot
+def test_historical_stage3_reports_preserve_recorded_metrics() -> None:
     live = _json("reports/quality-stage3-live-160.json")
     closed = _json("reports/quality-stage3-closed-270.json")
     assert live["single_turn_summary"]["overall"]["quality_pass"]["rate_pct"] >= 94.38

@@ -1,0 +1,228 @@
+{
+  "source_commit": "bd3a92a",
+  "current_full_suite": {
+    "passed": 633,
+    "failed": 43
+  },
+  "baseline_replay_of_current_failures": {
+    "passed": 13,
+    "failed": 30
+  },
+  "failures": [
+    {
+      "test": "tests.test_deployed_chat_regressions_2026_08_13::test_employee_requests_use_written_support_without_repeating_a_name[\\u043f\\u0443\\u0441\\u0442\\u044c \\u043f\\u0435\\u0440\\u0435\\u0437\\u0432\\u043e\\u043d\\u0438\\u0442 \\u0418\\u0433\\u043e\\u0440\\u044c]",
+      "failed_at_bd3a92a": true,
+      "failure": "tests\\test_deployed_chat_regressions_2026_08_13.py:43: in test_employee_requests_use_written_support_without_repeating_a_name\n    assert response.scenario_id in {\"support.contact\", \"support.callback\"}\nE   AssertionError: assert None in {'support.callback', 'support.contact'}\nE    +  where None = ChatResponse(state_version=1, action_result=None, session_id='deploy-regression-2ac9513a-59aa-4ba0-8952-93baf988c509',...фы', 'Торги и ставки', 'Оплата', 'Вопрос по лоту'], actions=[], used_context=[], data_freshness=None, action='clarify').scenario_id"
+    },
+    {
+      "test": "tests.test_deployed_chat_regressions_2026_08_13::test_connect_premium_answer_excludes_unasked_demo_instructions",
+      "failed_at_bd3a92a": false,
+      "failure": "tests\\test_deployed_chat_regressions_2026_08_13.py:100: in test_connect_premium_answer_excludes_unasked_demo_instructions\n    assert \"выберите «премиум»\" in response.answer.casefold()\nE   AssertionError: assert 'выберите «премиум»' in 'войдите в личный кабинет, откройте раздел тарифов, выберите подходящий вариант и подтвердите оплату. пополнение балан...ткрытом чате. после оплаты проверьте статус тарифа в кабинете; если доступ не появился, создайте обращение по платежу.'\nE    +  where 'войдите в личный кабинет, откройте раздел тарифов, выберите подходящий вариант и подтвердите оплату. пополнение балан...ткрытом чате. после оплаты проверьте статус тарифа в кабинете; если доступ не появился, создайте обращение по платежу.' = <built-in method casefold of str object at 0x0000027BBCE0AB70>()\nE    +    where <built-in method casefold of str object at 0x0000027BBCE0AB70> = 'Войдите в личный кабинет, откройте раздел тарифов, выберите подходящий вариант и подтвердите оплату. Пополнение балан...ткрытом чате. После оплаты проверьте статус тарифа в кабинете; если доступ не появился, создайте обращение по платежу.'.casefold\nE    +      where 'Войдите в личный кабинет, откройте раздел тарифов, выберите подходящий вариант и подтвердите оплату. Пополнение балан...ткрытом чате. После оплаты проверьте статус тарифа в кабинете; если доступ не появился, создайте обращение по платежу.' = ChatResponse(state_version=1, action_result=None, session_id='deploy-regression-bd9f2076-9368-48e1-b9a7-e9997b5ea2ec',...}, requires_auth=False, requires_confirmation=True)], used_context=['page_type'], data_freshness=None, action='answer').answer"
+    },
+    {
+      "test": "tests.test_deployed_chat_regressions_2026_08_13::test_refund_template_request_returns_the_document_not_a_generic_fallback",
+      "failed_at_bd3a92a": false,
+      "failure": "tests\\test_deployed_chat_regressions_2026_08_13.py:124: in test_refund_template_request_returns_the_document_not_a_generic_fallback\n    assert \"шаблон заявления\" in response.answer.casefold()\nE   AssertionError: assert 'шаблон заявления' in 'возврат оформляется заявлением или через предусмотренную кнопку в личном кабинете; одного сообщения в чате недостаточ...очтовой ветке на info@migtorg.com. подготовьте данные платежа без полного номера карты, cvc/cvv, пароля и кода из sms.'\nE    +  where 'возврат оформляется заявлением или через предусмотренную кнопку в личном кабинете; одного сообщения в чате недостаточ...очтовой ветке на info@migtorg.com. подготовьте данные платежа без полного номера карты, cvc/cvv, пароля и кода из sms.' = <built-in method casefold of str object at 0x0000027BBCFDD5B0>()\nE    +    where <built-in method casefold of str object at 0x0000027BBCFDD5B0> = 'Возврат оформляется заявлением или через предусмотренную кнопку в личном кабинете; одного сообщения в чате недостаточ...очтовой ветке на info@migtorg.com. Подготовьте данные платежа без полного номера карты, CVC/CVV, пароля и кода из SMS.'.casefold\nE    +      where 'Возврат оформляется заявлением или через предусмотренную кнопку в личном кабинете; одного сообщения в чате недостаточ...очтовой ветке на info@migtorg.com. Подготовьте данные платежа без полного номера карты, CVC/CVV, пароля и кода из SMS.' = ChatResponse(state_version=1, action_result=None, session_id='deploy-regression-67fe9c1e-887e-4130-affc-21718380443c',...ires_auth=False, requires_confirmation=True)], used_context=['page_type'], data_freshness=None, action='show_document').answer"
+    },
+    {
+      "test": "tests.test_deployed_chat_regressions_2026_08_13::test_short_bid_definition_does_not_route_to_missing_bid_troubleshooting",
+      "failed_at_bd3a92a": true,
+      "failure": "tests\\test_deployed_chat_regressions_2026_08_13.py:132: in test_short_bid_definition_does_not_route_to_missing_bid_troubleshooting\n    assert response.scenario_id == \"bid.price_terms\"\nE   AssertionError: assert 'bid.place' == 'bid.price_terms'\nE     \nE     - bid.price_terms\nE     + bid.place"
+    },
+    {
+      "test": "tests.test_expert_questionnaire_part2_ver2::test_contract_and_refund_terms_require_authorized_role",
+      "failed_at_bd3a92a": true,
+      "failure": "tests\\test_expert_questionnaire_part2_ver2.py:62: in test_contract_and_refund_terms_require_authorized_role\n    assert scenarios[scenario_id][\"roles\"] == [\"authorized\"]\nE   AssertionError: assert ['guest', 'authorized'] == ['authorized']\nE     \nE     At index 0 diff: 'guest' != 'authorized'\nE     Left contains one more item: 'authorized'\nE     Use -v to get more diff"
+    },
+    {
+      "test": "tests.test_expert_questionnaire_part2_ver2::test_demo_tariff_scope_and_confirmed_identification_are_recorded",
+      "failed_at_bd3a92a": true,
+      "failure": "tests\\test_expert_questionnaire_part2_ver2.py:71: in test_demo_tariff_scope_and_confirmed_identification_are_recorded\n    assert \"демо-тарифа\" in joined\nE   AssertionError: assert 'демо-тарифа' in 'Тариф и баланс являются разными сущностями. Подходящий тариф выбирается и активируется в личном кабинете. Пополнение ...ные данные и подписывает договор покупателя; ИП или организация направляет реквизиты и получает договор на оформление.'"
+    },
+    {
+      "test": "tests.test_manual_dialogue_release_review::test_reviewed_dialogue_routing_remains_stable[\\u043f\\u043e\\u0447\\u0435\\u043c\\u0443 \\u043e\\u0442\\u043a\\u0430\\u0437\\u0430\\u043b\\u0438 \\u0432 \\u0432\\u043e\\u0437\\u0432\\u0440\\u0430\\u0442\\u0435]",
+      "failed_at_bd3a92a": true,
+      "failure": "tests\\test_manual_dialogue_release_review.py:41: in test_reviewed_dialogue_routing_remains_stable\n    assert response.scenario_id == case[\"expected_scenario_id\"]\nE   AssertionError: assert None == 'refund.denied_or_blocked'\nE    +  where None = ChatResponse(state_version=1, action_result=None, session_id='release-review-1425087213544728713', message_id='40', an...возврат', 'Срок и статус возврата', 'Другая тема'], actions=[], used_context=[], data_freshness=None, action='clarify').scenario_id"
+    },
+    {
+      "test": "tests.test_manual_dialogue_release_review::test_reviewed_dialogue_routing_remains_stable[\\u043a\\u0430\\u043a \\u043e\\u043f\\u043b\\u0430\\u0442\\u0438\\u0442\\u044c \\u0431\\u0435\\u0437 \\u043a\\u043e\\u043c\\u0438\\u0441\\u0441\\u0438\\u0438]",
+      "failed_at_bd3a92a": false,
+      "failure": "tests\\test_manual_dialogue_release_review.py:41: in test_reviewed_dialogue_routing_remains_stable\n    assert response.scenario_id == case[\"expected_scenario_id\"]\nE   AssertionError: assert 'commission.discount' == 'payment.methods'\nE     \nE     - payment.methods\nE     + commission.discount"
+    },
+    {
+      "test": "tests.test_manual_dialogue_release_review::test_reviewed_dialogue_routing_remains_stable[\\u043c\\u043e\\u0436\\u043d\\u043e \\u043e\\u043f\\u043b\\u0430\\u0442\\u0438\\u0442\\u044c \\u0442\\u0430\\u0440\\u0438\\u0444 \\u043f\\u043e QR \\u0431\\u0435\\u0437 \\u043a\\u043e\\u043c\\u0438\\u0441\\u0441\\u0438\\u0438]",
+      "failed_at_bd3a92a": true,
+      "failure": "tests\\test_manual_dialogue_release_review.py:41: in test_reviewed_dialogue_routing_remains_stable\n    assert response.scenario_id == case[\"expected_scenario_id\"]\nE   AssertionError: assert 'tariff.choose' == 'payment.methods'\nE     \nE     - payment.methods\nE     + tariff.choose"
+    },
+    {
+      "test": "tests.test_manual_dialogue_release_review::test_reviewed_dialogue_routing_remains_stable[\\u043a\\u0430\\u043a \\u043e\\u043f\\u043b\\u0430\\u0442\\u0438\\u0442\\u044c \\u0432\\u044b\\u0438\\u0433\\u0440\\u0430\\u043d\\u043d\\u044b\\u0439 \\u043b\\u043e\\u0442]",
+      "failed_at_bd3a92a": true,
+      "failure": "tests\\test_manual_dialogue_release_review.py:41: in test_reviewed_dialogue_routing_remains_stable\n    assert response.scenario_id == case[\"expected_scenario_id\"]\nE   AssertionError: assert 'win.next_steps' == None\nE    +  where 'win.next_steps' = ChatResponse(state_version=1, action_result=None, session_id='release-review-6925462376780930688', message_id='45', an...}, requires_auth=False, requires_confirmation=True)], used_context=['page_type'], data_freshness=None, action='answer').scenario_id"
+    },
+    {
+      "test": "tests.test_manual_dialogue_release_review::test_reviewed_dialogue_routing_remains_stable[\\u043a\\u0430\\u043a \\u043e\\u0441\\u043f\\u043e\\u0440\\u0438\\u0442\\u044c \\u0448\\u0442\\u0440\\u0430\\u0444]",
+      "failed_at_bd3a92a": false,
+      "failure": "tests\\test_manual_dialogue_release_review.py:41: in test_reviewed_dialogue_routing_remains_stable\n    assert response.scenario_id == case[\"expected_scenario_id\"]\nE   AssertionError: assert None == 'penalty.explain_or_dispute'\nE    +  where None = ChatResponse(state_version=1, action_result=None, session_id='release-review-8599268100778634917', message_id='46', an...а', 'Как подать запрос на возврат', 'Другая тема'], actions=[], used_context=[], data_freshness=None, action='clarify').scenario_id"
+    },
+    {
+      "test": "tests.test_manual_dialogue_release_review::test_reviewed_dialogue_routing_remains_stable[\\u043a\\u0430\\u043a\\u0438\\u0435 \\u043f\\u043e\\u0441\\u043b\\u0435\\u0434\\u0441\\u0442\\u0432\\u0438\\u044f \\u043e\\u0442\\u043a\\u0430\\u0437\\u0430 \\u043d\\u0430 \\u043a\\u0430\\u0436\\u0434\\u043e\\u043c \\u044d\\u0442\\u0430\\u043f\\u0435]",
+      "failed_at_bd3a92a": false,
+      "failure": "tests\\test_manual_dialogue_release_review.py:41: in test_reviewed_dialogue_routing_remains_stable\n    assert response.scenario_id == case[\"expected_scenario_id\"]\nE   AssertionError: assert None == 'refusal.unconfirmed_details'\nE    +  where None = ChatResponse(state_version=1, action_result=None, session_id='release-review-337864918458315400', message_id='47', ans...нение, уменьшение и отмена ставки', 'Другая тема'], actions=[], used_context=[], data_freshness=None, action='clarify').scenario_id"
+    },
+    {
+      "test": "tests.test_manual_dialogue_release_review::test_reviewed_dialogue_routing_remains_stable[\\u0441\\u043a\\u0440\\u044b\\u0442\\u043e\\u0435 \\u043f\\u043e\\u0432\\u0440\\u0435\\u0436\\u0434\\u0435\\u043d\\u0438\\u0435 \\u043c\\u043e\\u0433\\u0443 \\u043e\\u0442\\u043a\\u0430\\u0437\\u0430\\u0442\\u044c\\u0441\\u044f]",
+      "failed_at_bd3a92a": false,
+      "failure": "tests\\test_manual_dialogue_release_review.py:41: in test_reviewed_dialogue_routing_remains_stable\n    assert response.scenario_id == case[\"expected_scenario_id\"]\nE   AssertionError: assert None == 'refusal.evidence'\nE    +  where None = ChatResponse(state_version=1, action_result=None, session_id='release-review-8907310330249320229', message_id='48', an...Не открывается раздел «Имущество»', 'Другая тема'], actions=[], used_context=[], data_freshness=None, action='clarify').scenario_id"
+    },
+    {
+      "test": "tests.test_manual_dialogue_release_review::test_reviewed_dialogue_routing_remains_stable[\\u044f \\u043f\\u0435\\u0440\\u0435\\u0434\\u0443\\u043c\\u0430\\u043b \\u043f\\u043e\\u043a\\u0443\\u043f\\u0430\\u0442\\u044c \\u0432\\u044b\\u0438\\u0433\\u0440\\u0430\\u043d\\u043d\\u044b\\u0439 \\u043b\\u043e\\u0442]",
+      "failed_at_bd3a92a": true,
+      "failure": "tests\\test_manual_dialogue_release_review.py:41: in test_reviewed_dialogue_routing_remains_stable\n    assert response.scenario_id == case[\"expected_scenario_id\"]\nE   AssertionError: assert 'win.next_steps' == None\nE    +  where 'win.next_steps' = ChatResponse(state_version=1, action_result=None, session_id='release-review-2396652487334264050', message_id='49', an...}, requires_auth=False, requires_confirmation=True)], used_context=['page_type'], data_freshness=None, action='answer').scenario_id"
+    },
+    {
+      "test": "tests.test_manual_dialogue_release_review::test_reviewed_dialogue_routing_remains_stable[\\u043c\\u043e\\u0433\\u0443 \\u043e\\u0442\\u043c\\u0435\\u043d\\u0438\\u0442\\u044c \\u0430\\u043a\\u0442\\u0438\\u0432\\u043d\\u0443\\u044e \\u0441\\u0442\\u0430\\u0432\\u043a\\u0443]",
+      "failed_at_bd3a92a": true,
+      "failure": "tests\\test_manual_dialogue_release_review.py:41: in test_reviewed_dialogue_routing_remains_stable\n    assert response.scenario_id == case[\"expected_scenario_id\"]\nE   AssertionError: assert 'bid.modify_cancel' == None\nE    +  where 'bid.modify_cancel' = ChatResponse(state_version=1, action_result=None, session_id='release-review-3269616156395991298', message_id='50', an...}, requires_auth=False, requires_confirmation=True)], used_context=['page_type'], data_freshness=None, action='answer').scenario_id"
+    },
+    {
+      "test": "tests.test_manual_dialogue_release_review::test_reviewed_dialogue_routing_remains_stable[\\u0432 \\u0434\\u043e\\u0433\\u043e\\u0432\\u043e\\u0440\\u0435 \\u043d\\u0435\\u043f\\u0440\\u0430\\u0432\\u0438\\u043b\\u044c\\u043d\\u0430\\u044f \\u0441\\u0441\\u044b\\u043b\\u043a\\u0430 \\u043d\\u0430 \\u043f\\u0440\\u0438\\u043b\\u043e\\u0436\\u0435\\u043d\\u0438\\u0435]",
+      "failed_at_bd3a92a": true,
+      "failure": "tests\\test_manual_dialogue_release_review.py:41: in test_reviewed_dialogue_routing_remains_stable\n    assert response.scenario_id == case[\"expected_scenario_id\"]\nE   AssertionError: assert 'feedback.imp...nt_suggestion' == 'contract.unconfirmed_details'\nE     \nE     - contract.unconfirmed_details\nE     + feedback.improvement_suggestion"
+    },
+    {
+      "test": "tests.test_manual_dialogue_release_review::test_reviewed_dialogue_routing_remains_stable[\\u043a\\u0430\\u043a\\u0438\\u0435 \\u0434\\u0430\\u043d\\u043d\\u044b\\u0435 \\u0434\\u043e\\u0441\\u0442\\u0443\\u043f\\u043d\\u044b \\u0442\\u043e\\u043b\\u044c\\u043a\\u043e \\u0441\\u043e\\u0442\\u0440\\u0443\\u0434\\u043d\\u0438\\u043a\\u0443]",
+      "failed_at_bd3a92a": false,
+      "failure": "tests\\test_manual_dialogue_release_review.py:41: in test_reviewed_dialogue_routing_remains_stable\n    assert response.scenario_id == case[\"expected_scenario_id\"]\nE   AssertionError: assert 'privacy.data_categories' == 'support.staff_only_details'\nE     \nE     - support.staff_only_details\nE     + privacy.data_categories"
+    },
+    {
+      "test": "tests.test_manual_dialogue_release_review::test_reviewed_dialogue_routing_remains_stable[\\u043c\\u043e\\u0436\\u0435\\u0442 \\u0434\\u0440\\u0443\\u0433\\u043e\\u0439 \\u0447\\u0435\\u043b\\u043e\\u0432\\u0435\\u043a \\u0437\\u0430\\u0431\\u0440\\u0430\\u0442\\u044c \\u043c\\u043e\\u0439 \\u043b\\u043e\\u0442]",
+      "failed_at_bd3a92a": true,
+      "failure": "tests\\test_manual_dialogue_release_review.py:41: in test_reviewed_dialogue_routing_remains_stable\n    assert response.scenario_id == case[\"expected_scenario_id\"]\nE   AssertionError: assert 'pickup.receive_lot' == None\nE    +  where 'pickup.receive_lot' = ChatResponse(state_version=1, action_result=None, session_id='release-review-9055012610379968003', message_id='55', an...}, requires_auth=False, requires_confirmation=True)], used_context=['page_type'], data_freshness=None, action='answer').scenario_id"
+    },
+    {
+      "test": "tests.test_manual_dialogue_release_review::test_reviewed_dialogue_routing_remains_stable[\\u0433\\u043e\\u0442\\u043e\\u0432 \\u0434\\u043e\\u043f\\u043b\\u0430\\u0442\\u0438\\u0442\\u044c \\u043f\\u0440\\u043e\\u0434\\u0430\\u0432\\u0446\\u0443 \\u0447\\u0442\\u043e\\u0431\\u044b \\u0437\\u0430\\u0431\\u0440\\u0430\\u0442\\u044c \\u043b\\u043e\\u0442]",
+      "failed_at_bd3a92a": true,
+      "failure": "tests\\test_manual_dialogue_release_review.py:41: in test_reviewed_dialogue_routing_remains_stable\n    assert response.scenario_id == case[\"expected_scenario_id\"]\nE   AssertionError: assert 'pickup.receive_lot' == None\nE    +  where 'pickup.receive_lot' = ChatResponse(state_version=1, action_result=None, session_id='release-review-5589255231311262654', message_id='57', an...}, requires_auth=False, requires_confirmation=True)], used_context=['page_type'], data_freshness=None, action='answer').scenario_id"
+    },
+    {
+      "test": "tests.test_manual_dialogue_release_review::test_reviewed_dialogue_routing_remains_stable[\\u043f\\u0440\\u043e\\u0434\\u0430\\u0432\\u0435\\u0446 \\u043d\\u0435 \\u0432\\u044b\\u0445\\u043e\\u0434\\u0438\\u0442 \\u043d\\u0430 \\u0441\\u0432\\u044f\\u0437\\u044c]",
+      "failed_at_bd3a92a": true,
+      "failure": "tests\\test_manual_dialogue_release_review.py:41: in test_reviewed_dialogue_routing_remains_stable\n    assert response.scenario_id == case[\"expected_scenario_id\"]\nE   AssertionError: assert 'transfer.seller_no_response' == None\nE    +  where 'transfer.seller_no_response' = ChatResponse(state_version=1, action_result=None, session_id='release-review-3444959613083704662', message_id='66', an...ires_auth=False, requires_confirmation=True)], used_context=['page_type'], data_freshness=None, action='create_ticket').scenario_id"
+    },
+    {
+      "test": "tests.test_manual_dialogue_release_review::test_reviewed_dialogue_routing_remains_stable[\\u043d\\u0435\\u0442 \\u0438\\u043d\\u0444\\u043e\\u0440\\u043c\\u0430\\u0446\\u0438\\u0438 \\u043e \\u043c\\u0430\\u0448\\u0438\\u043d\\u0435]",
+      "failed_at_bd3a92a": true,
+      "failure": "tests\\test_manual_dialogue_release_review.py:41: in test_reviewed_dialogue_routing_remains_stable\n    assert response.scenario_id == case[\"expected_scenario_id\"]\nE   AssertionError: assert 'lot.card_information' == None\nE    +  where 'lot.card_information' = ChatResponse(state_version=1, action_result=None, session_id='release-review-928235809527594256', message_id='67', ans...ires_auth=False, requires_confirmation=True)], used_context=['page_type'], data_freshness=None, action='create_ticket').scenario_id"
+    },
+    {
+      "test": "tests.test_manual_dialogue_release_review::test_reviewed_dialogue_routing_remains_stable[\\u043c\\u043e\\u0436\\u043d\\u043e \\u043f\\u043e\\u0441\\u043c\\u043e\\u0442\\u0440\\u0435\\u0442\\u044c \\u043c\\u0430\\u0448\\u0438\\u043d\\u0443 \\u0434\\u043e \\u0441\\u0442\\u0430\\u0432\\u043a\\u0438]",
+      "failed_at_bd3a92a": true,
+      "failure": "tests\\test_manual_dialogue_release_review.py:41: in test_reviewed_dialogue_routing_remains_stable\n    assert response.scenario_id == case[\"expected_scenario_id\"]\nE   AssertionError: assert 'bid.place' == None\nE    +  where 'bid.place' = ChatResponse(state_version=1, action_result=None, session_id='release-review-8299088610826929083', message_id='69', an...}, requires_auth=False, requires_confirmation=True)], used_context=['page_type'], data_freshness=None, action='answer').scenario_id"
+    },
+    {
+      "test": "tests.test_manual_dialogue_release_review::test_resolved_refund_request_uses_application_flow",
+      "failed_at_bd3a92a": true,
+      "failure": "tests\\test_manual_dialogue_release_review.py:47: in test_resolved_refund_request_uses_application_flow\n    assert \"кнопку возврата в личном кабинете\" in answer\nE   AssertionError: assert 'кнопку возврата в личном кабинете' in 'возврат оформляется заявлением или через предусмотренную кнопку в личном кабинете; одного сообщения в чате недостаточ...очтовой ветке на info@migtorg.com. подготовьте данные платежа без полного номера карты, cvc/cvv, пароля и кода из sms.'"
+    },
+    {
+      "test": "tests.test_manual_review_regressions::test_informal_accounting_documents_question_uses_document_scenario",
+      "failed_at_bd3a92a": false,
+      "failure": "tests\\test_manual_review_regressions.py:41: in test_informal_accounting_documents_question_uses_document_scenario\n    assert response.intent == \"payment\"\nE   AssertionError: assert 'unknown' == 'payment'\nE     \nE     - payment\nE     + unknown"
+    },
+    {
+      "test": "tests.test_manual_review_regressions::test_missing_lot_answer_contains_only_user_facing_instructions",
+      "failed_at_bd3a92a": false,
+      "failure": "tests\\test_manual_review_regressions.py:54: in test_missing_lot_answer_contains_only_user_facing_instructions\n    assert \"создайте обращение\" in response.answer.casefold()\nE   AssertionError: assert 'создайте обращение' in 'оценивайте лот только по опубликованной карточке и документам: отсутствующие характеристики бот не придумывает и не п...а. если его нет, приложите марку, модель, vin или часть, регион, дату торгов, скриншот, сумму ставки и email аккаунта.'\nE    +  where 'оценивайте лот только по опубликованной карточке и документам: отсутствующие характеристики бот не придумывает и не п...а. если его нет, приложите марку, модель, vin или часть, регион, дату торгов, скриншот, сумму ставки и email аккаунта.' = <built-in method casefold of str object at 0x0000027C72266FE0>()\nE    +    where <built-in method casefold of str object at 0x0000027C72266FE0> = 'Оценивайте лот только по опубликованной карточке и документам: отсутствующие характеристики бот не придумывает и не п...а. Если его нет, приложите марку, модель, VIN или часть, регион, дату торгов, скриншот, сумму ставки и email аккаунта.'.casefold\nE    +      where 'Оценивайте лот только по опубликованной карточке и документам: отсутствующие характеристики бот не придумывает и не п...а. Если его нет, приложите марку, модель, VIN или часть, регион, дату торгов, скриншот, сумму ставки и email аккаунта.' = ChatResponse(state_version=1, action_result=None, session_id='manual-review-missing-lot', message_id='75', answer='Оце...ires_auth=False, requires_confirmation=True)], used_context=['page_type'], data_freshness=None, action='create_ticket').answer"
+    },
+    {
+      "test": "tests.test_manual_review_regressions::test_existing_quick_scenarios_keep_their_routing[\\u041d\\u0430\\u0447\\u0438\\u0441\\u043b\\u0438\\u043b\\u0438 \\u0448\\u0442\\u0440\\u0430\\u0444-penalty]",
+      "failed_at_bd3a92a": false,
+      "failure": "tests\\test_manual_review_regressions.py:72: in test_existing_quick_scenarios_keep_their_routing\n    assert response.intent == expected_intent\nE   AssertionError: assert 'unknown' == 'penalty'\nE     \nE     - penalty\nE     + unknown"
+    },
+    {
+      "test": "tests.test_manual_review_regressions::test_existing_quick_scenarios_keep_their_routing[\\u041d\\u0435 \\u043c\\u043e\\u0433\\u0443 \\u0441\\u0434\\u0435\\u043b\\u0430\\u0442\\u044c \\u0441\\u0442\\u0430\\u0432\\u043a\\u0443-support]",
+      "failed_at_bd3a92a": true,
+      "failure": "tests\\test_manual_review_regressions.py:72: in test_existing_quick_scenarios_keep_their_routing\n    assert response.intent == expected_intent\nE   AssertionError: assert 'bidding' == 'support'\nE     \nE     - support\nE     + bidding"
+    },
+    {
+      "test": "tests.test_manual_review_regressions::test_penalty_or_deposit_quick_topic_asks_user_to_choose_one_topic",
+      "failed_at_bd3a92a": true,
+      "failure": "tests\\test_manual_review_regressions.py:105: in test_penalty_or_deposit_quick_topic_asks_user_to_choose_one_topic\n    assert response.clarifying_options == [\"Штраф\", \"Депозит\"]\nE   AssertionError: assert ['Когда требу...'Другая тема'] == ['Штраф', 'Депозит']\nE     \nE     At index 0 diff: 'Когда требуется ручная проверка сотрудником' != 'Штраф'\nE     Left contains 2 more items, first extra item: 'Срок и статус возврата'\nE     Use -v to get more diff"
+    },
+    {
+      "test": "tests.test_manual_review_regressions::test_auction_without_bids_has_dedicated_answer[\\u0442\\u043e\\u0440\\u0433\\u0438 \\u043d\\u0435 \\u0441\\u043e\\u0441\\u0442\\u043e\\u044f\\u043b\\u0438\\u0441\\u044c]",
+      "failed_at_bd3a92a": true,
+      "failure": "tests\\test_manual_review_regressions.py:149: in test_auction_without_bids_has_dedicated_answer\n    assert \"не было ни одной ставки\" in response.answer\nE   AssertionError: assert 'не было ни одной ставки' in 'Откройте карточку лота и в блоке информации о ставках укажите допустимую сумму. Система учитывает правила и шаг конкр...верьте авторизацию и активность тарифа. Если ставка отправлена, но не появилась, перейдите к сценарию проверки ставки.'\nE    +  where 'Откройте карточку лота и в блоке информации о ставках укажите допустимую сумму. Система учитывает правила и шаг конкр...верьте авторизацию и активность тарифа. Если ставка отправлена, но не появилась, перейдите к сценарию проверки ставки.' = ChatResponse(state_version=1, action_result=None, session_id='manual-review-auction-without-bids-3181609739524943431',...}, requires_auth=False, requires_confirmation=True)], used_context=['page_type'], data_freshness=None, action='answer').answer"
+    },
+    {
+      "test": "tests.test_manual_review_regressions::test_auction_without_bids_has_dedicated_answer[\\u043c\\u043e\\u0433\\u0443\\u0442 \\u043b\\u0438 \\u0442\\u043e\\u0440\\u0433\\u0438 \\u043d\\u0435 \\u0441\\u043e\\u0441\\u0442\\u043e\\u044f\\u0442\\u044c\\u0441\\u044f]",
+      "failed_at_bd3a92a": true,
+      "failure": "tests\\test_manual_review_regressions.py:149: in test_auction_without_bids_has_dedicated_answer\n    assert \"не было ни одной ставки\" in response.answer\nE   AssertionError: assert 'не было ни одной ставки' in 'Откройте карточку лота и в блоке информации о ставках укажите допустимую сумму. Система учитывает правила и шаг конкр...верьте авторизацию и активность тарифа. Если ставка отправлена, но не появилась, перейдите к сценарию проверки ставки.'\nE    +  where 'Откройте карточку лота и в блоке информации о ставках укажите допустимую сумму. Система учитывает правила и шаг конкр...верьте авторизацию и активность тарифа. Если ставка отправлена, но не появилась, перейдите к сценарию проверки ставки.' = ChatResponse(state_version=1, action_result=None, session_id='manual-review-auction-without-bids-8688625787071100136',...}, requires_auth=False, requires_confirmation=True)], used_context=['page_type'], data_freshness=None, action='answer').answer"
+    },
+    {
+      "test": "tests.test_manual_review_regressions::test_auction_without_bids_has_dedicated_answer[\\u043f\\u043e\\u0447\\u0435\\u043c\\u0443 \\u0442\\u043e\\u0440\\u0433\\u0438 \\u043d\\u0435 \\u0441\\u043e\\u0441\\u0442\\u043e\\u044f\\u043b\\u0438\\u0441\\u044c]",
+      "failed_at_bd3a92a": true,
+      "failure": "tests\\test_manual_review_regressions.py:149: in test_auction_without_bids_has_dedicated_answer\n    assert \"не было ни одной ставки\" in response.answer\nE   AssertionError: assert 'не было ни одной ставки' in 'Откройте карточку лота и в блоке информации о ставках укажите допустимую сумму. Система учитывает правила и шаг конкр...верьте авторизацию и активность тарифа. Если ставка отправлена, но не появилась, перейдите к сценарию проверки ставки.'\nE    +  where 'Откройте карточку лота и в блоке информации о ставках укажите допустимую сумму. Система учитывает правила и шаг конкр...верьте авторизацию и активность тарифа. Если ставка отправлена, но не появилась, перейдите к сценарию проверки ставки.' = ChatResponse(state_version=1, action_result=None, session_id='manual-review-auction-without-bids-5883694055061439204',...}, requires_auth=False, requires_confirmation=True)], used_context=['page_type'], data_freshness=None, action='answer').answer"
+    },
+    {
+      "test": "tests.test_manual_review_regressions::test_ticket_requests_start_with_category_selection[\\u0441\\u043e\\u0441\\u0442\\u0430\\u0432\\u0438\\u0442\\u044c \\u043e\\u0431\\u0440\\u0430\\u0449\\u0435\\u043d\\u0438\\u0435]",
+      "failed_at_bd3a92a": true,
+      "failure": "tests\\test_manual_review_regressions.py:161: in test_ticket_requests_start_with_category_selection\n    assert response.action == \"clarify\"\nE   AssertionError: assert 'answer' == 'clarify'\nE     \nE     - clarify\nE     + answer"
+    },
+    {
+      "test": "tests.test_manual_review_regressions::test_every_canonical_phrase_keeps_its_assigned_article",
+      "failed_at_bd3a92a": true,
+      "failure": "tests\\test_manual_review_regressions.py:236: in test_every_canonical_phrase_keeps_its_assigned_article\n    assert failures == {}\nE   AssertionError: assert {'авто не отд...', ...]}, ...} == {}\nE     \nE     Left contains 50 more items:\nE     {'авто не отдают': {'actual': 'pickup.receive_lot',\nE                         'expected': 'pickup.delay',\nE                         'fallback_reason': '',\nE                         'features': ['routing_v3',\nE                                      'pairwise_staged_policy_lock',...\nE     \nE     ...Full output truncated (712 lines hidden), use '-vv' to show"
+    },
+    {
+      "test": "tests.test_manual_review_regressions::test_screenshot_top_sellers_is_clarified_instead_of_misrouted",
+      "failed_at_bd3a92a": true,
+      "failure": "tests\\test_manual_review_regressions.py:252: in test_screenshot_top_sellers_is_clarified_instead_of_misrouted\n    assert response.clarifying_options == [\nE   AssertionError: assert ['Как подключ...'Другая тема'] == ['Какие прода...'Другая тема']\nE     \nE     At index 0 diff: 'Как подключиться и стать продавцом' != 'Какие продавцы размещают лоты'\nE     Left contains one more item: 'Другая тема'\nE     Use -v to get more diff"
+    },
+    {
+      "test": "tests.test_manual_review_regressions::test_reordered_accounting_documents_question_keeps_meaning[\\u0434\\u043e\\u043a\\u0443\\u043c\\u0435\\u043d\\u0442\\u044b \\u0433\\u0434\\u0435 \\u043c\\u043e\\u0438]",
+      "failed_at_bd3a92a": false,
+      "failure": "tests\\test_manual_review_regressions.py:276: in test_reordered_accounting_documents_question_keeps_meaning\n    assert response.intent == \"payment\"\nE   AssertionError: assert 'unknown' == 'payment'\nE     \nE     - payment\nE     + unknown"
+    },
+    {
+      "test": "tests.test_manual_review_regressions::test_reordered_accounting_documents_question_keeps_meaning[\\u043c\\u043e\\u0438 \\u0433\\u0434\\u0435 \\u0434\\u043e\\u043a\\u0443\\u043c\\u0435\\u043d\\u0442\\u044b]",
+      "failed_at_bd3a92a": false,
+      "failure": "tests\\test_manual_review_regressions.py:276: in test_reordered_accounting_documents_question_keeps_meaning\n    assert response.intent == \"payment\"\nE   AssertionError: assert 'unknown' == 'payment'\nE     \nE     - payment\nE     + unknown"
+    },
+    {
+      "test": "tests.test_retrieval_v31_validation::test_retrieval_dataset_is_deterministic_and_has_no_frozen_phrase_overlap",
+      "failed_at_bd3a92a": true,
+      "failure": "tests\\test_retrieval_v31_validation.py:25: in test_retrieval_dataset_is_deterministic_and_has_no_frozen_phrase_overlap\n    assert rebuilt == committed\nE   AssertionError: assert {'case_count'...nt': 374, ...} == {'case_count'...nt': 372, ...}\nE     \nE     Omitting 6 identical items, use -vv to show\nE     Differing items:\nE     {'cases': [{'exact_frozen_overlap': False, 'expected_scenario_id': 'buyer.get_started', 'id': 'buyer.get_started::prim...ected_scenario_id': 'seller.get_started', 'id': 'seller.get_started::primary::word_order', 'role': 'guest', ...}, ...]} != {'cases': [{'exact_frozen_overlap': False, 'expected_scenario_id': 'buyer.get_started', 'id': 'buyer.get_started::prim...ected_scenario_id': 'seller.get_started', 'id': 'seller.get_started::primary::word_order', 'role': 'guest', ...}, ...]}\nE     {'development_count': 374} != {'d...\nE     \nE     ...Full output truncated (6 lines hidden), use '-vv' to show"
+    },
+    {
+      "test": "tests.test_scenario_v2::test_expert_review_queue_is_not_loaded_as_active_knowledge",
+      "failed_at_bd3a92a": true,
+      "failure": "tests\\test_scenario_v2.py:211: in test_expert_review_queue_is_not_loaded_as_active_knowledge\n    assert item[\"proposed_scenario_id\"] not in active_ids\nE   AssertionError: assert 'property.overview' not in {'account.activation_pending', 'account.blocked', 'account.credential_responsibility', 'account.dashboard_sections', 'account.delete_request', 'account.identification_edge_case', ...}"
+    },
+    {
+      "test": "tests.test_screenshot_acceptance_2026_08_12::test_each_unique_screenshot_query[photo-4]",
+      "failed_at_bd3a92a": false,
+      "failure": "tests\\test_screenshot_acceptance_2026_08_12.py:76: in test_each_unique_screenshot_query\n    assert response.scenario_id == case.scenario_id\nE   AssertionError: assert None == 'payment.accounting_documents'\nE    +  where None = ChatResponse(state_version=1, action_result=None, session_id='screenshot-acceptance-4-a3633cbb-42fe-40a6-8de8-858833d1... документы по имущественному лоту', 'Другая тема'], actions=[], used_context=[], data_freshness=None, action='clarify').scenario_id\nE    +  and   'payment.accounting_documents' = ScreenshotCase(photo_number=4, query='документы где мои', scenario_id='payment.accounting_documents', intent='payment', resolution='escalated', required_text=('info@migtorg.com',), required_options=()).scenario_id"
+    },
+    {
+      "test": "tests.test_screenshot_acceptance_2026_08_12::test_each_unique_screenshot_query[photo-7]",
+      "failed_at_bd3a92a": true,
+      "failure": "tests\\test_screenshot_acceptance_2026_08_12.py:84: in test_each_unique_screenshot_query\n    assert option in response.clarifying_options\nE   AssertionError: assert 'Какие продавцы размещают лоты' in ['Как подключиться и стать продавцом', 'Победный лот не передан продавцом', 'Информация продавца и предложение покупателя', 'Другая тема']\nE    +  where ['Как подключиться и стать продавцом', 'Победный лот не передан продавцом', 'Информация продавца и предложение покупателя', 'Другая тема'] = ChatResponse(state_version=1, action_result=None, session_id='screenshot-acceptance-7-e2f61b1f-0b04-4402-94e5-edb4c167...продавца и предложение покупателя', 'Другая тема'], actions=[], used_context=[], data_freshness=None, action='clarify').clarifying_options"
+    },
+    {
+      "test": "tests.test_screenshot_acceptance_2026_08_12::test_each_unique_screenshot_query[photo-15]",
+      "failed_at_bd3a92a": true,
+      "failure": "tests\\test_screenshot_acceptance_2026_08_12.py:77: in test_each_unique_screenshot_query\n    assert response.intent == case.intent\nE   AssertionError: assert 'unknown' == 'registration'\nE     \nE     - registration\nE     + unknown"
+    },
+    {
+      "test": "tests.test_screenshot_acceptance_2026_08_12::test_each_unique_screenshot_query[photo-22]",
+      "failed_at_bd3a92a": true,
+      "failure": "tests\\test_screenshot_acceptance_2026_08_12.py:82: in test_each_unique_screenshot_query\n    assert marker.casefold() in answer\nE   AssertionError: assert 'почтовую ветку' in 'договор или дкп не нужно забирать как автомобиль: его готовит продавец и направляет по каналам сопровождения сделки. ...после передачи полных реквизитов ответа нет более 7 дней, создайте отдельное обращение с номером лота и датой запроса.'\nE    +  where 'почтовую ветку' = <built-in method casefold of str object at 0x0000027BBE90EE90>()\nE    +    where <built-in method casefold of str object at 0x0000027BBE90EE90> = 'почтовую ветку'.casefold"
+    },
+    {
+      "test": "tests.test_support_manual_review_migration::test_office_visit_requires_confirmation_and_protects_personal_data",
+      "failed_at_bd3a92a": true,
+      "failure": "tests\\test_support_manual_review_migration.py:38: in test_office_visit_requires_confirmation_and_protects_personal_data\n    assert \"строго с 10:00 до 18:00\" in answer\nE   AssertionError: assert 'строго с 10:00 до 18:00' in 'если вам нужен именно офис migtorg, он находится по адресу: г. москва, ул. смирновская, д. 25, стр. 16, 4 этаж, каб. ...ем и данными для пропуска. номер +7 (495) 649-91-99 используйте для оперативного решения, только если вы уже на месте.'"
+    }
+  ]
+}

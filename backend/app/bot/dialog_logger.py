@@ -48,6 +48,33 @@ class DialogLogger:
             conn.execute("PRAGMA synchronous = NORMAL")
             conn.executescript(
                 """
+                CREATE TABLE IF NOT EXISTS dialogue_states (
+                    session_id TEXT PRIMARY KEY,
+                    state_json TEXT NOT NULL
+                );
+                CREATE TABLE IF NOT EXISTS dialogue_leases (
+                    session_id TEXT PRIMARY KEY,
+                    token TEXT NOT NULL,
+                    expires_at TEXT NOT NULL
+                );
+                CREATE TABLE IF NOT EXISTS response_states (
+                    session_id TEXT PRIMARY KEY,
+                    message_id TEXT NOT NULL,
+                    version INTEGER NOT NULL DEFAULT 1,
+                    actions_json TEXT NOT NULL DEFAULT '[]',
+                    response_json TEXT NOT NULL DEFAULT '{}',
+                    created_at TEXT NOT NULL
+                );
+                CREATE TABLE IF NOT EXISTS decision_traces (
+                    message_id TEXT PRIMARY KEY,
+                    trace_json TEXT NOT NULL
+                );
+                CREATE TABLE IF NOT EXISTS llm_budget_reservations (
+                    id TEXT PRIMARY KEY,
+                    amount REAL NOT NULL,
+                    created_at TEXT NOT NULL,
+                    expires_at TEXT NOT NULL
+                );
                 CREATE TABLE IF NOT EXISTS dialog_messages (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
                     session_id TEXT NOT NULL,
@@ -492,20 +519,17 @@ class DialogLogger:
 
     def get_pending_clarification_state(self, session_id: str) -> dict | None:
         now = datetime.now(timezone.utc).isoformat()
-        with self._database_lock:
-            state = self._clarification_cache.get(session_id)
-        if not state:
+        with self._connect() as conn:
+            row = conn.execute(
+                "SELECT * FROM clarification_states WHERE session_id = ? AND expires_at >= ?",
+                (session_id, now),
+            ).fetchone()
+        if not row:
             return None
-        if str(state["expires_at"]) < now:
-            self.clear_pending_clarification(session_id)
-            return None
-        return {
-            "options": [dict(option) for option in state["options"]],
-            "original_message": str(state["original_message"]),
-            "context": dict(state["context"]),
-            "attempts": int(state["attempts"]),
-            "expires_at": str(state["expires_at"]),
-        }
+        return {"options": json.loads(row["options"]),
+                "original_message": row["original_message"],
+                "context": json.loads(row["context_json"]),
+                "attempts": row["attempts"], "expires_at": row["expires_at"]}
 
     def get_pending_clarification(self, session_id: str) -> list[dict[str, str]]:
         state = self.get_pending_clarification_state(session_id)
@@ -1132,3 +1156,96 @@ class DialogLogger:
             report["problem_examples"] = examples
 
         return report
+
+    def get_response_state(self, session_id: str) -> dict | None:
+        with self._connect() as conn:
+            row = conn.execute("SELECT * FROM response_states WHERE session_id = ?", (session_id,)).fetchone()
+        if not row:
+            return None
+        return {**dict(row), "actions": json.loads(row["actions_json"]),
+                "response": json.loads(row["response_json"])}
+
+    def save_response_state(self, response, trace: dict, dialogue_turn=None, lease_token=None) -> int:
+        with self._connect() as conn:
+            conn.execute("BEGIN IMMEDIATE")
+            if dialogue_turn is not None:
+                lease = conn.execute("SELECT token, expires_at FROM dialogue_leases WHERE session_id = ?", (response.session_id,)).fetchone()
+                if not lease or lease["token"] != lease_token or lease["expires_at"] < datetime.now(timezone.utc).isoformat():
+                    raise RuntimeError("dialogue_lease_lost")
+            turn = conn.execute(
+                "SELECT q.created_at, m.matched_features FROM quality_events q "
+                "JOIN matching_events m ON m.id = q.matching_event_id WHERE q.id = ? AND q.session_id = ?",
+                (response.message_id, response.session_id)).fetchone()
+            if turn:
+                features = json.loads(turn["matched_features"])
+                trace["answer_provenance"] = [f for f in features if f.startswith(("answer_fact:", "answer_verifier:"))]
+                trace.setdefault("decision", {})["pipeline_features"] = features
+                conn.execute("UPDATE dialog_messages SET answer = ? WHERE session_id = ? AND created_at = ?",
+                             (response.answer, response.session_id, turn["created_at"]))
+                conn.execute("UPDATE quality_events SET resolution = ?, action = ?, confidence = ?, latency_ms = ? WHERE id = ?",
+                             (response.resolution, response.action, response.confidence_level,
+                              int(trace.get("elapsed_ms", 0)), response.message_id))
+            row = conn.execute("SELECT version FROM response_states WHERE session_id = ?", (response.session_id,)).fetchone()
+            version = int(row[0]) + 1 if row else 1
+            response.state_version = version
+            if dialogue_turn is not None:
+                from backend.app.bot.dialogue_understanding import finish_turn
+                pending = conn.execute("SELECT options FROM clarification_states WHERE session_id = ?", (response.session_id,)).fetchone()
+                state = finish_turn(dialogue_turn, response, {"options": json.loads(pending[0])} if pending else None, trace)
+                state.version = version
+                trace["dialogue_state"] = {"version": version, "status": state.status, "expected_field": state.expected_field}
+                conn.execute("INSERT OR REPLACE INTO dialogue_states VALUES (?, ?)", (response.session_id, state.model_dump_json()))
+            conn.execute(
+                "INSERT OR REPLACE INTO response_states VALUES (?, ?, ?, ?, ?, ?)",
+                (response.session_id, response.message_id, version,
+                 json.dumps([a.model_dump() for a in response.actions], ensure_ascii=False),
+                 response.model_dump_json(), datetime.now(timezone.utc).isoformat()))
+            conn.execute("INSERT OR REPLACE INTO decision_traces VALUES (?, ?)",
+                         (response.message_id, json.dumps(trace, ensure_ascii=False)))
+        return version
+
+    def reserve_llm_budget(self, amount: float, daily_limit: float, monthly_limit: float) -> str | None:
+        from uuid import uuid4
+        now = datetime.now(timezone.utc)
+        if amount <= 0:
+            return None
+        with self._connect() as conn:
+            conn.execute("BEGIN IMMEDIATE")
+            conn.execute("DELETE FROM llm_budget_reservations WHERE expires_at < ?", (now.isoformat(),))
+            held = conn.execute("SELECT COALESCE(SUM(amount), 0) FROM llm_budget_reservations").fetchone()[0]
+            for days, limit in ((1, daily_limit), (31, monthly_limit)):
+                spent = conn.execute("SELECT COALESCE(SUM(estimated_cost_usd), 0) FROM llm_requests WHERE created_at >= ?",
+                                     ((now - timedelta(days=days)).isoformat(),)).fetchone()[0]
+                if spent + held + amount > limit:
+                    return None
+            reservation = str(uuid4())
+            conn.execute("INSERT INTO llm_budget_reservations VALUES (?, ?, ?, ?)",
+                         (reservation, amount, now.isoformat(), (now + timedelta(minutes=5)).isoformat()))
+        return reservation
+
+    def release_llm_budget(self, reservation: str) -> None:
+        with self._connect() as conn:
+            conn.execute("DELETE FROM llm_budget_reservations WHERE id = ?", (reservation,))
+
+    def load_dialogue_state(self, session_id: str):
+        from backend.app.models.dialogue import DialogueState
+        with self._connect() as conn:
+            row = conn.execute("SELECT state_json FROM dialogue_states WHERE session_id = ?", (session_id,)).fetchone()
+        return DialogueState.model_validate_json(row[0]) if row else DialogueState()
+
+    def acquire_dialogue_turn(self, session_id: str) -> str | None:
+        from uuid import uuid4
+        now = datetime.now(timezone.utc)
+        token = str(uuid4())
+        with self._connect() as conn:
+            conn.execute("BEGIN IMMEDIATE")
+            row = conn.execute("SELECT expires_at FROM dialogue_leases WHERE session_id = ?", (session_id,)).fetchone()
+            if row and row[0] > now.isoformat():
+                return None
+            conn.execute("INSERT OR REPLACE INTO dialogue_leases VALUES (?, ?, ?)",
+                         (session_id, token, (now + timedelta(seconds=120)).isoformat()))
+        return token
+
+    def release_dialogue_turn(self, session_id: str, token: str) -> None:
+        with self._connect() as conn:
+            conn.execute("DELETE FROM dialogue_leases WHERE session_id = ? AND token = ?", (session_id, token))

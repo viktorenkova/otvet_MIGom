@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import pytest
 from pathlib import Path
 
 from backend.app.bot.answer_contracts import get_answer_contract, verify_answer
@@ -22,7 +23,9 @@ def test_answer_contracts_are_deterministic_and_cover_every_active_scenario() ->
         ROOT / "knowledge/v3_1/scenario_conflicts.json",
     )
     assert rebuilt == committed
-    assert committed["record_count"] == 142
+    from backend.app.bot.scenario_engine import load_scenarios
+    assert {row["scenario_id"] for row in committed["records"]} == {s.scenario_id for s in load_scenarios()}
+    assert committed["record_count"] == len(committed["records"])
     assert {row["template_kind"] for row in committed["records"]} == {
         "direct", "clarification", "status", "contact"
     }
@@ -189,7 +192,8 @@ def test_deterministic_scenario_answer_returns_fact_trace() -> None:
     assert set(generated.used_fact_ids) == set(contract.required_fact_ids)
 
 
-def test_stage4_expert_gate_and_runtime_regression_pass() -> None:
+@pytest.mark.report_snapshot
+def test_historical_stage4_reports_preserve_recorded_metrics() -> None:
     evaluation = json.loads(
         (ROOT / "reports/stage4-answer-layer-evaluation.json").read_text(encoding="utf-8")
     )
