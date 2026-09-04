@@ -153,6 +153,7 @@ def build_runtime_manifest(settings: Any) -> dict[str, Any]:
         "routing_architecture": settings.routing_architecture,
         "dialogue_state_enabled": settings.dialogue_state_enabled,
         "answer_assembly_enabled": settings.answer_assembly_enabled,
+        "chat_max_concurrency": settings.chat_max_concurrency,
         "llm_understanding_enabled": settings.llm_understanding_enabled,
         "architecture_experiment": settings.architecture_experiment,
         "knowledge_mode": (

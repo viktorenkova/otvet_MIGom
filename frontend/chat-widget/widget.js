@@ -662,7 +662,16 @@
         safety_flags: [],
         model_used: "mock",
       });
-      appendMessage(`Обращение создано. Номер: ${data.ticket_id}. Сотрудник проверит данные и свяжется с вами по указанному контакту.`, "system");
+      const deliveryLabels = {
+        saved: "Отправка ещё не выполнена.",
+        pending: "Обращение ожидает отправки.",
+        sending: "Выполняется отправка обращения.",
+        accepted: "Почтовый сервер поддержки принял обращение.",
+        failed: "Не удалось отправить обращение.",
+        unknown: "Результат отправки требует проверки.",
+      };
+      const deliveryText = deliveryLabels[data.delivery?.state] || "Статус отправки пока не подтверждён.";
+      appendMessage(`Обращение создано. Номер: ${data.ticket_id}. ${deliveryText}`, "system");
       ticketForm.reset();
       resetTicketFormState();
       setTicketFormOpen(false);

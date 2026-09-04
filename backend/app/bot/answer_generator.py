@@ -377,6 +377,25 @@ def generate_answer(
         "Допустимые атомарные факты (ID нужны для проверки, не показывайте их пользователю):\n"
         f"{approved_facts}"
     )
+    from backend.app.bot.architecture_decision import decision_context
+    from backend.app.bot.processing_budget import remaining
+    from backend.app.integrations.llm_provider import estimate_cost
+    ctx = decision_context.get()
+    if ctx:
+        timeout = min(4.0, remaining()-0.2)
+        if timeout <= 0:
+            return GeneratedAnswer(base, verification_reason="llm_deadline_exhausted")
+        # Reserve before a concurrent request can consume the same remaining budget.
+        amount = estimate_cost(settings, len(prompt.encode("utf-8"))+2048, settings.llm_max_output_tokens)
+        if amount > 0:
+            reservation = ctx["logger"].reserve_llm_budget(amount, settings.llm_daily_budget_usd, settings.active_llm_monthly_budget_usd)
+            if not reservation:
+                return GeneratedAnswer(base, verification_reason="llm_budget_reserved_elsewhere")
+            ctx["answer_budget_reservation"] = reservation
+        elif settings.llm_provider != "mock":
+            return GeneratedAnswer(base, verification_reason="llm_pricing_unavailable")
+        settings = settings.model_copy(update={"llm_request_timeout_seconds": timeout,
+            "llm_total_timeout_seconds": timeout, "llm_fallback_model": None})
     provider = build_llm_provider(settings)
     result = provider.generate(
         LLMRequest(

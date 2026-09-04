@@ -52,6 +52,15 @@ class DialogLogger:
                     session_id TEXT PRIMARY KEY,
                     state_json TEXT NOT NULL
                 );
+                CREATE TABLE IF NOT EXISTS ticket_requests (
+                    session_id TEXT NOT NULL, request_key TEXT NOT NULL, payload_hash TEXT NOT NULL,
+                    ticket_id TEXT NOT NULL, PRIMARY KEY(session_id, request_key)
+                );
+                CREATE TABLE IF NOT EXISTS ticket_outbox (
+                    ticket_id TEXT PRIMARY KEY, state TEXT NOT NULL, attempts INTEGER NOT NULL DEFAULT 0,
+                    token TEXT, claimed_at TEXT, accepted_at TEXT, error TEXT, next_attempt_at TEXT
+                );
+                CREATE TABLE IF NOT EXISTS processing_slots(token TEXT PRIMARY KEY, expires_at TEXT NOT NULL);
                 CREATE TABLE IF NOT EXISTS dialogue_leases (
                     session_id TEXT PRIMARY KEY,
                     token TEXT NOT NULL,
@@ -265,6 +274,10 @@ class DialogLogger:
                 conn.execute(
                     "ALTER TABLE clarification_states ADD COLUMN attempts INTEGER NOT NULL DEFAULT 0"
                 )
+            conn.execute("INSERT OR IGNORE INTO ticket_outbox(ticket_id,state,error) "
+                "SELECT id, CASE WHEN status='sent_email' THEN 'accepted' "
+                "WHEN status IN ('delivery_failed','failed','sent_bitrix','sent_telegram') THEN 'unknown' ELSE 'saved' END, "
+                "'imported_legacy_state' FROM tickets")
 
     @staticmethod
     def _clarification_state_from_row(row: sqlite3.Row) -> dict | None:
@@ -585,9 +598,21 @@ class DialogLogger:
                 return
             sequence += 1
 
-    def save_ticket(self, ticket: Ticket) -> Ticket:
+    def save_ticket(self, ticket: Ticket, queue_delivery: bool = False) -> Ticket:
         with self._connect() as conn:
             conn.execute("BEGIN IMMEDIATE")
+            import hashlib
+            business = ticket.model_dump(mode="json", exclude={"id", "status", "idempotency_key", "created_at",
+                "dialog_history", "delivery_attempts", "next_delivery_attempt_at"})
+            digest = hashlib.sha256(json.dumps(business, ensure_ascii=False, sort_keys=True).encode()).hexdigest()
+            if ticket.idempotency_key:
+                prior = conn.execute("SELECT * FROM ticket_requests WHERE session_id = ? AND request_key = ?",
+                    (ticket.session_id, ticket.idempotency_key)).fetchone()
+                if prior:
+                    if prior["payload_hash"] != digest:
+                        raise ValueError("idempotency_key_conflict")
+                    row = conn.execute("SELECT * FROM tickets WHERE id = ?", (prior["ticket_id"],)).fetchone()
+                    return self.ticket_from_row(dict(row))
             self._assign_ticket_id(conn, ticket)
             conn.execute(
                 """
@@ -622,7 +647,66 @@ class DialogLogger:
                     ticket.created_at.isoformat(),
                 ),
             )
+            if ticket.idempotency_key:
+                conn.execute("INSERT INTO ticket_requests VALUES (?, ?, ?, ?)",
+                    (ticket.session_id, ticket.idempotency_key, digest, ticket.id))
+            conn.execute("INSERT OR IGNORE INTO ticket_outbox(ticket_id,state) VALUES (?, ?)",
+                         (ticket.id, "pending" if queue_delivery else "saved"))
         return ticket
+
+    @staticmethod
+    def ticket_from_row(row: dict) -> Ticket:
+        row = dict(row)
+        for field in ("dialog_history", "attachments", "collected_fields"):
+            row[field] = json.loads(row[field]) if isinstance(row.get(field), str) else row.get(field)
+        return Ticket.model_validate(row)
+
+    def queue_ticket(self, ticket_id: str) -> None:
+        with self._connect() as conn:
+            conn.execute("UPDATE ticket_outbox SET state = 'pending' WHERE ticket_id = ? AND state = 'saved'", (ticket_id,))
+
+    def ticket_delivery(self, ticket_id: str) -> dict:
+        with self._connect() as conn:
+            row = conn.execute("SELECT state, attempts, accepted_at, error FROM ticket_outbox WHERE ticket_id = ?", (ticket_id,)).fetchone()
+        return {"state": "unconfirmed"} if not row else dict(row)
+
+    def delivery_summary(self) -> dict:
+        with self._connect() as conn:
+            counts = {r[0]: r[1] for r in conn.execute("SELECT state, COUNT(*) FROM ticket_outbox GROUP BY state")}
+            unresolved = [r[0] for r in conn.execute("SELECT ticket_id FROM ticket_outbox WHERE state='unknown' ORDER BY ticket_id LIMIT 100")]
+        return {"states": counts, "manual_check_ticket_ids": unresolved, "mailbox_delivery_confirmed": None}
+
+    def claim_delivery(self) -> dict | None:
+        from uuid import uuid4
+        now = datetime.now(timezone.utc)
+        with self._connect() as conn:
+            conn.execute("BEGIN IMMEDIATE")
+            # A lost worker may already have sent the email: never retry blindly.
+            conn.execute("UPDATE ticket_outbox SET state = 'unknown', error = 'worker_lost_after_claim' "
+                "WHERE state = 'sending' AND claimed_at < ?", ((now-timedelta(minutes=2)).isoformat(),))
+            row = conn.execute("SELECT ticket_id FROM ticket_outbox WHERE state IN ('pending','failed') "
+                "AND attempts < 5 AND (next_attempt_at IS NULL OR next_attempt_at <= ?) ORDER BY ticket_id LIMIT 1", (now.isoformat(),)).fetchone()
+            if not row:
+                return None
+            token = str(uuid4())
+            conn.execute("UPDATE ticket_outbox SET state='sending', token=?, claimed_at=?, attempts=attempts+1 WHERE ticket_id=?",
+                (token, now.isoformat(), row[0]))
+            ticket = conn.execute("SELECT * FROM tickets WHERE id=?", (row[0],)).fetchone()
+            return {"ticket": self.ticket_from_row(dict(ticket)), "token": token}
+
+    def complete_delivery(self, ticket_id: str, token: str, state: str, error: str = "") -> bool:
+        if state not in {"accepted", "failed", "unknown"}:
+            raise ValueError("invalid_delivery_state")
+        now = datetime.now(timezone.utc)
+        with self._connect() as conn:
+            conn.execute("BEGIN IMMEDIATE")
+            changed = conn.execute("UPDATE ticket_outbox SET state=?, accepted_at=?, error=?, next_attempt_at=? "
+                "WHERE ticket_id=? AND token=? AND state='sending'",
+                (state, now.isoformat() if state == "accepted" else None, error,
+                 (now+timedelta(minutes=5)).isoformat() if state == "failed" else None, ticket_id, token)).rowcount
+            if changed:
+                conn.execute("UPDATE tickets SET status=? WHERE id=?", ("sent_email" if state == "accepted" else "delivery_failed", ticket_id))
+            return bool(changed)
 
     def update_ticket_status(self, ticket_id: str, status: str) -> None:
         with self._connect() as conn:
@@ -1249,3 +1333,19 @@ class DialogLogger:
     def release_dialogue_turn(self, session_id: str, token: str) -> None:
         with self._connect() as conn:
             conn.execute("DELETE FROM dialogue_leases WHERE session_id = ? AND token = ?", (session_id, token))
+
+    def acquire_processing_slot(self, limit: int) -> str | None:
+        from uuid import uuid4
+        now = datetime.now(timezone.utc)
+        with self._connect() as conn:
+            conn.execute("BEGIN IMMEDIATE")
+            conn.execute("DELETE FROM processing_slots WHERE expires_at < ?", (now.isoformat(),))
+            if conn.execute("SELECT COUNT(*) FROM processing_slots").fetchone()[0] >= limit:
+                return None
+            token = str(uuid4())
+            conn.execute("INSERT INTO processing_slots VALUES (?, ?)", (token, (now+timedelta(minutes=2)).isoformat()))
+            return token
+
+    def release_processing_slot(self, token: str):
+        with self._connect() as conn:
+            conn.execute("DELETE FROM processing_slots WHERE token=?", (token,))

@@ -106,16 +106,11 @@ def demo_widget_without_slash() -> RedirectResponse:
 
 
 def _save_and_deliver_ticket(ticket: Ticket) -> Ticket:
-    saved = local_ticket_provider.deliver(ticket)
-    try:
-        delivered = email_ticket_provider.deliver(saved)
-    except Exception:
-        logger.record_ticket_delivery_failure(saved.id)
-        saved.status = "delivery_failed"
-        return saved
-    if delivered.status != saved.status:
-        logger.update_ticket_status(delivered.id, delivered.status)
-    return delivered
+    if not ticket.idempotency_key:
+        content = ticket.model_dump(mode="json", exclude={"id", "status", "idempotency_key", "created_at",
+            "dialog_history", "delivery_attempts", "next_delivery_attempt_at"})
+        ticket.idempotency_key = hashlib.sha256(json.dumps(content, sort_keys=True, ensure_ascii=False).encode()).hexdigest()
+    return logger.save_ticket(ticket, queue_delivery=settings.ticket_email_enabled)
 
 
 def _log_safety(
@@ -453,21 +448,27 @@ def _process_chat_message(request: ChatRequest) -> ChatResponse:
                     confidence_level="high",
                     action="clarify",
                 )
-            status = status_provider.fetch(
+            try:
+                status = status_provider.fetch(
                 kind,
                 str(request.context.user_id or ""),
                 reference_id,
                 str(request.trusted_context_token or ""),
-            )
+                )
+            except Exception:
+                from backend.app.integrations.status_provider import StatusResult
+                status = StatusResult(False, kind, error_code="upstream_unavailable")
             if status.success:
                 answer = f"Статус: {status.status}. {status.description}".strip()
                 resolution = "status"
                 fallback_reason = ""
             else:
-                answer = (
-                    "Сейчас не удалось получить подтверждённый статус из системы MIGTORG. "
-                    "Я не буду предполагать результат — создайте обращение для ручной проверки."
-                )
+                reasons = {"not_found": "Объект с указанным идентификатором не найден.",
+                    "forbidden": "Нет подтверждённого доступа к данным этого объекта.",
+                    "unknown_status": "Система не сообщила определённый статус объекта.",
+                    "invalid_status_payload": "Полученный ответ системы не прошёл проверку структуры."}
+                answer = reasons.get(status.error_code, "Сейчас не удалось получить подтверждённый статус из системы MIGTORG.")
+                answer += " Можно создать обращение для ручной проверки."
                 resolution = "escalated"
                 fallback_reason = status.error_code
             message_id = _persist_turn(
@@ -497,9 +498,12 @@ def _process_chat_message(request: ChatRequest) -> ChatResponse:
                 resolution=resolution,
                 role=role,
                 needs_ticket=not status.success,
-                actions=_scenario_actions(action_scenario.scenario_id),
-                used_context=["trusted_user", "lot_id"],
+                actions=[a for a in _scenario_actions(action_scenario.scenario_id)
+                         if not status.success or a.id in status.allowed_actions],
+                used_context=["trusted_user"] + ([] if kind == "tariff" else ["lot_id"]),
                 data_freshness=status.freshness,
+                action_result={"kind": kind, "success": status.success, "error_code": status.error_code,
+                               "received_at": status.received_at, "data_freshness": status.freshness},
                 confidence_level="high",
                 action="fetch_status",
             )
@@ -651,6 +655,10 @@ def _process_chat_message(request: ChatRequest) -> ChatResponse:
             pattern_match=pattern_match,
             skip_topic_ambiguity=bool(forced_intent),
         )
+    from backend.app.bot.processing_budget import remaining
+    if remaining() <= 0.2:
+        search_result = KnowledgeSearchResult(None, 0, "low", fallback_reason="processing_deadline",
+            clarifying_question="Обработка заняла слишком много времени. Повторите вопрос через несколько секунд.")
     article = search_result.article
     if article and article.intent != "unknown":
         intent = article.intent
@@ -1023,6 +1031,7 @@ def quality_report(
     if not x_quality_report_token or not secrets.compare_digest(x_quality_report_token, expected_token):
         raise HTTPException(status_code=403, detail="Invalid quality report token")
     report = logger.get_quality_report(days=days, include_examples=False)
+    report["ticket_delivery"] = logger.delivery_summary()
     daily_spend = logger.get_llm_spend(settings.llm_environment, days=1)
     monthly_spend = logger.get_llm_spend(settings.llm_environment, days=31)
     warning_ratio = settings.llm_budget_warning_pct / 100
@@ -1049,39 +1058,8 @@ def retry_due_tickets(
         raise HTTPException(status_code=403, detail="Invalid quality report token")
     if not settings.ticket_email_enabled:
         raise HTTPException(status_code=409, detail="Email delivery is disabled")
-    sent: list[str] = []
-    failed: list[str] = []
-    for row in logger.get_due_delivery_tickets():
-        ticket = Ticket(
-            id=str(row["id"]),
-            status="new",
-            topic=str(row["topic"]),
-            description=str(row["description"]),
-            contact=row["contact"],
-            role=str(row["role"]),
-            user_id=row["user_id"],
-            lot_id=row["lot_id"],
-            payment_id=row["payment_id"],
-            session_id=str(row["session_id"]),
-            page_type=row["page_type"],
-            dialog_history=json.loads(str(row["dialog_history"] or "[]")),
-            attachments=json.loads(str(row["attachments"] or "[]")),
-            category=row["category"],
-            priority=str(row["priority"] or "normal"),
-            scenario_id=row["scenario_id"],
-            source_message_id=row["source_message_id"],
-            collected_fields=json.loads(str(row["collected_fields"] or "{}")),
-            delivery_attempts=int(row["delivery_attempts"] or 0),
-            created_at=str(row["created_at"]),
-        )
-        try:
-            delivered = email_ticket_provider.deliver(ticket)
-            logger.update_ticket_status(ticket.id, delivered.status)
-            sent.append(ticket.id)
-        except Exception:
-            logger.record_ticket_delivery_failure(ticket.id)
-            failed.append(ticket.id)
-    return {"sent": sent, "failed": failed}
+    from backend.app.delivery.outbox import drain_outbox
+    return drain_outbox(logger, email_ticket_provider)
 
 
 @app.get("/api/internal/review-queue")
@@ -1104,7 +1082,7 @@ def chat_message(request: ChatRequest) -> ChatResponse:
 
 
 @app.post("/api/chat/ticket")
-def create_ticket(request: TicketCreateRequest) -> dict[str, str]:
+def create_ticket(request: TicketCreateRequest) -> dict:
     request.context.session_id = request.session_id
     _apply_trusted_context(request)
     role = "authorized" if request.context.trusted else "guest"
@@ -1113,6 +1091,9 @@ def create_ticket(request: TicketCreateRequest) -> dict[str, str]:
     if not contact:
         raise HTTPException(status_code=400, detail="contact is required to create ticket")
     ticket = Ticket(
+        idempotency_key=request.idempotency_key or hashlib.sha256(json.dumps(
+            request.model_dump(mode="json", exclude={"trusted_context_token", "context", "idempotency_key"}),
+            sort_keys=True, ensure_ascii=False).encode()).hexdigest(),
         topic=request.topic,
         description=request.description,
         contact=contact,
@@ -1136,9 +1117,15 @@ def create_ticket(request: TicketCreateRequest) -> dict[str, str]:
             if value
         },
     )
-    ticket = _save_and_deliver_ticket(ticket)
+    try:
+        ticket = _save_and_deliver_ticket(ticket)
+    except ValueError as exc:
+        if str(exc) == "idempotency_key_conflict":
+            raise HTTPException(status_code=409, detail="idempotency_key_conflict") from exc
+        raise
     logger.mark_ticket_created(request.session_id)
-    return {"ticket_id": ticket.id, "status": ticket.status}
+    return {"ticket_id": ticket.id, "status": ticket.status, "created": True,
+            "delivery": logger.ticket_delivery(ticket.id)}
 
 
 @app.get("/api/chat/history/{session_id}")
@@ -1171,8 +1158,9 @@ def _process_bound_chat_message(request: ChatRequest, dialogue_turn=None, lease_
     _apply_trusted_context(request)
     role = "authorized" if request.context.trusted else "guest"
     previous = logger.get_response_state(request.session_id)
+    from backend.app.bot.processing_budget import deadline_context
     trace = {"session_id": request.session_id, "logger": logger,
-             "deadline": time.monotonic() + 5.0,
+             "deadline": deadline_context.get() or time.monotonic() + 5.0,
              "minimal_state": {"previous_scenario_id": previous["response"].get("scenario_id")} if previous else {},
              "previous_message_id": previous["message_id"] if previous else None}
     if dialogue_turn:
@@ -1226,7 +1214,7 @@ def _process_bound_chat_message(request: ChatRequest, dialogue_turn=None, lease_
             trace["knowledge_gap"] = gap["gap_id"]
         if response.ticket_id:
             response.action_result = {"ticket_id": response.ticket_id, "created": True,
-                                      "delivery": "unconfirmed"}
+                                      "delivery": logger.ticket_delivery(response.ticket_id)}
             response.answer += f" Обращение создано. Номер: {response.ticket_id}."
             trace["service_text"] = "runtime.ticket_created:confirmed_sqlite_record"
         elif settings.answer_assembly_enabled and response.needs_ticket:
@@ -1247,6 +1235,8 @@ def _process_bound_chat_message(request: ChatRequest, dialogue_turn=None, lease_
                                    dialogue_turn=dialogue_turn, lease_token=lease_token)
         return response
     finally:
+        if trace.get("answer_budget_reservation"):
+            trace["logger"].release_llm_budget(trace["answer_budget_reservation"])
         decision_context.reset(token)
 
 
@@ -1268,7 +1258,7 @@ def _dialogue_service_response(request, turn, role, started):
         actions=[a for a in _scenario_actions("support.contact") if a.type == "open_ticket"] if manual else [])
 
 
-def process_chat_message(request: ChatRequest) -> ChatResponse:
+def _process_dialogue_chat_message(request: ChatRequest) -> ChatResponse:
     if not settings.dialogue_state_enabled:
         return _process_bound_chat_message(request)
     from backend.app.bot.dialogue_understanding import prepare_turn
@@ -1309,3 +1299,20 @@ def process_chat_message(request: ChatRequest) -> ChatResponse:
         raise
     finally:
         logger.release_dialogue_turn(request.session_id, lease)
+
+
+def process_chat_message(request: ChatRequest) -> ChatResponse:
+    import time
+    from backend.app.bot.processing_budget import deadline_context
+    token = deadline_context.set(time.monotonic() + 5.0)
+    owner = logger
+    slot = None
+    try:
+        slot = owner.acquire_processing_slot(settings.chat_max_concurrency)
+        if not slot:
+            raise HTTPException(status_code=503, detail="Сервис занят. Повторите сообщение через несколько секунд.", headers={"Retry-After": "2"})
+        return _process_dialogue_chat_message(request)
+    finally:
+        if slot:
+            owner.release_processing_slot(slot)
+        deadline_context.reset(token)

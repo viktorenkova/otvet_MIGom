@@ -278,6 +278,8 @@ def test_safety_response_resets_active_context(runtime, monkeypatch):
 
 
 def test_existing_ticket_category_flow_with_structured_state(tmp_path, monkeypatch):
+    # Direct calls bypass lifespan; use the same startup warmup as HTTP workers.
+    main.warm_knowledge_indexes()
     log = DialogLogger(str(tmp_path / "ticket.sqlite3"))
     monkeypatch.setattr(main, "logger", log)
     monkeypatch.setattr(main.settings, "dialogue_state_enabled", True)

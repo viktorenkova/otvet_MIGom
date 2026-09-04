@@ -106,12 +106,14 @@ def test_tariff_status_uses_trusted_user_without_lot(isolated_log, monkeypatch):
     class Provider:
         def fetch(self, kind, user_id, reference_id, token):
             calls.append((kind, user_id, reference_id))
-            return StatusResult(True, kind, "active", "", None)
+            return StatusResult(True, kind, "active", "", None, [action.id, "untrusted-api-action"])
     monkeypatch.setattr(main, "status_provider", Provider())
     response = main.process_chat_message(ChatRequest(message=action.label, session_id="tariff",
         selected_action_id=action.id, conversation_turn_id="prior", trusted_context_token=body + "." + signature))
     assert response.resolution == "status"
     assert calls == [("tariff", "confirmed-user", "confirmed-user")]
+    assert [a.id for a in response.actions] == [action.id]
+    assert response.data_freshness is None
 
 
 def test_model_failure_clarifies_without_independent_fallback(monkeypatch):

@@ -16,6 +16,7 @@ class Settings(BaseModel):
     database_path: str = "migtorg_chatbot.sqlite3"
     dialogue_state_enabled: bool = False
     answer_assembly_enabled: bool = False
+    chat_max_concurrency: int = 8
     routing_architecture: Literal["control", "local"] = "control"
     llm_understanding_enabled: bool = False
     architecture_experiment: bool = False
@@ -139,6 +140,7 @@ def get_settings() -> Settings:
         cors_allowed_origins=cors_allowed_origins or ["*"],
         dialogue_state_enabled=_bool_from_env(os.getenv("DIALOGUE_STATE_ENABLED")),
         answer_assembly_enabled=_bool_from_env(os.getenv("ANSWER_ASSEMBLY_ENABLED")),
+        chat_max_concurrency=max(1, int(os.getenv("CHAT_MAX_CONCURRENCY", "8"))),
         routing_architecture=os.getenv("ROUTING_ARCHITECTURE", "control"),
         llm_understanding_enabled=os.getenv("LLM_UNDERSTANDING_ENABLED", "false").lower() == "true",
         architecture_experiment=os.getenv("ARCHITECTURE_EXPERIMENT", "true").lower() == "true",

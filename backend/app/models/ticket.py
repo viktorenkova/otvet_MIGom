@@ -19,6 +19,7 @@ TicketStatus = Literal[
 
 
 class Ticket(BaseModel):
+    idempotency_key: str | None = None
     id: str = ""
     status: TicketStatus = "new"
     topic: str
@@ -43,6 +44,7 @@ class Ticket(BaseModel):
 
 
 class TicketCreateRequest(BaseModel):
+    idempotency_key: str | None = Field(default=None, min_length=1, max_length=128)
     topic: str = Field(min_length=1)
     description: str = Field(min_length=1)
     contact: str | None = None

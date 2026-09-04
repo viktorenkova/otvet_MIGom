@@ -35,6 +35,8 @@ class EmailTicketProvider:
                 json.dumps(ticket.dialog_history, ensure_ascii=False, indent=2),
             ]
         )
-        self.client.send(f"MIGTORG: {ticket.topic}", body)
+        import hashlib
+        stable_id = hashlib.sha256(ticket.id.encode()).hexdigest()
+        self.client.send(f"MIGTORG: {ticket.topic}", body, message_id=f"<ticket-{stable_id}@migtorg.local>")
         ticket.status = "sent_email"
         return ticket
