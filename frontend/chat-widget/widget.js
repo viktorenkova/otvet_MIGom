@@ -76,7 +76,7 @@
         </nav>
 
         <form class="chat__form">
-          <input class="chat__input" name="message" autocomplete="off" placeholder="Коротко опишите проблему" />
+          <input class="chat__input" name="message" autocomplete="off" placeholder="Напишите вопрос своими словами" />
           <button class="chat__send" type="submit" aria-label="Отправить сообщение">Отправить</button>
         </form>
 
@@ -126,7 +126,7 @@
     const link = document.createElement("link");
     link.id = "migtorg-chat-widget-style";
     link.rel = "stylesheet";
-    link.href = new URL("style.css?v=20260813-answer-quality", assetBase).toString();
+    link.href = new URL("style.css?v=20260905-guided-navigation", assetBase).toString();
     document.head.appendChild(link);
   }
 
@@ -164,6 +164,7 @@
     setHomeVisible(false);
     if (debugOutput) debugOutput.textContent = "";
     input.focus();
+    loadStartExperience();
   }
 
   function context(extra) {
@@ -204,6 +205,9 @@
         model_used: data.model_used || "mock",
         scenario_id: data.scenario_id || null,
         resolution: data.resolution || null,
+        experience_variant: data.experience_variant || null,
+        navigation_version: data.navigation_version || null,
+        navigation_node_id: data.navigation_node_id || null,
       },
       null,
       2,
@@ -332,11 +336,23 @@
 
   function appendStructuredActions(node, actions, message, intent) {
     if (!Array.isArray(actions) || !actions.length) return false;
+    const modifier = actions.some((action) => action.type === "guided_choice")
+      ? "guided"
+      : "clarifying";
     appendMessageActions(
       node,
       actions.map((action) => ({
         label: action.label,
         onClick: (event) => {
+          if (action.type === "answer" && action.payload?.message) {
+            event.currentTarget.parentElement
+              ?.querySelectorAll("button")
+              .forEach((button) => {
+                button.disabled = true;
+              });
+            sendMessage(action.payload.message);
+            return;
+          }
           if (action.type === "navigate" && action.payload?.url) {
             window.location.assign(action.payload.url);
             return;
@@ -352,10 +368,13 @@
             .forEach((button) => {
               button.disabled = true;
             });
-          sendMessage(action.label, action.id);
+          const pending = sendMessage(action.label, action.id);
+          if (action.type === "guided_choice" && action.payload?.kind === "free_text") {
+            pending.finally(() => input.focus());
+          }
         },
       })),
-      "clarifying",
+      modifier,
     );
     return true;
   }
@@ -429,6 +448,24 @@
     return response.json();
   }
 
+  async function loadStartExperience() {
+    const generationAtStart = chatGeneration;
+    try {
+      const data = await postJson("/api/chat/start", {
+        session_id: sessionId,
+        context: context(),
+      });
+      if (generationAtStart !== chatGeneration) return;
+      latestMessageId = data.message_id || null;
+      messages.replaceChildren();
+      const welcome = appendMessage(data.answer, "bot", "welcome");
+      appendStructuredActions(welcome, data.actions || [], data.answer, data.intent);
+      updateDebug(data);
+    } catch (error) {
+      // The static welcome and free-text input remain usable when start loading fails.
+    }
+  }
+
   async function sendMessage(text, selectedActionId) {
     const message = text.trim();
     if (!message) return;
@@ -493,6 +530,8 @@
       sendMessage(button.dataset.message || button.textContent || "");
     });
   });
+
+  loadStartExperience();
 
   form.addEventListener("submit", async (event) => {
     event.preventDefault();

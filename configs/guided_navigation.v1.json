@@ -1,0 +1,97 @@
+{
+  "version": "v1",
+  "root_node_id": "root",
+  "nodes": [
+    {
+      "id": "root",
+      "label": "Главное меню",
+      "prompt": "Выберите тему или напишите вопрос своими словами.",
+      "choices": [
+        {"id": "start", "label": "Начать пользоваться MIGTORG", "target_node_id": "start"},
+        {"id": "bidding", "label": "Ставки и торги", "target_node_id": "bidding"},
+        {"id": "money", "label": "Тариф, оплата и деньги", "target_node_id": "money"},
+        {"id": "after_win", "label": "Выиграл лот — что дальше", "target_node_id": "after_win"},
+        {"id": "pickup", "label": "Осмотр и получение автомобиля", "target_node_id": "pickup"},
+        {"id": "refund", "label": "Возврат или штраф", "target_node_id": "refund"},
+        {"id": "seller", "label": "Я продавец", "scenario_id": "seller.get_started"},
+        {"id": "support", "label": "Связаться с поддержкой", "scenario_id": "support.contact"}
+      ]
+    },
+    {
+      "id": "start",
+      "parent_id": "root",
+      "label": "Начало работы",
+      "prompt": "Что именно вы хотите узнать о начале работы?",
+      "choices": [
+        {"id": "about", "label": "Что такое MIGTORG", "scenario_id": "platform.about"},
+        {"id": "registration", "label": "Регистрация", "scenario_id": "account.registration"},
+        {"id": "buyer", "label": "Как начать покупать", "scenario_id": "buyer.get_started"},
+        {"id": "login", "label": "Не получается войти", "scenario_id": "account.login_problem"}
+      ]
+    },
+    {
+      "id": "bidding",
+      "parent_id": "root",
+      "label": "Ставки и торги",
+      "prompt": "Выберите вопрос о ставках или торгах.",
+      "choices": [
+        {"id": "place", "label": "Как сделать ставку", "scenario_id": "bid.place"},
+        {"id": "not_visible", "label": "Ставка не отображается", "scenario_id": "bid.not_visible"},
+        {"id": "autobid", "label": "Автоставка и продление торгов", "scenario_id": "bid.autobid_extension"},
+        {"id": "position", "label": "Узнать позицию ставки", "scenario_id": "bid.position_service"},
+        {"id": "result", "label": "Результаты торгов", "scenario_id": "auction.result"},
+        {"id": "change", "label": "Изменить или отменить ставку", "scenario_id": "bid.modify_cancel"}
+      ]
+    },
+    {
+      "id": "money",
+      "parent_id": "root",
+      "label": "Тариф, оплата и деньги",
+      "prompt": "Выберите вопрос о тарифе или оплате.",
+      "choices": [
+        {"id": "choose", "label": "Какой тариф выбрать", "scenario_id": "tariff.choose"},
+        {"id": "connect", "label": "Как подключить тариф", "scenario_id": "tariff.connect"},
+        {"id": "status", "label": "Тариф не активировался", "scenario_id": "tariff.status"},
+        {"id": "methods", "label": "Способы оплаты", "scenario_id": "payment.methods"},
+        {"id": "not_visible", "label": "Платёж не отображается", "scenario_id": "payment.not_visible"},
+        {"id": "commission", "label": "Комиссия площадки", "scenario_id": "commission.explained"}
+      ]
+    },
+    {
+      "id": "after_win",
+      "parent_id": "root",
+      "label": "После победы",
+      "prompt": "Что произошло после победы в торгах?",
+      "choices": [
+        {"id": "next", "label": "Что делать после победы", "scenario_id": "win.next_steps"},
+        {"id": "not_confirmed", "label": "Лот не передан", "scenario_id": "transfer.not_confirmed"},
+        {"id": "confirmed", "label": "Статус «Передан»", "scenario_id": "transfer.confirmed"},
+        {"id": "seller_silent", "label": "Продавец не отвечает", "scenario_id": "transfer.seller_no_response"},
+        {"id": "contract", "label": "Как получить договор", "scenario_id": "contract.receive"}
+      ]
+    },
+    {
+      "id": "pickup",
+      "parent_id": "root",
+      "label": "Осмотр и получение",
+      "prompt": "Выберите вопрос об осмотре или получении автомобиля.",
+      "choices": [
+        {"id": "receive", "label": "Как получить лот", "scenario_id": "pickup.receive_lot"},
+        {"id": "representative", "label": "Получение представителем", "scenario_id": "pickup.representative"},
+        {"id": "inspection", "label": "Организация осмотра", "scenario_id": "inspection.arrange"}
+      ]
+    },
+    {
+      "id": "refund",
+      "parent_id": "root",
+      "label": "Возврат или штраф",
+      "prompt": "Выберите вопрос о возврате или штрафе.",
+      "choices": [
+        {"id": "eligibility", "label": "Можно ли вернуть средства", "scenario_id": "refund.eligibility"},
+        {"id": "application", "label": "Как подать заявление", "scenario_id": "refund.application"},
+        {"id": "timing", "label": "Срок возврата", "scenario_id": "refund.timing_status"},
+        {"id": "penalty", "label": "Объяснить или оспорить штраф", "scenario_id": "penalty.explain_or_dispute"}
+      ]
+    }
+  ]
+}

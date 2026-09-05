@@ -150,12 +150,19 @@ def build_runtime_manifest(settings: Any) -> dict[str, Any]:
         "feature_schema_sha256": _sha256_file(ROOT / "backend/app/bot/pairwise_reranker.py"),
         "evaluator_sha256": _sha256_files(_tree_files("backend/tools", {".py"})),
         "policy_bundle_sha256": _sha256_files(_tree_files("configs", {".json"})),
+        "guided_navigation_sha256": _sha256_file(ROOT / settings.guided_navigation_config_path),
         "routing_architecture": settings.routing_architecture,
         "dialogue_state_enabled": settings.dialogue_state_enabled,
         "answer_assembly_enabled": settings.answer_assembly_enabled,
         "chat_max_concurrency": settings.chat_max_concurrency,
         "llm_understanding_enabled": settings.llm_understanding_enabled,
         "architecture_experiment": settings.architecture_experiment,
+        "guided_navigation": {
+            "enabled": settings.guided_navigation_enabled,
+            "rollout_percentage": settings.guided_navigation_rollout_percentage,
+            "config_path": settings.guided_navigation_config_path,
+            "max_depth": settings.guided_navigation_max_depth,
+        },
         "knowledge_mode": (
             "v3_1"
             if settings.knowledge_v2_enabled

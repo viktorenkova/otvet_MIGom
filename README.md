@@ -122,6 +122,7 @@ CORS_ALLOWED_ORIGINS=https://migtorg.com,https://www.migtorg.com
 | Метод и путь | Назначение |
 |---|---|
 | `GET /health` | Состояние приложения |
+| `POST /api/chat/start` | Стартовый экран и серверные кнопки гибридной навигации |
 | `POST /api/chat/message` | Отправка сообщения в чат |
 | `POST /api/chat/ticket` | Создание обращения |
 | `GET /api/chat/history/{session_id}` | История диалога |
@@ -240,7 +241,7 @@ python -m backend.tools.check_production_readiness --env-file .env.production --
 ### Сценарная база знаний v2
 
 Поверх legacy-БЗ подключён версионированный слой `knowledge/v2/scenarios.json`.
-Он различает роль, этап, объект, действие и состояние, хранит отрицательные
+Он различает этап, объект, действие и состояние, хранит отрицательные
 примеры, утверждённые факты, следующие шаги и структурированные действия.
 Сильное сценарное совпадение имеет приоритет; при близких вариантах бот задаёт
 предметное уточнение. Слой можно независимо отключить через
@@ -250,6 +251,26 @@ python -m backend.tools.check_production_readiness --env-file .env.production --
 `message_id`, `scenario_id`, `resolution`, `actions`, `used_context` и
 `data_freshness`. Виджет передаёт `selected_action_id` и связывает feedback с
 `message_id`.
+
+### Гибридная навигация
+
+Виджет получает стартовое меню через `POST /api/chat/start`, при этом поле
+свободного ввода остаётся доступным на каждом шаге. Конечная кнопка связана с
+конкретным активным сценарием на сервере и не запускает повторный нечёткий
+поиск. Сервер принимает выбор только среди действий, выданных этой сессии в
+последнем ответе. Конфигурация пилота из 30 сценариев находится в
+`configs/guided_navigation.v1.json`.
+
+```env
+GUIDED_NAVIGATION_ENABLED=false
+GUIDED_NAVIGATION_ROLLOUT_PERCENTAGE=0
+GUIDED_NAVIGATION_CONFIG_PATH=configs/guided_navigation.v1.json
+GUIDED_NAVIGATION_MAX_DEPTH=2
+```
+
+Допустимые доли включения: `0`, `5`, `25`, `50`, `100`. Распределение стабильно
+для `session_id`; возврат к контрольному интерфейсу выполняется установкой
+процента в `0` без отката данных.
 
 ### Защищённые персональные статусы
 

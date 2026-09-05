@@ -62,6 +62,10 @@ class Settings(BaseModel):
     internal_status_api_enabled: bool = False
     internal_status_api_url: str = ""
     internal_status_timeout_seconds: int = 5
+    guided_navigation_enabled: bool = False
+    guided_navigation_rollout_percentage: int = 0
+    guided_navigation_config_path: str = "configs/guided_navigation.v1.json"
+    guided_navigation_max_depth: int = 2
 
     @property
     def knowledge_root(self) -> Path:
@@ -117,6 +121,13 @@ def validate_llm_runtime(settings: Settings) -> None:
         raise ValueError("LLM concurrency and circuit threshold must be positive")
     if settings.llm_rollout_percentage not in {0, 5, 25, 50, 100}:
         raise ValueError("LLM rollout percentage must be one of 0, 5, 25, 50, 100")
+
+
+def validate_guided_navigation_runtime(settings: Settings) -> None:
+    if settings.guided_navigation_rollout_percentage not in {0, 5, 25, 50, 100}:
+        raise ValueError("Guided navigation rollout percentage must be one of 0, 5, 25, 50, 100")
+    if settings.guided_navigation_max_depth < 1:
+        raise ValueError("Guided navigation max depth must be positive")
 
 
 def _bool_from_env(value: str | None, default: bool = False) -> bool:
@@ -187,6 +198,11 @@ def get_settings() -> Settings:
         internal_status_api_enabled=_bool_from_env(os.getenv("INTERNAL_STATUS_API_ENABLED"), False),
         internal_status_api_url=os.getenv("INTERNAL_STATUS_API_URL", ""),
         internal_status_timeout_seconds=int(os.getenv("INTERNAL_STATUS_TIMEOUT_SECONDS", "5")),
+        guided_navigation_enabled=_bool_from_env(os.getenv("GUIDED_NAVIGATION_ENABLED"), False),
+        guided_navigation_rollout_percentage=int(os.getenv("GUIDED_NAVIGATION_ROLLOUT_PERCENTAGE", "0")),
+        guided_navigation_config_path=os.getenv("GUIDED_NAVIGATION_CONFIG_PATH", "configs/guided_navigation.v1.json"),
+        guided_navigation_max_depth=int(os.getenv("GUIDED_NAVIGATION_MAX_DEPTH", "2")),
     )
     validate_llm_runtime(settings)
+    validate_guided_navigation_runtime(settings)
     return settings

@@ -26,6 +26,7 @@ from backend.app.bot.knowledge_search import (
 )
 from backend.app.bot.role_resolver import resolve_role
 from backend.app.bot.scenario_engine import extract_query_facets, find_scenario_action, get_scenario
+from backend.app.bot.guided_navigation import load_guided_navigation
 from backend.app.bot.safety_guard import post_check, pre_check
 from backend.app.bot.text_processing import analyze_text, best_intent_pattern, load_matching_config, tokenize
 from backend.app.bot.topic_router import route_topic
@@ -37,7 +38,7 @@ from backend.app.delivery.local_provider import LocalDatabaseTicketProvider
 from backend.app.integrations.langfuse_client import LangfuseClient
 from backend.app.integrations.status_provider import build_status_provider
 from backend.app.bot.trusted_context import TrustedContextError, verify_trusted_context_token
-from backend.app.models.chat import ChatAction, ChatFeedbackRequest, ChatRequest, ChatResponse, LegacyChatRequest, LegacyChatResponse
+from backend.app.models.chat import ChatAction, ChatFeedbackRequest, ChatRequest, ChatResponse, ChatStartRequest, LegacyChatRequest, LegacyChatResponse
 from backend.app.models.safety import SafetyEvent
 from backend.app.models.ticket import Ticket, TicketCreateRequest
 
@@ -54,6 +55,17 @@ def _in_llm_rollout(session_id: str, percentage: int) -> bool:
         return True
     bucket = int(hashlib.sha256(session_id.encode("utf-8")).hexdigest()[:8], 16) % 100
     return bucket < percentage
+
+
+def _guided_navigation_for_session(session_id: str):
+    if not settings.guided_navigation_enabled:
+        return None
+    if not _in_llm_rollout(session_id, settings.guided_navigation_rollout_percentage):
+        return None
+    return load_guided_navigation(
+        settings.guided_navigation_config_path,
+        settings.guided_navigation_max_depth,
+    )
 
 
 langfuse_client = LangfuseClient(settings)
@@ -73,6 +85,11 @@ async def lifespan(_: FastAPI):
     print(f"MIGTORG_WIDGET_ROOT={settings.widget_root}")
     print(f"MIGTORG_ROUTES={route_paths}")
     warm_knowledge_indexes()
+    if settings.guided_navigation_enabled:
+        load_guided_navigation(
+            settings.guided_navigation_config_path,
+            settings.guided_navigation_max_depth,
+        )
     yield
 
 
@@ -334,7 +351,7 @@ def _restore_clarification_context(request: ChatRequest, state: dict | None) -> 
             setattr(request.context, field_name, saved_context[field_name])
 
 
-def _process_chat_message(request: ChatRequest) -> ChatResponse:
+def _process_chat_message(request: ChatRequest, *, guided_scenario_id: str | None = None) -> ChatResponse:
     from backend.app.bot.architecture_decision import decision_context
     dialogue = (decision_context.get() or {}).get("dialogue")
     started_at = perf_counter()
@@ -400,7 +417,7 @@ def _process_chat_message(request: ChatRequest) -> ChatResponse:
             action="safety_refusal",
         )
 
-    selected_scenario_article = None
+    selected_scenario_article = get_article_by_id(guided_scenario_id, role) if guided_scenario_id else None
     selected_action = find_scenario_action(str(request.selected_action_id or ""))
     if selected_action:
         action_scenario, action_config = selected_action
@@ -717,7 +734,7 @@ def _process_chat_message(request: ChatRequest) -> ChatResponse:
             article=selected_article,
             score=150,
             confidence="high",
-            matched_features=["clarification_choice"],
+            matched_features=["guided_choice" if guided_scenario_id else "clarification_choice"],
         )
     else:
         intent = forced_intent or classify_intent(effective_message)
@@ -1122,6 +1139,7 @@ def quality_report(
     if not x_quality_report_token or not secrets.compare_digest(x_quality_report_token, expected_token):
         raise HTTPException(status_code=403, detail="Invalid quality report token")
     report = logger.get_quality_report(days=days, include_examples=False)
+    report["guided_navigation"] = logger.get_guided_navigation_metrics(days)
     report["ticket_delivery"] = logger.delivery_summary()
     daily_spend = logger.get_llm_spend(settings.llm_environment, days=1)
     monthly_spend = logger.get_llm_spend(settings.llm_environment, days=31)
@@ -1165,6 +1183,82 @@ def review_queue(
         raise HTTPException(status_code=403, detail="Invalid quality report token")
     items = logger.get_review_queue(days=days, include_dev_sessions=False)
     return {"period_days": days, "item_count": len(items), "items": items}
+
+
+def _control_start_actions() -> list[ChatAction]:
+    labels = [
+        "Лот не передают",
+        "Не могу сделать ставку",
+        "Оплатил тариф, доступа нет",
+        "Вопрос по штрафу или депозиту",
+    ]
+    return [
+        ChatAction(
+            id=f"control-start:{index}",
+            type="answer",
+            label=label,
+            payload={"message": label, "kind": "free_text"},
+        )
+        for index, label in enumerate(labels, start=1)
+    ]
+
+
+def _save_start_response(response: ChatResponse) -> ChatResponse:
+    logger.save_response_state(
+        response,
+        {
+            "entry_source": "start",
+            "experience_variant": response.experience_variant,
+            "navigation_version": response.navigation_version,
+            "navigation_node_id": response.navigation_node_id,
+        },
+    )
+    logger.log_guided_navigation_event(
+        response.session_id or "",
+        response.experience_variant or "control",
+        "root_shown",
+        navigation_version=response.navigation_version,
+        node_id=response.navigation_node_id,
+    )
+    return response
+
+
+@app.post("/api/chat/start", response_model=ChatResponse)
+def chat_start(request: ChatStartRequest) -> ChatResponse:
+    navigation = _guided_navigation_for_session(request.session_id)
+    role = "guest"
+    message_id = f"chat-start-{secrets.token_hex(12)}"
+    if not navigation:
+        return _save_start_response(ChatResponse(
+            session_id=request.session_id,
+            message_id=message_id,
+            answer="Опишите проблему своими словами — я помогу разобраться или подготовлю обращение в поддержку.",
+            intent="start",
+            role=role,
+            needs_ticket=False,
+            actions=_control_start_actions(),
+            confidence_level="high",
+            action="clarify",
+            resolution="clarified",
+            experience_variant="control",
+        ))
+
+    root = navigation.node(navigation.root_node_id)
+    return _save_start_response(ChatResponse(
+        session_id=request.session_id,
+        message_id=message_id,
+        answer=root.prompt,
+        intent="guided_navigation",
+        role=role,
+        needs_ticket=False,
+        actions=navigation.actions(root.id),
+        confidence_level="high",
+        action="clarify",
+        resolution="clarified",
+        experience_variant="guided",
+        navigation_version=navigation.version,
+        navigation_node_id=root.id,
+    ))
 
 
 @app.post("/api/chat/message", response_model=ChatResponse)
@@ -1239,6 +1333,79 @@ def legacy_chat(request: LegacyChatRequest) -> LegacyChatResponse:
     return LegacyChatResponse(answer=answer, needs_escalation=response.needs_ticket)
 
 
+def _guided_navigation_turn_response(request, navigation, node_id: str, role: str, started: float) -> ChatResponse:
+    node = navigation.node(node_id)
+    answer = node.prompt
+    message_id = _persist_turn(
+        started_at=started,
+        request=request,
+        analysis=analyze_text(request.message, request.context),
+        role=role,
+        intent="guided_navigation",
+        answer=answer,
+        article_id=None,
+        score=300,
+        confidence="high",
+        matched_features=[f"guided_node:{node.id}"],
+        action="clarify",
+        needs_ticket=False,
+        ticket_id=None,
+        ticket_created=False,
+        fallback_reason="",
+        safety_categories=[],
+    )
+    return ChatResponse(
+        session_id=request.session_id,
+        message_id=message_id,
+        answer=answer,
+        intent="guided_navigation",
+        role=role,
+        needs_ticket=False,
+        actions=navigation.actions(node.id),
+        confidence_level="high",
+        action="clarify",
+        resolution="clarified",
+        experience_variant="guided",
+        navigation_version=navigation.version,
+        navigation_node_id=node.id,
+    )
+
+
+def _guided_free_text_response(request, navigation, role: str, started: float) -> ChatResponse:
+    answer = "Напишите вопрос своими словами — поле ввода доступно ниже."
+    message_id = _persist_turn(
+        started_at=started,
+        request=request,
+        analysis=analyze_text(request.message, request.context),
+        role=role,
+        intent="guided_navigation",
+        answer=answer,
+        article_id=None,
+        score=300,
+        confidence="high",
+        matched_features=["guided_navigation:free_text"],
+        action="clarify",
+        needs_ticket=False,
+        ticket_id=None,
+        ticket_created=False,
+        fallback_reason="",
+        safety_categories=[],
+    )
+    return ChatResponse(
+        session_id=request.session_id,
+        message_id=message_id,
+        answer=answer,
+        intent="guided_navigation",
+        role=role,
+        needs_ticket=False,
+        confidence_level="high",
+        action="clarify",
+        resolution="clarified",
+        experience_variant="guided",
+        navigation_version=navigation.version,
+    )
+
+
 def _process_bound_chat_message(request: ChatRequest, dialogue_turn=None, lease_token=None) -> ChatResponse:
     """Bind issued actions to this session before any action or search runs."""
     import time
@@ -1266,15 +1433,38 @@ def _process_bound_chat_message(request: ChatRequest, dialogue_turn=None, lease_
         }
     token = decision_context.set(trace)
     try:
+        if (
+            not request.selected_action_id
+            and previous
+            and previous["response"].get("experience_variant") == "guided"
+        ):
+            logger.log_guided_navigation_event(
+                request.session_id,
+                "guided",
+                "free_text_message",
+                navigation_version=previous["response"].get("navigation_version"),
+                node_id=previous["response"].get("navigation_node_id"),
+            )
         valid_action = True
+        issued = None
+        definition = None
+        guided_action = None
         if request.selected_action_id:
             issued = next((a for a in (previous["actions"] if previous else [])
                            if a["id"] == request.selected_action_id), None)
             definition = find_scenario_action(request.selected_action_id)
-            valid_action = bool(issued and definition
-                and scenario_allowed(definition[0], role)
-                and action_allowed(ChatAction.model_validate(issued), role)
-                and (not request.conversation_turn_id or request.conversation_turn_id == previous["message_id"]))
+            navigation = _guided_navigation_for_session(request.session_id)
+            guided_action = navigation.resolve_action(request.selected_action_id) if navigation else None
+            issued_action = ChatAction.model_validate(issued) if issued else None
+            valid_action = bool(
+                issued_action
+                and (not request.conversation_turn_id or request.conversation_turn_id == previous["message_id"])
+                and action_allowed(issued_action, role)
+                and (
+                    (definition and scenario_allowed(definition[0], role))
+                    or (guided_action and issued_action.model_dump() == guided_action.model_dump())
+                )
+            )
         if not valid_action:
             disabled_status_action = bool(
                 issued
@@ -1301,11 +1491,56 @@ def _process_bound_chat_message(request: ChatRequest, dialogue_turn=None, lease_
                 role=role, needs_ticket=False,
                 resolution="clarified", action="clarify", confidence_level="low")
             trace["decision"] = {"reason": reason}
+        elif guided_action:
+            kind = str(guided_action.payload.get("kind") or "")
+            if kind in {"node", "back"}:
+                response = _guided_navigation_turn_response(
+                    request,
+                    navigation,
+                    str(guided_action.payload.get("target_node_id") or ""),
+                    role,
+                    started,
+                )
+                trace["guided_navigation"] = {
+                    "version": navigation.version,
+                    "source_node_id": guided_action.payload.get("node_id"),
+                    "target_node_id": guided_action.payload.get("target_node_id"),
+                    "kind": kind,
+                }
+            elif kind == "free_text":
+                response = _guided_free_text_response(request, navigation, role, started)
+                trace["guided_navigation"] = {
+                    "version": navigation.version,
+                    "source_node_id": guided_action.payload.get("node_id"),
+                    "kind": kind,
+                }
+            elif kind == "scenario" and guided_action.scenario_id:
+                response = _process_chat_message(request, guided_scenario_id=guided_action.scenario_id)
+                response.experience_variant = "guided"
+                response.navigation_version = navigation.version
+                trace["guided_navigation"] = {
+                    "version": navigation.version,
+                    "source_node_id": guided_action.payload.get("node_id"),
+                    "scenario_id": guided_action.scenario_id,
+                    "kind": kind,
+                }
+            else:
+                raise HTTPException(status_code=409, detail="invalid_guided_navigation_action")
         elif dialogue_turn and dialogue_turn.service_reply and pre_check(request.message).allowed:
             response = _dialogue_service_response(request, dialogue_turn, role, started)
             trace["service_text"] = "dialogue." + dialogue_turn.service_reply
         else:
             response = _process_chat_message(request)
+        if guided_action:
+            logger.log_guided_navigation_event(
+                request.session_id,
+                "guided",
+                "terminal_selected" if guided_action.scenario_id else "navigation_selected",
+                navigation_version=guided_action.payload.get("navigation_version"),
+                node_id=guided_action.payload.get("node_id"),
+                scenario_id=guided_action.scenario_id,
+                action_id=guided_action.id,
+            )
         response.actions = [a for a in response.actions if action_allowed(a, role)]
         if settings.answer_assembly_enabled and trace.get("answer_assembly_error"):
             response.resolution = "clarified"

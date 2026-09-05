@@ -30,6 +30,13 @@ class ChatRequest(BaseModel):
     model_config = {"populate_by_name": True}
 
 
+class ChatStartRequest(BaseModel):
+    session_id: str = Field(default_factory=lambda: str(uuid4()))
+    context: UserContext = Field(default_factory=UserContext, validation_alias=AliasChoices("context", "user_context"))
+
+    model_config = {"populate_by_name": True}
+
+
 class TemplateLink(BaseModel):
     label: str
     url: str
@@ -44,6 +51,7 @@ ChatActionType = Literal[
     "open_ticket",
     "request_callback",
     "handoff",
+    "guided_choice",
 ]
 
 
@@ -92,6 +100,9 @@ class ChatResponse(BaseModel):
     used_context: list[str] = Field(default_factory=list)
     data_freshness: str | None = None
     action: str = "answer"
+    experience_variant: str | None = None
+    navigation_version: str | None = None
+    navigation_node_id: str | None = None
 
 
 class ChatFeedbackRequest(BaseModel):

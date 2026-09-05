@@ -137,6 +137,17 @@ class DialogLogger:
                     message_id TEXT,
                     created_at TEXT NOT NULL
                 );
+                CREATE TABLE IF NOT EXISTS guided_navigation_events (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    session_id TEXT NOT NULL,
+                    variant TEXT NOT NULL,
+                    navigation_version TEXT,
+                    event_type TEXT NOT NULL,
+                    node_id TEXT,
+                    scenario_id TEXT,
+                    action_id TEXT,
+                    created_at TEXT NOT NULL
+                );
                 CREATE TABLE IF NOT EXISTS llm_requests (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
                     provider TEXT NOT NULL,
@@ -212,6 +223,10 @@ class DialogLogger:
                     ON clarification_states(expires_at);
                 CREATE INDEX IF NOT EXISTS idx_feedback_message_id
                     ON feedback(message_id);
+                CREATE INDEX IF NOT EXISTS idx_guided_navigation_events_created_at
+                    ON guided_navigation_events(created_at);
+                CREATE INDEX IF NOT EXISTS idx_guided_navigation_events_session_id
+                    ON guided_navigation_events(session_id);
                 """
             )
             ticket_columns = {
@@ -786,6 +801,47 @@ class DialogLogger:
                 """,
                 (session_id, rating, comment, message_id, datetime.now(timezone.utc).isoformat()),
             )
+
+    def log_guided_navigation_event(
+        self,
+        session_id: str,
+        variant: str,
+        event_type: str,
+        *,
+        navigation_version: str | None = None,
+        node_id: str | None = None,
+        scenario_id: str | None = None,
+        action_id: str | None = None,
+    ) -> None:
+        with self._connect() as conn:
+            conn.execute(
+                """
+                INSERT INTO guided_navigation_events
+                (session_id, variant, navigation_version, event_type, node_id, scenario_id, action_id, created_at)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+                """,
+                (
+                    session_id,
+                    variant,
+                    navigation_version,
+                    event_type,
+                    node_id,
+                    scenario_id,
+                    action_id,
+                    datetime.now(timezone.utc).isoformat(),
+                ),
+            )
+
+    def get_guided_navigation_metrics(self, days: int = 30) -> dict:
+        period_days = max(1, int(days))
+        since = (datetime.now(timezone.utc) - timedelta(days=period_days)).isoformat()
+        with self._connect() as conn:
+            rows = conn.execute(
+                "SELECT variant, event_type, COUNT(*) AS count, COUNT(DISTINCT session_id) AS sessions "
+                "FROM guided_navigation_events WHERE created_at >= ? GROUP BY variant, event_type",
+                (since,),
+            ).fetchall()
+        return {"period_days": period_days, "events": [dict(row) for row in rows]}
 
     def log_llm_request(
         self,

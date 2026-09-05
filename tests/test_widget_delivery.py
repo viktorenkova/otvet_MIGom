@@ -15,7 +15,7 @@ def test_widget_files_are_not_cached_after_ui_updates():
 def test_served_widget_contains_ticket_description_clear_action():
     response = TestClient(app).get("/widget/")
 
-    assert "20260813-answer-quality" in response.text
+    assert "20260905-guided-navigation" in response.text
     assert "Очистить и написать своё" in response.text
     assert '<select name="topic">' in response.text
     assert "Удобное время звонка" not in response.text
@@ -32,6 +32,8 @@ def test_widget_script_submits_written_support_only():
     assert 'category: "support"' in response.text
     assert "preferred_callback_time" not in response.text
     assert "request_callback:" not in response.text
+    assert 'postJson("/api/chat/start"' in response.text
+    assert 'action.type === "guided_choice"' in response.text
 
 
 def test_widget_home_action_starts_a_fresh_chat_session():
