@@ -1,0 +1,34 @@
+{
+  "generated_at": "2026-09-04T15:17:23.141858+00:00",
+  "protocol": "architecture-acceptance-2026-09-04-v1",
+  "status": "engineering_handoff_only",
+  "blind_gate_passed": false,
+  "production_release_allowed": false,
+  "new_independent_singles": 0,
+  "new_independent_dialogues": 0,
+  "required_singles": 500,
+  "required_dialogues": 100,
+  "template_checks": {
+    "schema_valid": false
+  },
+  "artifact_sha256": {
+    "pack-template.json": "90008870610c4c1cafa75b4ea9809eae281f255702751c492f431412c2e1048b",
+    "pack.schema.json": "c5acb43e7fb955799fd144338ba45da3671a40e5ff947ff2f4c7487ddccd19d3",
+    "observation.schema.json": "a28724790225bf7c046a439d7f0f0623a088a3bc8a8764d0ac75f9bf9c8aad92",
+    "judgment.schema.json": "9823d245f26debb85c8a2f813682898a704a7095e1664604874678d638fd1f6c",
+    "exclusions-template.json": "3aa3159682a50b7ea64b2c35197b3183d91afad3933ebbbe006ec24c6dbc7e17",
+    "run-template.json": "e5af84e3fd56f6379f235522840291f4d8c3494f76d8c9e59b55c703d61850ac"
+  },
+  "not_performed": [
+    "independent_collection_and_labeling",
+    "fresh_blind_run",
+    "expert_response_review",
+    "new_real_shadow_1000",
+    "full_suite_and_browser_release_checks",
+    "rollout"
+  ],
+  "historical_evidence": {
+    "stage5_preparation": "500 singles / 50 dialogues reported historically; independence for this candidate is not established",
+    "stage6_local_shadow": "Replayed development events; ineligible as new production shadow"
+  }
+}

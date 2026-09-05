@@ -225,6 +225,7 @@ def test_missing_status_identifier_is_collected_across_workers(tmp_path, monkeyp
     log = DialogLogger(str(tmp_path / "status.sqlite3"))
     monkeypatch.setattr(main, "logger", log)
     monkeypatch.setattr(main.settings, "dialogue_state_enabled", True)
+    monkeypatch.setattr(main.settings, "internal_status_api_enabled", True)
     secret = "dialogue-test-only-secret"
     monkeypatch.setattr(main.settings, "trusted_context_secret", secret)
     body = base64.urlsafe_b64encode(json.dumps({"iss": main.settings.trusted_context_issuer,
@@ -253,11 +254,17 @@ def test_missing_status_identifier_is_collected_across_workers(tmp_path, monkeyp
     assert calls == [("user", "456")]
 
 
-def test_guest_cannot_choose_closed_scenario_from_previous_options():
+def test_guest_can_choose_any_public_scenario_from_previous_options():
     from backend.app.bot.scenario_engine import load_scenarios
     from backend.app.bot.dialogue_understanding import resolve_choice
-    closed = next(s for s in load_scenarios() if "guest" not in s.roles)
-    assert resolve_choice(closed.title, [{"article_id": closed.scenario_id, "label": closed.title}], "guest") is None
+    scenario = next(s for s in load_scenarios() if s.scenario_id == "commission.explained")
+    selected = resolve_choice(
+        scenario.title,
+        [{"article_id": scenario.scenario_id, "label": scenario.title}],
+        "guest",
+    )
+    assert selected is not None
+    assert selected == scenario.scenario_id
 
 
 def test_repeat_keeps_current_task():

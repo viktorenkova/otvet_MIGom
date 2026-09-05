@@ -45,3 +45,24 @@ def test_remote_audit_prefers_api_health_for_proxied_deployment() -> None:
         "https://chat.migtorg.com/api/chat/message",
         "https://dev.example.test/manifest",
     ) == ["https://dev.example.test/manifest"]
+
+
+def test_manifest_identifies_effective_thresholds_and_action_channels():
+    from backend.app.config import Settings
+    control = build_runtime_manifest(Settings(routing_architecture="control"))
+    local = build_runtime_manifest(Settings(routing_architecture="local", ticket_email_enabled=True))
+    assert control["effective_scorer_config"]["path"] == "configs/reranker_config.json"
+    assert local["effective_scorer_config"]["path"] == "configs/architecture_reranker_config.json"
+    assert control["effective_scorer_config"]["sha256"] != local["effective_scorer_config"]["sha256"]
+    assert control["action_settings"]["ticket_email_enabled"] is False
+    assert local["action_settings"]["ticket_email_enabled"] is True
+    assert control["manifest_sha256"] != local["manifest_sha256"]
+
+
+def test_manifest_never_exports_secrets():
+    import json
+    from backend.app.config import Settings
+    secret = "test-only-do-not-export-value"
+    manifest = build_runtime_manifest(Settings(qwen_api_key=secret, litellm_api_key=secret,
+        smtp_password=secret, trusted_context_secret=secret))
+    assert secret not in json.dumps(manifest)

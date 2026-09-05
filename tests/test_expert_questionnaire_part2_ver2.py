@@ -45,30 +45,25 @@ def test_approved_refusal_answers_route_to_specific_scenarios(message, scenario_
     assert decision.scenario.scenario_id == scenario_id
 
 
-def test_contract_and_refund_terms_require_authorized_role():
+def test_all_static_knowledge_is_public_for_guest_and_authorized_users():
     scenarios = _scenario_map()
-    restricted = {
-        "contract.termination_and_restriction",
-        "commission.explained",
-        "commission.unpaid",
-        "balance.topup.commission",
-        "refund.eligibility",
-        "refund.application",
-        "refund.destination",
-        "refund.timing_status",
-        "refund.denied_or_blocked",
-    }
-    for scenario_id in restricted:
-        assert scenarios[scenario_id]["roles"] == ["authorized"]
+    assert scenarios
+    for scenario in scenarios.values():
+        assert scenario["roles"] == ["guest", "authorized"]
 
     guest_decision = match_scenario("какие комиссии есть", "guest")
-    assert guest_decision.scenario is None
+    assert guest_decision.scenario is not None
+    assert guest_decision.scenario.scenario_id == "commission.explained"
 
 
 def test_demo_tariff_scope_and_confirmed_identification_are_recorded():
-    tariff = _scenario_map()["tariff.connect"]
-    joined = " ".join(tariff["facts"])
-    assert "демо-тарифа" in joined
+    scenarios = _scenario_map()
+    joined = " ".join(
+        fact
+        for scenario_id in ("tariff.demo", "tariff.choose", "account.identification_for_contract")
+        for fact in scenarios[scenario_id]["facts"]
+    )
+    assert "Демо-режим" in joined
     assert "разделе «Имущество»" in joined
     assert "телефона и электронной почты" in joined
     assert "паспортные данные" in joined

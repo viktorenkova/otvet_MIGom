@@ -287,26 +287,6 @@ def generate_answer(
     ):
         base += legacy_template("legacy_exception_11")
         base_lower = base.lower()
-    if (
-        role == "authorized"
-        and intent in {"payment", "tariffs", "lot", "transfer", "pickup", "refund", "penalty"}
-        and not (
-            article
-            and article.slug
-            in {
-                "kb-014-демо-режим-после-регистрации",
-                "manual-review-2026-07-11-q-015-что-дает-демо-режим",
-                "manual-review-2026-07-11-q-016-можно-ли-делать-ставки-в-демо-режиме",
-                'manual-review-2026-07-11-q-017-можно-ли-видеть-результаты-торгов-в-демо-режиме',
-                'manual-review-2026-07-11-q-021-как-посмотреть-цену-за-лот-если-у-меня-демо-режим',
-                'manual-review-2026-07-11-q-027-пополнил-кошелек-но-тариф-не-включился-что-делать',
-                "site-doc-028-demo-mode-upgrade",
-            }
-        )
-    ):
-        base += (
-            legacy_template("legacy_exception_15")
-        )
     base = _finalize_answer(base, message)
 
     # Validate Python exceptions too; unapproved text cannot approve itself.

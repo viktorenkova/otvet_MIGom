@@ -188,7 +188,11 @@ def run_checks(settings: Settings, knowledge_report: dict | None = None) -> dict
     failures = sum(item["status"] == "fail" for item in checks)
     warnings = sum(item["status"] == "warn" for item in checks)
     return {
-        "production_ready": failures == 0,
+        "configuration_ready": failures == 0,
+        "production_ready": False,
+        "scope": "configuration_preflight_only",
+        "release_requirements": ["current_bundle_independent_500_100_gate", "new_real_shadow_1000",
+                                 "full_suite_http_widget_checks", "staged_rollout_review"],
         "failures": failures,
         "warnings": warnings,
         "checks": checks,
@@ -212,7 +216,7 @@ def main() -> None:
     parser = argparse.ArgumentParser(description="Check MIGTORG chatbot production readiness.")
     parser.add_argument("--env-file", type=Path, help="Load configuration without overriding existing variables.")
     parser.add_argument("--output", type=Path)
-    parser.add_argument("--strict", action="store_true", help="Exit with code 1 when a required check fails.")
+    parser.add_argument("--strict", action="store_true", help="Require complete production readiness; configuration alone cannot pass.")
     args = parser.parse_args()
     if args.env_file:
         _load_env_file(args.env_file)

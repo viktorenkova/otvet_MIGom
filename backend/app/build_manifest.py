@@ -132,7 +132,7 @@ def build_runtime_manifest(settings: Any) -> dict[str, Any]:
     }
     llm_policy_raw = json.dumps(llm_policy, sort_keys=True, separators=(",", ":")).encode("utf-8")
     payload: dict[str, Any] = {
-        "manifest_schema": 2,
+        "manifest_schema": 3,
         "deploy_version": str(settings.deploy_version),
         "git_sha": git_sha,
         "working_tree_dirty": working_tree_dirty,
@@ -170,7 +170,21 @@ def build_runtime_manifest(settings: Any) -> dict[str, Any]:
         "llm_primary_model": str(settings.llm_primary_model),
         "llm_fallback_model": str(settings.llm_fallback_model),
         "llm_policy_sha256": _sha256_bytes(llm_policy_raw),
+        "action_settings": {"ticket_email_enabled": settings.ticket_email_enabled,
+            "internal_status_api_enabled": settings.internal_status_api_enabled,
+            "internal_status_timeout_seconds": settings.internal_status_timeout_seconds},
+        "llm_budget_settings": {"daily_usd": settings.llm_daily_budget_usd,
+            "monthly_usd": settings.active_llm_monthly_budget_usd,
+            "input_per_million_usd": settings.llm_input_cost_per_million_usd,
+            "output_per_million_usd": settings.llm_output_cost_per_million_usd},
     }
+    active_path = ROOT / ("knowledge/v3_1/scenarios.json" if payload["knowledge_mode"] == "v3_1" else "knowledge/v2/scenarios.json")
+    payload["active_scenarios_sha256"] = _sha256_file(active_path)
+    scorer_path = ROOT / ("configs/architecture_reranker_config.json" if settings.routing_architecture == "local" else "configs/reranker_config.json")
+    payload["effective_scorer_config"] = {"path": scorer_path.relative_to(ROOT).as_posix(),
+        "sha256": _sha256_file(scorer_path), "settings": json.loads(scorer_path.read_text(encoding="utf-8"))}
+    payload["dense_environment"] = {key: os.getenv(key) for key in
+        ("SEMANTIC_DENSE_ENABLED", "SEMANTIC_MODEL_ALLOW_DOWNLOAD", "HF_HUB_OFFLINE", "TRANSFORMERS_OFFLINE")}
     from backend.app.bot.knowledge_search import _semantic_index
     semantic = json.loads(matching_config.read_text(encoding="utf-8")).get("semantic_matching", {})
     payload["retrieval_settings"] = semantic
@@ -181,6 +195,12 @@ def build_runtime_manifest(settings: Any) -> dict[str, Any]:
          **_embedding_fingerprint(_semantic_index())}
         if _semantic_index.cache_info().currsize else {"initialized": False, "available": None}
     )
+    if _semantic_index.cache_info().currsize:
+        index = _semantic_index()
+        payload["effective_search_channels"] = {"lexical_weight": index.lexical_weight,
+            "dense_weight": index.dense_weight, "dense_floor": index.dense_floor,
+            "lexical_char_weight": index.lexical.char_weight, "lexical_word_weight": index.lexical.word_weight,
+            "indexed_scenario_ids_sha256": _sha256_bytes(json.dumps(sorted(index.article_ids)).encode())}
     from importlib.metadata import version, PackageNotFoundError
     payload["dependencies"] = {}
     for name in ("numpy", "scikit-learn", "sentence-transformers", "torch", "fastapi", "pydantic"):

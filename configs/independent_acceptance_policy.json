@@ -1,0 +1,22 @@
+{
+  "protocol": "architecture-acceptance-2026-09-04-v1",
+  "single_min": 500,
+  "dialogue_min": 100,
+  "dialogue_turns": 2,
+  "required_roles": ["guest", "authorized"],
+  "required_slices": ["typos", "letter_permutation", "word_order", "morphology", "colloquial"],
+  "required_topics": ["bidding", "registration", "platform", "lot", "transfer", "support", "pickup", "inspection", "tariffs", "payment", "refund", "penalty", "refusal", "seller", "account", "prohibited", "technical", "feedback"],
+  "e2e_min_pct": 84,
+  "wilson_lower_min_pct": 80,
+  "top1_min_pct": 90,
+  "recall10_min_pct": 97,
+  "correct_route_answer_min_pct": 93,
+  "confident_wrong_max_pct": 2,
+  "slice_e2e_min_pct": 80,
+  "topic_e2e_min_pct": 75,
+  "ambiguous_dialogue_min_pct": 85,
+  "p95_max_ms": 5000,
+  "local_p95_degradation_max_pct": 10,
+  "shadow_min_new_events": 1000,
+  "rollout_percentages": [5, 25, 50, 100]
+}

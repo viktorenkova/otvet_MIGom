@@ -4,7 +4,7 @@
   "generated_at": "2026-08-23T00:00:00+03:00",
   "migrated_from": {
     "schema_version": 2,
-    "version": "2026.09.01.2"
+    "version": "2026.09.05.1"
   },
   "retrieval_taxonomy": {
     "path": "configs\\retrieval_taxonomy_terms.json",
@@ -697,7 +697,7 @@
       ],
       "short_answer": "Если подтверждённая ставка не отображается, не отправляйте её повторно до проверки статуса.",
       "detailed_answer": "Проверьте карточку лота и раздел активных ставок, затем обновите страницу. Для точной проверки нужны авторизация и номер лота.",
-      "next_step": "Авторизуйтесь и выберите «Проверить ставку» либо создайте обращение с номером лота и временем отправки ставки.",
+      "next_step": "Проверьте карточку лота и раздел активных ставок. Если ставка не отображается, создайте обращение с номером лота и временем отправки ставки.",
       "actions": [
         {
           "id": "bid.status.fetch",
@@ -909,7 +909,7 @@
       ],
       "short_answer": "Общий статус торгов отображается в карточке лота и в соответствующем разделе личного кабинета.",
       "detailed_answer": "Если торги завершились, но статус не изменился, точное состояние нужно проверить по номеру лота. Платная опция позиции ставки не заменяет проверку статуса торгов.",
-      "next_step": "Авторизуйтесь и запросите статус по номеру лота либо создайте обращение.",
+      "next_step": "Проверьте статус в карточке лота или личном кабинете. Если статус не меняется, создайте обращение с номером лота.",
       "actions": [
         {
           "id": "auction.status.fetch",
@@ -1736,7 +1736,7 @@
       ],
       "short_answer": "Если ваша ставка стала лучшей, дождитесь решения продавца о передаче лота: победа в торгах ещё не означает автоматическую передачу автомобиля.",
       "detailed_answer": "До официального подтверждения не оплачивайте автомобиль самостоятельно. После передачи отдел сопровождения направит дальнейшие инструкции по реквизитам и документам, затем можно будет согласовать оплату и получение.",
-      "next_step": "Проверьте статус лота в личном кабинете. Для проверки конкретного лота нужна защищённая авторизация; если статус не меняется или инструкции не пришли, создайте обращение с номером лота.",
+      "next_step": "Проверьте статус лота в личном кабинете. Если статус не меняется или инструкции не пришли, создайте обращение с номером лота.",
       "actions": [
         {
           "id": "win.transfer.fetch",
@@ -2129,6 +2129,7 @@
       "title": "Расторжение договора и ограничение доступа",
       "intent": "registration",
       "roles": [
+        "guest",
         "authorized"
       ],
       "stage": "access",
@@ -2642,7 +2643,7 @@
       ],
       "short_answer": "Забрать лот можно после подтверждения оплаты, готовности документов и согласования выдачи.",
       "detailed_answer": "Заранее согласуйте с продавцом или менеджером дату, время и место получения. Не приезжайте без подтверждения доступа на территорию и готовности автомобиля. Точный список документов уточняется по конкретной сделке.",
-      "next_step": "Проверьте статус выдачи по номеру лота. Если лот оплачен, но данных для получения нет, создайте обращение.",
+      "next_step": "Проверьте статус выдачи в личном кабинете. Если лот оплачен, но данных для получения нет, создайте обращение.",
       "actions": [
         {
           "id": "pickup.status.fetch",
@@ -3894,6 +3895,7 @@
       "title": "Как оплатить тариф, комиссию или лот",
       "intent": "payment",
       "roles": [
+        "guest",
         "authorized"
       ],
       "stage": "payment",
@@ -4437,6 +4439,7 @@
       "title": "Как устроена комиссия MIGTORG",
       "intent": "payment",
       "roles": [
+        "guest",
         "authorized"
       ],
       "stage": "after_transfer",
@@ -4942,6 +4945,7 @@
       "title": "Срок оплаты комиссии и блокировка",
       "intent": "payment",
       "roles": [
+        "guest",
         "authorized"
       ],
       "stage": "after_transfer",
@@ -5181,6 +5185,7 @@
       "title": "Когда можно оплачивать выигранный лот",
       "intent": "payment",
       "roles": [
+        "guest",
         "authorized"
       ],
       "stage": "after_win",
@@ -5929,6 +5934,7 @@
       "title": "Комиссия при пополнении баланса",
       "intent": "payment",
       "roles": [
+        "guest",
         "authorized"
       ],
       "stage": "payment",
@@ -6705,6 +6711,7 @@
       "title": "Куда возвращаются деньги",
       "intent": "refund",
       "roles": [
+        "guest",
         "authorized"
       ],
       "stage": "payment",
@@ -7159,6 +7166,7 @@
       "title": "Почему возврат недоступен или отклонён",
       "intent": "refund",
       "roles": [
+        "guest",
         "authorized"
       ],
       "stage": "payment",
@@ -7407,6 +7415,7 @@
       "title": "Штраф: основание, оплата и спор",
       "intent": "penalty",
       "roles": [
+        "guest",
         "authorized"
       ],
       "stage": "payment",
@@ -7712,6 +7721,7 @@
       "title": "Какие данные нужны для демо и платного договора",
       "intent": "registration",
       "roles": [
+        "guest",
         "authorized"
       ],
       "stage": "access",
@@ -7925,6 +7935,7 @@
       "title": "Регистрация автомобиля после покупки",
       "intent": "transfer",
       "roles": [
+        "guest",
         "authorized"
       ],
       "stage": "after_transfer",
@@ -8428,6 +8439,7 @@
       "title": "Неутверждённый срок или ссылка в договоре",
       "intent": "registration",
       "roles": [
+        "guest",
         "authorized"
       ],
       "stage": "access",
@@ -8665,6 +8677,7 @@
       "title": "Неутверждённые основания или последствия отказа",
       "intent": "refusal",
       "roles": [
+        "guest",
         "authorized"
       ],
       "stage": "after_transfer",
@@ -8907,6 +8920,7 @@
       "title": "Неопубликованный срок, формула или владелец решения по штрафу",
       "intent": "penalty",
       "roles": [
+        "guest",
         "authorized"
       ],
       "stage": "payment",
@@ -9159,6 +9173,7 @@
       "title": "Документы представителя или стороннего плательщика требуют проверки",
       "intent": "registration",
       "roles": [
+        "guest",
         "authorized"
       ],
       "stage": "access",
@@ -9387,6 +9402,7 @@
       "title": "Штраф за нарушение срока регистрации автомобиля требует официальной проверки",
       "intent": "transfer",
       "roles": [
+        "guest",
         "authorized"
       ],
       "stage": "after_transfer",
@@ -9631,6 +9647,7 @@
       "title": "Сведения, доступные только после индивидуальной проверки",
       "intent": "support",
       "roles": [
+        "guest",
         "authorized"
       ],
       "stage": "support",
@@ -9833,6 +9850,7 @@
       "title": "Какие причины не подтверждают мотивированный отказ",
       "intent": "refusal",
       "roles": [
+        "guest",
         "authorized"
       ],
       "stage": "after_transfer",
@@ -10053,6 +10071,7 @@
       "title": "Какие документы и фотографии нужны для отказа",
       "intent": "refusal",
       "roles": [
+        "guest",
         "authorized"
       ],
       "stage": "after_transfer",
@@ -10283,6 +10302,7 @@
       "title": "Срок и способ подачи акта об отказе",
       "intent": "refusal",
       "roles": [
+        "guest",
         "authorized"
       ],
       "stage": "after_transfer",
@@ -10503,6 +10523,7 @@
       "title": "Кто принимает решение по мотивированному отказу",
       "intent": "refusal",
       "roles": [
+        "guest",
         "authorized"
       ],
       "stage": "after_transfer",
@@ -10740,6 +10761,7 @@
       "title": "Финансовые и закрывающие документы",
       "intent": "payment",
       "roles": [
+        "guest",
         "authorized"
       ],
       "stage": "payment",
@@ -11005,6 +11027,7 @@
       "title": "Что такое обеспечительный или возвратный депозит",
       "intent": "refund",
       "roles": [
+        "guest",
         "authorized"
       ],
       "stage": "access",
@@ -11230,6 +11253,7 @@
       "title": "Покупатель не оплатил переданное имущество",
       "intent": "payment",
       "roles": [
+        "guest",
         "authorized"
       ],
       "stage": "after_transfer",
@@ -12660,7 +12684,7 @@
       ],
       "short_answer": "Проверьте раздел «Тарифы» и вкладку «Ваш тариф»: пополнение кошелька само по себе не означает, что тариф уже активирован.",
       "detailed_answer": "Если деньги списались, а тариф не отображается или ставки недоступны, подготовьте контакт аккаунта, дату, сумму, способ оплаты и подтверждение списания. Не оплачивайте повторно до проверки операции.",
-      "next_step": "Нажмите «Проверить тариф» или создайте обращение; администрация проверит платёж и статус активации.",
+      "next_step": "Проверьте статус тарифа в личном кабинете. Если деньги списались, а тариф не отображается, создайте обращение по платежу.",
       "actions": [
         {
           "id": "tariff.status.fetch",
@@ -13094,6 +13118,7 @@
       "title": "Покупатель передумал выкупать выигранный лот",
       "intent": "refusal",
       "roles": [
+        "guest",
         "authorized"
       ],
       "stage": "after_transfer",
@@ -13333,6 +13358,7 @@
       "title": "Покупатель игнорирует продавца после победы",
       "intent": "refusal",
       "roles": [
+        "guest",
         "authorized"
       ],
       "stage": "after_transfer",
@@ -13604,6 +13630,7 @@
       "title": "Покупатель отказался от имущества продавца",
       "intent": "seller",
       "roles": [
+        "guest",
         "authorized"
       ],
       "stage": "after_transfer",
@@ -14067,6 +14094,7 @@
       "title": "Срок победной ставки истёк",
       "intent": "bidding",
       "roles": [
+        "guest",
         "authorized"
       ],
       "stage": "after_bid",
@@ -14590,6 +14618,7 @@
       "title": "Задержка вывоза и возможные расходы хранения",
       "intent": "pickup",
       "roles": [
+        "guest",
         "authorized"
       ],
       "stage": "pickup",
@@ -15099,6 +15128,7 @@
       "title": "Доступ продавца и безопасность логина",
       "intent": "seller",
       "roles": [
+        "guest",
         "authorized"
       ],
       "stage": "seller_onboarding",
@@ -15544,6 +15574,7 @@
       "title": "Обучение сотрудников продавца",
       "intent": "seller",
       "roles": [
+        "guest",
         "authorized"
       ],
       "stage": "seller_onboarding",
@@ -15736,6 +15767,7 @@
       "title": "Срок и прекращение договора продавца",
       "intent": "seller",
       "roles": [
+        "guest",
         "authorized"
       ],
       "stage": "seller_contract",
@@ -16491,7 +16523,8 @@
       "title": "Регистрация покупателя и необходимые данные",
       "intent": "account",
       "roles": [
-        "guest"
+        "guest",
+        "authorized"
       ],
       "stage": "registration",
       "objects": [
@@ -16917,6 +16950,7 @@
       "title": "Как узнать результат торгов и победную ставку",
       "intent": "lot",
       "roles": [
+        "guest",
         "authorized"
       ],
       "stage": "after_bid",
@@ -17666,6 +17700,7 @@
       "title": "Что означает статус «Передан»",
       "intent": "transfer",
       "roles": [
+        "guest",
         "authorized"
       ],
       "stage": "after_transfer",
@@ -19097,6 +19132,7 @@
       "title": "Пользователь не видит свой лот",
       "intent": "lot",
       "roles": [
+        "guest",
         "authorized"
       ],
       "stage": "lot_management",
@@ -19784,6 +19820,7 @@
       "title": "Автоставка и продление открытых торгов",
       "intent": "bidding",
       "roles": [
+        "guest",
         "authorized"
       ],
       "stage": "during_bid",
@@ -20285,6 +20322,7 @@
       "title": "Опция «Узнать позицию ставки» и дополнительные инструменты",
       "intent": "bidding",
       "roles": [
+        "guest",
         "authorized"
       ],
       "stage": "during_bid",
@@ -20516,6 +20554,7 @@
       "title": "Уведомление о передаче и контакт продавца",
       "intent": "transfer",
       "roles": [
+        "guest",
         "authorized"
       ],
       "stage": "after_transfer",
@@ -20746,6 +20785,7 @@
       "title": "Какие реквизиты направить для документов по лоту",
       "intent": "transfer",
       "roles": [
+        "guest",
         "authorized"
       ],
       "stage": "after_transfer",
@@ -21664,6 +21704,7 @@
       "title": "Получение лота представителем и доверенность",
       "intent": "pickup",
       "roles": [
+        "guest",
         "authorized"
       ],
       "stage": "pickup",
@@ -21878,6 +21919,7 @@
       "title": "Оплата другим лицом или смена плательщика",
       "intent": "payment",
       "roles": [
+        "guest",
         "authorized"
       ],
       "stage": "before_payment",
@@ -25155,6 +25197,7 @@
       "title": "Разделы личного кабинета",
       "intent": "account",
       "roles": [
+        "guest",
         "authorized"
       ],
       "stage": "account_management",
@@ -25535,6 +25578,7 @@
       "title": "Не приходят уведомления или письма",
       "intent": "technical",
       "roles": [
+        "guest",
         "authorized"
       ],
       "stage": "account_management",
@@ -27637,6 +27681,7 @@
       "title": "Проблема авторизованного клиента по конкретному лоту",
       "intent": "support",
       "roles": [
+        "guest",
         "authorized"
       ],
       "stage": "deal",
@@ -31699,6 +31744,7 @@
       "title": "Удаление аккаунта MIGTORG",
       "intent": "registration",
       "roles": [
+        "guest",
         "authorized"
       ],
       "stage": "access",

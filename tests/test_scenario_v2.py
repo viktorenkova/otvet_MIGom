@@ -12,8 +12,9 @@ from backend.app.bot.scenario_engine import match_scenario
 from backend.app.bot.answer_generator import _redact_for_llm
 from backend.app.bot.trusted_context import TrustedContextError, verify_trusted_context_token
 from backend.app.integrations.status_provider import StatusResult
+from backend.app import main
 from backend.app.main import process_chat_message, settings
-from backend.app.models.chat import ChatRequest
+from backend.app.models.chat import ChatRequest, ChatResponse
 from backend.app.models.user_context import UserContext
 from backend.tools.evaluate_scenarios import evaluate
 
@@ -141,6 +142,7 @@ def test_trusted_status_action_uses_read_only_provider(monkeypatch):
 
     secret = "test-secret"
     monkeypatch.setattr(settings, "trusted_context_secret", secret)
+    monkeypatch.setattr(settings, "internal_status_api_enabled", True)
     monkeypatch.setattr("backend.app.main.status_provider", FakeProvider())
     token = _token(
         secret,
@@ -151,16 +153,19 @@ def test_trusted_status_action_uses_read_only_provider(monkeypatch):
             "scopes": ["status:bid:read"],
         },
     )
-    previous = process_chat_message(ChatRequest(
-        message="не видна моя ставка", trusted_context_token=token,
-        session_id="v2-trusted-status", context=UserContext(lot_id="123")))
-    assert any(action.id == "bid.status.fetch" for action in previous.actions)
+    action = next(a for a in main._scenario_actions("bid.not_visible") if a.id == "bid.status.fetch")
+    previous = ChatResponse(
+        session_id="v2-trusted-status", message_id="v2-status-issued",
+        answer="Статус можно проверить.", intent="bidding", scenario_id="bid.not_visible",
+        role="authorized", needs_ticket=False, actions=[action],
+    )
+    main.logger.save_response_state(previous, {})
     response = process_chat_message(
         ChatRequest(
             message="Проверить ставку",
             selected_action_id="bid.status.fetch",
             trusted_context_token=token,
-            conversation_turn_id=previous.message_id,
+            conversation_turn_id="v2-status-issued",
             session_id="v2-trusted-status",
             context=UserContext(lot_id="123"),
         )

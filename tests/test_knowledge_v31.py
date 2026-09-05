@@ -40,7 +40,7 @@ def test_v31_strict_validator_passes_every_gate() -> None:
 
     assert result["valid"] is True
     assert result["errors"] == []
-    assert result["metrics"]["active_scenario_count"] == 142
+    assert result["metrics"]["active_scenario_count"] == len({r["scenario_id"] for r in source["records"]})
     assert result["metrics"]["fact_loss_count"] == 0
     assert result["metrics"]["financial_or_contract_facts_with_provenance_pct"] == 100.0
     assert result["metrics"]["atomic_unit_count"] == 158
@@ -51,7 +51,9 @@ def test_runtime_loads_v31_with_traceable_answer_policy() -> None:
     clear_knowledge_cache()
     scenarios = load_scenarios()
 
-    assert len(scenarios) == 142
+    expected_ids = {r["scenario_id"] for r in _payload(KNOWLEDGE_PATH)["records"]}
+    assert {s.scenario_id for s in scenarios} == expected_ids
+    assert len(scenarios) == len(expected_ids)
     assert all(item.domain and item.source_version for item in scenarios)
     assert all(item.fact_records and item.answer_policy for item in scenarios)
     assert all(item.retrieval_taxonomy_terms for item in scenarios)

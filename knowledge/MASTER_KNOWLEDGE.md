@@ -18,14 +18,14 @@
 
 ## 2. Состояние знаний
 
-- Версия канонического слоя: `2026.09.01.2`.
+- Версия канонического слоя: `2026.09.05.1`.
 - Сценариев: 142, активных: 142.
 - Подтверждённых фактов: 585.
 - Уникальных текстовых описаний источников: 112.
 - Зафиксированных содержательных пробелов: 3.
 - Кандидатов, ожидающих экспертного решения: 9.
 - Просроченных повторных проверок на 2026-09-01: 60.
-- SHA-256 канонических сценариев: `89bd8cbc3b4c8de64ec6c3acbaae80f71b613a217b500bdccb7047c650d6fed1`.
+- SHA-256 канонических сценариев: `bd1137816d7c87d4015cad9ff723f07e5ded460e3af29b77bb6decc663c6ea0e`.
 - SHA-256 реестра пробелов: `c9f0f8929e75f00245eadc9db5617cd3aec5a13f03276a0b751ef0d8a2a7b401`.
 - SHA-256 очереди экспертной проверки: `89542247add810f88fb26463a96771f4f7187a5306dccce876cdc8db4020d80f`.
 
@@ -759,7 +759,7 @@
 | Параметр | Подтверждённое значение |
 |---|---|
 | Назначение/intent | `lot` |
-| Роли | authorized |
+| Роли | guest, authorized |
 | Этап | `lot_management` |
 | Объекты | lot, account |
 | Операции | search, check |
@@ -1373,7 +1373,7 @@
 | Параметр | Подтверждённое значение |
 |---|---|
 | Назначение/intent | `transfer` |
-| Роли | authorized |
+| Роли | guest, authorized |
 | Этап | `after_transfer` |
 | Объекты | vehicle, registration, document, seller |
 | Операции | register, check, contact |
@@ -1414,7 +1414,7 @@
 | Параметр | Подтверждённое значение |
 |---|---|
 | Назначение/intent | `transfer` |
-| Роли | authorized |
+| Роли | guest, authorized |
 | Этап | `after_transfer` |
 | Объекты | vehicle, registration, penalty, document |
 | Операции | register, check, contact |
@@ -1833,7 +1833,7 @@
 | Параметр | Подтверждённое значение |
 |---|---|
 | Назначение/intent | `registration` |
-| Роли | authorized |
+| Роли | guest, authorized |
 | Этап | `access` |
 | Объекты | contract, account, lot |
 | Операции | check |
@@ -1876,7 +1876,7 @@
 | Параметр | Подтверждённое значение |
 |---|---|
 | Назначение/intent | `registration` |
-| Роли | authorized |
+| Роли | guest, authorized |
 | Этап | `access` |
 | Объекты | contract, account, payment, document |
 | Операции | check, contact |
@@ -1957,7 +1957,7 @@
 | Параметр | Подтверждённое значение |
 |---|---|
 | Назначение/intent | `payment` |
-| Роли | authorized |
+| Роли | guest, authorized |
 | Этап | `before_payment` |
 | Объекты | lot, payer, invoice, contract |
 | Операции | change, pay |
@@ -2165,7 +2165,7 @@
 | Параметр | Подтверждённое значение |
 |---|---|
 | Назначение/intent | `pickup` |
-| Роли | authorized |
+| Роли | guest, authorized |
 | Этап | `pickup` |
 | Объекты | lot, vehicle, seller, parking |
 | Операции | receive, check, contact |
@@ -2225,7 +2225,7 @@
 
 - Короткий ответ: Забрать лот можно после подтверждения оплаты, готовности документов и согласования выдачи.
 - Подробности: Заранее согласуйте с продавцом или менеджером дату, время и место получения. Не приезжайте без подтверждения доступа на территорию и готовности автомобиля. Точный список документов уточняется по конкретной сделке.
-- Следующий шаг: Проверьте статус выдачи по номеру лота. Если лот оплачен, но данных для получения нет, создайте обращение.
+- Следующий шаг: Проверьте статус выдачи в личном кабинете. Если лот оплачен, но данных для получения нет, создайте обращение.
 
 #### Действия и эскалация
 
@@ -2247,7 +2247,7 @@
 | Параметр | Подтверждённое значение |
 |---|---|
 | Назначение/intent | `pickup` |
-| Роли | authorized |
+| Роли | guest, authorized |
 | Этап | `pickup` |
 | Объекты | lot, buyer, representative, power_of_attorney |
 | Операции | receive, authorize |
@@ -2288,7 +2288,7 @@
 | Параметр | Подтверждённое значение |
 |---|---|
 | Назначение/intent | `refusal` |
-| Роли | authorized |
+| Роли | guest, authorized |
 | Этап | `after_transfer` |
 | Объекты | lot, refusal, seller |
 | Операции | refuse, contact |
@@ -2329,7 +2329,7 @@
 | Параметр | Подтверждённое значение |
 |---|---|
 | Назначение/intent | `refusal` |
-| Роли | authorized |
+| Роли | guest, authorized |
 | Этап | `after_transfer` |
 | Объекты | lot, refusal, document |
 | Операции | refuse, contact |
@@ -2370,7 +2370,7 @@
 | Параметр | Подтверждённое значение |
 |---|---|
 | Назначение/intent | `refusal` |
-| Роли | authorized |
+| Роли | guest, authorized |
 | Этап | `after_transfer` |
 | Объекты | lot, refusal, document, inspection |
 | Операции | refuse, check |
@@ -2411,7 +2411,7 @@
 | Параметр | Подтверждённое значение |
 |---|---|
 | Назначение/intent | `refusal` |
-| Роли | authorized |
+| Роли | guest, authorized |
 | Этап | `after_transfer` |
 | Объекты | lot, refusal, document |
 | Операции | refuse, check |
@@ -2452,7 +2452,7 @@
 | Параметр | Подтверждённое значение |
 |---|---|
 | Назначение/intent | `refusal` |
-| Роли | authorized |
+| Роли | guest, authorized |
 | Этап | `after_transfer` |
 | Объекты | lot, refusal, seller, account |
 | Операции | refuse, contact, check |
@@ -2493,7 +2493,7 @@
 | Параметр | Подтверждённое значение |
 |---|---|
 | Назначение/intent | `refusal` |
-| Роли | authorized |
+| Роли | guest, authorized |
 | Этап | `after_transfer` |
 | Объекты | lot, refusal, seller |
 | Операции | refuse, contact, check |
@@ -2534,7 +2534,7 @@
 | Параметр | Подтверждённое значение |
 |---|---|
 | Назначение/intent | `refusal` |
-| Роли | authorized |
+| Роли | guest, authorized |
 | Этап | `after_transfer` |
 | Объекты | lot, refusal, seller, contract |
 | Операции | refuse, check, contact |
@@ -2574,7 +2574,7 @@
 | Параметр | Подтверждённое значение |
 |---|---|
 | Назначение/intent | `transfer` |
-| Роли | authorized |
+| Роли | guest, authorized |
 | Этап | `after_transfer` |
 | Объекты | lot, seller, document, payment |
 | Операции | check, receive, pay |
@@ -2657,7 +2657,7 @@
 | Параметр | Подтверждённое значение |
 |---|---|
 | Назначение/intent | `transfer` |
-| Роли | authorized |
+| Роли | guest, authorized |
 | Этап | `after_transfer` |
 | Объекты | lot, seller, notification |
 | Операции | check, contact |
@@ -2698,7 +2698,7 @@
 | Параметр | Подтверждённое значение |
 |---|---|
 | Назначение/intent | `transfer` |
-| Роли | authorized |
+| Роли | guest, authorized |
 | Этап | `after_transfer` |
 | Объекты | lot, payer, document, requisites |
 | Операции | provide, check |
@@ -2800,7 +2800,7 @@
 
 - Короткий ответ: Если ваша ставка стала лучшей, дождитесь решения продавца о передаче лота: победа в торгах ещё не означает автоматическую передачу автомобиля.
 - Подробности: До официального подтверждения не оплачивайте автомобиль самостоятельно. После передачи отдел сопровождения направит дальнейшие инструкции по реквизитам и документам, затем можно будет согласовать оплату и получение.
-- Следующий шаг: Проверьте статус лота в личном кабинете. Для проверки конкретного лота нужна защищённая авторизация; если статус не меняется или инструкции не пришли, создайте обращение с номером лота.
+- Следующий шаг: Проверьте статус лота в личном кабинете. Если статус не меняется или инструкции не пришли, создайте обращение с номером лота.
 
 #### Действия и эскалация
 
@@ -3152,7 +3152,7 @@
 | Параметр | Подтверждённое значение |
 |---|---|
 | Назначение/intent | `support` |
-| Роли | authorized |
+| Роли | guest, authorized |
 | Этап | `deal` |
 | Объекты | lot, documents, payment, pickup, seller |
 | Операции | collect_context, escalate |
@@ -3278,7 +3278,7 @@
 | Параметр | Подтверждённое значение |
 |---|---|
 | Назначение/intent | `support` |
-| Роли | authorized |
+| Роли | guest, authorized |
 | Этап | `support` |
 | Объекты | account, support, document |
 | Операции | check, contact |
@@ -3482,7 +3482,7 @@
 | Параметр | Подтверждённое значение |
 |---|---|
 | Назначение/intent | `technical` |
-| Роли | authorized |
+| Роли | guest, authorized |
 | Этап | `account_management` |
 | Объекты | notification, email, lot |
 | Операции | check, escalate |
@@ -3525,7 +3525,7 @@
 | Параметр | Подтверждённое значение |
 |---|---|
 | Назначение/intent | `seller` |
-| Роли | authorized |
+| Роли | guest, authorized |
 | Этап | `seller_onboarding` |
 | Объекты | seller, account |
 | Операции | connect, check, contact |
@@ -3566,7 +3566,7 @@
 | Параметр | Подтверждённое значение |
 |---|---|
 | Назначение/intent | `payment` |
-| Роли | authorized |
+| Роли | guest, authorized |
 | Этап | `after_transfer` |
 | Объекты | seller, buyer, lot, payment |
 | Операции | check, contact |
@@ -3606,7 +3606,7 @@
 | Параметр | Подтверждённое значение |
 |---|---|
 | Назначение/intent | `seller` |
-| Роли | authorized |
+| Роли | guest, authorized |
 | Этап | `after_transfer` |
 | Объекты | seller, buyer, lot, refusal, property |
 | Операции | check, contact |
@@ -3688,7 +3688,7 @@
 | Параметр | Подтверждённое значение |
 |---|---|
 | Назначение/intent | `seller` |
-| Роли | authorized |
+| Роли | guest, authorized |
 | Этап | `seller_contract` |
 | Объекты | seller, contract |
 | Операции | terminate, check, contact |
@@ -3852,7 +3852,7 @@
 | Параметр | Подтверждённое значение |
 |---|---|
 | Назначение/intent | `seller` |
-| Роли | authorized |
+| Роли | guest, authorized |
 | Этап | `seller_onboarding` |
 | Объекты | seller, account |
 | Операции | connect, contact |
@@ -4016,7 +4016,7 @@
 | Параметр | Подтверждённое значение |
 |---|---|
 | Назначение/intent | `account` |
-| Роли | authorized |
+| Роли | guest, authorized |
 | Этап | `account_management` |
 | Объекты | account, lot, tariff, balance, notification |
 | Операции | navigate, check |
@@ -4056,7 +4056,7 @@
 | Параметр | Подтверждённое значение |
 |---|---|
 | Назначение/intent | `registration` |
-| Роли | authorized |
+| Роли | guest, authorized |
 | Этап | `access` |
 | Объекты | account, personal_data, contract |
 | Операции | request, delete |
@@ -4096,7 +4096,7 @@
 | Параметр | Подтверждённое значение |
 |---|---|
 | Назначение/intent | `registration` |
-| Роли | authorized |
+| Роли | guest, authorized |
 | Этап | `access` |
 | Объекты | account, contract, document, payment |
 | Операции | identify, check, contact |
@@ -4136,7 +4136,7 @@
 | Параметр | Подтверждённое значение |
 |---|---|
 | Назначение/intent | `registration` |
-| Роли | authorized |
+| Роли | guest, authorized |
 | Этап | `access` |
 | Объекты | account, contract, tariff, document |
 | Операции | identify, connect |
@@ -4257,7 +4257,7 @@
 | Параметр | Подтверждённое значение |
 |---|---|
 | Назначение/intent | `account` |
-| Роли | guest |
+| Роли | guest, authorized |
 | Этап | `registration` |
 | Объекты | account, buyer |
 | Операции | register, participate |
@@ -4344,7 +4344,7 @@
 | Параметр | Подтверждённое значение |
 |---|---|
 | Назначение/intent | `payment` |
-| Роли | authorized |
+| Роли | guest, authorized |
 | Этап | `payment` |
 | Объекты | balance, commission, payment |
 | Операции | pay, check |
@@ -4428,7 +4428,7 @@
 | Параметр | Подтверждённое значение |
 |---|---|
 | Назначение/intent | `payment` |
-| Роли | authorized |
+| Роли | guest, authorized |
 | Этап | `after_transfer` |
 | Объекты | commission, payment, lot, invoice |
 | Операции | check, pay |
@@ -4470,7 +4470,7 @@
 | Параметр | Подтверждённое значение |
 |---|---|
 | Назначение/intent | `payment` |
-| Роли | authorized |
+| Роли | guest, authorized |
 | Этап | `after_transfer` |
 | Объекты | commission, account, lot |
 | Операции | pay, check |
@@ -4511,7 +4511,7 @@
 | Параметр | Подтверждённое значение |
 |---|---|
 | Назначение/intent | `refund` |
-| Роли | authorized |
+| Роли | guest, authorized |
 | Этап | `access` |
 | Объекты | deposit, refund, account, contract |
 | Операции | check, refund |
@@ -4680,7 +4680,7 @@
 | Параметр | Подтверждённое значение |
 |---|---|
 | Назначение/intent | `payment` |
-| Роли | authorized |
+| Роли | guest, authorized |
 | Этап | `after_win` |
 | Объекты | payment, lot, vehicle |
 | Операции | pay, check |
@@ -4760,7 +4760,7 @@
 | Параметр | Подтверждённое значение |
 |---|---|
 | Назначение/intent | `payment` |
-| Роли | authorized |
+| Роли | guest, authorized |
 | Этап | `payment` |
 | Объекты | payment, invoice, document, account |
 | Операции | receive, contact, check |
@@ -4885,7 +4885,7 @@
 | Параметр | Подтверждённое значение |
 |---|---|
 | Назначение/intent | `payment` |
-| Роли | authorized |
+| Роли | guest, authorized |
 | Этап | `payment` |
 | Объекты | payment, balance, tariff, commission, lot, invoice |
 | Операции | pay |
@@ -4969,7 +4969,7 @@
 | Параметр | Подтверждённое значение |
 |---|---|
 | Назначение/intent | `penalty` |
-| Роли | authorized |
+| Роли | guest, authorized |
 | Этап | `payment` |
 | Объекты | penalty, account, lot, invoice |
 | Операции | check, pay, contact |
@@ -5012,7 +5012,7 @@
 | Параметр | Подтверждённое значение |
 |---|---|
 | Назначение/intent | `penalty` |
-| Роли | authorized |
+| Роли | guest, authorized |
 | Этап | `payment` |
 | Объекты | penalty, account, lot, invoice |
 | Операции | check, pay, contact |
@@ -5096,7 +5096,7 @@
 | Параметр | Подтверждённое значение |
 |---|---|
 | Назначение/intent | `refund` |
-| Роли | authorized |
+| Роли | guest, authorized |
 | Этап | `payment` |
 | Объекты | refund, account, payment, balance |
 | Операции | refund, check |
@@ -5137,7 +5137,7 @@
 | Параметр | Подтверждённое значение |
 |---|---|
 | Назначение/intent | `refund` |
-| Роли | authorized |
+| Роли | guest, authorized |
 | Этап | `payment` |
 | Объекты | refund, payment, balance |
 | Операции | refund, check |
@@ -5534,7 +5534,7 @@
 
 - Короткий ответ: Проверьте раздел «Тарифы» и вкладку «Ваш тариф»: пополнение кошелька само по себе не означает, что тариф уже активирован.
 - Подробности: Если деньги списались, а тариф не отображается или ставки недоступны, подготовьте контакт аккаунта, дату, сумму, способ оплаты и подтверждение списания. Не оплачивайте повторно до проверки операции.
-- Следующий шаг: Нажмите «Проверить тариф» или создайте обращение; администрация проверит платёж и статус активации.
+- Следующий шаг: Проверьте статус тарифа в личном кабинете. Если деньги списались, а тариф не отображается, создайте обращение по платежу.
 
 #### Действия и эскалация
 
@@ -5690,7 +5690,7 @@
 | Параметр | Подтверждённое значение |
 |---|---|
 | Назначение/intent | `lot` |
-| Роли | authorized |
+| Роли | guest, authorized |
 | Этап | `after_bid` |
 | Объекты | auction, bid, lot |
 | Операции | check |
@@ -5749,7 +5749,7 @@
 
 - Короткий ответ: Общий статус торгов отображается в карточке лота и в соответствующем разделе личного кабинета.
 - Подробности: Если торги завершились, но статус не изменился, точное состояние нужно проверить по номеру лота. Платная опция позиции ставки не заменяет проверку статуса торгов.
-- Следующий шаг: Авторизуйтесь и запросите статус по номеру лота либо создайте обращение.
+- Следующий шаг: Проверьте статус в карточке лота или личном кабинете. Если статус не меняется, создайте обращение с номером лота.
 
 #### Действия и эскалация
 
@@ -5771,7 +5771,7 @@
 | Параметр | Подтверждённое значение |
 |---|---|
 | Назначение/intent | `bidding` |
-| Роли | authorized |
+| Роли | guest, authorized |
 | Этап | `during_bid` |
 | Объекты | bid, auction, lot |
 | Операции | participate, check |
@@ -5813,7 +5813,7 @@
 | Параметр | Подтверждённое значение |
 |---|---|
 | Назначение/intent | `bidding` |
-| Роли | authorized |
+| Роли | guest, authorized |
 | Этап | `after_bid` |
 | Объекты | bid, lot, seller |
 | Операции | check, contact |
@@ -5956,7 +5956,7 @@
 
 - Короткий ответ: Если подтверждённая ставка не отображается, не отправляйте её повторно до проверки статуса.
 - Подробности: Проверьте карточку лота и раздел активных ставок, затем обновите страницу. Для точной проверки нужны авторизация и номер лота.
-- Следующий шаг: Авторизуйтесь и выберите «Проверить ставку» либо создайте обращение с номером лота и временем отправки ставки.
+- Следующий шаг: Проверьте карточку лота и раздел активных ставок. Если ставка не отображается, создайте обращение с номером лота и временем отправки ставки.
 
 #### Действия и эскалация
 
@@ -6019,7 +6019,7 @@
 | Параметр | Подтверждённое значение |
 |---|---|
 | Назначение/intent | `bidding` |
-| Роли | authorized |
+| Роли | guest, authorized |
 | Этап | `during_bid` |
 | Объекты | bid, auction, lot, payment |
 | Операции | check, pay |
@@ -6267,7 +6267,7 @@
 ```json
 {
   "schema_version": 2,
-  "version": "2026.09.01.2",
+  "version": "2026.09.05.1",
   "publication_policy": "manual_review_only",
   "records": [
     {
@@ -6373,7 +6373,7 @@
       "facts": ["Статус конкретной ставки можно подтверждать только по данным авторизованного пользователя.", "Позиция ставки и факт её отображения — разные вопросы."],
       "short_answer": "Если подтверждённая ставка не отображается, не отправляйте её повторно до проверки статуса.",
       "detailed_answer": "Проверьте карточку лота и раздел активных ставок, затем обновите страницу. Для точной проверки нужны авторизация и номер лота.",
-      "next_step": "Авторизуйтесь и выберите «Проверить ставку» либо создайте обращение с номером лота и временем отправки ставки.",
+      "next_step": "Проверьте карточку лота и раздел активных ставок. Если ставка не отображается, создайте обращение с номером лота и временем отправки ставки.",
       "actions": [
         {"id": "bid.status.fetch","type": "fetch_status","label": "Проверить ставку","payload": {"kind": "bid"},"requires_auth": true},
         {"id": "bid.status.ticket","type": "open_ticket","label": "Создать обращение","requires_confirmation": true}
@@ -6402,7 +6402,7 @@
       "facts": ["Статус торгов и позиция ставки являются разными данными.", "Персональный статус проверяется только после подтверждённой авторизации."],
       "short_answer": "Общий статус торгов отображается в карточке лота и в соответствующем разделе личного кабинета.",
       "detailed_answer": "Если торги завершились, но статус не изменился, точное состояние нужно проверить по номеру лота. Платная опция позиции ставки не заменяет проверку статуса торгов.",
-      "next_step": "Авторизуйтесь и запросите статус по номеру лота либо создайте обращение.",
+      "next_step": "Проверьте статус в карточке лота или личном кабинете. Если статус не меняется, создайте обращение с номером лота.",
       "actions": [
         {"id": "auction.status.fetch","type": "fetch_status","label": "Проверить статус торгов","payload": {"kind": "auction"},"requires_auth": true},
         {"id": "auction.status.ticket","type": "open_ticket","label": "Статус не меняется","requires_confirmation": true}
@@ -6516,7 +6516,7 @@
       "facts": ["Победа в торгах не означает автоматическую передачу лота.", "Результат и дальнейшую передачу подтверждает продавец.", "До подтверждения передачи не нужно самостоятельно оплачивать автомобиль.", "После передачи следуют реквизиты, документы, оплата и согласование получения."],
       "short_answer": "Если ваша ставка стала лучшей, дождитесь решения продавца о передаче лота: победа в торгах ещё не означает автоматическую передачу автомобиля.",
       "detailed_answer": "До официального подтверждения не оплачивайте автомобиль самостоятельно. После передачи отдел сопровождения направит дальнейшие инструкции по реквизитам и документам, затем можно будет согласовать оплату и получение.",
-      "next_step": "Проверьте статус лота в личном кабинете. Для проверки конкретного лота нужна защищённая авторизация; если статус не меняется или инструкции не пришли, создайте обращение с номером лота.",
+      "next_step": "Проверьте статус лота в личном кабинете. Если статус не меняется или инструкции не пришли, создайте обращение с номером лота.",
       "actions": [
         {"id": "win.transfer.fetch","type": "fetch_status","label": "Проверить передачу","payload": {"kind": "transfer"},"requires_auth": true},
         {"id": "win.next.ticket","type": "open_ticket","label": "Нет дальнейших инструкций","requires_confirmation": true}
@@ -6561,7 +6561,7 @@
       "scenario_id": "contract.termination_and_restriction",
       "title": "Расторжение договора и ограничение доступа",
       "intent": "registration",
-      "roles": ["authorized"],
+      "roles": ["guest", "authorized"],
       "stage": "access",
       "objects": ["contract", "account", "lot"],
       "operations": ["check"],
@@ -6629,7 +6629,7 @@
       "facts": ["Получение согласовывается после подтверждения оплаты и готовности документов.", "Дату, время, место и доступ на территорию нужно подтвердить заранее.", "Точный комплект документов определяет продавец по конкретной сделке."],
       "short_answer": "Забрать лот можно после подтверждения оплаты, готовности документов и согласования выдачи.",
       "detailed_answer": "Заранее согласуйте с продавцом или менеджером дату, время и место получения. Не приезжайте без подтверждения доступа на территорию и готовности автомобиля. Точный список документов уточняется по конкретной сделке.",
-      "next_step": "Проверьте статус выдачи по номеру лота. Если лот оплачен, но данных для получения нет, создайте обращение.",
+      "next_step": "Проверьте статус выдачи в личном кабинете. Если лот оплачен, но данных для получения нет, создайте обращение.",
       "actions": [
         {"id": "pickup.status.fetch","type": "fetch_status","label": "Проверить выдачу","payload": {"kind": "transfer"},"requires_auth": true},
         {"id": "pickup.receive.ticket","type": "open_ticket","label": "Нет данных для выдачи","requires_confirmation": true}
@@ -6788,7 +6788,7 @@
       "scenario_id": "payment.methods",
       "title": "Как оплатить тариф, комиссию или лот",
       "intent": "payment",
-      "roles": ["authorized"],
+      "roles": ["guest", "authorized"],
       "stage": "payment",
       "objects": ["payment", "balance", "tariff", "commission", "lot", "invoice"],
       "operations": ["pay"],
@@ -6844,7 +6844,7 @@
       "scenario_id": "commission.explained",
       "title": "Как устроена комиссия MIGTORG",
       "intent": "payment",
-      "roles": ["authorized"],
+      "roles": ["guest", "authorized"],
       "stage": "after_transfer",
       "objects": ["commission", "payment", "lot", "invoice"],
       "operations": ["check", "pay"],
@@ -6898,7 +6898,7 @@
       "scenario_id": "commission.unpaid",
       "title": "Срок оплаты комиссии и блокировка",
       "intent": "payment",
-      "roles": ["authorized"],
+      "roles": ["guest", "authorized"],
       "stage": "after_transfer",
       "objects": ["commission", "account", "lot"],
       "operations": ["pay", "check"],
@@ -6926,7 +6926,7 @@
       "scenario_id": "lot.payment.start",
       "title": "Когда можно оплачивать выигранный лот",
       "intent": "payment",
-      "roles": ["authorized"],
+      "roles": ["guest", "authorized"],
       "stage": "after_win",
       "objects": ["payment", "lot", "vehicle"],
       "operations": ["pay", "check"],
@@ -7010,7 +7010,7 @@
       "scenario_id": "balance.topup.commission",
       "title": "Комиссия при пополнении баланса",
       "intent": "payment",
-      "roles": ["authorized"],
+      "roles": ["guest", "authorized"],
       "stage": "payment",
       "objects": ["balance", "commission", "payment"],
       "operations": ["pay", "check"],
@@ -7090,7 +7090,7 @@
       "scenario_id": "refund.destination",
       "title": "Куда возвращаются деньги",
       "intent": "refund",
-      "roles": ["authorized"],
+      "roles": ["guest", "authorized"],
       "stage": "payment",
       "objects": ["refund", "payment", "balance"],
       "operations": ["refund", "check"],
@@ -7144,7 +7144,7 @@
       "scenario_id": "refund.denied_or_blocked",
       "title": "Почему возврат недоступен или отклонён",
       "intent": "refund",
-      "roles": ["authorized"],
+      "roles": ["guest", "authorized"],
       "stage": "payment",
       "objects": ["refund", "account", "payment", "balance"],
       "operations": ["refund", "check"],
@@ -7172,7 +7172,7 @@
       "scenario_id": "penalty.explain_or_dispute",
       "title": "Штраф: основание, оплата и спор",
       "intent": "penalty",
-      "roles": ["authorized"],
+      "roles": ["guest", "authorized"],
       "stage": "payment",
       "objects": ["penalty", "account", "lot", "invoice"],
       "operations": ["check", "pay", "contact"],
@@ -7200,7 +7200,7 @@
       "scenario_id": "account.identification_for_contract",
       "title": "Какие данные нужны для демо и платного договора",
       "intent": "registration",
-      "roles": ["authorized"],
+      "roles": ["guest", "authorized"],
       "stage": "access",
       "objects": ["account", "contract", "tariff", "document"],
       "operations": ["identify", "connect"],
@@ -7228,7 +7228,7 @@
       "scenario_id": "vehicle.registration_after_purchase",
       "title": "Регистрация автомобиля после покупки",
       "intent": "transfer",
-      "roles": ["authorized"],
+      "roles": ["guest", "authorized"],
       "stage": "after_transfer",
       "objects": ["vehicle", "registration", "document", "seller"],
       "operations": ["register", "check", "contact"],
@@ -7284,7 +7284,7 @@
       "scenario_id": "contract.unconfirmed_details",
       "title": "Неутверждённый срок или ссылка в договоре",
       "intent": "registration",
-      "roles": ["authorized"],
+      "roles": ["guest", "authorized"],
       "stage": "access",
       "objects": ["contract", "account", "payment", "document"],
       "operations": ["check", "contact"],
@@ -7312,7 +7312,7 @@
       "scenario_id": "refusal.unconfirmed_details",
       "title": "Неутверждённые основания или последствия отказа",
       "intent": "refusal",
-      "roles": ["authorized"],
+      "roles": ["guest", "authorized"],
       "stage": "after_transfer",
       "objects": ["lot", "refusal", "seller", "contract"],
       "operations": ["refuse", "check", "contact"],
@@ -7340,7 +7340,7 @@
       "scenario_id": "penalty.unconfirmed_details",
       "title": "Неопубликованный срок, формула или владелец решения по штрафу",
       "intent": "penalty",
-      "roles": ["authorized"],
+      "roles": ["guest", "authorized"],
       "stage": "payment",
       "objects": ["penalty", "account", "lot", "invoice"],
       "operations": ["check", "pay", "contact"],
@@ -7368,7 +7368,7 @@
       "scenario_id": "account.identification_edge_case",
       "title": "Документы представителя или стороннего плательщика требуют проверки",
       "intent": "registration",
-      "roles": ["authorized"],
+      "roles": ["guest", "authorized"],
       "stage": "access",
       "objects": ["account", "contract", "document", "payment"],
       "operations": ["identify", "check", "contact"],
@@ -7396,7 +7396,7 @@
       "scenario_id": "vehicle.registration_penalty_details",
       "title": "Штраф за нарушение срока регистрации автомобиля требует официальной проверки",
       "intent": "transfer",
-      "roles": ["authorized"],
+      "roles": ["guest", "authorized"],
       "stage": "after_transfer",
       "objects": ["vehicle", "registration", "penalty", "document"],
       "operations": ["register", "check", "contact"],
@@ -7424,7 +7424,7 @@
       "scenario_id": "support.staff_only_details",
       "title": "Сведения, доступные только после индивидуальной проверки",
       "intent": "support",
-      "roles": ["authorized"],
+      "roles": ["guest", "authorized"],
       "stage": "support",
       "objects": ["account", "support", "document"],
       "operations": ["check", "contact"],
@@ -7452,7 +7452,7 @@
       "scenario_id": "refusal.invalid_reasons",
       "title": "Какие причины не подтверждают мотивированный отказ",
       "intent": "refusal",
-      "roles": ["authorized"],
+      "roles": ["guest", "authorized"],
       "stage": "after_transfer",
       "objects": ["lot", "refusal", "document"],
       "operations": ["refuse", "check"],
@@ -7480,7 +7480,7 @@
       "scenario_id": "refusal.evidence",
       "title": "Какие документы и фотографии нужны для отказа",
       "intent": "refusal",
-      "roles": ["authorized"],
+      "roles": ["guest", "authorized"],
       "stage": "after_transfer",
       "objects": ["lot", "refusal", "document", "inspection"],
       "operations": ["refuse", "check"],
@@ -7508,7 +7508,7 @@
       "scenario_id": "refusal.deadline_and_submission",
       "title": "Срок и способ подачи акта об отказе",
       "intent": "refusal",
-      "roles": ["authorized"],
+      "roles": ["guest", "authorized"],
       "stage": "after_transfer",
       "objects": ["lot", "refusal", "document"],
       "operations": ["refuse", "contact"],
@@ -7536,7 +7536,7 @@
       "scenario_id": "refusal.seller_decision",
       "title": "Кто принимает решение по мотивированному отказу",
       "intent": "refusal",
-      "roles": ["authorized"],
+      "roles": ["guest", "authorized"],
       "stage": "after_transfer",
       "objects": ["lot", "refusal", "seller"],
       "operations": ["refuse", "contact", "check"],
@@ -7564,7 +7564,7 @@
       "scenario_id": "payment.accounting_documents",
       "title": "Финансовые и закрывающие документы",
       "intent": "payment",
-      "roles": ["authorized"],
+      "roles": ["guest", "authorized"],
       "stage": "payment",
       "objects": ["payment", "invoice", "document", "account"],
       "operations": ["receive", "contact", "check"],
@@ -7592,7 +7592,7 @@
       "scenario_id": "deposit.explained",
       "title": "Что такое обеспечительный или возвратный депозит",
       "intent": "refund",
-      "roles": ["authorized"],
+      "roles": ["guest", "authorized"],
       "stage": "access",
       "objects": ["deposit", "refund", "account", "contract"],
       "operations": ["check", "refund"],
@@ -7621,7 +7621,7 @@
       "scenario_id": "seller.buyer_nonpayment",
       "title": "Покупатель не оплатил переданное имущество",
       "intent": "payment",
-      "roles": ["authorized"],
+      "roles": ["guest", "authorized"],
       "stage": "after_transfer",
       "objects": ["seller", "buyer", "lot", "payment"],
       "operations": ["check", "contact"],
@@ -7805,7 +7805,7 @@
       "facts": ["Статус тарифа отображается в личном кабинете: раздел «Тарифы», вкладка «Ваш тариф».", "Пополнение кошелька само по себе не всегда активирует тариф: выбранный тариф должен пройти оплату и активацию.", "Для проверки нужны контакт аккаунта, дата, сумма, способ оплаты и подтверждение списания.", "После проверки администрация активирует доступ или сообщает причину задержки; бот не обещает результат до проверки."],
       "short_answer": "Проверьте раздел «Тарифы» и вкладку «Ваш тариф»: пополнение кошелька само по себе не означает, что тариф уже активирован.",
       "detailed_answer": "Если деньги списались, а тариф не отображается или ставки недоступны, подготовьте контакт аккаунта, дату, сумму, способ оплаты и подтверждение списания. Не оплачивайте повторно до проверки операции.",
-      "next_step": "Нажмите «Проверить тариф» или создайте обращение; администрация проверит платёж и статус активации.",
+      "next_step": "Проверьте статус тарифа в личном кабинете. Если деньги списались, а тариф не отображается, создайте обращение по платежу.",
       "actions": [
         {"id": "tariff.status.fetch","type": "fetch_status","label": "Проверить тариф","payload": {"kind": "tariff"},"requires_auth": true},
         {"id": "tariff.status.ticket","type": "open_ticket","label": "Оплатил, доступа нет","requires_confirmation": true}
@@ -7850,7 +7850,7 @@
       "scenario_id": "refusal.change_mind",
       "title": "Покупатель передумал выкупать выигранный лот",
       "intent": "refusal",
-      "roles": ["authorized"],
+      "roles": ["guest", "authorized"],
       "stage": "after_transfer",
       "objects": ["lot", "refusal", "seller"],
       "operations": ["refuse", "contact"],
@@ -7878,7 +7878,7 @@
       "scenario_id": "refusal.no_response",
       "title": "Покупатель игнорирует продавца после победы",
       "intent": "refusal",
-      "roles": ["authorized"],
+      "roles": ["guest", "authorized"],
       "stage": "after_transfer",
       "objects": ["lot", "refusal", "seller", "account"],
       "operations": ["refuse", "contact", "check"],
@@ -7906,7 +7906,7 @@
       "scenario_id": "seller.buyer_refusal",
       "title": "Покупатель отказался от имущества продавца",
       "intent": "seller",
-      "roles": ["authorized"],
+      "roles": ["guest", "authorized"],
       "stage": "after_transfer",
       "objects": ["seller", "buyer", "lot", "refusal", "property"],
       "operations": ["check", "contact"],
@@ -7962,7 +7962,7 @@
       "scenario_id": "bid.expired",
       "title": "Срок победной ставки истёк",
       "intent": "bidding",
-      "roles": ["authorized"],
+      "roles": ["guest", "authorized"],
       "stage": "after_bid",
       "objects": ["bid", "lot", "seller"],
       "operations": ["check", "contact"],
@@ -8018,7 +8018,7 @@
       "scenario_id": "pickup.delay",
       "title": "Задержка вывоза и возможные расходы хранения",
       "intent": "pickup",
-      "roles": ["authorized"],
+      "roles": ["guest", "authorized"],
       "stage": "pickup",
       "objects": ["lot", "vehicle", "seller", "parking"],
       "operations": ["receive", "check", "contact"],
@@ -8074,7 +8074,7 @@
       "scenario_id": "seller.access_security",
       "title": "Доступ продавца и безопасность логина",
       "intent": "seller",
-      "roles": ["authorized"],
+      "roles": ["guest", "authorized"],
       "stage": "seller_onboarding",
       "objects": ["seller", "account"],
       "operations": ["connect", "check", "contact"],
@@ -8130,7 +8130,7 @@
       "scenario_id": "seller.training",
       "title": "Обучение сотрудников продавца",
       "intent": "seller",
-      "roles": ["authorized"],
+      "roles": ["guest", "authorized"],
       "stage": "seller_onboarding",
       "objects": ["seller", "account"],
       "operations": ["connect", "contact"],
@@ -8158,7 +8158,7 @@
       "scenario_id": "seller.contract_term",
       "title": "Срок и прекращение договора продавца",
       "intent": "seller",
-      "roles": ["authorized"],
+      "roles": ["guest", "authorized"],
       "stage": "seller_contract",
       "objects": ["seller", "contract"],
       "operations": ["terminate", "check", "contact"],
@@ -8243,7 +8243,7 @@
       "scenario_id": "account.registration",
       "title": "Регистрация покупателя и необходимые данные",
       "intent": "account",
-      "roles": ["guest"],
+      "roles": ["guest", "authorized"],
       "stage": "registration",
       "objects": ["account", "buyer"],
       "operations": ["register", "participate"],
@@ -8299,7 +8299,7 @@
       "scenario_id": "auction.result",
       "title": "Как узнать результат торгов и победную ставку",
       "intent": "lot",
-      "roles": ["authorized"],
+      "roles": ["guest", "authorized"],
       "stage": "after_bid",
       "objects": ["auction", "bid", "lot"],
       "operations": ["check"],
@@ -8383,7 +8383,7 @@
       "scenario_id": "transfer.confirmed",
       "title": "Что означает статус «Передан»",
       "intent": "transfer",
-      "roles": ["authorized"],
+      "roles": ["guest", "authorized"],
       "stage": "after_transfer",
       "objects": ["lot", "seller", "document", "payment"],
       "operations": ["check", "receive", "pay"],
@@ -8547,7 +8547,7 @@
       "scenario_id": "lot.missing",
       "title": "Пользователь не видит свой лот",
       "intent": "lot",
-      "roles": ["authorized"],
+      "roles": ["guest", "authorized"],
       "stage": "lot_management",
       "objects": ["lot", "account"],
       "operations": ["search", "check"],
@@ -8627,7 +8627,7 @@
       "scenario_id": "bid.autobid_extension",
       "title": "Автоставка и продление открытых торгов",
       "intent": "bidding",
-      "roles": ["authorized"],
+      "roles": ["guest", "authorized"],
       "stage": "during_bid",
       "objects": ["bid", "auction", "lot"],
       "operations": ["participate", "check"],
@@ -8681,7 +8681,7 @@
       "scenario_id": "bid.position_service",
       "title": "Опция «Узнать позицию ставки» и дополнительные инструменты",
       "intent": "bidding",
-      "roles": ["authorized"],
+      "roles": ["guest", "authorized"],
       "stage": "during_bid",
       "objects": ["bid", "auction", "lot", "payment"],
       "operations": ["check", "pay"],
@@ -8707,7 +8707,7 @@
       "scenario_id": "transfer.notification_contact",
       "title": "Уведомление о передаче и контакт продавца",
       "intent": "transfer",
-      "roles": ["authorized"],
+      "roles": ["guest", "authorized"],
       "stage": "after_transfer",
       "objects": ["lot", "seller", "notification"],
       "operations": ["check", "contact"],
@@ -8733,7 +8733,7 @@
       "scenario_id": "transfer.requisites",
       "title": "Какие реквизиты направить для документов по лоту",
       "intent": "transfer",
-      "roles": ["authorized"],
+      "roles": ["guest", "authorized"],
       "stage": "after_transfer",
       "objects": ["lot", "payer", "document", "requisites"],
       "operations": ["provide", "check"],
@@ -8839,7 +8839,7 @@
       "scenario_id": "pickup.representative",
       "title": "Получение лота представителем и доверенность",
       "intent": "pickup",
-      "roles": ["authorized"],
+      "roles": ["guest", "authorized"],
       "stage": "pickup",
       "objects": ["lot", "buyer", "representative", "power_of_attorney"],
       "operations": ["receive", "authorize"],
@@ -8865,7 +8865,7 @@
       "scenario_id": "documents.payer_change",
       "title": "Оплата другим лицом или смена плательщика",
       "intent": "payment",
-      "roles": ["authorized"],
+      "roles": ["guest", "authorized"],
       "stage": "before_payment",
       "objects": ["lot", "payer", "invoice", "contract"],
       "operations": ["change", "pay"],
@@ -9295,7 +9295,7 @@
       "scenario_id": "account.dashboard_sections",
       "title": "Разделы личного кабинета",
       "intent": "account",
-      "roles": ["authorized"],
+      "roles": ["guest", "authorized"],
       "stage": "account_management",
       "objects": ["account", "lot", "tariff", "balance", "notification"],
       "operations": ["navigate", "check"],
@@ -9347,7 +9347,7 @@
       "scenario_id": "notification.delivery_problem",
       "title": "Не приходят уведомления или письма",
       "intent": "technical",
-      "roles": ["authorized"],
+      "roles": ["guest", "authorized"],
       "stage": "account_management",
       "objects": ["notification", "email", "lot"],
       "operations": ["check", "escalate"],
@@ -9637,7 +9637,7 @@
       "scenario_id": "support.lot_case_review",
       "title": "Проблема авторизованного клиента по конкретному лоту",
       "intent": "support",
-      "roles": ["authorized"],
+      "roles": ["guest", "authorized"],
       "stage": "deal",
       "objects": ["lot", "documents", "payment", "pickup", "seller"],
       "operations": ["collect_context", "escalate"],
@@ -10163,7 +10163,7 @@
       "scenario_id": "account.delete_request",
       "title": "Удаление аккаунта MIGTORG",
       "intent": "registration",
-      "roles": ["authorized"],
+      "roles": ["guest", "authorized"],
       "stage": "access",
       "objects": ["account", "personal_data", "contract"],
       "operations": ["request", "delete"],

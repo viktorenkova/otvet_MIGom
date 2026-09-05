@@ -24,10 +24,12 @@ def _statuses(result: dict) -> dict[str, str]:
     return {item["name"]: item["status"] for item in result["checks"]}
 
 
-def test_production_readiness_passes_required_checks(tmp_path):
+def test_configuration_pass_does_not_authorize_release(tmp_path):
     result = run_checks(_production_settings(tmp_path), {"production_release_ready": True})
 
-    assert result["production_ready"] is True
+    assert result["configuration_ready"] is True
+    assert result["production_ready"] is False
+    assert "current_bundle_independent_500_100_gate" in result["release_requirements"]
     assert result["failures"] == 0
     assert _statuses(result)["trusted_status_integration"] == "warn"
 

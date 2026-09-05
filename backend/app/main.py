@@ -11,6 +11,7 @@ from fastapi.responses import RedirectResponse
 from fastapi.staticfiles import StaticFiles
 
 from backend.app.bot.answer_generator import generate_answer
+from backend.app.bot.runtime_templates import approved_template
 from backend.app.bot.dialog_logger import DialogLogger
 from backend.app.bot.escalation import needs_ticket, suggested_fields_for
 from backend.app.bot.intent_classifier import classify_intent
@@ -155,6 +156,12 @@ def _persist_turn(
     fallback_reason: str,
     safety_categories: list[str],
 ) -> str:
+    from backend.app.bot.architecture_decision import decision_context
+    trace = decision_context.get()
+    if trace is not None:
+        trace["final_decision"] = {"article_id": article_id, "intent": intent, "action": action,
+            "score": score, "confidence": confidence, "fallback_reason": fallback_reason,
+            "features": matched_features, "ticket_offered": needs_ticket, "ticket_created": ticket_created}
     facets = extract_query_facets(request.message)
     _, quality_event_id = logger.log_turn(
         session_id=request.session_id,
@@ -214,8 +221,41 @@ def _scenario_actions(scenario_id: str | None) -> list[ChatAction]:
             requires_confirmation=bool(item.get("requires_confirmation", False)),
         )
         for item in scenario.actions
-        if item.get("id") and item.get("label")
+        if item.get("id")
+        and item.get("label")
+        and (item.get("type") != "fetch_status" or settings.internal_status_api_enabled)
     ]
+
+
+_SPECIFIC_DYNAMIC_OBJECT = re.compile(
+    r"\b(?:лот|плат[её]ж|возврат|договор|тариф|ставк)\w*\s*(?:№|номер\s*)?\d+[\w/-]*\b",
+    flags=re.IGNORECASE,
+)
+_PERSONAL_MARKER = re.compile(r"\b(?:мой|моя|мо[её]|мои|моего|мою|мне|у\s+меня)\b", flags=re.IGNORECASE)
+_DYNAMIC_STATE_MARKER = re.compile(
+    r"\b(?:статус|где|почему|когда|не\s+приш\w*|не\s+поступ\w*|не\s+отображ\w*|"
+    r"списал\w*|начисл\w*|вернул\w*|активир\w*|передан\w*|выиграл\w*|одобрен\w*|отмен\w*)\b",
+    flags=re.IGNORECASE,
+)
+
+
+def _asks_for_specific_dynamic_data(message: str) -> bool:
+    return bool(
+        _SPECIFIC_DYNAMIC_OBJECT.search(message)
+        or (_PERSONAL_MARKER.search(message) and _DYNAMIC_STATE_MARKER.search(message))
+    )
+
+
+def _answer_has_dynamic_data_limit(answer: str) -> bool:
+    normalized = answer.casefold()
+    return any(marker in normalized for marker in (
+        "не могу подтверд",
+        "не подтвержда",
+        "не могу обещ",
+        "без проверки в системе",
+        "не вижу фактические данные",
+        "проверяются сотрудниками",
+    ))
 
 
 def _response_scenario_actions(message: str, scenario_id: str | None) -> list[ChatAction]:
@@ -369,6 +409,42 @@ def _process_chat_message(request: ChatRequest) -> ChatResponse:
         if action_type == "clarify":
             selected_scenario_article = get_article_by_id(target_scenario_id, role)
         elif action_type == "fetch_status":
+            if not settings.internal_status_api_enabled:
+                answer = approved_template("status_integration_disabled")
+                message_id = _persist_turn(
+                    started_at=started_at,
+                    request=request,
+                    analysis=analysis,
+                    role=role,
+                    intent=action_scenario.intent,
+                    answer=answer,
+                    article_id=action_scenario.scenario_id,
+                    score=250,
+                    confidence="high",
+                    matched_features=["structured_action", "status_integration_disabled"],
+                    action="clarify",
+                    needs_ticket=False,
+                    ticket_id=None,
+                    ticket_created=False,
+                    fallback_reason="status_integration_disabled",
+                    safety_categories=[],
+                )
+                return ChatResponse(
+                    session_id=request.session_id,
+                    message_id=message_id,
+                    answer=answer,
+                    intent=action_scenario.intent,
+                    scenario_id=action_scenario.scenario_id,
+                    resolution="clarified",
+                    role=role,
+                    needs_ticket=False,
+                    actions=[
+                        item for item in _scenario_actions(action_scenario.scenario_id)
+                        if item.type == "open_ticket"
+                    ],
+                    confidence_level="high",
+                    action="clarify",
+                )
             kind = str(action_config.get("payload", {}).get("kind") or "lot")
             required_scope = f"status:{kind}:read"
             has_scope = "status:read" in request.context.trusted_scopes or required_scope in request.context.trusted_scopes
@@ -903,6 +979,21 @@ def _process_chat_message(request: ChatRequest) -> ChatResponse:
         f"answer_verifier:{generated.verification_reason or 'not_applicable'}",
     ]))
     answer = generated.answer
+    if (
+        not settings.internal_status_api_enabled
+        and _asks_for_specific_dynamic_data(effective_message)
+        and not _answer_has_dynamic_data_limit(answer)
+    ):
+        answer = f"{answer.rstrip()} {approved_template('dynamic_data_unavailable')}"
+        matched_features.append("service_text:dynamic_data_unavailable")
+    from backend.app.bot.architecture_decision import decision_context
+    trace = decision_context.get()
+    if trace is not None:
+        trace["answer_evidence"] = {"used_fact_ids": generated.used_fact_ids,
+            "verification_passed": generated.verification_passed,
+            "verification_reason": generated.verification_reason}
+        if "service_text:dynamic_data_unavailable" in matched_features:
+            trace["service_text"] = "runtime.owner_approved.dynamic_data_unavailable"
     if safety_before.answer_prefix:
         answer = safety_before.answer_prefix + answer
     safety_after = post_check(answer)
@@ -1185,17 +1276,31 @@ def _process_bound_chat_message(request: ChatRequest, dialogue_turn=None, lease_
                 and action_allowed(ChatAction.model_validate(issued), role)
                 and (not request.conversation_turn_id or request.conversation_turn_id == previous["message_id"]))
         if not valid_action:
-            answer = "Это действие больше не относится к текущему ответу. Опишите, пожалуйста, что нужно проверить."
+            disabled_status_action = bool(
+                issued
+                and definition
+                and str(issued.get("type") or "") == "fetch_status"
+                and not settings.internal_status_api_enabled
+            )
+            reason = "status_integration_disabled" if disabled_status_action else "action_not_issued_for_current_turn"
+            answer = (
+                approved_template("status_integration_disabled")
+                if disabled_status_action
+                else "Это действие больше не относится к текущему ответу. Опишите, пожалуйста, что нужно проверить."
+            )
+            response_intent = definition[0].intent if disabled_status_action else "unknown"
+            response_scenario_id = definition[0].scenario_id if disabled_status_action else None
             message_id = _persist_turn(started_at=started, request=request,
-                analysis=analyze_text(request.message, request.context), role=role, intent="unknown",
-                answer=answer, article_id=None, score=0, confidence="low",
-                matched_features=["action_not_issued_for_current_turn"], action="clarify",
+                analysis=analyze_text(request.message, request.context), role=role, intent=response_intent,
+                answer=answer, article_id=response_scenario_id, score=0, confidence="low",
+                matched_features=[reason], action="clarify",
                 needs_ticket=False, ticket_id=None, ticket_created=False,
-                fallback_reason="action_not_issued_for_current_turn", safety_categories=[])
+                fallback_reason=reason, safety_categories=[])
             response = ChatResponse(session_id=request.session_id, message_id=message_id,
-                answer=answer, intent="unknown", role=role, needs_ticket=False,
+                answer=answer, intent=response_intent, scenario_id=response_scenario_id,
+                role=role, needs_ticket=False,
                 resolution="clarified", action="clarify", confidence_level="low")
-            trace["decision"] = {"reason": "action_not_issued_for_current_turn"}
+            trace["decision"] = {"reason": reason}
         elif dialogue_turn and dialogue_turn.service_reply and pre_check(request.message).allowed:
             response = _dialogue_service_response(request, dialogue_turn, role, started)
             trace["service_text"] = "dialogue." + dialogue_turn.service_reply

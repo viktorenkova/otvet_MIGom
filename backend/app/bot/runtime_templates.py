@@ -11,3 +11,7 @@ def runtime_templates():
 
 def legacy_template(template_id: str) -> str:
     return runtime_templates()["exceptions"][template_id]["text"]
+
+
+def approved_template(template_id: str) -> str:
+    return runtime_templates()["owner_approved"][template_id]["text"]

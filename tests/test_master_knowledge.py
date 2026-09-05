@@ -23,7 +23,9 @@ def test_master_is_complete_and_human_readable_sections_are_in_sync() -> None:
 
     assert result["valid"] is True
     assert result["errors"] == []
-    assert result["metrics"]["scenario_count"] == 142
+    expected_ids = {r["scenario_id"] for r in _json(V2_PATH)["records"]}
+    assert {r["scenario_id"] for r in source["records"]} == expected_ids
+    assert result["metrics"]["scenario_count"] == len(expected_ids)
     assert result["metrics"]["fact_count"] == 585
     assert result["metrics"]["knowledge_gap_count"] == 3
     assert result["metrics"]["expert_review_candidate_count"] == 9

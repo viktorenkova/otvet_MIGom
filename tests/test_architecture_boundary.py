@@ -11,7 +11,7 @@ from backend.app.bot.answer_contracts import get_answer_contract, verify_answer
 from backend.app.bot.answer_generator import generate_answer
 from backend.app.bot.dialog_logger import DialogLogger
 from backend.app.bot.scenario_engine import load_scenarios
-from backend.app.models.chat import ChatRequest, ChatResponse
+from backend.app.models.chat import ChatAction, ChatRequest, ChatResponse
 
 
 @pytest.fixture
@@ -21,16 +21,15 @@ def isolated_log(tmp_path, monkeypatch):
     return log
 
 
-def test_all_scenario_roles_survive_search_card_conversion():
+def test_all_active_scenarios_are_public_search_cards():
     for scenario in load_scenarios():
         for role in ("guest", "authorized"):
             article = ks.get_article_by_id(scenario.scenario_id, role)
-            assert bool(article) == (role in scenario.roles), (scenario.scenario_id, role)
-            if article:
-                assert set(article.roles) == set(scenario.roles)
+            assert article is not None, (scenario.scenario_id, role)
+            assert set(article.roles) == {"guest", "authorized"}
 
 
-def test_top10_never_contains_forbidden_role(monkeypatch):
+def test_guest_candidate_pool_contains_all_active_scenarios(monkeypatch):
     captured = set()
     class Index:
         def rank(self, message, ids, *args, **kwargs):
@@ -39,7 +38,9 @@ def test_top10_never_contains_forbidden_role(monkeypatch):
     monkeypatch.setattr(ks, "_semantic_index", lambda: Index())
     ks.retrieve_knowledge_candidates("тариф", "guest")
     assert captured
-    assert all("guest" in a.roles for a in ks.load_articles() if a.slug in captured)
+    assert "commission.explained" in captured
+    assert "refund.denied_or_blocked" in captured
+    assert "contract.termination_and_restriction" in captured
 
 
 def test_invented_action_never_reaches_business_logic(isolated_log, monkeypatch):
@@ -93,6 +94,7 @@ def test_tariff_status_uses_trusted_user_without_lot(isolated_log, monkeypatch):
     from backend.app.integrations.status_provider import StatusResult
     secret = "test-only-architecture-secret"
     monkeypatch.setattr(main.settings, "trusted_context_secret", secret)
+    monkeypatch.setattr(main.settings, "internal_status_api_enabled", True)
     scenario = next(s for s in load_scenarios() if any(
         a.get("type") == "fetch_status" and a.get("payload", {}).get("kind") == "tariff" for a in s.actions))
     action = next(a for a in main._scenario_actions(scenario.scenario_id) if a.payload.get("kind") == "tariff")
@@ -142,11 +144,77 @@ def test_fallback_cannot_authorize_itself():
     assert verification.answer == contract.approved_template
 
 
-def test_answer_boundary_rechecks_role_even_for_preselected_article():
-    article = next(a for a in ks.load_articles() if a.roles == ("authorized",))
-    answer = generate_answer("вопрос", article.intent, "guest", article, False)
-    assert answer.verification_reason == "policy:scenario_access_denied"
-    assert not answer.used_fact_ids
+def test_answer_boundary_allows_public_article_for_guest():
+    article = ks.get_article_by_id("commission.explained", "guest")
+    assert article is not None
+    answer = generate_answer("какие комиссии есть", article.intent, "guest", article, False)
+    assert answer.verification_reason != "policy:scenario_access_denied"
+    assert answer.answer
+
+
+def test_status_actions_are_dormant_until_integration_is_enabled(monkeypatch):
+    scenario = next(s for s in load_scenarios() if any(
+        a.get("type") == "fetch_status" for a in s.actions
+    ))
+    monkeypatch.setattr(main.settings, "internal_status_api_enabled", False)
+    assert all(a.type != "fetch_status" for a in main._scenario_actions(scenario.scenario_id))
+    monkeypatch.setattr(main.settings, "internal_status_api_enabled", True)
+    assert any(a.type == "fetch_status" for a in main._scenario_actions(scenario.scenario_id))
+
+
+def test_disabled_status_action_reports_real_capability(isolated_log, monkeypatch):
+    monkeypatch.setattr(main.settings, "internal_status_api_enabled", False)
+    scenario = next(s for s in load_scenarios() if any(
+        a.get("type") == "fetch_status" for a in s.actions
+    ))
+    raw_action = next(a for a in scenario.actions if a.get("type") == "fetch_status")
+    action = ChatAction(
+        id=str(raw_action["id"]), type="fetch_status", label=str(raw_action["label"]),
+        scenario_id=scenario.scenario_id, payload=dict(raw_action.get("payload", {})),
+        requires_auth=bool(raw_action.get("requires_auth", False)),
+    )
+    isolated_log.save_response_state(ChatResponse(
+        session_id="disabled-status", message_id="previous", answer="ответ",
+        intent=scenario.intent, role="guest", needs_ticket=False, actions=[action],
+    ), {})
+    response = main.process_chat_message(ChatRequest(
+        message=str(raw_action["label"]),
+        session_id="disabled-status",
+        selected_action_id=str(raw_action["id"]),
+        conversation_turn_id="previous",
+    ))
+    assert response.resolution == "clarified"
+    assert response.action == "clarify"
+    assert "не подключён к данным личного кабинета" in response.answer
+    assert all(a.type != "fetch_status" for a in response.actions)
+
+
+@pytest.mark.parametrize("message", [
+    "Где мой возврат?",
+    "Почему мой тариф не активирован?",
+    "Какой статус у лота 12345?",
+    "Не поступил платёж №7788",
+])
+def test_specific_dynamic_data_is_detected(message):
+    assert main._asks_for_specific_dynamic_data(message)
+
+
+@pytest.mark.parametrize("message", [
+    "Как устроен возврат?",
+    "Какие тарифы есть?",
+    "Как проходят торги?",
+])
+def test_general_knowledge_question_is_not_marked_personal(message):
+    assert not main._asks_for_specific_dynamic_data(message)
+
+
+@pytest.mark.parametrize("answer", [
+    "Без проверки в системе я не могу подтвердить статус.",
+    "Штрафы и спорные ситуации проверяются сотрудниками.",
+    "Я не могу обещать возврат.",
+])
+def test_existing_capability_limit_is_not_duplicated(answer):
+    assert main._answer_has_dynamic_data_limit(answer)
 
 
 def test_published_gaps_are_executable():

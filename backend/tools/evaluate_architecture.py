@@ -7,12 +7,39 @@ import argparse
 from collections import Counter
 from contextlib import nullcontext
 from datetime import datetime, timezone
+import hashlib
 import json
 import os
 from pathlib import Path
 import tempfile
 import time
 from unittest.mock import patch
+
+from backend.tools.check_production_readiness import _load_env_file
+
+
+def llm_telemetry(logger, variant: str) -> dict:
+    with logger._connect() as conn:
+        rows = conn.execute(
+            """SELECT model, input_tokens, output_tokens, estimated_cost_usd,
+                      latency_ms, success, error
+               FROM llm_requests
+               WHERE task_type = 'scenario_selection' AND session_id LIKE ?""",
+            (variant + "-%",),
+        ).fetchall()
+    latencies = sorted(int(row["latency_ms"]) for row in rows)
+    return {
+        "logged_external_calls": len(rows),
+        "successful_provider_calls": sum(bool(row["success"]) for row in rows),
+        "failed_provider_calls": sum(not bool(row["success"]) for row in rows),
+        "models": dict(Counter(str(row["model"]) for row in rows)),
+        "input_tokens": sum(int(row["input_tokens"]) for row in rows),
+        "output_tokens": sum(int(row["output_tokens"]) for row in rows),
+        "estimated_cost_usd": round(sum(float(row["estimated_cost_usd"]) for row in rows), 8),
+        "provider_p95_ms": (latencies[max(0, __import__('math').ceil(len(latencies) * .95) - 1)]
+                            if latencies else None),
+        "provider_errors": dict(Counter(str(row["error"]) for row in rows if row["error"])),
+    }
 
 
 def metrics(rows):
@@ -37,10 +64,13 @@ def main():
     parser.add_argument("--dataset", type=Path, default=Path("tests/data/routing_v3_closed_control_270.json"))
     parser.add_argument("--overlay", type=Path, default=Path("tests/data/routing_label_adjudication_110.json"))
     parser.add_argument("--include-llm", action="store_true", help="Use the configured paid provider for C")
+    parser.add_argument("--env-file", type=Path, help="Load a local ignored environment file before importing the app")
     parser.add_argument("--output", type=Path, default=Path("reports/architecture-experiment.json"))
     parser.add_argument("--details", type=Path, default=Path(".work/architecture-experiment-details.json"))
     parser.add_argument("--limit", type=int)
     args = parser.parse_args()
+    if args.env_file:
+        _load_env_file(args.env_file)
     with tempfile.TemporaryDirectory(prefix="migtorg-architecture-") as temporary:
         os.environ.update(DATABASE_PATH=str(Path(temporary) / "evaluation.sqlite3"),
             TICKET_EMAIL_ENABLED="false", INTERNAL_STATUS_API_ENABLED="false", LLM_ENABLED="false",
@@ -67,6 +97,19 @@ def main():
             "assessment": "automatic marker proxy; expert semantic assessment unavailable",
             "release_allowed": False, "variants": {}, "label_access_conflicts": [],
             "C": "not run: requires configured non-mock provider and separate explicit evaluation enablement"}
+        if args.include_llm:
+            endpoint = app.settings.qwen_base_url if app.settings.llm_provider == "qwen" else app.settings.litellm_proxy_url
+            report["llm_experiment_config"] = {
+                "provider": app.settings.llm_provider,
+                "primary_model": app.settings.llm_primary_model,
+                "endpoint_sha256": hashlib.sha256(endpoint.encode("utf-8")).hexdigest(),
+                "input_cost_per_million_usd": app.settings.llm_input_cost_per_million_usd,
+                "output_cost_per_million_usd": app.settings.llm_output_cost_per_million_usd,
+                "daily_budget_usd": app.settings.llm_daily_budget_usd,
+                "total_budget_usd": app.settings.active_llm_monthly_budget_usd,
+                "selector_timeout_seconds": min(4, app.settings.llm_total_timeout_seconds),
+                "answer_rewriting_enabled": app.settings.llm_enabled,
+            }
         details = {}
         frozen = build_runtime_manifest(app.settings)
         bundle_keys = ("application_bundle_sha256", "knowledge_sha256", "evaluator_sha256",
@@ -126,6 +169,15 @@ def main():
             summary["recall_at_10"] = ({"recalled": recalled, "total": len(expected_candidate_rows)} if variant != "D" else None)
             summary.update(manifest=manifest, http_parity_failures=parity_failures,
                            expert_semantic_success=None)
+            if variant == "C":
+                summary["llm_telemetry"] = llm_telemetry(app.logger, variant)
+                summary["direct_selector_outcomes"] = dict(Counter(
+                    "fallback:" + str(row["trace"].get("llm_fallback"))
+                    if row["trace"].get("llm_fallback") else
+                    "selected" if row["trace"].get("interpretation", {}).get("scenario_id") else
+                    "clarified"
+                    for row in rows
+                ))
             report["variants"][variant] = summary
         ids = candidates_by_variant["A"].keys() & candidates_by_variant["B"].keys()
         report["same_top10"] = all(candidates_by_variant["A"][k] == candidates_by_variant["B"][k] for k in ids)
